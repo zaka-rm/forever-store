@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /admin/login
+Disallow: /checkout
+Disallow: /checkout/confirmation
+Disallow: /commande
+Disallow: /favoris
+Disallow: /recherche
+
+Sitemap: https://votre-domaine.fr/sitemap.xml

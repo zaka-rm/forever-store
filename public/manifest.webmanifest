@@ -1,0 +1,20 @@
+{
+  "name": "Forever Living — Distributeur Indépendant",
+  "short_name": "Forever",
+  "description": "Le bien-être par l'Aloe Vera : nutrition, beauté, fitness et produits de la ruche.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#FBFCFC",
+  "theme_color": "#FBFCFC",
+  "lang": "fr",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

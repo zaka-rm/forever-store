@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: auto;
+}
+
+body {
+  font-feature-settings: 'ss01' on, 'ss02' on;
+}
+
+::selection {
+  background-color: #0e7c66;
+  color: #fbfcfc;
+}
+
+.lenis {
+  scroll-behavior: auto !important;
+}
+
+@layer utilities {
+  .container-px {
+    @apply px-6 sm:px-10 lg:px-16;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+[dir='rtl'] body {
+  font-family: 'Noto Kufi Arabic', 'Inter', system-ui, sans-serif;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
