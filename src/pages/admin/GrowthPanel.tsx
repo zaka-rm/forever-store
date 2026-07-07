@@ -16,22 +16,27 @@ import {
   advanceSubscription,
   setSubscriptionActive,
   deleteSubscription,
+  fetchStockAlerts,
+  setAlertNotified,
+  deleteStockAlert,
   type SubscriberRow,
   type DistributorLeadRow,
   type DeliveryZoneRow,
   type ReferralRow,
   type LoyaltyRow,
   type SubscriptionRow,
+  type StockAlertRow,
 } from '@/lib/adminGrowth'
 import { formatDate } from '@/lib/adminData'
 import { formatPrice } from '@/lib/format'
 import { toWhatsAppNumber, waLink } from '@/lib/whatsapp'
 
-type SubTab = 'subscribers' | 'leads' | 'zones' | 'referrals' | 'loyalty' | 'subscriptions'
+type SubTab = 'subscribers' | 'leads' | 'zones' | 'referrals' | 'loyalty' | 'subscriptions' | 'alerts'
 
 const SUB_TABS: { key: SubTab; label: string }[] = [
   { key: 'subscribers', label: 'Abonnés' },
   { key: 'subscriptions', label: 'Abonnements' },
+  { key: 'alerts', label: 'Alertes stock' },
   { key: 'leads', label: 'Distributeurs' },
   { key: 'zones', label: 'Livraison' },
   { key: 'referrals', label: 'Parrainage' },
@@ -63,6 +68,80 @@ export function GrowthPanel() {
       {sub === 'referrals' && <ReferralsTab />}
       {sub === 'loyalty' && <LoyaltyTab />}
       {sub === 'subscriptions' && <SubscriptionsTab />}
+      {sub === 'alerts' && <StockAlertsTab />}
+    </div>
+  )
+}
+
+function StockAlertsTab() {
+  const [rows, setRows] = useState<StockAlertRow[]>([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState('')
+
+  useEffect(() => {
+    fetchStockAlerts()
+      .then(setRows)
+      .catch(() => setError("Impossible de charger les alertes. Avez-vous exécuté 21_stock-alerts.sql ?"))
+      .finally(() => setLoading(false))
+  }, [])
+
+  async function toggle(r: StockAlertRow) {
+    await setAlertNotified(r.id, !r.notified)
+    setRows((list) => list.map((x) => (x.id === r.id ? { ...x, notified: !r.notified } : x)))
+  }
+  async function remove(r: StockAlertRow) {
+    await deleteStockAlert(r.id)
+    setRows((list) => list.filter((x) => x.id !== r.id))
+  }
+
+  if (loading) return <p className="py-8 text-center text-ink/40">Chargement…</p>
+  if (error) return <p className="rounded-2xl bg-clay-500/10 px-4 py-3 text-sm text-clay-600">{error}</p>
+
+  // Group by product so you see what to restock first.
+  const byProduct = new Map<string, number>()
+  rows.forEach((r) => byProduct.set(r.product_name, (byProduct.get(r.product_name) ?? 0) + 1))
+  const ranked = [...byProduct.entries()].sort((a, b) => b[1] - a[1])
+
+  return (
+    <div>
+      <p className="mb-4 text-xs text-ink/45">
+        Clients qui attendent le retour d'un produit en rupture. Réapprovisionnez d'abord les plus demandés,
+        puis contactez-les (WhatsApp / email) et marquez « Prévenu ».
+      </p>
+      {ranked.length > 0 && (
+        <div className="mb-5 flex flex-wrap gap-2">
+          {ranked.map(([name, n]) => (
+            <span key={name} className="rounded-full bg-cream-dark px-3 py-1 text-xs text-ink/70">
+              {name} · <span className="font-semibold text-clay-600">{n}</span>
+            </span>
+          ))}
+        </div>
+      )}
+      {rows.length === 0 ? (
+        <p className="rounded-3xl border border-ink/10 bg-cream-dark py-12 text-center text-sm text-ink/40">
+          Aucune demande pour le moment.
+        </p>
+      ) : (
+        <div className="overflow-hidden rounded-3xl border border-ink/10 bg-cream-dark">
+          {rows.map((r) => (
+            <div key={r.id} className={`flex flex-wrap items-center gap-3 border-b border-ink/10 px-4 py-3 last:border-0 ${r.notified ? 'opacity-50' : ''}`}>
+              <div className="min-w-0 flex-1">
+                <p className="truncate text-sm font-medium text-ink">{r.product_name}</p>
+                <p className="truncate text-xs text-ink/45">{r.contact} · {formatDate(r.created_at)}</p>
+              </div>
+              {r.contact.includes('@') ? (
+                <a href={`mailto:${r.contact}`} className="flex-none rounded-full border border-ink/15 px-3 py-1.5 text-xs text-ink hover:border-ink">✉</a>
+              ) : (
+                <a href={waLink(toWhatsAppNumber(r.contact), `Bonjour, bonne nouvelle : « ${r.product_name} » est de nouveau disponible chez Naturaloé 🌿`)} target="_blank" rel="noopener noreferrer" className="flex-none rounded-full bg-[#25D366] px-3 py-1.5 text-xs font-medium text-white hover:brightness-95">💬</a>
+              )}
+              <button onClick={() => toggle(r)} className="flex-none rounded-full border border-ink/15 px-3 py-1.5 text-xs text-ink hover:border-ink">
+                {r.notified ? 'Rétablir' : 'Prévenu'}
+              </button>
+              <button onClick={() => remove(r)} className="flex-none text-ink/30 hover:text-clay-600">✕</button>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   )
 }

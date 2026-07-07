@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { SITE_URL } from '@/lib/constants'
 
-const SITE_NAME = 'Forever Living — Distributeur Indépendant'
+const SITE_NAME = 'Naturaloé — Distributeur Indépendant Forever Living'
 const base = SITE_URL.replace(/\/$/, '')
 
 function setMeta(attr: 'name' | 'property', key: string, content: string) {

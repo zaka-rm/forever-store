@@ -67,7 +67,7 @@ export function SocialProof() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 16 }}
           transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-          className="fixed bottom-6 start-6 z-30 flex max-w-[300px] items-center gap-3 rounded-2xl border border-ink/10 bg-cream px-4 py-3 shadow-soft"
+          className="fixed bottom-6 start-6 z-30 hidden max-w-[300px] items-center gap-3 rounded-2xl border border-ink/10 bg-cream px-4 py-3 shadow-soft sm:flex"
         >
           <span className="flex h-9 w-9 flex-none items-center justify-center rounded-full bg-sage-100 text-lg">🛍️</span>
           <div className="min-w-0 text-xs leading-snug">

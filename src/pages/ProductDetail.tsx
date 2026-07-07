@@ -15,6 +15,7 @@ import { ReviewsSection } from '@/components/sections/ReviewsSection'
 import { RecentlyViewed } from '@/components/sections/RecentlyViewed'
 import { TrustStrip } from '@/components/sections/TrustStrip'
 import { SubscribeBox } from '@/components/ui/SubscribeBox'
+import { StockAlertBox } from '@/components/ui/StockAlertBox'
 import { trackViewed } from '@/lib/recentlyViewed'
 import { JsonLd } from '@/components/ui/JsonLd'
 import { usePageMeta } from '@/lib/usePageMeta'
@@ -188,6 +189,7 @@ export default function ProductDetail() {
                 >
                   {t.product.outOfStock}
                 </button>
+                <StockAlertBox productId={product.id} productName={product.name} />
               </div>
             ) : (
               <div className="mt-8 flex items-center gap-4">
@@ -221,7 +223,7 @@ export default function ProductDetail() {
               </div>
             )}
 
-            <SubscribeBox productId={product.id} productName={product.name} />
+            {!soldOut && <SubscribeBox productId={product.id} productName={product.name} />}
 
             <div className="mt-12">
               <Accordion items={accordionItems} />

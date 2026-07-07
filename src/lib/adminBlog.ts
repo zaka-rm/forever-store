@@ -58,6 +58,11 @@ export async function deletePost(id: string): Promise<void> {
   if (error) throw error
 }
 
+export async function setPostPublished(id: string, published: boolean): Promise<void> {
+  const { error } = await supabase.from('blog_posts').update({ published }).eq('id', id)
+  if (error) throw error
+}
+
 /** One-click seed: inserts the built-in articles so the admin can edit them. */
 export async function importDefaultPosts(): Promise<number> {
   const rows = staticPosts.map((p) => ({

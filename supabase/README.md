@@ -38,6 +38,7 @@ Les numéros indiquent **l'ordre**. Lancez-les de haut en bas, **une seule fois 
 | 18 | `18_fix-orders-security.sql` | 🔴 Ré-active la sécurité (RLS) de la table orders. **Obligatoire avant le lancement.** |
 | 19 | `19_delivery-zones-maroc.sql` | Tarifs de livraison par ville marocaine (grille Amana). |
 | 20 | `20_track-by-phone.sql` | Suivi de commande par téléphone OU email (indispensable, email facultatif). |
+| 21 | `21_stock-alerts.sql` | « Prévenez-moi quand c'est disponible » sur les produits en rupture. |
 
 ## 3. Utilitaire (à lancer une seule fois, au besoin)
 

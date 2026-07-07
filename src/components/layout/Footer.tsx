@@ -42,7 +42,7 @@ export function Footer() {
         <RevealItem className="grid grid-cols-2 gap-10 sm:grid-cols-4">
           <div className="col-span-2">
             <NavLink to="/" className="font-display text-3xl font-semibold text-sage-700">
-              FOREVER
+              Naturaloé
             </NavLink>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-ink/60">{f.description}</p>
             <div className="mt-6 flex gap-3">

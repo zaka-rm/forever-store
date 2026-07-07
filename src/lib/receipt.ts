@@ -73,7 +73,7 @@ export function printReceipt(r: Receipt, L: ReceiptLabels, rtl: boolean) {
 <body>
   <div class="head">
     <div>
-      <div class="brand">FOREVER</div>
+      <div class="brand">Naturaloé</div>
       <div class="muted">${L.title}</div>
     </div>
     <div style="text-align:${rtl ? 'left' : 'right'}">

@@ -3,6 +3,13 @@ dist
 dist-ssr
 *.local
 .DS_Store
+
+# Environment files — NEVER commit these (they hold your keys)
 .env
+.env.*
+!.env.example
 
 .vercel
+
+# Editor / tooling noise
+*.tsbuildinfo

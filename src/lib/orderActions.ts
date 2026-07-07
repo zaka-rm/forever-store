@@ -17,7 +17,7 @@ export function orderWhatsAppUrl(o: OrderRow): string {
   let message: string
   switch (o.status) {
     case 'confirmed':
-      message = `Bonjour ${o.customer_name}, votre commande Forever${ref} est confirmée ✅ et en préparation. Total à régler à la livraison : ${total}. Merci pour votre confiance !${trackLink}`
+      message = `Bonjour ${o.customer_name}, votre commande Naturaloé${ref} est confirmée ✅ et en préparation. Total à régler à la livraison : ${total}. Merci pour votre confiance !${trackLink}`
       break
     case 'shipped':
       message = `Bonjour ${o.customer_name}, bonne nouvelle : votre commande${ref} a été expédiée 🚚. Nous vous préviendrons dès qu'elle arrive. Total à régler : ${total}.${trackLink}`
@@ -26,14 +26,14 @@ export function orderWhatsAppUrl(o: OrderRow): string {
       message = `Bonjour ${o.customer_name}, votre commande${ref} est en cours de livraison aujourd'hui 📦. Merci de préparer ${total} en espèces. À tout de suite !`
       break
     case 'delivered':
-      message = `Bonjour ${o.customer_name}, merci pour votre commande${ref} chez Forever ! 🌿 Nous espérons que tout vous convient — n'hésitez pas à nous faire un retour. À bientôt !`
+      message = `Bonjour ${o.customer_name}, merci pour votre commande${ref} chez Naturaloé ! 🌿 Nous espérons que tout vous convient — n'hésitez pas à nous faire un retour. À bientôt !`
       break
     case 'cancelled':
       message = `Bonjour ${o.customer_name}, votre commande${ref} a été annulée. Contactez-nous si vous souhaitez la repasser, avec plaisir. Merci !`
       break
     default: // pending
       message =
-        `Bonjour ${o.customer_name}, votre commande Forever${ref} est bien reçue :\n${items}\n\n` +
+        `Bonjour ${o.customer_name}, votre commande Naturaloé${ref} est bien reçue :\n${items}\n\n` +
         `Total à régler à la livraison : ${total}.\n` +
         `Merci de confirmer pour organiser la livraison. 🌿${trackLink}`
   }
@@ -70,7 +70,7 @@ function slipBody(o: OrderRow): string {
     .join('')
   const address = [o.address, o.city, o.zip, o.region, o.country].filter(Boolean).map((s) => esc(s as string)).join(', ')
   return `<div class="slip">
-    <div class="brand">FOREVER</div>
+    <div class="brand">Naturaloé</div>
     <h1>Bon de livraison ${o.order_ref ? '· #' + esc(o.order_ref) : ''}</h1>
     <div class="box">
       <h2>Livrer à</h2>

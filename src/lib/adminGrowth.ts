@@ -185,3 +185,34 @@ export async function deleteSubscription(id: string): Promise<void> {
   const { error } = await supabase.from('subscriptions').delete().eq('id', id)
   if (error) throw error
 }
+
+// ---------------------------------------------------------------------------
+// Stock alerts ("Prévenez-moi quand c'est disponible")
+// ---------------------------------------------------------------------------
+export interface StockAlertRow {
+  id: string
+  created_at: string
+  product_id: string
+  product_name: string
+  contact: string
+  notified: boolean
+}
+
+export async function fetchStockAlerts(): Promise<StockAlertRow[]> {
+  const { data, error } = await supabase
+    .from('stock_alerts')
+    .select('*')
+    .order('created_at', { ascending: false })
+  if (error) throw error
+  return (data ?? []) as StockAlertRow[]
+}
+
+export async function setAlertNotified(id: string, notified: boolean): Promise<void> {
+  const { error } = await supabase.from('stock_alerts').update({ notified }).eq('id', id)
+  if (error) throw error
+}
+
+export async function deleteStockAlert(id: string): Promise<void> {
+  const { error } = await supabase.from('stock_alerts').delete().eq('id', id)
+  if (error) throw error
+}

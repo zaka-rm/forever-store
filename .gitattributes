@@ -1,0 +1,14 @@
+# Normalize line endings so Git stops flagging every file on Windows.
+* text=auto eol=lf
+
+# Treat binaries as binary (never touch their bytes).
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.ico binary
+*.svg text
+*.mp4 binary
+*.woff binary
+*.woff2 binary

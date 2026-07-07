@@ -40,8 +40,7 @@ export function Header({ onMenuOpen, onSearchOpen }: { onMenuOpen: () => void; o
       <AnnouncementBar />
       <div className="container-px mx-auto flex h-20 max-w-7xl items-center justify-between">
         <NavLink to="/" className="flex items-baseline gap-0.5 font-display text-2xl font-semibold tracking-tight text-sage-700">
-          FOREVER
-          <span className="text-xs font-medium align-top text-clay-500">®</span>
+          Naturaloé
         </NavLink>
 
         <nav className="hidden items-center gap-10 lg:flex">

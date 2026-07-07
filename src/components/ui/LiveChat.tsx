@@ -55,7 +55,7 @@ export function LiveChat() {
             className="fixed bottom-[168px] right-6 z-30 w-[calc(100%-3rem)] max-w-sm overflow-hidden rounded-4xl border border-ink/10 bg-cream shadow-soft sm:w-80"
           >
             <div className="bg-ink px-5 py-4">
-              <p className="font-display text-sm font-semibold text-cream">FOREVER</p>
+              <p className="font-display text-sm font-semibold text-cream">Naturaloé</p>
             </div>
             <div className="p-5">
               <p className="mb-4 text-sm leading-relaxed text-ink/80">{c.greeting}</p>

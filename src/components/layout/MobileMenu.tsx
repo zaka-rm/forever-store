@@ -33,7 +33,7 @@ export function MobileMenu({ open, onClose }: { open: boolean; onClose: () => vo
             className="fixed inset-y-0 right-0 z-50 flex w-[80%] max-w-sm flex-col bg-cream p-8 lg:hidden"
           >
             <div className="mb-12 flex items-center justify-between">
-              <span className="font-display text-2xl font-semibold text-sage-700">FOREVER</span>
+              <span className="font-display text-2xl font-semibold text-sage-700">Naturaloé</span>
               <button
                 type="button"
                 onClick={onClose}

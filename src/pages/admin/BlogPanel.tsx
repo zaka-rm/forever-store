@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { fetchAllPosts, deletePost, importDefaultPosts, emptyPost, type BlogRow } from '@/lib/adminBlog'
+import { fetchAllPosts, deletePost, setPostPublished, importDefaultPosts, emptyPost, type BlogRow } from '@/lib/adminBlog'
 import { formatDate } from '@/lib/adminData'
 import { BlogForm } from '@/pages/admin/BlogForm'
 
@@ -44,6 +44,17 @@ export function BlogPanel() {
     if (!confirm(`Supprimer l'article « ${row.title} » ?`)) return
     await deletePost(row.id)
     load()
+  }
+
+  async function togglePublished(row: BlogRow) {
+    // optimistic update
+    setRows((list) => list.map((r) => (r.id === row.id ? { ...r, published: !r.published } : r)))
+    try {
+      await setPostPublished(row.id, !row.published)
+    } catch {
+      setRows((list) => list.map((r) => (r.id === row.id ? { ...r, published: row.published } : r)))
+      alert("Échec. Avez-vous exécuté 17_blog.sql ?")
+    }
   }
 
   if (view.mode === 'edit') {
@@ -100,6 +111,13 @@ export function BlogPanel() {
                 </p>
                 <p className="truncate text-xs text-ink/45">{row.tag || '—'} · {formatDate(row.date)}</p>
               </div>
+              <button
+                onClick={() => togglePublished(row)}
+                title={row.published ? 'Masquer du site' : 'Publier sur le site'}
+                className="rounded-full border border-ink/15 px-3 py-1.5 text-xs text-ink hover:border-ink"
+              >
+                {row.published ? 'Masquer' : 'Publier'}
+              </button>
               <button onClick={() => setView({ mode: 'edit', row, isNew: false })} className="rounded-full border border-ink/15 px-3 py-1.5 text-xs text-ink hover:border-ink">Modifier</button>
               <button onClick={() => handleDelete(row)} className="rounded-full border border-clay-500/30 px-3 py-1.5 text-xs text-clay-600 hover:border-clay-500">Supprimer</button>
             </div>
