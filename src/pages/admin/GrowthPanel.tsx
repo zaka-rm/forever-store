@@ -48,12 +48,12 @@ export function GrowthPanel() {
 
   return (
     <div>
-      <div className="mb-6 flex gap-1 border-b border-ink/10">
+      <div className="mb-6 flex gap-1 overflow-x-auto border-b border-ink/10 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
         {SUB_TABS.map((s) => (
           <button
             key={s.key}
             onClick={() => setSub(s.key)}
-            className={`relative px-3 py-2.5 text-sm font-medium transition-colors ${
+            className={`relative flex-none whitespace-nowrap px-3 py-2.5 text-sm font-medium transition-colors ${
               sub === s.key ? 'text-ink' : 'text-ink/45 hover:text-ink/70'
             }`}
           >

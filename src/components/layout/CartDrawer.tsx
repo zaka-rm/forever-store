@@ -2,6 +2,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { useNavigate } from 'react-router-dom'
 import { useCart } from '@/lib/cartContext'
 import { useProducts } from '@/lib/productsContext'
+import { stockStatus } from '@/lib/products'
 import { ProductImage } from '@/components/ui/ProductImage'
 import { Button } from '@/components/ui/Button'
 import { useLanguage } from '@/lib/i18n/LanguageContext'
@@ -17,9 +18,12 @@ export function CartDrawer() {
   const remaining = Math.max(0, FREE_SHIPPING_THRESHOLD - subtotal)
   const progress = Math.min(100, (subtotal / FREE_SHIPPING_THRESHOLD) * 100)
 
-  // Recommend a couple of best-sellers that aren't already in the cart.
+  // Recommend a couple of best-sellers that aren't already in the cart and are
+  // in stock (never suggest something the customer can't buy).
   const inCart = new Set(lines.map((l) => l.product.id))
-  const suggestions = getBestSellers().filter((p) => !inCart.has(p.id)).slice(0, 2)
+  const suggestions = getBestSellers()
+    .filter((p) => !inCart.has(p.id) && stockStatus(p.stock) !== 'out')
+    .slice(0, 2)
 
   function goToCheckout() {
     closeCart()

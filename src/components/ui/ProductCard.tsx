@@ -46,15 +46,15 @@ export function ProductCard({ product: rawProduct }: { product: Product }) {
           </motion.div>
 
           {soldOut ? (
-            <span className="absolute left-4 top-4 rounded-full bg-clay-500/90 px-3 py-1 text-[11px] font-medium uppercase tracking-wider text-cream">
-              {t.product.outOfStock}
+            <span className="absolute start-3 top-3 rounded-full bg-clay-500/90 px-2.5 py-1 text-[10px] font-medium uppercase tracking-wider text-cream">
+              {t.product.soldOut}
             </span>
           ) : stock === 'low' ? (
-            <span className="absolute left-4 top-4 rounded-full bg-clay-500/90 px-3 py-1 text-[11px] font-medium uppercase tracking-wider text-cream">
-              {t.product.lowStockPrefix} {product.stock} {t.product.lowStockSuffix}
+            <span className="absolute start-3 top-3 rounded-full bg-clay-500/90 px-2.5 py-1 text-[10px] font-medium uppercase tracking-wider text-cream">
+              {product.stock} {t.product.lowStockSuffix}
             </span>
           ) : (product.bestSeller || product.new) ? (
-            <span className="absolute left-4 top-4 rounded-full bg-cream/90 px-3 py-1 text-[11px] font-medium uppercase tracking-wider text-ink/70">
+            <span className="absolute start-3 top-3 rounded-full bg-cream/90 px-2.5 py-1 text-[10px] font-medium uppercase tracking-wider text-ink/70">
               {product.bestSeller ? t.product.bestSellerBadge : t.product.newBadge}
             </span>
           ) : null}
@@ -63,7 +63,7 @@ export function ProductCard({ product: rawProduct }: { product: Product }) {
             type="button"
             onClick={handleToggleWishlist}
             aria-label={t.nav.openWishlist}
-            className="absolute right-4 top-4 flex h-8 w-8 items-center justify-center rounded-full bg-cream/90 transition-colors hover:bg-cream"
+            className="absolute end-3 top-3 flex h-8 w-8 items-center justify-center rounded-full bg-cream/90 transition-colors hover:bg-cream"
           >
             <svg
               viewBox="0 0 24 24"

@@ -283,7 +283,7 @@ export default function Checkout() {
         </RevealItem>
 
         <RevealItem className="grid gap-12 lg:grid-cols-[1.2fr_0.8fr]">
-          <form onSubmit={handleSubmit} className="rounded-5xl border border-ink/10 bg-cream-dark p-8 sm:p-10">
+          <form onSubmit={handleSubmit} className="min-w-0 rounded-5xl border border-ink/10 bg-cream-dark p-6 sm:p-10">
             {step === 0 && (
               <div className="flex flex-col gap-5">
                 <h2 className="font-display text-2xl font-bold text-ink">{c.contactHeading}</h2>
@@ -386,7 +386,7 @@ export default function Checkout() {
             </div>
           </form>
 
-          <aside className="h-fit rounded-5xl border border-ink/10 p-8">
+          <aside className="h-fit min-w-0 rounded-5xl border border-ink/10 p-6 sm:p-8">
             <h2 className="mb-6 font-display text-xl font-bold text-ink">{c.summaryTitle}</h2>
             <ul className="flex flex-col gap-5">
               {lines.map((line) => (

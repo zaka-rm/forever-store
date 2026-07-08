@@ -152,7 +152,7 @@ export default function AdminDashboard() {
         </nav>
       </header>
 
-      <main className="mx-auto max-w-5xl px-4 py-6 sm:px-6 sm:py-8">
+      <main className="mx-auto max-w-5xl overflow-x-hidden px-4 py-6 sm:px-6 sm:py-8">
         {tab === 'dashboard' && <DashboardPanel onGoto={goToTab} />}
         {tab === 'products' && <ProductsPanel />}
         {tab === 'orders' && <OrdersPanel />}

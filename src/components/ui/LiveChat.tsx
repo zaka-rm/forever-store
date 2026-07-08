@@ -32,7 +32,7 @@ export function LiveChat() {
         transition={{ delay: 0.8, type: 'spring', stiffness: 260, damping: 20 }}
         whileHover={{ scale: 1.08 }}
         whileTap={{ scale: 0.95 }}
-        className="fixed bottom-24 right-6 z-30 flex h-14 w-14 items-center justify-center rounded-full bg-ink shadow-soft"
+        className="fixed bottom-24 right-6 z-30 hidden h-14 w-14 items-center justify-center rounded-full bg-ink shadow-soft sm:flex"
       >
         {open ? (
           <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="#FBFCFC" strokeWidth="1.8">

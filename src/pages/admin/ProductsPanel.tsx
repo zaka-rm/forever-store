@@ -180,14 +180,14 @@ export function ProductsPanel() {
             return (
               <div
                 key={row.id}
-                className={`flex items-center gap-4 border-b border-ink/10 px-4 py-3 last:border-0 ${row.hidden ? 'opacity-55' : ''}`}
+                className={`flex flex-wrap items-center gap-x-4 gap-y-3 border-b border-ink/10 px-4 py-3 last:border-0 sm:flex-nowrap ${row.hidden ? 'opacity-55' : ''}`}
               >
                 <div className="h-12 w-10 flex-none overflow-hidden rounded-lg bg-stone">
                   {row.image && <img src={row.image} alt="" className="h-full w-full object-cover" />}
                 </div>
                 <div className="min-w-0 flex-1">
-                  <div className="flex items-center gap-2">
-                    <p className="truncate text-sm font-medium text-ink">{row.name}</p>
+                  <div className="flex flex-wrap items-center gap-1.5">
+                    <p className="min-w-0 truncate text-sm font-medium text-ink">{row.name}</p>
                     {row.hidden && (
                       <span className="flex-none rounded-full bg-ink/10 px-2 py-0.5 text-[10px] font-medium uppercase tracking-wide text-ink/50">Masqué</span>
                     )}
@@ -199,26 +199,29 @@ export function ProductsPanel() {
                   </div>
                   <p className="truncate text-xs text-ink/45">{row.category} · {formatPrice(row.price)}</p>
                 </div>
-                <button
-                  onClick={() => toggleHidden(row)}
-                  disabled={busyId === row.id}
-                  title={row.hidden ? 'Rendre visible sur le site' : 'Masquer du site'}
-                  className="rounded-full border border-ink/15 px-3 py-1.5 text-xs text-ink hover:border-ink disabled:opacity-50"
-                >
-                  {row.hidden ? 'Afficher' : 'Masquer'}
-                </button>
-                <button
-                  onClick={() => setView({ mode: 'edit', row, isNew: false })}
-                  className="rounded-full border border-ink/15 px-3 py-1.5 text-xs text-ink hover:border-ink"
-                >
-                  Modifier
-                </button>
-                <button
-                  onClick={() => handleDelete(row)}
-                  className="rounded-full border border-clay-500/30 px-3 py-1.5 text-xs text-clay-600 hover:border-clay-500"
-                >
-                  Supprimer
-                </button>
+                {/* Buttons wrap to a full-width second row on mobile, inline on desktop */}
+                <div className="flex w-full flex-none gap-2 sm:w-auto">
+                  <button
+                    onClick={() => toggleHidden(row)}
+                    disabled={busyId === row.id}
+                    title={row.hidden ? 'Rendre visible sur le site' : 'Masquer du site'}
+                    className="flex-1 rounded-full border border-ink/15 px-3 py-1.5 text-xs text-ink hover:border-ink disabled:opacity-50 sm:flex-none"
+                  >
+                    {row.hidden ? 'Afficher' : 'Masquer'}
+                  </button>
+                  <button
+                    onClick={() => setView({ mode: 'edit', row, isNew: false })}
+                    className="flex-1 rounded-full border border-ink/15 px-3 py-1.5 text-xs text-ink hover:border-ink sm:flex-none"
+                  >
+                    Modifier
+                  </button>
+                  <button
+                    onClick={() => handleDelete(row)}
+                    className="flex-1 rounded-full border border-clay-500/30 px-3 py-1.5 text-xs text-clay-600 hover:border-clay-500 sm:flex-none"
+                  >
+                    Supprimer
+                  </button>
+                </div>
               </div>
             )
           })}

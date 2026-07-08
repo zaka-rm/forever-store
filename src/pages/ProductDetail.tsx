@@ -96,7 +96,7 @@ export default function ProductDetail() {
   ]
 
   return (
-    <div className="pb-24 pt-32 sm:pt-40">
+    <div className="pb-32 pt-32 sm:pb-24 sm:pt-40">
       <JsonLd
         data={{
           '@context': 'https://schema.org/',
@@ -131,7 +131,7 @@ export default function ProductDetail() {
                 type="button"
                 onClick={() => toggle(product.id)}
                 aria-label={t.nav.openWishlist}
-                className="absolute right-5 top-5 flex h-10 w-10 items-center justify-center rounded-full bg-cream/90 transition-colors hover:bg-cream"
+                className="absolute end-5 top-5 flex h-10 w-10 items-center justify-center rounded-full bg-cream/90 transition-colors hover:bg-cream"
               >
                 <svg
                   viewBox="0 0 24 24"
@@ -166,7 +166,7 @@ export default function ProductDetail() {
               {t.categories[product.category]}
               {product.size ? ` · ${product.size}` : ''}
             </p>
-            <h1 className="font-display text-4xl text-ink sm:text-5xl">{product.name}</h1>
+            <h1 dir="auto" className="text-balance break-words font-display text-3xl text-ink sm:text-5xl">{product.name}</h1>
             <div className="mt-4 flex items-center gap-4">
               <RatingStars rating={product.rating} count={product.reviewCount} />
             </div>
@@ -178,7 +178,7 @@ export default function ProductDetail() {
                 </p>
               </div>
             )}
-            <p className="mt-5 max-w-md text-base leading-relaxed text-ink/65">{product.description}</p>
+            <p dir="auto" className="mt-5 max-w-md text-base leading-relaxed text-ink/65">{product.description}</p>
 
             {soldOut ? (
               <div className="mt-8">

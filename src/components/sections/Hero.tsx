@@ -103,7 +103,7 @@ export function Hero() {
           <motion.div
             animate={{ y: [0, -10, 0] }}
             transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
-            className="absolute -left-6 top-10 hidden rounded-2xl bg-cream px-5 py-4 shadow-card sm:block"
+            className="absolute -start-6 top-10 hidden rounded-2xl bg-cream px-5 py-4 shadow-card sm:block"
           >
             <p className="text-2xl font-display font-bold text-sage-600">250+</p>
             <p className="text-xs text-ink/60">{hero.statComposants}</p>
@@ -112,7 +112,7 @@ export function Hero() {
           <motion.div
             animate={{ y: [0, 10, 0] }}
             transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
-            className="absolute -bottom-6 -right-4 hidden rounded-2xl bg-cream px-5 py-4 shadow-card sm:block"
+            className="absolute -bottom-6 -end-4 hidden rounded-2xl bg-cream px-5 py-4 shadow-card sm:block"
           >
             <p className="text-2xl font-display font-bold text-clay-500">ISO 9001</p>
             <p className="text-xs text-ink/60">{hero.statIso}</p>

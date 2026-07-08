@@ -43,7 +43,7 @@ export default function App() {
   }
 
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="flex min-h-screen flex-col overflow-x-hidden">
       <ScrollToTop />
       <Header onMenuOpen={() => setMenuOpen(true)} onSearchOpen={() => setSearchOpen(true)} />
       <MobileMenu open={menuOpen} onClose={() => setMenuOpen(false)} />

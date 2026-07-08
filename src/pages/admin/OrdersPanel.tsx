@@ -106,15 +106,15 @@ export function OrdersPanel() {
 
   return (
     <>
-      <div className="mb-4 flex items-center justify-between gap-3">
+      <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <p className="text-sm text-ink/60">
           {filtered.length}{filtered.length !== orders.length ? ` / ${orders.length}` : ''} commande{orders.length > 1 ? 's' : ''}
         </p>
-        <div className="flex flex-none flex-wrap justify-end gap-2">
+        <div className="flex flex-wrap gap-2 sm:justify-end">
           {toShip.length > 0 && (
             <button
               onClick={() => printDeliverySlips(toShip)}
-              className="rounded-full border border-ink/15 px-4 py-2.5 text-sm font-medium text-ink hover:border-ink"
+              className="flex-1 whitespace-nowrap rounded-full border border-ink/15 px-4 py-2.5 text-sm font-medium text-ink hover:border-ink sm:flex-none"
             >
               🖨 Bons du jour ({toShip.length})
             </button>
@@ -122,14 +122,14 @@ export function OrdersPanel() {
           {orders.length > 0 && (
             <button
               onClick={exportCsv}
-              className="rounded-full border border-ink/15 px-4 py-2.5 text-sm font-medium text-ink hover:border-ink"
+              className="flex-1 whitespace-nowrap rounded-full border border-ink/15 px-4 py-2.5 text-sm font-medium text-ink hover:border-ink sm:flex-none"
             >
               ⬇ Export CSV
             </button>
           )}
           <button
             onClick={() => setCreating(true)}
-            className="rounded-full bg-ink px-5 py-2.5 text-sm font-medium text-cream transition-colors hover:bg-sage-700"
+            className="w-full whitespace-nowrap rounded-full bg-ink px-5 py-2.5 text-sm font-medium text-cream transition-colors hover:bg-sage-700 sm:w-auto"
           >
             + Nouvelle commande
           </button>
@@ -181,7 +181,7 @@ export function OrdersPanel() {
               <div key={o.id} className="overflow-hidden rounded-3xl border border-ink/10 bg-cream-dark">
                 <button
                   onClick={() => setExpanded(expanded === o.id ? null : o.id)}
-                  className="flex w-full items-center gap-4 px-5 py-4 text-left"
+                  className="flex w-full items-start gap-3 px-4 py-3 text-left sm:items-center sm:gap-4 sm:px-5 sm:py-4"
                 >
                   <div className="min-w-0 flex-1">
                     <p className="truncate text-sm font-medium text-ink">
@@ -189,14 +189,22 @@ export function OrdersPanel() {
                       {o.order_ref && <span className="ml-2 text-xs font-normal text-ink/40">#{o.order_ref}</span>}
                     </p>
                     <p className="truncate text-xs text-ink/45">{o.customer_email} · {formatDate(o.created_at)}</p>
+                    {/* Mobile: status + total on their own line so they never cover the name */}
+                    <div className="mt-2 flex items-center gap-2 sm:hidden">
+                      <span className={`rounded-full px-2.5 py-1 text-[11px] font-medium ${ORDER_STATUS_BADGE[status]}`}>
+                        {ORDER_STATUS_LABELS_FR[status]}
+                      </span>
+                      <span className="font-display text-sm font-bold text-ink">{formatPrice(Number(o.total))}</span>
+                    </div>
                   </div>
-                  <span className={`flex-none rounded-full px-2.5 py-1 text-[11px] font-medium ${ORDER_STATUS_BADGE[status]}`}>
+                  {/* Desktop: inline */}
+                  <span className={`hidden flex-none rounded-full px-2.5 py-1 text-[11px] font-medium sm:inline ${ORDER_STATUS_BADGE[status]}`}>
                     {ORDER_STATUS_LABELS_FR[status]}
                   </span>
-                  <span className="flex-none font-display text-sm font-bold text-ink">
+                  <span className="hidden flex-none font-display text-sm font-bold text-ink sm:inline">
                     {formatPrice(Number(o.total))}
                   </span>
-                  <span className="flex-none text-ink/30">{expanded === o.id ? '−' : '+'}</span>
+                  <span className="flex-none pt-1 text-ink/30 sm:pt-0">{expanded === o.id ? '−' : '+'}</span>
                 </button>
 
                 {expanded === o.id && (

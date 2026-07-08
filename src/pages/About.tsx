@@ -51,8 +51,8 @@ export default function About() {
           </RevealItem>
           <RevealItem className="flex flex-col gap-10">
             {a.timeline.map((item) => (
-              <div key={item.year} className="grid grid-cols-[80px_1fr] gap-6 border-l border-ink/15 pl-6 sm:grid-cols-[120px_1fr]">
-                <span className="font-display text-2xl font-bold text-clay-500">{item.year}</span>
+              <div key={item.year} className="grid grid-cols-1 gap-1 border-s border-ink/15 ps-5 sm:grid-cols-[120px_1fr] sm:gap-6 sm:ps-6">
+                <span className="font-display text-xl font-bold text-clay-500 sm:text-2xl">{item.year}</span>
                 <p className="text-sm leading-relaxed text-ink/65">{item.copy}</p>
               </div>
             ))}

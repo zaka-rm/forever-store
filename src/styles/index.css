@@ -10,6 +10,23 @@ body {
   font-feature-settings: 'ss01' on, 'ss02' on;
 }
 
+/* Never allow horizontal scroll (fixes shifted layout / off-screen titles &
+   buttons, especially in Arabic RTL on mobile). Applied at every level so a
+   single wide child can't push the whole page sideways. */
+html,
+body,
+#root {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+/* Media never overflows its container (a common cause of RTL horizontal shift). */
+img,
+svg,
+video {
+  max-width: 100%;
+}
+
 ::selection {
   background-color: #0e7c66;
   color: #fbfcfc;

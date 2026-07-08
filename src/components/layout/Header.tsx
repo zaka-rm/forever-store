@@ -98,7 +98,7 @@ export function Header({ onMenuOpen, onSearchOpen }: { onMenuOpen: () => void; o
               <path d="M12 20.5s-7.5-4.6-9.6-9.3C1 8.1 2.3 5 5.4 4.2c2-.5 3.9.3 5 1.9l1.6 2.2 1.6-2.2c1.1-1.6 3-2.4 5-1.9 3.1.8 4.4 3.9 3 7-2.1 4.7-9.6 9.3-9.6 9.3Z" />
             </svg>
             {wishCount > 0 && (
-              <span className="absolute -right-0.5 -top-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-sage-600 text-[10px] font-medium text-white">
+              <span className="absolute -end-0.5 -top-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-sage-600 text-[10px] font-medium text-white">
                 {wishCount}
               </span>
             )}
@@ -119,7 +119,7 @@ export function Header({ onMenuOpen, onSearchOpen }: { onMenuOpen: () => void; o
                 key={count}
                 initial={{ scale: 0.5 }}
                 animate={{ scale: 1 }}
-                className="absolute -right-0.5 -top-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-clay-500 text-[10px] font-medium text-white"
+                className="absolute -end-0.5 -top-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-clay-500 text-[10px] font-medium text-white"
               >
                 {count}
               </motion.span>
