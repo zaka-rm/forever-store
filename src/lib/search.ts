@@ -10,12 +10,18 @@ export function searchProducts(
   const q = query.trim().toLowerCase()
   if (!q) return []
 
+  // Search BOTH languages regardless of the active locale: Arabic users often
+  // type Latin product names ("aloe", "argi+"), and French users may paste
+  // Arabic — either way the product should be found.
   const results = products
-    .map((p) => getLocalizedProduct(p, locale))
     .filter((p) => {
-      const haystack = `${p.name} ${p.tagline} ${p.category}`.toLowerCase()
+      const haystack = [p.name, p.tagline, p.category, p.nameAr, p.taglineAr]
+        .filter(Boolean)
+        .join(' ')
+        .toLowerCase()
       return haystack.includes(q)
     })
+    .map((p) => getLocalizedProduct(p, locale))
 
   return limit ? results.slice(0, limit) : results
 }

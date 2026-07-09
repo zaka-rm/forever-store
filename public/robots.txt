@@ -1,4 +1,4 @@
-User-agent: *
+﻿User-agent: *
 Allow: /
 Disallow: /admin
 Disallow: /admin/login
@@ -8,4 +8,4 @@ Disallow: /commande
 Disallow: /favoris
 Disallow: /recherche
 
-Sitemap: https://votre-domaine.fr/sitemap.xml
+Sitemap: https://naturaloe.store/sitemap.xml

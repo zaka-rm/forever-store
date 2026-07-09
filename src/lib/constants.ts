@@ -13,4 +13,4 @@ export const SHIPPING_FEE = 40
 // Public site address — used for SEO (canonical URLs, social-share previews,
 // sitemap). ⚠️ Replace with your real domain once you have one, e.g.
 // 'https://www.votre-boutique.com' (no trailing slash).
-export const SITE_URL = 'https://votre-domaine.fr'
+export const SITE_URL = 'https://naturaloe.store'
