@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import { Analytics } from "@vercel/analytics/react"
+import { SpeedInsights } from '@vercel/speed-insights/react'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 import { MobileMenu } from '@/components/layout/MobileMenu'
@@ -38,6 +39,7 @@ export default function App() {
         <ScrollToTop />
         <AppRoutes />
         <Analytics />
+        <SpeedInsights />
       </>
     )
   }
@@ -57,6 +59,7 @@ export default function App() {
       <WhatsAppButton />
       <SocialProof />
       <Analytics />
+      <SpeedInsights />
     </div>
   )
 }
