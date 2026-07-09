@@ -11,6 +11,8 @@ export function ProductImage({ src, alt, className = '', eager = false }: Produc
       src={src}
       alt={alt}
       loading={eager ? 'eager' : 'lazy'}
+      // The hero image is the LCP element — tell the browser to fetch it first.
+      fetchPriority={eager ? 'high' : 'auto'}
       decoding="async"
       draggable={false}
       className={`h-full w-full object-cover ${className}`}

@@ -49,6 +49,7 @@ export interface ReviewRow {
   rating: number
   comment: string
   approved: boolean
+  photo_url?: string | null
 }
 
 export async function fetchOrders(): Promise<OrderRow[]> {

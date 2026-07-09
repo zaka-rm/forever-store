@@ -11,7 +11,7 @@ import { formatPrice } from '@/lib/format'
 import { DISTRIBUTOR_WHATSAPP, waLink } from '@/lib/whatsapp'
 
 export function CartDrawer() {
-  const { isOpen, closeCart, lines, updateQuantity, removeFromCart, addToCart, subtotal } = useCart()
+  const { isOpen, closeCart, lines, updateQuantity, removeFromCart, addToCart, subtotal, hasBundle, bundleDiscount, total } = useCart()
   const { getBestSellers } = useProducts()
   const navigate = useNavigate()
   const { t } = useLanguage()
@@ -188,9 +188,19 @@ export function CartDrawer() {
                     />
                   </div>
                 </div>
-                <div className="mb-4 flex items-center justify-between text-sm">
+                <div className="mb-1 flex items-center justify-between text-sm">
                   <span className="text-ink/60">{t.cart.subtotal}</span>
                   <span className="font-medium text-ink">{formatPrice(subtotal)}</span>
+                </div>
+                {hasBundle && (
+                  <div className="mb-1 flex items-center justify-between text-sm">
+                    <span className="font-medium text-sage-700">{t.cart.bundleLabel}</span>
+                    <span className="font-medium text-sage-700">−{formatPrice(bundleDiscount)}</span>
+                  </div>
+                )}
+                <div className="mb-4 mt-1 flex items-center justify-between border-t border-ink/10 pt-2 text-sm">
+                  <span className="text-ink/60">{t.cart.total}</span>
+                  <span className="font-semibold text-ink">{formatPrice(total)}</span>
                 </div>
                 <Button variant="primary" className="w-full" onClick={goToCheckout}>
                   {t.cart.checkout}

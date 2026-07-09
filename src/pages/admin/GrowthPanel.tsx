@@ -19,7 +19,10 @@ import {
   fetchStockAlerts,
   setAlertNotified,
   deleteStockAlert,
+  fetchAbandonedCarts,
+  deleteAbandonedCart,
   type SubscriberRow,
+  type AbandonedCartRow,
   type DistributorLeadRow,
   type DeliveryZoneRow,
   type ReferralRow,
@@ -31,9 +34,10 @@ import { formatDate } from '@/lib/adminData'
 import { formatPrice } from '@/lib/format'
 import { toWhatsAppNumber, waLink } from '@/lib/whatsapp'
 
-type SubTab = 'subscribers' | 'leads' | 'zones' | 'referrals' | 'loyalty' | 'subscriptions' | 'alerts'
+type SubTab = 'subscribers' | 'leads' | 'zones' | 'referrals' | 'loyalty' | 'subscriptions' | 'alerts' | 'abandoned'
 
 const SUB_TABS: { key: SubTab; label: string }[] = [
+  { key: 'abandoned', label: 'Paniers abandonnés' },
   { key: 'subscribers', label: 'Abonnés' },
   { key: 'subscriptions', label: 'Abonnements' },
   { key: 'alerts', label: 'Alertes stock' },
@@ -69,6 +73,70 @@ export function GrowthPanel() {
       {sub === 'loyalty' && <LoyaltyTab />}
       {sub === 'subscriptions' && <SubscriptionsTab />}
       {sub === 'alerts' && <StockAlertsTab />}
+      {sub === 'abandoned' && <AbandonedCartsTab />}
+    </div>
+  )
+}
+
+function AbandonedCartsTab() {
+  const [rows, setRows] = useState<AbandonedCartRow[]>([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState('')
+
+  useEffect(() => {
+    fetchAbandonedCarts()
+      .then(setRows)
+      .catch(() => setError("Impossible de charger. Avez-vous exécuté 23_abandoned-carts.sql ?"))
+      .finally(() => setLoading(false))
+  }, [])
+
+  async function remove(r: AbandonedCartRow) {
+    await deleteAbandonedCart(r.id)
+    setRows((list) => list.filter((x) => x.id !== r.id))
+  }
+
+  if (loading) return <p className="py-8 text-center text-ink/40">Chargement…</p>
+  if (error) return <p className="rounded-2xl bg-clay-500/10 px-4 py-3 text-sm text-clay-600">{error}</p>
+
+  return (
+    <div>
+      <p className="mb-4 text-xs text-ink/45">
+        Ces clients ont commencé une commande sans la confirmer. Relancez-les par WhatsApp — c'est souvent une vente récupérée !
+      </p>
+      {rows.length === 0 ? (
+        <p className="rounded-3xl border border-ink/10 bg-cream-dark py-12 text-center text-sm text-ink/40">
+          Aucun panier abandonné. 🎉
+        </p>
+      ) : (
+        <div className="flex flex-col gap-2">
+          {rows.map((r) => {
+            const itemsTxt = r.items.map((it) => `${it.name} ×${it.quantity}`).join(', ')
+            const msg = `Bonjour ${r.name || ''}, vous avez commencé une commande sur Naturaloé (${itemsTxt} — ${formatPrice(Number(r.subtotal))}). Souhaitez-vous que je vous la prépare et vous la livre ? 🌿`
+            return (
+              <div key={r.id} className="overflow-hidden rounded-2xl border border-ink/10 bg-cream-dark px-4 py-3">
+                <div className="flex flex-wrap items-center gap-3">
+                  <div className="min-w-0 flex-1">
+                    <p className="truncate text-sm font-medium text-ink">{r.name || 'Client'} · <span className="text-ink/60">{r.phone || '—'}</span></p>
+                    <p className="truncate text-xs text-ink/45">{r.city ? r.city + ' · ' : ''}{formatPrice(Number(r.subtotal))} · {formatDate(r.updated_at)}</p>
+                  </div>
+                  {r.phone && (
+                    <a
+                      href={waLink(toWhatsAppNumber(r.phone), msg)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-none rounded-full bg-[#25D366] px-4 py-1.5 text-xs font-medium text-white hover:brightness-95"
+                    >
+                      💬 Relancer
+                    </a>
+                  )}
+                  <button onClick={() => remove(r)} className="flex-none text-ink/30 hover:text-clay-600">✕</button>
+                </div>
+                <p className="mt-1.5 truncate text-xs text-ink/40">{itemsTxt}</p>
+              </div>
+            )
+          })}
+        </div>
+      )}
     </div>
   )
 }

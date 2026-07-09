@@ -141,6 +141,36 @@ export async function fetchLoyalty(): Promise<LoyaltyRow[]> {
 }
 
 // ---------------------------------------------------------------------------
+// Abandoned carts (checkout started but not confirmed)
+// ---------------------------------------------------------------------------
+export interface AbandonedCartRow {
+  id: string
+  created_at: string
+  updated_at: string
+  name: string | null
+  phone: string | null
+  city: string | null
+  items: { name: string; price: number; quantity: number }[]
+  subtotal: number
+  recovered: boolean
+}
+
+export async function fetchAbandonedCarts(): Promise<AbandonedCartRow[]> {
+  const { data, error } = await supabase
+    .from('abandoned_carts')
+    .select('*')
+    .eq('recovered', false)
+    .order('updated_at', { ascending: false })
+  if (error) throw error
+  return (data ?? []) as AbandonedCartRow[]
+}
+
+export async function deleteAbandonedCart(id: string): Promise<void> {
+  const { error } = await supabase.from('abandoned_carts').delete().eq('id', id)
+  if (error) throw error
+}
+
+// ---------------------------------------------------------------------------
 // Subscriptions (monthly re-delivery)
 // ---------------------------------------------------------------------------
 export interface SubscriptionRow {

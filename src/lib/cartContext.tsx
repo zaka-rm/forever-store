@@ -17,9 +17,20 @@ interface CartContextValue {
   updateQuantity: (productId: string, quantity: number) => void
   clearCart: () => void
   subtotal: number
+  /** true when the cart qualifies for the routine bundle discount (3+ items) */
+  hasBundle: boolean
+  /** dirham amount discounted by the bundle (0 when not eligible) */
+  bundleDiscount: number
+  /** subtotal minus the bundle discount */
+  total: number
   count: number
   lastAdded: Product | null
 }
+
+// Routine bundle: 3 articles ou plus → -10% automatique. Encourage le panier
+// "cure complète" (nettoyant + soin + complément) sans code promo à saisir.
+export const BUNDLE_MIN_ITEMS = 3
+export const BUNDLE_RATE = 0.1
 
 const CartContext = createContext<CartContextValue | null>(null)
 
@@ -76,6 +87,12 @@ export function CartProvider({ children }: { children: ReactNode }) {
     [lines],
   )
   const count = useMemo(() => lines.reduce((sum, l) => sum + l.quantity, 0), [lines])
+  const hasBundle = count >= BUNDLE_MIN_ITEMS
+  const bundleDiscount = useMemo(
+    () => (hasBundle ? Math.round(subtotal * BUNDLE_RATE) : 0),
+    [hasBundle, subtotal],
+  )
+  const total = subtotal - bundleDiscount
 
   const value: CartContextValue = {
     lines,
@@ -87,6 +104,9 @@ export function CartProvider({ children }: { children: ReactNode }) {
     updateQuantity,
     clearCart,
     subtotal,
+    hasBundle,
+    bundleDiscount,
+    total,
     count,
     lastAdded,
   }

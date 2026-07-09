@@ -14,12 +14,14 @@ export function ReviewsSection({ productId }: { productId: string }) {
   const [name, setName] = useState('')
   const [rating, setRating] = useState(5)
   const [comment, setComment] = useState('')
+  const [photo, setPhoto] = useState<File | null>(null)
+  const [uploading, setUploading] = useState(false)
 
   useEffect(() => {
     let cancelled = false
     supabase
       .from('reviews')
-      .select('id, author, rating, comment, created_at')
+      .select('id, author, rating, comment, created_at, photo_url')
       .eq('product_id', productId)
       .eq('approved', true)
       .order('created_at', { ascending: false })
@@ -32,6 +34,7 @@ export function ReviewsSection({ productId }: { productId: string }) {
             rating: row.rating as number,
             comment: row.comment as string,
             date: (row.created_at as string).slice(0, 10),
+            photoUrl: (row.photo_url as string) ?? undefined,
           })),
         )
       })
@@ -48,18 +51,37 @@ export function ReviewsSection({ productId }: { productId: string }) {
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
     if (!name || !comment) return
+    setUploading(true)
+    let photoUrl: string | null = null
+    if (photo) {
+      try {
+        const ext = photo.name.split('.').pop() || 'jpg'
+        const path = `${productId}/${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`
+        const { error: upErr } = await supabase.storage
+          .from('review-photos')
+          .upload(path, photo, { upsert: false, contentType: photo.type })
+        if (!upErr) {
+          photoUrl = supabase.storage.from('review-photos').getPublicUrl(path).data.publicUrl
+        }
+      } catch {
+        /* photo optional — never block the review */
+      }
+    }
     await supabase.from('reviews').insert({
       product_id: productId,
       author: name,
       rating,
       comment,
       approved: false,
+      photo_url: photoUrl,
     })
+    setUploading(false)
     setSubmitted(true)
     setShowForm(false)
     setName('')
     setComment('')
     setRating(5)
+    setPhoto(null)
   }
 
   return (
@@ -133,12 +155,24 @@ export function ReviewsSection({ productId }: { productId: string }) {
               className="w-full resize-none rounded-2xl border border-ink/15 bg-cream px-4 py-2.5 text-sm text-ink outline-none focus:border-ink/40"
             />
           </div>
+          <div>
+            <label className="mb-1.5 block text-xs font-medium uppercase tracking-wider text-ink/40">
+              {t.reviews.photoLabel}
+            </label>
+            <input
+              type="file"
+              accept="image/*"
+              onChange={(e) => setPhoto(e.target.files?.[0] ?? null)}
+              className="block w-full text-sm text-ink/70 file:me-3 file:rounded-full file:border-0 file:bg-ink file:px-4 file:py-2 file:text-sm file:font-medium file:text-cream"
+            />
+          </div>
           <p className="text-xs text-ink/40">{t.reviews.pendingNotice}</p>
           <button
             type="submit"
-            className="w-fit rounded-full bg-ink px-5 py-2.5 text-sm font-medium text-cream"
+            disabled={uploading}
+            className="w-fit rounded-full bg-ink px-5 py-2.5 text-sm font-medium text-cream disabled:opacity-50"
           >
-            {t.reviews.submit}
+            {uploading ? '…' : t.reviews.submit}
           </button>
         </motion.form>
       )}
@@ -159,6 +193,16 @@ export function ReviewsSection({ productId }: { productId: string }) {
               </div>
               <RatingStars rating={review.rating} className="mb-2" />
               <p className="text-sm leading-relaxed text-ink/70">{review.comment}</p>
+              {review.photoUrl && (
+                <a href={review.photoUrl} target="_blank" rel="noopener noreferrer">
+                  <img
+                    src={review.photoUrl}
+                    alt=""
+                    loading="lazy"
+                    className="mt-3 h-24 w-24 rounded-2xl border border-ink/10 object-cover"
+                  />
+                </a>
+              )}
             </div>
           ))}
         </div>

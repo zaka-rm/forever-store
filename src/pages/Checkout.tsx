@@ -10,6 +10,7 @@ import { usePageMeta } from '@/lib/usePageMeta'
 import { FREE_SHIPPING_THRESHOLD, SHIPPING_FEE } from '@/lib/constants'
 import { formatPrice } from '@/lib/format'
 import { trackInitiateCheckout } from '@/lib/analytics'
+import { saveAbandonedCart, markCartRecovered } from '@/lib/abandonedCart'
 
 interface OrderFormData {
   fullName: string
@@ -36,7 +37,7 @@ const initialFormData: OrderFormData = {
 }
 
 export default function Checkout() {
-  const { lines, subtotal } = useCart()
+  const { lines, subtotal, hasBundle, bundleDiscount } = useCart()
   const navigate = useNavigate()
   const [step, setStep] = useState(0)
   const [formData, setFormData] = useState<OrderFormData>(initialFormData)
@@ -88,7 +89,7 @@ export default function Checkout() {
       ? Math.round(subtotal * promo.value) / 100
       : Math.min(promo.value, subtotal)
     : 0
-  const total = Math.max(0, subtotal + shipping - discount)
+  const total = Math.max(0, subtotal + shipping - discount - bundleDiscount)
 
   async function applyPromo() {
     const code = promoInput.trim()
@@ -170,8 +171,10 @@ export default function Checkout() {
         subtotal,
         shipping,
         total,
-        discount_code: promo?.code ?? null,
-        discount_amount: discount,
+        // Fold the automatic routine bundle (-10%) into the recorded discount so
+        // the order total always reconciles, even without a dedicated column.
+        discount_code: promo?.code ?? (hasBundle ? 'ROUTINE-10%' : null),
+        discount_amount: discount + bundleDiscount,
         currency: 'eur',
         payment_status: 'pending',
         payment_method: 'cod',
@@ -239,12 +242,23 @@ export default function Checkout() {
       }),
     )
 
+    markCartRecovered()
     navigate(`/checkout/confirmation?ref=${reference}`)
   }
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
     if (step < c.steps.length - 1) {
+      // Capture the in-progress order so it can be recovered if abandoned.
+      if (step === 0) {
+        saveAbandonedCart({
+          name: formData.fullName,
+          phone: formData.phone,
+          city: formData.city,
+          items: lines.map((l) => ({ name: l.product.name, price: l.product.price, quantity: l.quantity })),
+          subtotal,
+        })
+      }
       setStep((s) => s + 1)
       window.scrollTo({ top: 0, behavior: 'smooth' })
       return
@@ -446,6 +460,12 @@ export default function Checkout() {
                 <span>{c.shipping}</span>
                 <span>{shipping === 0 ? c.free : formatPrice(shipping)}</span>
               </div>
+              {hasBundle && bundleDiscount > 0 && (
+                <div className="flex justify-between font-medium text-sage-700">
+                  <span>{t.cart.bundleLabel}</span>
+                  <span>−{formatPrice(bundleDiscount)}</span>
+                </div>
+              )}
               {discount > 0 && (
                 <div className="flex justify-between font-medium text-sage-700">
                   <span>{c.discount} {promo ? `(${promo.code})` : ''}</span>

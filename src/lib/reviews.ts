@@ -4,6 +4,7 @@ export interface Review {
   rating: number
   date: string
   comment: string
+  photoUrl?: string
 }
 
 const seedReviews: Record<string, Review[]> = {

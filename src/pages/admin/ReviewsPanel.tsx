@@ -84,6 +84,15 @@ export function ReviewsPanel() {
               </div>
               <RatingStars rating={r.rating} className="mb-2" />
               <p className="mb-3 text-sm text-ink/70">{r.comment}</p>
+              {r.photo_url && (
+                <a href={r.photo_url} target="_blank" rel="noopener noreferrer">
+                  <img
+                    src={r.photo_url}
+                    alt=""
+                    className="mb-3 h-24 w-24 rounded-2xl border border-ink/10 object-cover"
+                  />
+                </a>
+              )}
               <div className="flex items-center gap-3">
                 <button
                   onClick={() => toggleApproved(r)}
