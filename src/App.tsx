@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
+import { Analytics } from "@vercel/analytics/react"
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 import { MobileMenu } from '@/components/layout/MobileMenu'
@@ -27,17 +28,16 @@ export default function App() {
   const { pathname } = useLocation()
   useLenis()
 
-  // Load analytics once (does nothing until the IDs are set in .env).
   useEffect(() => {
     initAnalytics()
   }, [])
 
-  // The admin panel is a standalone tool — render it without the storefront chrome.
   if (pathname.startsWith('/admin')) {
     return (
       <>
         <ScrollToTop />
         <AppRoutes />
+        <Analytics />
       </>
     )
   }
@@ -56,6 +56,7 @@ export default function App() {
       <LiveChat />
       <WhatsAppButton />
       <SocialProof />
+      <Analytics />
     </div>
   )
 }
