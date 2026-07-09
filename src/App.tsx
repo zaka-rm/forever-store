@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import { Analytics } from "@vercel/analytics/react"
+import { SpeedInsights } from "@vercel/speed-insights/react"
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 import { MobileMenu } from '@/components/layout/MobileMenu'
@@ -32,16 +33,19 @@ export default function App() {
     initAnalytics()
   }, [])
 
+  // Admin routes - minimal layout
   if (pathname.startsWith('/admin')) {
     return (
       <>
         <ScrollToTop />
         <AppRoutes />
         <Analytics />
+        <SpeedInsights />
       </>
     )
   }
 
+  // Public routes - full layout
   return (
     <div className="flex min-h-screen flex-col overflow-x-hidden">
       <ScrollToTop />
@@ -57,6 +61,7 @@ export default function App() {
       <WhatsAppButton />
       <SocialProof />
       <Analytics />
+      <SpeedInsights />
     </div>
   )
 }
