@@ -1,4 +1,10 @@
 {
   "buildCommand": "npm ci --legacy-peer-deps && npm run build",
   "installCommand": "npm ci --legacy-peer-deps"
+
+
+  "rewrites": [
+    { "source": "/admin(.*)", "destination": "/admin" },
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
 }
