@@ -63,21 +63,21 @@ export function LiveChat() {
                 <button
                   type="button"
                   onClick={() => openWhatsapp(c.quickReplies.product)}
-                  className="rounded-2xl border border-ink/10 px-4 py-2.5 text-left text-sm text-ink transition-colors hover:border-sage-500 hover:bg-sage-50"
+                  className="rounded-2xl border border-ink/10 px-4 py-2.5 text-start text-sm text-ink transition-colors hover:border-sage-500 hover:bg-sage-50"
                 >
                   {c.quickReplies.product}
                 </button>
                 <button
                   type="button"
                   onClick={() => openWhatsapp(c.quickReplies.order)}
-                  className="rounded-2xl border border-ink/10 px-4 py-2.5 text-left text-sm text-ink transition-colors hover:border-sage-500 hover:bg-sage-50"
+                  className="rounded-2xl border border-ink/10 px-4 py-2.5 text-start text-sm text-ink transition-colors hover:border-sage-500 hover:bg-sage-50"
                 >
                   {c.quickReplies.order}
                 </button>
                 <button
                   type="button"
                   onClick={() => openWhatsapp(c.quickReplies.distributor)}
-                  className="rounded-2xl border border-ink/10 px-4 py-2.5 text-left text-sm text-ink transition-colors hover:border-sage-500 hover:bg-sage-50"
+                  className="rounded-2xl border border-ink/10 px-4 py-2.5 text-start text-sm text-ink transition-colors hover:border-sage-500 hover:bg-sage-50"
                 >
                   {c.quickReplies.distributor}
                 </button>

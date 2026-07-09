@@ -38,7 +38,7 @@ export function SubscribeBox({ productId, productName }: { productId: string; pr
       <button
         type="button"
         onClick={() => setOpen((o) => !o)}
-        className="flex w-full items-center justify-between text-left"
+        className="flex w-full items-center justify-between text-start"
       >
         <span className="flex items-center gap-2 text-sm font-medium text-ink">
           <span className="text-lg">🔁</span> {s.cta}

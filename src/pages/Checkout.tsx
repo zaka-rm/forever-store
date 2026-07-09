@@ -479,7 +479,7 @@ function PaymentOption({
     <button
       type="button"
       onClick={onSelect}
-      className={`flex items-start gap-3 rounded-2xl border p-4 text-left transition-colors ${
+      className={`flex items-start gap-3 rounded-2xl border p-4 text-start transition-colors ${
         selected ? 'border-ink bg-cream' : 'border-ink/15 hover:border-ink/40'
       }`}
     >

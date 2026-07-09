@@ -18,7 +18,7 @@ export function Accordion({ items }: { items: AccordionItem[] }) {
             <button
               type="button"
               onClick={() => setOpen(isOpen ? null : i)}
-              className="flex w-full items-center justify-between py-5 text-left"
+              className="flex w-full items-center justify-between py-5 text-start"
               aria-expanded={isOpen}
             >
               <span className="font-display text-base text-ink">{item.title}</span>
