@@ -60,6 +60,7 @@ export default function AdminDashboard() {
   const [checking, setChecking] = useState(true)
   const [tab, setTab] = useState<Tab>('dashboard')
   const [newOrders, setNewOrders] = useState(0)
+  const [pendingReviews, setPendingReviews] = useState(0)
   const knownCount = useRef<number | null>(null)
 
   useEffect(() => {
@@ -90,6 +91,13 @@ export default function AdminDashboard() {
         playNewOrderChime()
       }
       knownCount.current = count
+
+      // Also surface reviews awaiting moderation as a badge on the Avis tab.
+      const { count: reviewsPending } = await supabase
+        .from('reviews')
+        .select('id', { count: 'exact', head: true })
+        .eq('approved', false)
+      if (active && reviewsPending != null) setPendingReviews(reviewsPending)
     }
     poll()
     const id = setInterval(poll, 25000)
@@ -107,6 +115,7 @@ export default function AdminDashboard() {
   function goToTab(key: Tab) {
     setTab(key)
     if (key === 'orders') setNewOrders(0)
+    if (key === 'reviews') setPendingReviews(0)
   }
 
   async function handleLogout() {
@@ -144,6 +153,11 @@ export default function AdminDashboard() {
               {t.key === 'orders' && newOrders > 0 && (
                 <span className="ml-1.5 inline-flex h-5 min-w-[20px] items-center justify-center rounded-full bg-clay-500 px-1.5 text-[11px] font-bold text-cream">
                   {newOrders}
+                </span>
+              )}
+              {t.key === 'reviews' && pendingReviews > 0 && (
+                <span className="ml-1.5 inline-flex h-5 min-w-[20px] items-center justify-center rounded-full bg-clay-500 px-1.5 text-[11px] font-bold text-cream">
+                  {pendingReviews}
                 </span>
               )}
               {tab === t.key && <span className="absolute inset-x-2 -bottom-px h-0.5 rounded-full bg-ink sm:inset-x-3" />}

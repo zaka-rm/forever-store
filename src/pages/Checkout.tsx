@@ -117,12 +117,15 @@ export default function Checkout() {
     setFormData((prev) => ({ ...prev, [key]: value }))
   }
 
-  async function startStripeCheckout() {
+  // Card payment via YouCan Pay: a server function tokenizes the payment (with
+  // the secret key), saves the order as pending, and returns the hosted
+  // payment-page URL. We redirect the customer there; the webhook marks it paid.
+  async function startCardPayment() {
     setIsSubmitting(true)
     setOrderError(false)
 
     const origin = window.location.origin
-    const { data, error } = await supabase.functions.invoke('create-checkout-session', {
+    const { data, error } = await supabase.functions.invoke('youcanpay-create-payment', {
       body: {
         items: lines.map((line) => ({
           id: line.product.id,
@@ -131,6 +134,10 @@ export default function Checkout() {
           quantity: line.quantity,
         })),
         customer: formData,
+        shipping,
+        // Send the combined promo + routine-bundle discount so the server
+        // charges exactly what the customer sees.
+        discount: discount + bundleDiscount,
         locale,
         successUrl: `${origin}/checkout/confirmation`,
         cancelUrl: `${origin}/checkout`,
@@ -264,7 +271,7 @@ export default function Checkout() {
       return
     }
     if (paymentMethod === 'card') {
-      startStripeCheckout()
+      startCardPayment()
     } else {
       placeCodOrder()
     }
