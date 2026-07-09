@@ -55,8 +55,8 @@ export function AppRoutes() {
           <Route path="/conditions" element={withTransition(<Legal />)} />
           <Route path="/blog" element={withTransition(<Blog />)} />
           <Route path="/blog/:slug" element={withTransition(<BlogPost />)} />
-          <Route path="/admin/login" element={<AdminLogin />} />
-          <Route path="/admin" element={<AdminDashboard />} />
+          <Route path="/admin/login" element={withTransition(<AdminLogin />)} />
+          <Route path="/admin" element={withTransition(<AdminDashboard />)} />
           <Route path="*" element={withTransition(<NotFound />)} />
         </Routes>
       </AnimatePresence>
