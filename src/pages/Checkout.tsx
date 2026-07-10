@@ -11,6 +11,7 @@ import { FREE_SHIPPING_THRESHOLD, SHIPPING_FEE } from '@/lib/constants'
 import { formatPrice } from '@/lib/format'
 import { trackInitiateCheckout } from '@/lib/analytics'
 import { saveAbandonedCart, markCartRecovered } from '@/lib/abandonedCart'
+import { useFeature } from '@/lib/featureFlags'
 
 interface OrderFormData {
   fullName: string
@@ -52,6 +53,8 @@ export default function Checkout() {
   const [referralCode, setReferralCode] = useState('')
   const { t, locale } = useLanguage()
   const c = t.checkout
+  const abandonedCartEnabled = useFeature('abandoned_cart')
+  const cardPaymentEnabled = useFeature('card_payment')
   usePageMeta('Commande', 'Finalisez votre commande Forever Living Products.')
 
   // Analytics: the visitor reached the checkout (fires once per visit).
@@ -257,7 +260,7 @@ export default function Checkout() {
     e.preventDefault()
     if (step < c.steps.length - 1) {
       // Capture the in-progress order so it can be recovered if abandoned.
-      if (step === 0) {
+      if (step === 0 && abandonedCartEnabled) {
         saveAbandonedCart({
           name: formData.fullName,
           phone: formData.phone,
@@ -351,12 +354,14 @@ export default function Checkout() {
                     title={c.payCod}
                     desc={c.payCodDesc}
                   />
-                  <PaymentOption
-                    selected={paymentMethod === 'card'}
-                    onSelect={() => setPaymentMethod('card')}
-                    title={c.payCard}
-                    desc={c.payCardDesc}
-                  />
+                  {cardPaymentEnabled && (
+                    <PaymentOption
+                      selected={paymentMethod === 'card'}
+                      onSelect={() => setPaymentMethod('card')}
+                      title={c.payCard}
+                      desc={c.payCardDesc}
+                    />
+                  )}
                 </div>
                 <p className="mt-5 text-xs text-ink/40">
                   {paymentMethod === 'card' ? c.redirectNotice : c.codNotice}

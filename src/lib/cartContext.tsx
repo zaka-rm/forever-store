@@ -1,6 +1,7 @@
 import { createContext, useContext, useMemo, useState, type ReactNode } from 'react'
 import type { Product } from '@/lib/products'
 import { trackAddToCart } from '@/lib/analytics'
+import { useFeature } from '@/lib/featureFlags'
 
 export interface CartLine {
   product: Product
@@ -87,7 +88,8 @@ export function CartProvider({ children }: { children: ReactNode }) {
     [lines],
   )
   const count = useMemo(() => lines.reduce((sum, l) => sum + l.quantity, 0), [lines])
-  const hasBundle = count >= BUNDLE_MIN_ITEMS
+  const bundleEnabled = useFeature('bundle_discount')
+  const hasBundle = bundleEnabled && count >= BUNDLE_MIN_ITEMS
   const bundleDiscount = useMemo(
     () => (hasBundle ? Math.round(subtotal * BUNDLE_RATE) : 0),
     [hasBundle, subtotal],

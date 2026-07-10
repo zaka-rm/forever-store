@@ -9,10 +9,12 @@ import { useLanguage } from '@/lib/i18n/LanguageContext'
 import { FREE_SHIPPING_THRESHOLD } from '@/lib/constants'
 import { formatPrice } from '@/lib/format'
 import { DISTRIBUTOR_WHATSAPP, waLink } from '@/lib/whatsapp'
+import { useFeature } from '@/lib/featureFlags'
 
 export function CartDrawer() {
   const { isOpen, closeCart, lines, updateQuantity, removeFromCart, addToCart, subtotal, hasBundle, bundleDiscount, total, count } = useCart()
   const itemsToBundle = Math.max(0, BUNDLE_MIN_ITEMS - count)
+  const nudgeEnabled = useFeature('bundle_nudge') && useFeature('bundle_discount')
   const { getBestSellers } = useProducts()
   const navigate = useNavigate()
   const { t } = useLanguage()
@@ -168,7 +170,7 @@ export function CartDrawer() {
 
             {lines.length > 0 && (
               <div className="border-t border-ink/10 px-6 py-6 sm:px-8">
-                {itemsToBundle > 0 ? (
+                {nudgeEnabled && (itemsToBundle > 0 ? (
                   <p className="mb-4 rounded-2xl bg-sage-100 px-4 py-2.5 text-center text-xs font-medium text-sage-700">
                     {t.cart.bundleNudge.replace('{n}', String(itemsToBundle))}
                   </p>
@@ -176,7 +178,7 @@ export function CartDrawer() {
                   <p className="mb-4 rounded-2xl bg-sage-600 px-4 py-2.5 text-center text-xs font-bold text-cream">
                     {t.cart.bundleUnlocked}
                   </p>
-                )}
+                ))}
                 <div className="mb-4">
                   <p className="mb-2 text-center text-xs font-medium text-ink/70">
                     {remaining > 0 ? (

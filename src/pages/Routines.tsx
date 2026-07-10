@@ -8,14 +8,20 @@ import { usePageMeta } from '@/lib/usePageMeta'
 import { formatPrice } from '@/lib/format'
 import { getLocalizedProduct } from '@/lib/products'
 import { ROUTINES, buildRoutine } from '@/lib/routines'
+import { useFeature } from '@/lib/featureFlags'
+import { Navigate } from 'react-router-dom'
 
 export default function Routines() {
+  const routinesEnabled = useFeature('routines')
   const { products } = useProducts()
   const { addToCart, openCart } = useCart()
   const { t, locale } = useLanguage()
   const lang = locale === 'ar' ? 'ar' : 'fr'
   const r = t.routines
   usePageMeta(r.metaTitle, r.metaDescription)
+
+  // Feature switched off in the admin → the page quietly redirects to the shop.
+  if (!routinesEnabled) return <Navigate to="/shop" replace />
 
   // Build routines sequentially, keeping each one's products distinct from the
   // others so the four routines feel genuinely different.

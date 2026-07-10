@@ -5,6 +5,7 @@ import { RatingStars } from '@/components/ui/RatingStars'
 import { getReviews, type Review } from '@/lib/reviews'
 import { useLanguage } from '@/lib/i18n/LanguageContext'
 import { supabase } from '@/lib/supabaseClient'
+import { useFeature } from '@/lib/featureFlags'
 
 export function ReviewsSection({ productId }: { productId: string }) {
   const { t } = useLanguage()
@@ -16,6 +17,7 @@ export function ReviewsSection({ productId }: { productId: string }) {
   const [comment, setComment] = useState('')
   const [photo, setPhoto] = useState<File | null>(null)
   const [uploading, setUploading] = useState(false)
+  const photoReviewsEnabled = useFeature('photo_reviews')
 
   useEffect(() => {
     let cancelled = false
@@ -155,17 +157,19 @@ export function ReviewsSection({ productId }: { productId: string }) {
               className="w-full resize-none rounded-2xl border border-ink/15 bg-cream px-4 py-2.5 text-sm text-ink outline-none focus:border-ink/40"
             />
           </div>
-          <div>
-            <label className="mb-1.5 block text-xs font-medium uppercase tracking-wider text-ink/40">
-              {t.reviews.photoLabel}
-            </label>
-            <input
-              type="file"
-              accept="image/*"
-              onChange={(e) => setPhoto(e.target.files?.[0] ?? null)}
-              className="block w-full text-sm text-ink/70 file:me-3 file:rounded-full file:border-0 file:bg-ink file:px-4 file:py-2 file:text-sm file:font-medium file:text-cream"
-            />
-          </div>
+          {photoReviewsEnabled && (
+            <div>
+              <label className="mb-1.5 block text-xs font-medium uppercase tracking-wider text-ink/40">
+                {t.reviews.photoLabel}
+              </label>
+              <input
+                type="file"
+                accept="image/*"
+                onChange={(e) => setPhoto(e.target.files?.[0] ?? null)}
+                className="block w-full text-sm text-ink/70 file:me-3 file:rounded-full file:border-0 file:bg-ink file:px-4 file:py-2 file:text-sm file:font-medium file:text-cream"
+              />
+            </div>
+          )}
           <p className="text-xs text-ink/40">{t.reviews.pendingNotice}</p>
           <button
             type="submit"

@@ -1,14 +1,16 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import { NavLink } from 'react-router-dom'
 import { useLanguage } from '@/lib/i18n/LanguageContext'
+import { useFeature } from '@/lib/featureFlags'
 
 export function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
   const { t, locale, setLocale } = useLanguage()
+  const routinesEnabled = useFeature('routines')
 
   const navLinks = [
     { to: '/', label: t.nav.home },
     { to: '/shop', label: t.nav.shop },
-    { to: '/routines', label: t.nav.routines },
+    ...(routinesEnabled ? [{ to: '/routines', label: t.nav.routines }] : []),
     { to: '/quiz', label: t.nav.quiz },
     { to: '/blog', label: t.nav.blog },
     { to: '/about', label: t.nav.about },

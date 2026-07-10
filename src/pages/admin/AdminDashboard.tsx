@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { supabase } from '@/lib/supabaseClient'
+import { useFeature } from '@/lib/featureFlags'
 
 // A short two-tone chime via Web Audio (no audio file needed). Silently no-ops
 // if the browser blocks audio before a user interaction.
@@ -62,6 +63,8 @@ export default function AdminDashboard() {
   const [newOrders, setNewOrders] = useState(0)
   const [pendingReviews, setPendingReviews] = useState(0)
   const knownCount = useRef<number | null>(null)
+  const orderSoundEnabled = useFeature('order_sound')
+  const reviewsBadgeEnabled = useFeature('reviews_badge')
 
   useEffect(() => {
     document.title = 'Admin — Naturaloé'
@@ -88,16 +91,18 @@ export default function AdminDashboard() {
       if (knownCount.current !== null && count > knownCount.current) {
         const added = count - knownCount.current
         setNewOrders((n) => n + added)
-        playNewOrderChime()
+        if (orderSoundEnabled) playNewOrderChime()
       }
       knownCount.current = count
 
       // Also surface reviews awaiting moderation as a badge on the Avis tab.
-      const { count: reviewsPending } = await supabase
-        .from('reviews')
-        .select('id', { count: 'exact', head: true })
-        .eq('approved', false)
-      if (active && reviewsPending != null) setPendingReviews(reviewsPending)
+      if (reviewsBadgeEnabled) {
+        const { count: reviewsPending } = await supabase
+          .from('reviews')
+          .select('id', { count: 'exact', head: true })
+          .eq('approved', false)
+        if (active && reviewsPending != null) setPendingReviews(reviewsPending)
+      }
     }
     poll()
     const id = setInterval(poll, 25000)
@@ -105,7 +110,7 @@ export default function AdminDashboard() {
       active = false
       clearInterval(id)
     }
-  }, [checking])
+  }, [checking, orderSoundEnabled, reviewsBadgeEnabled])
 
   // Reflect pending new orders in the browser tab title (visible when minimized).
   useEffect(() => {
@@ -155,7 +160,7 @@ export default function AdminDashboard() {
                   {newOrders}
                 </span>
               )}
-              {t.key === 'reviews' && pendingReviews > 0 && (
+              {t.key === 'reviews' && reviewsBadgeEnabled && pendingReviews > 0 && (
                 <span className="ml-1.5 inline-flex h-5 min-w-[20px] items-center justify-center rounded-full bg-clay-500 px-1.5 text-[11px] font-bold text-cream">
                   {pendingReviews}
                 </span>

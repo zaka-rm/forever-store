@@ -5,6 +5,7 @@ import { useCart } from '@/lib/cartContext'
 import { useWishlist } from '@/lib/wishlistContext'
 import { useLanguage } from '@/lib/i18n/LanguageContext'
 import { AnnouncementBar } from '@/components/layout/AnnouncementBar'
+import { useFeature } from '@/lib/featureFlags'
 
 export function Header({ onMenuOpen, onSearchOpen }: { onMenuOpen: () => void; onSearchOpen: () => void }) {
   const [scrolled, setScrolled] = useState(false)
@@ -12,9 +13,10 @@ export function Header({ onMenuOpen, onSearchOpen }: { onMenuOpen: () => void; o
   const { count: wishCount } = useWishlist()
   const { t, locale, setLocale } = useLanguage()
 
+  const routinesEnabled = useFeature('routines')
   const navLinks = [
     { to: '/shop', label: t.nav.shop },
-    { to: '/routines', label: t.nav.routines },
+    ...(routinesEnabled ? [{ to: '/routines', label: t.nav.routines }] : []),
     { to: '/quiz', label: t.nav.quiz },
     { to: '/about', label: t.nav.about },
     { to: '/contact', label: t.nav.contact },

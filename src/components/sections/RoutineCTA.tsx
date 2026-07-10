@@ -3,10 +3,13 @@ import { Button } from '@/components/ui/Button'
 import { OrganicVisual } from '@/components/ui/OrganicVisual'
 import { ProductImage } from '@/components/ui/ProductImage'
 import { useLanguage } from '@/lib/i18n/LanguageContext'
+import { useFeature } from '@/lib/featureFlags'
 
 export function RoutineCTA() {
   const { t } = useLanguage()
   const cta = t.home.routineCta
+  const enabled = useFeature('routines')
+  if (!enabled) return null
 
   return (
     <SectionReveal className="container-px mx-auto max-w-7xl py-10">
