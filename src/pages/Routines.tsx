@@ -57,6 +57,7 @@ export default function Routines() {
     icon: string
     title: string
     goal: string
+    image: string | null
     items: { product: Product; quantity: number }[]
     subtotal: number
     discount: number
@@ -70,6 +71,7 @@ export default function Routines() {
       icon: p.pack.icon || '🌿',
       title: (lang === 'ar' && p.pack.name_ar) || p.pack.name_fr,
       goal: ((lang === 'ar' && p.pack.goal_ar) || p.pack.goal_fr) ?? '',
+      image: p.pack.image,
       items: p.items,
       subtotal: p.subtotal,
       discount: p.discount,
@@ -88,6 +90,7 @@ export default function Routines() {
         icon: b.def.icon,
         title: b.def.title[lang],
         goal: b.def.goal[lang],
+        image: null,
         items: b.items.map((product) => ({ product, quantity: 1 })),
         subtotal: b.subtotal,
         discount: b.discount,
@@ -120,24 +123,41 @@ export default function Routines() {
                 </div>
               </div>
 
-              <div className="mb-6 grid grid-cols-3 gap-3 sm:grid-cols-4">
-                {card.items.map(({ product, quantity }) => {
-                  const lp = getLocalizedProduct(product, lang)
-                  return (
-                    <div key={product.id} className="min-w-0">
-                      <div className="relative aspect-square overflow-hidden rounded-2xl bg-stone">
-                        <ProductImage src={product.image} alt={lp.name} />
-                        {quantity > 1 && (
-                          <span className="absolute end-1.5 top-1.5 rounded-full bg-ink px-2 py-0.5 text-[11px] font-bold text-cream">
-                            ×{quantity}
-                          </span>
-                        )}
+              {card.image ? (
+                /* Custom composed pack photo + compact contents list */
+                <div className="mb-6">
+                  <div className="aspect-[4/3] overflow-hidden rounded-2xl bg-stone">
+                    <ProductImage src={card.image} alt={card.title} />
+                  </div>
+                  <p className="mt-3 text-xs leading-relaxed text-ink/60">
+                    {card.items
+                      .map(({ product, quantity }) => {
+                        const lp = getLocalizedProduct(product, lang)
+                        return quantity > 1 ? `${lp.name} ×${quantity}` : lp.name
+                      })
+                      .join(' · ')}
+                  </p>
+                </div>
+              ) : (
+                <div className="mb-6 grid grid-cols-3 gap-3 sm:grid-cols-4">
+                  {card.items.map(({ product, quantity }) => {
+                    const lp = getLocalizedProduct(product, lang)
+                    return (
+                      <div key={product.id} className="min-w-0">
+                        <div className="relative aspect-square overflow-hidden rounded-2xl bg-stone">
+                          <ProductImage src={product.image} alt={lp.name} />
+                          {quantity > 1 && (
+                            <span className="absolute end-1.5 top-1.5 rounded-full bg-ink px-2 py-0.5 text-[11px] font-bold text-cream">
+                              ×{quantity}
+                            </span>
+                          )}
+                        </div>
+                        <p className="mt-2 truncate text-xs font-medium text-ink/80">{lp.name}</p>
                       </div>
-                      <p className="mt-2 truncate text-xs font-medium text-ink/80">{lp.name}</p>
-                    </div>
-                  )
-                })}
-              </div>
+                    )
+                  })}
+                </div>
+              )}
 
               <div className="mt-auto flex flex-wrap items-center justify-between gap-4 border-t border-ink/10 pt-5">
                 <div>

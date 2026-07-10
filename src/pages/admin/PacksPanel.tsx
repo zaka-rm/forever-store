@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import { fetchPacks, savePack, deletePack, type PackRow, type PackItemRef } from '@/lib/packs'
+import { uploadProductImage } from '@/lib/adminProducts'
 import { useProducts } from '@/lib/productsContext'
 import { formatPrice } from '@/lib/format'
 import { BUNDLE_MIN_ITEMS, BUNDLE_RATE } from '@/lib/cartContext'
@@ -14,6 +15,7 @@ interface Draft {
   name_ar: string
   goal_fr: string
   goal_ar: string
+  image: string
   sort_order: number
   active: boolean
   items: PackItemRef[]
@@ -25,6 +27,7 @@ const emptyDraft: Draft = {
   name_ar: '',
   goal_fr: '',
   goal_ar: '',
+  image: '',
   sort_order: 0,
   active: true,
   items: [],
@@ -61,6 +64,7 @@ export function PacksPanel() {
       name_ar: p.name_ar ?? '',
       goal_fr: p.goal_fr ?? '',
       goal_ar: p.goal_ar ?? '',
+      image: p.image ?? '',
       sort_order: p.sort_order,
       active: p.active,
       items: p.items ?? [],
@@ -89,6 +93,7 @@ export function PacksPanel() {
           name_ar: draft.name_ar.trim() || null,
           goal_fr: draft.goal_fr.trim() || null,
           goal_ar: draft.goal_ar.trim() || null,
+          image: draft.image.trim() || null,
           sort_order: draft.sort_order,
           active: draft.active,
           items: draft.items,
@@ -239,6 +244,23 @@ function PackForm({
 }) {
   const { products } = useProducts()
   const [search, setSearch] = useState('')
+  const [uploading, setUploading] = useState(false)
+  const [uploadError, setUploadError] = useState('')
+
+  async function handleImageFile(file: File | undefined) {
+    if (!file) return
+    setUploading(true)
+    setUploadError('')
+    try {
+      // Reuses the existing product-images bucket under a packs/ folder.
+      const url = await uploadProductImage('packs', file)
+      setDraft({ ...draft, image: url })
+    } catch {
+      setUploadError("Échec de l'envoi. Vérifiez que le bucket 'product-images' existe.")
+    } finally {
+      setUploading(false)
+    }
+  }
 
   const selectedIds = new Set(draft.items.map((it) => it.id))
   const available = useMemo(() => {
@@ -327,6 +349,41 @@ function PackForm({
             placeholder="التطهير والتغذية واستعادة الطاقة."
           />
         </div>
+      </div>
+
+      {/* --- Pack photo (optional) ------------------------------------------ */}
+      <div className="mb-4">
+        <label className={label}>Photo du pack (facultative)</label>
+        <p className="mb-2 text-xs text-ink/45">
+          Si vous ajoutez une photo (ex : les produits posés ensemble), elle remplace la grille de
+          produits sur la carte. Sans photo, la grille s'affiche — les deux fonctionnent.
+        </p>
+        <div className="flex flex-wrap items-start gap-3">
+          {draft.image && (
+            <div className="relative">
+              <img src={draft.image} alt="" className="h-24 w-32 rounded-2xl border border-ink/10 object-cover" />
+              <button
+                type="button"
+                onClick={() => setDraft({ ...draft, image: '' })}
+                className="absolute -end-2 -top-2 flex h-6 w-6 items-center justify-center rounded-full bg-ink text-xs text-cream"
+                title="Retirer la photo"
+              >
+                ✕
+              </button>
+            </div>
+          )}
+          <label className="flex h-24 w-40 cursor-pointer items-center justify-center rounded-2xl border border-dashed border-ink/20 bg-cream text-center text-xs text-ink/50 hover:border-ink/40">
+            {uploading ? 'Envoi…' : 'Cliquez pour choisir une photo'}
+            <input type="file" accept="image/*" className="hidden" onChange={(e) => handleImageFile(e.target.files?.[0])} />
+          </label>
+        </div>
+        <input
+          className={`${input} mt-2`}
+          value={draft.image}
+          onChange={(e) => setDraft({ ...draft, image: e.target.value })}
+          placeholder="…ou collez une URL d'image"
+        />
+        {uploadError && <p className="mt-1 text-xs font-medium text-clay-600">{uploadError}</p>}
       </div>
 
       {/* --- Product picker ------------------------------------------------ */}

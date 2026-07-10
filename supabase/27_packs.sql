@@ -11,9 +11,15 @@ create table if not exists packs (
   name_ar text,
   goal_fr text,
   goal_ar text,
+  -- Photo du pack (facultative) : si définie, elle remplace la grille de
+  -- produits sur la carte du pack.
+  image text,
   -- [{ "id": "p01", "quantity": 1 }, ...]
   items jsonb not null default '[]'::jsonb
 );
+
+-- Si vous aviez déjà exécuté ce script avant l'ajout de la photo :
+alter table packs add column if not exists image text;
 
 alter table packs enable row level security;
 

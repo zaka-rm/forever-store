@@ -24,6 +24,8 @@ export interface PackRow {
   name_ar: string | null
   goal_fr: string | null
   goal_ar: string | null
+  /** optional composed pack photo — shown instead of the product grid */
+  image: string | null
   items: PackItemRef[]
 }
 
