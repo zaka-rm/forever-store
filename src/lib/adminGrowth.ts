@@ -171,6 +171,44 @@ export async function deleteAbandonedCart(id: string): Promise<void> {
 }
 
 // ---------------------------------------------------------------------------
+// Follow-ups (delivered 20+ days ago → propose a re-order on WhatsApp)
+// ---------------------------------------------------------------------------
+export interface FollowupRow {
+  id: string
+  created_at: string
+  customer_name: string
+  phone: string | null
+  city: string | null
+  items: { name: string; price: number; quantity: number }[]
+  total: number
+}
+
+/**
+ * Customers whose order was delivered at least `minDays` ago — prime timing to
+ * propose a refill (aloe products run out in ~a month). One row per phone
+ * number (their most recent delivered order).
+ */
+export async function fetchFollowupCandidates(minDays = 20): Promise<FollowupRow[]> {
+  const cutoff = new Date(Date.now() - minDays * 24 * 3600 * 1000).toISOString()
+  const { data, error } = await supabase
+    .from('orders')
+    .select('id, created_at, customer_name, phone, city, items, total, status')
+    .eq('status', 'delivered')
+    .lt('created_at', cutoff)
+    .order('created_at', { ascending: false })
+  if (error) throw error
+  const seen = new Set<string>()
+  const rows: FollowupRow[] = []
+  for (const o of data ?? []) {
+    const key = (o.phone as string) || (o.customer_name as string)
+    if (!key || seen.has(key)) continue
+    seen.add(key)
+    rows.push(o as FollowupRow)
+  }
+  return rows
+}
+
+// ---------------------------------------------------------------------------
 // Subscriptions (monthly re-delivery)
 // ---------------------------------------------------------------------------
 export interface SubscriptionRow {

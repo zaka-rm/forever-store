@@ -55,6 +55,7 @@ export default function Checkout() {
   const c = t.checkout
   const abandonedCartEnabled = useFeature('abandoned_cart')
   const cardPaymentEnabled = useFeature('card_payment')
+  const checkoutBadgesEnabled = useFeature('checkout_badges')
   usePageMeta('Commande', 'Finalisez votre commande Forever Living Products.')
 
   // Analytics: the visitor reached the checkout (fires once per visit).
@@ -366,6 +367,21 @@ export default function Checkout() {
                 <p className="mt-5 text-xs text-ink/40">
                   {paymentMethod === 'card' ? c.redirectNotice : c.codNotice}
                 </p>
+
+                {/* Reassurance at the moment of decision — the step where COD
+                    shoppers hesitate most on a store they don't know yet. */}
+                {checkoutBadgesEnabled && (
+                  <div className="mt-5 grid grid-cols-1 gap-2 rounded-2xl border border-sage-600/20 bg-sage-100/40 px-4 py-3 sm:grid-cols-3">
+                    {[t.home.trust.cod, t.home.trust.authentic, t.home.trust.guarantee].map((label) => (
+                      <span key={label} className="flex items-center gap-2 text-xs font-medium text-sage-700">
+                        <svg viewBox="0 0 24 24" className="h-4 w-4 flex-none" fill="none" stroke="currentColor" strokeWidth="2">
+                          <path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                        {label}
+                      </span>
+                    ))}
+                  </div>
+                )}
 
                 {paymentMethod === 'cod' && (
                   <div className="mt-5">

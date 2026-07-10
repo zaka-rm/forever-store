@@ -21,6 +21,8 @@ import {
   deleteStockAlert,
   fetchAbandonedCarts,
   deleteAbandonedCart,
+  fetchFollowupCandidates,
+  type FollowupRow,
   type SubscriberRow,
   type AbandonedCartRow,
   type DistributorLeadRow,
@@ -33,11 +35,13 @@ import {
 import { formatDate } from '@/lib/adminData'
 import { formatPrice } from '@/lib/format'
 import { toWhatsAppNumber, waLink } from '@/lib/whatsapp'
+import { useFeature } from '@/lib/featureFlags'
 
-type SubTab = 'subscribers' | 'leads' | 'zones' | 'referrals' | 'loyalty' | 'subscriptions' | 'alerts' | 'abandoned'
+type SubTab = 'subscribers' | 'leads' | 'zones' | 'referrals' | 'loyalty' | 'subscriptions' | 'alerts' | 'abandoned' | 'followup'
 
 const SUB_TABS: { key: SubTab; label: string }[] = [
   { key: 'abandoned', label: 'Paniers abandonnés' },
+  { key: 'followup', label: 'Relance fidélité' },
   { key: 'subscribers', label: 'Abonnés' },
   { key: 'subscriptions', label: 'Abonnements' },
   { key: 'alerts', label: 'Alertes stock' },
@@ -49,11 +53,13 @@ const SUB_TABS: { key: SubTab; label: string }[] = [
 
 export function GrowthPanel() {
   const [sub, setSub] = useState<SubTab>('subscribers')
+  const followupsEnabled = useFeature('followups')
+  const tabs = SUB_TABS.filter((s) => s.key !== 'followup' || followupsEnabled)
 
   return (
     <div>
       <div className="mb-6 flex gap-1 overflow-x-auto border-b border-ink/10 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-        {SUB_TABS.map((s) => (
+        {tabs.map((s) => (
           <button
             key={s.key}
             onClick={() => setSub(s.key)}
@@ -74,6 +80,79 @@ export function GrowthPanel() {
       {sub === 'subscriptions' && <SubscriptionsTab />}
       {sub === 'alerts' && <StockAlertsTab />}
       {sub === 'abandoned' && <AbandonedCartsTab />}
+      {sub === 'followup' && followupsEnabled && <FollowupTab />}
+    </div>
+  )
+}
+
+function FollowupTab() {
+  const [rows, setRows] = useState<FollowupRow[]>([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState('')
+  const [dismissed, setDismissed] = useState<Set<string>>(new Set())
+
+  useEffect(() => {
+    fetchFollowupCandidates()
+      .then(setRows)
+      .catch(() => setError('Impossible de charger les commandes livrées.'))
+      .finally(() => setLoading(false))
+  }, [])
+
+  if (loading) return <p className="py-8 text-center text-ink/40">Chargement…</p>
+  if (error) return <p className="rounded-2xl bg-clay-500/10 px-4 py-3 text-sm text-clay-600">{error}</p>
+
+  const visible = rows.filter((r) => !dismissed.has(r.id))
+
+  return (
+    <div>
+      <p className="mb-4 text-xs text-ink/45">
+        Clients livrés il y a 20 jours ou plus — le moment idéal pour proposer un réassort (les
+        produits s'épuisent en ± un mois). Un client existant coûte 5× moins cher qu'un nouveau !
+      </p>
+      {visible.length === 0 ? (
+        <p className="rounded-3xl border border-ink/10 bg-cream-dark py-12 text-center text-sm text-ink/40">
+          Aucune relance à faire pour le moment.
+        </p>
+      ) : (
+        <div className="flex flex-col gap-2">
+          {visible.map((r) => {
+            const itemsTxt = r.items.map((it) => `${it.name} ×${it.quantity}`).join(', ')
+            const msg = `Bonjour ${r.customer_name} ! 🌿 C'est Naturaloé. Votre commande (${itemsTxt}) date d'il y a un moment — souhaitez-vous que je vous prépare le même réassort, livré chez vous ?`
+            return (
+              <div key={r.id} className="overflow-hidden rounded-2xl border border-ink/10 bg-cream-dark px-4 py-3">
+                <div className="flex flex-wrap items-center gap-3">
+                  <div className="min-w-0 flex-1">
+                    <p className="truncate text-sm font-medium text-ink">
+                      {r.customer_name} · <span className="text-ink/60">{r.phone || '—'}</span>
+                    </p>
+                    <p className="truncate text-xs text-ink/45">
+                      {r.city ? r.city + ' · ' : ''}Livrée le {formatDate(r.created_at)} · {formatPrice(Number(r.total))}
+                    </p>
+                  </div>
+                  {r.phone && (
+                    <a
+                      href={waLink(toWhatsAppNumber(r.phone), msg)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-none rounded-full bg-[#25D366] px-4 py-1.5 text-xs font-medium text-white hover:brightness-95"
+                    >
+                      💬 Proposer un réassort
+                    </a>
+                  )}
+                  <button
+                    onClick={() => setDismissed((s) => new Set(s).add(r.id))}
+                    className="flex-none text-ink/30 hover:text-clay-600"
+                    title="Masquer"
+                  >
+                    ✕
+                  </button>
+                </div>
+                <p className="mt-1.5 truncate text-xs text-ink/40">{itemsTxt}</p>
+              </div>
+            )
+          })}
+        </div>
+      )}
     </div>
   )
 }

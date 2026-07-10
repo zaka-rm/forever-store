@@ -25,6 +25,9 @@ export const FLAG_DEFS: FlagDef[] = [
   { key: 'order_sound', label: 'Alerte nouvelle commande', desc: 'Son + badge dans l’admin à chaque nouvelle commande.', default: true },
   { key: 'reviews_badge', label: 'Badge avis en attente', desc: 'Compteur d’avis à modérer sur l’onglet Avis de l’admin.', default: true },
   { key: 'card_payment', label: 'Paiement par carte', desc: 'Option « Payer par carte » au checkout (nécessite les clés YouCan Pay).', default: false },
+  { key: 'order_wa_confirm', label: 'Confirmation WhatsApp', desc: 'Bouton « Confirmer ma commande sur WhatsApp » après la commande (réduit les fausses commandes).', default: true },
+  { key: 'checkout_badges', label: 'Badges de confiance', desc: 'Rappels « Payez à la livraison · Produits authentiques · Satisfait ou remboursé » au moment du paiement.', default: true },
+  { key: 'followups', label: 'Relance fidélité', desc: 'Onglet admin listant les clients livrés il y a 20+ jours pour proposer un réassort.', default: true },
 ]
 
 export type Flags = Record<string, boolean>

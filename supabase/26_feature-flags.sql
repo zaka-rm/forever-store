@@ -32,5 +32,9 @@ insert into feature_flags (key, enabled) values
   ('photo_reviews', true),     -- Champ photo dans le formulaire d'avis
   ('order_sound', true),       -- Son + badge « nouvelle commande » dans l'admin
   ('reviews_badge', true),     -- Badge « avis en attente » sur l'onglet Avis
-  ('card_payment', false)      -- Option « Payer par carte » au checkout (nécessite YouCan Pay)
+  ('card_payment', false),     -- Option « Payer par carte » au checkout (nécessite YouCan Pay)
+  ('order_wa_confirm', true),  -- Bouton « Confirmer ma commande sur WhatsApp » après commande
+  ('checkout_badges', true),   -- Badges de confiance au moment du paiement
+  ('followups', true)          -- Onglet admin « Relance fidélité » (réassort à J+20)
 on conflict (key) do nothing;
+-- Script réexécutable sans risque : les lignes existantes ne sont pas modifiées.

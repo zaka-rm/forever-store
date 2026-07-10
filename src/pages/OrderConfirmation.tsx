@@ -6,6 +6,9 @@ import { useLanguage } from '@/lib/i18n/LanguageContext'
 import { usePageMeta } from '@/lib/usePageMeta'
 import { printReceipt, type Receipt } from '@/lib/receipt'
 import { trackPurchase } from '@/lib/analytics'
+import { DISTRIBUTOR_WHATSAPP, waLink } from '@/lib/whatsapp'
+import { formatPrice } from '@/lib/format'
+import { useFeature } from '@/lib/featureFlags'
 
 export default function OrderConfirmation() {
   const { clearCart } = useCart()
@@ -24,6 +27,7 @@ export default function OrderConfirmation() {
   const canShareReferral = Boolean(ref)
   const [cleared, setCleared] = useState(false)
   const [copied, setCopied] = useState(false)
+  const waConfirmEnabled = useFeature('order_wa_confirm')
 
   // The receipt snapshot saved at checkout (only present for orders placed in
   // this browser session), matched to the current reference.
@@ -99,6 +103,30 @@ export default function OrderConfirmation() {
           </p>
           {reference && (
             <p className="mt-3 text-xs text-ink/45">{t.orderConfirmation.trackHint}</p>
+          )}
+
+          {/* One-tap WhatsApp confirmation — customers who confirm are real
+              orders, so this directly cuts COD ghost orders. */}
+          {waConfirmEnabled && reference && (
+            <div className="mx-auto mt-8 max-w-sm rounded-3xl border border-[#25D366]/30 bg-[#25D366]/5 p-6">
+              <p className="font-display text-lg font-bold text-ink">{t.orderConfirmation.waConfirmTitle}</p>
+              <p className="mt-1.5 text-sm text-ink/60">{t.orderConfirmation.waConfirmBody}</p>
+              <a
+                href={waLink(
+                  DISTRIBUTOR_WHATSAPP,
+                  `${t.orderConfirmation.waConfirmMessage} ${reference}` +
+                    (receipt
+                      ? ` — ${receipt.items.map((it) => `${it.name} ×${it.quantity}`).join(', ')} — ${formatPrice(receipt.total)}`
+                      : ''),
+                )}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#25D366] px-5 py-3 text-sm font-semibold text-white hover:brightness-95"
+              >
+                <svg viewBox="0 0 24 24" className="h-4 w-4" fill="currentColor"><path d="M17.5 14.4c-.3-.15-1.7-.85-2-.95-.25-.1-.45-.15-.65.15-.2.3-.75.95-.9 1.1-.15.2-.35.2-.65.05-.3-.15-1.25-.45-2.4-1.5-.9-.8-1.5-1.75-1.65-2.05-.15-.3 0-.45.15-.6.15-.15.3-.35.45-.55.15-.2.2-.3.3-.5.1-.2.05-.4-.05-.55-.1-.15-.65-1.55-.9-2.15-.2-.55-.45-.5-.65-.5h-.55c-.2 0-.5.05-.75.35-.25.3-1 1-1 2.4s1.05 2.8 1.2 3c.15.2 2.05 3.15 5 4.4.7.3 1.25.5 1.65.65.7.2 1.35.2 1.85.1.55-.05 1.7-.7 1.95-1.35.25-.65.25-1.2.15-1.35-.1-.15-.3-.2-.6-.35zM12 2a10 10 0 00-8.6 15l-1.3 4.7 4.8-1.25A10 10 0 1012 2z"/></svg>
+                {t.orderConfirmation.waConfirmButton}
+              </a>
+            </div>
           )}
 
           {canShareReferral && (
