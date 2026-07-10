@@ -32,6 +32,7 @@ function playNewOrderChime() {
 }
 import { DashboardPanel } from '@/pages/admin/DashboardPanel'
 import { ProductsPanel } from '@/pages/admin/ProductsPanel'
+import { PacksPanel } from '@/pages/admin/PacksPanel'
 import { OrdersPanel } from '@/pages/admin/OrdersPanel'
 import { MessagesPanel } from '@/pages/admin/MessagesPanel'
 import { ReviewsPanel } from '@/pages/admin/ReviewsPanel'
@@ -41,11 +42,12 @@ import { CustomersPanel } from '@/pages/admin/CustomersPanel'
 import { BlogPanel } from '@/pages/admin/BlogPanel'
 import { SettingsPanel } from '@/pages/admin/SettingsPanel'
 
-type Tab = 'dashboard' | 'products' | 'orders' | 'customers' | 'messages' | 'reviews' | 'discounts' | 'growth' | 'blog' | 'settings'
+type Tab = 'dashboard' | 'products' | 'packs' | 'orders' | 'customers' | 'messages' | 'reviews' | 'discounts' | 'growth' | 'blog' | 'settings'
 
 const TABS: { key: Tab; label: string }[] = [
   { key: 'dashboard', label: 'Tableau de bord' },
   { key: 'products', label: 'Produits' },
+  { key: 'packs', label: 'Packs' },
   { key: 'orders', label: 'Commandes' },
   { key: 'customers', label: 'Clients' },
   { key: 'discounts', label: 'Codes promo' },
@@ -174,6 +176,7 @@ export default function AdminDashboard() {
       <main className="mx-auto max-w-5xl overflow-x-hidden px-4 py-6 sm:px-6 sm:py-8">
         {tab === 'dashboard' && <DashboardPanel onGoto={goToTab} />}
         {tab === 'products' && <ProductsPanel />}
+        {tab === 'packs' && <PacksPanel />}
         {tab === 'orders' && <OrdersPanel />}
         {tab === 'customers' && <CustomersPanel />}
         {tab === 'discounts' && <DiscountsPanel />}

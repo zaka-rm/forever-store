@@ -14,7 +14,10 @@ import { useFeature } from '@/lib/featureFlags'
 export function CartDrawer() {
   const { isOpen, closeCart, lines, updateQuantity, removeFromCart, addToCart, subtotal, hasBundle, bundleDiscount, total, count } = useCart()
   const itemsToBundle = Math.max(0, BUNDLE_MIN_ITEMS - count)
-  const nudgeEnabled = useFeature('bundle_nudge') && useFeature('bundle_discount')
+  // Both hooks must run unconditionally (Rules of Hooks) — combine after.
+  const nudgeFlag = useFeature('bundle_nudge')
+  const bundleFlag = useFeature('bundle_discount')
+  const nudgeEnabled = nudgeFlag && bundleFlag
   const { getBestSellers } = useProducts()
   const navigate = useNavigate()
   const { t } = useLanguage()
