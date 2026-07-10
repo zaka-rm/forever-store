@@ -86,28 +86,67 @@ export function GrowthPanel() {
 }
 
 function FollowupTab() {
+  // Two follow-up moments: J+3 = ask how it's going + usage tips (builds the
+  // relationship), J+20 = propose a refill (drives the repeat sale).
+  const [mode, setMode] = useState<'care' | 'refill'>('refill')
   const [rows, setRows] = useState<FollowupRow[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
   const [dismissed, setDismissed] = useState<Set<string>>(new Set())
 
   useEffect(() => {
-    fetchFollowupCandidates()
+    setLoading(true)
+    const fetch = mode === 'care' ? fetchFollowupCandidates(3, 20) : fetchFollowupCandidates(20)
+    fetch
       .then(setRows)
       .catch(() => setError('Impossible de charger les commandes livrées.'))
       .finally(() => setLoading(false))
-  }, [])
-
-  if (loading) return <p className="py-8 text-center text-ink/40">Chargement…</p>
-  if (error) return <p className="rounded-2xl bg-clay-500/10 px-4 py-3 text-sm text-clay-600">{error}</p>
+  }, [mode])
 
   const visible = rows.filter((r) => !dismissed.has(r.id))
 
   return (
     <div>
+      <div className="mb-4 flex gap-2">
+        <button
+          onClick={() => setMode('care')}
+          className={`rounded-full px-4 py-1.5 text-xs font-medium ${mode === 'care' ? 'bg-ink text-cream' : 'bg-cream-dark text-ink/60 hover:text-ink'}`}
+        >
+          💬 Conseil J+3
+        </button>
+        <button
+          onClick={() => setMode('refill')}
+          className={`rounded-full px-4 py-1.5 text-xs font-medium ${mode === 'refill' ? 'bg-ink text-cream' : 'bg-cream-dark text-ink/60 hover:text-ink'}`}
+        >
+          🔄 Réassort J+20
+        </button>
+      </div>
+      {loading ? (
+        <p className="py-8 text-center text-ink/40">Chargement…</p>
+      ) : error ? (
+        <p className="rounded-2xl bg-clay-500/10 px-4 py-3 text-sm text-clay-600">{error}</p>
+      ) : (
+        <FollowupList mode={mode} visible={visible} dismiss={(id) => setDismissed((s) => new Set(s).add(id))} />
+      )}
+    </div>
+  )
+}
+
+function FollowupList({
+  mode,
+  visible,
+  dismiss,
+}: {
+  mode: 'care' | 'refill'
+  visible: FollowupRow[]
+  dismiss: (id: string) => void
+}) {
+  return (
+    <div>
       <p className="mb-4 text-xs text-ink/45">
-        Clients livrés il y a 20 jours ou plus — le moment idéal pour proposer un réassort (les
-        produits s'épuisent en ± un mois). Un client existant coûte 5× moins cher qu'un nouveau !
+        {mode === 'care'
+          ? 'Clients livrés il y a 3 à 20 jours — prenez des nouvelles et donnez un conseil d\'utilisation. C\'est ce petit geste qui transforme un acheteur en client fidèle.'
+          : 'Clients livrés il y a 20 jours ou plus — le moment idéal pour proposer un réassort (les produits s\'épuisent en ± un mois). Un client existant coûte 5× moins cher qu\'un nouveau !'}
       </p>
       {visible.length === 0 ? (
         <p className="rounded-3xl border border-ink/10 bg-cream-dark py-12 text-center text-sm text-ink/40">
@@ -117,7 +156,10 @@ function FollowupTab() {
         <div className="flex flex-col gap-2">
           {visible.map((r) => {
             const itemsTxt = r.items.map((it) => `${it.name} ×${it.quantity}`).join(', ')
-            const msg = `Bonjour ${r.customer_name} ! 🌿 C'est Naturaloé. Votre commande (${itemsTxt}) date d'il y a un moment — souhaitez-vous que je vous prépare le même réassort, livré chez vous ?`
+            const msg =
+              mode === 'care'
+                ? `Bonjour ${r.customer_name} ! 🌿 C'est Naturaloé. Comment trouvez-vous ${itemsTxt} ? N'hésitez pas si vous avez la moindre question sur l'utilisation — je suis là pour vous accompagner.`
+                : `Bonjour ${r.customer_name} ! 🌿 C'est Naturaloé. Votre commande (${itemsTxt}) date d'il y a un moment — souhaitez-vous que je vous prépare le même réassort, livré chez vous ?`
             return (
               <div key={r.id} className="overflow-hidden rounded-2xl border border-ink/10 bg-cream-dark px-4 py-3">
                 <div className="flex flex-wrap items-center gap-3">
@@ -136,11 +178,11 @@ function FollowupTab() {
                       rel="noopener noreferrer"
                       className="flex-none rounded-full bg-[#25D366] px-4 py-1.5 text-xs font-medium text-white hover:brightness-95"
                     >
-                      💬 Proposer un réassort
+                      {mode === 'care' ? '💬 Prendre des nouvelles' : '💬 Proposer un réassort'}
                     </a>
                   )}
                   <button
-                    onClick={() => setDismissed((s) => new Set(s).add(r.id))}
+                    onClick={() => dismiss(r.id)}
                     className="flex-none text-ink/30 hover:text-clay-600"
                     title="Masquer"
                   >

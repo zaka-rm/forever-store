@@ -56,6 +56,26 @@ export default function Checkout() {
   const abandonedCartEnabled = useFeature('abandoned_cart')
   const cardPaymentEnabled = useFeature('card_payment')
   const checkoutBadgesEnabled = useFeature('checkout_badges')
+  const prefillEnabled = useFeature('checkout_prefill')
+  const [prefilled, setPrefilled] = useState(false)
+
+  // Returning customer on this device → pre-fill their details from the last
+  // order (stored locally in their own browser only — nothing looked up server-side).
+  useEffect(() => {
+    if (!prefillEnabled) return
+    try {
+      const raw = localStorage.getItem('savedCustomer')
+      if (!raw) return
+      const saved = JSON.parse(raw) as Partial<OrderFormData>
+      setFormData((prev) => {
+        if (prev.fullName || prev.phone) return prev // don't overwrite typed data
+        setPrefilled(true)
+        return { ...prev, ...saved, notes: '' }
+      })
+    } catch {
+      /* corrupt data — ignore */
+    }
+  }, [prefillEnabled])
   usePageMeta('Commande', 'Finalisez votre commande Forever Living Products.')
 
   // Analytics: the visitor reached the checkout (fires once per visit).
@@ -253,6 +273,14 @@ export default function Checkout() {
       }),
     )
 
+    // Remember the customer's details on their device for a faster next order.
+    try {
+      const { notes: _n, ...toSave } = formData
+      localStorage.setItem('savedCustomer', JSON.stringify(toSave))
+    } catch {
+      /* storage full/blocked — non-essential */
+    }
+
     markCartRecovered()
     navigate(`/checkout/confirmation?ref=${reference}`)
   }
@@ -312,6 +340,11 @@ export default function Checkout() {
             {step === 0 && (
               <div className="flex flex-col gap-5">
                 <h2 className="font-display text-2xl font-bold text-ink">{c.contactHeading}</h2>
+                {prefilled && (
+                  <p className="rounded-2xl bg-sage-100 px-4 py-2.5 text-sm font-medium text-sage-700">
+                    {c.prefillNotice}
+                  </p>
+                )}
                 <Field label={c.fullName} type="text" value={formData.fullName} onChange={(v) => updateField('fullName', v)} />
                 <Field label={c.phone} type="tel" value={formData.phone} onChange={(v) => updateField('phone', v)} />
                 <Field label={c.email} type="email" required={false} value={formData.email} onChange={(v) => updateField('email', v)} />

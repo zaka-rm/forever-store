@@ -7,10 +7,13 @@ import {
 } from '@/lib/adminData'
 import { orderStatusLabel } from '@/lib/orderStatus'
 import { formatPrice } from '@/lib/format'
+import { useProducts } from '@/lib/productsContext'
 
 interface Stats {
   revenueTotal: number
   revenueMonth: number
+  revenueToday: number
+  ordersToday: number
   ordersCount: number
   avgBasket: number
   pendingOrders: number
@@ -58,7 +61,10 @@ function Metric({ label, value }: { label: string; value: string }) {
   )
 }
 
-export function DashboardPanel({ onGoto }: { onGoto: (tab: 'orders' | 'messages' | 'reviews') => void }) {
+export function DashboardPanel({ onGoto }: { onGoto: (tab: 'orders' | 'messages' | 'reviews' | 'products') => void }) {
+  const { products } = useProducts()
+  // Products whose tracked stock is nearly gone — reorder before it hits zero.
+  const restock = products.filter((p) => typeof p.stock === 'number' && p.stock <= 2)
   const [stats, setStats] = useState<Stats | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
@@ -88,6 +94,14 @@ export function DashboardPanel({ onGoto }: { onGoto: (tab: 'orders' | 'messages'
 
   return (
     <div className="flex flex-col gap-8">
+      {/* Today at a glance */}
+      <div className="rounded-2xl bg-sage-100/60 px-5 py-4">
+        <p className="text-xs font-medium uppercase tracking-wider text-sage-700">Aujourd'hui</p>
+        <p className="mt-1 font-display text-2xl font-bold text-ink">
+          {stats.ordersToday} commande{stats.ordersToday > 1 ? 's' : ''} · {money(stats.revenueToday)}
+        </p>
+      </div>
+
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
         <Metric label="Chiffre d'affaires" value={money(stats.revenueTotal)} />
         <Metric label="Ce mois-ci" value={money(stats.revenueMonth)} />
@@ -115,6 +129,26 @@ export function DashboardPanel({ onGoto }: { onGoto: (tab: 'orders' | 'messages'
           </button>
         </div>
       </div>
+
+      {/* Restock warning: tracked stock nearly gone */}
+      {restock.length > 0 && (
+        <div className="rounded-2xl border border-clay-500/30 bg-clay-500/5 px-5 py-4">
+          <p className="mb-2 text-xs font-medium uppercase tracking-wider text-clay-600">
+            ⚠️ Stock faible — pensez à réapprovisionner
+          </p>
+          <div className="flex flex-wrap gap-2">
+            {restock.map((p) => (
+              <button
+                key={p.id}
+                onClick={() => onGoto('products')}
+                className="rounded-full border border-clay-500/30 bg-cream px-3 py-1.5 text-xs text-ink hover:border-clay-500"
+              >
+                {p.name} · <span className="font-bold text-clay-600">{p.stock === 0 ? 'épuisé' : `reste ${p.stock}`}</span>
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
 
       <div className="grid gap-8 sm:grid-cols-2">
         {/* Top products */}
@@ -162,6 +196,10 @@ function compute(orders: OrderRow[], unhandledMessages: number, pendingReviews: 
     })
     .reduce((s, o) => s + Number(o.total), 0)
 
+  const todayKey = now.toISOString().slice(0, 10)
+  const todayOrders = active.filter((o) => new Date(o.created_at).toISOString().slice(0, 10) === todayKey)
+  const revenueToday = todayOrders.reduce((s, o) => s + Number(o.total), 0)
+
   const byStatus: Record<string, number> = {}
   for (const o of orders) byStatus[o.status || 'pending'] = (byStatus[o.status || 'pending'] || 0) + 1
 
@@ -193,6 +231,8 @@ function compute(orders: OrderRow[], unhandledMessages: number, pendingReviews: 
   return {
     revenueTotal,
     revenueMonth,
+    revenueToday,
+    ordersToday: todayOrders.length,
     ordersCount: active.length,
     avgBasket: active.length ? revenueTotal / active.length : 0,
     pendingOrders: orders.filter((o) => (o.status || 'pending') === 'pending').length,

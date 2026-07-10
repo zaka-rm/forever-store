@@ -32,6 +32,7 @@ export const FLAG_DEFS: FlagDef[] = [
   { key: 'pack_cross_sell', label: 'Bandeau pack sur produit', desc: '« Ce produit fait partie du pack X — économisez 10% » sur les pages produit.', default: true },
   { key: 'story_section', label: 'Section « Qui suis-je »', desc: 'Votre histoire sur l’accueil (texte dans Réglages ; masquée si vide).', default: true },
   { key: 'wa_testimonials', label: 'Témoignages WhatsApp', desc: 'Captures d’écran de clients sur l’accueil (upload dans Réglages).', default: true },
+  { key: 'checkout_prefill', label: 'Client reconnu au checkout', desc: 'Pré-remplit les coordonnées d’un client qui a déjà commandé sur cet appareil.', default: true },
 ]
 
 export type Flags = Record<string, boolean>

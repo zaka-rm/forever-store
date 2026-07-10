@@ -39,6 +39,7 @@ insert into feature_flags (key, enabled) values
   ('product_wa_order', true),  -- Bouton « Commander sur WhatsApp » sur les pages produit
   ('pack_cross_sell', true),   -- Bandeau « fait partie du pack X » sur les pages produit
   ('story_section', true),     -- Section « Qui suis-je » sur l'accueil
-  ('wa_testimonials', true)    -- Témoignages WhatsApp (captures) sur l'accueil
+  ('wa_testimonials', true),   -- Témoignages WhatsApp (captures) sur l'accueil
+  ('checkout_prefill', true)   -- Pré-remplissage des coordonnées d'un client déjà connu
 on conflict (key) do nothing;
 -- Script réexécutable sans risque : les lignes existantes ne sont pas modifiées.

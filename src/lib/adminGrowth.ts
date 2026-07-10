@@ -184,18 +184,22 @@ export interface FollowupRow {
 }
 
 /**
- * Customers whose order was delivered at least `minDays` ago — prime timing to
- * propose a refill (aloe products run out in ~a month). One row per phone
- * number (their most recent delivered order).
+ * Customers whose order was delivered between `minDays` and `maxDays` ago.
+ * Two useful windows: J+3 (a care/usage-tips message) and J+20 (a refill
+ * proposal — aloe products run out in ~a month). One row per phone number
+ * (their most recent delivered order).
  */
-export async function fetchFollowupCandidates(minDays = 20): Promise<FollowupRow[]> {
+export async function fetchFollowupCandidates(minDays = 20, maxDays?: number): Promise<FollowupRow[]> {
   const cutoff = new Date(Date.now() - minDays * 24 * 3600 * 1000).toISOString()
-  const { data, error } = await supabase
+  let query = supabase
     .from('orders')
     .select('id, created_at, customer_name, phone, city, items, total, status')
     .eq('status', 'delivered')
     .lt('created_at', cutoff)
-    .order('created_at', { ascending: false })
+  if (maxDays !== undefined) {
+    query = query.gt('created_at', new Date(Date.now() - maxDays * 24 * 3600 * 1000).toISOString())
+  }
+  const { data, error } = await query.order('created_at', { ascending: false })
   if (error) throw error
   const seen = new Set<string>()
   const rows: FollowupRow[] = []
