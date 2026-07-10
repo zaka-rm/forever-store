@@ -122,6 +122,10 @@ export const translations = {
         success: 'Bienvenue dans la communauté Forever !',
       },
       oversizedType: "aloe vera · bien-être · aloe vera · bien-être ·",
+      storyEyebrow: 'QUI SUIS-JE',
+      storyTitle: 'Une personne réelle, pas une boutique anonyme.',
+      screenshotsEyebrow: 'ILS NOUS ONT ÉCRIT',
+      screenshotsTitle: 'Des messages de vrais clients.',
     },
     shop: {
       eyebrow: 'Collection Complète',
@@ -247,6 +251,11 @@ export const translations = {
     product: {
       related: 'Vous aimerez ',
       relatedAccent: 'aussi',
+      waOrder: 'Commander sur WhatsApp',
+      waOrderMessage: 'Bonjour ! Je souhaite commander :',
+      packBanner: 'Ce produit fait partie du pack',
+      packBannerSave: 'Économisez −10% en le prenant en pack !',
+      packBannerCta: 'Voir le pack',
       addToCart: 'Ajouter au Panier',
       added: 'Ajouté ✓',
       subscribe: {
@@ -610,6 +619,10 @@ export const translations = {
         success: 'مرحباً بك في مجتمع Forever!',
       },
       oversizedType: 'الألوة فيرا · العافية · الألوة فيرا · العافية ·',
+      storyEyebrow: 'من أنا',
+      storyTitle: 'شخص حقيقي، وليس متجراً مجهولاً.',
+      screenshotsEyebrow: 'كتبوا لنا',
+      screenshotsTitle: 'رسائل من زبائن حقيقيين.',
     },
     shop: {
       eyebrow: 'التشكيلة الكاملة',
@@ -735,6 +748,11 @@ export const translations = {
     product: {
       related: 'قد يعجبك ',
       relatedAccent: 'أيضاً',
+      waOrder: 'اطلب عبر واتساب',
+      waOrderMessage: 'مرحباً! أريد طلب:',
+      packBanner: 'هذا المنتج جزء من باك',
+      packBannerSave: 'وفّر −10% بطلبه ضمن الباك!',
+      packBannerCta: 'شاهد الباك',
       addToCart: 'أضف إلى السلة',
       added: 'تمت الإضافة ✓',
       subscribe: {

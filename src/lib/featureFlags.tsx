@@ -28,6 +28,10 @@ export const FLAG_DEFS: FlagDef[] = [
   { key: 'order_wa_confirm', label: 'Confirmation WhatsApp', desc: 'Bouton « Confirmer ma commande sur WhatsApp » après la commande (réduit les fausses commandes).', default: true },
   { key: 'checkout_badges', label: 'Badges de confiance', desc: 'Rappels « Payez à la livraison · Produits authentiques · Satisfait ou remboursé » au moment du paiement.', default: true },
   { key: 'followups', label: 'Relance fidélité', desc: 'Onglet admin listant les clients livrés il y a 20+ jours pour proposer un réassort.', default: true },
+  { key: 'product_wa_order', label: 'Commande WhatsApp produit', desc: 'Bouton « Commander sur WhatsApp » sur chaque page produit.', default: true },
+  { key: 'pack_cross_sell', label: 'Bandeau pack sur produit', desc: '« Ce produit fait partie du pack X — économisez 10% » sur les pages produit.', default: true },
+  { key: 'story_section', label: 'Section « Qui suis-je »', desc: 'Votre histoire sur l’accueil (texte dans Réglages ; masquée si vide).', default: true },
+  { key: 'wa_testimonials', label: 'Témoignages WhatsApp', desc: 'Captures d’écran de clients sur l’accueil (upload dans Réglages).', default: true },
 ]
 
 export type Flags = Record<string, boolean>

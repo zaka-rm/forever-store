@@ -35,6 +35,10 @@ insert into feature_flags (key, enabled) values
   ('card_payment', false),     -- Option « Payer par carte » au checkout (nécessite YouCan Pay)
   ('order_wa_confirm', true),  -- Bouton « Confirmer ma commande sur WhatsApp » après commande
   ('checkout_badges', true),   -- Badges de confiance au moment du paiement
-  ('followups', true)          -- Onglet admin « Relance fidélité » (réassort à J+20)
+  ('followups', true),         -- Onglet admin « Relance fidélité » (réassort à J+20)
+  ('product_wa_order', true),  -- Bouton « Commander sur WhatsApp » sur les pages produit
+  ('pack_cross_sell', true),   -- Bandeau « fait partie du pack X » sur les pages produit
+  ('story_section', true),     -- Section « Qui suis-je » sur l'accueil
+  ('wa_testimonials', true)    -- Témoignages WhatsApp (captures) sur l'accueil
 on conflict (key) do nothing;
 -- Script réexécutable sans risque : les lignes existantes ne sont pas modifiées.

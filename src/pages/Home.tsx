@@ -7,6 +7,8 @@ import { OversizedType } from '@/components/ui/OversizedType'
 import { IngredientSpotlight } from '@/components/sections/IngredientSpotlight'
 import { RoutineCTA } from '@/components/sections/RoutineCTA'
 import { Testimonials } from '@/components/sections/Testimonials'
+import { SellerStory } from '@/components/sections/SellerStory'
+import { ScreenshotWall } from '@/components/sections/ScreenshotWall'
 import { FAQ } from '@/components/sections/FAQ'
 import { Newsletter } from '@/components/sections/Newsletter'
 import { useLanguage } from '@/lib/i18n/LanguageContext'
@@ -29,6 +31,8 @@ export default function Home() {
       <BrandStory />
       <IngredientSpotlight />
       <RoutineCTA />
+      <SellerStory />
+      <ScreenshotWall />
       <Testimonials />
       <FAQ />
       <Newsletter />

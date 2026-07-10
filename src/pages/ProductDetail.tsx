@@ -21,6 +21,9 @@ import { JsonLd } from '@/components/ui/JsonLd'
 import { usePageMeta } from '@/lib/usePageMeta'
 import { SITE_URL } from '@/lib/constants'
 import { formatPrice } from '@/lib/format'
+import { DISTRIBUTOR_WHATSAPP, waLink } from '@/lib/whatsapp'
+import { fetchPacks, type PackRow } from '@/lib/packs'
+import { useFeature } from '@/lib/featureFlags'
 
 export default function ProductDetail() {
   const { slug } = useParams()
@@ -30,7 +33,16 @@ export default function ProductDetail() {
   const { has, toggle } = useWishlist()
   const { t, locale } = useLanguage()
   const [quantity, setQuantity] = useState(1)
+  const waOrderEnabled = useFeature('product_wa_order')
+  const packBannerEnabled = useFeature('pack_cross_sell')
   usePageMeta(rawProduct?.name ?? '', rawProduct?.tagline, rawProduct?.image)
+
+  // Packs that contain this product (for the "part of a pack" banner).
+  const [packs, setPacks] = useState<PackRow[]>([])
+  useEffect(() => {
+    if (!packBannerEnabled) return
+    fetchPacks().then((rows) => setPacks(rows.filter((p) => p.active)))
+  }, [packBannerEnabled])
 
   // Remember this product for the "recently viewed" strip.
   useEffect(() => {
@@ -50,6 +62,10 @@ export default function ProductDetail() {
 
   const product = getLocalizedProduct(rawProduct, locale)
   const related = getRelatedProducts(rawProduct)
+  const containingPack = packs.find((p) => (p.items ?? []).some((it) => it.id === rawProduct.id))
+  const packName = containingPack
+    ? (locale === 'ar' && containingPack.name_ar) || containingPack.name_fr
+    : ''
   const saved = has(product.id)
   const stock = stockStatus(product.stock)
   const soldOut = stock === 'out'
@@ -221,6 +237,40 @@ export default function ProductDetail() {
                   {t.product.addToCart} — {formatPrice(product.price * quantity)}
                 </Button>
               </div>
+            )}
+
+            {/* Zero-friction path: some customers will never fill a form but
+                will happily order in one WhatsApp message. */}
+            {!soldOut && waOrderEnabled && (
+              <a
+                href={waLink(
+                  DISTRIBUTOR_WHATSAPP,
+                  `${t.product.waOrderMessage} ${product.name} ×${quantity} — ${formatPrice(product.price * quantity)}\n${SITE_URL}/shop/${product.slug}`,
+                )}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-full border border-[#25D366]/40 bg-[#25D366]/10 px-5 py-3 text-sm font-semibold text-[#128C4A] transition-colors hover:bg-[#25D366]/20"
+              >
+                <svg viewBox="0 0 24 24" className="h-4 w-4" fill="currentColor"><path d="M17.5 14.4c-.3-.15-1.7-.85-2-.95-.25-.1-.45-.15-.65.15-.2.3-.75.95-.9 1.1-.15.2-.35.2-.65.05-.3-.15-1.25-.45-2.4-1.5-.9-.8-1.5-1.75-1.65-2.05-.15-.3 0-.45.15-.6.15-.15.3-.35.45-.55.15-.2.2-.3.3-.5.1-.2.05-.4-.05-.55-.1-.15-.65-1.55-.9-2.15-.2-.55-.45-.5-.65-.5h-.55c-.2 0-.5.05-.75.35-.25.3-1 1-1 2.4s1.05 2.8 1.2 3c.15.2 2.05 3.15 5 4.4.7.3 1.25.5 1.65.65.7.2 1.35.2 1.85.1.55-.05 1.7-.7 1.95-1.35.25-.65.25-1.2.15-1.35-.1-.15-.3-.2-.6-.35zM12 2a10 10 0 00-8.6 15l-1.3 4.7 4.8-1.25A10 10 0 1012 2z"/></svg>
+                {t.product.waOrder}
+              </a>
+            )}
+
+            {/* Cross-sell: this product belongs to an admin pack → point to it. */}
+            {packBannerEnabled && containingPack && (
+              <a
+                href="/routines"
+                className="mt-3 flex items-center gap-3 rounded-2xl border border-sage-600/25 bg-sage-100/50 px-4 py-3 transition-colors hover:border-sage-600/50"
+              >
+                <span className="text-xl" aria-hidden>{containingPack.icon || '🌿'}</span>
+                <span className="min-w-0 flex-1 text-sm text-ink/75">
+                  {t.product.packBanner} <span className="font-semibold text-ink">{packName}</span> —{' '}
+                  <span className="font-medium text-sage-700">{t.product.packBannerSave}</span>
+                </span>
+                <span className="flex-none text-xs font-semibold text-sage-700 underline underline-offset-2">
+                  {t.product.packBannerCta}
+                </span>
+              </a>
             )}
 
             {!soldOut && <SubscribeBox productId={product.id} productName={product.name} />}
