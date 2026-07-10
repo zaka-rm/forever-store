@@ -15,6 +15,7 @@ const empty = {
   min_subtotal: '' as number | '',
   active: true,
   expires_at: '' as string,
+  max_uses: '' as number | '',
 }
 
 export function DiscountsPanel() {
@@ -54,6 +55,9 @@ export function DiscountsPanel() {
           min_subtotal: form.min_subtotal === '' ? null : Number(form.min_subtotal),
           active: true,
           expires_at: form.expires_at ? new Date(form.expires_at).toISOString() : null,
+          // Only sent when set, so code creation keeps working before
+          // 29_promo-usage-limits.sql adds the column.
+          ...(form.max_uses === '' ? {} : { max_uses: Number(form.max_uses) }),
         },
         true,
       )
@@ -113,6 +117,18 @@ export function DiscountsPanel() {
             <label className={label}>Expire le (facultatif)</label>
             <input type="date" className={`${input} w-full`} value={form.expires_at} onChange={(e) => setForm({ ...form, expires_at: e.target.value })} />
           </div>
+          <div>
+            <label className={label}>Utilisations max (facultatif)</label>
+            <input
+              type="number"
+              min="1"
+              className={`${input} w-full`}
+              value={form.max_uses}
+              onChange={(e) => setForm({ ...form, max_uses: e.target.value === '' ? '' : Number(e.target.value) })}
+              placeholder="Illimité"
+            />
+            <p className="mt-1 text-[11px] text-ink/40">Ex : 1 = code à usage unique, 2 = utilisable deux fois.</p>
+          </div>
           <div className="flex items-end">
             <button type="submit" disabled={saving} className="rounded-full bg-ink px-6 py-2.5 text-sm font-medium text-cream hover:bg-sage-700 disabled:opacity-60">
               {saving ? 'Création…' : 'Créer le code'}
@@ -130,6 +146,7 @@ export function DiscountsPanel() {
         <div className="overflow-hidden rounded-3xl border border-ink/10 bg-cream-dark">
           {rows.map((r) => {
             const expired = r.expires_at ? new Date(r.expires_at) < new Date() : false
+            const usedUp = r.max_uses != null && (r.used_count ?? 0) >= r.max_uses
             return (
               <div key={r.id} className="flex flex-wrap items-center gap-3 border-b border-ink/10 px-4 py-3 last:border-0">
                 <span className="font-mono text-sm font-bold text-ink">{r.code}</span>
@@ -137,6 +154,12 @@ export function DiscountsPanel() {
                   {r.type === 'percent' ? `−${r.value}%` : `−${formatPrice(Number(r.value))}`}
                   {r.min_subtotal ? ` · dès ${formatPrice(Number(r.min_subtotal), 0)}` : ''}
                 </span>
+                <span className={`rounded-full px-2 py-0.5 text-[11px] ${usedUp ? 'bg-clay-500/10 text-clay-600' : 'bg-sage-100 text-sage-700'}`}>
+                  {r.max_uses != null
+                    ? `${r.used_count ?? 0}/${r.max_uses} utilisé${(r.used_count ?? 0) > 1 ? 's' : ''}`
+                    : `${r.used_count ?? 0} utilisé${(r.used_count ?? 0) > 1 ? 's' : ''} · illimité`}
+                </span>
+                {usedUp && <span className="rounded-full bg-clay-500/10 px-2 py-0.5 text-[11px] font-medium text-clay-600">Épuisé</span>}
                 {expired && <span className="rounded-full bg-clay-500/10 px-2 py-0.5 text-[11px] text-clay-600">Expiré</span>}
                 {r.expires_at && !expired && <span className="text-[11px] text-ink/40">exp. {formatDate(r.expires_at)}</span>}
                 <div className="ml-auto flex items-center gap-2">

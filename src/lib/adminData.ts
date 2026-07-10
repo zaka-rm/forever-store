@@ -150,6 +150,9 @@ export interface DiscountRow {
   active: boolean
   expires_at: string | null
   created_at: string
+  /** null = unlimited */
+  max_uses?: number | null
+  used_count?: number
 }
 
 export async function fetchDiscounts(): Promise<DiscountRow[]> {
