@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { fetchPacks, savePack, deletePack, type PackRow, type PackItemRef } from '@/lib/packs'
 import { uploadProductImage } from '@/lib/adminProducts'
+import { ROUTINES, buildRoutine } from '@/lib/routines'
 import { useProducts } from '@/lib/productsContext'
 import { formatPrice } from '@/lib/format'
 import { BUNDLE_MIN_ITEMS, BUNDLE_RATE } from '@/lib/cartContext'
