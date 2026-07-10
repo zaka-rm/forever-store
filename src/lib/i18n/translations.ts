@@ -2,6 +2,7 @@ export const translations = {
   fr: {
     nav: {
       shop: 'Boutique',
+      routines: 'Routines',
       about: 'À Propos',
       contact: 'Contact',
       home: 'Accueil',
@@ -18,6 +19,17 @@ export const translations = {
     },
     header: {
       brandSuffix: '',
+    },
+    routines: {
+      metaTitle: 'Nos Routines Bien-être',
+      metaDescription: 'Des cures complètes prêtes à commander — 3 produits, −10% automatique.',
+      eyebrow: 'Cures complètes',
+      title: 'Nos routines ',
+      titleAccent: 'bien-être',
+      intro: 'Chaque routine réunit 3 produits complémentaires pour un objectif précis. Ajoutez-la en un clic et profitez automatiquement de −10% sur l’ensemble.',
+      addRoutine: 'Ajouter la routine',
+      empty: 'Les routines seront bientôt disponibles.',
+      browse: 'Voir la boutique',
     },
     home: {
       hero: {
@@ -275,6 +287,8 @@ export const translations = {
       remove: 'Retirer',
       subtotal: 'Sous-total',
       bundleLabel: 'Remise routine (−10%)',
+      bundleNudge: 'Ajoutez {n} produit(s) de plus et bénéficiez de −10% sur tout le panier 🌿',
+      bundleUnlocked: '🎉 −10% appliqué sur votre routine !',
       total: 'Total',
       checkout: 'Commander',
       decrease: 'Diminuer la quantité',
@@ -472,6 +486,7 @@ export const translations = {
   ar: {
     nav: {
       shop: 'المتجر',
+      routines: 'روتينات',
       about: 'من نحن',
       contact: 'اتصل بنا',
       home: 'الرئيسية',
@@ -488,6 +503,17 @@ export const translations = {
     },
     header: {
       brandSuffix: '',
+    },
+    routines: {
+      metaTitle: 'روتيناتنا للعافية',
+      metaDescription: 'كيورات متكاملة جاهزة للطلب — 3 منتجات، خصم −10% تلقائياً.',
+      eyebrow: 'كيورات متكاملة',
+      title: 'روتيناتنا ',
+      titleAccent: 'للعافية',
+      intro: 'كل روتين يجمع 3 منتجات متكاملة لهدف محدد. أضفه بنقرة واحدة واستفد تلقائياً من خصم −10% على الكل.',
+      addRoutine: 'أضف الروتين',
+      empty: 'ستتوفر الروتينات قريباً.',
+      browse: 'زيارة المتجر',
     },
     home: {
       hero: {
@@ -745,6 +771,8 @@ export const translations = {
       remove: 'إزالة',
       subtotal: 'المجموع الفرعي',
       bundleLabel: 'خصم الروتين (−10%)',
+      bundleNudge: 'أضف {n} منتج آخر واحصل على خصم −10% على السلة كاملة 🌿',
+      bundleUnlocked: '🎉 تم تطبيق خصم −10% على روتينك!',
       total: 'المجموع',
       checkout: 'إتمام الطلب',
       decrease: 'إنقاص الكمية',

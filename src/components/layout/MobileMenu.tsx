@@ -8,6 +8,7 @@ export function MobileMenu({ open, onClose }: { open: boolean; onClose: () => vo
   const navLinks = [
     { to: '/', label: t.nav.home },
     { to: '/shop', label: t.nav.shop },
+    { to: '/routines', label: t.nav.routines },
     { to: '/quiz', label: t.nav.quiz },
     { to: '/blog', label: t.nav.blog },
     { to: '/about', label: t.nav.about },

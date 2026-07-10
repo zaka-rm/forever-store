@@ -14,6 +14,7 @@ export function Header({ onMenuOpen, onSearchOpen }: { onMenuOpen: () => void; o
 
   const navLinks = [
     { to: '/shop', label: t.nav.shop },
+    { to: '/routines', label: t.nav.routines },
     { to: '/quiz', label: t.nav.quiz },
     { to: '/about', label: t.nav.about },
     { to: '/contact', label: t.nav.contact },

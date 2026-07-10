@@ -5,6 +5,7 @@ import { PageTransition } from '@/components/ui/PageTransition'
 
 const Home = lazy(() => import('@/pages/Home'))
 const Shop = lazy(() => import('@/pages/Shop'))
+const Routines = lazy(() => import('@/pages/Routines'))
 const ProductDetail = lazy(() => import('@/pages/ProductDetail'))
 const About = lazy(() => import('@/pages/About'))
 const Contact = lazy(() => import('@/pages/Contact'))
@@ -39,6 +40,7 @@ export function AppRoutes() {
           <Route path="/" element={withTransition(<Home />)} />
           <Route path="/shop" element={withTransition(<Shop />)} />
           <Route path="/shop/:slug" element={withTransition(<ProductDetail />)} />
+          <Route path="/routines" element={withTransition(<Routines />)} />
           <Route path="/about" element={withTransition(<About />)} />
           <Route path="/contact" element={withTransition(<Contact />)} />
           <Route path="/checkout" element={withTransition(<Checkout />)} />
