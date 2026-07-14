@@ -1,0 +1,44 @@
+{
+  "registry": "impact_assessments",
+  "version": "1.0.0",
+  "generated_at": "2026-07-12T03:39:37Z",
+  "records": [
+    {
+      "id": "IMPACT-000001",
+      "type": "impact_assessment",
+      "name": "Governance Center v2.0 MVP Impact Assessment",
+      "description": "Explainable assessment of the platform-governance change boundary, affected owners, compatibility, invalidation, verification, and release obligations.",
+      "status": "Released",
+      "owner": "TEAM-000001",
+      "version": "1.0.0",
+      "aliases": [
+        "GOV-IMPACT-2026-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "source_change_request": "CR-000001",
+        "primary_target": "CAP-000004",
+        "max_depth": 4,
+        "severity": "High",
+        "compatibility": "Additive platform evolution",
+        "status_reason": "Requires cross-authority review because governance, product, architecture, security, data, AI, and design controls are affected",
+        "report_location": "knowledge/reports/impact-CAP-000004.json",
+        "path_explanations_required": true,
+        "owner_routing_required": true,
+        "invalidation_required": true,
+        "test_selection_required": true,
+        "release_gate_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000001",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    }
+  ]
+}

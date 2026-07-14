@@ -1,0 +1,2827 @@
+{
+  "registry": "user_journeys",
+  "version": "1.0.0",
+  "generated_at": "2026-07-12T03:39:37Z",
+  "records": [
+    {
+      "id": "UJ-000001",
+      "type": "user_journey",
+      "name": "Signal-to-decision creation",
+      "description": "End-to-end user journey for signal-to-decision creation across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-UJ-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Convert material business signals into prioritized, explainable, owned decisions and measurable outcomes.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UJ-000002",
+      "type": "user_journey",
+      "name": "Decision triage",
+      "description": "End-to-end user journey for decision triage across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-UJ-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Convert material business signals into prioritized, explainable, owned decisions and measurable outcomes.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UJ-000003",
+      "type": "user_journey",
+      "name": "Evidence review",
+      "description": "End-to-end user journey for evidence review across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-UJ-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Convert material business signals into prioritized, explainable, owned decisions and measurable outcomes.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UJ-000004",
+      "type": "user_journey",
+      "name": "Approval path",
+      "description": "End-to-end user journey for approval path across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-UJ-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Convert material business signals into prioritized, explainable, owned decisions and measurable outcomes.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UJ-000005",
+      "type": "user_journey",
+      "name": "Action recording",
+      "description": "End-to-end user journey for action recording across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-UJ-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Convert material business signals into prioritized, explainable, owned decisions and measurable outcomes.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UJ-000006",
+      "type": "user_journey",
+      "name": "Outcome review",
+      "description": "End-to-end user journey for outcome review across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-UJ-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Convert material business signals into prioritized, explainable, owned decisions and measurable outcomes.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UJ-000007",
+      "type": "user_journey",
+      "name": "Reopen and recovery",
+      "description": "End-to-end user journey for reopen and recovery across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-UJ-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Convert material business signals into prioritized, explainable, owned decisions and measurable outcomes.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UJ-000008",
+      "type": "user_journey",
+      "name": "Capture memory",
+      "description": "End-to-end user journey for capture memory across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-UJ-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Preserve the business's decisions, context, outcomes, and lessons as permission-aware organizational memory.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UJ-000009",
+      "type": "user_journey",
+      "name": "Enrich and index",
+      "description": "End-to-end user journey for enrich and index across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-UJ-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Preserve the business's decisions, context, outcomes, and lessons as permission-aware organizational memory.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UJ-000010",
+      "type": "user_journey",
+      "name": "Search and retrieve",
+      "description": "End-to-end user journey for search and retrieve across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-UJ-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Preserve the business's decisions, context, outcomes, and lessons as permission-aware organizational memory.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UJ-000011",
+      "type": "user_journey",
+      "name": "Inspect source lineage",
+      "description": "End-to-end user journey for inspect source lineage across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-UJ-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Preserve the business's decisions, context, outcomes, and lessons as permission-aware organizational memory.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UJ-000012",
+      "type": "user_journey",
+      "name": "Correct by supersession",
+      "description": "End-to-end user journey for correct by supersession across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-UJ-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Preserve the business's decisions, context, outcomes, and lessons as permission-aware organizational memory.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UJ-000013",
+      "type": "user_journey",
+      "name": "Apply retention",
+      "description": "End-to-end user journey for apply retention across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-UJ-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Preserve the business's decisions, context, outcomes, and lessons as permission-aware organizational memory.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UJ-000014",
+      "type": "user_journey",
+      "name": "Export authorized memory",
+      "description": "End-to-end user journey for export authorized memory across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-UJ-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Preserve the business's decisions, context, outcomes, and lessons as permission-aware organizational memory.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UJ-000015",
+      "type": "user_journey",
+      "name": "Govern prompt version",
+      "description": "End-to-end user journey for govern prompt version across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-UJ-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Provide provider-agnostic, explainable, evaluated intelligence that augments human judgment across ZYVORA.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UJ-000016",
+      "type": "user_journey",
+      "name": "Route model request",
+      "description": "End-to-end user journey for route model request across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-UJ-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Provide provider-agnostic, explainable, evaluated intelligence that augments human judgment across ZYVORA.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UJ-000017",
+      "type": "user_journey",
+      "name": "Retrieve governed context",
+      "description": "End-to-end user journey for retrieve governed context across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-UJ-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Provide provider-agnostic, explainable, evaluated intelligence that augments human judgment across ZYVORA.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UJ-000018",
+      "type": "user_journey",
+      "name": "Validate structured output",
+      "description": "End-to-end user journey for validate structured output across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-UJ-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Provide provider-agnostic, explainable, evaluated intelligence that augments human judgment across ZYVORA.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UJ-000019",
+      "type": "user_journey",
+      "name": "Human review",
+      "description": "End-to-end user journey for human review across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-UJ-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Provide provider-agnostic, explainable, evaluated intelligence that augments human judgment across ZYVORA.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UJ-000020",
+      "type": "user_journey",
+      "name": "Evaluate release",
+      "description": "End-to-end user journey for evaluate release across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-UJ-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Provide provider-agnostic, explainable, evaluated intelligence that augments human judgment across ZYVORA.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UJ-000021",
+      "type": "user_journey",
+      "name": "Fallback and recovery",
+      "description": "End-to-end user journey for fallback and recovery across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-UJ-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Provide provider-agnostic, explainable, evaluated intelligence that augments human judgment across ZYVORA.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UJ-000022",
+      "type": "user_journey",
+      "name": "Measure outcome",
+      "description": "End-to-end user journey for measure outcome across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-UJ-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Provide provider-agnostic, explainable, evaluated intelligence that augments human judgment across ZYVORA.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UJ-000023",
+      "type": "user_journey",
+      "name": "Create workspace",
+      "description": "End-to-end user journey for create workspace across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-UJ-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Establish trusted identity, tenant boundaries, least-privilege authority, session control, and reconstructable platform evidence.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UJ-000024",
+      "type": "user_journey",
+      "name": "Invite and onboard member",
+      "description": "End-to-end user journey for invite and onboard member across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-UJ-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Establish trusted identity, tenant boundaries, least-privilege authority, session control, and reconstructable platform evidence.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UJ-000025",
+      "type": "user_journey",
+      "name": "Change role",
+      "description": "End-to-end user journey for change role across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-UJ-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Establish trusted identity, tenant boundaries, least-privilege authority, session control, and reconstructable platform evidence.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UJ-000026",
+      "type": "user_journey",
+      "name": "Suspend or revoke access",
+      "description": "End-to-end user journey for suspend or revoke access across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-UJ-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Establish trusted identity, tenant boundaries, least-privilege authority, session control, and reconstructable platform evidence.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UJ-000027",
+      "type": "user_journey",
+      "name": "Authenticate and refresh",
+      "description": "End-to-end user journey for authenticate and refresh across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-UJ-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Establish trusted identity, tenant boundaries, least-privilege authority, session control, and reconstructable platform evidence.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UJ-000028",
+      "type": "user_journey",
+      "name": "Revoke session",
+      "description": "End-to-end user journey for revoke session across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-UJ-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Establish trusted identity, tenant boundaries, least-privilege authority, session control, and reconstructable platform evidence.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UJ-000029",
+      "type": "user_journey",
+      "name": "Evaluate permission",
+      "description": "End-to-end user journey for evaluate permission across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-UJ-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Establish trusted identity, tenant boundaries, least-privilege authority, session control, and reconstructable platform evidence.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UJ-000030",
+      "type": "user_journey",
+      "name": "Investigate audit trail",
+      "description": "End-to-end user journey for investigate audit trail across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-UJ-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Establish trusted identity, tenant boundaries, least-privilege authority, session control, and reconstructable platform evidence.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UJ-000031",
+      "type": "user_journey",
+      "name": "Post journal",
+      "description": "End-to-end user journey for post journal across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-UJ-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Maintain correct, auditable financial records and convert them into cash, profitability, control, and planning decisions.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UJ-000032",
+      "type": "user_journey",
+      "name": "Issue and collect invoice",
+      "description": "End-to-end user journey for issue and collect invoice across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-UJ-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Maintain correct, auditable financial records and convert them into cash, profitability, control, and planning decisions.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UJ-000033",
+      "type": "user_journey",
+      "name": "Record and pay bill",
+      "description": "End-to-end user journey for record and pay bill across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-UJ-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Maintain correct, auditable financial records and convert them into cash, profitability, control, and planning decisions.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UJ-000034",
+      "type": "user_journey",
+      "name": "Import and reconcile bank activity",
+      "description": "End-to-end user journey for import and reconcile bank activity across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-UJ-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Maintain correct, auditable financial records and convert them into cash, profitability, control, and planning decisions.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UJ-000035",
+      "type": "user_journey",
+      "name": "Close fiscal period",
+      "description": "End-to-end user journey for close fiscal period across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-UJ-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Maintain correct, auditable financial records and convert them into cash, profitability, control, and planning decisions.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UJ-000036",
+      "type": "user_journey",
+      "name": "Approve budget",
+      "description": "End-to-end user journey for approve budget across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-UJ-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Maintain correct, auditable financial records and convert them into cash, profitability, control, and planning decisions.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UJ-000037",
+      "type": "user_journey",
+      "name": "Forecast cash",
+      "description": "End-to-end user journey for forecast cash across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-UJ-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Maintain correct, auditable financial records and convert them into cash, profitability, control, and planning decisions.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UJ-000038",
+      "type": "user_journey",
+      "name": "Reverse incorrect posting",
+      "description": "End-to-end user journey for reverse incorrect posting across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-UJ-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Maintain correct, auditable financial records and convert them into cash, profitability, control, and planning decisions.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UJ-000039",
+      "type": "user_journey",
+      "name": "Create product",
+      "description": "End-to-end user journey for create product across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-UJ-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Maintain trusted stock truth and improve replenishment, availability, purchasing, transfer, and working-capital decisions.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UJ-000040",
+      "type": "user_journey",
+      "name": "Receive stock",
+      "description": "End-to-end user journey for receive stock across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-UJ-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Maintain trusted stock truth and improve replenishment, availability, purchasing, transfer, and working-capital decisions.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UJ-000041",
+      "type": "user_journey",
+      "name": "Reserve and release",
+      "description": "End-to-end user journey for reserve and release across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-UJ-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Maintain trusted stock truth and improve replenishment, availability, purchasing, transfer, and working-capital decisions.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UJ-000042",
+      "type": "user_journey",
+      "name": "Transfer stock",
+      "description": "End-to-end user journey for transfer stock across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-UJ-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Maintain trusted stock truth and improve replenishment, availability, purchasing, transfer, and working-capital decisions.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UJ-000043",
+      "type": "user_journey",
+      "name": "Adjust with reason",
+      "description": "End-to-end user journey for adjust with reason across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-UJ-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Maintain trusted stock truth and improve replenishment, availability, purchasing, transfer, and working-capital decisions.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UJ-000044",
+      "type": "user_journey",
+      "name": "Cycle count",
+      "description": "End-to-end user journey for cycle count across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-UJ-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Maintain trusted stock truth and improve replenishment, availability, purchasing, transfer, and working-capital decisions.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UJ-000045",
+      "type": "user_journey",
+      "name": "Purchase and receive",
+      "description": "End-to-end user journey for purchase and receive across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-UJ-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Maintain trusted stock truth and improve replenishment, availability, purchasing, transfer, and working-capital decisions.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UJ-000046",
+      "type": "user_journey",
+      "name": "Reorder decision",
+      "description": "End-to-end user journey for reorder decision across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-UJ-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Maintain trusted stock truth and improve replenishment, availability, purchasing, transfer, and working-capital decisions.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UJ-000047",
+      "type": "user_journey",
+      "name": "Capture and deduplicate lead",
+      "description": "End-to-end user journey for capture and deduplicate lead across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-UJ-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Create a trusted customer relationship record and improve acquisition, pipeline, retention, and service decisions.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UJ-000048",
+      "type": "user_journey",
+      "name": "Qualify lead",
+      "description": "End-to-end user journey for qualify lead across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-UJ-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Create a trusted customer relationship record and improve acquisition, pipeline, retention, and service decisions.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UJ-000049",
+      "type": "user_journey",
+      "name": "Progress opportunity",
+      "description": "End-to-end user journey for progress opportunity across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-UJ-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Create a trusted customer relationship record and improve acquisition, pipeline, retention, and service decisions.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UJ-000050",
+      "type": "user_journey",
+      "name": "Record activity",
+      "description": "End-to-end user journey for record activity across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-UJ-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Create a trusted customer relationship record and improve acquisition, pipeline, retention, and service decisions.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UJ-000051",
+      "type": "user_journey",
+      "name": "Assign next action",
+      "description": "End-to-end user journey for assign next action across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-UJ-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Create a trusted customer relationship record and improve acquisition, pipeline, retention, and service decisions.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UJ-000052",
+      "type": "user_journey",
+      "name": "Build segment",
+      "description": "End-to-end user journey for build segment across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-UJ-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Create a trusted customer relationship record and improve acquisition, pipeline, retention, and service decisions.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UJ-000053",
+      "type": "user_journey",
+      "name": "Detect churn risk",
+      "description": "End-to-end user journey for detect churn risk across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-UJ-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Create a trusted customer relationship record and improve acquisition, pipeline, retention, and service decisions.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UJ-000054",
+      "type": "user_journey",
+      "name": "Win/loss review",
+      "description": "End-to-end user journey for win/loss review across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-UJ-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Create a trusted customer relationship record and improve acquisition, pipeline, retention, and service decisions.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UJ-000055",
+      "type": "user_journey",
+      "name": "Define and approve metric",
+      "description": "End-to-end user journey for define and approve metric across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-UJ-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Provide governed, decision-oriented metrics, dashboards, drill-down, exports, and scheduled reporting across ZYVORA.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UJ-000056",
+      "type": "user_journey",
+      "name": "Compute metric",
+      "description": "End-to-end user journey for compute metric across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-UJ-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Provide governed, decision-oriented metrics, dashboards, drill-down, exports, and scheduled reporting across ZYVORA.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UJ-000057",
+      "type": "user_journey",
+      "name": "Compose dashboard",
+      "description": "End-to-end user journey for compose dashboard across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-UJ-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Provide governed, decision-oriented metrics, dashboards, drill-down, exports, and scheduled reporting across ZYVORA.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UJ-000058",
+      "type": "user_journey",
+      "name": "Filter and drill down",
+      "description": "End-to-end user journey for filter and drill down across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-UJ-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Provide governed, decision-oriented metrics, dashboards, drill-down, exports, and scheduled reporting across ZYVORA.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UJ-000059",
+      "type": "user_journey",
+      "name": "Annotate change",
+      "description": "End-to-end user journey for annotate change across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-UJ-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Provide governed, decision-oriented metrics, dashboards, drill-down, exports, and scheduled reporting across ZYVORA.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UJ-000060",
+      "type": "user_journey",
+      "name": "Schedule report",
+      "description": "End-to-end user journey for schedule report across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-UJ-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Provide governed, decision-oriented metrics, dashboards, drill-down, exports, and scheduled reporting across ZYVORA.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UJ-000061",
+      "type": "user_journey",
+      "name": "Export data",
+      "description": "End-to-end user journey for export data across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-UJ-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Provide governed, decision-oriented metrics, dashboards, drill-down, exports, and scheduled reporting across ZYVORA.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UJ-000062",
+      "type": "user_journey",
+      "name": "Handle data-quality failure",
+      "description": "End-to-end user journey for handle data-quality failure across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-UJ-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Provide governed, decision-oriented metrics, dashboards, drill-down, exports, and scheduled reporting across ZYVORA.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UJ-000063",
+      "type": "user_journey",
+      "name": "Upload and classify",
+      "description": "End-to-end user journey for upload and classify across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-UJ-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Create, govern, store, retrieve, approve, sign, and retain business documents as trusted operational evidence.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UJ-000064",
+      "type": "user_journey",
+      "name": "Generate from template",
+      "description": "End-to-end user journey for generate from template across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-UJ-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Create, govern, store, retrieve, approve, sign, and retain business documents as trusted operational evidence.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UJ-000065",
+      "type": "user_journey",
+      "name": "Create new version",
+      "description": "End-to-end user journey for create new version across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-UJ-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Create, govern, store, retrieve, approve, sign, and retain business documents as trusted operational evidence.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UJ-000066",
+      "type": "user_journey",
+      "name": "Review and approve",
+      "description": "End-to-end user journey for review and approve across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-UJ-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Create, govern, store, retrieve, approve, sign, and retain business documents as trusted operational evidence.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UJ-000067",
+      "type": "user_journey",
+      "name": "Send for signature",
+      "description": "End-to-end user journey for send for signature across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-UJ-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Create, govern, store, retrieve, approve, sign, and retain business documents as trusted operational evidence.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UJ-000068",
+      "type": "user_journey",
+      "name": "Extract and index",
+      "description": "End-to-end user journey for extract and index across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-UJ-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Create, govern, store, retrieve, approve, sign, and retain business documents as trusted operational evidence.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UJ-000069",
+      "type": "user_journey",
+      "name": "Place legal hold",
+      "description": "End-to-end user journey for place legal hold across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-UJ-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Create, govern, store, retrieve, approve, sign, and retain business documents as trusted operational evidence.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UJ-000070",
+      "type": "user_journey",
+      "name": "Archive or dispose",
+      "description": "End-to-end user journey for archive or dispose across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-UJ-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Create, govern, store, retrieve, approve, sign, and retain business documents as trusted operational evidence.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UJ-000071",
+      "type": "user_journey",
+      "name": "Create notification",
+      "description": "End-to-end user journey for create notification across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-UJ-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Deliver timely, relevant, explainable communications across in-app, email, SMS, WhatsApp, and push channels without creating noise.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UJ-000072",
+      "type": "user_journey",
+      "name": "Evaluate policy",
+      "description": "End-to-end user journey for evaluate policy across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-UJ-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Deliver timely, relevant, explainable communications across in-app, email, SMS, WhatsApp, and push channels without creating noise.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UJ-000073",
+      "type": "user_journey",
+      "name": "Render template",
+      "description": "End-to-end user journey for render template across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-UJ-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Deliver timely, relevant, explainable communications across in-app, email, SMS, WhatsApp, and push channels without creating noise.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UJ-000074",
+      "type": "user_journey",
+      "name": "Route channel",
+      "description": "End-to-end user journey for route channel across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-UJ-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Deliver timely, relevant, explainable communications across in-app, email, SMS, WhatsApp, and push channels without creating noise.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UJ-000075",
+      "type": "user_journey",
+      "name": "Deliver and retry",
+      "description": "End-to-end user journey for deliver and retry across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-UJ-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Deliver timely, relevant, explainable communications across in-app, email, SMS, WhatsApp, and push channels without creating noise.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UJ-000076",
+      "type": "user_journey",
+      "name": "Group digest",
+      "description": "End-to-end user journey for group digest across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-UJ-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Deliver timely, relevant, explainable communications across in-app, email, SMS, WhatsApp, and push channels without creating noise.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UJ-000077",
+      "type": "user_journey",
+      "name": "Escalate failure",
+      "description": "End-to-end user journey for escalate failure across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-UJ-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Deliver timely, relevant, explainable communications across in-app, email, SMS, WhatsApp, and push channels without creating noise.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UJ-000078",
+      "type": "user_journey",
+      "name": "Read/dismiss/act",
+      "description": "End-to-end user journey for read/dismiss/act across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-UJ-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Deliver timely, relevant, explainable communications across in-app, email, SMS, WhatsApp, and push channels without creating noise.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UJ-000079",
+      "type": "user_journey",
+      "name": "Recruit and hire",
+      "description": "End-to-end user journey for recruit and hire across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-UJ-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Maintain trusted workforce records and improve hiring, onboarding, capacity, performance, leave, and workforce-cost decisions.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UJ-000080",
+      "type": "user_journey",
+      "name": "Onboard employee",
+      "description": "End-to-end user journey for onboard employee across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-UJ-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Maintain trusted workforce records and improve hiring, onboarding, capacity, performance, leave, and workforce-cost decisions.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UJ-000081",
+      "type": "user_journey",
+      "name": "Request and approve leave",
+      "description": "End-to-end user journey for request and approve leave across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-UJ-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Maintain trusted workforce records and improve hiring, onboarding, capacity, performance, leave, and workforce-cost decisions.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UJ-000082",
+      "type": "user_journey",
+      "name": "Record attendance exception",
+      "description": "End-to-end user journey for record attendance exception across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-UJ-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Maintain trusted workforce records and improve hiring, onboarding, capacity, performance, leave, and workforce-cost decisions.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UJ-000083",
+      "type": "user_journey",
+      "name": "Set and review goals",
+      "description": "End-to-end user journey for set and review goals across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-UJ-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Maintain trusted workforce records and improve hiring, onboarding, capacity, performance, leave, and workforce-cost decisions.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UJ-000084",
+      "type": "user_journey",
+      "name": "Change position/compensation",
+      "description": "End-to-end user journey for change position/compensation across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-UJ-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Maintain trusted workforce records and improve hiring, onboarding, capacity, performance, leave, and workforce-cost decisions.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UJ-000085",
+      "type": "user_journey",
+      "name": "Offboard and revoke access",
+      "description": "End-to-end user journey for offboard and revoke access across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-UJ-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Maintain trusted workforce records and improve hiring, onboarding, capacity, performance, leave, and workforce-cost decisions.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UJ-000086",
+      "type": "user_journey",
+      "name": "Plan capacity",
+      "description": "End-to-end user journey for plan capacity across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-UJ-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Maintain trusted workforce records and improve hiring, onboarding, capacity, performance, leave, and workforce-cost decisions.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UJ-000087",
+      "type": "user_journey",
+      "name": "Release production order",
+      "description": "End-to-end user journey for release production order across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-UJ-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Plan and control production, materials, quality, capacity, and cost so the business can fulfill demand reliably and profitably.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UJ-000088",
+      "type": "user_journey",
+      "name": "Plan material",
+      "description": "End-to-end user journey for plan material across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-UJ-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Plan and control production, materials, quality, capacity, and cost so the business can fulfill demand reliably and profitably.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UJ-000089",
+      "type": "user_journey",
+      "name": "Schedule operation",
+      "description": "End-to-end user journey for schedule operation across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-UJ-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Plan and control production, materials, quality, capacity, and cost so the business can fulfill demand reliably and profitably.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UJ-000090",
+      "type": "user_journey",
+      "name": "Issue material",
+      "description": "End-to-end user journey for issue material across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-UJ-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Plan and control production, materials, quality, capacity, and cost so the business can fulfill demand reliably and profitably.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UJ-000091",
+      "type": "user_journey",
+      "name": "Record production",
+      "description": "End-to-end user journey for record production across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-UJ-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Plan and control production, materials, quality, capacity, and cost so the business can fulfill demand reliably and profitably.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UJ-000092",
+      "type": "user_journey",
+      "name": "Inspect quality",
+      "description": "End-to-end user journey for inspect quality across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-UJ-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Plan and control production, materials, quality, capacity, and cost so the business can fulfill demand reliably and profitably.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UJ-000093",
+      "type": "user_journey",
+      "name": "Handle nonconformance",
+      "description": "End-to-end user journey for handle nonconformance across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-UJ-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Plan and control production, materials, quality, capacity, and cost so the business can fulfill demand reliably and profitably.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UJ-000094",
+      "type": "user_journey",
+      "name": "Close and cost order",
+      "description": "End-to-end user journey for close and cost order across approved module boundaries.",
+      "status": "In Design",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-UJ-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "primary_actor": "Authorized workspace member",
+        "entry_condition": "Authenticated, authorized, and workspace context established",
+        "success_outcome": "Plan and control production, materials, quality, capacity, and cost so the business can fulfill demand reliably and profitably.",
+        "failure_and_recovery_required": true,
+        "measurement_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    }
+  ]
+}

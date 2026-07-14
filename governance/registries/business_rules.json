@@ -1,0 +1,2983 @@
+{
+  "registry": "business_rules",
+  "version": "1.0.0",
+  "generated_at": "2026-07-12T03:39:37Z",
+  "records": [
+    {
+      "id": "BR-000001",
+      "type": "business_rule",
+      "name": "Decision Center Rule 1",
+      "description": "Every decision identifies a supported Builder decision and source owner.",
+      "status": "Specified",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-BR-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "Every decision identifies a supported Builder decision and source owner.",
+        "severity": "Critical",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000002",
+      "type": "business_rule",
+      "name": "Decision Center Rule 2",
+      "description": "Priority exposes material factors and never relies on an unexplained score.",
+      "status": "Specified",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-BR-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "Priority exposes material factors and never relies on an unexplained score.",
+        "severity": "Critical",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000003",
+      "type": "business_rule",
+      "name": "Decision Center Rule 3",
+      "description": "High-impact actions require configured human approval.",
+      "status": "Specified",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-BR-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "High-impact actions require configured human approval.",
+        "severity": "Critical",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000004",
+      "type": "business_rule",
+      "name": "Decision Center Rule 4",
+      "description": "A recorded decision requires owner, rationale, evidence snapshot, and expected outcome.",
+      "status": "Specified",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-BR-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "A recorded decision requires owner, rationale, evidence snapshot, and expected outcome.",
+        "severity": "High",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000005",
+      "type": "business_rule",
+      "name": "Decision Center Rule 5",
+      "description": "Completed approval history and evidence snapshots are append-only.",
+      "status": "Specified",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-BR-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "Completed approval history and evidence snapshots are append-only.",
+        "severity": "High",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000006",
+      "type": "business_rule",
+      "name": "Decision Center Rule 6",
+      "description": "Overdue decisions escalate only through a declared policy.",
+      "status": "Specified",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-BR-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "Overdue decisions escalate only through a declared policy.",
+        "severity": "High",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000007",
+      "type": "business_rule",
+      "name": "Decision Center Rule 7",
+      "description": "Outcome capture never rewrites the original expectation.",
+      "status": "Specified",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-BR-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "Outcome capture never rewrites the original expectation.",
+        "severity": "High",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000008",
+      "type": "business_rule",
+      "name": "Decision Center Rule 8",
+      "description": "AI confidence cannot grant authority.",
+      "status": "Specified",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-BR-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "AI confidence cannot grant authority.",
+        "severity": "High",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000009",
+      "type": "business_rule",
+      "name": "Business Memory Rule 1",
+      "description": "Memory never becomes the transactional source of truth for operational entities.",
+      "status": "Specified",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-BR-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "Memory never becomes the transactional source of truth for operational entities.",
+        "severity": "Critical",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000010",
+      "type": "business_rule",
+      "name": "Business Memory Rule 2",
+      "description": "Captured context remains reconstructable after source records change.",
+      "status": "Specified",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-BR-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "Captured context remains reconstructable after source records change.",
+        "severity": "Critical",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000011",
+      "type": "business_rule",
+      "name": "Business Memory Rule 3",
+      "description": "Permission filters execute before semantic retrieval.",
+      "status": "Specified",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-BR-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "Permission filters execute before semantic retrieval.",
+        "severity": "Critical",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000012",
+      "type": "business_rule",
+      "name": "Business Memory Rule 4",
+      "description": "Corrections create linked superseding versions.",
+      "status": "Specified",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-BR-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "Corrections create linked superseding versions.",
+        "severity": "High",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000013",
+      "type": "business_rule",
+      "name": "Business Memory Rule 5",
+      "description": "Sources, capture time, actor, and policy are mandatory.",
+      "status": "Specified",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-BR-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "Sources, capture time, actor, and policy are mandatory.",
+        "severity": "High",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000014",
+      "type": "business_rule",
+      "name": "Business Memory Rule 6",
+      "description": "Tenant data never enters a general training corpus without explicit authorization.",
+      "status": "Specified",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-BR-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "Tenant data never enters a general training corpus without explicit authorization.",
+        "severity": "High",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000015",
+      "type": "business_rule",
+      "name": "Business Memory Rule 7",
+      "description": "Legal holds override scheduled deletion.",
+      "status": "Specified",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-BR-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "Legal holds override scheduled deletion.",
+        "severity": "High",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000016",
+      "type": "business_rule",
+      "name": "Business Memory Rule 8",
+      "description": "A lesson must link to an outcome or be labeled as an observation.",
+      "status": "Specified",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-BR-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "A lesson must link to an outcome or be labeled as an observation.",
+        "severity": "High",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000017",
+      "type": "business_rule",
+      "name": "AI Engine Rule 1",
+      "description": "Business logic never depends on provider-specific response objects.",
+      "status": "Specified",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-BR-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "Business logic never depends on provider-specific response objects.",
+        "severity": "Critical",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000018",
+      "type": "business_rule",
+      "name": "AI Engine Rule 2",
+      "description": "Every production prompt and route has an approved version.",
+      "status": "Specified",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-BR-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "Every production prompt and route has an approved version.",
+        "severity": "Critical",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000019",
+      "type": "business_rule",
+      "name": "AI Engine Rule 3",
+      "description": "Every output is schema-validated before use.",
+      "status": "Specified",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-BR-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "Every output is schema-validated before use.",
+        "severity": "Critical",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000020",
+      "type": "business_rule",
+      "name": "AI Engine Rule 4",
+      "description": "High-impact outputs require human review.",
+      "status": "Specified",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-BR-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "High-impact outputs require human review.",
+        "severity": "High",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000021",
+      "type": "business_rule",
+      "name": "AI Engine Rule 5",
+      "description": "Retrieval is tenant- and permission-scoped.",
+      "status": "Specified",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-BR-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "Retrieval is tenant- and permission-scoped.",
+        "severity": "High",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000022",
+      "type": "business_rule",
+      "name": "AI Engine Rule 6",
+      "description": "Fallback never converts a failed inference into a successful fact.",
+      "status": "Specified",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-BR-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "Fallback never converts a failed inference into a successful fact.",
+        "severity": "High",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000023",
+      "type": "business_rule",
+      "name": "AI Engine Rule 7",
+      "description": "Model, prompt, sources, cost, latency, and safety metadata are traceable.",
+      "status": "Specified",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-BR-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "Model, prompt, sources, cost, latency, and safety metadata are traceable.",
+        "severity": "High",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000024",
+      "type": "business_rule",
+      "name": "AI Engine Rule 8",
+      "description": "Tenant data is not used for general model training without authorization.",
+      "status": "Specified",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-BR-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "Tenant data is not used for general model training without authorization.",
+        "severity": "High",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000025",
+      "type": "business_rule",
+      "name": "Identity, Workspace, Permissions & Audit Rule 1",
+      "description": "Every active workspace has at least one protected owner.",
+      "status": "Specified",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-BR-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "Every active workspace has at least one protected owner.",
+        "severity": "Critical",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000026",
+      "type": "business_rule",
+      "name": "Identity, Workspace, Permissions & Audit Rule 2",
+      "description": "A user may delegate only permissions they possess and may delegate.",
+      "status": "Specified",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-BR-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "A user may delegate only permissions they possess and may delegate.",
+        "severity": "Critical",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000027",
+      "type": "business_rule",
+      "name": "Identity, Workspace, Permissions & Audit Rule 3",
+      "description": "Workspace context is derived server-side.",
+      "status": "Specified",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-BR-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "Workspace context is derived server-side.",
+        "severity": "Critical",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000028",
+      "type": "business_rule",
+      "name": "Identity, Workspace, Permissions & Audit Rule 4",
+      "description": "Direct routes remain server-authorized even when hidden in UI.",
+      "status": "Specified",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-BR-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "Direct routes remain server-authorized even when hidden in UI.",
+        "severity": "High",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000029",
+      "type": "business_rule",
+      "name": "Identity, Workspace, Permissions & Audit Rule 5",
+      "description": "Sensitive changes require recent authentication.",
+      "status": "Specified",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-BR-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "Sensitive changes require recent authentication.",
+        "severity": "High",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000030",
+      "type": "business_rule",
+      "name": "Identity, Workspace, Permissions & Audit Rule 6",
+      "description": "Role changes are versioned and auditable.",
+      "status": "Specified",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-BR-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "Role changes are versioned and auditable.",
+        "severity": "High",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000031",
+      "type": "business_rule",
+      "name": "Identity, Workspace, Permissions & Audit Rule 7",
+      "description": "Audit records are append-only and tamper-evident.",
+      "status": "Specified",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-BR-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "Audit records are append-only and tamper-evident.",
+        "severity": "High",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000032",
+      "type": "business_rule",
+      "name": "Identity, Workspace, Permissions & Audit Rule 8",
+      "description": "Support access is time-, purpose-, and permission-bound.",
+      "status": "Specified",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-BR-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "Support access is time-, purpose-, and permission-bound.",
+        "severity": "High",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000033",
+      "type": "business_rule",
+      "name": "Finance Rule 1",
+      "description": "Every posted journal balances debits and credits in one currency basis.",
+      "status": "Specified",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-BR-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "Every posted journal balances debits and credits in one currency basis.",
+        "severity": "Critical",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000034",
+      "type": "business_rule",
+      "name": "Finance Rule 2",
+      "description": "Posted entries are immutable; corrections use reversal and replacement.",
+      "status": "Specified",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-BR-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "Posted entries are immutable; corrections use reversal and replacement.",
+        "severity": "Critical",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000035",
+      "type": "business_rule",
+      "name": "Finance Rule 3",
+      "description": "Closed periods reject posting unless reopened by authorized control.",
+      "status": "Specified",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-BR-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "Closed periods reject posting unless reopened by authorized control.",
+        "severity": "Critical",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000036",
+      "type": "business_rule",
+      "name": "Finance Rule 4",
+      "description": "Money uses decimal arithmetic and explicit currency.",
+      "status": "Specified",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-BR-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "Money uses decimal arithmetic and explicit currency.",
+        "severity": "High",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000037",
+      "type": "business_rule",
+      "name": "Finance Rule 5",
+      "description": "Invoice totals equal validated line, tax, discount, and rounding components.",
+      "status": "Specified",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-BR-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "Invoice totals equal validated line, tax, discount, and rounding components.",
+        "severity": "High",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000038",
+      "type": "business_rule",
+      "name": "Finance Rule 6",
+      "description": "Payments cannot exceed permitted open amount without an explicit credit policy.",
+      "status": "Specified",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-BR-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "Payments cannot exceed permitted open amount without an explicit credit policy.",
+        "severity": "High",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000039",
+      "type": "business_rule",
+      "name": "Finance Rule 7",
+      "description": "Reconciliation records source, match method, actor, and difference.",
+      "status": "Specified",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-BR-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "Reconciliation records source, match method, actor, and difference.",
+        "severity": "High",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000040",
+      "type": "business_rule",
+      "name": "Finance Rule 8",
+      "description": "Forecasts disclose assumptions, horizon, interval, and model version.",
+      "status": "Specified",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-BR-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "Forecasts disclose assumptions, horizon, interval, and model version.",
+        "severity": "High",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000041",
+      "type": "business_rule",
+      "name": "Inventory Rule 1",
+      "description": "Available quantity equals on-hand minus valid reservations and control holds.",
+      "status": "Specified",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-BR-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "Available quantity equals on-hand minus valid reservations and control holds.",
+        "severity": "Critical",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000042",
+      "type": "business_rule",
+      "name": "Inventory Rule 2",
+      "description": "Every quantity change creates an immutable stock movement.",
+      "status": "Specified",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-BR-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "Every quantity change creates an immutable stock movement.",
+        "severity": "Critical",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000043",
+      "type": "business_rule",
+      "name": "Inventory Rule 3",
+      "description": "Completed movements are reversed, not edited.",
+      "status": "Specified",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-BR-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "Completed movements are reversed, not edited.",
+        "severity": "Critical",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000044",
+      "type": "business_rule",
+      "name": "Inventory Rule 4",
+      "description": "Negative stock is prohibited unless workspace policy explicitly permits it.",
+      "status": "Specified",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-BR-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "Negative stock is prohibited unless workspace policy explicitly permits it.",
+        "severity": "High",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000045",
+      "type": "business_rule",
+      "name": "Inventory Rule 5",
+      "description": "Transfers require balanced source and destination movements.",
+      "status": "Specified",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-BR-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "Transfers require balanced source and destination movements.",
+        "severity": "High",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000046",
+      "type": "business_rule",
+      "name": "Inventory Rule 6",
+      "description": "Receipt quantity beyond tolerance requires approval.",
+      "status": "Specified",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-BR-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "Receipt quantity beyond tolerance requires approval.",
+        "severity": "High",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000047",
+      "type": "business_rule",
+      "name": "Inventory Rule 7",
+      "description": "Lot/serial-controlled products require identifiers at configured transitions.",
+      "status": "Specified",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-BR-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "Lot/serial-controlled products require identifiers at configured transitions.",
+        "severity": "High",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000048",
+      "type": "business_rule",
+      "name": "Inventory Rule 8",
+      "description": "Reorder recommendations disclose forecast, lead time, safety stock, constraints, and confidence.",
+      "status": "Specified",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-BR-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "Reorder recommendations disclose forecast, lead time, safety stock, constraints, and confidence.",
+        "severity": "High",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000049",
+      "type": "business_rule",
+      "name": "CRM Rule 1",
+      "description": "A person or organization is not duplicated when a verified matching rule identifies the same party.",
+      "status": "Specified",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-BR-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "A person or organization is not duplicated when a verified matching rule identifies the same party.",
+        "severity": "Critical",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000050",
+      "type": "business_rule",
+      "name": "CRM Rule 2",
+      "description": "Pipeline stages have ordered entry and exit criteria.",
+      "status": "Specified",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-BR-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "Pipeline stages have ordered entry and exit criteria.",
+        "severity": "Critical",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000051",
+      "type": "business_rule",
+      "name": "CRM Rule 3",
+      "description": "Opportunity probability is stage-derived unless an authorized override includes reason.",
+      "status": "Specified",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-BR-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "Opportunity probability is stage-derived unless an authorized override includes reason.",
+        "severity": "Critical",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000052",
+      "type": "business_rule",
+      "name": "CRM Rule 4",
+      "description": "Activities retain actor, channel, time, outcome, and related party.",
+      "status": "Specified",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-BR-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "Activities retain actor, channel, time, outcome, and related party.",
+        "severity": "High",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000053",
+      "type": "business_rule",
+      "name": "CRM Rule 5",
+      "description": "Marketing communication requires valid consent and suppression checks.",
+      "status": "Specified",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-BR-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "Marketing communication requires valid consent and suppression checks.",
+        "severity": "High",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000054",
+      "type": "business_rule",
+      "name": "CRM Rule 6",
+      "description": "Customer lifetime value uses an approved Finance definition.",
+      "status": "Specified",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-BR-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "Customer lifetime value uses an approved Finance definition.",
+        "severity": "High",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000055",
+      "type": "business_rule",
+      "name": "CRM Rule 7",
+      "description": "Churn recommendations expose factors and confidence.",
+      "status": "Specified",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-BR-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "Churn recommendations expose factors and confidence.",
+        "severity": "High",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000056",
+      "type": "business_rule",
+      "name": "CRM Rule 8",
+      "description": "Merged records preserve source lineage and audit history.",
+      "status": "Specified",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-BR-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "Merged records preserve source lineage and audit history.",
+        "severity": "High",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000057",
+      "type": "business_rule",
+      "name": "Analytics Rule 1",
+      "description": "Every metric has one owner, formula, unit, sources, filters, refresh policy, and version.",
+      "status": "Specified",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-BR-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "Every metric has one owner, formula, unit, sources, filters, refresh policy, and version.",
+        "severity": "Critical",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000058",
+      "type": "business_rule",
+      "name": "Analytics Rule 2",
+      "description": "Dashboards answer a declared decision question.",
+      "status": "Specified",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-BR-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "Dashboards answer a declared decision question.",
+        "severity": "Critical",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000059",
+      "type": "business_rule",
+      "name": "Analytics Rule 3",
+      "description": "Drill-down reconciles to the displayed value within documented rounding.",
+      "status": "Specified",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-BR-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "Drill-down reconciles to the displayed value within documented rounding.",
+        "severity": "Critical",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000060",
+      "type": "business_rule",
+      "name": "Analytics Rule 4",
+      "description": "Stale or failed data is visible and never silently presented as current.",
+      "status": "Specified",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-BR-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "Stale or failed data is visible and never silently presented as current.",
+        "severity": "High",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000061",
+      "type": "business_rule",
+      "name": "Analytics Rule 5",
+      "description": "Exports enforce the same permissions as interactive views.",
+      "status": "Specified",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-BR-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "Exports enforce the same permissions as interactive views.",
+        "severity": "High",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000062",
+      "type": "business_rule",
+      "name": "Analytics Rule 6",
+      "description": "Metric changes create a new version and effective date.",
+      "status": "Specified",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-BR-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "Metric changes create a new version and effective date.",
+        "severity": "High",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000063",
+      "type": "business_rule",
+      "name": "Analytics Rule 7",
+      "description": "Charts include accessible text or tabular alternatives.",
+      "status": "Specified",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-BR-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "Charts include accessible text or tabular alternatives.",
+        "severity": "High",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000064",
+      "type": "business_rule",
+      "name": "Analytics Rule 8",
+      "description": "Scheduled reports record parameters and source freshness.",
+      "status": "Specified",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-BR-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "Scheduled reports record parameters and source freshness.",
+        "severity": "High",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000065",
+      "type": "business_rule",
+      "name": "Documents Rule 1",
+      "description": "A document has one authoritative current version and immutable prior versions.",
+      "status": "Specified",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-BR-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "A document has one authoritative current version and immutable prior versions.",
+        "severity": "Critical",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000066",
+      "type": "business_rule",
+      "name": "Documents Rule 2",
+      "description": "Generated documents record template version and input snapshot.",
+      "status": "Specified",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-BR-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "Generated documents record template version and input snapshot.",
+        "severity": "Critical",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000067",
+      "type": "business_rule",
+      "name": "Documents Rule 3",
+      "description": "Signed versions are immutable.",
+      "status": "Specified",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-BR-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "Signed versions are immutable.",
+        "severity": "Critical",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000068",
+      "type": "business_rule",
+      "name": "Documents Rule 4",
+      "description": "Access follows workspace and linked-resource policy.",
+      "status": "Specified",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-BR-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "Access follows workspace and linked-resource policy.",
+        "severity": "High",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000069",
+      "type": "business_rule",
+      "name": "Documents Rule 5",
+      "description": "File hashes detect corruption and duplicate content.",
+      "status": "Specified",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-BR-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "File hashes detect corruption and duplicate content.",
+        "severity": "High",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000070",
+      "type": "business_rule",
+      "name": "Documents Rule 6",
+      "description": "Retention and legal hold are evaluated before deletion.",
+      "status": "Specified",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-BR-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "Retention and legal hold are evaluated before deletion.",
+        "severity": "High",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000071",
+      "type": "business_rule",
+      "name": "Documents Rule 7",
+      "description": "OCR text is labeled as extracted and retains confidence.",
+      "status": "Specified",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-BR-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "OCR text is labeled as extracted and retains confidence.",
+        "severity": "High",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000072",
+      "type": "business_rule",
+      "name": "Documents Rule 8",
+      "description": "External signatures are verified through provider evidence.",
+      "status": "Specified",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-BR-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "External signatures are verified through provider evidence.",
+        "severity": "High",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000073",
+      "type": "business_rule",
+      "name": "Notifications Rule 1",
+      "description": "Every notification names the triggering event and intended action.",
+      "status": "Specified",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-BR-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "Every notification names the triggering event and intended action.",
+        "severity": "Critical",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000074",
+      "type": "business_rule",
+      "name": "Notifications Rule 2",
+      "description": "Mandatory security and approval notices cannot be disabled.",
+      "status": "Specified",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-BR-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "Mandatory security and approval notices cannot be disabled.",
+        "severity": "Critical",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000075",
+      "type": "business_rule",
+      "name": "Notifications Rule 3",
+      "description": "Preferences and quiet hours are evaluated before optional delivery.",
+      "status": "Specified",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-BR-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "Preferences and quiet hours are evaluated before optional delivery.",
+        "severity": "Critical",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000076",
+      "type": "business_rule",
+      "name": "Notifications Rule 4",
+      "description": "Duplicate source events create one user-visible effect.",
+      "status": "Specified",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-BR-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "Duplicate source events create one user-visible effect.",
+        "severity": "High",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000077",
+      "type": "business_rule",
+      "name": "Notifications Rule 5",
+      "description": "Template versions are immutable after publication.",
+      "status": "Specified",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-BR-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "Template versions are immutable after publication.",
+        "severity": "High",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000078",
+      "type": "business_rule",
+      "name": "Notifications Rule 6",
+      "description": "Retries are bounded and terminal failure has an owner.",
+      "status": "Specified",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-BR-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "Retries are bounded and terminal failure has an owner.",
+        "severity": "High",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000079",
+      "type": "business_rule",
+      "name": "Notifications Rule 7",
+      "description": "Sensitive content is minimized by channel.",
+      "status": "Specified",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-BR-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "Sensitive content is minimized by channel.",
+        "severity": "High",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000080",
+      "type": "business_rule",
+      "name": "Notifications Rule 8",
+      "description": "Status is derived from per-channel delivery evidence.",
+      "status": "Specified",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-BR-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "Status is derived from per-channel delivery evidence.",
+        "severity": "High",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000081",
+      "type": "business_rule",
+      "name": "Human Resources Rule 1",
+      "description": "HR sensitive fields use explicit field-level permissions.",
+      "status": "Specified",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-BR-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "HR sensitive fields use explicit field-level permissions.",
+        "severity": "Critical",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000082",
+      "type": "business_rule",
+      "name": "Human Resources Rule 2",
+      "description": "Employment and compensation changes require effective dates and approval.",
+      "status": "Specified",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-BR-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "Employment and compensation changes require effective dates and approval.",
+        "severity": "Critical",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000083",
+      "type": "business_rule",
+      "name": "Human Resources Rule 3",
+      "description": "Leave balances cannot become negative unless policy permits.",
+      "status": "Specified",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-BR-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "Leave balances cannot become negative unless policy permits.",
+        "severity": "Critical",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000084",
+      "type": "business_rule",
+      "name": "Human Resources Rule 4",
+      "description": "Offboarding triggers access revocation and asset/document tasks.",
+      "status": "Specified",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-BR-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "Offboarding triggers access revocation and asset/document tasks.",
+        "severity": "High",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000085",
+      "type": "business_rule",
+      "name": "Human Resources Rule 5",
+      "description": "Performance records retain author, period, acknowledgements, and versions.",
+      "status": "Specified",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-BR-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "Performance records retain author, period, acknowledgements, and versions.",
+        "severity": "High",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000086",
+      "type": "business_rule",
+      "name": "Human Resources Rule 6",
+      "description": "Attendance corrections require reason and audit.",
+      "status": "Specified",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-BR-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "Attendance corrections require reason and audit.",
+        "severity": "High",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000087",
+      "type": "business_rule",
+      "name": "Human Resources Rule 7",
+      "description": "Payroll-impacting outputs reconcile to approved employment terms.",
+      "status": "Specified",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-BR-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "Payroll-impacting outputs reconcile to approved employment terms.",
+        "severity": "High",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000088",
+      "type": "business_rule",
+      "name": "Human Resources Rule 8",
+      "description": "AI employment recommendations require human review and bias evaluation.",
+      "status": "Specified",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-BR-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "AI employment recommendations require human review and bias evaluation.",
+        "severity": "High",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000089",
+      "type": "business_rule",
+      "name": "Manufacturing Rule 1",
+      "description": "Released orders reference approved BOM and routing versions.",
+      "status": "Specified",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-BR-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "Released orders reference approved BOM and routing versions.",
+        "severity": "Critical",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000090",
+      "type": "business_rule",
+      "name": "Manufacturing Rule 2",
+      "description": "Material consumption and output create inventory movements.",
+      "status": "Specified",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-BR-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "Material consumption and output create inventory movements.",
+        "severity": "Critical",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000091",
+      "type": "business_rule",
+      "name": "Manufacturing Rule 3",
+      "description": "Produced quantity, scrap, rework, and yield reconcile.",
+      "status": "Specified",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-BR-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "Produced quantity, scrap, rework, and yield reconcile.",
+        "severity": "Critical",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000092",
+      "type": "business_rule",
+      "name": "Manufacturing Rule 4",
+      "description": "Quality holds prevent unauthorized use or shipment.",
+      "status": "Specified",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-BR-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "Quality holds prevent unauthorized use or shipment.",
+        "severity": "High",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000093",
+      "type": "business_rule",
+      "name": "Manufacturing Rule 5",
+      "description": "Capacity scheduling respects calendar, efficiency, and committed load.",
+      "status": "Specified",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-BR-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "Capacity scheduling respects calendar, efficiency, and committed load.",
+        "severity": "High",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000094",
+      "type": "business_rule",
+      "name": "Manufacturing Rule 6",
+      "description": "Closed production orders are corrected through controlled adjustments.",
+      "status": "Specified",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-BR-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "Closed production orders are corrected through controlled adjustments.",
+        "severity": "High",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000095",
+      "type": "business_rule",
+      "name": "Manufacturing Rule 7",
+      "description": "Actual cost reconciles material, labor, overhead, scrap, and variance.",
+      "status": "Specified",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-BR-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "Actual cost reconciles material, labor, overhead, scrap, and variance.",
+        "severity": "High",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "BR-000096",
+      "type": "business_rule",
+      "name": "Manufacturing Rule 8",
+      "description": "AI schedules and forecasts require human approval before release.",
+      "status": "Specified",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-BR-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "rule_text": "AI schedules and forecasts require human approval before release.",
+        "severity": "High",
+        "release_introduced": "REL-000001",
+        "release_modified": null,
+        "implementation_evidence_status": "required_before_implementation_ready",
+        "automated_test_status": "required_before_release"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    }
+  ]
+}

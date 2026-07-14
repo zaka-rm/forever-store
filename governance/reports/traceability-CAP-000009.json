@@ -1,0 +1,235 @@
+{
+  "version": "2.2.0",
+  "capability": {
+    "id": "CAP-000009",
+    "name": "Documents Core Capability",
+    "status": "Specified",
+    "owner": "TEAM-000015"
+  },
+  "generated_at": "2026-07-12T03:39:42.487Z",
+  "stages": [
+    {
+      "stage": "authority",
+      "status": "COVERED",
+      "records": [
+        {
+          "id": "CON-000001",
+          "type": "constitution",
+          "name": "Product Constitution",
+          "status": "Released",
+          "freshness": "Current"
+        },
+        {
+          "id": "CON-000002",
+          "type": "constitution",
+          "name": "Architecture Constitution",
+          "status": "Released",
+          "freshness": "Current"
+        },
+        {
+          "id": "CON-000003",
+          "type": "constitution",
+          "name": "Design Constitution",
+          "status": "Released",
+          "freshness": "Current"
+        },
+        {
+          "id": "CON-000004",
+          "type": "constitution",
+          "name": "Security Constitution",
+          "status": "Released",
+          "freshness": "Current"
+        },
+        {
+          "id": "CON-000005",
+          "type": "constitution",
+          "name": "Data Constitution",
+          "status": "Released",
+          "freshness": "Current"
+        },
+        {
+          "id": "CON-000006",
+          "type": "constitution",
+          "name": "AI Constitution",
+          "status": "Released",
+          "freshness": "Current"
+        }
+      ]
+    },
+    {
+      "stage": "decision",
+      "status": "COVERED",
+      "records": [
+        {
+          "id": "DEC-000033",
+          "type": "decision",
+          "name": "Which document is authoritative?",
+          "status": "Specified",
+          "freshness": "Current"
+        },
+        {
+          "id": "DEC-000034",
+          "type": "decision",
+          "name": "Who must review or sign it?",
+          "status": "Specified",
+          "freshness": "Current"
+        },
+        {
+          "id": "DEC-000035",
+          "type": "decision",
+          "name": "What changed between versions?",
+          "status": "Specified",
+          "freshness": "Current"
+        },
+        {
+          "id": "DEC-000036",
+          "type": "decision",
+          "name": "When may it be archived or deleted?",
+          "status": "Specified",
+          "freshness": "Current"
+        }
+      ]
+    },
+    {
+      "stage": "prd",
+      "status": "COVERED",
+      "records": [
+        {
+          "id": "ART-000009",
+          "type": "artifact",
+          "name": "ZYVORA Documents PRD v1.0",
+          "status": "Released",
+          "freshness": "Current"
+        }
+      ]
+    },
+    {
+      "stage": "technical_specification",
+      "status": "COVERED",
+      "records": [
+        {
+          "id": "ART-000022",
+          "type": "artifact",
+          "name": "ZYVORA Documents Technical Specification v1.0",
+          "status": "Released",
+          "freshness": "Current"
+        }
+      ]
+    },
+    {
+      "stage": "blueprint",
+      "status": "COVERED",
+      "records": [
+        {
+          "id": "ART-000029",
+          "type": "artifact",
+          "name": "ZYVORA BP-000 Platform Blueprint v1.0",
+          "status": "Released",
+          "freshness": "Current"
+        },
+        {
+          "id": "ART-000030",
+          "type": "artifact",
+          "name": "ZYVORA BP-001 UI Blueprint v1.0",
+          "status": "Released",
+          "freshness": "Current"
+        },
+        {
+          "id": "ART-000031",
+          "type": "artifact",
+          "name": "ZYVORA BP-002 Backend Blueprint v1.0",
+          "status": "Released",
+          "freshness": "Current"
+        },
+        {
+          "id": "ART-000032",
+          "type": "artifact",
+          "name": "ZYVORA BP-003 Database Blueprint v1.0",
+          "status": "Released",
+          "freshness": "Current"
+        },
+        {
+          "id": "ART-000033",
+          "type": "artifact",
+          "name": "ZYVORA BP-004 API Blueprint v1.0",
+          "status": "Released",
+          "freshness": "Current"
+        },
+        {
+          "id": "ART-000034",
+          "type": "artifact",
+          "name": "ZYVORA BP-005 AI Blueprint v1.0",
+          "status": "Released",
+          "freshness": "Current"
+        },
+        {
+          "id": "ART-000035",
+          "type": "artifact",
+          "name": "ZYVORA BP-006 Security Blueprint v1.0",
+          "status": "Released",
+          "freshness": "Current"
+        },
+        {
+          "id": "ART-000036",
+          "type": "artifact",
+          "name": "ZYVORA BP-007 Infrastructure Blueprint v1.0",
+          "status": "Released",
+          "freshness": "Current"
+        }
+      ]
+    },
+    {
+      "stage": "build_pack",
+      "status": "MISSING",
+      "records": []
+    },
+    {
+      "stage": "qa_pack",
+      "status": "MISSING",
+      "records": []
+    },
+    {
+      "stage": "repository",
+      "status": "MISSING",
+      "records": []
+    },
+    {
+      "stage": "tests",
+      "status": "MISSING",
+      "records": []
+    },
+    {
+      "stage": "release",
+      "status": "COVERED",
+      "records": [
+        {
+          "id": "REL-000001",
+          "type": "release",
+          "name": "Architecture Knowledge System 1.0",
+          "status": "Released",
+          "freshness": "Current"
+        }
+      ]
+    },
+    {
+      "stage": "production",
+      "status": "MISSING",
+      "records": []
+    }
+  ],
+  "coverage": {
+    "covered": 6,
+    "total": 11,
+    "percent": 55
+  },
+  "freshness": "CURRENT",
+  "required_for_current_maturity": [
+    "authority",
+    "decision",
+    "prd",
+    "technical_specification",
+    "blueprint"
+  ],
+  "missing_required": [],
+  "gate": "PASS_CURRENT_MATURITY"
+}

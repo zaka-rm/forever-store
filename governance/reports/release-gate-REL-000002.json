@@ -1,0 +1,38 @@
+{
+  "version": "1.1.0",
+  "generated_at": "2026-07-12T00:34:11.317Z",
+  "release": "REL-000002",
+  "status": "Planned",
+  "members": [
+    "BUILD-000001",
+    "QA-000001"
+  ],
+  "checks": [
+    {
+      "object": "BUILD-000001",
+      "gate": "paired QA Pack",
+      "pass": true
+    },
+    {
+      "object": "BUILD-000001",
+      "gate": "owner",
+      "pass": true
+    },
+    {
+      "object": "BUILD-000001",
+      "gate": "governance",
+      "pass": true
+    },
+    {
+      "object": "QA-000001",
+      "gate": "owner",
+      "pass": true
+    },
+    {
+      "object": "QA-000001",
+      "gate": "governance",
+      "pass": true
+    }
+  ],
+  "pass": true
+}

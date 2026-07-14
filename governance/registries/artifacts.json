@@ -1,0 +1,1387 @@
+{
+  "registry": "artifacts",
+  "version": "1.0.0",
+  "generated_at": "2026-07-12T03:39:37Z",
+  "records": [
+    {
+      "id": "ART-000001",
+      "type": "artifact",
+      "name": "ZYVORA Design System & UI/UX Bible v1.0",
+      "description": "Controlled human-readable view at outputs\\01_Governance\\ZYVORA_Design_System_UIUX_Bible_v1.0.docx.",
+      "status": "Released",
+      "owner": "TEAM-000001",
+      "version": "1.0.0",
+      "aliases": [
+        "ZAO-DS-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "path": "outputs/01_Governance/ZYVORA_Design_System_UIUX_Bible_v1.0.docx",
+        "format": "docx",
+        "canonical_view": false,
+        "size_bytes": 49437,
+        "sha256": "286189fa769a421c1973379074f4016dc80d2ac93eb72f15091a1c2ec2fa6844"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000001",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ART-000002",
+      "type": "artifact",
+      "name": "ZYVORA ZYVORA Product PRD v1.0",
+      "description": "Controlled human-readable view at outputs\\01_Governance\\ZYVORA_Master_PRD_v1.0.docx.",
+      "status": "Released",
+      "owner": "TEAM-000001",
+      "version": "1.0.0",
+      "aliases": [
+        "ZAO-PRD-MASTER-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "path": "outputs/01_Governance/ZYVORA_Master_PRD_v1.0.docx",
+        "format": "docx",
+        "canonical_view": false,
+        "size_bytes": 66979,
+        "sha256": "da17e9e5b388a19f95694f7e8e8faf77de7a28791e2c4eafc6dd2933f8a498b8"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000001",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ART-000003",
+      "type": "artifact",
+      "name": "ZYVORA Master Product Bible v1.0",
+      "description": "Controlled human-readable view at outputs\\01_Governance\\ZYVORA_Master_Product_Bible_v1.0.docx.",
+      "status": "Released",
+      "owner": "TEAM-000001",
+      "version": "1.0.0",
+      "aliases": [
+        "ZAO-MPB-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "path": "outputs/01_Governance/ZYVORA_Master_Product_Bible_v1.0.docx",
+        "format": "docx",
+        "canonical_view": false,
+        "size_bytes": 58116,
+        "sha256": "420e0a410a6e11a1b5d192f06755df2db7b9d3fdda5e9753207c8c82f5f1a5ca"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000001",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ART-000004",
+      "type": "artifact",
+      "name": "ZYVORA AI Engine PRD v1.0",
+      "description": "Controlled human-readable view at outputs\\02_Module_PRDs\\ZYVORA_PRD_AI_AI_Engine_v1.0.docx.",
+      "status": "Released",
+      "owner": "TEAM-000001",
+      "version": "1.0.0",
+      "aliases": [
+        "ZAO-PRD-AI-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "path": "outputs/02_Module_PRDs/ZYVORA_PRD_AI_AI_Engine_v1.0.docx",
+        "format": "docx",
+        "canonical_view": false,
+        "size_bytes": 61257,
+        "sha256": "be638355a8655e068046dfe67d6ccd7328432745d08793061500a132b77c4768"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000001",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ART-000005",
+      "type": "artifact",
+      "name": "ZYVORA Analytics PRD v1.0",
+      "description": "Controlled human-readable view at outputs\\02_Module_PRDs\\ZYVORA_PRD_ANA_Analytics_v1.0.docx.",
+      "status": "Released",
+      "owner": "TEAM-000001",
+      "version": "1.0.0",
+      "aliases": [
+        "ZAO-PRD-ANA-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "path": "outputs/02_Module_PRDs/ZYVORA_PRD_ANA_Analytics_v1.0.docx",
+        "format": "docx",
+        "canonical_view": false,
+        "size_bytes": 61162,
+        "sha256": "ae36ca9950b5bb803a7b998dfccf2ced139d1fe8fb9087b74e13d6cd44091a91"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000001",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ART-000006",
+      "type": "artifact",
+      "name": "ZYVORA Business Memory PRD v1.0",
+      "description": "Controlled human-readable view at outputs\\02_Module_PRDs\\ZYVORA_PRD_BM_Business_Memory_v1.0.docx.",
+      "status": "Released",
+      "owner": "TEAM-000001",
+      "version": "1.0.0",
+      "aliases": [
+        "ZAO-PRD-BM-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "path": "outputs/02_Module_PRDs/ZYVORA_PRD_BM_Business_Memory_v1.0.docx",
+        "format": "docx",
+        "canonical_view": false,
+        "size_bytes": 61064,
+        "sha256": "40f5cc148d4121f62bae5e22866600ac18ac7e9e8b7c3564f5b36727e305009b"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000001",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ART-000007",
+      "type": "artifact",
+      "name": "ZYVORA CRM PRD v1.0",
+      "description": "Controlled human-readable view at outputs\\02_Module_PRDs\\ZYVORA_PRD_CRM_CRM_v1.0.docx.",
+      "status": "Released",
+      "owner": "TEAM-000001",
+      "version": "1.0.0",
+      "aliases": [
+        "ZAO-PRD-CRM-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "path": "outputs/02_Module_PRDs/ZYVORA_PRD_CRM_CRM_v1.0.docx",
+        "format": "docx",
+        "canonical_view": false,
+        "size_bytes": 61910,
+        "sha256": "f865a7aba146e3efa1924db3653559085c4f6fdc50669cddb7694aa4d837d0a2"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000001",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ART-000008",
+      "type": "artifact",
+      "name": "ZYVORA Decision Center PRD v1.0",
+      "description": "Controlled human-readable view at outputs\\02_Module_PRDs\\ZYVORA_PRD_DC_Decision_Center_v1.0.docx.",
+      "status": "Released",
+      "owner": "TEAM-000001",
+      "version": "1.0.0",
+      "aliases": [
+        "ZAO-PRD-DC-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "path": "outputs/02_Module_PRDs/ZYVORA_PRD_DC_Decision_Center_v1.0.docx",
+        "format": "docx",
+        "canonical_view": false,
+        "size_bytes": 61057,
+        "sha256": "9118ddc866add9de122554afada1c5eb3424e8c744b76cd835bcf11d17248e62"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000001",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ART-000009",
+      "type": "artifact",
+      "name": "ZYVORA Documents PRD v1.0",
+      "description": "Controlled human-readable view at outputs\\02_Module_PRDs\\ZYVORA_PRD_DOC_Documents_v1.0.docx.",
+      "status": "Released",
+      "owner": "TEAM-000001",
+      "version": "1.0.0",
+      "aliases": [
+        "ZAO-PRD-DOC-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "path": "outputs/02_Module_PRDs/ZYVORA_PRD_DOC_Documents_v1.0.docx",
+        "format": "docx",
+        "canonical_view": false,
+        "size_bytes": 61348,
+        "sha256": "1b8dba7747765714e5efa48a60c08a352d2eb43e84b6a8ff1cbf69ef0a10963d"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000001",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ART-000010",
+      "type": "artifact",
+      "name": "ZYVORA Finance PRD v1.0",
+      "description": "Controlled human-readable view at outputs\\02_Module_PRDs\\ZYVORA_PRD_FIN_Finance_v1.0.docx.",
+      "status": "Released",
+      "owner": "TEAM-000001",
+      "version": "1.0.0",
+      "aliases": [
+        "ZAO-PRD-FIN-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "path": "outputs/02_Module_PRDs/ZYVORA_PRD_FIN_Finance_v1.0.docx",
+        "format": "docx",
+        "canonical_view": false,
+        "size_bytes": 61874,
+        "sha256": "346bf89386b14c42cccad911ebb89a23d8f0e074a57f7999b40ed7886a079ad3"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000001",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ART-000011",
+      "type": "artifact",
+      "name": "ZYVORA Human Resources PRD v1.0",
+      "description": "Controlled human-readable view at outputs\\02_Module_PRDs\\ZYVORA_PRD_HR_Human_Resources_v1.0.docx.",
+      "status": "Released",
+      "owner": "TEAM-000001",
+      "version": "1.0.0",
+      "aliases": [
+        "ZAO-PRD-HR-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "path": "outputs/02_Module_PRDs/ZYVORA_PRD_HR_Human_Resources_v1.0.docx",
+        "format": "docx",
+        "canonical_view": false,
+        "size_bytes": 61723,
+        "sha256": "617ca970546b6c4189f0b34db1c171b66bed545103ba58a25faa0e671e269866"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000001",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ART-000012",
+      "type": "artifact",
+      "name": "ZYVORA Identity, Workspace, Permissions & Audit PRD v1.0",
+      "description": "Controlled human-readable view at outputs\\02_Module_PRDs\\ZYVORA_PRD_IAM_Identity,_Workspace,_Permissions_and_Audit_v1.0.docx.",
+      "status": "Released",
+      "owner": "TEAM-000001",
+      "version": "1.0.0",
+      "aliases": [
+        "ZAO-PRD-IAM-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "path": "outputs/02_Module_PRDs/ZYVORA_PRD_IAM_Identity,_Workspace,_Permissions_and_Audit_v1.0.docx",
+        "format": "docx",
+        "canonical_view": false,
+        "size_bytes": 61297,
+        "sha256": "63c23d6954e5bc34c660aa1d99ac92b988b81829d17438bb58bd48a894ad73c9"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000001",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ART-000013",
+      "type": "artifact",
+      "name": "ZYVORA Inventory PRD v1.0",
+      "description": "Controlled human-readable view at outputs\\02_Module_PRDs\\ZYVORA_PRD_INV_Inventory_v1.0.docx.",
+      "status": "Released",
+      "owner": "TEAM-000001",
+      "version": "1.0.0",
+      "aliases": [
+        "ZAO-PRD-INV-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "path": "outputs/02_Module_PRDs/ZYVORA_PRD_INV_Inventory_v1.0.docx",
+        "format": "docx",
+        "canonical_view": false,
+        "size_bytes": 62018,
+        "sha256": "67a01d0fe5ff674224bab7cc38ff192e06f7dd09d3b53b52b71c033770291355"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000001",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ART-000014",
+      "type": "artifact",
+      "name": "ZYVORA Manufacturing PRD v1.0",
+      "description": "Controlled human-readable view at outputs\\02_Module_PRDs\\ZYVORA_PRD_MFG_Manufacturing_v1.0.docx.",
+      "status": "Released",
+      "owner": "TEAM-000001",
+      "version": "1.0.0",
+      "aliases": [
+        "ZAO-PRD-MFG-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "path": "outputs/02_Module_PRDs/ZYVORA_PRD_MFG_Manufacturing_v1.0.docx",
+        "format": "docx",
+        "canonical_view": false,
+        "size_bytes": 62008,
+        "sha256": "2b7f7483608eabaac740f3c7fb98dedddbd7ea25c96c9f2b5c4b4ac15cb660d6"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000001",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ART-000015",
+      "type": "artifact",
+      "name": "ZYVORA Notifications PRD v1.0",
+      "description": "Controlled human-readable view at outputs\\02_Module_PRDs\\ZYVORA_PRD_NOT_Notifications_v1.0.docx.",
+      "status": "Released",
+      "owner": "TEAM-000001",
+      "version": "1.0.0",
+      "aliases": [
+        "ZAO-PRD-NOT-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "path": "outputs/02_Module_PRDs/ZYVORA_PRD_NOT_Notifications_v1.0.docx",
+        "format": "docx",
+        "canonical_view": false,
+        "size_bytes": 60316,
+        "sha256": "7aa50e5a69c760b6c2652ebf80b95a9ec3ae9f259ee0da1944cfee008592625f"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000001",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ART-000016",
+      "type": "artifact",
+      "name": "ZYVORA ZYVORA Product Technical Specification v1.0",
+      "description": "Controlled human-readable view at outputs\\03_Technical_Specifications\\ZYVORA_TS_000_Platform_Master_Technical_Specification_v1.0.docx.",
+      "status": "Released",
+      "owner": "TEAM-000001",
+      "version": "1.0.0",
+      "aliases": [
+        "ZAO-TS-MASTER-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "path": "outputs/03_Technical_Specifications/ZYVORA_TS_000_Platform_Master_Technical_Specification_v1.0.docx",
+        "format": "docx",
+        "canonical_view": false,
+        "size_bytes": 52556,
+        "sha256": "d8b82ef1d9acfe3b8930b4cede90c7cae6f6fb6711c9e4877fef7976e48b53b3"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000001",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ART-000017",
+      "type": "artifact",
+      "name": "ZYVORA AI Engine Technical Specification v1.0",
+      "description": "Controlled human-readable view at outputs\\03_Technical_Specifications\\ZYVORA_TS_AI_AI_Engine_v1.0.docx.",
+      "status": "Released",
+      "owner": "TEAM-000001",
+      "version": "1.0.0",
+      "aliases": [
+        "ZAO-TS-AI-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "path": "outputs/03_Technical_Specifications/ZYVORA_TS_AI_AI_Engine_v1.0.docx",
+        "format": "docx",
+        "canonical_view": false,
+        "size_bytes": 49697,
+        "sha256": "3ab3a0cdeee686a9928bffaa684fa752a05a5feaf493b1a69786b9ff74da1f9f"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000001",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ART-000018",
+      "type": "artifact",
+      "name": "ZYVORA Analytics Technical Specification v1.0",
+      "description": "Controlled human-readable view at outputs\\03_Technical_Specifications\\ZYVORA_TS_ANA_Analytics_v1.0.docx.",
+      "status": "Released",
+      "owner": "TEAM-000001",
+      "version": "1.0.0",
+      "aliases": [
+        "ZAO-TS-ANA-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "path": "outputs/03_Technical_Specifications/ZYVORA_TS_ANA_Analytics_v1.0.docx",
+        "format": "docx",
+        "canonical_view": false,
+        "size_bytes": 49692,
+        "sha256": "7da305fa927adb626d973963a119b67883593e6a983c1b96f945ed304653e64a"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000001",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ART-000019",
+      "type": "artifact",
+      "name": "ZYVORA Business Memory Technical Specification v1.0",
+      "description": "Controlled human-readable view at outputs\\03_Technical_Specifications\\ZYVORA_TS_BM_Business_Memory_v1.0.docx.",
+      "status": "Released",
+      "owner": "TEAM-000001",
+      "version": "1.0.0",
+      "aliases": [
+        "ZAO-TS-BM-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "path": "outputs/03_Technical_Specifications/ZYVORA_TS_BM_Business_Memory_v1.0.docx",
+        "format": "docx",
+        "canonical_view": false,
+        "size_bytes": 49225,
+        "sha256": "a0508e4d5af56a000762b1fb32dd87619ef8bec78c3ae5fbe40606182dab0f6d"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000001",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ART-000020",
+      "type": "artifact",
+      "name": "ZYVORA CRM Technical Specification v1.0",
+      "description": "Controlled human-readable view at outputs\\03_Technical_Specifications\\ZYVORA_TS_CRM_CRM_v1.0.docx.",
+      "status": "Released",
+      "owner": "TEAM-000001",
+      "version": "1.0.0",
+      "aliases": [
+        "ZAO-TS-CRM-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "path": "outputs/03_Technical_Specifications/ZYVORA_TS_CRM_CRM_v1.0.docx",
+        "format": "docx",
+        "canonical_view": false,
+        "size_bytes": 50181,
+        "sha256": "c3434dbd25849ef0ad677397cca6c813d3dcbc05b84cac3e1decd186f4bd5861"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000001",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ART-000021",
+      "type": "artifact",
+      "name": "ZYVORA Decision Center Technical Specification v1.0",
+      "description": "Controlled human-readable view at outputs\\03_Technical_Specifications\\ZYVORA_TS_DC_Decision_Center_v1.0.docx.",
+      "status": "Released",
+      "owner": "TEAM-000001",
+      "version": "1.0.0",
+      "aliases": [
+        "ZAO-TS-DC-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "path": "outputs/03_Technical_Specifications/ZYVORA_TS_DC_Decision_Center_v1.0.docx",
+        "format": "docx",
+        "canonical_view": false,
+        "size_bytes": 49232,
+        "sha256": "e1e40cdb75463eed8206f88e24497712b4ca5d5a0dc2e2b38bf779c5a2a69f29"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000001",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ART-000022",
+      "type": "artifact",
+      "name": "ZYVORA Documents Technical Specification v1.0",
+      "description": "Controlled human-readable view at outputs\\03_Technical_Specifications\\ZYVORA_TS_DOC_Documents_v1.0.docx.",
+      "status": "Released",
+      "owner": "TEAM-000001",
+      "version": "1.0.0",
+      "aliases": [
+        "ZAO-TS-DOC-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "path": "outputs/03_Technical_Specifications/ZYVORA_TS_DOC_Documents_v1.0.docx",
+        "format": "docx",
+        "canonical_view": false,
+        "size_bytes": 49793,
+        "sha256": "6ed264bd6e6137a49546761f8e7dab5ae0653caebd95887fc71f8254dd7a8dfa"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000001",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ART-000023",
+      "type": "artifact",
+      "name": "ZYVORA Finance Technical Specification v1.0",
+      "description": "Controlled human-readable view at outputs\\03_Technical_Specifications\\ZYVORA_TS_FIN_Finance_v1.0.docx.",
+      "status": "Released",
+      "owner": "TEAM-000001",
+      "version": "1.0.0",
+      "aliases": [
+        "ZAO-TS-FIN-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "path": "outputs/03_Technical_Specifications/ZYVORA_TS_FIN_Finance_v1.0.docx",
+        "format": "docx",
+        "canonical_view": false,
+        "size_bytes": 50121,
+        "sha256": "7c660c707fe6cdee3590a56011a4bbb003060c6425402d20dbb365a5e2b0a7af"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000001",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ART-000024",
+      "type": "artifact",
+      "name": "ZYVORA Human Resources Technical Specification v1.0",
+      "description": "Controlled human-readable view at outputs\\03_Technical_Specifications\\ZYVORA_TS_HR_Human_Resources_v1.0.docx.",
+      "status": "Released",
+      "owner": "TEAM-000001",
+      "version": "1.0.0",
+      "aliases": [
+        "ZAO-TS-HR-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "path": "outputs/03_Technical_Specifications/ZYVORA_TS_HR_Human_Resources_v1.0.docx",
+        "format": "docx",
+        "canonical_view": false,
+        "size_bytes": 50044,
+        "sha256": "d40bf20e60b93e307917b322098252e8f8d08602b97fa7eba3c9c0c923cc9820"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000001",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ART-000025",
+      "type": "artifact",
+      "name": "ZYVORA Identity, Workspace, Permissions & Audit Technical Specification v1.0",
+      "description": "Controlled human-readable view at outputs\\03_Technical_Specifications\\ZYVORA_TS_IAM_Identity,_Workspace,_Permissions_and_Audit_v1.0.docx.",
+      "status": "Released",
+      "owner": "TEAM-000001",
+      "version": "1.0.0",
+      "aliases": [
+        "ZAO-TS-IAM-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "path": "outputs/03_Technical_Specifications/ZYVORA_TS_IAM_Identity,_Workspace,_Permissions_and_Audit_v1.0.docx",
+        "format": "docx",
+        "canonical_view": false,
+        "size_bytes": 50034,
+        "sha256": "d456960da1b0bd384972ba0b6e0b83ba499ebd8f45d3a3944ef4330a5f3ee1c5"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000001",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ART-000026",
+      "type": "artifact",
+      "name": "ZYVORA Inventory Technical Specification v1.0",
+      "description": "Controlled human-readable view at outputs\\03_Technical_Specifications\\ZYVORA_TS_INV_Inventory_v1.0.docx.",
+      "status": "Released",
+      "owner": "TEAM-000001",
+      "version": "1.0.0",
+      "aliases": [
+        "ZAO-TS-INV-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "path": "outputs/03_Technical_Specifications/ZYVORA_TS_INV_Inventory_v1.0.docx",
+        "format": "docx",
+        "canonical_view": false,
+        "size_bytes": 50193,
+        "sha256": "04a9d77ee533c7fa3672d6a791a6e98ef6a9c8f46f9e2d5e6b9a4f45e2f3e6b2"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000001",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ART-000027",
+      "type": "artifact",
+      "name": "ZYVORA Manufacturing Technical Specification v1.0",
+      "description": "Controlled human-readable view at outputs\\03_Technical_Specifications\\ZYVORA_TS_MFG_Manufacturing_v1.0.docx.",
+      "status": "Released",
+      "owner": "TEAM-000001",
+      "version": "1.0.0",
+      "aliases": [
+        "ZAO-TS-MFG-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "path": "outputs/03_Technical_Specifications/ZYVORA_TS_MFG_Manufacturing_v1.0.docx",
+        "format": "docx",
+        "canonical_view": false,
+        "size_bytes": 50239,
+        "sha256": "e4d102858d5b25738b89a39b4fd48734d0cdc9a6072847f8dfeeebf4d5965dfc"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000001",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ART-000028",
+      "type": "artifact",
+      "name": "ZYVORA Notifications Technical Specification v1.0",
+      "description": "Controlled human-readable view at outputs\\03_Technical_Specifications\\ZYVORA_TS_NOT_Notifications_v1.0.docx.",
+      "status": "Released",
+      "owner": "TEAM-000001",
+      "version": "1.0.0",
+      "aliases": [
+        "ZAO-TS-NOT-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "path": "outputs/03_Technical_Specifications/ZYVORA_TS_NOT_Notifications_v1.0.docx",
+        "format": "docx",
+        "canonical_view": false,
+        "size_bytes": 49603,
+        "sha256": "f37a7e3c4639e8afb6bb41a63e101792c4b2cfc253487b51397da01c551f3f69"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000001",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ART-000029",
+      "type": "artifact",
+      "name": "ZYVORA BP-000 Platform Blueprint v1.0",
+      "description": "Controlled human-readable view at outputs\\04_Blueprints\\ZYVORA_BP-000_Platform_Blueprint_v1.0.docx.",
+      "status": "Released",
+      "owner": "TEAM-000001",
+      "version": "1.0.0",
+      "aliases": [
+        "ZAO-BP-000-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "path": "outputs/04_Blueprints/ZYVORA_BP-000_Platform_Blueprint_v1.0.docx",
+        "format": "docx",
+        "canonical_view": false,
+        "size_bytes": 43210,
+        "sha256": "c43187017797bea9e45dd2c4ef92779b3ee8b494400ef29f4f09bad5266289e1"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000001",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ART-000030",
+      "type": "artifact",
+      "name": "ZYVORA BP-001 UI Blueprint v1.0",
+      "description": "Controlled human-readable view at outputs\\04_Blueprints\\ZYVORA_BP-001_UI_Blueprint_v1.0.docx.",
+      "status": "Released",
+      "owner": "TEAM-000001",
+      "version": "1.0.0",
+      "aliases": [
+        "ZAO-BP-001-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "path": "outputs/04_Blueprints/ZYVORA_BP-001_UI_Blueprint_v1.0.docx",
+        "format": "docx",
+        "canonical_view": false,
+        "size_bytes": 43442,
+        "sha256": "c700c7da3a17969218d60923597415c5115478eda58d5a41f80572e16e89e0f0"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000001",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ART-000031",
+      "type": "artifact",
+      "name": "ZYVORA BP-002 Backend Blueprint v1.0",
+      "description": "Controlled human-readable view at outputs\\04_Blueprints\\ZYVORA_BP-002_Backend_Blueprint_v1.0.docx.",
+      "status": "Released",
+      "owner": "TEAM-000001",
+      "version": "1.0.0",
+      "aliases": [
+        "ZAO-BP-002-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "path": "outputs/04_Blueprints/ZYVORA_BP-002_Backend_Blueprint_v1.0.docx",
+        "format": "docx",
+        "canonical_view": false,
+        "size_bytes": 43481,
+        "sha256": "cd4509db22849b48c5577f7fe7bcb6a32b6beedea9031faac94bed1f53d701d6"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000001",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ART-000032",
+      "type": "artifact",
+      "name": "ZYVORA BP-003 Database Blueprint v1.0",
+      "description": "Controlled human-readable view at outputs\\04_Blueprints\\ZYVORA_BP-003_Database_Blueprint_v1.0.docx.",
+      "status": "Released",
+      "owner": "TEAM-000001",
+      "version": "1.0.0",
+      "aliases": [
+        "ZAO-BP-003-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "path": "outputs/04_Blueprints/ZYVORA_BP-003_Database_Blueprint_v1.0.docx",
+        "format": "docx",
+        "canonical_view": false,
+        "size_bytes": 43735,
+        "sha256": "78f397a9980f7ab9fbee17dad09d93d4be801c8e6d50bd86dcf9a3c720ee65a5"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000001",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ART-000033",
+      "type": "artifact",
+      "name": "ZYVORA BP-004 API Blueprint v1.0",
+      "description": "Controlled human-readable view at outputs\\04_Blueprints\\ZYVORA_BP-004_API_Blueprint_v1.0.docx.",
+      "status": "Released",
+      "owner": "TEAM-000001",
+      "version": "1.0.0",
+      "aliases": [
+        "ZAO-BP-004-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "path": "outputs/04_Blueprints/ZYVORA_BP-004_API_Blueprint_v1.0.docx",
+        "format": "docx",
+        "canonical_view": false,
+        "size_bytes": 43757,
+        "sha256": "f0e5827d59763bdf879cc8d4d5734dd576c2f98e8f0e7b4dc2daef1baaf77dba"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000001",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ART-000034",
+      "type": "artifact",
+      "name": "ZYVORA BP-005 AI Blueprint v1.0",
+      "description": "Controlled human-readable view at outputs\\04_Blueprints\\ZYVORA_BP-005_AI_Blueprint_v1.0.docx.",
+      "status": "Released",
+      "owner": "TEAM-000001",
+      "version": "1.0.0",
+      "aliases": [
+        "ZAO-BP-005-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "path": "outputs/04_Blueprints/ZYVORA_BP-005_AI_Blueprint_v1.0.docx",
+        "format": "docx",
+        "canonical_view": false,
+        "size_bytes": 43778,
+        "sha256": "0b1d4138c83220c473bed764408f2004ac46768127a9d2251bc961d411437c9a"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000001",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ART-000035",
+      "type": "artifact",
+      "name": "ZYVORA BP-006 Security Blueprint v1.0",
+      "description": "Controlled human-readable view at outputs\\04_Blueprints\\ZYVORA_BP-006_Security_Blueprint_v1.0.docx.",
+      "status": "Released",
+      "owner": "TEAM-000001",
+      "version": "1.0.0",
+      "aliases": [
+        "ZAO-BP-006-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "path": "outputs/04_Blueprints/ZYVORA_BP-006_Security_Blueprint_v1.0.docx",
+        "format": "docx",
+        "canonical_view": false,
+        "size_bytes": 43770,
+        "sha256": "c8b6307d9a59d9ff3d78a716f000db6a049bf07956e9bd0bdd7fb59d01938502"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000001",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ART-000036",
+      "type": "artifact",
+      "name": "ZYVORA BP-007 Infrastructure Blueprint v1.0",
+      "description": "Controlled human-readable view at outputs\\04_Blueprints\\ZYVORA_BP-007_Infrastructure_Blueprint_v1.0.docx.",
+      "status": "Released",
+      "owner": "TEAM-000001",
+      "version": "1.0.0",
+      "aliases": [
+        "ZAO-BP-007-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "path": "outputs/04_Blueprints/ZYVORA_BP-007_Infrastructure_Blueprint_v1.0.docx",
+        "format": "docx",
+        "canonical_view": false,
+        "size_bytes": 44132,
+        "sha256": "2479e96274458a0cdd5215dc86a534820efbf7a70ae44f322ac847e0fda2933f"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000001",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ART-000037",
+      "type": "artifact",
+      "name": "ZYVORA Build Pack Standard v1.0",
+      "description": "Controlled human-readable view at outputs\\05_Build_Packs\\ZYVORA_Build_Pack_Standard_v1.0.docx.",
+      "status": "Released",
+      "owner": "TEAM-000001",
+      "version": "1.0.0",
+      "aliases": [
+        "ZAO-BUILD-STD-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "path": "outputs/05_Build_Packs/ZYVORA_Build_Pack_Standard_v1.0.docx",
+        "format": "docx",
+        "canonical_view": false,
+        "size_bytes": 41145,
+        "sha256": "7247d06fd3ecf44e38064c7de0b68f737cd2af89697217aa262c684a0e7a8760"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000001",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ART-000038",
+      "type": "artifact",
+      "name": "ZYVORA QA Pack Standard v1.0",
+      "description": "Controlled human-readable view at outputs\\06_QA_Packs\\ZYVORA_QA_Pack_Standard_v1.0.docx.",
+      "status": "Released",
+      "owner": "TEAM-000001",
+      "version": "1.0.0",
+      "aliases": [
+        "ZAO-QA-STD-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "path": "outputs/06_QA_Packs/ZYVORA_QA_Pack_Standard_v1.0.docx",
+        "format": "docx",
+        "canonical_view": false,
+        "size_bytes": 41387,
+        "sha256": "e42b15ed0c4f6cd5dc29468f27b51f4d55e2798efb9d22691a046df825e67219"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000001",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ART-000039",
+      "type": "artifact",
+      "name": "ZYVORA Developer Standards v1.0",
+      "description": "Controlled human-readable view at outputs\\07_Standards\\ZYVORA_Developer_Standards_v1.0.docx.",
+      "status": "Released",
+      "owner": "TEAM-000001",
+      "version": "1.0.0",
+      "aliases": [
+        "ZAO-ZS-DEV-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "path": "outputs/07_Standards/ZYVORA_Developer_Standards_v1.0.docx",
+        "format": "docx",
+        "canonical_view": false,
+        "size_bytes": 41247,
+        "sha256": "ae61500cb946b47123adcb8211ef8076461391412c1bdabf73ad80aea13b1340"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000001",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ART-000040",
+      "type": "artifact",
+      "name": "ZYVORA AKG Ontology and Registry Standard v1.0",
+      "description": "Controlled human-readable view at outputs\\08_Knowledge_Graph\\ZYVORA_AKG_Ontology_and_Registry_Standard_v1.0.docx.",
+      "status": "Released",
+      "owner": "TEAM-000001",
+      "version": "1.0.0",
+      "aliases": [
+        "ZAO-AKG-ONT-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "path": "outputs/08_Knowledge_Graph/ZYVORA_AKG_Ontology_and_Registry_Standard_v1.0.docx",
+        "format": "docx",
+        "canonical_view": false,
+        "size_bytes": 46998,
+        "sha256": "474cd1925633a3f63c11bf95b595ebc969decf8b8a7a99335a17e07ed023107f"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000001",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ART-000041",
+      "type": "artifact",
+      "name": "ZYVORA Architecture Knowledge Graph Constitution v1.0",
+      "description": "Controlled human-readable view at outputs\\08_Knowledge_Graph\\ZYVORA_Architecture_Knowledge_Graph_Constitution_v1.0.docx.",
+      "status": "Released",
+      "owner": "TEAM-000001",
+      "version": "1.0.0",
+      "aliases": [
+        "ZAO-AKG-CON-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "path": "outputs/08_Knowledge_Graph/ZYVORA_Architecture_Knowledge_Graph_Constitution_v1.0.docx",
+        "format": "docx",
+        "canonical_view": false,
+        "size_bytes": 46831,
+        "sha256": "f0fc37097ec060b7480bb76e30ee66b1334408f22e596e4cb40baa630c0114ea"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000001",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ART-000042",
+      "type": "artifact",
+      "name": "ZYVORA Governance Engine v1.1 Operating Specification",
+      "description": "Controlled human-readable view at outputs\\08_Knowledge_Graph\\ZYVORA_Governance_Engine_v1.1_Operating_Specification.docx.",
+      "status": "Released",
+      "owner": "TEAM-000001",
+      "version": "1.0.0",
+      "aliases": [
+        "ZAO-GOV-ENG-011"
+      ],
+      "tags": [],
+      "attributes": {
+        "path": "outputs/08_Knowledge_Graph/ZYVORA_Governance_Engine_v1.1_Operating_Specification.docx",
+        "format": "docx",
+        "canonical_view": false,
+        "size_bytes": 44302,
+        "sha256": "7466e033e65d3282aba6cf32a7fd881beeaed1f3314154a012a6697c48e2a65b"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000001",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ART-000043",
+      "type": "artifact",
+      "name": "ZYVORA Team Implementation Handoff Guide v1.0",
+      "description": "Controlled human-readable view at outputs\\08_Knowledge_Graph\\ZYVORA_Team_Implementation_Handoff_Guide_v1.0.docx.",
+      "status": "Released",
+      "owner": "TEAM-000001",
+      "version": "1.0.0",
+      "aliases": [
+        "ZAO-AKG-HANDOFF-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "path": "outputs/08_Knowledge_Graph/ZYVORA_Team_Implementation_Handoff_Guide_v1.0.docx",
+        "format": "docx",
+        "canonical_view": false,
+        "size_bytes": 45216,
+        "sha256": "310129ec10a3f004b0caa1692c156db50d7d187d60bcd063ba6fb7257bf642c9"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000001",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ART-000044",
+      "type": "artifact",
+      "name": "ZYVORA Architecture Overview v1.0",
+      "description": "Controlled human-readable view at outputs\\ZYVORA_Architecture_Overview_v1.0.docx.",
+      "status": "Released",
+      "owner": "TEAM-000001",
+      "version": "1.0.0",
+      "aliases": [
+        "ZAO-ARCH-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "path": "outputs/ZYVORA_Architecture_Overview_v1.0.docx",
+        "format": "docx",
+        "canonical_view": false,
+        "size_bytes": 61546,
+        "sha256": "dbf9823f15adf1eee4a0ac1b5123dc3f867c3fd8b42c91adf11a1e0c44361ce1"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000001",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ART-000045",
+      "type": "artifact",
+      "name": "ZYVORA Platform PRD v1.0",
+      "description": "Controlled human-readable view at outputs\\ZYVORA_Platform_PRD_v1.0.docx.",
+      "status": "Released",
+      "owner": "TEAM-000001",
+      "version": "1.0.0",
+      "aliases": [
+        "ZAO-PRD-PLATFORM-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "path": "outputs/ZYVORA_Platform_PRD_v1.0.docx",
+        "format": "docx",
+        "canonical_view": false,
+        "size_bytes": 89813,
+        "sha256": "74defc1bd92d1aa067ecd0ba6d50aa1e36bd040e6ae28d5839ed1eaf5ed6fac0"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000001",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ART-000046",
+      "type": "artifact",
+      "name": "ZYVORA Product Architecture Library Manifest v1.0",
+      "description": "Controlled human-readable view at outputs\\ZYVORA_Product_Architecture_Library_Manifest_v1.0.docx.",
+      "status": "Released",
+      "owner": "TEAM-000001",
+      "version": "1.0.0",
+      "aliases": [
+        "ZAO-LIB-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "path": "outputs/ZYVORA_Product_Architecture_Library_Manifest_v1.0.docx",
+        "format": "docx",
+        "canonical_view": false,
+        "size_bytes": 43318,
+        "sha256": "b72c5a4598aec5b84fcd0922895d6926494308b5b10a3ca67069d9284356e8fc"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000001",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "registry": "change_requests",
+  "version": "1.0.0",
+  "generated_at": "2026-07-12T03:39:37Z",
+  "records": [
+    {
+      "id": "CR-000001",
+      "type": "change_request",
+      "name": "Governance Center v2.0 MVP",
+      "description": "Approved evolution from read-only governed model to operational governance control plane.",
+      "status": "Released",
+      "owner": "TEAM-000001",
+      "version": "1.0.0",
+      "aliases": [
+        "GOV-CR-2026-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "change_kind": "platform_evolution",
+        "reason": "Operationalize registry, traceability, impact, release, and approval governance",
+        "requested_by": "TEAM-000001",
+        "approved_by": [
+          "TEAM-000001",
+          "TEAM-000002",
+          "TEAM-000003",
+          "TEAM-000004",
+          "TEAM-000005",
+          "TEAM-000006"
+        ],
+        "impact_report_required": true,
+        "rollback_required": true,
+        "implemented_version": "2.0.0"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000001",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    }
+  ]
+}

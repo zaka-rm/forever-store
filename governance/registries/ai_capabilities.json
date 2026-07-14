@@ -1,0 +1,1573 @@
+{
+  "registry": "ai_capabilities",
+  "version": "1.0.0",
+  "generated_at": "2026-07-12T03:39:37Z",
+  "records": [
+    {
+      "id": "AICAP-000001",
+      "type": "ai_capability",
+      "name": "Decision Center: Priority assistance",
+      "description": "Human-governed AI participation: Priority assistance.",
+      "status": "Specified",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-AI-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "explainable": true,
+        "human_review": true,
+        "fallback": true,
+        "evaluation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AICAP-000002",
+      "type": "ai_capability",
+      "name": "Decision Center: Alternative generation",
+      "description": "Human-governed AI participation: Alternative generation.",
+      "status": "Specified",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-AI-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "explainable": true,
+        "human_review": true,
+        "fallback": true,
+        "evaluation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AICAP-000003",
+      "type": "ai_capability",
+      "name": "Decision Center: Trade-off explanation",
+      "description": "Human-governed AI participation: Trade-off explanation.",
+      "status": "Specified",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-AI-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "explainable": true,
+        "human_review": true,
+        "fallback": true,
+        "evaluation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AICAP-000004",
+      "type": "ai_capability",
+      "name": "Decision Center: Outcome comparison",
+      "description": "Human-governed AI participation: Outcome comparison.",
+      "status": "Specified",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-AI-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "explainable": true,
+        "human_review": true,
+        "fallback": true,
+        "evaluation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AICAP-000005",
+      "type": "ai_capability",
+      "name": "Decision Center: Similar-decision retrieval",
+      "description": "Human-governed AI participation: Similar-decision retrieval.",
+      "status": "Specified",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-AI-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "explainable": true,
+        "human_review": true,
+        "fallback": true,
+        "evaluation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AICAP-000006",
+      "type": "ai_capability",
+      "name": "Business Memory: Semantic retrieval",
+      "description": "Human-governed AI participation: Semantic retrieval.",
+      "status": "Specified",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-AI-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "explainable": true,
+        "human_review": true,
+        "fallback": true,
+        "evaluation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AICAP-000007",
+      "type": "ai_capability",
+      "name": "Business Memory: Summarization with citations",
+      "description": "Human-governed AI participation: Summarization with citations.",
+      "status": "Specified",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-AI-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "explainable": true,
+        "human_review": true,
+        "fallback": true,
+        "evaluation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AICAP-000008",
+      "type": "ai_capability",
+      "name": "Business Memory: Similar-case discovery",
+      "description": "Human-governed AI participation: Similar-case discovery.",
+      "status": "Specified",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-AI-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "explainable": true,
+        "human_review": true,
+        "fallback": true,
+        "evaluation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AICAP-000009",
+      "type": "ai_capability",
+      "name": "Business Memory: Lesson extraction",
+      "description": "Human-governed AI participation: Lesson extraction.",
+      "status": "Specified",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-AI-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "explainable": true,
+        "human_review": true,
+        "fallback": true,
+        "evaluation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AICAP-000010",
+      "type": "ai_capability",
+      "name": "Business Memory: Memory quality classification",
+      "description": "Human-governed AI participation: Memory quality classification.",
+      "status": "Specified",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-AI-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "explainable": true,
+        "human_review": true,
+        "fallback": true,
+        "evaluation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AICAP-000011",
+      "type": "ai_capability",
+      "name": "AI Engine: All capabilities are AI capabilities; core business workflows remain usable without them",
+      "description": "Human-governed AI participation: All capabilities are AI capabilities; core business workflows remain usable without them.",
+      "status": "Specified",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-AI-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "explainable": true,
+        "human_review": true,
+        "fallback": true,
+        "evaluation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AICAP-000012",
+      "type": "ai_capability",
+      "name": "Identity, Workspace, Permissions & Audit: Risk signal explanation",
+      "description": "Human-governed AI participation: Risk signal explanation.",
+      "status": "Specified",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-AI-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "explainable": true,
+        "human_review": true,
+        "fallback": true,
+        "evaluation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AICAP-000013",
+      "type": "ai_capability",
+      "name": "Identity, Workspace, Permissions & Audit: Access review assistance",
+      "description": "Human-governed AI participation: Access review assistance.",
+      "status": "Specified",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-AI-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "explainable": true,
+        "human_review": true,
+        "fallback": true,
+        "evaluation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AICAP-000014",
+      "type": "ai_capability",
+      "name": "Identity, Workspace, Permissions & Audit: Anomalous sign-in triage",
+      "description": "Human-governed AI participation: Anomalous sign-in triage.",
+      "status": "Specified",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-AI-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "explainable": true,
+        "human_review": true,
+        "fallback": true,
+        "evaluation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AICAP-000015",
+      "type": "ai_capability",
+      "name": "Finance: Cash forecast",
+      "description": "Human-governed AI participation: Cash forecast.",
+      "status": "Specified",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-AI-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "explainable": true,
+        "human_review": true,
+        "fallback": true,
+        "evaluation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AICAP-000016",
+      "type": "ai_capability",
+      "name": "Finance: Anomaly detection",
+      "description": "Human-governed AI participation: Anomaly detection.",
+      "status": "Specified",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-AI-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "explainable": true,
+        "human_review": true,
+        "fallback": true,
+        "evaluation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AICAP-000017",
+      "type": "ai_capability",
+      "name": "Finance: Reconciliation suggestions",
+      "description": "Human-governed AI participation: Reconciliation suggestions.",
+      "status": "Specified",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-AI-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "explainable": true,
+        "human_review": true,
+        "fallback": true,
+        "evaluation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AICAP-000018",
+      "type": "ai_capability",
+      "name": "Finance: Collection priority",
+      "description": "Human-governed AI participation: Collection priority.",
+      "status": "Specified",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-AI-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "explainable": true,
+        "human_review": true,
+        "fallback": true,
+        "evaluation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AICAP-000019",
+      "type": "ai_capability",
+      "name": "Finance: Variance explanation",
+      "description": "Human-governed AI participation: Variance explanation.",
+      "status": "Specified",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-AI-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "explainable": true,
+        "human_review": true,
+        "fallback": true,
+        "evaluation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AICAP-000020",
+      "type": "ai_capability",
+      "name": "Inventory: Demand forecast",
+      "description": "Human-governed AI participation: Demand forecast.",
+      "status": "Specified",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-AI-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "explainable": true,
+        "human_review": true,
+        "fallback": true,
+        "evaluation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AICAP-000021",
+      "type": "ai_capability",
+      "name": "Inventory: Reorder quantity",
+      "description": "Human-governed AI participation: Reorder quantity.",
+      "status": "Specified",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-AI-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "explainable": true,
+        "human_review": true,
+        "fallback": true,
+        "evaluation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AICAP-000022",
+      "type": "ai_capability",
+      "name": "Inventory: Supplier comparison",
+      "description": "Human-governed AI participation: Supplier comparison.",
+      "status": "Specified",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-AI-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "explainable": true,
+        "human_review": true,
+        "fallback": true,
+        "evaluation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AICAP-000023",
+      "type": "ai_capability",
+      "name": "Inventory: Anomaly and shrinkage detection",
+      "description": "Human-governed AI participation: Anomaly and shrinkage detection.",
+      "status": "Specified",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-AI-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "explainable": true,
+        "human_review": true,
+        "fallback": true,
+        "evaluation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AICAP-000024",
+      "type": "ai_capability",
+      "name": "Inventory: Slow-moving stock explanation",
+      "description": "Human-governed AI participation: Slow-moving stock explanation.",
+      "status": "Specified",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-AI-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "explainable": true,
+        "human_review": true,
+        "fallback": true,
+        "evaluation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AICAP-000025",
+      "type": "ai_capability",
+      "name": "CRM: Lead scoring",
+      "description": "Human-governed AI participation: Lead scoring.",
+      "status": "Specified",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-AI-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "explainable": true,
+        "human_review": true,
+        "fallback": true,
+        "evaluation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AICAP-000026",
+      "type": "ai_capability",
+      "name": "CRM: Next best action",
+      "description": "Human-governed AI participation: Next best action.",
+      "status": "Specified",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-AI-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "explainable": true,
+        "human_review": true,
+        "fallback": true,
+        "evaluation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AICAP-000027",
+      "type": "ai_capability",
+      "name": "CRM: Churn risk",
+      "description": "Human-governed AI participation: Churn risk.",
+      "status": "Specified",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-AI-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "explainable": true,
+        "human_review": true,
+        "fallback": true,
+        "evaluation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AICAP-000028",
+      "type": "ai_capability",
+      "name": "CRM: Opportunity forecast",
+      "description": "Human-governed AI participation: Opportunity forecast.",
+      "status": "Specified",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-AI-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "explainable": true,
+        "human_review": true,
+        "fallback": true,
+        "evaluation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AICAP-000029",
+      "type": "ai_capability",
+      "name": "CRM: Interaction summary",
+      "description": "Human-governed AI participation: Interaction summary.",
+      "status": "Specified",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-AI-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "explainable": true,
+        "human_review": true,
+        "fallback": true,
+        "evaluation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AICAP-000030",
+      "type": "ai_capability",
+      "name": "CRM: Win/loss explanation",
+      "description": "Human-governed AI participation: Win/loss explanation.",
+      "status": "Specified",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-AI-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "explainable": true,
+        "human_review": true,
+        "fallback": true,
+        "evaluation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AICAP-000031",
+      "type": "ai_capability",
+      "name": "Analytics: Narrative explanation",
+      "description": "Human-governed AI participation: Narrative explanation.",
+      "status": "Specified",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-AI-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "explainable": true,
+        "human_review": true,
+        "fallback": true,
+        "evaluation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AICAP-000032",
+      "type": "ai_capability",
+      "name": "Analytics: Anomaly detection",
+      "description": "Human-governed AI participation: Anomaly detection.",
+      "status": "Specified",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-AI-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "explainable": true,
+        "human_review": true,
+        "fallback": true,
+        "evaluation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AICAP-000033",
+      "type": "ai_capability",
+      "name": "Analytics: Forecast overlay",
+      "description": "Human-governed AI participation: Forecast overlay.",
+      "status": "Specified",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-AI-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "explainable": true,
+        "human_review": true,
+        "fallback": true,
+        "evaluation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AICAP-000034",
+      "type": "ai_capability",
+      "name": "Analytics: Natural language query",
+      "description": "Human-governed AI participation: Natural language query.",
+      "status": "Specified",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-AI-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "explainable": true,
+        "human_review": true,
+        "fallback": true,
+        "evaluation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AICAP-000035",
+      "type": "ai_capability",
+      "name": "Analytics: Chart recommendation",
+      "description": "Human-governed AI participation: Chart recommendation.",
+      "status": "Specified",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-AI-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "explainable": true,
+        "human_review": true,
+        "fallback": true,
+        "evaluation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AICAP-000036",
+      "type": "ai_capability",
+      "name": "Documents: Classification",
+      "description": "Human-governed AI participation: Classification.",
+      "status": "Specified",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-AI-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "explainable": true,
+        "human_review": true,
+        "fallback": true,
+        "evaluation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AICAP-000037",
+      "type": "ai_capability",
+      "name": "Documents: Field extraction",
+      "description": "Human-governed AI participation: Field extraction.",
+      "status": "Specified",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-AI-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "explainable": true,
+        "human_review": true,
+        "fallback": true,
+        "evaluation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AICAP-000038",
+      "type": "ai_capability",
+      "name": "Documents: Document summary",
+      "description": "Human-governed AI participation: Document summary.",
+      "status": "Specified",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-AI-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "explainable": true,
+        "human_review": true,
+        "fallback": true,
+        "evaluation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AICAP-000039",
+      "type": "ai_capability",
+      "name": "Documents: Clause comparison",
+      "description": "Human-governed AI participation: Clause comparison.",
+      "status": "Specified",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-AI-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "explainable": true,
+        "human_review": true,
+        "fallback": true,
+        "evaluation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AICAP-000040",
+      "type": "ai_capability",
+      "name": "Documents: Template assistance",
+      "description": "Human-governed AI participation: Template assistance.",
+      "status": "Specified",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-AI-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "explainable": true,
+        "human_review": true,
+        "fallback": true,
+        "evaluation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AICAP-000041",
+      "type": "ai_capability",
+      "name": "Notifications: Priority suggestion",
+      "description": "Human-governed AI participation: Priority suggestion.",
+      "status": "Specified",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-AI-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "explainable": true,
+        "human_review": true,
+        "fallback": true,
+        "evaluation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AICAP-000042",
+      "type": "ai_capability",
+      "name": "Notifications: Digest summarization",
+      "description": "Human-governed AI participation: Digest summarization.",
+      "status": "Specified",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-AI-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "explainable": true,
+        "human_review": true,
+        "fallback": true,
+        "evaluation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AICAP-000043",
+      "type": "ai_capability",
+      "name": "Notifications: Send-time optimization",
+      "description": "Human-governed AI participation: Send-time optimization.",
+      "status": "Specified",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-AI-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "explainable": true,
+        "human_review": true,
+        "fallback": true,
+        "evaluation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AICAP-000044",
+      "type": "ai_capability",
+      "name": "Notifications: Noise detection",
+      "description": "Human-governed AI participation: Noise detection.",
+      "status": "Specified",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-AI-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "explainable": true,
+        "human_review": true,
+        "fallback": true,
+        "evaluation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AICAP-000045",
+      "type": "ai_capability",
+      "name": "Human Resources: Candidate matching",
+      "description": "Human-governed AI participation: Candidate matching.",
+      "status": "Specified",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-AI-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "explainable": true,
+        "human_review": true,
+        "fallback": true,
+        "evaluation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AICAP-000046",
+      "type": "ai_capability",
+      "name": "Human Resources: Capacity forecast",
+      "description": "Human-governed AI participation: Capacity forecast.",
+      "status": "Specified",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-AI-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "explainable": true,
+        "human_review": true,
+        "fallback": true,
+        "evaluation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AICAP-000047",
+      "type": "ai_capability",
+      "name": "Human Resources: Turnover risk",
+      "description": "Human-governed AI participation: Turnover risk.",
+      "status": "Specified",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-AI-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "explainable": true,
+        "human_review": true,
+        "fallback": true,
+        "evaluation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AICAP-000048",
+      "type": "ai_capability",
+      "name": "Human Resources: Review summarization",
+      "description": "Human-governed AI participation: Review summarization.",
+      "status": "Specified",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-AI-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "explainable": true,
+        "human_review": true,
+        "fallback": true,
+        "evaluation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AICAP-000049",
+      "type": "ai_capability",
+      "name": "Human Resources: Policy question answering",
+      "description": "Human-governed AI participation: Policy question answering.",
+      "status": "Specified",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-AI-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "explainable": true,
+        "human_review": true,
+        "fallback": true,
+        "evaluation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AICAP-000050",
+      "type": "ai_capability",
+      "name": "Manufacturing: Demand and capacity forecast",
+      "description": "Human-governed AI participation: Demand and capacity forecast.",
+      "status": "Specified",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-AI-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "explainable": true,
+        "human_review": true,
+        "fallback": true,
+        "evaluation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AICAP-000051",
+      "type": "ai_capability",
+      "name": "Manufacturing: Schedule optimization",
+      "description": "Human-governed AI participation: Schedule optimization.",
+      "status": "Specified",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-AI-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "explainable": true,
+        "human_review": true,
+        "fallback": true,
+        "evaluation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AICAP-000052",
+      "type": "ai_capability",
+      "name": "Manufacturing: Quality anomaly",
+      "description": "Human-governed AI participation: Quality anomaly.",
+      "status": "Specified",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-AI-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "explainable": true,
+        "human_review": true,
+        "fallback": true,
+        "evaluation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AICAP-000053",
+      "type": "ai_capability",
+      "name": "Manufacturing: Predictive maintenance signal",
+      "description": "Human-governed AI participation: Predictive maintenance signal.",
+      "status": "Specified",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-AI-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "explainable": true,
+        "human_review": true,
+        "fallback": true,
+        "evaluation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AICAP-000054",
+      "type": "ai_capability",
+      "name": "Manufacturing: Cost variance explanation",
+      "description": "Human-governed AI participation: Cost variance explanation.",
+      "status": "Specified",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-AI-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "explainable": true,
+        "human_review": true,
+        "fallback": true,
+        "evaluation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    }
+  ]
+}

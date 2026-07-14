@@ -1,0 +1,255 @@
+{
+  "registry": "implementation_evidence",
+  "version": "1.0.0",
+  "generated_at": "2026-07-12T03:39:37Z",
+  "records": [
+    {
+      "id": "IMPL-000001",
+      "type": "implementation_evidence",
+      "name": "Governance Center Source",
+      "description": "Implementation synchronization adapter for governance center source.",
+      "status": "Specified",
+      "owner": "TEAM-000002",
+      "version": "1.0.0",
+      "aliases": [
+        "SYNC-SRC-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "source_kind": "repository",
+        "location": "governance-center/app",
+        "evidence_status": "OBSERVED",
+        "authority": "observational",
+        "canonical_overwrite_permitted": false,
+        "approval_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000002",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "IMPL-000002",
+      "type": "implementation_evidence",
+      "name": "Canonical Product Model Snapshot",
+      "description": "Implementation synchronization adapter for canonical product model snapshot.",
+      "status": "Specified",
+      "owner": "TEAM-000002",
+      "version": "1.0.0",
+      "aliases": [
+        "SYNC-SRC-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "source_kind": "canonical_snapshot",
+        "location": "knowledge/graph.snapshot.json",
+        "evidence_status": "OBSERVED",
+        "authority": "observational",
+        "canonical_overwrite_permitted": false,
+        "approval_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000002",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "IMPL-000003",
+      "type": "implementation_evidence",
+      "name": "Generated Draft Packs",
+      "description": "Implementation synchronization adapter for generated draft packs.",
+      "status": "Specified",
+      "owner": "TEAM-000002",
+      "version": "1.0.0",
+      "aliases": [
+        "SYNC-SRC-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "source_kind": "generated_artifacts",
+        "location": "knowledge/generated-packs",
+        "evidence_status": "OBSERVED",
+        "authority": "observational",
+        "canonical_overwrite_permitted": false,
+        "approval_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000002",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "IMPL-000004",
+      "type": "implementation_evidence",
+      "name": "OpenAPI Contracts",
+      "description": "Implementation synchronization adapter for openapi contracts.",
+      "status": "Planned",
+      "owner": "TEAM-000002",
+      "version": "1.0.0",
+      "aliases": [
+        "SYNC-SRC-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "source_kind": "openapi",
+        "location": null,
+        "evidence_status": "NOT_CONNECTED",
+        "authority": "observational",
+        "canonical_overwrite_permitted": false,
+        "approval_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000002",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "IMPL-000005",
+      "type": "implementation_evidence",
+      "name": "Prisma Database Schema",
+      "description": "Implementation synchronization adapter for prisma database schema.",
+      "status": "Planned",
+      "owner": "TEAM-000002",
+      "version": "1.0.0",
+      "aliases": [
+        "SYNC-SRC-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "source_kind": "database_schema",
+        "location": null,
+        "evidence_status": "NOT_CONNECTED",
+        "authority": "observational",
+        "canonical_overwrite_permitted": false,
+        "approval_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000002",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "IMPL-000006",
+      "type": "implementation_evidence",
+      "name": "Automated Test Results",
+      "description": "Implementation synchronization adapter for automated test results.",
+      "status": "Planned",
+      "owner": "TEAM-000002",
+      "version": "1.0.0",
+      "aliases": [
+        "SYNC-SRC-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "source_kind": "test_results",
+        "location": null,
+        "evidence_status": "NOT_CONNECTED",
+        "authority": "evidence",
+        "canonical_overwrite_permitted": false,
+        "approval_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000002",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "IMPL-000007",
+      "type": "implementation_evidence",
+      "name": "Deployment Evidence",
+      "description": "Implementation synchronization adapter for deployment evidence.",
+      "status": "Planned",
+      "owner": "TEAM-000002",
+      "version": "1.0.0",
+      "aliases": [
+        "SYNC-SRC-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "source_kind": "deployment",
+        "location": null,
+        "evidence_status": "NOT_CONNECTED",
+        "authority": "evidence",
+        "canonical_overwrite_permitted": false,
+        "approval_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000002",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "IMPL-000008",
+      "type": "implementation_evidence",
+      "name": "Runtime Telemetry",
+      "description": "Implementation synchronization adapter for runtime telemetry.",
+      "status": "Planned",
+      "owner": "TEAM-000002",
+      "version": "1.0.0",
+      "aliases": [
+        "SYNC-SRC-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "source_kind": "runtime_telemetry",
+        "location": null,
+        "evidence_status": "NOT_CONNECTED",
+        "authority": "evidence",
+        "canonical_overwrite_permitted": false,
+        "approval_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000002",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    }
+  ]
+}

@@ -1,0 +1,3907 @@
+{
+  "registry": "screens",
+  "version": "1.0.0",
+  "generated_at": "2026-07-12T03:39:37Z",
+  "records": [
+    {
+      "id": "SCR-000001",
+      "type": "screen",
+      "name": "Decision Center Decision Dashboard",
+      "description": "Primary decision surface for Decision Center.",
+      "status": "In Design",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-SCR-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/dc",
+        "screen_purpose": "Convert material business signals into prioritized, explainable, owned decisions and measurable outcomes.",
+        "responsive_strategy": "Mobile decision-first redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "stale",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000002",
+      "type": "screen",
+      "name": "Decision inbox and saved views Workspace",
+      "description": "Purpose-built work surface for decision inbox and saved views.",
+      "status": "In Design",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-SCR-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/dc/1",
+        "screen_purpose": "Operate Decision inbox and saved views",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000003",
+      "type": "screen",
+      "name": "Priority and urgency explanation Workspace",
+      "description": "Purpose-built work surface for priority and urgency explanation.",
+      "status": "In Design",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-SCR-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/dc/2",
+        "screen_purpose": "Operate Priority and urgency explanation",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000004",
+      "type": "screen",
+      "name": "Decision detail and evidence bundle Workspace",
+      "description": "Purpose-built work surface for decision detail and evidence bundle.",
+      "status": "In Design",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-SCR-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/dc/3",
+        "screen_purpose": "Operate Decision detail and evidence bundle",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000005",
+      "type": "screen",
+      "name": "Alternative and trade-off comparison Workspace",
+      "description": "Purpose-built work surface for alternative and trade-off comparison.",
+      "status": "In Design",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-SCR-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/dc/4",
+        "screen_purpose": "Operate Alternative and trade-off comparison",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000006",
+      "type": "screen",
+      "name": "Assignment and due-date control Workspace",
+      "description": "Purpose-built work surface for assignment and due-date control.",
+      "status": "In Design",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-SCR-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/dc/5",
+        "screen_purpose": "Operate Assignment and due-date control",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000007",
+      "type": "screen",
+      "name": "Approval and escalation Workspace",
+      "description": "Purpose-built work surface for approval and escalation.",
+      "status": "In Design",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-SCR-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/dc/6",
+        "screen_purpose": "Operate Approval and escalation",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000008",
+      "type": "screen",
+      "name": "Action and rationale recording Workspace",
+      "description": "Purpose-built work surface for action and rationale recording.",
+      "status": "In Design",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-SCR-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/dc/7",
+        "screen_purpose": "Operate Action and rationale recording",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000009",
+      "type": "screen",
+      "name": "Outcome follow-up and learning Workspace",
+      "description": "Purpose-built work surface for outcome follow-up and learning.",
+      "status": "In Design",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-SCR-009"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/dc/8",
+        "screen_purpose": "Operate Outcome follow-up and learning",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000010",
+      "type": "screen",
+      "name": "Business Memory Decision Dashboard",
+      "description": "Primary decision surface for Business Memory.",
+      "status": "In Design",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-SCR-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/bm",
+        "screen_purpose": "Preserve the business's decisions, context, outcomes, and lessons as permission-aware organizational memory.",
+        "responsive_strategy": "Mobile decision-first redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "stale",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000011",
+      "type": "screen",
+      "name": "Decision timeline Workspace",
+      "description": "Purpose-built work surface for decision timeline.",
+      "status": "In Design",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-SCR-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/bm/1",
+        "screen_purpose": "Operate Decision timeline",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000012",
+      "type": "screen",
+      "name": "Immutable context snapshots Workspace",
+      "description": "Purpose-built work surface for immutable context snapshots.",
+      "status": "In Design",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-SCR-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/bm/2",
+        "screen_purpose": "Operate Immutable context snapshots",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000013",
+      "type": "screen",
+      "name": "Outcome and lesson capture Workspace",
+      "description": "Purpose-built work surface for outcome and lesson capture.",
+      "status": "In Design",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-SCR-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/bm/3",
+        "screen_purpose": "Operate Outcome and lesson capture",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000014",
+      "type": "screen",
+      "name": "Structured and semantic search Workspace",
+      "description": "Purpose-built work surface for structured and semantic search.",
+      "status": "In Design",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-SCR-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/bm/4",
+        "screen_purpose": "Operate Structured and semantic search",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000015",
+      "type": "screen",
+      "name": "Source and freshness lineage Workspace",
+      "description": "Purpose-built work surface for source and freshness lineage.",
+      "status": "In Design",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-SCR-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/bm/5",
+        "screen_purpose": "Operate Source and freshness lineage",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000016",
+      "type": "screen",
+      "name": "Memory collections and tags Workspace",
+      "description": "Purpose-built work surface for memory collections and tags.",
+      "status": "In Design",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-SCR-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/bm/6",
+        "screen_purpose": "Operate Memory collections and tags",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000017",
+      "type": "screen",
+      "name": "Retention and privacy control Workspace",
+      "description": "Purpose-built work surface for retention and privacy control.",
+      "status": "In Design",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-SCR-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/bm/7",
+        "screen_purpose": "Operate Retention and privacy control",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000018",
+      "type": "screen",
+      "name": "Citation-ready retrieval Workspace",
+      "description": "Purpose-built work surface for citation-ready retrieval.",
+      "status": "In Design",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-SCR-009"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/bm/8",
+        "screen_purpose": "Operate Citation-ready retrieval",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000019",
+      "type": "screen",
+      "name": "AI Engine Decision Dashboard",
+      "description": "Primary decision surface for AI Engine.",
+      "status": "In Design",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-SCR-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/ai",
+        "screen_purpose": "Provide provider-agnostic, explainable, evaluated intelligence that augments human judgment across ZYVORA.",
+        "responsive_strategy": "Mobile decision-first redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "stale",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000020",
+      "type": "screen",
+      "name": "Model Gateway Workspace",
+      "description": "Purpose-built work surface for model gateway.",
+      "status": "In Design",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-SCR-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/ai/1",
+        "screen_purpose": "Operate Model Gateway",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000021",
+      "type": "screen",
+      "name": "Prompt Registry Workspace",
+      "description": "Purpose-built work surface for prompt registry.",
+      "status": "In Design",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-SCR-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/ai/2",
+        "screen_purpose": "Operate Prompt Registry",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000022",
+      "type": "screen",
+      "name": "Retrieval service Workspace",
+      "description": "Purpose-built work surface for retrieval service.",
+      "status": "In Design",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-SCR-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/ai/3",
+        "screen_purpose": "Operate Retrieval service",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000023",
+      "type": "screen",
+      "name": "Recommendation service Workspace",
+      "description": "Purpose-built work surface for recommendation service.",
+      "status": "In Design",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-SCR-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/ai/4",
+        "screen_purpose": "Operate Recommendation service",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000024",
+      "type": "screen",
+      "name": "Forecasting service Workspace",
+      "description": "Purpose-built work surface for forecasting service.",
+      "status": "In Design",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-SCR-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/ai/5",
+        "screen_purpose": "Operate Forecasting service",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000025",
+      "type": "screen",
+      "name": "Explainability service Workspace",
+      "description": "Purpose-built work surface for explainability service.",
+      "status": "In Design",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-SCR-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/ai/6",
+        "screen_purpose": "Operate Explainability service",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000026",
+      "type": "screen",
+      "name": "Evaluation and release gates Workspace",
+      "description": "Purpose-built work surface for evaluation and release gates.",
+      "status": "In Design",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-SCR-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/ai/7",
+        "screen_purpose": "Operate Evaluation and release gates",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000027",
+      "type": "screen",
+      "name": "Cost, latency, safety, and drift monitoring Workspace",
+      "description": "Purpose-built work surface for cost, latency, safety, and drift monitoring.",
+      "status": "In Design",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-SCR-009"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/ai/8",
+        "screen_purpose": "Operate Cost, latency, safety, and drift monitoring",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000028",
+      "type": "screen",
+      "name": "Identity, Workspace, Permissions & Audit Decision Dashboard",
+      "description": "Primary decision surface for Identity, Workspace, Permissions & Audit.",
+      "status": "In Design",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-SCR-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/iam",
+        "screen_purpose": "Establish trusted identity, tenant boundaries, least-privilege authority, session control, and reconstructable platform evidence.",
+        "responsive_strategy": "Mobile decision-first redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "stale",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000029",
+      "type": "screen",
+      "name": "Authentication adapter Workspace",
+      "description": "Purpose-built work surface for authentication adapter.",
+      "status": "In Design",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-SCR-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/iam/1",
+        "screen_purpose": "Operate Authentication adapter",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000030",
+      "type": "screen",
+      "name": "Workspace lifecycle Workspace",
+      "description": "Purpose-built work surface for workspace lifecycle.",
+      "status": "In Design",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-SCR-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/iam/2",
+        "screen_purpose": "Operate Workspace lifecycle",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000031",
+      "type": "screen",
+      "name": "Invitation and membership Workspace",
+      "description": "Purpose-built work surface for invitation and membership.",
+      "status": "In Design",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-SCR-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/iam/3",
+        "screen_purpose": "Operate Invitation and membership",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000032",
+      "type": "screen",
+      "name": "Roles and permission grants Workspace",
+      "description": "Purpose-built work surface for roles and permission grants.",
+      "status": "In Design",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-SCR-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/iam/4",
+        "screen_purpose": "Operate Roles and permission grants",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000033",
+      "type": "screen",
+      "name": "Policy evaluation Workspace",
+      "description": "Purpose-built work surface for policy evaluation.",
+      "status": "In Design",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-SCR-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/iam/5",
+        "screen_purpose": "Operate Policy evaluation",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000034",
+      "type": "screen",
+      "name": "MFA and session management Workspace",
+      "description": "Purpose-built work surface for mfa and session management.",
+      "status": "In Design",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-SCR-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/iam/6",
+        "screen_purpose": "Operate MFA and session management",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000035",
+      "type": "screen",
+      "name": "API keys and service identities Workspace",
+      "description": "Purpose-built work surface for api keys and service identities.",
+      "status": "In Design",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-SCR-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/iam/7",
+        "screen_purpose": "Operate API keys and service identities",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000036",
+      "type": "screen",
+      "name": "Audit explorer and evidence export Workspace",
+      "description": "Purpose-built work surface for audit explorer and evidence export.",
+      "status": "In Design",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-SCR-009"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/iam/8",
+        "screen_purpose": "Operate Audit explorer and evidence export",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000037",
+      "type": "screen",
+      "name": "Finance Decision Dashboard",
+      "description": "Primary decision surface for Finance.",
+      "status": "In Design",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-SCR-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/fin",
+        "screen_purpose": "Maintain correct, auditable financial records and convert them into cash, profitability, control, and planning decisions.",
+        "responsive_strategy": "Mobile decision-first redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "stale",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000038",
+      "type": "screen",
+      "name": "Chart of accounts Workspace",
+      "description": "Purpose-built work surface for chart of accounts.",
+      "status": "In Design",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-SCR-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/fin/1",
+        "screen_purpose": "Operate Chart of accounts",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000039",
+      "type": "screen",
+      "name": "Double-entry journals Workspace",
+      "description": "Purpose-built work surface for double-entry journals.",
+      "status": "In Design",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-SCR-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/fin/2",
+        "screen_purpose": "Operate Double-entry journals",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000040",
+      "type": "screen",
+      "name": "Accounts receivable and invoicing Workspace",
+      "description": "Purpose-built work surface for accounts receivable and invoicing.",
+      "status": "In Design",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-SCR-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/fin/3",
+        "screen_purpose": "Operate Accounts receivable and invoicing",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000041",
+      "type": "screen",
+      "name": "Accounts payable and bills Workspace",
+      "description": "Purpose-built work surface for accounts payable and bills.",
+      "status": "In Design",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-SCR-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/fin/4",
+        "screen_purpose": "Operate Accounts payable and bills",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000042",
+      "type": "screen",
+      "name": "Payments and reconciliation Workspace",
+      "description": "Purpose-built work surface for payments and reconciliation.",
+      "status": "In Design",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-SCR-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/fin/5",
+        "screen_purpose": "Operate Payments and reconciliation",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000043",
+      "type": "screen",
+      "name": "Budgets and variance Workspace",
+      "description": "Purpose-built work surface for budgets and variance.",
+      "status": "In Design",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-SCR-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/fin/6",
+        "screen_purpose": "Operate Budgets and variance",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000044",
+      "type": "screen",
+      "name": "Cash-flow forecasting Workspace",
+      "description": "Purpose-built work surface for cash-flow forecasting.",
+      "status": "In Design",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-SCR-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/fin/7",
+        "screen_purpose": "Operate Cash-flow forecasting",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000045",
+      "type": "screen",
+      "name": "Financial statements and close Workspace",
+      "description": "Purpose-built work surface for financial statements and close.",
+      "status": "In Design",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-SCR-009"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/fin/8",
+        "screen_purpose": "Operate Financial statements and close",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000046",
+      "type": "screen",
+      "name": "Inventory Decision Dashboard",
+      "description": "Primary decision surface for Inventory.",
+      "status": "In Design",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-SCR-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/inv",
+        "screen_purpose": "Maintain trusted stock truth and improve replenishment, availability, purchasing, transfer, and working-capital decisions.",
+        "responsive_strategy": "Mobile decision-first redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "stale",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000047",
+      "type": "screen",
+      "name": "Product and SKU catalog Workspace",
+      "description": "Purpose-built work surface for product and sku catalog.",
+      "status": "In Design",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-SCR-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/inv/1",
+        "screen_purpose": "Operate Product and SKU catalog",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000048",
+      "type": "screen",
+      "name": "Warehouse and location model Workspace",
+      "description": "Purpose-built work surface for warehouse and location model.",
+      "status": "In Design",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-SCR-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/inv/2",
+        "screen_purpose": "Operate Warehouse and location model",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000049",
+      "type": "screen",
+      "name": "Stock ledger and availability Workspace",
+      "description": "Purpose-built work surface for stock ledger and availability.",
+      "status": "In Design",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-SCR-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/inv/3",
+        "screen_purpose": "Operate Stock ledger and availability",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000050",
+      "type": "screen",
+      "name": "Reservations and allocations Workspace",
+      "description": "Purpose-built work surface for reservations and allocations.",
+      "status": "In Design",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-SCR-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/inv/4",
+        "screen_purpose": "Operate Reservations and allocations",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000051",
+      "type": "screen",
+      "name": "Purchase orders and receipts Workspace",
+      "description": "Purpose-built work surface for purchase orders and receipts.",
+      "status": "In Design",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-SCR-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/inv/5",
+        "screen_purpose": "Operate Purchase orders and receipts",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000052",
+      "type": "screen",
+      "name": "Transfers and adjustments Workspace",
+      "description": "Purpose-built work surface for transfers and adjustments.",
+      "status": "In Design",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-SCR-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/inv/6",
+        "screen_purpose": "Operate Transfers and adjustments",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000053",
+      "type": "screen",
+      "name": "Lot/serial/batch traceability Workspace",
+      "description": "Purpose-built work surface for lot/serial/batch traceability.",
+      "status": "In Design",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-SCR-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/inv/7",
+        "screen_purpose": "Operate Lot/serial/batch traceability",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000054",
+      "type": "screen",
+      "name": "Reorder and demand planning Workspace",
+      "description": "Purpose-built work surface for reorder and demand planning.",
+      "status": "In Design",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-SCR-009"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/inv/8",
+        "screen_purpose": "Operate Reorder and demand planning",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000055",
+      "type": "screen",
+      "name": "CRM Decision Dashboard",
+      "description": "Primary decision surface for CRM.",
+      "status": "In Design",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-SCR-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/crm",
+        "screen_purpose": "Create a trusted customer relationship record and improve acquisition, pipeline, retention, and service decisions.",
+        "responsive_strategy": "Mobile decision-first redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "stale",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000056",
+      "type": "screen",
+      "name": "Contacts and organizations Workspace",
+      "description": "Purpose-built work surface for contacts and organizations.",
+      "status": "In Design",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-SCR-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/crm/1",
+        "screen_purpose": "Operate Contacts and organizations",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000057",
+      "type": "screen",
+      "name": "Lead capture and qualification Workspace",
+      "description": "Purpose-built work surface for lead capture and qualification.",
+      "status": "In Design",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-SCR-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/crm/2",
+        "screen_purpose": "Operate Lead capture and qualification",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000058",
+      "type": "screen",
+      "name": "Opportunity pipelines Workspace",
+      "description": "Purpose-built work surface for opportunity pipelines.",
+      "status": "In Design",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-SCR-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/crm/3",
+        "screen_purpose": "Operate Opportunity pipelines",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000059",
+      "type": "screen",
+      "name": "Activities and tasks Workspace",
+      "description": "Purpose-built work surface for activities and tasks.",
+      "status": "In Design",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-SCR-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/crm/4",
+        "screen_purpose": "Operate Activities and tasks",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000060",
+      "type": "screen",
+      "name": "Segmentation Workspace",
+      "description": "Purpose-built work surface for segmentation.",
+      "status": "In Design",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-SCR-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/crm/5",
+        "screen_purpose": "Operate Segmentation",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000061",
+      "type": "screen",
+      "name": "Customer value and health Workspace",
+      "description": "Purpose-built work surface for customer value and health.",
+      "status": "In Design",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-SCR-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/crm/6",
+        "screen_purpose": "Operate Customer value and health",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000062",
+      "type": "screen",
+      "name": "Campaign attribution Workspace",
+      "description": "Purpose-built work surface for campaign attribution.",
+      "status": "In Design",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-SCR-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/crm/7",
+        "screen_purpose": "Operate Campaign attribution",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000063",
+      "type": "screen",
+      "name": "Consent and communication history Workspace",
+      "description": "Purpose-built work surface for consent and communication history.",
+      "status": "In Design",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-SCR-009"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/crm/8",
+        "screen_purpose": "Operate Consent and communication history",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000064",
+      "type": "screen",
+      "name": "Analytics Decision Dashboard",
+      "description": "Primary decision surface for Analytics.",
+      "status": "In Design",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-SCR-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/ana",
+        "screen_purpose": "Provide governed, decision-oriented metrics, dashboards, drill-down, exports, and scheduled reporting across ZYVORA.",
+        "responsive_strategy": "Mobile decision-first redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "stale",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000065",
+      "type": "screen",
+      "name": "Metric registry Workspace",
+      "description": "Purpose-built work surface for metric registry.",
+      "status": "In Design",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-SCR-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/ana/1",
+        "screen_purpose": "Operate Metric registry",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000066",
+      "type": "screen",
+      "name": "Semantic definitions Workspace",
+      "description": "Purpose-built work surface for semantic definitions.",
+      "status": "In Design",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-SCR-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/ana/2",
+        "screen_purpose": "Operate Semantic definitions",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000067",
+      "type": "screen",
+      "name": "Dashboard composition Workspace",
+      "description": "Purpose-built work surface for dashboard composition.",
+      "status": "In Design",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-SCR-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/ana/3",
+        "screen_purpose": "Operate Dashboard composition",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000068",
+      "type": "screen",
+      "name": "Filters and saved views Workspace",
+      "description": "Purpose-built work surface for filters and saved views.",
+      "status": "In Design",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-SCR-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/ana/4",
+        "screen_purpose": "Operate Filters and saved views",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000069",
+      "type": "screen",
+      "name": "Drill-down and lineage Workspace",
+      "description": "Purpose-built work surface for drill-down and lineage.",
+      "status": "In Design",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-SCR-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/ana/5",
+        "screen_purpose": "Operate Drill-down and lineage",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000070",
+      "type": "screen",
+      "name": "Scheduled reports Workspace",
+      "description": "Purpose-built work surface for scheduled reports.",
+      "status": "In Design",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-SCR-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/ana/6",
+        "screen_purpose": "Operate Scheduled reports",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000071",
+      "type": "screen",
+      "name": "Exports Workspace",
+      "description": "Purpose-built work surface for exports.",
+      "status": "In Design",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-SCR-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/ana/7",
+        "screen_purpose": "Operate Exports",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000072",
+      "type": "screen",
+      "name": "Annotations and forecast overlays Workspace",
+      "description": "Purpose-built work surface for annotations and forecast overlays.",
+      "status": "In Design",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-SCR-009"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/ana/8",
+        "screen_purpose": "Operate Annotations and forecast overlays",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000073",
+      "type": "screen",
+      "name": "Documents Decision Dashboard",
+      "description": "Primary decision surface for Documents.",
+      "status": "In Design",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-SCR-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/doc",
+        "screen_purpose": "Create, govern, store, retrieve, approve, sign, and retain business documents as trusted operational evidence.",
+        "responsive_strategy": "Mobile decision-first redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "stale",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000074",
+      "type": "screen",
+      "name": "Document metadata and storage Workspace",
+      "description": "Purpose-built work surface for document metadata and storage.",
+      "status": "In Design",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-SCR-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/doc/1",
+        "screen_purpose": "Operate Document metadata and storage",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000075",
+      "type": "screen",
+      "name": "Templates Workspace",
+      "description": "Purpose-built work surface for templates.",
+      "status": "In Design",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-SCR-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/doc/2",
+        "screen_purpose": "Operate Templates",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000076",
+      "type": "screen",
+      "name": "Generation Workspace",
+      "description": "Purpose-built work surface for generation.",
+      "status": "In Design",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-SCR-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/doc/3",
+        "screen_purpose": "Operate Generation",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000077",
+      "type": "screen",
+      "name": "Versioning Workspace",
+      "description": "Purpose-built work surface for versioning.",
+      "status": "In Design",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-SCR-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/doc/4",
+        "screen_purpose": "Operate Versioning",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000078",
+      "type": "screen",
+      "name": "Review and approval Workspace",
+      "description": "Purpose-built work surface for review and approval.",
+      "status": "In Design",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-SCR-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/doc/5",
+        "screen_purpose": "Operate Review and approval",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000079",
+      "type": "screen",
+      "name": "Electronic signature adapters Workspace",
+      "description": "Purpose-built work surface for electronic signature adapters.",
+      "status": "In Design",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-SCR-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/doc/6",
+        "screen_purpose": "Operate Electronic signature adapters",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000080",
+      "type": "screen",
+      "name": "OCR/import Workspace",
+      "description": "Purpose-built work surface for ocr/import.",
+      "status": "In Design",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-SCR-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/doc/7",
+        "screen_purpose": "Operate OCR/import",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000081",
+      "type": "screen",
+      "name": "Retention and legal hold Workspace",
+      "description": "Purpose-built work surface for retention and legal hold.",
+      "status": "In Design",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-SCR-009"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/doc/8",
+        "screen_purpose": "Operate Retention and legal hold",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000082",
+      "type": "screen",
+      "name": "Notifications Decision Dashboard",
+      "description": "Primary decision surface for Notifications.",
+      "status": "In Design",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-SCR-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/not",
+        "screen_purpose": "Deliver timely, relevant, explainable communications across in-app, email, SMS, WhatsApp, and push channels without creating noise.",
+        "responsive_strategy": "Mobile decision-first redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "stale",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000083",
+      "type": "screen",
+      "name": "Unified notification events Workspace",
+      "description": "Purpose-built work surface for unified notification events.",
+      "status": "In Design",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-SCR-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/not/1",
+        "screen_purpose": "Operate Unified notification events",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000084",
+      "type": "screen",
+      "name": "Templates and versions Workspace",
+      "description": "Purpose-built work surface for templates and versions.",
+      "status": "In Design",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-SCR-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/not/2",
+        "screen_purpose": "Operate Templates and versions",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000085",
+      "type": "screen",
+      "name": "Category and priority Workspace",
+      "description": "Purpose-built work surface for category and priority.",
+      "status": "In Design",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-SCR-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/not/3",
+        "screen_purpose": "Operate Category and priority",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000086",
+      "type": "screen",
+      "name": "User preferences and quiet hours Workspace",
+      "description": "Purpose-built work surface for user preferences and quiet hours.",
+      "status": "In Design",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-SCR-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/not/4",
+        "screen_purpose": "Operate User preferences and quiet hours",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000087",
+      "type": "screen",
+      "name": "Channel routing Workspace",
+      "description": "Purpose-built work surface for channel routing.",
+      "status": "In Design",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-SCR-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/not/5",
+        "screen_purpose": "Operate Channel routing",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000088",
+      "type": "screen",
+      "name": "Delivery retries Workspace",
+      "description": "Purpose-built work surface for delivery retries.",
+      "status": "In Design",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-SCR-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/not/6",
+        "screen_purpose": "Operate Delivery retries",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000089",
+      "type": "screen",
+      "name": "Digest and grouping Workspace",
+      "description": "Purpose-built work surface for digest and grouping.",
+      "status": "In Design",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-SCR-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/not/7",
+        "screen_purpose": "Operate Digest and grouping",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000090",
+      "type": "screen",
+      "name": "Escalation and audit Workspace",
+      "description": "Purpose-built work surface for escalation and audit.",
+      "status": "In Design",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-SCR-009"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/not/8",
+        "screen_purpose": "Operate Escalation and audit",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000091",
+      "type": "screen",
+      "name": "Human Resources Decision Dashboard",
+      "description": "Primary decision surface for Human Resources.",
+      "status": "In Design",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-SCR-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/hr",
+        "screen_purpose": "Maintain trusted workforce records and improve hiring, onboarding, capacity, performance, leave, and workforce-cost decisions.",
+        "responsive_strategy": "Mobile decision-first redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "stale",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000092",
+      "type": "screen",
+      "name": "Employee records Workspace",
+      "description": "Purpose-built work surface for employee records.",
+      "status": "In Design",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-SCR-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/hr/1",
+        "screen_purpose": "Operate Employee records",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000093",
+      "type": "screen",
+      "name": "Organization and positions Workspace",
+      "description": "Purpose-built work surface for organization and positions.",
+      "status": "In Design",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-SCR-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/hr/2",
+        "screen_purpose": "Operate Organization and positions",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000094",
+      "type": "screen",
+      "name": "Recruitment Workspace",
+      "description": "Purpose-built work surface for recruitment.",
+      "status": "In Design",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-SCR-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/hr/3",
+        "screen_purpose": "Operate Recruitment",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000095",
+      "type": "screen",
+      "name": "Onboarding/offboarding Workspace",
+      "description": "Purpose-built work surface for onboarding/offboarding.",
+      "status": "In Design",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-SCR-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/hr/4",
+        "screen_purpose": "Operate Onboarding/offboarding",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000096",
+      "type": "screen",
+      "name": "Leave and attendance Workspace",
+      "description": "Purpose-built work surface for leave and attendance.",
+      "status": "In Design",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-SCR-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/hr/5",
+        "screen_purpose": "Operate Leave and attendance",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000097",
+      "type": "screen",
+      "name": "Performance and goals Workspace",
+      "description": "Purpose-built work surface for performance and goals.",
+      "status": "In Design",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-SCR-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/hr/6",
+        "screen_purpose": "Operate Performance and goals",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000098",
+      "type": "screen",
+      "name": "Compensation records Workspace",
+      "description": "Purpose-built work surface for compensation records.",
+      "status": "In Design",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-SCR-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/hr/7",
+        "screen_purpose": "Operate Compensation records",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000099",
+      "type": "screen",
+      "name": "Workforce planning and compliance Workspace",
+      "description": "Purpose-built work surface for workforce planning and compliance.",
+      "status": "In Design",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-SCR-009"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/hr/8",
+        "screen_purpose": "Operate Workforce planning and compliance",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000100",
+      "type": "screen",
+      "name": "Manufacturing Decision Dashboard",
+      "description": "Primary decision surface for Manufacturing.",
+      "status": "In Design",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-SCR-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/mfg",
+        "screen_purpose": "Plan and control production, materials, quality, capacity, and cost so the business can fulfill demand reliably and profitably.",
+        "responsive_strategy": "Mobile decision-first redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "stale",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000101",
+      "type": "screen",
+      "name": "Bills of materials Workspace",
+      "description": "Purpose-built work surface for bills of materials.",
+      "status": "In Design",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-SCR-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/mfg/1",
+        "screen_purpose": "Operate Bills of materials",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000102",
+      "type": "screen",
+      "name": "Routings and work centers Workspace",
+      "description": "Purpose-built work surface for routings and work centers.",
+      "status": "In Design",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-SCR-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/mfg/2",
+        "screen_purpose": "Operate Routings and work centers",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000103",
+      "type": "screen",
+      "name": "Production orders Workspace",
+      "description": "Purpose-built work surface for production orders.",
+      "status": "In Design",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-SCR-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/mfg/3",
+        "screen_purpose": "Operate Production orders",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000104",
+      "type": "screen",
+      "name": "Material requirements Workspace",
+      "description": "Purpose-built work surface for material requirements.",
+      "status": "In Design",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-SCR-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/mfg/4",
+        "screen_purpose": "Operate Material requirements",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000105",
+      "type": "screen",
+      "name": "Scheduling and capacity Workspace",
+      "description": "Purpose-built work surface for scheduling and capacity.",
+      "status": "In Design",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-SCR-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/mfg/5",
+        "screen_purpose": "Operate Scheduling and capacity",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000106",
+      "type": "screen",
+      "name": "Issue/consume/produce Workspace",
+      "description": "Purpose-built work surface for issue/consume/produce.",
+      "status": "In Design",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-SCR-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/mfg/6",
+        "screen_purpose": "Operate Issue/consume/produce",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000107",
+      "type": "screen",
+      "name": "Quality control Workspace",
+      "description": "Purpose-built work surface for quality control.",
+      "status": "In Design",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-SCR-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/mfg/7",
+        "screen_purpose": "Operate Quality control",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "SCR-000108",
+      "type": "screen",
+      "name": "Yield, scrap, downtime, and cost Workspace",
+      "description": "Purpose-built work surface for yield, scrap, downtime, and cost.",
+      "status": "In Design",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-SCR-009"
+      ],
+      "tags": [],
+      "attributes": {
+        "route_intent": "/mfg/8",
+        "screen_purpose": "Operate Yield, scrap, downtime, and cost",
+        "responsive_strategy": "Task-prioritized mobile redesign",
+        "accessibility": "WCAG 2.1 AA",
+        "states": [
+          "loading",
+          "empty",
+          "ready",
+          "error",
+          "permission_denied"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    }
+  ]
+}

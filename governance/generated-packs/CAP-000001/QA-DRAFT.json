@@ -1,0 +1,1666 @@
+{
+  "generator_version": "2.3.0",
+  "generated_at": "2026-07-12T03:39:43.066Z",
+  "source_capability": {
+    "id": "CAP-000001",
+    "type": "capability",
+    "name": "Decision Center Core Capability",
+    "status": "Specified",
+    "version": "1.0.0",
+    "owner": "TEAM-000007"
+  },
+  "source_fingerprint": "f6aa891ed08ea2d08773c17b3269e160b1ad672352790e41bef040ff9475d088",
+  "authority": "DRAFT_NOT_AUTHORIZED",
+  "promotion_gate": "BLOCKED_SOURCE_INCOMPLETE",
+  "blockers": [
+    "MET-000001: metric formula is not approved",
+    "MET-000002: metric formula is not approved",
+    "MET-000003: metric formula is not approved",
+    "MET-000004: metric formula is not approved",
+    "MET-000005: metric formula is not approved",
+    "MET-000006: metric formula is not approved",
+    "PROMPT-000001: prompt template and evaluation are not approved",
+    "PROMPT-000002: prompt template and evaluation are not approved",
+    "PROMPT-000003: prompt template and evaluation are not approved",
+    "PROMPT-000004: prompt template and evaluation are not approved",
+    "PROMPT-000005: prompt template and evaluation are not approved",
+    "WF-000001: ordered workflow steps are not approved",
+    "WF-000002: ordered workflow steps are not approved",
+    "WF-000003: ordered workflow steps are not approved",
+    "WF-000004: ordered workflow steps are not approved",
+    "WF-000005: ordered workflow steps are not approved",
+    "WF-000006: ordered workflow steps are not approved",
+    "WF-000007: ordered workflow steps are not approved",
+    "UF-000001: UI transitions and recovery states are not approved",
+    "UF-000002: UI transitions and recovery states are not approved",
+    "UF-000003: UI transitions and recovery states are not approved",
+    "UF-000004: UI transitions and recovery states are not approved",
+    "UF-000005: UI transitions and recovery states are not approved",
+    "UF-000006: UI transitions and recovery states are not approved",
+    "UF-000007: UI transitions and recovery states are not approved",
+    "UF-000008: UI transitions and recovery states are not approved",
+    "UF-000009: UI transitions and recovery states are not approved",
+    "EVT-000001: event domain payload is not approved",
+    "EVT-000002: event domain payload is not approved",
+    "EVT-000003: event domain payload is not approved",
+    "EVT-000004: event domain payload is not approved",
+    "EVT-000005: event domain payload is not approved",
+    "EVT-000006: event domain payload is not approved",
+    "API-000001: API request and response schema is not approved",
+    "API-000002: API request and response schema is not approved",
+    "API-000003: API request and response schema is not approved",
+    "API-000004: API request and response schema is not approved",
+    "API-000005: API request and response schema is not approved",
+    "API-000006: API request and response schema is not approved",
+    "API-000007: API request and response schema is not approved",
+    "API-000008: API request and response schema is not approved"
+  ],
+  "completeness": {
+    "source_records": 133,
+    "blocker_count": 41,
+    "traceability_gate": "PASS_CURRENT_MATURITY",
+    "traceability_coverage_percent": 55
+  },
+  "provenance": [
+    {
+      "id": "CAP-000001",
+      "type": "capability",
+      "name": "Decision Center Core Capability",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "MOD-000001",
+      "type": "module",
+      "name": "Decision Center",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "DEC-000001",
+      "type": "decision",
+      "name": "What requires attention now?",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "DEC-000002",
+      "type": "decision",
+      "name": "Which action should be taken?",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "DEC-000003",
+      "type": "decision",
+      "name": "Who must decide or approve?",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "DEC-000004",
+      "type": "decision",
+      "name": "Did the decision produce the expected outcome?",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "FEAT-000001",
+      "type": "feature",
+      "name": "Decision inbox and saved views",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "FEAT-000002",
+      "type": "feature",
+      "name": "Priority and urgency explanation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "FEAT-000003",
+      "type": "feature",
+      "name": "Decision detail and evidence bundle",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "FEAT-000004",
+      "type": "feature",
+      "name": "Alternative and trade-off comparison",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "FEAT-000005",
+      "type": "feature",
+      "name": "Assignment and due-date control",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "FEAT-000006",
+      "type": "feature",
+      "name": "Approval and escalation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "FEAT-000007",
+      "type": "feature",
+      "name": "Action and rationale recording",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "FEAT-000008",
+      "type": "feature",
+      "name": "Outcome follow-up and learning",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "BR-000001",
+      "type": "business_rule",
+      "name": "Decision Center Rule 1",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "BR-000002",
+      "type": "business_rule",
+      "name": "Decision Center Rule 2",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "BR-000003",
+      "type": "business_rule",
+      "name": "Decision Center Rule 3",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "BR-000004",
+      "type": "business_rule",
+      "name": "Decision Center Rule 4",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "BR-000005",
+      "type": "business_rule",
+      "name": "Decision Center Rule 5",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "BR-000006",
+      "type": "business_rule",
+      "name": "Decision Center Rule 6",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "BR-000007",
+      "type": "business_rule",
+      "name": "Decision Center Rule 7",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "BR-000008",
+      "type": "business_rule",
+      "name": "Decision Center Rule 8",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "WF-000001",
+      "type": "workflow",
+      "name": "Signal-to-decision creation",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "WF-000002",
+      "type": "workflow",
+      "name": "Decision triage",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "WF-000003",
+      "type": "workflow",
+      "name": "Evidence review",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "WF-000004",
+      "type": "workflow",
+      "name": "Approval path",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "WF-000005",
+      "type": "workflow",
+      "name": "Action recording",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "WF-000006",
+      "type": "workflow",
+      "name": "Outcome review",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "WF-000007",
+      "type": "workflow",
+      "name": "Reopen and recovery",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "ENT-000001",
+      "type": "entity",
+      "name": "DecisionContext",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "ENT-000002",
+      "type": "entity",
+      "name": "DecisionEvidence",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "ENT-000003",
+      "type": "entity",
+      "name": "DecisionAlternative",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "ENT-000004",
+      "type": "entity",
+      "name": "DecisionAssignment",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "ENT-000005",
+      "type": "entity",
+      "name": "ApprovalRequest",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "ENT-000006",
+      "type": "entity",
+      "name": "DecisionAction",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "ENT-000007",
+      "type": "entity",
+      "name": "DecisionOutcome",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "ENT-000008",
+      "type": "entity",
+      "name": "DecisionComment",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "API-000001",
+      "type": "api",
+      "name": "Decision Center Decision inbox and saved views API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "API-000002",
+      "type": "api",
+      "name": "Decision Center Priority and urgency explanation API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "API-000003",
+      "type": "api",
+      "name": "Decision Center Decision detail and evidence bundle API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "API-000004",
+      "type": "api",
+      "name": "Decision Center Alternative and trade-off comparison API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "API-000005",
+      "type": "api",
+      "name": "Decision Center Assignment and due-date control API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "API-000006",
+      "type": "api",
+      "name": "Decision Center Approval and escalation API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "API-000007",
+      "type": "api",
+      "name": "Decision Center Action and rationale recording API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "API-000008",
+      "type": "api",
+      "name": "Decision Center Outcome follow-up and learning API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "EVT-000001",
+      "type": "event",
+      "name": "DecisionQueued",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "EVT-000002",
+      "type": "event",
+      "name": "DecisionPriorityChanged",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "EVT-000003",
+      "type": "event",
+      "name": "DecisionAssigned",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "EVT-000004",
+      "type": "event",
+      "name": "ApprovalRequested",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "EVT-000005",
+      "type": "event",
+      "name": "DecisionRecorded",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "EVT-000006",
+      "type": "event",
+      "name": "DecisionOutcomeCaptured",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "PERM-000001",
+      "type": "permission",
+      "name": "Read Decision inbox and saved views",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "PERM-000002",
+      "type": "permission",
+      "name": "Manage Decision inbox and saved views",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "PERM-000003",
+      "type": "permission",
+      "name": "Read Priority and urgency explanation",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "PERM-000004",
+      "type": "permission",
+      "name": "Manage Priority and urgency explanation",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "PERM-000005",
+      "type": "permission",
+      "name": "Read Decision detail and evidence bundle",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "PERM-000006",
+      "type": "permission",
+      "name": "Manage Decision detail and evidence bundle",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "PERM-000007",
+      "type": "permission",
+      "name": "Read Alternative and trade-off comparison",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "PERM-000008",
+      "type": "permission",
+      "name": "Manage Alternative and trade-off comparison",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "PERM-000009",
+      "type": "permission",
+      "name": "Read Assignment and due-date control",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "PERM-000010",
+      "type": "permission",
+      "name": "Manage Assignment and due-date control",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "PERM-000011",
+      "type": "permission",
+      "name": "Read Approval and escalation",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "PERM-000012",
+      "type": "permission",
+      "name": "Manage Approval and escalation",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "PERM-000013",
+      "type": "permission",
+      "name": "Read Action and rationale recording",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "PERM-000014",
+      "type": "permission",
+      "name": "Manage Action and rationale recording",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "PERM-000015",
+      "type": "permission",
+      "name": "Read Outcome follow-up and learning",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "PERM-000016",
+      "type": "permission",
+      "name": "Manage Outcome follow-up and learning",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "SCR-000001",
+      "type": "screen",
+      "name": "Decision Center Decision Dashboard",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "SCR-000002",
+      "type": "screen",
+      "name": "Decision inbox and saved views Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "SCR-000003",
+      "type": "screen",
+      "name": "Priority and urgency explanation Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "SCR-000004",
+      "type": "screen",
+      "name": "Decision detail and evidence bundle Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "SCR-000005",
+      "type": "screen",
+      "name": "Alternative and trade-off comparison Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "SCR-000006",
+      "type": "screen",
+      "name": "Assignment and due-date control Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "SCR-000007",
+      "type": "screen",
+      "name": "Approval and escalation Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "SCR-000008",
+      "type": "screen",
+      "name": "Action and rationale recording Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "SCR-000009",
+      "type": "screen",
+      "name": "Outcome follow-up and learning Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "UF-000001",
+      "type": "ui_flow",
+      "name": "Decision Center UI Flow 1",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "UF-000002",
+      "type": "ui_flow",
+      "name": "Decision Center UI Flow 2",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "UF-000003",
+      "type": "ui_flow",
+      "name": "Decision Center UI Flow 3",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "UF-000004",
+      "type": "ui_flow",
+      "name": "Decision Center UI Flow 4",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "UF-000005",
+      "type": "ui_flow",
+      "name": "Decision Center UI Flow 5",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "UF-000006",
+      "type": "ui_flow",
+      "name": "Decision Center UI Flow 6",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "UF-000007",
+      "type": "ui_flow",
+      "name": "Decision Center UI Flow 7",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "UF-000008",
+      "type": "ui_flow",
+      "name": "Decision Center UI Flow 8",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "UF-000009",
+      "type": "ui_flow",
+      "name": "Decision Center UI Flow 9",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "MET-000001",
+      "type": "metric",
+      "name": "Median time to decision",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "MET-000002",
+      "type": "metric",
+      "name": "Unowned decision rate",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "MET-000003",
+      "type": "metric",
+      "name": "Approval cycle time",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "MET-000004",
+      "type": "metric",
+      "name": "Outcome capture rate",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "MET-000005",
+      "type": "metric",
+      "name": "Decision reopen rate",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "MET-000006",
+      "type": "metric",
+      "name": "Recommendation acceptance with reason",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "AICAP-000001",
+      "type": "ai_capability",
+      "name": "Decision Center: Priority assistance",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "AICAP-000002",
+      "type": "ai_capability",
+      "name": "Decision Center: Alternative generation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "AICAP-000003",
+      "type": "ai_capability",
+      "name": "Decision Center: Trade-off explanation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "AICAP-000004",
+      "type": "ai_capability",
+      "name": "Decision Center: Outcome comparison",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "AICAP-000005",
+      "type": "ai_capability",
+      "name": "Decision Center: Similar-decision retrieval",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "PROMPT-000001",
+      "type": "prompt",
+      "name": "Decision Center: Priority assistance Prompt",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000006"
+    },
+    {
+      "id": "PROMPT-000002",
+      "type": "prompt",
+      "name": "Decision Center: Alternative generation Prompt",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000006"
+    },
+    {
+      "id": "PROMPT-000003",
+      "type": "prompt",
+      "name": "Decision Center: Trade-off explanation Prompt",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000006"
+    },
+    {
+      "id": "PROMPT-000004",
+      "type": "prompt",
+      "name": "Decision Center: Outcome comparison Prompt",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000006"
+    },
+    {
+      "id": "PROMPT-000005",
+      "type": "prompt",
+      "name": "Decision Center: Similar-decision retrieval Prompt",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000006"
+    },
+    {
+      "id": "AUTO-000001",
+      "type": "automation",
+      "name": "New assignment Automation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "AUTO-000002",
+      "type": "automation",
+      "name": "Approval requested Automation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "AUTO-000003",
+      "type": "automation",
+      "name": "Due soon Automation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "AUTO-000004",
+      "type": "automation",
+      "name": "Overdue escalation Automation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "AUTO-000005",
+      "type": "automation",
+      "name": "Outcome review due Automation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "AUTO-000006",
+      "type": "automation",
+      "name": "Decision materially changed Automation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "NOT-000001",
+      "type": "notification",
+      "name": "New assignment",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "NOT-000002",
+      "type": "notification",
+      "name": "Approval requested",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "NOT-000003",
+      "type": "notification",
+      "name": "Due soon",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "NOT-000004",
+      "type": "notification",
+      "name": "Overdue escalation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "NOT-000005",
+      "type": "notification",
+      "name": "Outcome review due",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "NOT-000006",
+      "type": "notification",
+      "name": "Decision materially changed",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "RPT-000001",
+      "type": "report",
+      "name": "Decision effectiveness",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "RPT-000002",
+      "type": "report",
+      "name": "Approval performance",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "RPT-000003",
+      "type": "report",
+      "name": "Overdue decisions",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "RPT-000004",
+      "type": "report",
+      "name": "Outcome variance",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "RPT-000005",
+      "type": "report",
+      "name": "Decision quality and trust",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "INT-000001",
+      "type": "integration",
+      "name": "Business Memory",
+      "status": "Planned",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "INT-000002",
+      "type": "integration",
+      "name": "AI Engine",
+      "status": "Planned",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "INT-000003",
+      "type": "integration",
+      "name": "Notifications",
+      "status": "Planned",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "INT-000004",
+      "type": "integration",
+      "name": "Analytics",
+      "status": "Planned",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "INT-000005",
+      "type": "integration",
+      "name": "Every domain module",
+      "status": "Planned",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "ART-000008",
+      "type": "artifact",
+      "name": "ZYVORA Decision Center PRD v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000021",
+      "type": "artifact",
+      "name": "ZYVORA Decision Center Technical Specification v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000029",
+      "type": "artifact",
+      "name": "ZYVORA BP-000 Platform Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000030",
+      "type": "artifact",
+      "name": "ZYVORA BP-001 UI Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000031",
+      "type": "artifact",
+      "name": "ZYVORA BP-002 Backend Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000032",
+      "type": "artifact",
+      "name": "ZYVORA BP-003 Database Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000033",
+      "type": "artifact",
+      "name": "ZYVORA BP-004 API Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000034",
+      "type": "artifact",
+      "name": "ZYVORA BP-005 AI Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000035",
+      "type": "artifact",
+      "name": "ZYVORA BP-006 Security Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000036",
+      "type": "artifact",
+      "name": "ZYVORA BP-007 Infrastructure Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    }
+  ],
+  "kind": "draft_qa_pack",
+  "paired_build_fingerprint": "f6aa891ed08ea2d08773c17b3269e160b1ad672352790e41bef040ff9475d088",
+  "test_scenarios": [
+    {
+      "id": "RULE-BR-000001",
+      "type": "unit_and_domain",
+      "source": "BR-000001",
+      "scenario": "Verify business rule: Every decision identifies a supported Builder decision and source owner.",
+      "expected": "Exact approved rule holds for valid, invalid, boundary, and concurrent cases."
+    },
+    {
+      "id": "RULE-BR-000002",
+      "type": "unit_and_domain",
+      "source": "BR-000002",
+      "scenario": "Verify business rule: Priority exposes material factors and never relies on an unexplained score.",
+      "expected": "Exact approved rule holds for valid, invalid, boundary, and concurrent cases."
+    },
+    {
+      "id": "RULE-BR-000003",
+      "type": "unit_and_domain",
+      "source": "BR-000003",
+      "scenario": "Verify business rule: High-impact actions require configured human approval.",
+      "expected": "Exact approved rule holds for valid, invalid, boundary, and concurrent cases."
+    },
+    {
+      "id": "RULE-BR-000004",
+      "type": "unit_and_domain",
+      "source": "BR-000004",
+      "scenario": "Verify business rule: A recorded decision requires owner, rationale, evidence snapshot, and expected outcome.",
+      "expected": "Exact approved rule holds for valid, invalid, boundary, and concurrent cases."
+    },
+    {
+      "id": "RULE-BR-000005",
+      "type": "unit_and_domain",
+      "source": "BR-000005",
+      "scenario": "Verify business rule: Completed approval history and evidence snapshots are append-only.",
+      "expected": "Exact approved rule holds for valid, invalid, boundary, and concurrent cases."
+    },
+    {
+      "id": "RULE-BR-000006",
+      "type": "unit_and_domain",
+      "source": "BR-000006",
+      "scenario": "Verify business rule: Overdue decisions escalate only through a declared policy.",
+      "expected": "Exact approved rule holds for valid, invalid, boundary, and concurrent cases."
+    },
+    {
+      "id": "RULE-BR-000007",
+      "type": "unit_and_domain",
+      "source": "BR-000007",
+      "scenario": "Verify business rule: Outcome capture never rewrites the original expectation.",
+      "expected": "Exact approved rule holds for valid, invalid, boundary, and concurrent cases."
+    },
+    {
+      "id": "RULE-BR-000008",
+      "type": "unit_and_domain",
+      "source": "BR-000008",
+      "scenario": "Verify business rule: AI confidence cannot grant authority.",
+      "expected": "Exact approved rule holds for valid, invalid, boundary, and concurrent cases."
+    },
+    {
+      "id": "WF-WF-000001",
+      "type": "end_to_end",
+      "source": "WF-000001",
+      "scenario": "Verify happy, alternative, failure, and recovery paths for Signal-to-decision creation",
+      "expected": "Approved workflow outcome, evidence, timing, and recovery requirements are satisfied."
+    },
+    {
+      "id": "WF-WF-000002",
+      "type": "end_to_end",
+      "source": "WF-000002",
+      "scenario": "Verify happy, alternative, failure, and recovery paths for Decision triage",
+      "expected": "Approved workflow outcome, evidence, timing, and recovery requirements are satisfied."
+    },
+    {
+      "id": "WF-WF-000003",
+      "type": "end_to_end",
+      "source": "WF-000003",
+      "scenario": "Verify happy, alternative, failure, and recovery paths for Evidence review",
+      "expected": "Approved workflow outcome, evidence, timing, and recovery requirements are satisfied."
+    },
+    {
+      "id": "WF-WF-000004",
+      "type": "end_to_end",
+      "source": "WF-000004",
+      "scenario": "Verify happy, alternative, failure, and recovery paths for Approval path",
+      "expected": "Approved workflow outcome, evidence, timing, and recovery requirements are satisfied."
+    },
+    {
+      "id": "WF-WF-000005",
+      "type": "end_to_end",
+      "source": "WF-000005",
+      "scenario": "Verify happy, alternative, failure, and recovery paths for Action recording",
+      "expected": "Approved workflow outcome, evidence, timing, and recovery requirements are satisfied."
+    },
+    {
+      "id": "WF-WF-000006",
+      "type": "end_to_end",
+      "source": "WF-000006",
+      "scenario": "Verify happy, alternative, failure, and recovery paths for Outcome review",
+      "expected": "Approved workflow outcome, evidence, timing, and recovery requirements are satisfied."
+    },
+    {
+      "id": "WF-WF-000007",
+      "type": "end_to_end",
+      "source": "WF-000007",
+      "scenario": "Verify happy, alternative, failure, and recovery paths for Reopen and recovery",
+      "expected": "Approved workflow outcome, evidence, timing, and recovery requirements are satisfied."
+    },
+    {
+      "id": "API-API-000001",
+      "type": "contract_and_security",
+      "source": "API-000001",
+      "scenario": "Verify request, response, authorization, idempotency, pagination, validation, and errors for Decision Center Decision inbox and saved views API",
+      "expected": "Approved API contract and security policy are preserved."
+    },
+    {
+      "id": "API-API-000002",
+      "type": "contract_and_security",
+      "source": "API-000002",
+      "scenario": "Verify request, response, authorization, idempotency, pagination, validation, and errors for Decision Center Priority and urgency explanation API",
+      "expected": "Approved API contract and security policy are preserved."
+    },
+    {
+      "id": "API-API-000003",
+      "type": "contract_and_security",
+      "source": "API-000003",
+      "scenario": "Verify request, response, authorization, idempotency, pagination, validation, and errors for Decision Center Decision detail and evidence bundle API",
+      "expected": "Approved API contract and security policy are preserved."
+    },
+    {
+      "id": "API-API-000004",
+      "type": "contract_and_security",
+      "source": "API-000004",
+      "scenario": "Verify request, response, authorization, idempotency, pagination, validation, and errors for Decision Center Alternative and trade-off comparison API",
+      "expected": "Approved API contract and security policy are preserved."
+    },
+    {
+      "id": "API-API-000005",
+      "type": "contract_and_security",
+      "source": "API-000005",
+      "scenario": "Verify request, response, authorization, idempotency, pagination, validation, and errors for Decision Center Assignment and due-date control API",
+      "expected": "Approved API contract and security policy are preserved."
+    },
+    {
+      "id": "API-API-000006",
+      "type": "contract_and_security",
+      "source": "API-000006",
+      "scenario": "Verify request, response, authorization, idempotency, pagination, validation, and errors for Decision Center Approval and escalation API",
+      "expected": "Approved API contract and security policy are preserved."
+    },
+    {
+      "id": "API-API-000007",
+      "type": "contract_and_security",
+      "source": "API-000007",
+      "scenario": "Verify request, response, authorization, idempotency, pagination, validation, and errors for Decision Center Action and rationale recording API",
+      "expected": "Approved API contract and security policy are preserved."
+    },
+    {
+      "id": "API-API-000008",
+      "type": "contract_and_security",
+      "source": "API-000008",
+      "scenario": "Verify request, response, authorization, idempotency, pagination, validation, and errors for Decision Center Outcome follow-up and learning API",
+      "expected": "Approved API contract and security policy are preserved."
+    },
+    {
+      "id": "EVT-EVT-000001",
+      "type": "integration",
+      "source": "EVT-000001",
+      "scenario": "Verify production, schema compatibility, ordering, duplication, retry, and idempotent consumption for DecisionQueued",
+      "expected": "Versioned event meaning and compatibility contract are preserved."
+    },
+    {
+      "id": "EVT-EVT-000002",
+      "type": "integration",
+      "source": "EVT-000002",
+      "scenario": "Verify production, schema compatibility, ordering, duplication, retry, and idempotent consumption for DecisionPriorityChanged",
+      "expected": "Versioned event meaning and compatibility contract are preserved."
+    },
+    {
+      "id": "EVT-EVT-000003",
+      "type": "integration",
+      "source": "EVT-000003",
+      "scenario": "Verify production, schema compatibility, ordering, duplication, retry, and idempotent consumption for DecisionAssigned",
+      "expected": "Versioned event meaning and compatibility contract are preserved."
+    },
+    {
+      "id": "EVT-EVT-000004",
+      "type": "integration",
+      "source": "EVT-000004",
+      "scenario": "Verify production, schema compatibility, ordering, duplication, retry, and idempotent consumption for ApprovalRequested",
+      "expected": "Versioned event meaning and compatibility contract are preserved."
+    },
+    {
+      "id": "EVT-EVT-000005",
+      "type": "integration",
+      "source": "EVT-000005",
+      "scenario": "Verify production, schema compatibility, ordering, duplication, retry, and idempotent consumption for DecisionRecorded",
+      "expected": "Versioned event meaning and compatibility contract are preserved."
+    },
+    {
+      "id": "EVT-EVT-000006",
+      "type": "integration",
+      "source": "EVT-000006",
+      "scenario": "Verify production, schema compatibility, ordering, duplication, retry, and idempotent consumption for DecisionOutcomeCaptured",
+      "expected": "Versioned event meaning and compatibility contract are preserved."
+    },
+    {
+      "id": "PERM-PERM-000001",
+      "type": "security",
+      "source": "PERM-000001",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Read Decision inbox and saved views",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000002",
+      "type": "security",
+      "source": "PERM-000002",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Manage Decision inbox and saved views",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000003",
+      "type": "security",
+      "source": "PERM-000003",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Read Priority and urgency explanation",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000004",
+      "type": "security",
+      "source": "PERM-000004",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Manage Priority and urgency explanation",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000005",
+      "type": "security",
+      "source": "PERM-000005",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Read Decision detail and evidence bundle",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000006",
+      "type": "security",
+      "source": "PERM-000006",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Manage Decision detail and evidence bundle",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000007",
+      "type": "security",
+      "source": "PERM-000007",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Read Alternative and trade-off comparison",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000008",
+      "type": "security",
+      "source": "PERM-000008",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Manage Alternative and trade-off comparison",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000009",
+      "type": "security",
+      "source": "PERM-000009",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Read Assignment and due-date control",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000010",
+      "type": "security",
+      "source": "PERM-000010",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Manage Assignment and due-date control",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000011",
+      "type": "security",
+      "source": "PERM-000011",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Read Approval and escalation",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000012",
+      "type": "security",
+      "source": "PERM-000012",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Manage Approval and escalation",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000013",
+      "type": "security",
+      "source": "PERM-000013",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Read Action and rationale recording",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000014",
+      "type": "security",
+      "source": "PERM-000014",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Manage Action and rationale recording",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000015",
+      "type": "security",
+      "source": "PERM-000015",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Read Outcome follow-up and learning",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000016",
+      "type": "security",
+      "source": "PERM-000016",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Manage Outcome follow-up and learning",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "SCR-SCR-000001",
+      "type": "ui_accessibility",
+      "source": "SCR-000001",
+      "scenario": "Verify responsive, keyboard, screen-reader, loading, empty, error, stale, and permission states for Decision Center Decision Dashboard",
+      "expected": "Decision purpose remains clear and WCAG 2.1 AA obligations pass."
+    },
+    {
+      "id": "SCR-SCR-000002",
+      "type": "ui_accessibility",
+      "source": "SCR-000002",
+      "scenario": "Verify responsive, keyboard, screen-reader, loading, empty, error, stale, and permission states for Decision inbox and saved views Workspace",
+      "expected": "Decision purpose remains clear and WCAG 2.1 AA obligations pass."
+    },
+    {
+      "id": "SCR-SCR-000003",
+      "type": "ui_accessibility",
+      "source": "SCR-000003",
+      "scenario": "Verify responsive, keyboard, screen-reader, loading, empty, error, stale, and permission states for Priority and urgency explanation Workspace",
+      "expected": "Decision purpose remains clear and WCAG 2.1 AA obligations pass."
+    },
+    {
+      "id": "SCR-SCR-000004",
+      "type": "ui_accessibility",
+      "source": "SCR-000004",
+      "scenario": "Verify responsive, keyboard, screen-reader, loading, empty, error, stale, and permission states for Decision detail and evidence bundle Workspace",
+      "expected": "Decision purpose remains clear and WCAG 2.1 AA obligations pass."
+    },
+    {
+      "id": "SCR-SCR-000005",
+      "type": "ui_accessibility",
+      "source": "SCR-000005",
+      "scenario": "Verify responsive, keyboard, screen-reader, loading, empty, error, stale, and permission states for Alternative and trade-off comparison Workspace",
+      "expected": "Decision purpose remains clear and WCAG 2.1 AA obligations pass."
+    },
+    {
+      "id": "SCR-SCR-000006",
+      "type": "ui_accessibility",
+      "source": "SCR-000006",
+      "scenario": "Verify responsive, keyboard, screen-reader, loading, empty, error, stale, and permission states for Assignment and due-date control Workspace",
+      "expected": "Decision purpose remains clear and WCAG 2.1 AA obligations pass."
+    },
+    {
+      "id": "SCR-SCR-000007",
+      "type": "ui_accessibility",
+      "source": "SCR-000007",
+      "scenario": "Verify responsive, keyboard, screen-reader, loading, empty, error, stale, and permission states for Approval and escalation Workspace",
+      "expected": "Decision purpose remains clear and WCAG 2.1 AA obligations pass."
+    },
+    {
+      "id": "SCR-SCR-000008",
+      "type": "ui_accessibility",
+      "source": "SCR-000008",
+      "scenario": "Verify responsive, keyboard, screen-reader, loading, empty, error, stale, and permission states for Action and rationale recording Workspace",
+      "expected": "Decision purpose remains clear and WCAG 2.1 AA obligations pass."
+    },
+    {
+      "id": "SCR-SCR-000009",
+      "type": "ui_accessibility",
+      "source": "SCR-000009",
+      "scenario": "Verify responsive, keyboard, screen-reader, loading, empty, error, stale, and permission states for Outcome follow-up and learning Workspace",
+      "expected": "Decision purpose remains clear and WCAG 2.1 AA obligations pass."
+    }
+  ],
+  "regression_scope": [
+    "CAP-000001",
+    "MOD-000001",
+    "DEC-000001",
+    "DEC-000002",
+    "DEC-000003",
+    "DEC-000004",
+    "FEAT-000001",
+    "FEAT-000002",
+    "FEAT-000003",
+    "FEAT-000004",
+    "FEAT-000005",
+    "FEAT-000006",
+    "FEAT-000007",
+    "FEAT-000008",
+    "BR-000001",
+    "BR-000002",
+    "BR-000003",
+    "BR-000004",
+    "BR-000005",
+    "BR-000006",
+    "BR-000007",
+    "BR-000008",
+    "WF-000001",
+    "WF-000002",
+    "WF-000003",
+    "WF-000004",
+    "WF-000005",
+    "WF-000006",
+    "WF-000007",
+    "ENT-000001",
+    "ENT-000002",
+    "ENT-000003",
+    "ENT-000004",
+    "ENT-000005",
+    "ENT-000006",
+    "ENT-000007",
+    "ENT-000008",
+    "API-000001",
+    "API-000002",
+    "API-000003",
+    "API-000004",
+    "API-000005",
+    "API-000006",
+    "API-000007",
+    "API-000008",
+    "EVT-000001",
+    "EVT-000002",
+    "EVT-000003",
+    "EVT-000004",
+    "EVT-000005",
+    "EVT-000006",
+    "PERM-000001",
+    "PERM-000002",
+    "PERM-000003",
+    "PERM-000004",
+    "PERM-000005",
+    "PERM-000006",
+    "PERM-000007",
+    "PERM-000008",
+    "PERM-000009",
+    "PERM-000010",
+    "PERM-000011",
+    "PERM-000012",
+    "PERM-000013",
+    "PERM-000014",
+    "PERM-000015",
+    "PERM-000016",
+    "SCR-000001",
+    "SCR-000002",
+    "SCR-000003",
+    "SCR-000004",
+    "SCR-000005",
+    "SCR-000006",
+    "SCR-000007",
+    "SCR-000008",
+    "SCR-000009",
+    "UF-000001",
+    "UF-000002",
+    "UF-000003",
+    "UF-000004",
+    "UF-000005",
+    "UF-000006",
+    "UF-000007",
+    "UF-000008",
+    "UF-000009",
+    "MET-000001",
+    "MET-000002",
+    "MET-000003",
+    "MET-000004",
+    "MET-000005",
+    "MET-000006",
+    "AICAP-000001",
+    "AICAP-000002",
+    "AICAP-000003",
+    "AICAP-000004",
+    "AICAP-000005",
+    "PROMPT-000001",
+    "PROMPT-000002",
+    "PROMPT-000003",
+    "PROMPT-000004",
+    "PROMPT-000005",
+    "AUTO-000001",
+    "AUTO-000002",
+    "AUTO-000003",
+    "AUTO-000004",
+    "AUTO-000005",
+    "AUTO-000006",
+    "NOT-000001",
+    "NOT-000002",
+    "NOT-000003",
+    "NOT-000004",
+    "NOT-000005",
+    "NOT-000006",
+    "RPT-000001",
+    "RPT-000002",
+    "RPT-000003",
+    "RPT-000004",
+    "RPT-000005",
+    "INT-000001",
+    "INT-000002",
+    "INT-000003",
+    "INT-000004",
+    "INT-000005",
+    "ART-000008",
+    "ART-000021",
+    "ART-000029",
+    "ART-000030",
+    "ART-000031",
+    "ART-000032",
+    "ART-000033",
+    "ART-000034",
+    "ART-000035",
+    "ART-000036"
+  ],
+  "performance_requirements": [
+    "Validate published performance budgets from the approved Technical Specification.",
+    "Verify no unbounded query, queue, retry, export, or AI workload."
+  ],
+  "security_requirements": [
+    "Tenant isolation",
+    "Authorization deny paths",
+    "Sensitive-data handling",
+    "Audit completeness",
+    "Rate limiting and abuse controls"
+  ],
+  "evidence_required": [
+    "Automated test results",
+    "Accessibility results",
+    "Security results",
+    "Performance results",
+    "Manual exploratory record",
+    "Deployment and rollback rehearsal"
+  ]
+}

@@ -1,0 +1,1818 @@
+{
+  "generator_version": "2.3.0",
+  "generated_at": "2026-07-12T03:39:43.108Z",
+  "source_capability": {
+    "id": "CAP-000006",
+    "type": "capability",
+    "name": "Inventory Core Capability",
+    "status": "Specified",
+    "version": "1.0.0",
+    "owner": "TEAM-000012"
+  },
+  "source_fingerprint": "f27c224fda8c13340a2b49ab5ca2d5b91a18bd6c623c0feabb40298352f1c560",
+  "authority": "DRAFT_NOT_AUTHORIZED",
+  "promotion_gate": "BLOCKED_SOURCE_INCOMPLETE",
+  "blockers": [
+    "MET-000035: metric formula is not approved",
+    "MET-000036: metric formula is not approved",
+    "MET-000037: metric formula is not approved",
+    "MET-000038: metric formula is not approved",
+    "MET-000039: metric formula is not approved",
+    "MET-000040: metric formula is not approved",
+    "MET-000041: metric formula is not approved",
+    "MET-000042: metric formula is not approved",
+    "PROMPT-000020: prompt template and evaluation are not approved",
+    "PROMPT-000021: prompt template and evaluation are not approved",
+    "PROMPT-000022: prompt template and evaluation are not approved",
+    "PROMPT-000023: prompt template and evaluation are not approved",
+    "PROMPT-000024: prompt template and evaluation are not approved",
+    "WF-000039: ordered workflow steps are not approved",
+    "WF-000040: ordered workflow steps are not approved",
+    "WF-000041: ordered workflow steps are not approved",
+    "WF-000042: ordered workflow steps are not approved",
+    "WF-000043: ordered workflow steps are not approved",
+    "WF-000044: ordered workflow steps are not approved",
+    "WF-000045: ordered workflow steps are not approved",
+    "WF-000046: ordered workflow steps are not approved",
+    "UF-000046: UI transitions and recovery states are not approved",
+    "UF-000047: UI transitions and recovery states are not approved",
+    "UF-000048: UI transitions and recovery states are not approved",
+    "UF-000049: UI transitions and recovery states are not approved",
+    "UF-000050: UI transitions and recovery states are not approved",
+    "UF-000051: UI transitions and recovery states are not approved",
+    "UF-000052: UI transitions and recovery states are not approved",
+    "UF-000053: UI transitions and recovery states are not approved",
+    "UF-000054: UI transitions and recovery states are not approved",
+    "EVT-000034: event domain payload is not approved",
+    "EVT-000035: event domain payload is not approved",
+    "EVT-000036: event domain payload is not approved",
+    "EVT-000037: event domain payload is not approved",
+    "EVT-000038: event domain payload is not approved",
+    "EVT-000039: event domain payload is not approved",
+    "EVT-000040: event domain payload is not approved",
+    "EVT-000041: event domain payload is not approved",
+    "API-000041: API request and response schema is not approved",
+    "API-000042: API request and response schema is not approved",
+    "API-000043: API request and response schema is not approved",
+    "API-000044: API request and response schema is not approved",
+    "API-000045: API request and response schema is not approved",
+    "API-000046: API request and response schema is not approved",
+    "API-000047: API request and response schema is not approved",
+    "API-000048: API request and response schema is not approved"
+  ],
+  "completeness": {
+    "source_records": 147,
+    "blocker_count": 46,
+    "traceability_gate": "PASS_CURRENT_MATURITY",
+    "traceability_coverage_percent": 55
+  },
+  "provenance": [
+    {
+      "id": "CAP-000006",
+      "type": "capability",
+      "name": "Inventory Core Capability",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "MOD-000006",
+      "type": "module",
+      "name": "Inventory",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "DEC-000021",
+      "type": "decision",
+      "name": "What should be reordered, when, and how much?",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "DEC-000022",
+      "type": "decision",
+      "name": "Where is stock available?",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "DEC-000023",
+      "type": "decision",
+      "name": "Which movement or variance requires investigation?",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "DEC-000024",
+      "type": "decision",
+      "name": "Which supplier and purchase action is best?",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "FEAT-000041",
+      "type": "feature",
+      "name": "Product and SKU catalog",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "FEAT-000042",
+      "type": "feature",
+      "name": "Warehouse and location model",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "FEAT-000043",
+      "type": "feature",
+      "name": "Stock ledger and availability",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "FEAT-000044",
+      "type": "feature",
+      "name": "Reservations and allocations",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "FEAT-000045",
+      "type": "feature",
+      "name": "Purchase orders and receipts",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "FEAT-000046",
+      "type": "feature",
+      "name": "Transfers and adjustments",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "FEAT-000047",
+      "type": "feature",
+      "name": "Lot/serial/batch traceability",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "FEAT-000048",
+      "type": "feature",
+      "name": "Reorder and demand planning",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "BR-000041",
+      "type": "business_rule",
+      "name": "Inventory Rule 1",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "BR-000042",
+      "type": "business_rule",
+      "name": "Inventory Rule 2",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "BR-000043",
+      "type": "business_rule",
+      "name": "Inventory Rule 3",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "BR-000044",
+      "type": "business_rule",
+      "name": "Inventory Rule 4",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "BR-000045",
+      "type": "business_rule",
+      "name": "Inventory Rule 5",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "BR-000046",
+      "type": "business_rule",
+      "name": "Inventory Rule 6",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "BR-000047",
+      "type": "business_rule",
+      "name": "Inventory Rule 7",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "BR-000048",
+      "type": "business_rule",
+      "name": "Inventory Rule 8",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "WF-000039",
+      "type": "workflow",
+      "name": "Create product",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "WF-000040",
+      "type": "workflow",
+      "name": "Receive stock",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "WF-000041",
+      "type": "workflow",
+      "name": "Reserve and release",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "WF-000042",
+      "type": "workflow",
+      "name": "Transfer stock",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "WF-000043",
+      "type": "workflow",
+      "name": "Adjust with reason",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "WF-000044",
+      "type": "workflow",
+      "name": "Cycle count",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "WF-000045",
+      "type": "workflow",
+      "name": "Purchase and receive",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "WF-000046",
+      "type": "workflow",
+      "name": "Reorder decision",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "ENT-000048",
+      "type": "entity",
+      "name": "Product",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "ENT-000049",
+      "type": "entity",
+      "name": "Variant",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "ENT-000050",
+      "type": "entity",
+      "name": "Warehouse",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "ENT-000051",
+      "type": "entity",
+      "name": "Location",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "ENT-000052",
+      "type": "entity",
+      "name": "StockBalance",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "ENT-000053",
+      "type": "entity",
+      "name": "StockMovement",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "ENT-000054",
+      "type": "entity",
+      "name": "Reservation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "ENT-000055",
+      "type": "entity",
+      "name": "PurchaseOrder",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "ENT-000056",
+      "type": "entity",
+      "name": "GoodsReceipt",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "ENT-000057",
+      "type": "entity",
+      "name": "Supplier",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "ENT-000058",
+      "type": "entity",
+      "name": "TransferOrder",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "ENT-000059",
+      "type": "entity",
+      "name": "InventoryCount",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "API-000041",
+      "type": "api",
+      "name": "Inventory Product and SKU catalog API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "API-000042",
+      "type": "api",
+      "name": "Inventory Warehouse and location model API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "API-000043",
+      "type": "api",
+      "name": "Inventory Stock ledger and availability API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "API-000044",
+      "type": "api",
+      "name": "Inventory Reservations and allocations API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "API-000045",
+      "type": "api",
+      "name": "Inventory Purchase orders and receipts API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "API-000046",
+      "type": "api",
+      "name": "Inventory Transfers and adjustments API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "API-000047",
+      "type": "api",
+      "name": "Inventory Lot/serial/batch traceability API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "API-000048",
+      "type": "api",
+      "name": "Inventory Reorder and demand planning API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "EVT-000034",
+      "type": "event",
+      "name": "ProductCreated",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "EVT-000035",
+      "type": "event",
+      "name": "StockLevelChanged",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "EVT-000036",
+      "type": "event",
+      "name": "StockReserved",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "EVT-000037",
+      "type": "event",
+      "name": "StockReceived",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "EVT-000038",
+      "type": "event",
+      "name": "StockTransferred",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "EVT-000039",
+      "type": "event",
+      "name": "InventoryAdjusted",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "EVT-000040",
+      "type": "event",
+      "name": "CountVarianceDetected",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "EVT-000041",
+      "type": "event",
+      "name": "ReorderRecommended",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "PERM-000081",
+      "type": "permission",
+      "name": "Read Product and SKU catalog",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "PERM-000082",
+      "type": "permission",
+      "name": "Manage Product and SKU catalog",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "PERM-000083",
+      "type": "permission",
+      "name": "Read Warehouse and location model",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "PERM-000084",
+      "type": "permission",
+      "name": "Manage Warehouse and location model",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "PERM-000085",
+      "type": "permission",
+      "name": "Read Stock ledger and availability",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "PERM-000086",
+      "type": "permission",
+      "name": "Manage Stock ledger and availability",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "PERM-000087",
+      "type": "permission",
+      "name": "Read Reservations and allocations",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "PERM-000088",
+      "type": "permission",
+      "name": "Manage Reservations and allocations",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "PERM-000089",
+      "type": "permission",
+      "name": "Read Purchase orders and receipts",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "PERM-000090",
+      "type": "permission",
+      "name": "Manage Purchase orders and receipts",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "PERM-000091",
+      "type": "permission",
+      "name": "Read Transfers and adjustments",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "PERM-000092",
+      "type": "permission",
+      "name": "Manage Transfers and adjustments",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "PERM-000093",
+      "type": "permission",
+      "name": "Read Lot/serial/batch traceability",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "PERM-000094",
+      "type": "permission",
+      "name": "Manage Lot/serial/batch traceability",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "PERM-000095",
+      "type": "permission",
+      "name": "Read Reorder and demand planning",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "PERM-000096",
+      "type": "permission",
+      "name": "Manage Reorder and demand planning",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "SCR-000046",
+      "type": "screen",
+      "name": "Inventory Decision Dashboard",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "SCR-000047",
+      "type": "screen",
+      "name": "Product and SKU catalog Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "SCR-000048",
+      "type": "screen",
+      "name": "Warehouse and location model Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "SCR-000049",
+      "type": "screen",
+      "name": "Stock ledger and availability Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "SCR-000050",
+      "type": "screen",
+      "name": "Reservations and allocations Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "SCR-000051",
+      "type": "screen",
+      "name": "Purchase orders and receipts Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "SCR-000052",
+      "type": "screen",
+      "name": "Transfers and adjustments Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "SCR-000053",
+      "type": "screen",
+      "name": "Lot/serial/batch traceability Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "SCR-000054",
+      "type": "screen",
+      "name": "Reorder and demand planning Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "UF-000046",
+      "type": "ui_flow",
+      "name": "Inventory UI Flow 1",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "UF-000047",
+      "type": "ui_flow",
+      "name": "Inventory UI Flow 2",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "UF-000048",
+      "type": "ui_flow",
+      "name": "Inventory UI Flow 3",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "UF-000049",
+      "type": "ui_flow",
+      "name": "Inventory UI Flow 4",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "UF-000050",
+      "type": "ui_flow",
+      "name": "Inventory UI Flow 5",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "UF-000051",
+      "type": "ui_flow",
+      "name": "Inventory UI Flow 6",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "UF-000052",
+      "type": "ui_flow",
+      "name": "Inventory UI Flow 7",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "UF-000053",
+      "type": "ui_flow",
+      "name": "Inventory UI Flow 8",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "UF-000054",
+      "type": "ui_flow",
+      "name": "Inventory UI Flow 9",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "MET-000035",
+      "type": "metric",
+      "name": "Stockout rate",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "MET-000036",
+      "type": "metric",
+      "name": "Inventory turns",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "MET-000037",
+      "type": "metric",
+      "name": "Forecast accuracy",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "MET-000038",
+      "type": "metric",
+      "name": "Count accuracy",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "MET-000039",
+      "type": "metric",
+      "name": "Fill rate",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "MET-000040",
+      "type": "metric",
+      "name": "Excess/obsolete value",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "MET-000041",
+      "type": "metric",
+      "name": "Supplier lead-time variance",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "MET-000042",
+      "type": "metric",
+      "name": "Working capital in stock",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "AICAP-000020",
+      "type": "ai_capability",
+      "name": "Inventory: Demand forecast",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "AICAP-000021",
+      "type": "ai_capability",
+      "name": "Inventory: Reorder quantity",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "AICAP-000022",
+      "type": "ai_capability",
+      "name": "Inventory: Supplier comparison",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "AICAP-000023",
+      "type": "ai_capability",
+      "name": "Inventory: Anomaly and shrinkage detection",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "AICAP-000024",
+      "type": "ai_capability",
+      "name": "Inventory: Slow-moving stock explanation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "PROMPT-000020",
+      "type": "prompt",
+      "name": "Inventory: Demand forecast Prompt",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000006"
+    },
+    {
+      "id": "PROMPT-000021",
+      "type": "prompt",
+      "name": "Inventory: Reorder quantity Prompt",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000006"
+    },
+    {
+      "id": "PROMPT-000022",
+      "type": "prompt",
+      "name": "Inventory: Supplier comparison Prompt",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000006"
+    },
+    {
+      "id": "PROMPT-000023",
+      "type": "prompt",
+      "name": "Inventory: Anomaly and shrinkage detection Prompt",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000006"
+    },
+    {
+      "id": "PROMPT-000024",
+      "type": "prompt",
+      "name": "Inventory: Slow-moving stock explanation Prompt",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000006"
+    },
+    {
+      "id": "AUTO-000030",
+      "type": "automation",
+      "name": "Low stock Automation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "AUTO-000031",
+      "type": "automation",
+      "name": "Stockout risk Automation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "AUTO-000032",
+      "type": "automation",
+      "name": "Purchase approval Automation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "AUTO-000033",
+      "type": "automation",
+      "name": "Receipt variance Automation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "AUTO-000034",
+      "type": "automation",
+      "name": "Count variance Automation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "AUTO-000035",
+      "type": "automation",
+      "name": "Transfer delay Automation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "AUTO-000036",
+      "type": "automation",
+      "name": "Expiring lot Automation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "NOT-000030",
+      "type": "notification",
+      "name": "Low stock",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "NOT-000031",
+      "type": "notification",
+      "name": "Stockout risk",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "NOT-000032",
+      "type": "notification",
+      "name": "Purchase approval",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "NOT-000033",
+      "type": "notification",
+      "name": "Receipt variance",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "NOT-000034",
+      "type": "notification",
+      "name": "Count variance",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "NOT-000035",
+      "type": "notification",
+      "name": "Transfer delay",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "NOT-000036",
+      "type": "notification",
+      "name": "Expiring lot",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "RPT-000028",
+      "type": "report",
+      "name": "Stock valuation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "RPT-000029",
+      "type": "report",
+      "name": "Availability",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "RPT-000030",
+      "type": "report",
+      "name": "Movement ledger",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "RPT-000031",
+      "type": "report",
+      "name": "Reorder plan",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "RPT-000032",
+      "type": "report",
+      "name": "Supplier performance",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "RPT-000033",
+      "type": "report",
+      "name": "Count variance",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "RPT-000034",
+      "type": "report",
+      "name": "Aging and obsolescence",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "INT-000025",
+      "type": "integration",
+      "name": "Barcode devices",
+      "status": "Planned",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "INT-000026",
+      "type": "integration",
+      "name": "E-commerce",
+      "status": "Planned",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "INT-000027",
+      "type": "integration",
+      "name": "Shipping",
+      "status": "Planned",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "INT-000028",
+      "type": "integration",
+      "name": "Suppliers",
+      "status": "Planned",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "INT-000029",
+      "type": "integration",
+      "name": "Finance",
+      "status": "Planned",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "INT-000030",
+      "type": "integration",
+      "name": "Manufacturing",
+      "status": "Planned",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "ART-000013",
+      "type": "artifact",
+      "name": "ZYVORA Inventory PRD v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000026",
+      "type": "artifact",
+      "name": "ZYVORA Inventory Technical Specification v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000029",
+      "type": "artifact",
+      "name": "ZYVORA BP-000 Platform Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000030",
+      "type": "artifact",
+      "name": "ZYVORA BP-001 UI Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000031",
+      "type": "artifact",
+      "name": "ZYVORA BP-002 Backend Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000032",
+      "type": "artifact",
+      "name": "ZYVORA BP-003 Database Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000033",
+      "type": "artifact",
+      "name": "ZYVORA BP-004 API Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000034",
+      "type": "artifact",
+      "name": "ZYVORA BP-005 AI Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000035",
+      "type": "artifact",
+      "name": "ZYVORA BP-006 Security Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000036",
+      "type": "artifact",
+      "name": "ZYVORA BP-007 Infrastructure Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    }
+  ],
+  "kind": "draft_qa_pack",
+  "paired_build_fingerprint": "f27c224fda8c13340a2b49ab5ca2d5b91a18bd6c623c0feabb40298352f1c560",
+  "test_scenarios": [
+    {
+      "id": "RULE-BR-000041",
+      "type": "unit_and_domain",
+      "source": "BR-000041",
+      "scenario": "Verify business rule: Available quantity equals on-hand minus valid reservations and control holds.",
+      "expected": "Exact approved rule holds for valid, invalid, boundary, and concurrent cases."
+    },
+    {
+      "id": "RULE-BR-000042",
+      "type": "unit_and_domain",
+      "source": "BR-000042",
+      "scenario": "Verify business rule: Every quantity change creates an immutable stock movement.",
+      "expected": "Exact approved rule holds for valid, invalid, boundary, and concurrent cases."
+    },
+    {
+      "id": "RULE-BR-000043",
+      "type": "unit_and_domain",
+      "source": "BR-000043",
+      "scenario": "Verify business rule: Completed movements are reversed, not edited.",
+      "expected": "Exact approved rule holds for valid, invalid, boundary, and concurrent cases."
+    },
+    {
+      "id": "RULE-BR-000044",
+      "type": "unit_and_domain",
+      "source": "BR-000044",
+      "scenario": "Verify business rule: Negative stock is prohibited unless workspace policy explicitly permits it.",
+      "expected": "Exact approved rule holds for valid, invalid, boundary, and concurrent cases."
+    },
+    {
+      "id": "RULE-BR-000045",
+      "type": "unit_and_domain",
+      "source": "BR-000045",
+      "scenario": "Verify business rule: Transfers require balanced source and destination movements.",
+      "expected": "Exact approved rule holds for valid, invalid, boundary, and concurrent cases."
+    },
+    {
+      "id": "RULE-BR-000046",
+      "type": "unit_and_domain",
+      "source": "BR-000046",
+      "scenario": "Verify business rule: Receipt quantity beyond tolerance requires approval.",
+      "expected": "Exact approved rule holds for valid, invalid, boundary, and concurrent cases."
+    },
+    {
+      "id": "RULE-BR-000047",
+      "type": "unit_and_domain",
+      "source": "BR-000047",
+      "scenario": "Verify business rule: Lot/serial-controlled products require identifiers at configured transitions.",
+      "expected": "Exact approved rule holds for valid, invalid, boundary, and concurrent cases."
+    },
+    {
+      "id": "RULE-BR-000048",
+      "type": "unit_and_domain",
+      "source": "BR-000048",
+      "scenario": "Verify business rule: Reorder recommendations disclose forecast, lead time, safety stock, constraints, and confidence.",
+      "expected": "Exact approved rule holds for valid, invalid, boundary, and concurrent cases."
+    },
+    {
+      "id": "WF-WF-000039",
+      "type": "end_to_end",
+      "source": "WF-000039",
+      "scenario": "Verify happy, alternative, failure, and recovery paths for Create product",
+      "expected": "Approved workflow outcome, evidence, timing, and recovery requirements are satisfied."
+    },
+    {
+      "id": "WF-WF-000040",
+      "type": "end_to_end",
+      "source": "WF-000040",
+      "scenario": "Verify happy, alternative, failure, and recovery paths for Receive stock",
+      "expected": "Approved workflow outcome, evidence, timing, and recovery requirements are satisfied."
+    },
+    {
+      "id": "WF-WF-000041",
+      "type": "end_to_end",
+      "source": "WF-000041",
+      "scenario": "Verify happy, alternative, failure, and recovery paths for Reserve and release",
+      "expected": "Approved workflow outcome, evidence, timing, and recovery requirements are satisfied."
+    },
+    {
+      "id": "WF-WF-000042",
+      "type": "end_to_end",
+      "source": "WF-000042",
+      "scenario": "Verify happy, alternative, failure, and recovery paths for Transfer stock",
+      "expected": "Approved workflow outcome, evidence, timing, and recovery requirements are satisfied."
+    },
+    {
+      "id": "WF-WF-000043",
+      "type": "end_to_end",
+      "source": "WF-000043",
+      "scenario": "Verify happy, alternative, failure, and recovery paths for Adjust with reason",
+      "expected": "Approved workflow outcome, evidence, timing, and recovery requirements are satisfied."
+    },
+    {
+      "id": "WF-WF-000044",
+      "type": "end_to_end",
+      "source": "WF-000044",
+      "scenario": "Verify happy, alternative, failure, and recovery paths for Cycle count",
+      "expected": "Approved workflow outcome, evidence, timing, and recovery requirements are satisfied."
+    },
+    {
+      "id": "WF-WF-000045",
+      "type": "end_to_end",
+      "source": "WF-000045",
+      "scenario": "Verify happy, alternative, failure, and recovery paths for Purchase and receive",
+      "expected": "Approved workflow outcome, evidence, timing, and recovery requirements are satisfied."
+    },
+    {
+      "id": "WF-WF-000046",
+      "type": "end_to_end",
+      "source": "WF-000046",
+      "scenario": "Verify happy, alternative, failure, and recovery paths for Reorder decision",
+      "expected": "Approved workflow outcome, evidence, timing, and recovery requirements are satisfied."
+    },
+    {
+      "id": "API-API-000041",
+      "type": "contract_and_security",
+      "source": "API-000041",
+      "scenario": "Verify request, response, authorization, idempotency, pagination, validation, and errors for Inventory Product and SKU catalog API",
+      "expected": "Approved API contract and security policy are preserved."
+    },
+    {
+      "id": "API-API-000042",
+      "type": "contract_and_security",
+      "source": "API-000042",
+      "scenario": "Verify request, response, authorization, idempotency, pagination, validation, and errors for Inventory Warehouse and location model API",
+      "expected": "Approved API contract and security policy are preserved."
+    },
+    {
+      "id": "API-API-000043",
+      "type": "contract_and_security",
+      "source": "API-000043",
+      "scenario": "Verify request, response, authorization, idempotency, pagination, validation, and errors for Inventory Stock ledger and availability API",
+      "expected": "Approved API contract and security policy are preserved."
+    },
+    {
+      "id": "API-API-000044",
+      "type": "contract_and_security",
+      "source": "API-000044",
+      "scenario": "Verify request, response, authorization, idempotency, pagination, validation, and errors for Inventory Reservations and allocations API",
+      "expected": "Approved API contract and security policy are preserved."
+    },
+    {
+      "id": "API-API-000045",
+      "type": "contract_and_security",
+      "source": "API-000045",
+      "scenario": "Verify request, response, authorization, idempotency, pagination, validation, and errors for Inventory Purchase orders and receipts API",
+      "expected": "Approved API contract and security policy are preserved."
+    },
+    {
+      "id": "API-API-000046",
+      "type": "contract_and_security",
+      "source": "API-000046",
+      "scenario": "Verify request, response, authorization, idempotency, pagination, validation, and errors for Inventory Transfers and adjustments API",
+      "expected": "Approved API contract and security policy are preserved."
+    },
+    {
+      "id": "API-API-000047",
+      "type": "contract_and_security",
+      "source": "API-000047",
+      "scenario": "Verify request, response, authorization, idempotency, pagination, validation, and errors for Inventory Lot/serial/batch traceability API",
+      "expected": "Approved API contract and security policy are preserved."
+    },
+    {
+      "id": "API-API-000048",
+      "type": "contract_and_security",
+      "source": "API-000048",
+      "scenario": "Verify request, response, authorization, idempotency, pagination, validation, and errors for Inventory Reorder and demand planning API",
+      "expected": "Approved API contract and security policy are preserved."
+    },
+    {
+      "id": "EVT-EVT-000034",
+      "type": "integration",
+      "source": "EVT-000034",
+      "scenario": "Verify production, schema compatibility, ordering, duplication, retry, and idempotent consumption for ProductCreated",
+      "expected": "Versioned event meaning and compatibility contract are preserved."
+    },
+    {
+      "id": "EVT-EVT-000035",
+      "type": "integration",
+      "source": "EVT-000035",
+      "scenario": "Verify production, schema compatibility, ordering, duplication, retry, and idempotent consumption for StockLevelChanged",
+      "expected": "Versioned event meaning and compatibility contract are preserved."
+    },
+    {
+      "id": "EVT-EVT-000036",
+      "type": "integration",
+      "source": "EVT-000036",
+      "scenario": "Verify production, schema compatibility, ordering, duplication, retry, and idempotent consumption for StockReserved",
+      "expected": "Versioned event meaning and compatibility contract are preserved."
+    },
+    {
+      "id": "EVT-EVT-000037",
+      "type": "integration",
+      "source": "EVT-000037",
+      "scenario": "Verify production, schema compatibility, ordering, duplication, retry, and idempotent consumption for StockReceived",
+      "expected": "Versioned event meaning and compatibility contract are preserved."
+    },
+    {
+      "id": "EVT-EVT-000038",
+      "type": "integration",
+      "source": "EVT-000038",
+      "scenario": "Verify production, schema compatibility, ordering, duplication, retry, and idempotent consumption for StockTransferred",
+      "expected": "Versioned event meaning and compatibility contract are preserved."
+    },
+    {
+      "id": "EVT-EVT-000039",
+      "type": "integration",
+      "source": "EVT-000039",
+      "scenario": "Verify production, schema compatibility, ordering, duplication, retry, and idempotent consumption for InventoryAdjusted",
+      "expected": "Versioned event meaning and compatibility contract are preserved."
+    },
+    {
+      "id": "EVT-EVT-000040",
+      "type": "integration",
+      "source": "EVT-000040",
+      "scenario": "Verify production, schema compatibility, ordering, duplication, retry, and idempotent consumption for CountVarianceDetected",
+      "expected": "Versioned event meaning and compatibility contract are preserved."
+    },
+    {
+      "id": "EVT-EVT-000041",
+      "type": "integration",
+      "source": "EVT-000041",
+      "scenario": "Verify production, schema compatibility, ordering, duplication, retry, and idempotent consumption for ReorderRecommended",
+      "expected": "Versioned event meaning and compatibility contract are preserved."
+    },
+    {
+      "id": "PERM-PERM-000081",
+      "type": "security",
+      "source": "PERM-000081",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Read Product and SKU catalog",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000082",
+      "type": "security",
+      "source": "PERM-000082",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Manage Product and SKU catalog",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000083",
+      "type": "security",
+      "source": "PERM-000083",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Read Warehouse and location model",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000084",
+      "type": "security",
+      "source": "PERM-000084",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Manage Warehouse and location model",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000085",
+      "type": "security",
+      "source": "PERM-000085",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Read Stock ledger and availability",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000086",
+      "type": "security",
+      "source": "PERM-000086",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Manage Stock ledger and availability",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000087",
+      "type": "security",
+      "source": "PERM-000087",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Read Reservations and allocations",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000088",
+      "type": "security",
+      "source": "PERM-000088",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Manage Reservations and allocations",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000089",
+      "type": "security",
+      "source": "PERM-000089",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Read Purchase orders and receipts",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000090",
+      "type": "security",
+      "source": "PERM-000090",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Manage Purchase orders and receipts",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000091",
+      "type": "security",
+      "source": "PERM-000091",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Read Transfers and adjustments",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000092",
+      "type": "security",
+      "source": "PERM-000092",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Manage Transfers and adjustments",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000093",
+      "type": "security",
+      "source": "PERM-000093",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Read Lot/serial/batch traceability",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000094",
+      "type": "security",
+      "source": "PERM-000094",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Manage Lot/serial/batch traceability",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000095",
+      "type": "security",
+      "source": "PERM-000095",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Read Reorder and demand planning",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000096",
+      "type": "security",
+      "source": "PERM-000096",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Manage Reorder and demand planning",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "SCR-SCR-000046",
+      "type": "ui_accessibility",
+      "source": "SCR-000046",
+      "scenario": "Verify responsive, keyboard, screen-reader, loading, empty, error, stale, and permission states for Inventory Decision Dashboard",
+      "expected": "Decision purpose remains clear and WCAG 2.1 AA obligations pass."
+    },
+    {
+      "id": "SCR-SCR-000047",
+      "type": "ui_accessibility",
+      "source": "SCR-000047",
+      "scenario": "Verify responsive, keyboard, screen-reader, loading, empty, error, stale, and permission states for Product and SKU catalog Workspace",
+      "expected": "Decision purpose remains clear and WCAG 2.1 AA obligations pass."
+    },
+    {
+      "id": "SCR-SCR-000048",
+      "type": "ui_accessibility",
+      "source": "SCR-000048",
+      "scenario": "Verify responsive, keyboard, screen-reader, loading, empty, error, stale, and permission states for Warehouse and location model Workspace",
+      "expected": "Decision purpose remains clear and WCAG 2.1 AA obligations pass."
+    },
+    {
+      "id": "SCR-SCR-000049",
+      "type": "ui_accessibility",
+      "source": "SCR-000049",
+      "scenario": "Verify responsive, keyboard, screen-reader, loading, empty, error, stale, and permission states for Stock ledger and availability Workspace",
+      "expected": "Decision purpose remains clear and WCAG 2.1 AA obligations pass."
+    },
+    {
+      "id": "SCR-SCR-000050",
+      "type": "ui_accessibility",
+      "source": "SCR-000050",
+      "scenario": "Verify responsive, keyboard, screen-reader, loading, empty, error, stale, and permission states for Reservations and allocations Workspace",
+      "expected": "Decision purpose remains clear and WCAG 2.1 AA obligations pass."
+    },
+    {
+      "id": "SCR-SCR-000051",
+      "type": "ui_accessibility",
+      "source": "SCR-000051",
+      "scenario": "Verify responsive, keyboard, screen-reader, loading, empty, error, stale, and permission states for Purchase orders and receipts Workspace",
+      "expected": "Decision purpose remains clear and WCAG 2.1 AA obligations pass."
+    },
+    {
+      "id": "SCR-SCR-000052",
+      "type": "ui_accessibility",
+      "source": "SCR-000052",
+      "scenario": "Verify responsive, keyboard, screen-reader, loading, empty, error, stale, and permission states for Transfers and adjustments Workspace",
+      "expected": "Decision purpose remains clear and WCAG 2.1 AA obligations pass."
+    },
+    {
+      "id": "SCR-SCR-000053",
+      "type": "ui_accessibility",
+      "source": "SCR-000053",
+      "scenario": "Verify responsive, keyboard, screen-reader, loading, empty, error, stale, and permission states for Lot/serial/batch traceability Workspace",
+      "expected": "Decision purpose remains clear and WCAG 2.1 AA obligations pass."
+    },
+    {
+      "id": "SCR-SCR-000054",
+      "type": "ui_accessibility",
+      "source": "SCR-000054",
+      "scenario": "Verify responsive, keyboard, screen-reader, loading, empty, error, stale, and permission states for Reorder and demand planning Workspace",
+      "expected": "Decision purpose remains clear and WCAG 2.1 AA obligations pass."
+    }
+  ],
+  "regression_scope": [
+    "CAP-000006",
+    "MOD-000006",
+    "DEC-000021",
+    "DEC-000022",
+    "DEC-000023",
+    "DEC-000024",
+    "FEAT-000041",
+    "FEAT-000042",
+    "FEAT-000043",
+    "FEAT-000044",
+    "FEAT-000045",
+    "FEAT-000046",
+    "FEAT-000047",
+    "FEAT-000048",
+    "BR-000041",
+    "BR-000042",
+    "BR-000043",
+    "BR-000044",
+    "BR-000045",
+    "BR-000046",
+    "BR-000047",
+    "BR-000048",
+    "WF-000039",
+    "WF-000040",
+    "WF-000041",
+    "WF-000042",
+    "WF-000043",
+    "WF-000044",
+    "WF-000045",
+    "WF-000046",
+    "ENT-000048",
+    "ENT-000049",
+    "ENT-000050",
+    "ENT-000051",
+    "ENT-000052",
+    "ENT-000053",
+    "ENT-000054",
+    "ENT-000055",
+    "ENT-000056",
+    "ENT-000057",
+    "ENT-000058",
+    "ENT-000059",
+    "API-000041",
+    "API-000042",
+    "API-000043",
+    "API-000044",
+    "API-000045",
+    "API-000046",
+    "API-000047",
+    "API-000048",
+    "EVT-000034",
+    "EVT-000035",
+    "EVT-000036",
+    "EVT-000037",
+    "EVT-000038",
+    "EVT-000039",
+    "EVT-000040",
+    "EVT-000041",
+    "PERM-000081",
+    "PERM-000082",
+    "PERM-000083",
+    "PERM-000084",
+    "PERM-000085",
+    "PERM-000086",
+    "PERM-000087",
+    "PERM-000088",
+    "PERM-000089",
+    "PERM-000090",
+    "PERM-000091",
+    "PERM-000092",
+    "PERM-000093",
+    "PERM-000094",
+    "PERM-000095",
+    "PERM-000096",
+    "SCR-000046",
+    "SCR-000047",
+    "SCR-000048",
+    "SCR-000049",
+    "SCR-000050",
+    "SCR-000051",
+    "SCR-000052",
+    "SCR-000053",
+    "SCR-000054",
+    "UF-000046",
+    "UF-000047",
+    "UF-000048",
+    "UF-000049",
+    "UF-000050",
+    "UF-000051",
+    "UF-000052",
+    "UF-000053",
+    "UF-000054",
+    "MET-000035",
+    "MET-000036",
+    "MET-000037",
+    "MET-000038",
+    "MET-000039",
+    "MET-000040",
+    "MET-000041",
+    "MET-000042",
+    "AICAP-000020",
+    "AICAP-000021",
+    "AICAP-000022",
+    "AICAP-000023",
+    "AICAP-000024",
+    "PROMPT-000020",
+    "PROMPT-000021",
+    "PROMPT-000022",
+    "PROMPT-000023",
+    "PROMPT-000024",
+    "AUTO-000030",
+    "AUTO-000031",
+    "AUTO-000032",
+    "AUTO-000033",
+    "AUTO-000034",
+    "AUTO-000035",
+    "AUTO-000036",
+    "NOT-000030",
+    "NOT-000031",
+    "NOT-000032",
+    "NOT-000033",
+    "NOT-000034",
+    "NOT-000035",
+    "NOT-000036",
+    "RPT-000028",
+    "RPT-000029",
+    "RPT-000030",
+    "RPT-000031",
+    "RPT-000032",
+    "RPT-000033",
+    "RPT-000034",
+    "INT-000025",
+    "INT-000026",
+    "INT-000027",
+    "INT-000028",
+    "INT-000029",
+    "INT-000030",
+    "ART-000013",
+    "ART-000026",
+    "ART-000029",
+    "ART-000030",
+    "ART-000031",
+    "ART-000032",
+    "ART-000033",
+    "ART-000034",
+    "ART-000035",
+    "ART-000036"
+  ],
+  "performance_requirements": [
+    "Validate published performance budgets from the approved Technical Specification.",
+    "Verify no unbounded query, queue, retry, export, or AI workload."
+  ],
+  "security_requirements": [
+    "Tenant isolation",
+    "Authorization deny paths",
+    "Sensitive-data handling",
+    "Audit completeness",
+    "Rate limiting and abuse controls"
+  ],
+  "evidence_required": [
+    "Automated test results",
+    "Accessibility results",
+    "Security results",
+    "Performance results",
+    "Manual exploratory record",
+    "Deployment and rollback rehearsal"
+  ]
+}

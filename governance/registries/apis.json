@@ -1,0 +1,3175 @@
+{
+  "registry": "apis",
+  "version": "1.0.0",
+  "generated_at": "2026-07-12T03:39:37Z",
+  "records": [
+    {
+      "id": "API-000001",
+      "type": "api",
+      "name": "Decision Center Decision inbox and saved views API",
+      "description": "REST contract intent for decision inbox and saved views; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-API-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/dc",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000002",
+      "type": "api",
+      "name": "Decision Center Priority and urgency explanation API",
+      "description": "REST contract intent for priority and urgency explanation; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-API-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/dc",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000003",
+      "type": "api",
+      "name": "Decision Center Decision detail and evidence bundle API",
+      "description": "REST contract intent for decision detail and evidence bundle; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-API-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/dc",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000004",
+      "type": "api",
+      "name": "Decision Center Alternative and trade-off comparison API",
+      "description": "REST contract intent for alternative and trade-off comparison; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-API-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/dc",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000005",
+      "type": "api",
+      "name": "Decision Center Assignment and due-date control API",
+      "description": "REST contract intent for assignment and due-date control; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-API-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/dc",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000006",
+      "type": "api",
+      "name": "Decision Center Approval and escalation API",
+      "description": "REST contract intent for approval and escalation; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-API-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/dc",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000007",
+      "type": "api",
+      "name": "Decision Center Action and rationale recording API",
+      "description": "REST contract intent for action and rationale recording; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-API-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/dc",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000008",
+      "type": "api",
+      "name": "Decision Center Outcome follow-up and learning API",
+      "description": "REST contract intent for outcome follow-up and learning; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-API-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/dc",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000009",
+      "type": "api",
+      "name": "Business Memory Decision timeline API",
+      "description": "REST contract intent for decision timeline; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-API-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/bm",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000010",
+      "type": "api",
+      "name": "Business Memory Immutable context snapshots API",
+      "description": "REST contract intent for immutable context snapshots; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-API-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/bm",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000011",
+      "type": "api",
+      "name": "Business Memory Outcome and lesson capture API",
+      "description": "REST contract intent for outcome and lesson capture; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-API-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/bm",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000012",
+      "type": "api",
+      "name": "Business Memory Structured and semantic search API",
+      "description": "REST contract intent for structured and semantic search; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-API-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/bm",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000013",
+      "type": "api",
+      "name": "Business Memory Source and freshness lineage API",
+      "description": "REST contract intent for source and freshness lineage; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-API-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/bm",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000014",
+      "type": "api",
+      "name": "Business Memory Memory collections and tags API",
+      "description": "REST contract intent for memory collections and tags; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-API-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/bm",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000015",
+      "type": "api",
+      "name": "Business Memory Retention and privacy control API",
+      "description": "REST contract intent for retention and privacy control; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-API-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/bm",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000016",
+      "type": "api",
+      "name": "Business Memory Citation-ready retrieval API",
+      "description": "REST contract intent for citation-ready retrieval; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-API-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/bm",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000017",
+      "type": "api",
+      "name": "AI Engine Model Gateway API",
+      "description": "REST contract intent for model gateway; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-API-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/ai",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000018",
+      "type": "api",
+      "name": "AI Engine Prompt Registry API",
+      "description": "REST contract intent for prompt registry; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-API-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/ai",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000019",
+      "type": "api",
+      "name": "AI Engine Retrieval service API",
+      "description": "REST contract intent for retrieval service; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-API-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/ai",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000020",
+      "type": "api",
+      "name": "AI Engine Recommendation service API",
+      "description": "REST contract intent for recommendation service; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-API-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/ai",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000021",
+      "type": "api",
+      "name": "AI Engine Forecasting service API",
+      "description": "REST contract intent for forecasting service; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-API-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/ai",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000022",
+      "type": "api",
+      "name": "AI Engine Explainability service API",
+      "description": "REST contract intent for explainability service; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-API-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/ai",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000023",
+      "type": "api",
+      "name": "AI Engine Evaluation and release gates API",
+      "description": "REST contract intent for evaluation and release gates; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-API-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/ai",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000024",
+      "type": "api",
+      "name": "AI Engine Cost, latency, safety, and drift monitoring API",
+      "description": "REST contract intent for cost, latency, safety, and drift monitoring; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-API-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/ai",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000025",
+      "type": "api",
+      "name": "Identity, Workspace, Permissions & Audit Authentication adapter API",
+      "description": "REST contract intent for authentication adapter; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-API-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/iam",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000026",
+      "type": "api",
+      "name": "Identity, Workspace, Permissions & Audit Workspace lifecycle API",
+      "description": "REST contract intent for workspace lifecycle; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-API-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/iam",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000027",
+      "type": "api",
+      "name": "Identity, Workspace, Permissions & Audit Invitation and membership API",
+      "description": "REST contract intent for invitation and membership; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-API-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/iam",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000028",
+      "type": "api",
+      "name": "Identity, Workspace, Permissions & Audit Roles and permission grants API",
+      "description": "REST contract intent for roles and permission grants; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-API-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/iam",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000029",
+      "type": "api",
+      "name": "Identity, Workspace, Permissions & Audit Policy evaluation API",
+      "description": "REST contract intent for policy evaluation; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-API-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/iam",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000030",
+      "type": "api",
+      "name": "Identity, Workspace, Permissions & Audit MFA and session management API",
+      "description": "REST contract intent for mfa and session management; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-API-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/iam",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000031",
+      "type": "api",
+      "name": "Identity, Workspace, Permissions & Audit API keys and service identities API",
+      "description": "REST contract intent for api keys and service identities; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-API-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/iam",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000032",
+      "type": "api",
+      "name": "Identity, Workspace, Permissions & Audit Audit explorer and evidence export API",
+      "description": "REST contract intent for audit explorer and evidence export; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-API-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/iam",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000033",
+      "type": "api",
+      "name": "Finance Chart of accounts API",
+      "description": "REST contract intent for chart of accounts; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-API-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/fin",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000034",
+      "type": "api",
+      "name": "Finance Double-entry journals API",
+      "description": "REST contract intent for double-entry journals; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-API-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/fin",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000035",
+      "type": "api",
+      "name": "Finance Accounts receivable and invoicing API",
+      "description": "REST contract intent for accounts receivable and invoicing; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-API-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/fin",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000036",
+      "type": "api",
+      "name": "Finance Accounts payable and bills API",
+      "description": "REST contract intent for accounts payable and bills; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-API-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/fin",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000037",
+      "type": "api",
+      "name": "Finance Payments and reconciliation API",
+      "description": "REST contract intent for payments and reconciliation; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-API-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/fin",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000038",
+      "type": "api",
+      "name": "Finance Budgets and variance API",
+      "description": "REST contract intent for budgets and variance; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-API-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/fin",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000039",
+      "type": "api",
+      "name": "Finance Cash-flow forecasting API",
+      "description": "REST contract intent for cash-flow forecasting; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-API-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/fin",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000040",
+      "type": "api",
+      "name": "Finance Financial statements and close API",
+      "description": "REST contract intent for financial statements and close; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-API-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/fin",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000041",
+      "type": "api",
+      "name": "Inventory Product and SKU catalog API",
+      "description": "REST contract intent for product and sku catalog; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-API-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/inv",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000042",
+      "type": "api",
+      "name": "Inventory Warehouse and location model API",
+      "description": "REST contract intent for warehouse and location model; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-API-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/inv",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000043",
+      "type": "api",
+      "name": "Inventory Stock ledger and availability API",
+      "description": "REST contract intent for stock ledger and availability; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-API-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/inv",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000044",
+      "type": "api",
+      "name": "Inventory Reservations and allocations API",
+      "description": "REST contract intent for reservations and allocations; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-API-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/inv",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000045",
+      "type": "api",
+      "name": "Inventory Purchase orders and receipts API",
+      "description": "REST contract intent for purchase orders and receipts; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-API-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/inv",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000046",
+      "type": "api",
+      "name": "Inventory Transfers and adjustments API",
+      "description": "REST contract intent for transfers and adjustments; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-API-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/inv",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000047",
+      "type": "api",
+      "name": "Inventory Lot/serial/batch traceability API",
+      "description": "REST contract intent for lot/serial/batch traceability; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-API-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/inv",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000048",
+      "type": "api",
+      "name": "Inventory Reorder and demand planning API",
+      "description": "REST contract intent for reorder and demand planning; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-API-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/inv",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000049",
+      "type": "api",
+      "name": "CRM Contacts and organizations API",
+      "description": "REST contract intent for contacts and organizations; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-API-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/crm",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000050",
+      "type": "api",
+      "name": "CRM Lead capture and qualification API",
+      "description": "REST contract intent for lead capture and qualification; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-API-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/crm",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000051",
+      "type": "api",
+      "name": "CRM Opportunity pipelines API",
+      "description": "REST contract intent for opportunity pipelines; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-API-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/crm",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000052",
+      "type": "api",
+      "name": "CRM Activities and tasks API",
+      "description": "REST contract intent for activities and tasks; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-API-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/crm",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000053",
+      "type": "api",
+      "name": "CRM Segmentation API",
+      "description": "REST contract intent for segmentation; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-API-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/crm",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000054",
+      "type": "api",
+      "name": "CRM Customer value and health API",
+      "description": "REST contract intent for customer value and health; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-API-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/crm",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000055",
+      "type": "api",
+      "name": "CRM Campaign attribution API",
+      "description": "REST contract intent for campaign attribution; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-API-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/crm",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000056",
+      "type": "api",
+      "name": "CRM Consent and communication history API",
+      "description": "REST contract intent for consent and communication history; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-API-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/crm",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000057",
+      "type": "api",
+      "name": "Analytics Metric registry API",
+      "description": "REST contract intent for metric registry; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-API-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/ana",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000058",
+      "type": "api",
+      "name": "Analytics Semantic definitions API",
+      "description": "REST contract intent for semantic definitions; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-API-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/ana",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000059",
+      "type": "api",
+      "name": "Analytics Dashboard composition API",
+      "description": "REST contract intent for dashboard composition; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-API-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/ana",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000060",
+      "type": "api",
+      "name": "Analytics Filters and saved views API",
+      "description": "REST contract intent for filters and saved views; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-API-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/ana",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000061",
+      "type": "api",
+      "name": "Analytics Drill-down and lineage API",
+      "description": "REST contract intent for drill-down and lineage; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-API-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/ana",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000062",
+      "type": "api",
+      "name": "Analytics Scheduled reports API",
+      "description": "REST contract intent for scheduled reports; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-API-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/ana",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000063",
+      "type": "api",
+      "name": "Analytics Exports API",
+      "description": "REST contract intent for exports; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-API-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/ana",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000064",
+      "type": "api",
+      "name": "Analytics Annotations and forecast overlays API",
+      "description": "REST contract intent for annotations and forecast overlays; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-API-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/ana",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000065",
+      "type": "api",
+      "name": "Documents Document metadata and storage API",
+      "description": "REST contract intent for document metadata and storage; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-API-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/doc",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000066",
+      "type": "api",
+      "name": "Documents Templates API",
+      "description": "REST contract intent for templates; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-API-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/doc",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000067",
+      "type": "api",
+      "name": "Documents Generation API",
+      "description": "REST contract intent for generation; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-API-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/doc",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000068",
+      "type": "api",
+      "name": "Documents Versioning API",
+      "description": "REST contract intent for versioning; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-API-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/doc",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000069",
+      "type": "api",
+      "name": "Documents Review and approval API",
+      "description": "REST contract intent for review and approval; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-API-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/doc",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000070",
+      "type": "api",
+      "name": "Documents Electronic signature adapters API",
+      "description": "REST contract intent for electronic signature adapters; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-API-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/doc",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000071",
+      "type": "api",
+      "name": "Documents OCR/import API",
+      "description": "REST contract intent for ocr/import; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-API-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/doc",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000072",
+      "type": "api",
+      "name": "Documents Retention and legal hold API",
+      "description": "REST contract intent for retention and legal hold; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-API-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/doc",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000073",
+      "type": "api",
+      "name": "Notifications Unified notification events API",
+      "description": "REST contract intent for unified notification events; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-API-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/not",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000074",
+      "type": "api",
+      "name": "Notifications Templates and versions API",
+      "description": "REST contract intent for templates and versions; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-API-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/not",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000075",
+      "type": "api",
+      "name": "Notifications Category and priority API",
+      "description": "REST contract intent for category and priority; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-API-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/not",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000076",
+      "type": "api",
+      "name": "Notifications User preferences and quiet hours API",
+      "description": "REST contract intent for user preferences and quiet hours; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-API-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/not",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000077",
+      "type": "api",
+      "name": "Notifications Channel routing API",
+      "description": "REST contract intent for channel routing; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-API-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/not",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000078",
+      "type": "api",
+      "name": "Notifications Delivery retries API",
+      "description": "REST contract intent for delivery retries; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-API-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/not",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000079",
+      "type": "api",
+      "name": "Notifications Digest and grouping API",
+      "description": "REST contract intent for digest and grouping; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-API-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/not",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000080",
+      "type": "api",
+      "name": "Notifications Escalation and audit API",
+      "description": "REST contract intent for escalation and audit; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-API-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/not",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000081",
+      "type": "api",
+      "name": "Human Resources Employee records API",
+      "description": "REST contract intent for employee records; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-API-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/hr",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000082",
+      "type": "api",
+      "name": "Human Resources Organization and positions API",
+      "description": "REST contract intent for organization and positions; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-API-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/hr",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000083",
+      "type": "api",
+      "name": "Human Resources Recruitment API",
+      "description": "REST contract intent for recruitment; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-API-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/hr",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000084",
+      "type": "api",
+      "name": "Human Resources Onboarding/offboarding API",
+      "description": "REST contract intent for onboarding/offboarding; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-API-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/hr",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000085",
+      "type": "api",
+      "name": "Human Resources Leave and attendance API",
+      "description": "REST contract intent for leave and attendance; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-API-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/hr",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000086",
+      "type": "api",
+      "name": "Human Resources Performance and goals API",
+      "description": "REST contract intent for performance and goals; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-API-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/hr",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000087",
+      "type": "api",
+      "name": "Human Resources Compensation records API",
+      "description": "REST contract intent for compensation records; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-API-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/hr",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000088",
+      "type": "api",
+      "name": "Human Resources Workforce planning and compliance API",
+      "description": "REST contract intent for workforce planning and compliance; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-API-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/hr",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000089",
+      "type": "api",
+      "name": "Manufacturing Bills of materials API",
+      "description": "REST contract intent for bills of materials; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-API-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/mfg",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000090",
+      "type": "api",
+      "name": "Manufacturing Routings and work centers API",
+      "description": "REST contract intent for routings and work centers; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-API-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/mfg",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000091",
+      "type": "api",
+      "name": "Manufacturing Production orders API",
+      "description": "REST contract intent for production orders; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-API-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/mfg",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000092",
+      "type": "api",
+      "name": "Manufacturing Material requirements API",
+      "description": "REST contract intent for material requirements; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-API-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/mfg",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000093",
+      "type": "api",
+      "name": "Manufacturing Scheduling and capacity API",
+      "description": "REST contract intent for scheduling and capacity; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-API-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/mfg",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000094",
+      "type": "api",
+      "name": "Manufacturing Issue/consume/produce API",
+      "description": "REST contract intent for issue/consume/produce; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-API-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/mfg",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000095",
+      "type": "api",
+      "name": "Manufacturing Quality control API",
+      "description": "REST contract intent for quality control; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-API-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/mfg",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "API-000096",
+      "type": "api",
+      "name": "Manufacturing Yield, scrap, downtime, and cost API",
+      "description": "REST contract intent for yield, scrap, downtime, and cost; exact request/response schema requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-API-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "base_path": "/api/v1/mfg",
+        "methods": [
+          "GET",
+          "POST",
+          "PATCH"
+        ],
+        "version": "v1",
+        "schema_status": "requires_build_pack_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    }
+  ]
+}

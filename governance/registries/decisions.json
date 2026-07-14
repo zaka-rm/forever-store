@@ -1,0 +1,1783 @@
+{
+  "registry": "decisions",
+  "version": "1.0.0",
+  "generated_at": "2026-07-12T03:39:37Z",
+  "records": [
+    {
+      "id": "DEC-000001",
+      "type": "decision",
+      "name": "What requires attention now?",
+      "description": "Builder decision supported by Decision Center.",
+      "status": "Specified",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-DEC-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "decision_question": "What requires attention now?",
+        "required_inputs": [
+          "DecisionContext",
+          "DecisionEvidence",
+          "DecisionAlternative"
+        ],
+        "expected_outcome": "Convert material business signals into prioritized, explainable, owned decisions and measurable outcomes.",
+        "success_metrics": [
+          "Median time to decision",
+          "Unowned decision rate"
+        ],
+        "authority": "Human decision owner; AI remains advisory unless a bounded automation is separately approved"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "DEC-000002",
+      "type": "decision",
+      "name": "Which action should be taken?",
+      "description": "Builder decision supported by Decision Center.",
+      "status": "Specified",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-DEC-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "decision_question": "Which action should be taken?",
+        "required_inputs": [
+          "DecisionContext",
+          "DecisionEvidence",
+          "DecisionAlternative"
+        ],
+        "expected_outcome": "Convert material business signals into prioritized, explainable, owned decisions and measurable outcomes.",
+        "success_metrics": [
+          "Median time to decision",
+          "Unowned decision rate"
+        ],
+        "authority": "Human decision owner; AI remains advisory unless a bounded automation is separately approved"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "DEC-000003",
+      "type": "decision",
+      "name": "Who must decide or approve?",
+      "description": "Builder decision supported by Decision Center.",
+      "status": "Specified",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-DEC-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "decision_question": "Who must decide or approve?",
+        "required_inputs": [
+          "DecisionContext",
+          "DecisionEvidence",
+          "DecisionAlternative"
+        ],
+        "expected_outcome": "Convert material business signals into prioritized, explainable, owned decisions and measurable outcomes.",
+        "success_metrics": [
+          "Median time to decision",
+          "Unowned decision rate"
+        ],
+        "authority": "Human decision owner; AI remains advisory unless a bounded automation is separately approved"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "DEC-000004",
+      "type": "decision",
+      "name": "Did the decision produce the expected outcome?",
+      "description": "Builder decision supported by Decision Center.",
+      "status": "Specified",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-DEC-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "decision_question": "Did the decision produce the expected outcome?",
+        "required_inputs": [
+          "DecisionContext",
+          "DecisionEvidence",
+          "DecisionAlternative"
+        ],
+        "expected_outcome": "Convert material business signals into prioritized, explainable, owned decisions and measurable outcomes.",
+        "success_metrics": [
+          "Median time to decision",
+          "Unowned decision rate"
+        ],
+        "authority": "Human decision owner; AI remains advisory unless a bounded automation is separately approved"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "DEC-000005",
+      "type": "decision",
+      "name": "What happened before?",
+      "description": "Builder decision supported by Business Memory.",
+      "status": "Specified",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-DEC-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "decision_question": "What happened before?",
+        "required_inputs": [
+          "MemoryRecord",
+          "ContextSnapshot",
+          "MemorySource"
+        ],
+        "expected_outcome": "Preserve the business's decisions, context, outcomes, and lessons as permission-aware organizational memory.",
+        "success_metrics": [
+          "Outcome-linked memory rate",
+          "Useful search result rate"
+        ],
+        "authority": "Human decision owner; AI remains advisory unless a bounded automation is separately approved"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "DEC-000006",
+      "type": "decision",
+      "name": "Why was a decision made?",
+      "description": "Builder decision supported by Business Memory.",
+      "status": "Specified",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-DEC-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "decision_question": "Why was a decision made?",
+        "required_inputs": [
+          "MemoryRecord",
+          "ContextSnapshot",
+          "MemorySource"
+        ],
+        "expected_outcome": "Preserve the business's decisions, context, outcomes, and lessons as permission-aware organizational memory.",
+        "success_metrics": [
+          "Outcome-linked memory rate",
+          "Useful search result rate"
+        ],
+        "authority": "Human decision owner; AI remains advisory unless a bounded automation is separately approved"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "DEC-000007",
+      "type": "decision",
+      "name": "What did we learn?",
+      "description": "Builder decision supported by Business Memory.",
+      "status": "Specified",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-DEC-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "decision_question": "What did we learn?",
+        "required_inputs": [
+          "MemoryRecord",
+          "ContextSnapshot",
+          "MemorySource"
+        ],
+        "expected_outcome": "Preserve the business's decisions, context, outcomes, and lessons as permission-aware organizational memory.",
+        "success_metrics": [
+          "Outcome-linked memory rate",
+          "Useful search result rate"
+        ],
+        "authority": "Human decision owner; AI remains advisory unless a bounded automation is separately approved"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "DEC-000008",
+      "type": "decision",
+      "name": "Which past situation is comparable?",
+      "description": "Builder decision supported by Business Memory.",
+      "status": "Specified",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-DEC-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "decision_question": "Which past situation is comparable?",
+        "required_inputs": [
+          "MemoryRecord",
+          "ContextSnapshot",
+          "MemorySource"
+        ],
+        "expected_outcome": "Preserve the business's decisions, context, outcomes, and lessons as permission-aware organizational memory.",
+        "success_metrics": [
+          "Outcome-linked memory rate",
+          "Useful search result rate"
+        ],
+        "authority": "Human decision owner; AI remains advisory unless a bounded automation is separately approved"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "DEC-000009",
+      "type": "decision",
+      "name": "Which recommendation is supported?",
+      "description": "Builder decision supported by AI Engine.",
+      "status": "Specified",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-DEC-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "decision_question": "Which recommendation is supported?",
+        "required_inputs": [
+          "ModelProvider",
+          "ModelRoute",
+          "PromptTemplate"
+        ],
+        "expected_outcome": "Provide provider-agnostic, explainable, evaluated intelligence that augments human judgment across ZYVORA.",
+        "success_metrics": [
+          "Task quality score",
+          "Calibration error"
+        ],
+        "authority": "Human decision owner; AI remains advisory unless a bounded automation is separately approved"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "DEC-000010",
+      "type": "decision",
+      "name": "What is likely to happen?",
+      "description": "Builder decision supported by AI Engine.",
+      "status": "Specified",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-DEC-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "decision_question": "What is likely to happen?",
+        "required_inputs": [
+          "ModelProvider",
+          "ModelRoute",
+          "PromptTemplate"
+        ],
+        "expected_outcome": "Provide provider-agnostic, explainable, evaluated intelligence that augments human judgment across ZYVORA.",
+        "success_metrics": [
+          "Task quality score",
+          "Calibration error"
+        ],
+        "authority": "Human decision owner; AI remains advisory unless a bounded automation is separately approved"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "DEC-000011",
+      "type": "decision",
+      "name": "What is anomalous?",
+      "description": "Builder decision supported by AI Engine.",
+      "status": "Specified",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-DEC-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "decision_question": "What is anomalous?",
+        "required_inputs": [
+          "ModelProvider",
+          "ModelRoute",
+          "PromptTemplate"
+        ],
+        "expected_outcome": "Provide provider-agnostic, explainable, evaluated intelligence that augments human judgment across ZYVORA.",
+        "success_metrics": [
+          "Task quality score",
+          "Calibration error"
+        ],
+        "authority": "Human decision owner; AI remains advisory unless a bounded automation is separately approved"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "DEC-000012",
+      "type": "decision",
+      "name": "How confident should the Builder be?",
+      "description": "Builder decision supported by AI Engine.",
+      "status": "Specified",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-DEC-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "decision_question": "How confident should the Builder be?",
+        "required_inputs": [
+          "ModelProvider",
+          "ModelRoute",
+          "PromptTemplate"
+        ],
+        "expected_outcome": "Provide provider-agnostic, explainable, evaluated intelligence that augments human judgment across ZYVORA.",
+        "success_metrics": [
+          "Task quality score",
+          "Calibration error"
+        ],
+        "authority": "Human decision owner; AI remains advisory unless a bounded automation is separately approved"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "DEC-000013",
+      "type": "decision",
+      "name": "Who may access this workspace?",
+      "description": "Builder decision supported by Identity, Workspace, Permissions & Audit.",
+      "status": "Specified",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-DEC-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "decision_question": "Who may access this workspace?",
+        "required_inputs": [
+          "User",
+          "Workspace",
+          "Membership"
+        ],
+        "expected_outcome": "Establish trusted identity, tenant boundaries, least-privilege authority, session control, and reconstructable platform evidence.",
+        "success_metrics": [
+          "Cross-tenant violations",
+          "MFA adoption"
+        ],
+        "authority": "Human decision owner; AI remains advisory unless a bounded automation is separately approved"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "DEC-000014",
+      "type": "decision",
+      "name": "What may this actor do?",
+      "description": "Builder decision supported by Identity, Workspace, Permissions & Audit.",
+      "status": "Specified",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-DEC-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "decision_question": "What may this actor do?",
+        "required_inputs": [
+          "User",
+          "Workspace",
+          "Membership"
+        ],
+        "expected_outcome": "Establish trusted identity, tenant boundaries, least-privilege authority, session control, and reconstructable platform evidence.",
+        "success_metrics": [
+          "Cross-tenant violations",
+          "MFA adoption"
+        ],
+        "authority": "Human decision owner; AI remains advisory unless a bounded automation is separately approved"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "DEC-000015",
+      "type": "decision",
+      "name": "Who changed what and why?",
+      "description": "Builder decision supported by Identity, Workspace, Permissions & Audit.",
+      "status": "Specified",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-DEC-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "decision_question": "Who changed what and why?",
+        "required_inputs": [
+          "User",
+          "Workspace",
+          "Membership"
+        ],
+        "expected_outcome": "Establish trusted identity, tenant boundaries, least-privilege authority, session control, and reconstructable platform evidence.",
+        "success_metrics": [
+          "Cross-tenant violations",
+          "MFA adoption"
+        ],
+        "authority": "Human decision owner; AI remains advisory unless a bounded automation is separately approved"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "DEC-000016",
+      "type": "decision",
+      "name": "How is compromised access revoked?",
+      "description": "Builder decision supported by Identity, Workspace, Permissions & Audit.",
+      "status": "Specified",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-DEC-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "decision_question": "How is compromised access revoked?",
+        "required_inputs": [
+          "User",
+          "Workspace",
+          "Membership"
+        ],
+        "expected_outcome": "Establish trusted identity, tenant boundaries, least-privilege authority, session control, and reconstructable platform evidence.",
+        "success_metrics": [
+          "Cross-tenant violations",
+          "MFA adoption"
+        ],
+        "authority": "Human decision owner; AI remains advisory unless a bounded automation is separately approved"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "DEC-000017",
+      "type": "decision",
+      "name": "Can the business afford this action?",
+      "description": "Builder decision supported by Finance.",
+      "status": "Specified",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-DEC-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "decision_question": "Can the business afford this action?",
+        "required_inputs": [
+          "Account",
+          "JournalEntry",
+          "JournalLine"
+        ],
+        "expected_outcome": "Maintain correct, auditable financial records and convert them into cash, profitability, control, and planning decisions.",
+        "success_metrics": [
+          "Cash runway",
+          "Operating cash flow"
+        ],
+        "authority": "Human decision owner; AI remains advisory unless a bounded automation is separately approved"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "DEC-000018",
+      "type": "decision",
+      "name": "What is driving profit and cash?",
+      "description": "Builder decision supported by Finance.",
+      "status": "Specified",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-DEC-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "decision_question": "What is driving profit and cash?",
+        "required_inputs": [
+          "Account",
+          "JournalEntry",
+          "JournalLine"
+        ],
+        "expected_outcome": "Maintain correct, auditable financial records and convert them into cash, profitability, control, and planning decisions.",
+        "success_metrics": [
+          "Cash runway",
+          "Operating cash flow"
+        ],
+        "authority": "Human decision owner; AI remains advisory unless a bounded automation is separately approved"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "DEC-000019",
+      "type": "decision",
+      "name": "Which receivable or payable needs action?",
+      "description": "Builder decision supported by Finance.",
+      "status": "Specified",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-DEC-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "decision_question": "Which receivable or payable needs action?",
+        "required_inputs": [
+          "Account",
+          "JournalEntry",
+          "JournalLine"
+        ],
+        "expected_outcome": "Maintain correct, auditable financial records and convert them into cash, profitability, control, and planning decisions.",
+        "success_metrics": [
+          "Cash runway",
+          "Operating cash flow"
+        ],
+        "authority": "Human decision owner; AI remains advisory unless a bounded automation is separately approved"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "DEC-000020",
+      "type": "decision",
+      "name": "Are the books complete and controlled?",
+      "description": "Builder decision supported by Finance.",
+      "status": "Specified",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-DEC-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "decision_question": "Are the books complete and controlled?",
+        "required_inputs": [
+          "Account",
+          "JournalEntry",
+          "JournalLine"
+        ],
+        "expected_outcome": "Maintain correct, auditable financial records and convert them into cash, profitability, control, and planning decisions.",
+        "success_metrics": [
+          "Cash runway",
+          "Operating cash flow"
+        ],
+        "authority": "Human decision owner; AI remains advisory unless a bounded automation is separately approved"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "DEC-000021",
+      "type": "decision",
+      "name": "What should be reordered, when, and how much?",
+      "description": "Builder decision supported by Inventory.",
+      "status": "Specified",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-DEC-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "decision_question": "What should be reordered, when, and how much?",
+        "required_inputs": [
+          "Product",
+          "Variant",
+          "Warehouse"
+        ],
+        "expected_outcome": "Maintain trusted stock truth and improve replenishment, availability, purchasing, transfer, and working-capital decisions.",
+        "success_metrics": [
+          "Stockout rate",
+          "Inventory turns"
+        ],
+        "authority": "Human decision owner; AI remains advisory unless a bounded automation is separately approved"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "DEC-000022",
+      "type": "decision",
+      "name": "Where is stock available?",
+      "description": "Builder decision supported by Inventory.",
+      "status": "Specified",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-DEC-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "decision_question": "Where is stock available?",
+        "required_inputs": [
+          "Product",
+          "Variant",
+          "Warehouse"
+        ],
+        "expected_outcome": "Maintain trusted stock truth and improve replenishment, availability, purchasing, transfer, and working-capital decisions.",
+        "success_metrics": [
+          "Stockout rate",
+          "Inventory turns"
+        ],
+        "authority": "Human decision owner; AI remains advisory unless a bounded automation is separately approved"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "DEC-000023",
+      "type": "decision",
+      "name": "Which movement or variance requires investigation?",
+      "description": "Builder decision supported by Inventory.",
+      "status": "Specified",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-DEC-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "decision_question": "Which movement or variance requires investigation?",
+        "required_inputs": [
+          "Product",
+          "Variant",
+          "Warehouse"
+        ],
+        "expected_outcome": "Maintain trusted stock truth and improve replenishment, availability, purchasing, transfer, and working-capital decisions.",
+        "success_metrics": [
+          "Stockout rate",
+          "Inventory turns"
+        ],
+        "authority": "Human decision owner; AI remains advisory unless a bounded automation is separately approved"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "DEC-000024",
+      "type": "decision",
+      "name": "Which supplier and purchase action is best?",
+      "description": "Builder decision supported by Inventory.",
+      "status": "Specified",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-DEC-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "decision_question": "Which supplier and purchase action is best?",
+        "required_inputs": [
+          "Product",
+          "Variant",
+          "Warehouse"
+        ],
+        "expected_outcome": "Maintain trusted stock truth and improve replenishment, availability, purchasing, transfer, and working-capital decisions.",
+        "success_metrics": [
+          "Stockout rate",
+          "Inventory turns"
+        ],
+        "authority": "Human decision owner; AI remains advisory unless a bounded automation is separately approved"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "DEC-000025",
+      "type": "decision",
+      "name": "Which lead or opportunity deserves attention?",
+      "description": "Builder decision supported by CRM.",
+      "status": "Specified",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-DEC-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "decision_question": "Which lead or opportunity deserves attention?",
+        "required_inputs": [
+          "Contact",
+          "Organization",
+          "Lead"
+        ],
+        "expected_outcome": "Create a trusted customer relationship record and improve acquisition, pipeline, retention, and service decisions.",
+        "success_metrics": [
+          "Pipeline value",
+          "Win rate"
+        ],
+        "authority": "Human decision owner; AI remains advisory unless a bounded automation is separately approved"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "DEC-000026",
+      "type": "decision",
+      "name": "Which customer is at risk?",
+      "description": "Builder decision supported by CRM.",
+      "status": "Specified",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-DEC-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "decision_question": "Which customer is at risk?",
+        "required_inputs": [
+          "Contact",
+          "Organization",
+          "Lead"
+        ],
+        "expected_outcome": "Create a trusted customer relationship record and improve acquisition, pipeline, retention, and service decisions.",
+        "success_metrics": [
+          "Pipeline value",
+          "Win rate"
+        ],
+        "authority": "Human decision owner; AI remains advisory unless a bounded automation is separately approved"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "DEC-000027",
+      "type": "decision",
+      "name": "What is the next best action?",
+      "description": "Builder decision supported by CRM.",
+      "status": "Specified",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-DEC-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "decision_question": "What is the next best action?",
+        "required_inputs": [
+          "Contact",
+          "Organization",
+          "Lead"
+        ],
+        "expected_outcome": "Create a trusted customer relationship record and improve acquisition, pipeline, retention, and service decisions.",
+        "success_metrics": [
+          "Pipeline value",
+          "Win rate"
+        ],
+        "authority": "Human decision owner; AI remains advisory unless a bounded automation is separately approved"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "DEC-000028",
+      "type": "decision",
+      "name": "Which segment or campaign should be prioritized?",
+      "description": "Builder decision supported by CRM.",
+      "status": "Specified",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-DEC-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "decision_question": "Which segment or campaign should be prioritized?",
+        "required_inputs": [
+          "Contact",
+          "Organization",
+          "Lead"
+        ],
+        "expected_outcome": "Create a trusted customer relationship record and improve acquisition, pipeline, retention, and service decisions.",
+        "success_metrics": [
+          "Pipeline value",
+          "Win rate"
+        ],
+        "authority": "Human decision owner; AI remains advisory unless a bounded automation is separately approved"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "DEC-000029",
+      "type": "decision",
+      "name": "What changed?",
+      "description": "Builder decision supported by Analytics.",
+      "status": "Specified",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-DEC-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "decision_question": "What changed?",
+        "required_inputs": [
+          "MetricDefinition",
+          "MetricVersion",
+          "Dataset"
+        ],
+        "expected_outcome": "Provide governed, decision-oriented metrics, dashboards, drill-down, exports, and scheduled reporting across ZYVORA.",
+        "success_metrics": [
+          "Metric freshness",
+          "Dashboard decision-action rate"
+        ],
+        "authority": "Human decision owner; AI remains advisory unless a bounded automation is separately approved"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "DEC-000030",
+      "type": "decision",
+      "name": "Why did it change?",
+      "description": "Builder decision supported by Analytics.",
+      "status": "Specified",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-DEC-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "decision_question": "Why did it change?",
+        "required_inputs": [
+          "MetricDefinition",
+          "MetricVersion",
+          "Dataset"
+        ],
+        "expected_outcome": "Provide governed, decision-oriented metrics, dashboards, drill-down, exports, and scheduled reporting across ZYVORA.",
+        "success_metrics": [
+          "Metric freshness",
+          "Dashboard decision-action rate"
+        ],
+        "authority": "Human decision owner; AI remains advisory unless a bounded automation is separately approved"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "DEC-000031",
+      "type": "decision",
+      "name": "Does it require attention?",
+      "description": "Builder decision supported by Analytics.",
+      "status": "Specified",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-DEC-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "decision_question": "Does it require attention?",
+        "required_inputs": [
+          "MetricDefinition",
+          "MetricVersion",
+          "Dataset"
+        ],
+        "expected_outcome": "Provide governed, decision-oriented metrics, dashboards, drill-down, exports, and scheduled reporting across ZYVORA.",
+        "success_metrics": [
+          "Metric freshness",
+          "Dashboard decision-action rate"
+        ],
+        "authority": "Human decision owner; AI remains advisory unless a bounded automation is separately approved"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "DEC-000032",
+      "type": "decision",
+      "name": "Which underlying records explain the metric?",
+      "description": "Builder decision supported by Analytics.",
+      "status": "Specified",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-DEC-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "decision_question": "Which underlying records explain the metric?",
+        "required_inputs": [
+          "MetricDefinition",
+          "MetricVersion",
+          "Dataset"
+        ],
+        "expected_outcome": "Provide governed, decision-oriented metrics, dashboards, drill-down, exports, and scheduled reporting across ZYVORA.",
+        "success_metrics": [
+          "Metric freshness",
+          "Dashboard decision-action rate"
+        ],
+        "authority": "Human decision owner; AI remains advisory unless a bounded automation is separately approved"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "DEC-000033",
+      "type": "decision",
+      "name": "Which document is authoritative?",
+      "description": "Builder decision supported by Documents.",
+      "status": "Specified",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-DEC-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "decision_question": "Which document is authoritative?",
+        "required_inputs": [
+          "Document",
+          "DocumentVersion",
+          "DocumentTemplate"
+        ],
+        "expected_outcome": "Create, govern, store, retrieve, approve, sign, and retain business documents as trusted operational evidence.",
+        "success_metrics": [
+          "Retrieval success",
+          "Approval time"
+        ],
+        "authority": "Human decision owner; AI remains advisory unless a bounded automation is separately approved"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "DEC-000034",
+      "type": "decision",
+      "name": "Who must review or sign it?",
+      "description": "Builder decision supported by Documents.",
+      "status": "Specified",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-DEC-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "decision_question": "Who must review or sign it?",
+        "required_inputs": [
+          "Document",
+          "DocumentVersion",
+          "DocumentTemplate"
+        ],
+        "expected_outcome": "Create, govern, store, retrieve, approve, sign, and retain business documents as trusted operational evidence.",
+        "success_metrics": [
+          "Retrieval success",
+          "Approval time"
+        ],
+        "authority": "Human decision owner; AI remains advisory unless a bounded automation is separately approved"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "DEC-000035",
+      "type": "decision",
+      "name": "What changed between versions?",
+      "description": "Builder decision supported by Documents.",
+      "status": "Specified",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-DEC-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "decision_question": "What changed between versions?",
+        "required_inputs": [
+          "Document",
+          "DocumentVersion",
+          "DocumentTemplate"
+        ],
+        "expected_outcome": "Create, govern, store, retrieve, approve, sign, and retain business documents as trusted operational evidence.",
+        "success_metrics": [
+          "Retrieval success",
+          "Approval time"
+        ],
+        "authority": "Human decision owner; AI remains advisory unless a bounded automation is separately approved"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "DEC-000036",
+      "type": "decision",
+      "name": "When may it be archived or deleted?",
+      "description": "Builder decision supported by Documents.",
+      "status": "Specified",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-DEC-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "decision_question": "When may it be archived or deleted?",
+        "required_inputs": [
+          "Document",
+          "DocumentVersion",
+          "DocumentTemplate"
+        ],
+        "expected_outcome": "Create, govern, store, retrieve, approve, sign, and retain business documents as trusted operational evidence.",
+        "success_metrics": [
+          "Retrieval success",
+          "Approval time"
+        ],
+        "authority": "Human decision owner; AI remains advisory unless a bounded automation is separately approved"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "DEC-000037",
+      "type": "decision",
+      "name": "Who needs to know or act?",
+      "description": "Builder decision supported by Notifications.",
+      "status": "Specified",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-DEC-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "decision_question": "Who needs to know or act?",
+        "required_inputs": [
+          "Notification",
+          "NotificationTemplate",
+          "TemplateVersion"
+        ],
+        "expected_outcome": "Deliver timely, relevant, explainable communications across in-app, email, SMS, WhatsApp, and push channels without creating noise.",
+        "success_metrics": [
+          "Actionable notification ratio",
+          "Delivery success"
+        ],
+        "authority": "Human decision owner; AI remains advisory unless a bounded automation is separately approved"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "DEC-000038",
+      "type": "decision",
+      "name": "Which channel and time are appropriate?",
+      "description": "Builder decision supported by Notifications.",
+      "status": "Specified",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-DEC-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "decision_question": "Which channel and time are appropriate?",
+        "required_inputs": [
+          "Notification",
+          "NotificationTemplate",
+          "TemplateVersion"
+        ],
+        "expected_outcome": "Deliver timely, relevant, explainable communications across in-app, email, SMS, WhatsApp, and push channels without creating noise.",
+        "success_metrics": [
+          "Actionable notification ratio",
+          "Delivery success"
+        ],
+        "authority": "Human decision owner; AI remains advisory unless a bounded automation is separately approved"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "DEC-000039",
+      "type": "decision",
+      "name": "Did delivery succeed?",
+      "description": "Builder decision supported by Notifications.",
+      "status": "Specified",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-DEC-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "decision_question": "Did delivery succeed?",
+        "required_inputs": [
+          "Notification",
+          "NotificationTemplate",
+          "TemplateVersion"
+        ],
+        "expected_outcome": "Deliver timely, relevant, explainable communications across in-app, email, SMS, WhatsApp, and push channels without creating noise.",
+        "success_metrics": [
+          "Actionable notification ratio",
+          "Delivery success"
+        ],
+        "authority": "Human decision owner; AI remains advisory unless a bounded automation is separately approved"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "DEC-000040",
+      "type": "decision",
+      "name": "Should the alert escalate?",
+      "description": "Builder decision supported by Notifications.",
+      "status": "Specified",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-DEC-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "decision_question": "Should the alert escalate?",
+        "required_inputs": [
+          "Notification",
+          "NotificationTemplate",
+          "TemplateVersion"
+        ],
+        "expected_outcome": "Deliver timely, relevant, explainable communications across in-app, email, SMS, WhatsApp, and push channels without creating noise.",
+        "success_metrics": [
+          "Actionable notification ratio",
+          "Delivery success"
+        ],
+        "authority": "Human decision owner; AI remains advisory unless a bounded automation is separately approved"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "DEC-000041",
+      "type": "decision",
+      "name": "Whom should we hire and when?",
+      "description": "Builder decision supported by Human Resources.",
+      "status": "Specified",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-DEC-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "decision_question": "Whom should we hire and when?",
+        "required_inputs": [
+          "Employee",
+          "Employment",
+          "Position"
+        ],
+        "expected_outcome": "Maintain trusted workforce records and improve hiring, onboarding, capacity, performance, leave, and workforce-cost decisions.",
+        "success_metrics": [
+          "Time to hire",
+          "Onboarding completion"
+        ],
+        "authority": "Human decision owner; AI remains advisory unless a bounded automation is separately approved"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "DEC-000042",
+      "type": "decision",
+      "name": "Is the team adequately staffed?",
+      "description": "Builder decision supported by Human Resources.",
+      "status": "Specified",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-DEC-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "decision_question": "Is the team adequately staffed?",
+        "required_inputs": [
+          "Employee",
+          "Employment",
+          "Position"
+        ],
+        "expected_outcome": "Maintain trusted workforce records and improve hiring, onboarding, capacity, performance, leave, and workforce-cost decisions.",
+        "success_metrics": [
+          "Time to hire",
+          "Onboarding completion"
+        ],
+        "authority": "Human decision owner; AI remains advisory unless a bounded automation is separately approved"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "DEC-000043",
+      "type": "decision",
+      "name": "Which employee action requires attention?",
+      "description": "Builder decision supported by Human Resources.",
+      "status": "Specified",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-DEC-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "decision_question": "Which employee action requires attention?",
+        "required_inputs": [
+          "Employee",
+          "Employment",
+          "Position"
+        ],
+        "expected_outcome": "Maintain trusted workforce records and improve hiring, onboarding, capacity, performance, leave, and workforce-cost decisions.",
+        "success_metrics": [
+          "Time to hire",
+          "Onboarding completion"
+        ],
+        "authority": "Human decision owner; AI remains advisory unless a bounded automation is separately approved"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "DEC-000044",
+      "type": "decision",
+      "name": "What is the workforce cost and risk?",
+      "description": "Builder decision supported by Human Resources.",
+      "status": "Specified",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-DEC-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "decision_question": "What is the workforce cost and risk?",
+        "required_inputs": [
+          "Employee",
+          "Employment",
+          "Position"
+        ],
+        "expected_outcome": "Maintain trusted workforce records and improve hiring, onboarding, capacity, performance, leave, and workforce-cost decisions.",
+        "success_metrics": [
+          "Time to hire",
+          "Onboarding completion"
+        ],
+        "authority": "Human decision owner; AI remains advisory unless a bounded automation is separately approved"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "DEC-000045",
+      "type": "decision",
+      "name": "What should be produced and when?",
+      "description": "Builder decision supported by Manufacturing.",
+      "status": "Specified",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-DEC-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "decision_question": "What should be produced and when?",
+        "required_inputs": [
+          "BillOfMaterial",
+          "BOMVersion",
+          "Routing"
+        ],
+        "expected_outcome": "Plan and control production, materials, quality, capacity, and cost so the business can fulfill demand reliably and profitably.",
+        "success_metrics": [
+          "Schedule adherence",
+          "Overall equipment effectiveness"
+        ],
+        "authority": "Human decision owner; AI remains advisory unless a bounded automation is separately approved"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "DEC-000046",
+      "type": "decision",
+      "name": "Are materials and capacity sufficient?",
+      "description": "Builder decision supported by Manufacturing.",
+      "status": "Specified",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-DEC-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "decision_question": "Are materials and capacity sufficient?",
+        "required_inputs": [
+          "BillOfMaterial",
+          "BOMVersion",
+          "Routing"
+        ],
+        "expected_outcome": "Plan and control production, materials, quality, capacity, and cost so the business can fulfill demand reliably and profitably.",
+        "success_metrics": [
+          "Schedule adherence",
+          "Overall equipment effectiveness"
+        ],
+        "authority": "Human decision owner; AI remains advisory unless a bounded automation is separately approved"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "DEC-000047",
+      "type": "decision",
+      "name": "Which quality or schedule exception needs action?",
+      "description": "Builder decision supported by Manufacturing.",
+      "status": "Specified",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-DEC-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "decision_question": "Which quality or schedule exception needs action?",
+        "required_inputs": [
+          "BillOfMaterial",
+          "BOMVersion",
+          "Routing"
+        ],
+        "expected_outcome": "Plan and control production, materials, quality, capacity, and cost so the business can fulfill demand reliably and profitably.",
+        "success_metrics": [
+          "Schedule adherence",
+          "Overall equipment effectiveness"
+        ],
+        "authority": "Human decision owner; AI remains advisory unless a bounded automation is separately approved"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "DEC-000048",
+      "type": "decision",
+      "name": "What is the actual production cost and yield?",
+      "description": "Builder decision supported by Manufacturing.",
+      "status": "Specified",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-DEC-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "decision_question": "What is the actual production cost and yield?",
+        "required_inputs": [
+          "BillOfMaterial",
+          "BOMVersion",
+          "Routing"
+        ],
+        "expected_outcome": "Plan and control production, materials, quality, capacity, and cost so the business can fulfill demand reliably and profitably.",
+        "success_metrics": [
+          "Schedule adherence",
+          "Overall equipment effectiveness"
+        ],
+        "authority": "Human decision owner; AI remains advisory unless a bounded automation is separately approved"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "registry": "releases",
+  "version": "1.0.0",
+  "generated_at": "2026-07-12T03:39:37Z",
+  "records": [
+    {
+      "id": "REL-000001",
+      "type": "release",
+      "name": "Architecture Knowledge System 1.0",
+      "description": "Initial governed ontology, registries, tools, Word views, and handoff package.",
+      "status": "Released",
+      "owner": "TEAM-000001",
+      "version": "1.0.0",
+      "aliases": [
+        "Release AKG 1.0"
+      ],
+      "tags": [],
+      "attributes": {
+        "release_date": "2026-07-11",
+        "software_release": false
+      },
+      "governance": {
+        "responsible_team": "TEAM-000001",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "REL-000002",
+      "type": "release",
+      "name": "Platform Foundation 1.0",
+      "description": "First software release implementing workspace, identity, audit, platform shell, and delivery foundation.",
+      "status": "Planned",
+      "owner": "TEAM-000002",
+      "version": "1.0.0",
+      "aliases": [
+        "Release 1.0"
+      ],
+      "tags": [],
+      "attributes": {
+        "target": "Platform foundation",
+        "software_release": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000002",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    }
+  ]
+}

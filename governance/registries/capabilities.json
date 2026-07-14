@@ -1,0 +1,355 @@
+{
+  "registry": "capabilities",
+  "version": "1.0.0",
+  "generated_at": "2026-07-12T03:39:37Z",
+  "records": [
+    {
+      "id": "CAP-000001",
+      "type": "capability",
+      "name": "Decision Center Core Capability",
+      "description": "Convert material business signals into prioritized, explainable, owned decisions and measurable outcomes.",
+      "status": "Specified",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-CAP-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "business_objective": "Convert material business signals into prioritized, explainable, owned decisions and measurable outcomes.",
+        "supported_decision": true,
+        "current_release": "REL-000002",
+        "maturity_evidence": "Approved PRD and technical specification views"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "CAP-000002",
+      "type": "capability",
+      "name": "Business Memory Core Capability",
+      "description": "Preserve the business's decisions, context, outcomes, and lessons as permission-aware organizational memory.",
+      "status": "Specified",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-CAP-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "business_objective": "Preserve the business's decisions, context, outcomes, and lessons as permission-aware organizational memory.",
+        "supported_decision": true,
+        "current_release": "REL-000002",
+        "maturity_evidence": "Approved PRD and technical specification views"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "CAP-000003",
+      "type": "capability",
+      "name": "AI Engine Core Capability",
+      "description": "Provide provider-agnostic, explainable, evaluated intelligence that augments human judgment across ZYVORA.",
+      "status": "Specified",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-CAP-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "business_objective": "Provide provider-agnostic, explainable, evaluated intelligence that augments human judgment across ZYVORA.",
+        "supported_decision": true,
+        "current_release": "REL-000002",
+        "maturity_evidence": "Approved PRD and technical specification views"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "CAP-000004",
+      "type": "capability",
+      "name": "Identity, Workspace, Permissions & Audit Core Capability",
+      "description": "Establish trusted identity, tenant boundaries, least-privilege authority, session control, and reconstructable platform evidence.",
+      "status": "Specified",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-CAP-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "business_objective": "Establish trusted identity, tenant boundaries, least-privilege authority, session control, and reconstructable platform evidence.",
+        "supported_decision": true,
+        "current_release": "REL-000002",
+        "maturity_evidence": "Approved PRD and technical specification views"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "CAP-000005",
+      "type": "capability",
+      "name": "Finance Core Capability",
+      "description": "Maintain correct, auditable financial records and convert them into cash, profitability, control, and planning decisions.",
+      "status": "Specified",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-CAP-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "business_objective": "Maintain correct, auditable financial records and convert them into cash, profitability, control, and planning decisions.",
+        "supported_decision": true,
+        "current_release": "REL-000002",
+        "maturity_evidence": "Approved PRD and technical specification views"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "CAP-000006",
+      "type": "capability",
+      "name": "Inventory Core Capability",
+      "description": "Maintain trusted stock truth and improve replenishment, availability, purchasing, transfer, and working-capital decisions.",
+      "status": "Specified",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-CAP-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "business_objective": "Maintain trusted stock truth and improve replenishment, availability, purchasing, transfer, and working-capital decisions.",
+        "supported_decision": true,
+        "current_release": "REL-000002",
+        "maturity_evidence": "Approved PRD and technical specification views"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "CAP-000007",
+      "type": "capability",
+      "name": "CRM Core Capability",
+      "description": "Create a trusted customer relationship record and improve acquisition, pipeline, retention, and service decisions.",
+      "status": "Specified",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-CAP-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "business_objective": "Create a trusted customer relationship record and improve acquisition, pipeline, retention, and service decisions.",
+        "supported_decision": true,
+        "current_release": "REL-000002",
+        "maturity_evidence": "Approved PRD and technical specification views"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "CAP-000008",
+      "type": "capability",
+      "name": "Analytics Core Capability",
+      "description": "Provide governed, decision-oriented metrics, dashboards, drill-down, exports, and scheduled reporting across ZYVORA.",
+      "status": "Specified",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-CAP-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "business_objective": "Provide governed, decision-oriented metrics, dashboards, drill-down, exports, and scheduled reporting across ZYVORA.",
+        "supported_decision": true,
+        "current_release": "REL-000002",
+        "maturity_evidence": "Approved PRD and technical specification views"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "CAP-000009",
+      "type": "capability",
+      "name": "Documents Core Capability",
+      "description": "Create, govern, store, retrieve, approve, sign, and retain business documents as trusted operational evidence.",
+      "status": "Specified",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-CAP-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "business_objective": "Create, govern, store, retrieve, approve, sign, and retain business documents as trusted operational evidence.",
+        "supported_decision": true,
+        "current_release": "REL-000002",
+        "maturity_evidence": "Approved PRD and technical specification views"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "CAP-000010",
+      "type": "capability",
+      "name": "Notifications Core Capability",
+      "description": "Deliver timely, relevant, explainable communications across in-app, email, SMS, WhatsApp, and push channels without creating noise.",
+      "status": "Specified",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-CAP-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "business_objective": "Deliver timely, relevant, explainable communications across in-app, email, SMS, WhatsApp, and push channels without creating noise.",
+        "supported_decision": true,
+        "current_release": "REL-000002",
+        "maturity_evidence": "Approved PRD and technical specification views"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "CAP-000011",
+      "type": "capability",
+      "name": "Human Resources Core Capability",
+      "description": "Maintain trusted workforce records and improve hiring, onboarding, capacity, performance, leave, and workforce-cost decisions.",
+      "status": "Specified",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-CAP-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "business_objective": "Maintain trusted workforce records and improve hiring, onboarding, capacity, performance, leave, and workforce-cost decisions.",
+        "supported_decision": true,
+        "current_release": "REL-000002",
+        "maturity_evidence": "Approved PRD and technical specification views"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "CAP-000012",
+      "type": "capability",
+      "name": "Manufacturing Core Capability",
+      "description": "Plan and control production, materials, quality, capacity, and cost so the business can fulfill demand reliably and profitably.",
+      "status": "Specified",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-CAP-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "business_objective": "Plan and control production, materials, quality, capacity, and cost so the business can fulfill demand reliably and profitably.",
+        "supported_decision": true,
+        "current_release": "REL-000002",
+        "maturity_evidence": "Approved PRD and technical specification views"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    }
+  ]
+}

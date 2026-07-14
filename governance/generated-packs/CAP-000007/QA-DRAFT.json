@@ -1,0 +1,1846 @@
+{
+  "generator_version": "2.3.0",
+  "generated_at": "2026-07-12T03:39:43.113Z",
+  "source_capability": {
+    "id": "CAP-000007",
+    "type": "capability",
+    "name": "CRM Core Capability",
+    "status": "Specified",
+    "version": "1.0.0",
+    "owner": "TEAM-000013"
+  },
+  "source_fingerprint": "f5030a90844f942ea3561164731a21187b3bc67a4446f4acd836f4a0ddc69c9c",
+  "authority": "DRAFT_NOT_AUTHORIZED",
+  "promotion_gate": "BLOCKED_SOURCE_INCOMPLETE",
+  "blockers": [
+    "MET-000043: metric formula is not approved",
+    "MET-000044: metric formula is not approved",
+    "MET-000045: metric formula is not approved",
+    "MET-000046: metric formula is not approved",
+    "MET-000047: metric formula is not approved",
+    "MET-000048: metric formula is not approved",
+    "MET-000049: metric formula is not approved",
+    "MET-000050: metric formula is not approved",
+    "PROMPT-000025: prompt template and evaluation are not approved",
+    "PROMPT-000026: prompt template and evaluation are not approved",
+    "PROMPT-000027: prompt template and evaluation are not approved",
+    "PROMPT-000028: prompt template and evaluation are not approved",
+    "PROMPT-000029: prompt template and evaluation are not approved",
+    "PROMPT-000030: prompt template and evaluation are not approved",
+    "WF-000047: ordered workflow steps are not approved",
+    "WF-000048: ordered workflow steps are not approved",
+    "WF-000049: ordered workflow steps are not approved",
+    "WF-000050: ordered workflow steps are not approved",
+    "WF-000051: ordered workflow steps are not approved",
+    "WF-000052: ordered workflow steps are not approved",
+    "WF-000053: ordered workflow steps are not approved",
+    "WF-000054: ordered workflow steps are not approved",
+    "UF-000055: UI transitions and recovery states are not approved",
+    "UF-000056: UI transitions and recovery states are not approved",
+    "UF-000057: UI transitions and recovery states are not approved",
+    "UF-000058: UI transitions and recovery states are not approved",
+    "UF-000059: UI transitions and recovery states are not approved",
+    "UF-000060: UI transitions and recovery states are not approved",
+    "UF-000061: UI transitions and recovery states are not approved",
+    "UF-000062: UI transitions and recovery states are not approved",
+    "UF-000063: UI transitions and recovery states are not approved",
+    "EVT-000042: event domain payload is not approved",
+    "EVT-000043: event domain payload is not approved",
+    "EVT-000044: event domain payload is not approved",
+    "EVT-000045: event domain payload is not approved",
+    "EVT-000046: event domain payload is not approved",
+    "EVT-000047: event domain payload is not approved",
+    "EVT-000048: event domain payload is not approved",
+    "EVT-000049: event domain payload is not approved",
+    "API-000049: API request and response schema is not approved",
+    "API-000050: API request and response schema is not approved",
+    "API-000051: API request and response schema is not approved",
+    "API-000052: API request and response schema is not approved",
+    "API-000053: API request and response schema is not approved",
+    "API-000054: API request and response schema is not approved",
+    "API-000055: API request and response schema is not approved",
+    "API-000056: API request and response schema is not approved"
+  ],
+  "completeness": {
+    "source_records": 150,
+    "blocker_count": 47,
+    "traceability_gate": "PASS_CURRENT_MATURITY",
+    "traceability_coverage_percent": 55
+  },
+  "provenance": [
+    {
+      "id": "CAP-000007",
+      "type": "capability",
+      "name": "CRM Core Capability",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "MOD-000007",
+      "type": "module",
+      "name": "CRM",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "DEC-000025",
+      "type": "decision",
+      "name": "Which lead or opportunity deserves attention?",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "DEC-000026",
+      "type": "decision",
+      "name": "Which customer is at risk?",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "DEC-000027",
+      "type": "decision",
+      "name": "What is the next best action?",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "DEC-000028",
+      "type": "decision",
+      "name": "Which segment or campaign should be prioritized?",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "FEAT-000049",
+      "type": "feature",
+      "name": "Contacts and organizations",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "FEAT-000050",
+      "type": "feature",
+      "name": "Lead capture and qualification",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "FEAT-000051",
+      "type": "feature",
+      "name": "Opportunity pipelines",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "FEAT-000052",
+      "type": "feature",
+      "name": "Activities and tasks",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "FEAT-000053",
+      "type": "feature",
+      "name": "Segmentation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "FEAT-000054",
+      "type": "feature",
+      "name": "Customer value and health",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "FEAT-000055",
+      "type": "feature",
+      "name": "Campaign attribution",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "FEAT-000056",
+      "type": "feature",
+      "name": "Consent and communication history",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "BR-000049",
+      "type": "business_rule",
+      "name": "CRM Rule 1",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "BR-000050",
+      "type": "business_rule",
+      "name": "CRM Rule 2",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "BR-000051",
+      "type": "business_rule",
+      "name": "CRM Rule 3",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "BR-000052",
+      "type": "business_rule",
+      "name": "CRM Rule 4",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "BR-000053",
+      "type": "business_rule",
+      "name": "CRM Rule 5",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "BR-000054",
+      "type": "business_rule",
+      "name": "CRM Rule 6",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "BR-000055",
+      "type": "business_rule",
+      "name": "CRM Rule 7",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "BR-000056",
+      "type": "business_rule",
+      "name": "CRM Rule 8",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "WF-000047",
+      "type": "workflow",
+      "name": "Capture and deduplicate lead",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "WF-000048",
+      "type": "workflow",
+      "name": "Qualify lead",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "WF-000049",
+      "type": "workflow",
+      "name": "Progress opportunity",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "WF-000050",
+      "type": "workflow",
+      "name": "Record activity",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "WF-000051",
+      "type": "workflow",
+      "name": "Assign next action",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "WF-000052",
+      "type": "workflow",
+      "name": "Build segment",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "WF-000053",
+      "type": "workflow",
+      "name": "Detect churn risk",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "WF-000054",
+      "type": "workflow",
+      "name": "Win/loss review",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "ENT-000060",
+      "type": "entity",
+      "name": "Contact",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "ENT-000061",
+      "type": "entity",
+      "name": "Organization",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "ENT-000062",
+      "type": "entity",
+      "name": "Lead",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "ENT-000063",
+      "type": "entity",
+      "name": "Opportunity",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "ENT-000064",
+      "type": "entity",
+      "name": "Pipeline",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "ENT-000065",
+      "type": "entity",
+      "name": "Stage",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "ENT-000066",
+      "type": "entity",
+      "name": "Activity",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "ENT-000067",
+      "type": "entity",
+      "name": "Task",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "ENT-000068",
+      "type": "entity",
+      "name": "Segment",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "ENT-000069",
+      "type": "entity",
+      "name": "Campaign",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "ENT-000070",
+      "type": "entity",
+      "name": "ConsentRecord",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "ENT-000071",
+      "type": "entity",
+      "name": "CustomerHealth",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "API-000049",
+      "type": "api",
+      "name": "CRM Contacts and organizations API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "API-000050",
+      "type": "api",
+      "name": "CRM Lead capture and qualification API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "API-000051",
+      "type": "api",
+      "name": "CRM Opportunity pipelines API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "API-000052",
+      "type": "api",
+      "name": "CRM Activities and tasks API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "API-000053",
+      "type": "api",
+      "name": "CRM Segmentation API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "API-000054",
+      "type": "api",
+      "name": "CRM Customer value and health API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "API-000055",
+      "type": "api",
+      "name": "CRM Campaign attribution API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "API-000056",
+      "type": "api",
+      "name": "CRM Consent and communication history API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "EVT-000042",
+      "type": "event",
+      "name": "LeadCaptured",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "EVT-000043",
+      "type": "event",
+      "name": "LeadQualified",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "EVT-000044",
+      "type": "event",
+      "name": "OpportunityStageChanged",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "EVT-000045",
+      "type": "event",
+      "name": "OpportunityWon",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "EVT-000046",
+      "type": "event",
+      "name": "OpportunityLost",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "EVT-000047",
+      "type": "event",
+      "name": "ActivityCompleted",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "EVT-000048",
+      "type": "event",
+      "name": "ChurnRiskDetected",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "EVT-000049",
+      "type": "event",
+      "name": "ConsentChanged",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "PERM-000097",
+      "type": "permission",
+      "name": "Read Contacts and organizations",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "PERM-000098",
+      "type": "permission",
+      "name": "Manage Contacts and organizations",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "PERM-000099",
+      "type": "permission",
+      "name": "Read Lead capture and qualification",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "PERM-000100",
+      "type": "permission",
+      "name": "Manage Lead capture and qualification",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "PERM-000101",
+      "type": "permission",
+      "name": "Read Opportunity pipelines",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "PERM-000102",
+      "type": "permission",
+      "name": "Manage Opportunity pipelines",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "PERM-000103",
+      "type": "permission",
+      "name": "Read Activities and tasks",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "PERM-000104",
+      "type": "permission",
+      "name": "Manage Activities and tasks",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "PERM-000105",
+      "type": "permission",
+      "name": "Read Segmentation",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "PERM-000106",
+      "type": "permission",
+      "name": "Manage Segmentation",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "PERM-000107",
+      "type": "permission",
+      "name": "Read Customer value and health",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "PERM-000108",
+      "type": "permission",
+      "name": "Manage Customer value and health",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "PERM-000109",
+      "type": "permission",
+      "name": "Read Campaign attribution",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "PERM-000110",
+      "type": "permission",
+      "name": "Manage Campaign attribution",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "PERM-000111",
+      "type": "permission",
+      "name": "Read Consent and communication history",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "PERM-000112",
+      "type": "permission",
+      "name": "Manage Consent and communication history",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "SCR-000055",
+      "type": "screen",
+      "name": "CRM Decision Dashboard",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "SCR-000056",
+      "type": "screen",
+      "name": "Contacts and organizations Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "SCR-000057",
+      "type": "screen",
+      "name": "Lead capture and qualification Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "SCR-000058",
+      "type": "screen",
+      "name": "Opportunity pipelines Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "SCR-000059",
+      "type": "screen",
+      "name": "Activities and tasks Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "SCR-000060",
+      "type": "screen",
+      "name": "Segmentation Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "SCR-000061",
+      "type": "screen",
+      "name": "Customer value and health Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "SCR-000062",
+      "type": "screen",
+      "name": "Campaign attribution Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "SCR-000063",
+      "type": "screen",
+      "name": "Consent and communication history Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "UF-000055",
+      "type": "ui_flow",
+      "name": "CRM UI Flow 1",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "UF-000056",
+      "type": "ui_flow",
+      "name": "CRM UI Flow 2",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "UF-000057",
+      "type": "ui_flow",
+      "name": "CRM UI Flow 3",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "UF-000058",
+      "type": "ui_flow",
+      "name": "CRM UI Flow 4",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "UF-000059",
+      "type": "ui_flow",
+      "name": "CRM UI Flow 5",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "UF-000060",
+      "type": "ui_flow",
+      "name": "CRM UI Flow 6",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "UF-000061",
+      "type": "ui_flow",
+      "name": "CRM UI Flow 7",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "UF-000062",
+      "type": "ui_flow",
+      "name": "CRM UI Flow 8",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "UF-000063",
+      "type": "ui_flow",
+      "name": "CRM UI Flow 9",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "MET-000043",
+      "type": "metric",
+      "name": "Pipeline value",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "MET-000044",
+      "type": "metric",
+      "name": "Win rate",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "MET-000045",
+      "type": "metric",
+      "name": "Sales cycle",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "MET-000046",
+      "type": "metric",
+      "name": "Lead response time",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "MET-000047",
+      "type": "metric",
+      "name": "Forecast accuracy",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "MET-000048",
+      "type": "metric",
+      "name": "Retention",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "MET-000049",
+      "type": "metric",
+      "name": "Customer lifetime value",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "MET-000050",
+      "type": "metric",
+      "name": "Consent compliance",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "AICAP-000025",
+      "type": "ai_capability",
+      "name": "CRM: Lead scoring",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "AICAP-000026",
+      "type": "ai_capability",
+      "name": "CRM: Next best action",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "AICAP-000027",
+      "type": "ai_capability",
+      "name": "CRM: Churn risk",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "AICAP-000028",
+      "type": "ai_capability",
+      "name": "CRM: Opportunity forecast",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "AICAP-000029",
+      "type": "ai_capability",
+      "name": "CRM: Interaction summary",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "AICAP-000030",
+      "type": "ai_capability",
+      "name": "CRM: Win/loss explanation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "PROMPT-000025",
+      "type": "prompt",
+      "name": "CRM: Lead scoring Prompt",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000006"
+    },
+    {
+      "id": "PROMPT-000026",
+      "type": "prompt",
+      "name": "CRM: Next best action Prompt",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000006"
+    },
+    {
+      "id": "PROMPT-000027",
+      "type": "prompt",
+      "name": "CRM: Churn risk Prompt",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000006"
+    },
+    {
+      "id": "PROMPT-000028",
+      "type": "prompt",
+      "name": "CRM: Opportunity forecast Prompt",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000006"
+    },
+    {
+      "id": "PROMPT-000029",
+      "type": "prompt",
+      "name": "CRM: Interaction summary Prompt",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000006"
+    },
+    {
+      "id": "PROMPT-000030",
+      "type": "prompt",
+      "name": "CRM: Win/loss explanation Prompt",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000006"
+    },
+    {
+      "id": "AUTO-000037",
+      "type": "automation",
+      "name": "New assignment Automation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "AUTO-000038",
+      "type": "automation",
+      "name": "Lead SLA Automation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "AUTO-000039",
+      "type": "automation",
+      "name": "Opportunity risk Automation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "AUTO-000040",
+      "type": "automation",
+      "name": "Next action due Automation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "AUTO-000041",
+      "type": "automation",
+      "name": "Churn risk Automation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "AUTO-000042",
+      "type": "automation",
+      "name": "Consent issue Automation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "AUTO-000043",
+      "type": "automation",
+      "name": "Customer milestone Automation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "NOT-000037",
+      "type": "notification",
+      "name": "New assignment",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "NOT-000038",
+      "type": "notification",
+      "name": "Lead SLA",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "NOT-000039",
+      "type": "notification",
+      "name": "Opportunity risk",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "NOT-000040",
+      "type": "notification",
+      "name": "Next action due",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "NOT-000041",
+      "type": "notification",
+      "name": "Churn risk",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "NOT-000042",
+      "type": "notification",
+      "name": "Consent issue",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "NOT-000043",
+      "type": "notification",
+      "name": "Customer milestone",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "RPT-000035",
+      "type": "report",
+      "name": "Pipeline",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "RPT-000036",
+      "type": "report",
+      "name": "Forecast",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "RPT-000037",
+      "type": "report",
+      "name": "Lead source",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "RPT-000038",
+      "type": "report",
+      "name": "Sales activity",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "RPT-000039",
+      "type": "report",
+      "name": "Retention and churn",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "RPT-000040",
+      "type": "report",
+      "name": "Customer value",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "RPT-000041",
+      "type": "report",
+      "name": "Campaign attribution",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "INT-000031",
+      "type": "integration",
+      "name": "Email",
+      "status": "Planned",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "INT-000032",
+      "type": "integration",
+      "name": "Calendar",
+      "status": "Planned",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "INT-000033",
+      "type": "integration",
+      "name": "Telephony",
+      "status": "Planned",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "INT-000034",
+      "type": "integration",
+      "name": "Marketing platforms",
+      "status": "Planned",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "INT-000026",
+      "type": "integration",
+      "name": "E-commerce",
+      "status": "Planned",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "INT-000029",
+      "type": "integration",
+      "name": "Finance",
+      "status": "Planned",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "INT-000003",
+      "type": "integration",
+      "name": "Notifications",
+      "status": "Planned",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "ART-000007",
+      "type": "artifact",
+      "name": "ZYVORA CRM PRD v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000020",
+      "type": "artifact",
+      "name": "ZYVORA CRM Technical Specification v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000029",
+      "type": "artifact",
+      "name": "ZYVORA BP-000 Platform Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000030",
+      "type": "artifact",
+      "name": "ZYVORA BP-001 UI Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000031",
+      "type": "artifact",
+      "name": "ZYVORA BP-002 Backend Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000032",
+      "type": "artifact",
+      "name": "ZYVORA BP-003 Database Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000033",
+      "type": "artifact",
+      "name": "ZYVORA BP-004 API Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000034",
+      "type": "artifact",
+      "name": "ZYVORA BP-005 AI Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000035",
+      "type": "artifact",
+      "name": "ZYVORA BP-006 Security Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000036",
+      "type": "artifact",
+      "name": "ZYVORA BP-007 Infrastructure Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    }
+  ],
+  "kind": "draft_qa_pack",
+  "paired_build_fingerprint": "f5030a90844f942ea3561164731a21187b3bc67a4446f4acd836f4a0ddc69c9c",
+  "test_scenarios": [
+    {
+      "id": "RULE-BR-000049",
+      "type": "unit_and_domain",
+      "source": "BR-000049",
+      "scenario": "Verify business rule: A person or organization is not duplicated when a verified matching rule identifies the same party.",
+      "expected": "Exact approved rule holds for valid, invalid, boundary, and concurrent cases."
+    },
+    {
+      "id": "RULE-BR-000050",
+      "type": "unit_and_domain",
+      "source": "BR-000050",
+      "scenario": "Verify business rule: Pipeline stages have ordered entry and exit criteria.",
+      "expected": "Exact approved rule holds for valid, invalid, boundary, and concurrent cases."
+    },
+    {
+      "id": "RULE-BR-000051",
+      "type": "unit_and_domain",
+      "source": "BR-000051",
+      "scenario": "Verify business rule: Opportunity probability is stage-derived unless an authorized override includes reason.",
+      "expected": "Exact approved rule holds for valid, invalid, boundary, and concurrent cases."
+    },
+    {
+      "id": "RULE-BR-000052",
+      "type": "unit_and_domain",
+      "source": "BR-000052",
+      "scenario": "Verify business rule: Activities retain actor, channel, time, outcome, and related party.",
+      "expected": "Exact approved rule holds for valid, invalid, boundary, and concurrent cases."
+    },
+    {
+      "id": "RULE-BR-000053",
+      "type": "unit_and_domain",
+      "source": "BR-000053",
+      "scenario": "Verify business rule: Marketing communication requires valid consent and suppression checks.",
+      "expected": "Exact approved rule holds for valid, invalid, boundary, and concurrent cases."
+    },
+    {
+      "id": "RULE-BR-000054",
+      "type": "unit_and_domain",
+      "source": "BR-000054",
+      "scenario": "Verify business rule: Customer lifetime value uses an approved Finance definition.",
+      "expected": "Exact approved rule holds for valid, invalid, boundary, and concurrent cases."
+    },
+    {
+      "id": "RULE-BR-000055",
+      "type": "unit_and_domain",
+      "source": "BR-000055",
+      "scenario": "Verify business rule: Churn recommendations expose factors and confidence.",
+      "expected": "Exact approved rule holds for valid, invalid, boundary, and concurrent cases."
+    },
+    {
+      "id": "RULE-BR-000056",
+      "type": "unit_and_domain",
+      "source": "BR-000056",
+      "scenario": "Verify business rule: Merged records preserve source lineage and audit history.",
+      "expected": "Exact approved rule holds for valid, invalid, boundary, and concurrent cases."
+    },
+    {
+      "id": "WF-WF-000047",
+      "type": "end_to_end",
+      "source": "WF-000047",
+      "scenario": "Verify happy, alternative, failure, and recovery paths for Capture and deduplicate lead",
+      "expected": "Approved workflow outcome, evidence, timing, and recovery requirements are satisfied."
+    },
+    {
+      "id": "WF-WF-000048",
+      "type": "end_to_end",
+      "source": "WF-000048",
+      "scenario": "Verify happy, alternative, failure, and recovery paths for Qualify lead",
+      "expected": "Approved workflow outcome, evidence, timing, and recovery requirements are satisfied."
+    },
+    {
+      "id": "WF-WF-000049",
+      "type": "end_to_end",
+      "source": "WF-000049",
+      "scenario": "Verify happy, alternative, failure, and recovery paths for Progress opportunity",
+      "expected": "Approved workflow outcome, evidence, timing, and recovery requirements are satisfied."
+    },
+    {
+      "id": "WF-WF-000050",
+      "type": "end_to_end",
+      "source": "WF-000050",
+      "scenario": "Verify happy, alternative, failure, and recovery paths for Record activity",
+      "expected": "Approved workflow outcome, evidence, timing, and recovery requirements are satisfied."
+    },
+    {
+      "id": "WF-WF-000051",
+      "type": "end_to_end",
+      "source": "WF-000051",
+      "scenario": "Verify happy, alternative, failure, and recovery paths for Assign next action",
+      "expected": "Approved workflow outcome, evidence, timing, and recovery requirements are satisfied."
+    },
+    {
+      "id": "WF-WF-000052",
+      "type": "end_to_end",
+      "source": "WF-000052",
+      "scenario": "Verify happy, alternative, failure, and recovery paths for Build segment",
+      "expected": "Approved workflow outcome, evidence, timing, and recovery requirements are satisfied."
+    },
+    {
+      "id": "WF-WF-000053",
+      "type": "end_to_end",
+      "source": "WF-000053",
+      "scenario": "Verify happy, alternative, failure, and recovery paths for Detect churn risk",
+      "expected": "Approved workflow outcome, evidence, timing, and recovery requirements are satisfied."
+    },
+    {
+      "id": "WF-WF-000054",
+      "type": "end_to_end",
+      "source": "WF-000054",
+      "scenario": "Verify happy, alternative, failure, and recovery paths for Win/loss review",
+      "expected": "Approved workflow outcome, evidence, timing, and recovery requirements are satisfied."
+    },
+    {
+      "id": "API-API-000049",
+      "type": "contract_and_security",
+      "source": "API-000049",
+      "scenario": "Verify request, response, authorization, idempotency, pagination, validation, and errors for CRM Contacts and organizations API",
+      "expected": "Approved API contract and security policy are preserved."
+    },
+    {
+      "id": "API-API-000050",
+      "type": "contract_and_security",
+      "source": "API-000050",
+      "scenario": "Verify request, response, authorization, idempotency, pagination, validation, and errors for CRM Lead capture and qualification API",
+      "expected": "Approved API contract and security policy are preserved."
+    },
+    {
+      "id": "API-API-000051",
+      "type": "contract_and_security",
+      "source": "API-000051",
+      "scenario": "Verify request, response, authorization, idempotency, pagination, validation, and errors for CRM Opportunity pipelines API",
+      "expected": "Approved API contract and security policy are preserved."
+    },
+    {
+      "id": "API-API-000052",
+      "type": "contract_and_security",
+      "source": "API-000052",
+      "scenario": "Verify request, response, authorization, idempotency, pagination, validation, and errors for CRM Activities and tasks API",
+      "expected": "Approved API contract and security policy are preserved."
+    },
+    {
+      "id": "API-API-000053",
+      "type": "contract_and_security",
+      "source": "API-000053",
+      "scenario": "Verify request, response, authorization, idempotency, pagination, validation, and errors for CRM Segmentation API",
+      "expected": "Approved API contract and security policy are preserved."
+    },
+    {
+      "id": "API-API-000054",
+      "type": "contract_and_security",
+      "source": "API-000054",
+      "scenario": "Verify request, response, authorization, idempotency, pagination, validation, and errors for CRM Customer value and health API",
+      "expected": "Approved API contract and security policy are preserved."
+    },
+    {
+      "id": "API-API-000055",
+      "type": "contract_and_security",
+      "source": "API-000055",
+      "scenario": "Verify request, response, authorization, idempotency, pagination, validation, and errors for CRM Campaign attribution API",
+      "expected": "Approved API contract and security policy are preserved."
+    },
+    {
+      "id": "API-API-000056",
+      "type": "contract_and_security",
+      "source": "API-000056",
+      "scenario": "Verify request, response, authorization, idempotency, pagination, validation, and errors for CRM Consent and communication history API",
+      "expected": "Approved API contract and security policy are preserved."
+    },
+    {
+      "id": "EVT-EVT-000042",
+      "type": "integration",
+      "source": "EVT-000042",
+      "scenario": "Verify production, schema compatibility, ordering, duplication, retry, and idempotent consumption for LeadCaptured",
+      "expected": "Versioned event meaning and compatibility contract are preserved."
+    },
+    {
+      "id": "EVT-EVT-000043",
+      "type": "integration",
+      "source": "EVT-000043",
+      "scenario": "Verify production, schema compatibility, ordering, duplication, retry, and idempotent consumption for LeadQualified",
+      "expected": "Versioned event meaning and compatibility contract are preserved."
+    },
+    {
+      "id": "EVT-EVT-000044",
+      "type": "integration",
+      "source": "EVT-000044",
+      "scenario": "Verify production, schema compatibility, ordering, duplication, retry, and idempotent consumption for OpportunityStageChanged",
+      "expected": "Versioned event meaning and compatibility contract are preserved."
+    },
+    {
+      "id": "EVT-EVT-000045",
+      "type": "integration",
+      "source": "EVT-000045",
+      "scenario": "Verify production, schema compatibility, ordering, duplication, retry, and idempotent consumption for OpportunityWon",
+      "expected": "Versioned event meaning and compatibility contract are preserved."
+    },
+    {
+      "id": "EVT-EVT-000046",
+      "type": "integration",
+      "source": "EVT-000046",
+      "scenario": "Verify production, schema compatibility, ordering, duplication, retry, and idempotent consumption for OpportunityLost",
+      "expected": "Versioned event meaning and compatibility contract are preserved."
+    },
+    {
+      "id": "EVT-EVT-000047",
+      "type": "integration",
+      "source": "EVT-000047",
+      "scenario": "Verify production, schema compatibility, ordering, duplication, retry, and idempotent consumption for ActivityCompleted",
+      "expected": "Versioned event meaning and compatibility contract are preserved."
+    },
+    {
+      "id": "EVT-EVT-000048",
+      "type": "integration",
+      "source": "EVT-000048",
+      "scenario": "Verify production, schema compatibility, ordering, duplication, retry, and idempotent consumption for ChurnRiskDetected",
+      "expected": "Versioned event meaning and compatibility contract are preserved."
+    },
+    {
+      "id": "EVT-EVT-000049",
+      "type": "integration",
+      "source": "EVT-000049",
+      "scenario": "Verify production, schema compatibility, ordering, duplication, retry, and idempotent consumption for ConsentChanged",
+      "expected": "Versioned event meaning and compatibility contract are preserved."
+    },
+    {
+      "id": "PERM-PERM-000097",
+      "type": "security",
+      "source": "PERM-000097",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Read Contacts and organizations",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000098",
+      "type": "security",
+      "source": "PERM-000098",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Manage Contacts and organizations",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000099",
+      "type": "security",
+      "source": "PERM-000099",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Read Lead capture and qualification",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000100",
+      "type": "security",
+      "source": "PERM-000100",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Manage Lead capture and qualification",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000101",
+      "type": "security",
+      "source": "PERM-000101",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Read Opportunity pipelines",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000102",
+      "type": "security",
+      "source": "PERM-000102",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Manage Opportunity pipelines",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000103",
+      "type": "security",
+      "source": "PERM-000103",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Read Activities and tasks",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000104",
+      "type": "security",
+      "source": "PERM-000104",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Manage Activities and tasks",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000105",
+      "type": "security",
+      "source": "PERM-000105",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Read Segmentation",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000106",
+      "type": "security",
+      "source": "PERM-000106",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Manage Segmentation",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000107",
+      "type": "security",
+      "source": "PERM-000107",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Read Customer value and health",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000108",
+      "type": "security",
+      "source": "PERM-000108",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Manage Customer value and health",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000109",
+      "type": "security",
+      "source": "PERM-000109",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Read Campaign attribution",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000110",
+      "type": "security",
+      "source": "PERM-000110",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Manage Campaign attribution",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000111",
+      "type": "security",
+      "source": "PERM-000111",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Read Consent and communication history",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000112",
+      "type": "security",
+      "source": "PERM-000112",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Manage Consent and communication history",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "SCR-SCR-000055",
+      "type": "ui_accessibility",
+      "source": "SCR-000055",
+      "scenario": "Verify responsive, keyboard, screen-reader, loading, empty, error, stale, and permission states for CRM Decision Dashboard",
+      "expected": "Decision purpose remains clear and WCAG 2.1 AA obligations pass."
+    },
+    {
+      "id": "SCR-SCR-000056",
+      "type": "ui_accessibility",
+      "source": "SCR-000056",
+      "scenario": "Verify responsive, keyboard, screen-reader, loading, empty, error, stale, and permission states for Contacts and organizations Workspace",
+      "expected": "Decision purpose remains clear and WCAG 2.1 AA obligations pass."
+    },
+    {
+      "id": "SCR-SCR-000057",
+      "type": "ui_accessibility",
+      "source": "SCR-000057",
+      "scenario": "Verify responsive, keyboard, screen-reader, loading, empty, error, stale, and permission states for Lead capture and qualification Workspace",
+      "expected": "Decision purpose remains clear and WCAG 2.1 AA obligations pass."
+    },
+    {
+      "id": "SCR-SCR-000058",
+      "type": "ui_accessibility",
+      "source": "SCR-000058",
+      "scenario": "Verify responsive, keyboard, screen-reader, loading, empty, error, stale, and permission states for Opportunity pipelines Workspace",
+      "expected": "Decision purpose remains clear and WCAG 2.1 AA obligations pass."
+    },
+    {
+      "id": "SCR-SCR-000059",
+      "type": "ui_accessibility",
+      "source": "SCR-000059",
+      "scenario": "Verify responsive, keyboard, screen-reader, loading, empty, error, stale, and permission states for Activities and tasks Workspace",
+      "expected": "Decision purpose remains clear and WCAG 2.1 AA obligations pass."
+    },
+    {
+      "id": "SCR-SCR-000060",
+      "type": "ui_accessibility",
+      "source": "SCR-000060",
+      "scenario": "Verify responsive, keyboard, screen-reader, loading, empty, error, stale, and permission states for Segmentation Workspace",
+      "expected": "Decision purpose remains clear and WCAG 2.1 AA obligations pass."
+    },
+    {
+      "id": "SCR-SCR-000061",
+      "type": "ui_accessibility",
+      "source": "SCR-000061",
+      "scenario": "Verify responsive, keyboard, screen-reader, loading, empty, error, stale, and permission states for Customer value and health Workspace",
+      "expected": "Decision purpose remains clear and WCAG 2.1 AA obligations pass."
+    },
+    {
+      "id": "SCR-SCR-000062",
+      "type": "ui_accessibility",
+      "source": "SCR-000062",
+      "scenario": "Verify responsive, keyboard, screen-reader, loading, empty, error, stale, and permission states for Campaign attribution Workspace",
+      "expected": "Decision purpose remains clear and WCAG 2.1 AA obligations pass."
+    },
+    {
+      "id": "SCR-SCR-000063",
+      "type": "ui_accessibility",
+      "source": "SCR-000063",
+      "scenario": "Verify responsive, keyboard, screen-reader, loading, empty, error, stale, and permission states for Consent and communication history Workspace",
+      "expected": "Decision purpose remains clear and WCAG 2.1 AA obligations pass."
+    }
+  ],
+  "regression_scope": [
+    "CAP-000007",
+    "MOD-000007",
+    "DEC-000025",
+    "DEC-000026",
+    "DEC-000027",
+    "DEC-000028",
+    "FEAT-000049",
+    "FEAT-000050",
+    "FEAT-000051",
+    "FEAT-000052",
+    "FEAT-000053",
+    "FEAT-000054",
+    "FEAT-000055",
+    "FEAT-000056",
+    "BR-000049",
+    "BR-000050",
+    "BR-000051",
+    "BR-000052",
+    "BR-000053",
+    "BR-000054",
+    "BR-000055",
+    "BR-000056",
+    "WF-000047",
+    "WF-000048",
+    "WF-000049",
+    "WF-000050",
+    "WF-000051",
+    "WF-000052",
+    "WF-000053",
+    "WF-000054",
+    "ENT-000060",
+    "ENT-000061",
+    "ENT-000062",
+    "ENT-000063",
+    "ENT-000064",
+    "ENT-000065",
+    "ENT-000066",
+    "ENT-000067",
+    "ENT-000068",
+    "ENT-000069",
+    "ENT-000070",
+    "ENT-000071",
+    "API-000049",
+    "API-000050",
+    "API-000051",
+    "API-000052",
+    "API-000053",
+    "API-000054",
+    "API-000055",
+    "API-000056",
+    "EVT-000042",
+    "EVT-000043",
+    "EVT-000044",
+    "EVT-000045",
+    "EVT-000046",
+    "EVT-000047",
+    "EVT-000048",
+    "EVT-000049",
+    "PERM-000097",
+    "PERM-000098",
+    "PERM-000099",
+    "PERM-000100",
+    "PERM-000101",
+    "PERM-000102",
+    "PERM-000103",
+    "PERM-000104",
+    "PERM-000105",
+    "PERM-000106",
+    "PERM-000107",
+    "PERM-000108",
+    "PERM-000109",
+    "PERM-000110",
+    "PERM-000111",
+    "PERM-000112",
+    "SCR-000055",
+    "SCR-000056",
+    "SCR-000057",
+    "SCR-000058",
+    "SCR-000059",
+    "SCR-000060",
+    "SCR-000061",
+    "SCR-000062",
+    "SCR-000063",
+    "UF-000055",
+    "UF-000056",
+    "UF-000057",
+    "UF-000058",
+    "UF-000059",
+    "UF-000060",
+    "UF-000061",
+    "UF-000062",
+    "UF-000063",
+    "MET-000043",
+    "MET-000044",
+    "MET-000045",
+    "MET-000046",
+    "MET-000047",
+    "MET-000048",
+    "MET-000049",
+    "MET-000050",
+    "AICAP-000025",
+    "AICAP-000026",
+    "AICAP-000027",
+    "AICAP-000028",
+    "AICAP-000029",
+    "AICAP-000030",
+    "PROMPT-000025",
+    "PROMPT-000026",
+    "PROMPT-000027",
+    "PROMPT-000028",
+    "PROMPT-000029",
+    "PROMPT-000030",
+    "AUTO-000037",
+    "AUTO-000038",
+    "AUTO-000039",
+    "AUTO-000040",
+    "AUTO-000041",
+    "AUTO-000042",
+    "AUTO-000043",
+    "NOT-000037",
+    "NOT-000038",
+    "NOT-000039",
+    "NOT-000040",
+    "NOT-000041",
+    "NOT-000042",
+    "NOT-000043",
+    "RPT-000035",
+    "RPT-000036",
+    "RPT-000037",
+    "RPT-000038",
+    "RPT-000039",
+    "RPT-000040",
+    "RPT-000041",
+    "INT-000031",
+    "INT-000032",
+    "INT-000033",
+    "INT-000034",
+    "INT-000026",
+    "INT-000029",
+    "INT-000003",
+    "ART-000007",
+    "ART-000020",
+    "ART-000029",
+    "ART-000030",
+    "ART-000031",
+    "ART-000032",
+    "ART-000033",
+    "ART-000034",
+    "ART-000035",
+    "ART-000036"
+  ],
+  "performance_requirements": [
+    "Validate published performance budgets from the approved Technical Specification.",
+    "Verify no unbounded query, queue, retry, export, or AI workload."
+  ],
+  "security_requirements": [
+    "Tenant isolation",
+    "Authorization deny paths",
+    "Sensitive-data handling",
+    "Audit completeness",
+    "Rate limiting and abuse controls"
+  ],
+  "evidence_required": [
+    "Automated test results",
+    "Accessibility results",
+    "Security results",
+    "Performance results",
+    "Manual exploratory record",
+    "Deployment and rollback rehearsal"
+  ]
+}

@@ -1,0 +1,343 @@
+{
+  "registry": "modules",
+  "version": "1.0.0",
+  "generated_at": "2026-07-12T03:39:37Z",
+  "records": [
+    {
+      "id": "MOD-000001",
+      "type": "module",
+      "name": "Decision Center",
+      "description": "Convert material business signals into prioritized, explainable, owned decisions and measurable outcomes.",
+      "status": "Specified",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC"
+      ],
+      "tags": [
+        "bounded-context"
+      ],
+      "attributes": {
+        "code": "DC"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MOD-000002",
+      "type": "module",
+      "name": "Business Memory",
+      "description": "Preserve the business's decisions, context, outcomes, and lessons as permission-aware organizational memory.",
+      "status": "Specified",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM"
+      ],
+      "tags": [
+        "bounded-context"
+      ],
+      "attributes": {
+        "code": "BM"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MOD-000003",
+      "type": "module",
+      "name": "AI Engine",
+      "description": "Provide provider-agnostic, explainable, evaluated intelligence that augments human judgment across ZYVORA.",
+      "status": "Specified",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI"
+      ],
+      "tags": [
+        "bounded-context"
+      ],
+      "attributes": {
+        "code": "AI"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MOD-000004",
+      "type": "module",
+      "name": "Identity, Workspace, Permissions & Audit",
+      "description": "Establish trusted identity, tenant boundaries, least-privilege authority, session control, and reconstructable platform evidence.",
+      "status": "Specified",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM"
+      ],
+      "tags": [
+        "bounded-context"
+      ],
+      "attributes": {
+        "code": "IAM"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MOD-000005",
+      "type": "module",
+      "name": "Finance",
+      "description": "Maintain correct, auditable financial records and convert them into cash, profitability, control, and planning decisions.",
+      "status": "Specified",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN"
+      ],
+      "tags": [
+        "bounded-context"
+      ],
+      "attributes": {
+        "code": "FIN"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MOD-000006",
+      "type": "module",
+      "name": "Inventory",
+      "description": "Maintain trusted stock truth and improve replenishment, availability, purchasing, transfer, and working-capital decisions.",
+      "status": "Specified",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV"
+      ],
+      "tags": [
+        "bounded-context"
+      ],
+      "attributes": {
+        "code": "INV"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MOD-000007",
+      "type": "module",
+      "name": "CRM",
+      "description": "Create a trusted customer relationship record and improve acquisition, pipeline, retention, and service decisions.",
+      "status": "Specified",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM"
+      ],
+      "tags": [
+        "bounded-context"
+      ],
+      "attributes": {
+        "code": "CRM"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MOD-000008",
+      "type": "module",
+      "name": "Analytics",
+      "description": "Provide governed, decision-oriented metrics, dashboards, drill-down, exports, and scheduled reporting across ZYVORA.",
+      "status": "Specified",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA"
+      ],
+      "tags": [
+        "bounded-context"
+      ],
+      "attributes": {
+        "code": "ANA"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MOD-000009",
+      "type": "module",
+      "name": "Documents",
+      "description": "Create, govern, store, retrieve, approve, sign, and retain business documents as trusted operational evidence.",
+      "status": "Specified",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC"
+      ],
+      "tags": [
+        "bounded-context"
+      ],
+      "attributes": {
+        "code": "DOC"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MOD-000010",
+      "type": "module",
+      "name": "Notifications",
+      "description": "Deliver timely, relevant, explainable communications across in-app, email, SMS, WhatsApp, and push channels without creating noise.",
+      "status": "Specified",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT"
+      ],
+      "tags": [
+        "bounded-context"
+      ],
+      "attributes": {
+        "code": "NOT"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MOD-000011",
+      "type": "module",
+      "name": "Human Resources",
+      "description": "Maintain trusted workforce records and improve hiring, onboarding, capacity, performance, leave, and workforce-cost decisions.",
+      "status": "Specified",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR"
+      ],
+      "tags": [
+        "bounded-context"
+      ],
+      "attributes": {
+        "code": "HR"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MOD-000012",
+      "type": "module",
+      "name": "Manufacturing",
+      "description": "Plan and control production, materials, quality, capacity, and cost so the business can fulfill demand reliably and profitably.",
+      "status": "Specified",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG"
+      ],
+      "tags": [
+        "bounded-context"
+      ],
+      "attributes": {
+        "code": "MFG"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    }
+  ]
+}

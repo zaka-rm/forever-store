@@ -1,0 +1,4999 @@
+{
+  "registry": "permissions",
+  "version": "1.0.0",
+  "generated_at": "2026-07-12T03:39:37Z",
+  "records": [
+    {
+      "id": "PERM-000001",
+      "type": "permission",
+      "name": "Read Decision inbox and saved views",
+      "description": "Read authorized decision inbox and saved views within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "dc.01.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000002",
+      "type": "permission",
+      "name": "Manage Decision inbox and saved views",
+      "description": "Create or change authorized decision inbox and saved views subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "dc.01.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000003",
+      "type": "permission",
+      "name": "Read Priority and urgency explanation",
+      "description": "Read authorized priority and urgency explanation within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "dc.02.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000004",
+      "type": "permission",
+      "name": "Manage Priority and urgency explanation",
+      "description": "Create or change authorized priority and urgency explanation subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "dc.02.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000005",
+      "type": "permission",
+      "name": "Read Decision detail and evidence bundle",
+      "description": "Read authorized decision detail and evidence bundle within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "dc.03.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000006",
+      "type": "permission",
+      "name": "Manage Decision detail and evidence bundle",
+      "description": "Create or change authorized decision detail and evidence bundle subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "dc.03.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000007",
+      "type": "permission",
+      "name": "Read Alternative and trade-off comparison",
+      "description": "Read authorized alternative and trade-off comparison within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "dc.04.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000008",
+      "type": "permission",
+      "name": "Manage Alternative and trade-off comparison",
+      "description": "Create or change authorized alternative and trade-off comparison subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "dc.04.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000009",
+      "type": "permission",
+      "name": "Read Assignment and due-date control",
+      "description": "Read authorized assignment and due-date control within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "dc.05.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000010",
+      "type": "permission",
+      "name": "Manage Assignment and due-date control",
+      "description": "Create or change authorized assignment and due-date control subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "dc.05.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000011",
+      "type": "permission",
+      "name": "Read Approval and escalation",
+      "description": "Read authorized approval and escalation within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "dc.06.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000012",
+      "type": "permission",
+      "name": "Manage Approval and escalation",
+      "description": "Create or change authorized approval and escalation subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "dc.06.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000013",
+      "type": "permission",
+      "name": "Read Action and rationale recording",
+      "description": "Read authorized action and rationale recording within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "dc.07.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000014",
+      "type": "permission",
+      "name": "Manage Action and rationale recording",
+      "description": "Create or change authorized action and rationale recording subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "dc.07.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000015",
+      "type": "permission",
+      "name": "Read Outcome follow-up and learning",
+      "description": "Read authorized outcome follow-up and learning within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "dc.08.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000016",
+      "type": "permission",
+      "name": "Manage Outcome follow-up and learning",
+      "description": "Create or change authorized outcome follow-up and learning subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "dc.08.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000017",
+      "type": "permission",
+      "name": "Read Decision timeline",
+      "description": "Read authorized decision timeline within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "bm.01.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000018",
+      "type": "permission",
+      "name": "Manage Decision timeline",
+      "description": "Create or change authorized decision timeline subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "bm.01.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000019",
+      "type": "permission",
+      "name": "Read Immutable context snapshots",
+      "description": "Read authorized immutable context snapshots within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "bm.02.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000020",
+      "type": "permission",
+      "name": "Manage Immutable context snapshots",
+      "description": "Create or change authorized immutable context snapshots subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "bm.02.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000021",
+      "type": "permission",
+      "name": "Read Outcome and lesson capture",
+      "description": "Read authorized outcome and lesson capture within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "bm.03.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000022",
+      "type": "permission",
+      "name": "Manage Outcome and lesson capture",
+      "description": "Create or change authorized outcome and lesson capture subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "bm.03.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000023",
+      "type": "permission",
+      "name": "Read Structured and semantic search",
+      "description": "Read authorized structured and semantic search within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "bm.04.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000024",
+      "type": "permission",
+      "name": "Manage Structured and semantic search",
+      "description": "Create or change authorized structured and semantic search subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "bm.04.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000025",
+      "type": "permission",
+      "name": "Read Source and freshness lineage",
+      "description": "Read authorized source and freshness lineage within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "bm.05.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000026",
+      "type": "permission",
+      "name": "Manage Source and freshness lineage",
+      "description": "Create or change authorized source and freshness lineage subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "bm.05.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000027",
+      "type": "permission",
+      "name": "Read Memory collections and tags",
+      "description": "Read authorized memory collections and tags within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "bm.06.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000028",
+      "type": "permission",
+      "name": "Manage Memory collections and tags",
+      "description": "Create or change authorized memory collections and tags subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "bm.06.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000029",
+      "type": "permission",
+      "name": "Read Retention and privacy control",
+      "description": "Read authorized retention and privacy control within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "bm.07.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000030",
+      "type": "permission",
+      "name": "Manage Retention and privacy control",
+      "description": "Create or change authorized retention and privacy control subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "bm.07.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000031",
+      "type": "permission",
+      "name": "Read Citation-ready retrieval",
+      "description": "Read authorized citation-ready retrieval within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "bm.08.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000032",
+      "type": "permission",
+      "name": "Manage Citation-ready retrieval",
+      "description": "Create or change authorized citation-ready retrieval subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "bm.08.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000033",
+      "type": "permission",
+      "name": "Read Model Gateway",
+      "description": "Read authorized model gateway within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "ai.01.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000034",
+      "type": "permission",
+      "name": "Manage Model Gateway",
+      "description": "Create or change authorized model gateway subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "ai.01.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000035",
+      "type": "permission",
+      "name": "Read Prompt Registry",
+      "description": "Read authorized prompt registry within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "ai.02.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000036",
+      "type": "permission",
+      "name": "Manage Prompt Registry",
+      "description": "Create or change authorized prompt registry subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "ai.02.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000037",
+      "type": "permission",
+      "name": "Read Retrieval service",
+      "description": "Read authorized retrieval service within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "ai.03.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000038",
+      "type": "permission",
+      "name": "Manage Retrieval service",
+      "description": "Create or change authorized retrieval service subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "ai.03.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000039",
+      "type": "permission",
+      "name": "Read Recommendation service",
+      "description": "Read authorized recommendation service within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "ai.04.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000040",
+      "type": "permission",
+      "name": "Manage Recommendation service",
+      "description": "Create or change authorized recommendation service subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "ai.04.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000041",
+      "type": "permission",
+      "name": "Read Forecasting service",
+      "description": "Read authorized forecasting service within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "ai.05.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000042",
+      "type": "permission",
+      "name": "Manage Forecasting service",
+      "description": "Create or change authorized forecasting service subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "ai.05.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000043",
+      "type": "permission",
+      "name": "Read Explainability service",
+      "description": "Read authorized explainability service within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "ai.06.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000044",
+      "type": "permission",
+      "name": "Manage Explainability service",
+      "description": "Create or change authorized explainability service subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "ai.06.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000045",
+      "type": "permission",
+      "name": "Read Evaluation and release gates",
+      "description": "Read authorized evaluation and release gates within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "ai.07.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000046",
+      "type": "permission",
+      "name": "Manage Evaluation and release gates",
+      "description": "Create or change authorized evaluation and release gates subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "ai.07.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000047",
+      "type": "permission",
+      "name": "Read Cost, latency, safety, and drift monitoring",
+      "description": "Read authorized cost, latency, safety, and drift monitoring within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "ai.08.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000048",
+      "type": "permission",
+      "name": "Manage Cost, latency, safety, and drift monitoring",
+      "description": "Create or change authorized cost, latency, safety, and drift monitoring subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "ai.08.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000049",
+      "type": "permission",
+      "name": "Read Authentication adapter",
+      "description": "Read authorized authentication adapter within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "iam.01.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000050",
+      "type": "permission",
+      "name": "Manage Authentication adapter",
+      "description": "Create or change authorized authentication adapter subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "iam.01.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000051",
+      "type": "permission",
+      "name": "Read Workspace lifecycle",
+      "description": "Read authorized workspace lifecycle within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "iam.02.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000052",
+      "type": "permission",
+      "name": "Manage Workspace lifecycle",
+      "description": "Create or change authorized workspace lifecycle subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "iam.02.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000053",
+      "type": "permission",
+      "name": "Read Invitation and membership",
+      "description": "Read authorized invitation and membership within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "iam.03.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000054",
+      "type": "permission",
+      "name": "Manage Invitation and membership",
+      "description": "Create or change authorized invitation and membership subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "iam.03.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000055",
+      "type": "permission",
+      "name": "Read Roles and permission grants",
+      "description": "Read authorized roles and permission grants within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "iam.04.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000056",
+      "type": "permission",
+      "name": "Manage Roles and permission grants",
+      "description": "Create or change authorized roles and permission grants subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "iam.04.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000057",
+      "type": "permission",
+      "name": "Read Policy evaluation",
+      "description": "Read authorized policy evaluation within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "iam.05.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000058",
+      "type": "permission",
+      "name": "Manage Policy evaluation",
+      "description": "Create or change authorized policy evaluation subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "iam.05.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000059",
+      "type": "permission",
+      "name": "Read MFA and session management",
+      "description": "Read authorized mfa and session management within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "iam.06.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000060",
+      "type": "permission",
+      "name": "Manage MFA and session management",
+      "description": "Create or change authorized mfa and session management subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "iam.06.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000061",
+      "type": "permission",
+      "name": "Read API keys and service identities",
+      "description": "Read authorized api keys and service identities within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "iam.07.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000062",
+      "type": "permission",
+      "name": "Manage API keys and service identities",
+      "description": "Create or change authorized api keys and service identities subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "iam.07.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000063",
+      "type": "permission",
+      "name": "Read Audit explorer and evidence export",
+      "description": "Read authorized audit explorer and evidence export within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "iam.08.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000064",
+      "type": "permission",
+      "name": "Manage Audit explorer and evidence export",
+      "description": "Create or change authorized audit explorer and evidence export subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "iam.08.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000065",
+      "type": "permission",
+      "name": "Read Chart of accounts",
+      "description": "Read authorized chart of accounts within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "fin.01.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000066",
+      "type": "permission",
+      "name": "Manage Chart of accounts",
+      "description": "Create or change authorized chart of accounts subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "fin.01.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000067",
+      "type": "permission",
+      "name": "Read Double-entry journals",
+      "description": "Read authorized double-entry journals within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "fin.02.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000068",
+      "type": "permission",
+      "name": "Manage Double-entry journals",
+      "description": "Create or change authorized double-entry journals subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "fin.02.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000069",
+      "type": "permission",
+      "name": "Read Accounts receivable and invoicing",
+      "description": "Read authorized accounts receivable and invoicing within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "fin.03.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000070",
+      "type": "permission",
+      "name": "Manage Accounts receivable and invoicing",
+      "description": "Create or change authorized accounts receivable and invoicing subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "fin.03.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000071",
+      "type": "permission",
+      "name": "Read Accounts payable and bills",
+      "description": "Read authorized accounts payable and bills within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "fin.04.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000072",
+      "type": "permission",
+      "name": "Manage Accounts payable and bills",
+      "description": "Create or change authorized accounts payable and bills subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "fin.04.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000073",
+      "type": "permission",
+      "name": "Read Payments and reconciliation",
+      "description": "Read authorized payments and reconciliation within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "fin.05.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000074",
+      "type": "permission",
+      "name": "Manage Payments and reconciliation",
+      "description": "Create or change authorized payments and reconciliation subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "fin.05.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000075",
+      "type": "permission",
+      "name": "Read Budgets and variance",
+      "description": "Read authorized budgets and variance within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "fin.06.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000076",
+      "type": "permission",
+      "name": "Manage Budgets and variance",
+      "description": "Create or change authorized budgets and variance subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "fin.06.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000077",
+      "type": "permission",
+      "name": "Read Cash-flow forecasting",
+      "description": "Read authorized cash-flow forecasting within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "fin.07.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000078",
+      "type": "permission",
+      "name": "Manage Cash-flow forecasting",
+      "description": "Create or change authorized cash-flow forecasting subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "fin.07.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000079",
+      "type": "permission",
+      "name": "Read Financial statements and close",
+      "description": "Read authorized financial statements and close within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "fin.08.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000080",
+      "type": "permission",
+      "name": "Manage Financial statements and close",
+      "description": "Create or change authorized financial statements and close subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "fin.08.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000081",
+      "type": "permission",
+      "name": "Read Product and SKU catalog",
+      "description": "Read authorized product and sku catalog within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "inv.01.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000082",
+      "type": "permission",
+      "name": "Manage Product and SKU catalog",
+      "description": "Create or change authorized product and sku catalog subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "inv.01.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000083",
+      "type": "permission",
+      "name": "Read Warehouse and location model",
+      "description": "Read authorized warehouse and location model within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "inv.02.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000084",
+      "type": "permission",
+      "name": "Manage Warehouse and location model",
+      "description": "Create or change authorized warehouse and location model subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "inv.02.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000085",
+      "type": "permission",
+      "name": "Read Stock ledger and availability",
+      "description": "Read authorized stock ledger and availability within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "inv.03.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000086",
+      "type": "permission",
+      "name": "Manage Stock ledger and availability",
+      "description": "Create or change authorized stock ledger and availability subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "inv.03.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000087",
+      "type": "permission",
+      "name": "Read Reservations and allocations",
+      "description": "Read authorized reservations and allocations within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "inv.04.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000088",
+      "type": "permission",
+      "name": "Manage Reservations and allocations",
+      "description": "Create or change authorized reservations and allocations subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "inv.04.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000089",
+      "type": "permission",
+      "name": "Read Purchase orders and receipts",
+      "description": "Read authorized purchase orders and receipts within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "inv.05.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000090",
+      "type": "permission",
+      "name": "Manage Purchase orders and receipts",
+      "description": "Create or change authorized purchase orders and receipts subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "inv.05.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000091",
+      "type": "permission",
+      "name": "Read Transfers and adjustments",
+      "description": "Read authorized transfers and adjustments within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "inv.06.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000092",
+      "type": "permission",
+      "name": "Manage Transfers and adjustments",
+      "description": "Create or change authorized transfers and adjustments subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "inv.06.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000093",
+      "type": "permission",
+      "name": "Read Lot/serial/batch traceability",
+      "description": "Read authorized lot/serial/batch traceability within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "inv.07.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000094",
+      "type": "permission",
+      "name": "Manage Lot/serial/batch traceability",
+      "description": "Create or change authorized lot/serial/batch traceability subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "inv.07.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000095",
+      "type": "permission",
+      "name": "Read Reorder and demand planning",
+      "description": "Read authorized reorder and demand planning within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "inv.08.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000096",
+      "type": "permission",
+      "name": "Manage Reorder and demand planning",
+      "description": "Create or change authorized reorder and demand planning subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "inv.08.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000097",
+      "type": "permission",
+      "name": "Read Contacts and organizations",
+      "description": "Read authorized contacts and organizations within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "crm.01.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000098",
+      "type": "permission",
+      "name": "Manage Contacts and organizations",
+      "description": "Create or change authorized contacts and organizations subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "crm.01.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000099",
+      "type": "permission",
+      "name": "Read Lead capture and qualification",
+      "description": "Read authorized lead capture and qualification within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "crm.02.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000100",
+      "type": "permission",
+      "name": "Manage Lead capture and qualification",
+      "description": "Create or change authorized lead capture and qualification subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "crm.02.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000101",
+      "type": "permission",
+      "name": "Read Opportunity pipelines",
+      "description": "Read authorized opportunity pipelines within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "crm.03.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000102",
+      "type": "permission",
+      "name": "Manage Opportunity pipelines",
+      "description": "Create or change authorized opportunity pipelines subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "crm.03.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000103",
+      "type": "permission",
+      "name": "Read Activities and tasks",
+      "description": "Read authorized activities and tasks within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "crm.04.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000104",
+      "type": "permission",
+      "name": "Manage Activities and tasks",
+      "description": "Create or change authorized activities and tasks subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "crm.04.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000105",
+      "type": "permission",
+      "name": "Read Segmentation",
+      "description": "Read authorized segmentation within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "crm.05.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000106",
+      "type": "permission",
+      "name": "Manage Segmentation",
+      "description": "Create or change authorized segmentation subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "crm.05.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000107",
+      "type": "permission",
+      "name": "Read Customer value and health",
+      "description": "Read authorized customer value and health within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "crm.06.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000108",
+      "type": "permission",
+      "name": "Manage Customer value and health",
+      "description": "Create or change authorized customer value and health subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "crm.06.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000109",
+      "type": "permission",
+      "name": "Read Campaign attribution",
+      "description": "Read authorized campaign attribution within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "crm.07.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000110",
+      "type": "permission",
+      "name": "Manage Campaign attribution",
+      "description": "Create or change authorized campaign attribution subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "crm.07.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000111",
+      "type": "permission",
+      "name": "Read Consent and communication history",
+      "description": "Read authorized consent and communication history within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "crm.08.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000112",
+      "type": "permission",
+      "name": "Manage Consent and communication history",
+      "description": "Create or change authorized consent and communication history subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "crm.08.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000113",
+      "type": "permission",
+      "name": "Read Metric registry",
+      "description": "Read authorized metric registry within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ana.01.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000114",
+      "type": "permission",
+      "name": "Manage Metric registry",
+      "description": "Create or change authorized metric registry subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ana.01.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000115",
+      "type": "permission",
+      "name": "Read Semantic definitions",
+      "description": "Read authorized semantic definitions within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ana.02.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000116",
+      "type": "permission",
+      "name": "Manage Semantic definitions",
+      "description": "Create or change authorized semantic definitions subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ana.02.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000117",
+      "type": "permission",
+      "name": "Read Dashboard composition",
+      "description": "Read authorized dashboard composition within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ana.03.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000118",
+      "type": "permission",
+      "name": "Manage Dashboard composition",
+      "description": "Create or change authorized dashboard composition subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ana.03.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000119",
+      "type": "permission",
+      "name": "Read Filters and saved views",
+      "description": "Read authorized filters and saved views within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ana.04.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000120",
+      "type": "permission",
+      "name": "Manage Filters and saved views",
+      "description": "Create or change authorized filters and saved views subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ana.04.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000121",
+      "type": "permission",
+      "name": "Read Drill-down and lineage",
+      "description": "Read authorized drill-down and lineage within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ana.05.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000122",
+      "type": "permission",
+      "name": "Manage Drill-down and lineage",
+      "description": "Create or change authorized drill-down and lineage subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ana.05.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000123",
+      "type": "permission",
+      "name": "Read Scheduled reports",
+      "description": "Read authorized scheduled reports within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ana.06.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000124",
+      "type": "permission",
+      "name": "Manage Scheduled reports",
+      "description": "Create or change authorized scheduled reports subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ana.06.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000125",
+      "type": "permission",
+      "name": "Read Exports",
+      "description": "Read authorized exports within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ana.07.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000126",
+      "type": "permission",
+      "name": "Manage Exports",
+      "description": "Create or change authorized exports subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ana.07.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000127",
+      "type": "permission",
+      "name": "Read Annotations and forecast overlays",
+      "description": "Read authorized annotations and forecast overlays within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ana.08.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000128",
+      "type": "permission",
+      "name": "Manage Annotations and forecast overlays",
+      "description": "Create or change authorized annotations and forecast overlays subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ana.08.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000129",
+      "type": "permission",
+      "name": "Read Document metadata and storage",
+      "description": "Read authorized document metadata and storage within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "doc.01.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000130",
+      "type": "permission",
+      "name": "Manage Document metadata and storage",
+      "description": "Create or change authorized document metadata and storage subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "doc.01.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000131",
+      "type": "permission",
+      "name": "Read Templates",
+      "description": "Read authorized templates within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "doc.02.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000132",
+      "type": "permission",
+      "name": "Manage Templates",
+      "description": "Create or change authorized templates subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "doc.02.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000133",
+      "type": "permission",
+      "name": "Read Generation",
+      "description": "Read authorized generation within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "doc.03.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000134",
+      "type": "permission",
+      "name": "Manage Generation",
+      "description": "Create or change authorized generation subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "doc.03.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000135",
+      "type": "permission",
+      "name": "Read Versioning",
+      "description": "Read authorized versioning within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "doc.04.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000136",
+      "type": "permission",
+      "name": "Manage Versioning",
+      "description": "Create or change authorized versioning subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "doc.04.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000137",
+      "type": "permission",
+      "name": "Read Review and approval",
+      "description": "Read authorized review and approval within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "doc.05.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000138",
+      "type": "permission",
+      "name": "Manage Review and approval",
+      "description": "Create or change authorized review and approval subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "doc.05.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000139",
+      "type": "permission",
+      "name": "Read Electronic signature adapters",
+      "description": "Read authorized electronic signature adapters within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "doc.06.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000140",
+      "type": "permission",
+      "name": "Manage Electronic signature adapters",
+      "description": "Create or change authorized electronic signature adapters subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "doc.06.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000141",
+      "type": "permission",
+      "name": "Read OCR/import",
+      "description": "Read authorized ocr/import within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "doc.07.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000142",
+      "type": "permission",
+      "name": "Manage OCR/import",
+      "description": "Create or change authorized ocr/import subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "doc.07.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000143",
+      "type": "permission",
+      "name": "Read Retention and legal hold",
+      "description": "Read authorized retention and legal hold within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "doc.08.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000144",
+      "type": "permission",
+      "name": "Manage Retention and legal hold",
+      "description": "Create or change authorized retention and legal hold subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "doc.08.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000145",
+      "type": "permission",
+      "name": "Read Unified notification events",
+      "description": "Read authorized unified notification events within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "not.01.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000146",
+      "type": "permission",
+      "name": "Manage Unified notification events",
+      "description": "Create or change authorized unified notification events subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "not.01.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000147",
+      "type": "permission",
+      "name": "Read Templates and versions",
+      "description": "Read authorized templates and versions within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "not.02.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000148",
+      "type": "permission",
+      "name": "Manage Templates and versions",
+      "description": "Create or change authorized templates and versions subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "not.02.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000149",
+      "type": "permission",
+      "name": "Read Category and priority",
+      "description": "Read authorized category and priority within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "not.03.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000150",
+      "type": "permission",
+      "name": "Manage Category and priority",
+      "description": "Create or change authorized category and priority subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "not.03.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000151",
+      "type": "permission",
+      "name": "Read User preferences and quiet hours",
+      "description": "Read authorized user preferences and quiet hours within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "not.04.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000152",
+      "type": "permission",
+      "name": "Manage User preferences and quiet hours",
+      "description": "Create or change authorized user preferences and quiet hours subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "not.04.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000153",
+      "type": "permission",
+      "name": "Read Channel routing",
+      "description": "Read authorized channel routing within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "not.05.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000154",
+      "type": "permission",
+      "name": "Manage Channel routing",
+      "description": "Create or change authorized channel routing subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "not.05.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000155",
+      "type": "permission",
+      "name": "Read Delivery retries",
+      "description": "Read authorized delivery retries within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "not.06.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000156",
+      "type": "permission",
+      "name": "Manage Delivery retries",
+      "description": "Create or change authorized delivery retries subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "not.06.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000157",
+      "type": "permission",
+      "name": "Read Digest and grouping",
+      "description": "Read authorized digest and grouping within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "not.07.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000158",
+      "type": "permission",
+      "name": "Manage Digest and grouping",
+      "description": "Create or change authorized digest and grouping subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "not.07.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000159",
+      "type": "permission",
+      "name": "Read Escalation and audit",
+      "description": "Read authorized escalation and audit within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "not.08.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000160",
+      "type": "permission",
+      "name": "Manage Escalation and audit",
+      "description": "Create or change authorized escalation and audit subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "not.08.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000161",
+      "type": "permission",
+      "name": "Read Employee records",
+      "description": "Read authorized employee records within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "hr.01.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000162",
+      "type": "permission",
+      "name": "Manage Employee records",
+      "description": "Create or change authorized employee records subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "hr.01.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000163",
+      "type": "permission",
+      "name": "Read Organization and positions",
+      "description": "Read authorized organization and positions within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "hr.02.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000164",
+      "type": "permission",
+      "name": "Manage Organization and positions",
+      "description": "Create or change authorized organization and positions subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "hr.02.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000165",
+      "type": "permission",
+      "name": "Read Recruitment",
+      "description": "Read authorized recruitment within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "hr.03.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000166",
+      "type": "permission",
+      "name": "Manage Recruitment",
+      "description": "Create or change authorized recruitment subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "hr.03.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000167",
+      "type": "permission",
+      "name": "Read Onboarding/offboarding",
+      "description": "Read authorized onboarding/offboarding within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "hr.04.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000168",
+      "type": "permission",
+      "name": "Manage Onboarding/offboarding",
+      "description": "Create or change authorized onboarding/offboarding subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "hr.04.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000169",
+      "type": "permission",
+      "name": "Read Leave and attendance",
+      "description": "Read authorized leave and attendance within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "hr.05.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000170",
+      "type": "permission",
+      "name": "Manage Leave and attendance",
+      "description": "Create or change authorized leave and attendance subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "hr.05.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000171",
+      "type": "permission",
+      "name": "Read Performance and goals",
+      "description": "Read authorized performance and goals within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "hr.06.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000172",
+      "type": "permission",
+      "name": "Manage Performance and goals",
+      "description": "Create or change authorized performance and goals subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "hr.06.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000173",
+      "type": "permission",
+      "name": "Read Compensation records",
+      "description": "Read authorized compensation records within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "hr.07.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000174",
+      "type": "permission",
+      "name": "Manage Compensation records",
+      "description": "Create or change authorized compensation records subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "hr.07.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000175",
+      "type": "permission",
+      "name": "Read Workforce planning and compliance",
+      "description": "Read authorized workforce planning and compliance within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "hr.08.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000176",
+      "type": "permission",
+      "name": "Manage Workforce planning and compliance",
+      "description": "Create or change authorized workforce planning and compliance subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "hr.08.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000177",
+      "type": "permission",
+      "name": "Read Bills of materials",
+      "description": "Read authorized bills of materials within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "mfg.01.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000178",
+      "type": "permission",
+      "name": "Manage Bills of materials",
+      "description": "Create or change authorized bills of materials subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "mfg.01.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000179",
+      "type": "permission",
+      "name": "Read Routings and work centers",
+      "description": "Read authorized routings and work centers within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "mfg.02.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000180",
+      "type": "permission",
+      "name": "Manage Routings and work centers",
+      "description": "Create or change authorized routings and work centers subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "mfg.02.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000181",
+      "type": "permission",
+      "name": "Read Production orders",
+      "description": "Read authorized production orders within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "mfg.03.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000182",
+      "type": "permission",
+      "name": "Manage Production orders",
+      "description": "Create or change authorized production orders subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "mfg.03.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000183",
+      "type": "permission",
+      "name": "Read Material requirements",
+      "description": "Read authorized material requirements within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "mfg.04.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000184",
+      "type": "permission",
+      "name": "Manage Material requirements",
+      "description": "Create or change authorized material requirements subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "mfg.04.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000185",
+      "type": "permission",
+      "name": "Read Scheduling and capacity",
+      "description": "Read authorized scheduling and capacity within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "mfg.05.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000186",
+      "type": "permission",
+      "name": "Manage Scheduling and capacity",
+      "description": "Create or change authorized scheduling and capacity subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "mfg.05.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000187",
+      "type": "permission",
+      "name": "Read Issue/consume/produce",
+      "description": "Read authorized issue/consume/produce within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "mfg.06.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000188",
+      "type": "permission",
+      "name": "Manage Issue/consume/produce",
+      "description": "Create or change authorized issue/consume/produce subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "mfg.06.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000189",
+      "type": "permission",
+      "name": "Read Quality control",
+      "description": "Read authorized quality control within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "mfg.07.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000190",
+      "type": "permission",
+      "name": "Manage Quality control",
+      "description": "Create or change authorized quality control subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "mfg.07.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000191",
+      "type": "permission",
+      "name": "Read Yield, scrap, downtime, and cost",
+      "description": "Read authorized yield, scrap, downtime, and cost within workspace and resource scope.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "mfg.08.read"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "read"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PERM-000192",
+      "type": "permission",
+      "name": "Manage Yield, scrap, downtime, and cost",
+      "description": "Create or change authorized yield, scrap, downtime, and cost subject to state and approval policy.",
+      "status": "Blueprint Ready",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "mfg.08.manage"
+      ],
+      "tags": [],
+      "attributes": {
+        "action": "manage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://zyvora.local/schema/registry.schema.json",
+  "title": "ZYVORA Registry",
+  "type": "object",
+  "required": ["registry", "version", "generated_at", "records"],
+  "additionalProperties": false,
+  "properties": {
+    "registry": {"type": "string"},
+    "version": {"type": "string"},
+    "generated_at": {"type": "string", "format": "date-time"},
+    "records": {"type": "array", "items": {"$ref": "node.schema.json"}}
+  }
+}

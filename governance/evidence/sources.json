@@ -1,0 +1,13 @@
+{
+  "version": "2.4.0",
+  "sources": [
+    {"id": "SRC-CPM", "kind": "canonical_snapshot", "path": "governance/graph.snapshot.json", "required": true, "authority": "canonical"},
+    {"id": "SRC-DRAFT-PACKS", "kind": "generated_artifacts", "path": "governance/generated-packs", "required": true, "authority": "derived"},
+    {"id": "SRC-APP-ZYVORA", "kind": "repository", "path": "zyvora/src", "required": true, "authority": "observational"},
+    {"id": "SRC-ARCH-LIBRARY", "kind": "repository", "path": "docs/zyvora", "required": false, "authority": "observational"},
+    {"id": "SRC-SUPABASE", "kind": "database_schema", "path": "supabase/40_zyvora.sql", "required": false, "authority": "observational"},
+    {"id": "SRC-OPENAPI", "kind": "openapi", "path": null, "required": false, "authority": "observational"},
+    {"id": "SRC-TESTS", "kind": "test_results", "path": "zyvora/scripts/verify.ts", "required": false, "authority": "evidence"},
+    {"id": "SRC-DEPLOYMENT", "kind": "deployment", "path": null, "required": false, "authority": "evidence"}
+  ]
+}

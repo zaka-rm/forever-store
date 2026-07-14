@@ -1,0 +1,1800 @@
+{
+  "generator_version": "2.3.0",
+  "generated_at": "2026-07-12T03:39:43.104Z",
+  "source_capability": {
+    "id": "CAP-000005",
+    "type": "capability",
+    "name": "Finance Core Capability",
+    "status": "Specified",
+    "version": "1.0.0",
+    "owner": "TEAM-000011"
+  },
+  "source_fingerprint": "aae63766febf9301ed43fec00570e3014c4f9ec57c0ce90c16abdbd403423460",
+  "authority": "DRAFT_NOT_AUTHORIZED",
+  "promotion_gate": "BLOCKED_SOURCE_INCOMPLETE",
+  "blockers": [
+    "MET-000027: metric formula is not approved",
+    "MET-000028: metric formula is not approved",
+    "MET-000029: metric formula is not approved",
+    "MET-000030: metric formula is not approved",
+    "MET-000031: metric formula is not approved",
+    "MET-000032: metric formula is not approved",
+    "MET-000033: metric formula is not approved",
+    "MET-000034: metric formula is not approved",
+    "PROMPT-000015: prompt template and evaluation are not approved",
+    "PROMPT-000016: prompt template and evaluation are not approved",
+    "PROMPT-000017: prompt template and evaluation are not approved",
+    "PROMPT-000018: prompt template and evaluation are not approved",
+    "PROMPT-000019: prompt template and evaluation are not approved",
+    "WF-000031: ordered workflow steps are not approved",
+    "WF-000032: ordered workflow steps are not approved",
+    "WF-000033: ordered workflow steps are not approved",
+    "WF-000034: ordered workflow steps are not approved",
+    "WF-000035: ordered workflow steps are not approved",
+    "WF-000036: ordered workflow steps are not approved",
+    "WF-000037: ordered workflow steps are not approved",
+    "WF-000038: ordered workflow steps are not approved",
+    "UF-000037: UI transitions and recovery states are not approved",
+    "UF-000038: UI transitions and recovery states are not approved",
+    "UF-000039: UI transitions and recovery states are not approved",
+    "UF-000040: UI transitions and recovery states are not approved",
+    "UF-000041: UI transitions and recovery states are not approved",
+    "UF-000042: UI transitions and recovery states are not approved",
+    "UF-000043: UI transitions and recovery states are not approved",
+    "UF-000044: UI transitions and recovery states are not approved",
+    "UF-000045: UI transitions and recovery states are not approved",
+    "EVT-000026: event domain payload is not approved",
+    "EVT-000027: event domain payload is not approved",
+    "EVT-000028: event domain payload is not approved",
+    "EVT-000029: event domain payload is not approved",
+    "EVT-000030: event domain payload is not approved",
+    "EVT-000031: event domain payload is not approved",
+    "EVT-000032: event domain payload is not approved",
+    "EVT-000033: event domain payload is not approved",
+    "API-000033: API request and response schema is not approved",
+    "API-000034: API request and response schema is not approved",
+    "API-000035: API request and response schema is not approved",
+    "API-000036: API request and response schema is not approved",
+    "API-000037: API request and response schema is not approved",
+    "API-000038: API request and response schema is not approved",
+    "API-000039: API request and response schema is not approved",
+    "API-000040: API request and response schema is not approved"
+  ],
+  "completeness": {
+    "source_records": 145,
+    "blocker_count": 46,
+    "traceability_gate": "PASS_CURRENT_MATURITY",
+    "traceability_coverage_percent": 55
+  },
+  "provenance": [
+    {
+      "id": "CAP-000005",
+      "type": "capability",
+      "name": "Finance Core Capability",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "MOD-000005",
+      "type": "module",
+      "name": "Finance",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "DEC-000017",
+      "type": "decision",
+      "name": "Can the business afford this action?",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "DEC-000018",
+      "type": "decision",
+      "name": "What is driving profit and cash?",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "DEC-000019",
+      "type": "decision",
+      "name": "Which receivable or payable needs action?",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "DEC-000020",
+      "type": "decision",
+      "name": "Are the books complete and controlled?",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "FEAT-000033",
+      "type": "feature",
+      "name": "Chart of accounts",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "FEAT-000034",
+      "type": "feature",
+      "name": "Double-entry journals",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "FEAT-000035",
+      "type": "feature",
+      "name": "Accounts receivable and invoicing",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "FEAT-000036",
+      "type": "feature",
+      "name": "Accounts payable and bills",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "FEAT-000037",
+      "type": "feature",
+      "name": "Payments and reconciliation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "FEAT-000038",
+      "type": "feature",
+      "name": "Budgets and variance",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "FEAT-000039",
+      "type": "feature",
+      "name": "Cash-flow forecasting",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "FEAT-000040",
+      "type": "feature",
+      "name": "Financial statements and close",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "BR-000033",
+      "type": "business_rule",
+      "name": "Finance Rule 1",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "BR-000034",
+      "type": "business_rule",
+      "name": "Finance Rule 2",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "BR-000035",
+      "type": "business_rule",
+      "name": "Finance Rule 3",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "BR-000036",
+      "type": "business_rule",
+      "name": "Finance Rule 4",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "BR-000037",
+      "type": "business_rule",
+      "name": "Finance Rule 5",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "BR-000038",
+      "type": "business_rule",
+      "name": "Finance Rule 6",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "BR-000039",
+      "type": "business_rule",
+      "name": "Finance Rule 7",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "BR-000040",
+      "type": "business_rule",
+      "name": "Finance Rule 8",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "WF-000031",
+      "type": "workflow",
+      "name": "Post journal",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "WF-000032",
+      "type": "workflow",
+      "name": "Issue and collect invoice",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "WF-000033",
+      "type": "workflow",
+      "name": "Record and pay bill",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "WF-000034",
+      "type": "workflow",
+      "name": "Import and reconcile bank activity",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "WF-000035",
+      "type": "workflow",
+      "name": "Close fiscal period",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "WF-000036",
+      "type": "workflow",
+      "name": "Approve budget",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "WF-000037",
+      "type": "workflow",
+      "name": "Forecast cash",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "WF-000038",
+      "type": "workflow",
+      "name": "Reverse incorrect posting",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "ENT-000037",
+      "type": "entity",
+      "name": "Account",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "ENT-000038",
+      "type": "entity",
+      "name": "JournalEntry",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "ENT-000039",
+      "type": "entity",
+      "name": "JournalLine",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "ENT-000040",
+      "type": "entity",
+      "name": "Invoice",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "ENT-000041",
+      "type": "entity",
+      "name": "Bill",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "ENT-000042",
+      "type": "entity",
+      "name": "Payment",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "ENT-000043",
+      "type": "entity",
+      "name": "BankAccount",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "ENT-000044",
+      "type": "entity",
+      "name": "Reconciliation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "ENT-000045",
+      "type": "entity",
+      "name": "Budget",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "ENT-000046",
+      "type": "entity",
+      "name": "TaxRate",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "ENT-000047",
+      "type": "entity",
+      "name": "FiscalPeriod",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "API-000033",
+      "type": "api",
+      "name": "Finance Chart of accounts API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "API-000034",
+      "type": "api",
+      "name": "Finance Double-entry journals API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "API-000035",
+      "type": "api",
+      "name": "Finance Accounts receivable and invoicing API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "API-000036",
+      "type": "api",
+      "name": "Finance Accounts payable and bills API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "API-000037",
+      "type": "api",
+      "name": "Finance Payments and reconciliation API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "API-000038",
+      "type": "api",
+      "name": "Finance Budgets and variance API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "API-000039",
+      "type": "api",
+      "name": "Finance Cash-flow forecasting API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "API-000040",
+      "type": "api",
+      "name": "Finance Financial statements and close API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "EVT-000026",
+      "type": "event",
+      "name": "JournalPosted",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "EVT-000027",
+      "type": "event",
+      "name": "InvoiceIssued",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "EVT-000028",
+      "type": "event",
+      "name": "InvoiceOverdue",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "EVT-000029",
+      "type": "event",
+      "name": "PaymentRecorded",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "EVT-000030",
+      "type": "event",
+      "name": "BillApproved",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "EVT-000031",
+      "type": "event",
+      "name": "BudgetExceeded",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "EVT-000032",
+      "type": "event",
+      "name": "PeriodClosed",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "EVT-000033",
+      "type": "event",
+      "name": "CashForecastUpdated",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "PERM-000065",
+      "type": "permission",
+      "name": "Read Chart of accounts",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "PERM-000066",
+      "type": "permission",
+      "name": "Manage Chart of accounts",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "PERM-000067",
+      "type": "permission",
+      "name": "Read Double-entry journals",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "PERM-000068",
+      "type": "permission",
+      "name": "Manage Double-entry journals",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "PERM-000069",
+      "type": "permission",
+      "name": "Read Accounts receivable and invoicing",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "PERM-000070",
+      "type": "permission",
+      "name": "Manage Accounts receivable and invoicing",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "PERM-000071",
+      "type": "permission",
+      "name": "Read Accounts payable and bills",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "PERM-000072",
+      "type": "permission",
+      "name": "Manage Accounts payable and bills",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "PERM-000073",
+      "type": "permission",
+      "name": "Read Payments and reconciliation",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "PERM-000074",
+      "type": "permission",
+      "name": "Manage Payments and reconciliation",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "PERM-000075",
+      "type": "permission",
+      "name": "Read Budgets and variance",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "PERM-000076",
+      "type": "permission",
+      "name": "Manage Budgets and variance",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "PERM-000077",
+      "type": "permission",
+      "name": "Read Cash-flow forecasting",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "PERM-000078",
+      "type": "permission",
+      "name": "Manage Cash-flow forecasting",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "PERM-000079",
+      "type": "permission",
+      "name": "Read Financial statements and close",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "PERM-000080",
+      "type": "permission",
+      "name": "Manage Financial statements and close",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "SCR-000037",
+      "type": "screen",
+      "name": "Finance Decision Dashboard",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "SCR-000038",
+      "type": "screen",
+      "name": "Chart of accounts Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "SCR-000039",
+      "type": "screen",
+      "name": "Double-entry journals Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "SCR-000040",
+      "type": "screen",
+      "name": "Accounts receivable and invoicing Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "SCR-000041",
+      "type": "screen",
+      "name": "Accounts payable and bills Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "SCR-000042",
+      "type": "screen",
+      "name": "Payments and reconciliation Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "SCR-000043",
+      "type": "screen",
+      "name": "Budgets and variance Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "SCR-000044",
+      "type": "screen",
+      "name": "Cash-flow forecasting Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "SCR-000045",
+      "type": "screen",
+      "name": "Financial statements and close Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "UF-000037",
+      "type": "ui_flow",
+      "name": "Finance UI Flow 1",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "UF-000038",
+      "type": "ui_flow",
+      "name": "Finance UI Flow 2",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "UF-000039",
+      "type": "ui_flow",
+      "name": "Finance UI Flow 3",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "UF-000040",
+      "type": "ui_flow",
+      "name": "Finance UI Flow 4",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "UF-000041",
+      "type": "ui_flow",
+      "name": "Finance UI Flow 5",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "UF-000042",
+      "type": "ui_flow",
+      "name": "Finance UI Flow 6",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "UF-000043",
+      "type": "ui_flow",
+      "name": "Finance UI Flow 7",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "UF-000044",
+      "type": "ui_flow",
+      "name": "Finance UI Flow 8",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "UF-000045",
+      "type": "ui_flow",
+      "name": "Finance UI Flow 9",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "MET-000027",
+      "type": "metric",
+      "name": "Cash runway",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "MET-000028",
+      "type": "metric",
+      "name": "Operating cash flow",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "MET-000029",
+      "type": "metric",
+      "name": "Gross margin",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "MET-000030",
+      "type": "metric",
+      "name": "Days sales outstanding",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "MET-000031",
+      "type": "metric",
+      "name": "Days payable outstanding",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "MET-000032",
+      "type": "metric",
+      "name": "Budget variance",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "MET-000033",
+      "type": "metric",
+      "name": "Close duration",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "MET-000034",
+      "type": "metric",
+      "name": "Reconciliation exception rate",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "AICAP-000015",
+      "type": "ai_capability",
+      "name": "Finance: Cash forecast",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "AICAP-000016",
+      "type": "ai_capability",
+      "name": "Finance: Anomaly detection",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "AICAP-000017",
+      "type": "ai_capability",
+      "name": "Finance: Reconciliation suggestions",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "AICAP-000018",
+      "type": "ai_capability",
+      "name": "Finance: Collection priority",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "AICAP-000019",
+      "type": "ai_capability",
+      "name": "Finance: Variance explanation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "PROMPT-000015",
+      "type": "prompt",
+      "name": "Finance: Cash forecast Prompt",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000006"
+    },
+    {
+      "id": "PROMPT-000016",
+      "type": "prompt",
+      "name": "Finance: Anomaly detection Prompt",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000006"
+    },
+    {
+      "id": "PROMPT-000017",
+      "type": "prompt",
+      "name": "Finance: Reconciliation suggestions Prompt",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000006"
+    },
+    {
+      "id": "PROMPT-000018",
+      "type": "prompt",
+      "name": "Finance: Collection priority Prompt",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000006"
+    },
+    {
+      "id": "PROMPT-000019",
+      "type": "prompt",
+      "name": "Finance: Variance explanation Prompt",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000006"
+    },
+    {
+      "id": "AUTO-000024",
+      "type": "automation",
+      "name": "Invoice overdue Automation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "AUTO-000025",
+      "type": "automation",
+      "name": "Bill approval Automation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "AUTO-000026",
+      "type": "automation",
+      "name": "Cash risk Automation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "AUTO-000027",
+      "type": "automation",
+      "name": "Budget threshold Automation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "AUTO-000028",
+      "type": "automation",
+      "name": "Reconciliation exception Automation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "AUTO-000029",
+      "type": "automation",
+      "name": "Period close task Automation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "NOT-000024",
+      "type": "notification",
+      "name": "Invoice overdue",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "NOT-000025",
+      "type": "notification",
+      "name": "Bill approval",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "NOT-000026",
+      "type": "notification",
+      "name": "Cash risk",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "NOT-000027",
+      "type": "notification",
+      "name": "Budget threshold",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "NOT-000028",
+      "type": "notification",
+      "name": "Reconciliation exception",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "NOT-000029",
+      "type": "notification",
+      "name": "Period close task",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "RPT-000021",
+      "type": "report",
+      "name": "Profit and loss",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "RPT-000022",
+      "type": "report",
+      "name": "Balance sheet",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "RPT-000023",
+      "type": "report",
+      "name": "Cash flow",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "RPT-000024",
+      "type": "report",
+      "name": "Aged receivables/payables",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "RPT-000025",
+      "type": "report",
+      "name": "Budget variance",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "RPT-000026",
+      "type": "report",
+      "name": "Tax summary",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "RPT-000027",
+      "type": "report",
+      "name": "Audit trail",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "INT-000018",
+      "type": "integration",
+      "name": "Bank feeds",
+      "status": "Planned",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "INT-000019",
+      "type": "integration",
+      "name": "Payment providers",
+      "status": "Planned",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "INT-000020",
+      "type": "integration",
+      "name": "Tax services",
+      "status": "Planned",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "INT-000021",
+      "type": "integration",
+      "name": "QuickBooks/Xero adapters",
+      "status": "Planned",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "INT-000022",
+      "type": "integration",
+      "name": "Inventory",
+      "status": "Planned",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "INT-000023",
+      "type": "integration",
+      "name": "CRM",
+      "status": "Planned",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "INT-000024",
+      "type": "integration",
+      "name": "HR",
+      "status": "Planned",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "ART-000010",
+      "type": "artifact",
+      "name": "ZYVORA Finance PRD v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000023",
+      "type": "artifact",
+      "name": "ZYVORA Finance Technical Specification v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000029",
+      "type": "artifact",
+      "name": "ZYVORA BP-000 Platform Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000030",
+      "type": "artifact",
+      "name": "ZYVORA BP-001 UI Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000031",
+      "type": "artifact",
+      "name": "ZYVORA BP-002 Backend Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000032",
+      "type": "artifact",
+      "name": "ZYVORA BP-003 Database Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000033",
+      "type": "artifact",
+      "name": "ZYVORA BP-004 API Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000034",
+      "type": "artifact",
+      "name": "ZYVORA BP-005 AI Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000035",
+      "type": "artifact",
+      "name": "ZYVORA BP-006 Security Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000036",
+      "type": "artifact",
+      "name": "ZYVORA BP-007 Infrastructure Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    }
+  ],
+  "kind": "draft_qa_pack",
+  "paired_build_fingerprint": "aae63766febf9301ed43fec00570e3014c4f9ec57c0ce90c16abdbd403423460",
+  "test_scenarios": [
+    {
+      "id": "RULE-BR-000033",
+      "type": "unit_and_domain",
+      "source": "BR-000033",
+      "scenario": "Verify business rule: Every posted journal balances debits and credits in one currency basis.",
+      "expected": "Exact approved rule holds for valid, invalid, boundary, and concurrent cases."
+    },
+    {
+      "id": "RULE-BR-000034",
+      "type": "unit_and_domain",
+      "source": "BR-000034",
+      "scenario": "Verify business rule: Posted entries are immutable; corrections use reversal and replacement.",
+      "expected": "Exact approved rule holds for valid, invalid, boundary, and concurrent cases."
+    },
+    {
+      "id": "RULE-BR-000035",
+      "type": "unit_and_domain",
+      "source": "BR-000035",
+      "scenario": "Verify business rule: Closed periods reject posting unless reopened by authorized control.",
+      "expected": "Exact approved rule holds for valid, invalid, boundary, and concurrent cases."
+    },
+    {
+      "id": "RULE-BR-000036",
+      "type": "unit_and_domain",
+      "source": "BR-000036",
+      "scenario": "Verify business rule: Money uses decimal arithmetic and explicit currency.",
+      "expected": "Exact approved rule holds for valid, invalid, boundary, and concurrent cases."
+    },
+    {
+      "id": "RULE-BR-000037",
+      "type": "unit_and_domain",
+      "source": "BR-000037",
+      "scenario": "Verify business rule: Invoice totals equal validated line, tax, discount, and rounding components.",
+      "expected": "Exact approved rule holds for valid, invalid, boundary, and concurrent cases."
+    },
+    {
+      "id": "RULE-BR-000038",
+      "type": "unit_and_domain",
+      "source": "BR-000038",
+      "scenario": "Verify business rule: Payments cannot exceed permitted open amount without an explicit credit policy.",
+      "expected": "Exact approved rule holds for valid, invalid, boundary, and concurrent cases."
+    },
+    {
+      "id": "RULE-BR-000039",
+      "type": "unit_and_domain",
+      "source": "BR-000039",
+      "scenario": "Verify business rule: Reconciliation records source, match method, actor, and difference.",
+      "expected": "Exact approved rule holds for valid, invalid, boundary, and concurrent cases."
+    },
+    {
+      "id": "RULE-BR-000040",
+      "type": "unit_and_domain",
+      "source": "BR-000040",
+      "scenario": "Verify business rule: Forecasts disclose assumptions, horizon, interval, and model version.",
+      "expected": "Exact approved rule holds for valid, invalid, boundary, and concurrent cases."
+    },
+    {
+      "id": "WF-WF-000031",
+      "type": "end_to_end",
+      "source": "WF-000031",
+      "scenario": "Verify happy, alternative, failure, and recovery paths for Post journal",
+      "expected": "Approved workflow outcome, evidence, timing, and recovery requirements are satisfied."
+    },
+    {
+      "id": "WF-WF-000032",
+      "type": "end_to_end",
+      "source": "WF-000032",
+      "scenario": "Verify happy, alternative, failure, and recovery paths for Issue and collect invoice",
+      "expected": "Approved workflow outcome, evidence, timing, and recovery requirements are satisfied."
+    },
+    {
+      "id": "WF-WF-000033",
+      "type": "end_to_end",
+      "source": "WF-000033",
+      "scenario": "Verify happy, alternative, failure, and recovery paths for Record and pay bill",
+      "expected": "Approved workflow outcome, evidence, timing, and recovery requirements are satisfied."
+    },
+    {
+      "id": "WF-WF-000034",
+      "type": "end_to_end",
+      "source": "WF-000034",
+      "scenario": "Verify happy, alternative, failure, and recovery paths for Import and reconcile bank activity",
+      "expected": "Approved workflow outcome, evidence, timing, and recovery requirements are satisfied."
+    },
+    {
+      "id": "WF-WF-000035",
+      "type": "end_to_end",
+      "source": "WF-000035",
+      "scenario": "Verify happy, alternative, failure, and recovery paths for Close fiscal period",
+      "expected": "Approved workflow outcome, evidence, timing, and recovery requirements are satisfied."
+    },
+    {
+      "id": "WF-WF-000036",
+      "type": "end_to_end",
+      "source": "WF-000036",
+      "scenario": "Verify happy, alternative, failure, and recovery paths for Approve budget",
+      "expected": "Approved workflow outcome, evidence, timing, and recovery requirements are satisfied."
+    },
+    {
+      "id": "WF-WF-000037",
+      "type": "end_to_end",
+      "source": "WF-000037",
+      "scenario": "Verify happy, alternative, failure, and recovery paths for Forecast cash",
+      "expected": "Approved workflow outcome, evidence, timing, and recovery requirements are satisfied."
+    },
+    {
+      "id": "WF-WF-000038",
+      "type": "end_to_end",
+      "source": "WF-000038",
+      "scenario": "Verify happy, alternative, failure, and recovery paths for Reverse incorrect posting",
+      "expected": "Approved workflow outcome, evidence, timing, and recovery requirements are satisfied."
+    },
+    {
+      "id": "API-API-000033",
+      "type": "contract_and_security",
+      "source": "API-000033",
+      "scenario": "Verify request, response, authorization, idempotency, pagination, validation, and errors for Finance Chart of accounts API",
+      "expected": "Approved API contract and security policy are preserved."
+    },
+    {
+      "id": "API-API-000034",
+      "type": "contract_and_security",
+      "source": "API-000034",
+      "scenario": "Verify request, response, authorization, idempotency, pagination, validation, and errors for Finance Double-entry journals API",
+      "expected": "Approved API contract and security policy are preserved."
+    },
+    {
+      "id": "API-API-000035",
+      "type": "contract_and_security",
+      "source": "API-000035",
+      "scenario": "Verify request, response, authorization, idempotency, pagination, validation, and errors for Finance Accounts receivable and invoicing API",
+      "expected": "Approved API contract and security policy are preserved."
+    },
+    {
+      "id": "API-API-000036",
+      "type": "contract_and_security",
+      "source": "API-000036",
+      "scenario": "Verify request, response, authorization, idempotency, pagination, validation, and errors for Finance Accounts payable and bills API",
+      "expected": "Approved API contract and security policy are preserved."
+    },
+    {
+      "id": "API-API-000037",
+      "type": "contract_and_security",
+      "source": "API-000037",
+      "scenario": "Verify request, response, authorization, idempotency, pagination, validation, and errors for Finance Payments and reconciliation API",
+      "expected": "Approved API contract and security policy are preserved."
+    },
+    {
+      "id": "API-API-000038",
+      "type": "contract_and_security",
+      "source": "API-000038",
+      "scenario": "Verify request, response, authorization, idempotency, pagination, validation, and errors for Finance Budgets and variance API",
+      "expected": "Approved API contract and security policy are preserved."
+    },
+    {
+      "id": "API-API-000039",
+      "type": "contract_and_security",
+      "source": "API-000039",
+      "scenario": "Verify request, response, authorization, idempotency, pagination, validation, and errors for Finance Cash-flow forecasting API",
+      "expected": "Approved API contract and security policy are preserved."
+    },
+    {
+      "id": "API-API-000040",
+      "type": "contract_and_security",
+      "source": "API-000040",
+      "scenario": "Verify request, response, authorization, idempotency, pagination, validation, and errors for Finance Financial statements and close API",
+      "expected": "Approved API contract and security policy are preserved."
+    },
+    {
+      "id": "EVT-EVT-000026",
+      "type": "integration",
+      "source": "EVT-000026",
+      "scenario": "Verify production, schema compatibility, ordering, duplication, retry, and idempotent consumption for JournalPosted",
+      "expected": "Versioned event meaning and compatibility contract are preserved."
+    },
+    {
+      "id": "EVT-EVT-000027",
+      "type": "integration",
+      "source": "EVT-000027",
+      "scenario": "Verify production, schema compatibility, ordering, duplication, retry, and idempotent consumption for InvoiceIssued",
+      "expected": "Versioned event meaning and compatibility contract are preserved."
+    },
+    {
+      "id": "EVT-EVT-000028",
+      "type": "integration",
+      "source": "EVT-000028",
+      "scenario": "Verify production, schema compatibility, ordering, duplication, retry, and idempotent consumption for InvoiceOverdue",
+      "expected": "Versioned event meaning and compatibility contract are preserved."
+    },
+    {
+      "id": "EVT-EVT-000029",
+      "type": "integration",
+      "source": "EVT-000029",
+      "scenario": "Verify production, schema compatibility, ordering, duplication, retry, and idempotent consumption for PaymentRecorded",
+      "expected": "Versioned event meaning and compatibility contract are preserved."
+    },
+    {
+      "id": "EVT-EVT-000030",
+      "type": "integration",
+      "source": "EVT-000030",
+      "scenario": "Verify production, schema compatibility, ordering, duplication, retry, and idempotent consumption for BillApproved",
+      "expected": "Versioned event meaning and compatibility contract are preserved."
+    },
+    {
+      "id": "EVT-EVT-000031",
+      "type": "integration",
+      "source": "EVT-000031",
+      "scenario": "Verify production, schema compatibility, ordering, duplication, retry, and idempotent consumption for BudgetExceeded",
+      "expected": "Versioned event meaning and compatibility contract are preserved."
+    },
+    {
+      "id": "EVT-EVT-000032",
+      "type": "integration",
+      "source": "EVT-000032",
+      "scenario": "Verify production, schema compatibility, ordering, duplication, retry, and idempotent consumption for PeriodClosed",
+      "expected": "Versioned event meaning and compatibility contract are preserved."
+    },
+    {
+      "id": "EVT-EVT-000033",
+      "type": "integration",
+      "source": "EVT-000033",
+      "scenario": "Verify production, schema compatibility, ordering, duplication, retry, and idempotent consumption for CashForecastUpdated",
+      "expected": "Versioned event meaning and compatibility contract are preserved."
+    },
+    {
+      "id": "PERM-PERM-000065",
+      "type": "security",
+      "source": "PERM-000065",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Read Chart of accounts",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000066",
+      "type": "security",
+      "source": "PERM-000066",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Manage Chart of accounts",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000067",
+      "type": "security",
+      "source": "PERM-000067",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Read Double-entry journals",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000068",
+      "type": "security",
+      "source": "PERM-000068",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Manage Double-entry journals",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000069",
+      "type": "security",
+      "source": "PERM-000069",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Read Accounts receivable and invoicing",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000070",
+      "type": "security",
+      "source": "PERM-000070",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Manage Accounts receivable and invoicing",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000071",
+      "type": "security",
+      "source": "PERM-000071",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Read Accounts payable and bills",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000072",
+      "type": "security",
+      "source": "PERM-000072",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Manage Accounts payable and bills",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000073",
+      "type": "security",
+      "source": "PERM-000073",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Read Payments and reconciliation",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000074",
+      "type": "security",
+      "source": "PERM-000074",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Manage Payments and reconciliation",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000075",
+      "type": "security",
+      "source": "PERM-000075",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Read Budgets and variance",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000076",
+      "type": "security",
+      "source": "PERM-000076",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Manage Budgets and variance",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000077",
+      "type": "security",
+      "source": "PERM-000077",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Read Cash-flow forecasting",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000078",
+      "type": "security",
+      "source": "PERM-000078",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Manage Cash-flow forecasting",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000079",
+      "type": "security",
+      "source": "PERM-000079",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Read Financial statements and close",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000080",
+      "type": "security",
+      "source": "PERM-000080",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Manage Financial statements and close",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "SCR-SCR-000037",
+      "type": "ui_accessibility",
+      "source": "SCR-000037",
+      "scenario": "Verify responsive, keyboard, screen-reader, loading, empty, error, stale, and permission states for Finance Decision Dashboard",
+      "expected": "Decision purpose remains clear and WCAG 2.1 AA obligations pass."
+    },
+    {
+      "id": "SCR-SCR-000038",
+      "type": "ui_accessibility",
+      "source": "SCR-000038",
+      "scenario": "Verify responsive, keyboard, screen-reader, loading, empty, error, stale, and permission states for Chart of accounts Workspace",
+      "expected": "Decision purpose remains clear and WCAG 2.1 AA obligations pass."
+    },
+    {
+      "id": "SCR-SCR-000039",
+      "type": "ui_accessibility",
+      "source": "SCR-000039",
+      "scenario": "Verify responsive, keyboard, screen-reader, loading, empty, error, stale, and permission states for Double-entry journals Workspace",
+      "expected": "Decision purpose remains clear and WCAG 2.1 AA obligations pass."
+    },
+    {
+      "id": "SCR-SCR-000040",
+      "type": "ui_accessibility",
+      "source": "SCR-000040",
+      "scenario": "Verify responsive, keyboard, screen-reader, loading, empty, error, stale, and permission states for Accounts receivable and invoicing Workspace",
+      "expected": "Decision purpose remains clear and WCAG 2.1 AA obligations pass."
+    },
+    {
+      "id": "SCR-SCR-000041",
+      "type": "ui_accessibility",
+      "source": "SCR-000041",
+      "scenario": "Verify responsive, keyboard, screen-reader, loading, empty, error, stale, and permission states for Accounts payable and bills Workspace",
+      "expected": "Decision purpose remains clear and WCAG 2.1 AA obligations pass."
+    },
+    {
+      "id": "SCR-SCR-000042",
+      "type": "ui_accessibility",
+      "source": "SCR-000042",
+      "scenario": "Verify responsive, keyboard, screen-reader, loading, empty, error, stale, and permission states for Payments and reconciliation Workspace",
+      "expected": "Decision purpose remains clear and WCAG 2.1 AA obligations pass."
+    },
+    {
+      "id": "SCR-SCR-000043",
+      "type": "ui_accessibility",
+      "source": "SCR-000043",
+      "scenario": "Verify responsive, keyboard, screen-reader, loading, empty, error, stale, and permission states for Budgets and variance Workspace",
+      "expected": "Decision purpose remains clear and WCAG 2.1 AA obligations pass."
+    },
+    {
+      "id": "SCR-SCR-000044",
+      "type": "ui_accessibility",
+      "source": "SCR-000044",
+      "scenario": "Verify responsive, keyboard, screen-reader, loading, empty, error, stale, and permission states for Cash-flow forecasting Workspace",
+      "expected": "Decision purpose remains clear and WCAG 2.1 AA obligations pass."
+    },
+    {
+      "id": "SCR-SCR-000045",
+      "type": "ui_accessibility",
+      "source": "SCR-000045",
+      "scenario": "Verify responsive, keyboard, screen-reader, loading, empty, error, stale, and permission states for Financial statements and close Workspace",
+      "expected": "Decision purpose remains clear and WCAG 2.1 AA obligations pass."
+    }
+  ],
+  "regression_scope": [
+    "CAP-000005",
+    "MOD-000005",
+    "DEC-000017",
+    "DEC-000018",
+    "DEC-000019",
+    "DEC-000020",
+    "FEAT-000033",
+    "FEAT-000034",
+    "FEAT-000035",
+    "FEAT-000036",
+    "FEAT-000037",
+    "FEAT-000038",
+    "FEAT-000039",
+    "FEAT-000040",
+    "BR-000033",
+    "BR-000034",
+    "BR-000035",
+    "BR-000036",
+    "BR-000037",
+    "BR-000038",
+    "BR-000039",
+    "BR-000040",
+    "WF-000031",
+    "WF-000032",
+    "WF-000033",
+    "WF-000034",
+    "WF-000035",
+    "WF-000036",
+    "WF-000037",
+    "WF-000038",
+    "ENT-000037",
+    "ENT-000038",
+    "ENT-000039",
+    "ENT-000040",
+    "ENT-000041",
+    "ENT-000042",
+    "ENT-000043",
+    "ENT-000044",
+    "ENT-000045",
+    "ENT-000046",
+    "ENT-000047",
+    "API-000033",
+    "API-000034",
+    "API-000035",
+    "API-000036",
+    "API-000037",
+    "API-000038",
+    "API-000039",
+    "API-000040",
+    "EVT-000026",
+    "EVT-000027",
+    "EVT-000028",
+    "EVT-000029",
+    "EVT-000030",
+    "EVT-000031",
+    "EVT-000032",
+    "EVT-000033",
+    "PERM-000065",
+    "PERM-000066",
+    "PERM-000067",
+    "PERM-000068",
+    "PERM-000069",
+    "PERM-000070",
+    "PERM-000071",
+    "PERM-000072",
+    "PERM-000073",
+    "PERM-000074",
+    "PERM-000075",
+    "PERM-000076",
+    "PERM-000077",
+    "PERM-000078",
+    "PERM-000079",
+    "PERM-000080",
+    "SCR-000037",
+    "SCR-000038",
+    "SCR-000039",
+    "SCR-000040",
+    "SCR-000041",
+    "SCR-000042",
+    "SCR-000043",
+    "SCR-000044",
+    "SCR-000045",
+    "UF-000037",
+    "UF-000038",
+    "UF-000039",
+    "UF-000040",
+    "UF-000041",
+    "UF-000042",
+    "UF-000043",
+    "UF-000044",
+    "UF-000045",
+    "MET-000027",
+    "MET-000028",
+    "MET-000029",
+    "MET-000030",
+    "MET-000031",
+    "MET-000032",
+    "MET-000033",
+    "MET-000034",
+    "AICAP-000015",
+    "AICAP-000016",
+    "AICAP-000017",
+    "AICAP-000018",
+    "AICAP-000019",
+    "PROMPT-000015",
+    "PROMPT-000016",
+    "PROMPT-000017",
+    "PROMPT-000018",
+    "PROMPT-000019",
+    "AUTO-000024",
+    "AUTO-000025",
+    "AUTO-000026",
+    "AUTO-000027",
+    "AUTO-000028",
+    "AUTO-000029",
+    "NOT-000024",
+    "NOT-000025",
+    "NOT-000026",
+    "NOT-000027",
+    "NOT-000028",
+    "NOT-000029",
+    "RPT-000021",
+    "RPT-000022",
+    "RPT-000023",
+    "RPT-000024",
+    "RPT-000025",
+    "RPT-000026",
+    "RPT-000027",
+    "INT-000018",
+    "INT-000019",
+    "INT-000020",
+    "INT-000021",
+    "INT-000022",
+    "INT-000023",
+    "INT-000024",
+    "ART-000010",
+    "ART-000023",
+    "ART-000029",
+    "ART-000030",
+    "ART-000031",
+    "ART-000032",
+    "ART-000033",
+    "ART-000034",
+    "ART-000035",
+    "ART-000036"
+  ],
+  "performance_requirements": [
+    "Validate published performance budgets from the approved Technical Specification.",
+    "Verify no unbounded query, queue, retry, export, or AI workload."
+  ],
+  "security_requirements": [
+    "Tenant isolation",
+    "Authorization deny paths",
+    "Sensitive-data handling",
+    "Audit completeness",
+    "Rate limiting and abuse controls"
+  ],
+  "evidence_required": [
+    "Automated test results",
+    "Accessibility results",
+    "Security results",
+    "Performance results",
+    "Manual exploratory record",
+    "Deployment and rollback rehearsal"
+  ]
+}

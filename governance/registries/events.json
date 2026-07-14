@@ -1,0 +1,4039 @@
+{
+  "registry": "events",
+  "version": "1.0.0",
+  "generated_at": "2026-07-12T03:39:37Z",
+  "records": [
+    {
+      "id": "EVT-000001",
+      "type": "event",
+      "name": "DecisionQueued",
+      "description": "Versioned business fact produced by Decision Center; exact domain payload requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-EVT-001",
+        "Decision Center.DecisionQueued/v1"
+      ],
+      "tags": [],
+      "attributes": {
+        "event_version": 1,
+        "producer": "DC",
+        "trigger": "Committed domain state transition in the owning module",
+        "business_meaning": "DecisionQueued occurred in Decision Center",
+        "payload": {
+          "envelope": [
+            "event_id",
+            "event_type",
+            "event_version",
+            "occurred_at",
+            "workspace_id",
+            "actor_id",
+            "correlation_id",
+            "causation_id",
+            "aggregate_type",
+            "aggregate_id"
+          ],
+          "domain_fields": [],
+          "domain_payload_status": "requires_domain_owner_approval"
+        },
+        "compatibility": "Additive within v1; breaking semantic/schema change requires a new major event version",
+        "idempotent_consumption_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "EVT-000002",
+      "type": "event",
+      "name": "DecisionPriorityChanged",
+      "description": "Versioned business fact produced by Decision Center; exact domain payload requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-EVT-002",
+        "Decision Center.DecisionPriorityChanged/v1"
+      ],
+      "tags": [],
+      "attributes": {
+        "event_version": 1,
+        "producer": "DC",
+        "trigger": "Committed domain state transition in the owning module",
+        "business_meaning": "DecisionPriorityChanged occurred in Decision Center",
+        "payload": {
+          "envelope": [
+            "event_id",
+            "event_type",
+            "event_version",
+            "occurred_at",
+            "workspace_id",
+            "actor_id",
+            "correlation_id",
+            "causation_id",
+            "aggregate_type",
+            "aggregate_id"
+          ],
+          "domain_fields": [],
+          "domain_payload_status": "requires_domain_owner_approval"
+        },
+        "compatibility": "Additive within v1; breaking semantic/schema change requires a new major event version",
+        "idempotent_consumption_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "EVT-000003",
+      "type": "event",
+      "name": "DecisionAssigned",
+      "description": "Versioned business fact produced by Decision Center; exact domain payload requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-EVT-003",
+        "Decision Center.DecisionAssigned/v1"
+      ],
+      "tags": [],
+      "attributes": {
+        "event_version": 1,
+        "producer": "DC",
+        "trigger": "Committed domain state transition in the owning module",
+        "business_meaning": "DecisionAssigned occurred in Decision Center",
+        "payload": {
+          "envelope": [
+            "event_id",
+            "event_type",
+            "event_version",
+            "occurred_at",
+            "workspace_id",
+            "actor_id",
+            "correlation_id",
+            "causation_id",
+            "aggregate_type",
+            "aggregate_id"
+          ],
+          "domain_fields": [],
+          "domain_payload_status": "requires_domain_owner_approval"
+        },
+        "compatibility": "Additive within v1; breaking semantic/schema change requires a new major event version",
+        "idempotent_consumption_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "EVT-000004",
+      "type": "event",
+      "name": "ApprovalRequested",
+      "description": "Versioned business fact produced by Decision Center; exact domain payload requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-EVT-004",
+        "Decision Center.ApprovalRequested/v1"
+      ],
+      "tags": [],
+      "attributes": {
+        "event_version": 1,
+        "producer": "DC",
+        "trigger": "Committed domain state transition in the owning module",
+        "business_meaning": "ApprovalRequested occurred in Decision Center",
+        "payload": {
+          "envelope": [
+            "event_id",
+            "event_type",
+            "event_version",
+            "occurred_at",
+            "workspace_id",
+            "actor_id",
+            "correlation_id",
+            "causation_id",
+            "aggregate_type",
+            "aggregate_id"
+          ],
+          "domain_fields": [],
+          "domain_payload_status": "requires_domain_owner_approval"
+        },
+        "compatibility": "Additive within v1; breaking semantic/schema change requires a new major event version",
+        "idempotent_consumption_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "EVT-000005",
+      "type": "event",
+      "name": "DecisionRecorded",
+      "description": "Versioned business fact produced by Decision Center; exact domain payload requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-EVT-005",
+        "Decision Center.DecisionRecorded/v1"
+      ],
+      "tags": [],
+      "attributes": {
+        "event_version": 1,
+        "producer": "DC",
+        "trigger": "Committed domain state transition in the owning module",
+        "business_meaning": "DecisionRecorded occurred in Decision Center",
+        "payload": {
+          "envelope": [
+            "event_id",
+            "event_type",
+            "event_version",
+            "occurred_at",
+            "workspace_id",
+            "actor_id",
+            "correlation_id",
+            "causation_id",
+            "aggregate_type",
+            "aggregate_id"
+          ],
+          "domain_fields": [],
+          "domain_payload_status": "requires_domain_owner_approval"
+        },
+        "compatibility": "Additive within v1; breaking semantic/schema change requires a new major event version",
+        "idempotent_consumption_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "EVT-000006",
+      "type": "event",
+      "name": "DecisionOutcomeCaptured",
+      "description": "Versioned business fact produced by Decision Center; exact domain payload requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-EVT-006",
+        "Decision Center.DecisionOutcomeCaptured/v1"
+      ],
+      "tags": [],
+      "attributes": {
+        "event_version": 1,
+        "producer": "DC",
+        "trigger": "Committed domain state transition in the owning module",
+        "business_meaning": "DecisionOutcomeCaptured occurred in Decision Center",
+        "payload": {
+          "envelope": [
+            "event_id",
+            "event_type",
+            "event_version",
+            "occurred_at",
+            "workspace_id",
+            "actor_id",
+            "correlation_id",
+            "causation_id",
+            "aggregate_type",
+            "aggregate_id"
+          ],
+          "domain_fields": [],
+          "domain_payload_status": "requires_domain_owner_approval"
+        },
+        "compatibility": "Additive within v1; breaking semantic/schema change requires a new major event version",
+        "idempotent_consumption_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "EVT-000007",
+      "type": "event",
+      "name": "MemoryCaptured",
+      "description": "Versioned business fact produced by Business Memory; exact domain payload requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-EVT-001",
+        "Business Memory.MemoryCaptured/v1"
+      ],
+      "tags": [],
+      "attributes": {
+        "event_version": 1,
+        "producer": "BM",
+        "trigger": "Committed domain state transition in the owning module",
+        "business_meaning": "MemoryCaptured occurred in Business Memory",
+        "payload": {
+          "envelope": [
+            "event_id",
+            "event_type",
+            "event_version",
+            "occurred_at",
+            "workspace_id",
+            "actor_id",
+            "correlation_id",
+            "causation_id",
+            "aggregate_type",
+            "aggregate_id"
+          ],
+          "domain_fields": [],
+          "domain_payload_status": "requires_domain_owner_approval"
+        },
+        "compatibility": "Additive within v1; breaking semantic/schema change requires a new major event version",
+        "idempotent_consumption_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "EVT-000008",
+      "type": "event",
+      "name": "MemoryIndexed",
+      "description": "Versioned business fact produced by Business Memory; exact domain payload requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-EVT-002",
+        "Business Memory.MemoryIndexed/v1"
+      ],
+      "tags": [],
+      "attributes": {
+        "event_version": 1,
+        "producer": "BM",
+        "trigger": "Committed domain state transition in the owning module",
+        "business_meaning": "MemoryIndexed occurred in Business Memory",
+        "payload": {
+          "envelope": [
+            "event_id",
+            "event_type",
+            "event_version",
+            "occurred_at",
+            "workspace_id",
+            "actor_id",
+            "correlation_id",
+            "causation_id",
+            "aggregate_type",
+            "aggregate_id"
+          ],
+          "domain_fields": [],
+          "domain_payload_status": "requires_domain_owner_approval"
+        },
+        "compatibility": "Additive within v1; breaking semantic/schema change requires a new major event version",
+        "idempotent_consumption_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "EVT-000009",
+      "type": "event",
+      "name": "LessonRecorded",
+      "description": "Versioned business fact produced by Business Memory; exact domain payload requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-EVT-003",
+        "Business Memory.LessonRecorded/v1"
+      ],
+      "tags": [],
+      "attributes": {
+        "event_version": 1,
+        "producer": "BM",
+        "trigger": "Committed domain state transition in the owning module",
+        "business_meaning": "LessonRecorded occurred in Business Memory",
+        "payload": {
+          "envelope": [
+            "event_id",
+            "event_type",
+            "event_version",
+            "occurred_at",
+            "workspace_id",
+            "actor_id",
+            "correlation_id",
+            "causation_id",
+            "aggregate_type",
+            "aggregate_id"
+          ],
+          "domain_fields": [],
+          "domain_payload_status": "requires_domain_owner_approval"
+        },
+        "compatibility": "Additive within v1; breaking semantic/schema change requires a new major event version",
+        "idempotent_consumption_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "EVT-000010",
+      "type": "event",
+      "name": "MemorySuperseded",
+      "description": "Versioned business fact produced by Business Memory; exact domain payload requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-EVT-004",
+        "Business Memory.MemorySuperseded/v1"
+      ],
+      "tags": [],
+      "attributes": {
+        "event_version": 1,
+        "producer": "BM",
+        "trigger": "Committed domain state transition in the owning module",
+        "business_meaning": "MemorySuperseded occurred in Business Memory",
+        "payload": {
+          "envelope": [
+            "event_id",
+            "event_type",
+            "event_version",
+            "occurred_at",
+            "workspace_id",
+            "actor_id",
+            "correlation_id",
+            "causation_id",
+            "aggregate_type",
+            "aggregate_id"
+          ],
+          "domain_fields": [],
+          "domain_payload_status": "requires_domain_owner_approval"
+        },
+        "compatibility": "Additive within v1; breaking semantic/schema change requires a new major event version",
+        "idempotent_consumption_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "EVT-000011",
+      "type": "event",
+      "name": "MemoryDispositioned",
+      "description": "Versioned business fact produced by Business Memory; exact domain payload requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-EVT-005",
+        "Business Memory.MemoryDispositioned/v1"
+      ],
+      "tags": [],
+      "attributes": {
+        "event_version": 1,
+        "producer": "BM",
+        "trigger": "Committed domain state transition in the owning module",
+        "business_meaning": "MemoryDispositioned occurred in Business Memory",
+        "payload": {
+          "envelope": [
+            "event_id",
+            "event_type",
+            "event_version",
+            "occurred_at",
+            "workspace_id",
+            "actor_id",
+            "correlation_id",
+            "causation_id",
+            "aggregate_type",
+            "aggregate_id"
+          ],
+          "domain_fields": [],
+          "domain_payload_status": "requires_domain_owner_approval"
+        },
+        "compatibility": "Additive within v1; breaking semantic/schema change requires a new major event version",
+        "idempotent_consumption_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "EVT-000012",
+      "type": "event",
+      "name": "RecommendationGenerated",
+      "description": "Versioned business fact produced by AI Engine; exact domain payload requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-EVT-001",
+        "AI Engine.RecommendationGenerated/v1"
+      ],
+      "tags": [],
+      "attributes": {
+        "event_version": 1,
+        "producer": "AI",
+        "trigger": "Committed domain state transition in the owning module",
+        "business_meaning": "RecommendationGenerated occurred in AI Engine",
+        "payload": {
+          "envelope": [
+            "event_id",
+            "event_type",
+            "event_version",
+            "occurred_at",
+            "workspace_id",
+            "actor_id",
+            "correlation_id",
+            "causation_id",
+            "aggregate_type",
+            "aggregate_id"
+          ],
+          "domain_fields": [],
+          "domain_payload_status": "requires_domain_owner_approval"
+        },
+        "compatibility": "Additive within v1; breaking semantic/schema change requires a new major event version",
+        "idempotent_consumption_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "EVT-000013",
+      "type": "event",
+      "name": "ForecastUpdated",
+      "description": "Versioned business fact produced by AI Engine; exact domain payload requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-EVT-002",
+        "AI Engine.ForecastUpdated/v1"
+      ],
+      "tags": [],
+      "attributes": {
+        "event_version": 1,
+        "producer": "AI",
+        "trigger": "Committed domain state transition in the owning module",
+        "business_meaning": "ForecastUpdated occurred in AI Engine",
+        "payload": {
+          "envelope": [
+            "event_id",
+            "event_type",
+            "event_version",
+            "occurred_at",
+            "workspace_id",
+            "actor_id",
+            "correlation_id",
+            "causation_id",
+            "aggregate_type",
+            "aggregate_id"
+          ],
+          "domain_fields": [],
+          "domain_payload_status": "requires_domain_owner_approval"
+        },
+        "compatibility": "Additive within v1; breaking semantic/schema change requires a new major event version",
+        "idempotent_consumption_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "EVT-000014",
+      "type": "event",
+      "name": "AnomalyDetected",
+      "description": "Versioned business fact produced by AI Engine; exact domain payload requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-EVT-003",
+        "AI Engine.AnomalyDetected/v1"
+      ],
+      "tags": [],
+      "attributes": {
+        "event_version": 1,
+        "producer": "AI",
+        "trigger": "Committed domain state transition in the owning module",
+        "business_meaning": "AnomalyDetected occurred in AI Engine",
+        "payload": {
+          "envelope": [
+            "event_id",
+            "event_type",
+            "event_version",
+            "occurred_at",
+            "workspace_id",
+            "actor_id",
+            "correlation_id",
+            "causation_id",
+            "aggregate_type",
+            "aggregate_id"
+          ],
+          "domain_fields": [],
+          "domain_payload_status": "requires_domain_owner_approval"
+        },
+        "compatibility": "Additive within v1; breaking semantic/schema change requires a new major event version",
+        "idempotent_consumption_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "EVT-000015",
+      "type": "event",
+      "name": "AIQualityDegraded",
+      "description": "Versioned business fact produced by AI Engine; exact domain payload requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-EVT-004",
+        "AI Engine.AIQualityDegraded/v1"
+      ],
+      "tags": [],
+      "attributes": {
+        "event_version": 1,
+        "producer": "AI",
+        "trigger": "Committed domain state transition in the owning module",
+        "business_meaning": "AIQualityDegraded occurred in AI Engine",
+        "payload": {
+          "envelope": [
+            "event_id",
+            "event_type",
+            "event_version",
+            "occurred_at",
+            "workspace_id",
+            "actor_id",
+            "correlation_id",
+            "causation_id",
+            "aggregate_type",
+            "aggregate_id"
+          ],
+          "domain_fields": [],
+          "domain_payload_status": "requires_domain_owner_approval"
+        },
+        "compatibility": "Additive within v1; breaking semantic/schema change requires a new major event version",
+        "idempotent_consumption_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "EVT-000016",
+      "type": "event",
+      "name": "ModelRouteChanged",
+      "description": "Versioned business fact produced by AI Engine; exact domain payload requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-EVT-005",
+        "AI Engine.ModelRouteChanged/v1"
+      ],
+      "tags": [],
+      "attributes": {
+        "event_version": 1,
+        "producer": "AI",
+        "trigger": "Committed domain state transition in the owning module",
+        "business_meaning": "ModelRouteChanged occurred in AI Engine",
+        "payload": {
+          "envelope": [
+            "event_id",
+            "event_type",
+            "event_version",
+            "occurred_at",
+            "workspace_id",
+            "actor_id",
+            "correlation_id",
+            "causation_id",
+            "aggregate_type",
+            "aggregate_id"
+          ],
+          "domain_fields": [],
+          "domain_payload_status": "requires_domain_owner_approval"
+        },
+        "compatibility": "Additive within v1; breaking semantic/schema change requires a new major event version",
+        "idempotent_consumption_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "EVT-000017",
+      "type": "event",
+      "name": "SafetyIncidentOpened",
+      "description": "Versioned business fact produced by AI Engine; exact domain payload requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-EVT-006",
+        "AI Engine.SafetyIncidentOpened/v1"
+      ],
+      "tags": [],
+      "attributes": {
+        "event_version": 1,
+        "producer": "AI",
+        "trigger": "Committed domain state transition in the owning module",
+        "business_meaning": "SafetyIncidentOpened occurred in AI Engine",
+        "payload": {
+          "envelope": [
+            "event_id",
+            "event_type",
+            "event_version",
+            "occurred_at",
+            "workspace_id",
+            "actor_id",
+            "correlation_id",
+            "causation_id",
+            "aggregate_type",
+            "aggregate_id"
+          ],
+          "domain_fields": [],
+          "domain_payload_status": "requires_domain_owner_approval"
+        },
+        "compatibility": "Additive within v1; breaking semantic/schema change requires a new major event version",
+        "idempotent_consumption_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "EVT-000018",
+      "type": "event",
+      "name": "WorkspaceCreated",
+      "description": "Versioned business fact produced by Identity, Workspace, Permissions & Audit; exact domain payload requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-EVT-001",
+        "Identity, Workspace, Permissions & Audit.WorkspaceCreated/v1"
+      ],
+      "tags": [],
+      "attributes": {
+        "event_version": 1,
+        "producer": "IAM",
+        "trigger": "Committed domain state transition in the owning module",
+        "business_meaning": "WorkspaceCreated occurred in Identity, Workspace, Permissions & Audit",
+        "payload": {
+          "envelope": [
+            "event_id",
+            "event_type",
+            "event_version",
+            "occurred_at",
+            "workspace_id",
+            "actor_id",
+            "correlation_id",
+            "causation_id",
+            "aggregate_type",
+            "aggregate_id"
+          ],
+          "domain_fields": [],
+          "domain_payload_status": "requires_domain_owner_approval"
+        },
+        "compatibility": "Additive within v1; breaking semantic/schema change requires a new major event version",
+        "idempotent_consumption_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "EVT-000019",
+      "type": "event",
+      "name": "MembershipActivated",
+      "description": "Versioned business fact produced by Identity, Workspace, Permissions & Audit; exact domain payload requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-EVT-002",
+        "Identity, Workspace, Permissions & Audit.MembershipActivated/v1"
+      ],
+      "tags": [],
+      "attributes": {
+        "event_version": 1,
+        "producer": "IAM",
+        "trigger": "Committed domain state transition in the owning module",
+        "business_meaning": "MembershipActivated occurred in Identity, Workspace, Permissions & Audit",
+        "payload": {
+          "envelope": [
+            "event_id",
+            "event_type",
+            "event_version",
+            "occurred_at",
+            "workspace_id",
+            "actor_id",
+            "correlation_id",
+            "causation_id",
+            "aggregate_type",
+            "aggregate_id"
+          ],
+          "domain_fields": [],
+          "domain_payload_status": "requires_domain_owner_approval"
+        },
+        "compatibility": "Additive within v1; breaking semantic/schema change requires a new major event version",
+        "idempotent_consumption_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "EVT-000020",
+      "type": "event",
+      "name": "MembershipRevoked",
+      "description": "Versioned business fact produced by Identity, Workspace, Permissions & Audit; exact domain payload requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-EVT-003",
+        "Identity, Workspace, Permissions & Audit.MembershipRevoked/v1"
+      ],
+      "tags": [],
+      "attributes": {
+        "event_version": 1,
+        "producer": "IAM",
+        "trigger": "Committed domain state transition in the owning module",
+        "business_meaning": "MembershipRevoked occurred in Identity, Workspace, Permissions & Audit",
+        "payload": {
+          "envelope": [
+            "event_id",
+            "event_type",
+            "event_version",
+            "occurred_at",
+            "workspace_id",
+            "actor_id",
+            "correlation_id",
+            "causation_id",
+            "aggregate_type",
+            "aggregate_id"
+          ],
+          "domain_fields": [],
+          "domain_payload_status": "requires_domain_owner_approval"
+        },
+        "compatibility": "Additive within v1; breaking semantic/schema change requires a new major event version",
+        "idempotent_consumption_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "EVT-000021",
+      "type": "event",
+      "name": "RoleChanged",
+      "description": "Versioned business fact produced by Identity, Workspace, Permissions & Audit; exact domain payload requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-EVT-004",
+        "Identity, Workspace, Permissions & Audit.RoleChanged/v1"
+      ],
+      "tags": [],
+      "attributes": {
+        "event_version": 1,
+        "producer": "IAM",
+        "trigger": "Committed domain state transition in the owning module",
+        "business_meaning": "RoleChanged occurred in Identity, Workspace, Permissions & Audit",
+        "payload": {
+          "envelope": [
+            "event_id",
+            "event_type",
+            "event_version",
+            "occurred_at",
+            "workspace_id",
+            "actor_id",
+            "correlation_id",
+            "causation_id",
+            "aggregate_type",
+            "aggregate_id"
+          ],
+          "domain_fields": [],
+          "domain_payload_status": "requires_domain_owner_approval"
+        },
+        "compatibility": "Additive within v1; breaking semantic/schema change requires a new major event version",
+        "idempotent_consumption_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "EVT-000022",
+      "type": "event",
+      "name": "PermissionChanged",
+      "description": "Versioned business fact produced by Identity, Workspace, Permissions & Audit; exact domain payload requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-EVT-005",
+        "Identity, Workspace, Permissions & Audit.PermissionChanged/v1"
+      ],
+      "tags": [],
+      "attributes": {
+        "event_version": 1,
+        "producer": "IAM",
+        "trigger": "Committed domain state transition in the owning module",
+        "business_meaning": "PermissionChanged occurred in Identity, Workspace, Permissions & Audit",
+        "payload": {
+          "envelope": [
+            "event_id",
+            "event_type",
+            "event_version",
+            "occurred_at",
+            "workspace_id",
+            "actor_id",
+            "correlation_id",
+            "causation_id",
+            "aggregate_type",
+            "aggregate_id"
+          ],
+          "domain_fields": [],
+          "domain_payload_status": "requires_domain_owner_approval"
+        },
+        "compatibility": "Additive within v1; breaking semantic/schema change requires a new major event version",
+        "idempotent_consumption_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "EVT-000023",
+      "type": "event",
+      "name": "SessionRevoked",
+      "description": "Versioned business fact produced by Identity, Workspace, Permissions & Audit; exact domain payload requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-EVT-006",
+        "Identity, Workspace, Permissions & Audit.SessionRevoked/v1"
+      ],
+      "tags": [],
+      "attributes": {
+        "event_version": 1,
+        "producer": "IAM",
+        "trigger": "Committed domain state transition in the owning module",
+        "business_meaning": "SessionRevoked occurred in Identity, Workspace, Permissions & Audit",
+        "payload": {
+          "envelope": [
+            "event_id",
+            "event_type",
+            "event_version",
+            "occurred_at",
+            "workspace_id",
+            "actor_id",
+            "correlation_id",
+            "causation_id",
+            "aggregate_type",
+            "aggregate_id"
+          ],
+          "domain_fields": [],
+          "domain_payload_status": "requires_domain_owner_approval"
+        },
+        "compatibility": "Additive within v1; breaking semantic/schema change requires a new major event version",
+        "idempotent_consumption_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "EVT-000024",
+      "type": "event",
+      "name": "AuthenticationRiskDetected",
+      "description": "Versioned business fact produced by Identity, Workspace, Permissions & Audit; exact domain payload requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-EVT-007",
+        "Identity, Workspace, Permissions & Audit.AuthenticationRiskDetected/v1"
+      ],
+      "tags": [],
+      "attributes": {
+        "event_version": 1,
+        "producer": "IAM",
+        "trigger": "Committed domain state transition in the owning module",
+        "business_meaning": "AuthenticationRiskDetected occurred in Identity, Workspace, Permissions & Audit",
+        "payload": {
+          "envelope": [
+            "event_id",
+            "event_type",
+            "event_version",
+            "occurred_at",
+            "workspace_id",
+            "actor_id",
+            "correlation_id",
+            "causation_id",
+            "aggregate_type",
+            "aggregate_id"
+          ],
+          "domain_fields": [],
+          "domain_payload_status": "requires_domain_owner_approval"
+        },
+        "compatibility": "Additive within v1; breaking semantic/schema change requires a new major event version",
+        "idempotent_consumption_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "EVT-000025",
+      "type": "event",
+      "name": "AuditEventRecorded",
+      "description": "Versioned business fact produced by Identity, Workspace, Permissions & Audit; exact domain payload requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-EVT-008",
+        "Identity, Workspace, Permissions & Audit.AuditEventRecorded/v1"
+      ],
+      "tags": [],
+      "attributes": {
+        "event_version": 1,
+        "producer": "IAM",
+        "trigger": "Committed domain state transition in the owning module",
+        "business_meaning": "AuditEventRecorded occurred in Identity, Workspace, Permissions & Audit",
+        "payload": {
+          "envelope": [
+            "event_id",
+            "event_type",
+            "event_version",
+            "occurred_at",
+            "workspace_id",
+            "actor_id",
+            "correlation_id",
+            "causation_id",
+            "aggregate_type",
+            "aggregate_id"
+          ],
+          "domain_fields": [],
+          "domain_payload_status": "requires_domain_owner_approval"
+        },
+        "compatibility": "Additive within v1; breaking semantic/schema change requires a new major event version",
+        "idempotent_consumption_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "EVT-000026",
+      "type": "event",
+      "name": "JournalPosted",
+      "description": "Versioned business fact produced by Finance; exact domain payload requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-EVT-001",
+        "Finance.JournalPosted/v1"
+      ],
+      "tags": [],
+      "attributes": {
+        "event_version": 1,
+        "producer": "FIN",
+        "trigger": "Committed domain state transition in the owning module",
+        "business_meaning": "JournalPosted occurred in Finance",
+        "payload": {
+          "envelope": [
+            "event_id",
+            "event_type",
+            "event_version",
+            "occurred_at",
+            "workspace_id",
+            "actor_id",
+            "correlation_id",
+            "causation_id",
+            "aggregate_type",
+            "aggregate_id"
+          ],
+          "domain_fields": [],
+          "domain_payload_status": "requires_domain_owner_approval"
+        },
+        "compatibility": "Additive within v1; breaking semantic/schema change requires a new major event version",
+        "idempotent_consumption_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "EVT-000027",
+      "type": "event",
+      "name": "InvoiceIssued",
+      "description": "Versioned business fact produced by Finance; exact domain payload requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-EVT-002",
+        "Finance.InvoiceIssued/v1"
+      ],
+      "tags": [],
+      "attributes": {
+        "event_version": 1,
+        "producer": "FIN",
+        "trigger": "Committed domain state transition in the owning module",
+        "business_meaning": "InvoiceIssued occurred in Finance",
+        "payload": {
+          "envelope": [
+            "event_id",
+            "event_type",
+            "event_version",
+            "occurred_at",
+            "workspace_id",
+            "actor_id",
+            "correlation_id",
+            "causation_id",
+            "aggregate_type",
+            "aggregate_id"
+          ],
+          "domain_fields": [],
+          "domain_payload_status": "requires_domain_owner_approval"
+        },
+        "compatibility": "Additive within v1; breaking semantic/schema change requires a new major event version",
+        "idempotent_consumption_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "EVT-000028",
+      "type": "event",
+      "name": "InvoiceOverdue",
+      "description": "Versioned business fact produced by Finance; exact domain payload requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-EVT-003",
+        "Finance.InvoiceOverdue/v1"
+      ],
+      "tags": [],
+      "attributes": {
+        "event_version": 1,
+        "producer": "FIN",
+        "trigger": "Committed domain state transition in the owning module",
+        "business_meaning": "InvoiceOverdue occurred in Finance",
+        "payload": {
+          "envelope": [
+            "event_id",
+            "event_type",
+            "event_version",
+            "occurred_at",
+            "workspace_id",
+            "actor_id",
+            "correlation_id",
+            "causation_id",
+            "aggregate_type",
+            "aggregate_id"
+          ],
+          "domain_fields": [],
+          "domain_payload_status": "requires_domain_owner_approval"
+        },
+        "compatibility": "Additive within v1; breaking semantic/schema change requires a new major event version",
+        "idempotent_consumption_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "EVT-000029",
+      "type": "event",
+      "name": "PaymentRecorded",
+      "description": "Versioned business fact produced by Finance; exact domain payload requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-EVT-004",
+        "Finance.PaymentRecorded/v1"
+      ],
+      "tags": [],
+      "attributes": {
+        "event_version": 1,
+        "producer": "FIN",
+        "trigger": "Committed domain state transition in the owning module",
+        "business_meaning": "PaymentRecorded occurred in Finance",
+        "payload": {
+          "envelope": [
+            "event_id",
+            "event_type",
+            "event_version",
+            "occurred_at",
+            "workspace_id",
+            "actor_id",
+            "correlation_id",
+            "causation_id",
+            "aggregate_type",
+            "aggregate_id"
+          ],
+          "domain_fields": [],
+          "domain_payload_status": "requires_domain_owner_approval"
+        },
+        "compatibility": "Additive within v1; breaking semantic/schema change requires a new major event version",
+        "idempotent_consumption_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "EVT-000030",
+      "type": "event",
+      "name": "BillApproved",
+      "description": "Versioned business fact produced by Finance; exact domain payload requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-EVT-005",
+        "Finance.BillApproved/v1"
+      ],
+      "tags": [],
+      "attributes": {
+        "event_version": 1,
+        "producer": "FIN",
+        "trigger": "Committed domain state transition in the owning module",
+        "business_meaning": "BillApproved occurred in Finance",
+        "payload": {
+          "envelope": [
+            "event_id",
+            "event_type",
+            "event_version",
+            "occurred_at",
+            "workspace_id",
+            "actor_id",
+            "correlation_id",
+            "causation_id",
+            "aggregate_type",
+            "aggregate_id"
+          ],
+          "domain_fields": [],
+          "domain_payload_status": "requires_domain_owner_approval"
+        },
+        "compatibility": "Additive within v1; breaking semantic/schema change requires a new major event version",
+        "idempotent_consumption_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "EVT-000031",
+      "type": "event",
+      "name": "BudgetExceeded",
+      "description": "Versioned business fact produced by Finance; exact domain payload requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-EVT-006",
+        "Finance.BudgetExceeded/v1"
+      ],
+      "tags": [],
+      "attributes": {
+        "event_version": 1,
+        "producer": "FIN",
+        "trigger": "Committed domain state transition in the owning module",
+        "business_meaning": "BudgetExceeded occurred in Finance",
+        "payload": {
+          "envelope": [
+            "event_id",
+            "event_type",
+            "event_version",
+            "occurred_at",
+            "workspace_id",
+            "actor_id",
+            "correlation_id",
+            "causation_id",
+            "aggregate_type",
+            "aggregate_id"
+          ],
+          "domain_fields": [],
+          "domain_payload_status": "requires_domain_owner_approval"
+        },
+        "compatibility": "Additive within v1; breaking semantic/schema change requires a new major event version",
+        "idempotent_consumption_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "EVT-000032",
+      "type": "event",
+      "name": "PeriodClosed",
+      "description": "Versioned business fact produced by Finance; exact domain payload requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-EVT-007",
+        "Finance.PeriodClosed/v1"
+      ],
+      "tags": [],
+      "attributes": {
+        "event_version": 1,
+        "producer": "FIN",
+        "trigger": "Committed domain state transition in the owning module",
+        "business_meaning": "PeriodClosed occurred in Finance",
+        "payload": {
+          "envelope": [
+            "event_id",
+            "event_type",
+            "event_version",
+            "occurred_at",
+            "workspace_id",
+            "actor_id",
+            "correlation_id",
+            "causation_id",
+            "aggregate_type",
+            "aggregate_id"
+          ],
+          "domain_fields": [],
+          "domain_payload_status": "requires_domain_owner_approval"
+        },
+        "compatibility": "Additive within v1; breaking semantic/schema change requires a new major event version",
+        "idempotent_consumption_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "EVT-000033",
+      "type": "event",
+      "name": "CashForecastUpdated",
+      "description": "Versioned business fact produced by Finance; exact domain payload requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-EVT-008",
+        "Finance.CashForecastUpdated/v1"
+      ],
+      "tags": [],
+      "attributes": {
+        "event_version": 1,
+        "producer": "FIN",
+        "trigger": "Committed domain state transition in the owning module",
+        "business_meaning": "CashForecastUpdated occurred in Finance",
+        "payload": {
+          "envelope": [
+            "event_id",
+            "event_type",
+            "event_version",
+            "occurred_at",
+            "workspace_id",
+            "actor_id",
+            "correlation_id",
+            "causation_id",
+            "aggregate_type",
+            "aggregate_id"
+          ],
+          "domain_fields": [],
+          "domain_payload_status": "requires_domain_owner_approval"
+        },
+        "compatibility": "Additive within v1; breaking semantic/schema change requires a new major event version",
+        "idempotent_consumption_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "EVT-000034",
+      "type": "event",
+      "name": "ProductCreated",
+      "description": "Versioned business fact produced by Inventory; exact domain payload requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-EVT-001",
+        "Inventory.ProductCreated/v1"
+      ],
+      "tags": [],
+      "attributes": {
+        "event_version": 1,
+        "producer": "INV",
+        "trigger": "Committed domain state transition in the owning module",
+        "business_meaning": "ProductCreated occurred in Inventory",
+        "payload": {
+          "envelope": [
+            "event_id",
+            "event_type",
+            "event_version",
+            "occurred_at",
+            "workspace_id",
+            "actor_id",
+            "correlation_id",
+            "causation_id",
+            "aggregate_type",
+            "aggregate_id"
+          ],
+          "domain_fields": [],
+          "domain_payload_status": "requires_domain_owner_approval"
+        },
+        "compatibility": "Additive within v1; breaking semantic/schema change requires a new major event version",
+        "idempotent_consumption_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "EVT-000035",
+      "type": "event",
+      "name": "StockLevelChanged",
+      "description": "Versioned business fact produced by Inventory; exact domain payload requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-EVT-002",
+        "Inventory.StockLevelChanged/v1"
+      ],
+      "tags": [],
+      "attributes": {
+        "event_version": 1,
+        "producer": "INV",
+        "trigger": "Committed domain state transition in the owning module",
+        "business_meaning": "StockLevelChanged occurred in Inventory",
+        "payload": {
+          "envelope": [
+            "event_id",
+            "event_type",
+            "event_version",
+            "occurred_at",
+            "workspace_id",
+            "actor_id",
+            "correlation_id",
+            "causation_id",
+            "aggregate_type",
+            "aggregate_id"
+          ],
+          "domain_fields": [],
+          "domain_payload_status": "requires_domain_owner_approval"
+        },
+        "compatibility": "Additive within v1; breaking semantic/schema change requires a new major event version",
+        "idempotent_consumption_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "EVT-000036",
+      "type": "event",
+      "name": "StockReserved",
+      "description": "Versioned business fact produced by Inventory; exact domain payload requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-EVT-003",
+        "Inventory.StockReserved/v1"
+      ],
+      "tags": [],
+      "attributes": {
+        "event_version": 1,
+        "producer": "INV",
+        "trigger": "Committed domain state transition in the owning module",
+        "business_meaning": "StockReserved occurred in Inventory",
+        "payload": {
+          "envelope": [
+            "event_id",
+            "event_type",
+            "event_version",
+            "occurred_at",
+            "workspace_id",
+            "actor_id",
+            "correlation_id",
+            "causation_id",
+            "aggregate_type",
+            "aggregate_id"
+          ],
+          "domain_fields": [],
+          "domain_payload_status": "requires_domain_owner_approval"
+        },
+        "compatibility": "Additive within v1; breaking semantic/schema change requires a new major event version",
+        "idempotent_consumption_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "EVT-000037",
+      "type": "event",
+      "name": "StockReceived",
+      "description": "Versioned business fact produced by Inventory; exact domain payload requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-EVT-004",
+        "Inventory.StockReceived/v1"
+      ],
+      "tags": [],
+      "attributes": {
+        "event_version": 1,
+        "producer": "INV",
+        "trigger": "Committed domain state transition in the owning module",
+        "business_meaning": "StockReceived occurred in Inventory",
+        "payload": {
+          "envelope": [
+            "event_id",
+            "event_type",
+            "event_version",
+            "occurred_at",
+            "workspace_id",
+            "actor_id",
+            "correlation_id",
+            "causation_id",
+            "aggregate_type",
+            "aggregate_id"
+          ],
+          "domain_fields": [],
+          "domain_payload_status": "requires_domain_owner_approval"
+        },
+        "compatibility": "Additive within v1; breaking semantic/schema change requires a new major event version",
+        "idempotent_consumption_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "EVT-000038",
+      "type": "event",
+      "name": "StockTransferred",
+      "description": "Versioned business fact produced by Inventory; exact domain payload requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-EVT-005",
+        "Inventory.StockTransferred/v1"
+      ],
+      "tags": [],
+      "attributes": {
+        "event_version": 1,
+        "producer": "INV",
+        "trigger": "Committed domain state transition in the owning module",
+        "business_meaning": "StockTransferred occurred in Inventory",
+        "payload": {
+          "envelope": [
+            "event_id",
+            "event_type",
+            "event_version",
+            "occurred_at",
+            "workspace_id",
+            "actor_id",
+            "correlation_id",
+            "causation_id",
+            "aggregate_type",
+            "aggregate_id"
+          ],
+          "domain_fields": [],
+          "domain_payload_status": "requires_domain_owner_approval"
+        },
+        "compatibility": "Additive within v1; breaking semantic/schema change requires a new major event version",
+        "idempotent_consumption_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "EVT-000039",
+      "type": "event",
+      "name": "InventoryAdjusted",
+      "description": "Versioned business fact produced by Inventory; exact domain payload requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-EVT-006",
+        "Inventory.InventoryAdjusted/v1"
+      ],
+      "tags": [],
+      "attributes": {
+        "event_version": 1,
+        "producer": "INV",
+        "trigger": "Committed domain state transition in the owning module",
+        "business_meaning": "InventoryAdjusted occurred in Inventory",
+        "payload": {
+          "envelope": [
+            "event_id",
+            "event_type",
+            "event_version",
+            "occurred_at",
+            "workspace_id",
+            "actor_id",
+            "correlation_id",
+            "causation_id",
+            "aggregate_type",
+            "aggregate_id"
+          ],
+          "domain_fields": [],
+          "domain_payload_status": "requires_domain_owner_approval"
+        },
+        "compatibility": "Additive within v1; breaking semantic/schema change requires a new major event version",
+        "idempotent_consumption_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "EVT-000040",
+      "type": "event",
+      "name": "CountVarianceDetected",
+      "description": "Versioned business fact produced by Inventory; exact domain payload requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-EVT-007",
+        "Inventory.CountVarianceDetected/v1"
+      ],
+      "tags": [],
+      "attributes": {
+        "event_version": 1,
+        "producer": "INV",
+        "trigger": "Committed domain state transition in the owning module",
+        "business_meaning": "CountVarianceDetected occurred in Inventory",
+        "payload": {
+          "envelope": [
+            "event_id",
+            "event_type",
+            "event_version",
+            "occurred_at",
+            "workspace_id",
+            "actor_id",
+            "correlation_id",
+            "causation_id",
+            "aggregate_type",
+            "aggregate_id"
+          ],
+          "domain_fields": [],
+          "domain_payload_status": "requires_domain_owner_approval"
+        },
+        "compatibility": "Additive within v1; breaking semantic/schema change requires a new major event version",
+        "idempotent_consumption_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "EVT-000041",
+      "type": "event",
+      "name": "ReorderRecommended",
+      "description": "Versioned business fact produced by Inventory; exact domain payload requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-EVT-008",
+        "Inventory.ReorderRecommended/v1"
+      ],
+      "tags": [],
+      "attributes": {
+        "event_version": 1,
+        "producer": "INV",
+        "trigger": "Committed domain state transition in the owning module",
+        "business_meaning": "ReorderRecommended occurred in Inventory",
+        "payload": {
+          "envelope": [
+            "event_id",
+            "event_type",
+            "event_version",
+            "occurred_at",
+            "workspace_id",
+            "actor_id",
+            "correlation_id",
+            "causation_id",
+            "aggregate_type",
+            "aggregate_id"
+          ],
+          "domain_fields": [],
+          "domain_payload_status": "requires_domain_owner_approval"
+        },
+        "compatibility": "Additive within v1; breaking semantic/schema change requires a new major event version",
+        "idempotent_consumption_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "EVT-000042",
+      "type": "event",
+      "name": "LeadCaptured",
+      "description": "Versioned business fact produced by CRM; exact domain payload requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-EVT-001",
+        "CRM.LeadCaptured/v1"
+      ],
+      "tags": [],
+      "attributes": {
+        "event_version": 1,
+        "producer": "CRM",
+        "trigger": "Committed domain state transition in the owning module",
+        "business_meaning": "LeadCaptured occurred in CRM",
+        "payload": {
+          "envelope": [
+            "event_id",
+            "event_type",
+            "event_version",
+            "occurred_at",
+            "workspace_id",
+            "actor_id",
+            "correlation_id",
+            "causation_id",
+            "aggregate_type",
+            "aggregate_id"
+          ],
+          "domain_fields": [],
+          "domain_payload_status": "requires_domain_owner_approval"
+        },
+        "compatibility": "Additive within v1; breaking semantic/schema change requires a new major event version",
+        "idempotent_consumption_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "EVT-000043",
+      "type": "event",
+      "name": "LeadQualified",
+      "description": "Versioned business fact produced by CRM; exact domain payload requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-EVT-002",
+        "CRM.LeadQualified/v1"
+      ],
+      "tags": [],
+      "attributes": {
+        "event_version": 1,
+        "producer": "CRM",
+        "trigger": "Committed domain state transition in the owning module",
+        "business_meaning": "LeadQualified occurred in CRM",
+        "payload": {
+          "envelope": [
+            "event_id",
+            "event_type",
+            "event_version",
+            "occurred_at",
+            "workspace_id",
+            "actor_id",
+            "correlation_id",
+            "causation_id",
+            "aggregate_type",
+            "aggregate_id"
+          ],
+          "domain_fields": [],
+          "domain_payload_status": "requires_domain_owner_approval"
+        },
+        "compatibility": "Additive within v1; breaking semantic/schema change requires a new major event version",
+        "idempotent_consumption_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "EVT-000044",
+      "type": "event",
+      "name": "OpportunityStageChanged",
+      "description": "Versioned business fact produced by CRM; exact domain payload requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-EVT-003",
+        "CRM.OpportunityStageChanged/v1"
+      ],
+      "tags": [],
+      "attributes": {
+        "event_version": 1,
+        "producer": "CRM",
+        "trigger": "Committed domain state transition in the owning module",
+        "business_meaning": "OpportunityStageChanged occurred in CRM",
+        "payload": {
+          "envelope": [
+            "event_id",
+            "event_type",
+            "event_version",
+            "occurred_at",
+            "workspace_id",
+            "actor_id",
+            "correlation_id",
+            "causation_id",
+            "aggregate_type",
+            "aggregate_id"
+          ],
+          "domain_fields": [],
+          "domain_payload_status": "requires_domain_owner_approval"
+        },
+        "compatibility": "Additive within v1; breaking semantic/schema change requires a new major event version",
+        "idempotent_consumption_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "EVT-000045",
+      "type": "event",
+      "name": "OpportunityWon",
+      "description": "Versioned business fact produced by CRM; exact domain payload requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-EVT-004",
+        "CRM.OpportunityWon/v1"
+      ],
+      "tags": [],
+      "attributes": {
+        "event_version": 1,
+        "producer": "CRM",
+        "trigger": "Committed domain state transition in the owning module",
+        "business_meaning": "OpportunityWon occurred in CRM",
+        "payload": {
+          "envelope": [
+            "event_id",
+            "event_type",
+            "event_version",
+            "occurred_at",
+            "workspace_id",
+            "actor_id",
+            "correlation_id",
+            "causation_id",
+            "aggregate_type",
+            "aggregate_id"
+          ],
+          "domain_fields": [],
+          "domain_payload_status": "requires_domain_owner_approval"
+        },
+        "compatibility": "Additive within v1; breaking semantic/schema change requires a new major event version",
+        "idempotent_consumption_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "EVT-000046",
+      "type": "event",
+      "name": "OpportunityLost",
+      "description": "Versioned business fact produced by CRM; exact domain payload requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-EVT-005",
+        "CRM.OpportunityLost/v1"
+      ],
+      "tags": [],
+      "attributes": {
+        "event_version": 1,
+        "producer": "CRM",
+        "trigger": "Committed domain state transition in the owning module",
+        "business_meaning": "OpportunityLost occurred in CRM",
+        "payload": {
+          "envelope": [
+            "event_id",
+            "event_type",
+            "event_version",
+            "occurred_at",
+            "workspace_id",
+            "actor_id",
+            "correlation_id",
+            "causation_id",
+            "aggregate_type",
+            "aggregate_id"
+          ],
+          "domain_fields": [],
+          "domain_payload_status": "requires_domain_owner_approval"
+        },
+        "compatibility": "Additive within v1; breaking semantic/schema change requires a new major event version",
+        "idempotent_consumption_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "EVT-000047",
+      "type": "event",
+      "name": "ActivityCompleted",
+      "description": "Versioned business fact produced by CRM; exact domain payload requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-EVT-006",
+        "CRM.ActivityCompleted/v1"
+      ],
+      "tags": [],
+      "attributes": {
+        "event_version": 1,
+        "producer": "CRM",
+        "trigger": "Committed domain state transition in the owning module",
+        "business_meaning": "ActivityCompleted occurred in CRM",
+        "payload": {
+          "envelope": [
+            "event_id",
+            "event_type",
+            "event_version",
+            "occurred_at",
+            "workspace_id",
+            "actor_id",
+            "correlation_id",
+            "causation_id",
+            "aggregate_type",
+            "aggregate_id"
+          ],
+          "domain_fields": [],
+          "domain_payload_status": "requires_domain_owner_approval"
+        },
+        "compatibility": "Additive within v1; breaking semantic/schema change requires a new major event version",
+        "idempotent_consumption_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "EVT-000048",
+      "type": "event",
+      "name": "ChurnRiskDetected",
+      "description": "Versioned business fact produced by CRM; exact domain payload requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-EVT-007",
+        "CRM.ChurnRiskDetected/v1"
+      ],
+      "tags": [],
+      "attributes": {
+        "event_version": 1,
+        "producer": "CRM",
+        "trigger": "Committed domain state transition in the owning module",
+        "business_meaning": "ChurnRiskDetected occurred in CRM",
+        "payload": {
+          "envelope": [
+            "event_id",
+            "event_type",
+            "event_version",
+            "occurred_at",
+            "workspace_id",
+            "actor_id",
+            "correlation_id",
+            "causation_id",
+            "aggregate_type",
+            "aggregate_id"
+          ],
+          "domain_fields": [],
+          "domain_payload_status": "requires_domain_owner_approval"
+        },
+        "compatibility": "Additive within v1; breaking semantic/schema change requires a new major event version",
+        "idempotent_consumption_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "EVT-000049",
+      "type": "event",
+      "name": "ConsentChanged",
+      "description": "Versioned business fact produced by CRM; exact domain payload requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-EVT-008",
+        "CRM.ConsentChanged/v1"
+      ],
+      "tags": [],
+      "attributes": {
+        "event_version": 1,
+        "producer": "CRM",
+        "trigger": "Committed domain state transition in the owning module",
+        "business_meaning": "ConsentChanged occurred in CRM",
+        "payload": {
+          "envelope": [
+            "event_id",
+            "event_type",
+            "event_version",
+            "occurred_at",
+            "workspace_id",
+            "actor_id",
+            "correlation_id",
+            "causation_id",
+            "aggregate_type",
+            "aggregate_id"
+          ],
+          "domain_fields": [],
+          "domain_payload_status": "requires_domain_owner_approval"
+        },
+        "compatibility": "Additive within v1; breaking semantic/schema change requires a new major event version",
+        "idempotent_consumption_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "EVT-000050",
+      "type": "event",
+      "name": "MetricUpdated",
+      "description": "Versioned business fact produced by Analytics; exact domain payload requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-EVT-001",
+        "Analytics.MetricUpdated/v1"
+      ],
+      "tags": [],
+      "attributes": {
+        "event_version": 1,
+        "producer": "ANA",
+        "trigger": "Committed domain state transition in the owning module",
+        "business_meaning": "MetricUpdated occurred in Analytics",
+        "payload": {
+          "envelope": [
+            "event_id",
+            "event_type",
+            "event_version",
+            "occurred_at",
+            "workspace_id",
+            "actor_id",
+            "correlation_id",
+            "causation_id",
+            "aggregate_type",
+            "aggregate_id"
+          ],
+          "domain_fields": [],
+          "domain_payload_status": "requires_domain_owner_approval"
+        },
+        "compatibility": "Additive within v1; breaking semantic/schema change requires a new major event version",
+        "idempotent_consumption_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "EVT-000051",
+      "type": "event",
+      "name": "MetricThresholdBreached",
+      "description": "Versioned business fact produced by Analytics; exact domain payload requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-EVT-002",
+        "Analytics.MetricThresholdBreached/v1"
+      ],
+      "tags": [],
+      "attributes": {
+        "event_version": 1,
+        "producer": "ANA",
+        "trigger": "Committed domain state transition in the owning module",
+        "business_meaning": "MetricThresholdBreached occurred in Analytics",
+        "payload": {
+          "envelope": [
+            "event_id",
+            "event_type",
+            "event_version",
+            "occurred_at",
+            "workspace_id",
+            "actor_id",
+            "correlation_id",
+            "causation_id",
+            "aggregate_type",
+            "aggregate_id"
+          ],
+          "domain_fields": [],
+          "domain_payload_status": "requires_domain_owner_approval"
+        },
+        "compatibility": "Additive within v1; breaking semantic/schema change requires a new major event version",
+        "idempotent_consumption_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "EVT-000052",
+      "type": "event",
+      "name": "DashboardPublished",
+      "description": "Versioned business fact produced by Analytics; exact domain payload requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-EVT-003",
+        "Analytics.DashboardPublished/v1"
+      ],
+      "tags": [],
+      "attributes": {
+        "event_version": 1,
+        "producer": "ANA",
+        "trigger": "Committed domain state transition in the owning module",
+        "business_meaning": "DashboardPublished occurred in Analytics",
+        "payload": {
+          "envelope": [
+            "event_id",
+            "event_type",
+            "event_version",
+            "occurred_at",
+            "workspace_id",
+            "actor_id",
+            "correlation_id",
+            "causation_id",
+            "aggregate_type",
+            "aggregate_id"
+          ],
+          "domain_fields": [],
+          "domain_payload_status": "requires_domain_owner_approval"
+        },
+        "compatibility": "Additive within v1; breaking semantic/schema change requires a new major event version",
+        "idempotent_consumption_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "EVT-000053",
+      "type": "event",
+      "name": "ReportCompleted",
+      "description": "Versioned business fact produced by Analytics; exact domain payload requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-EVT-004",
+        "Analytics.ReportCompleted/v1"
+      ],
+      "tags": [],
+      "attributes": {
+        "event_version": 1,
+        "producer": "ANA",
+        "trigger": "Committed domain state transition in the owning module",
+        "business_meaning": "ReportCompleted occurred in Analytics",
+        "payload": {
+          "envelope": [
+            "event_id",
+            "event_type",
+            "event_version",
+            "occurred_at",
+            "workspace_id",
+            "actor_id",
+            "correlation_id",
+            "causation_id",
+            "aggregate_type",
+            "aggregate_id"
+          ],
+          "domain_fields": [],
+          "domain_payload_status": "requires_domain_owner_approval"
+        },
+        "compatibility": "Additive within v1; breaking semantic/schema change requires a new major event version",
+        "idempotent_consumption_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "EVT-000054",
+      "type": "event",
+      "name": "ReportFailed",
+      "description": "Versioned business fact produced by Analytics; exact domain payload requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-EVT-005",
+        "Analytics.ReportFailed/v1"
+      ],
+      "tags": [],
+      "attributes": {
+        "event_version": 1,
+        "producer": "ANA",
+        "trigger": "Committed domain state transition in the owning module",
+        "business_meaning": "ReportFailed occurred in Analytics",
+        "payload": {
+          "envelope": [
+            "event_id",
+            "event_type",
+            "event_version",
+            "occurred_at",
+            "workspace_id",
+            "actor_id",
+            "correlation_id",
+            "causation_id",
+            "aggregate_type",
+            "aggregate_id"
+          ],
+          "domain_fields": [],
+          "domain_payload_status": "requires_domain_owner_approval"
+        },
+        "compatibility": "Additive within v1; breaking semantic/schema change requires a new major event version",
+        "idempotent_consumption_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "EVT-000055",
+      "type": "event",
+      "name": "DataQualityFailed",
+      "description": "Versioned business fact produced by Analytics; exact domain payload requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-EVT-006",
+        "Analytics.DataQualityFailed/v1"
+      ],
+      "tags": [],
+      "attributes": {
+        "event_version": 1,
+        "producer": "ANA",
+        "trigger": "Committed domain state transition in the owning module",
+        "business_meaning": "DataQualityFailed occurred in Analytics",
+        "payload": {
+          "envelope": [
+            "event_id",
+            "event_type",
+            "event_version",
+            "occurred_at",
+            "workspace_id",
+            "actor_id",
+            "correlation_id",
+            "causation_id",
+            "aggregate_type",
+            "aggregate_id"
+          ],
+          "domain_fields": [],
+          "domain_payload_status": "requires_domain_owner_approval"
+        },
+        "compatibility": "Additive within v1; breaking semantic/schema change requires a new major event version",
+        "idempotent_consumption_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "EVT-000056",
+      "type": "event",
+      "name": "DocumentUploaded",
+      "description": "Versioned business fact produced by Documents; exact domain payload requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-EVT-001",
+        "Documents.DocumentUploaded/v1"
+      ],
+      "tags": [],
+      "attributes": {
+        "event_version": 1,
+        "producer": "DOC",
+        "trigger": "Committed domain state transition in the owning module",
+        "business_meaning": "DocumentUploaded occurred in Documents",
+        "payload": {
+          "envelope": [
+            "event_id",
+            "event_type",
+            "event_version",
+            "occurred_at",
+            "workspace_id",
+            "actor_id",
+            "correlation_id",
+            "causation_id",
+            "aggregate_type",
+            "aggregate_id"
+          ],
+          "domain_fields": [],
+          "domain_payload_status": "requires_domain_owner_approval"
+        },
+        "compatibility": "Additive within v1; breaking semantic/schema change requires a new major event version",
+        "idempotent_consumption_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "EVT-000057",
+      "type": "event",
+      "name": "DocumentGenerated",
+      "description": "Versioned business fact produced by Documents; exact domain payload requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-EVT-002",
+        "Documents.DocumentGenerated/v1"
+      ],
+      "tags": [],
+      "attributes": {
+        "event_version": 1,
+        "producer": "DOC",
+        "trigger": "Committed domain state transition in the owning module",
+        "business_meaning": "DocumentGenerated occurred in Documents",
+        "payload": {
+          "envelope": [
+            "event_id",
+            "event_type",
+            "event_version",
+            "occurred_at",
+            "workspace_id",
+            "actor_id",
+            "correlation_id",
+            "causation_id",
+            "aggregate_type",
+            "aggregate_id"
+          ],
+          "domain_fields": [],
+          "domain_payload_status": "requires_domain_owner_approval"
+        },
+        "compatibility": "Additive within v1; breaking semantic/schema change requires a new major event version",
+        "idempotent_consumption_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "EVT-000058",
+      "type": "event",
+      "name": "DocumentVersionCreated",
+      "description": "Versioned business fact produced by Documents; exact domain payload requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-EVT-003",
+        "Documents.DocumentVersionCreated/v1"
+      ],
+      "tags": [],
+      "attributes": {
+        "event_version": 1,
+        "producer": "DOC",
+        "trigger": "Committed domain state transition in the owning module",
+        "business_meaning": "DocumentVersionCreated occurred in Documents",
+        "payload": {
+          "envelope": [
+            "event_id",
+            "event_type",
+            "event_version",
+            "occurred_at",
+            "workspace_id",
+            "actor_id",
+            "correlation_id",
+            "causation_id",
+            "aggregate_type",
+            "aggregate_id"
+          ],
+          "domain_fields": [],
+          "domain_payload_status": "requires_domain_owner_approval"
+        },
+        "compatibility": "Additive within v1; breaking semantic/schema change requires a new major event version",
+        "idempotent_consumption_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "EVT-000059",
+      "type": "event",
+      "name": "DocumentApproved",
+      "description": "Versioned business fact produced by Documents; exact domain payload requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-EVT-004",
+        "Documents.DocumentApproved/v1"
+      ],
+      "tags": [],
+      "attributes": {
+        "event_version": 1,
+        "producer": "DOC",
+        "trigger": "Committed domain state transition in the owning module",
+        "business_meaning": "DocumentApproved occurred in Documents",
+        "payload": {
+          "envelope": [
+            "event_id",
+            "event_type",
+            "event_version",
+            "occurred_at",
+            "workspace_id",
+            "actor_id",
+            "correlation_id",
+            "causation_id",
+            "aggregate_type",
+            "aggregate_id"
+          ],
+          "domain_fields": [],
+          "domain_payload_status": "requires_domain_owner_approval"
+        },
+        "compatibility": "Additive within v1; breaking semantic/schema change requires a new major event version",
+        "idempotent_consumption_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "EVT-000060",
+      "type": "event",
+      "name": "SignatureCompleted",
+      "description": "Versioned business fact produced by Documents; exact domain payload requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-EVT-005",
+        "Documents.SignatureCompleted/v1"
+      ],
+      "tags": [],
+      "attributes": {
+        "event_version": 1,
+        "producer": "DOC",
+        "trigger": "Committed domain state transition in the owning module",
+        "business_meaning": "SignatureCompleted occurred in Documents",
+        "payload": {
+          "envelope": [
+            "event_id",
+            "event_type",
+            "event_version",
+            "occurred_at",
+            "workspace_id",
+            "actor_id",
+            "correlation_id",
+            "causation_id",
+            "aggregate_type",
+            "aggregate_id"
+          ],
+          "domain_fields": [],
+          "domain_payload_status": "requires_domain_owner_approval"
+        },
+        "compatibility": "Additive within v1; breaking semantic/schema change requires a new major event version",
+        "idempotent_consumption_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "EVT-000061",
+      "type": "event",
+      "name": "DocumentArchived",
+      "description": "Versioned business fact produced by Documents; exact domain payload requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-EVT-006",
+        "Documents.DocumentArchived/v1"
+      ],
+      "tags": [],
+      "attributes": {
+        "event_version": 1,
+        "producer": "DOC",
+        "trigger": "Committed domain state transition in the owning module",
+        "business_meaning": "DocumentArchived occurred in Documents",
+        "payload": {
+          "envelope": [
+            "event_id",
+            "event_type",
+            "event_version",
+            "occurred_at",
+            "workspace_id",
+            "actor_id",
+            "correlation_id",
+            "causation_id",
+            "aggregate_type",
+            "aggregate_id"
+          ],
+          "domain_fields": [],
+          "domain_payload_status": "requires_domain_owner_approval"
+        },
+        "compatibility": "Additive within v1; breaking semantic/schema change requires a new major event version",
+        "idempotent_consumption_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "EVT-000062",
+      "type": "event",
+      "name": "RetentionDispositioned",
+      "description": "Versioned business fact produced by Documents; exact domain payload requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-EVT-007",
+        "Documents.RetentionDispositioned/v1"
+      ],
+      "tags": [],
+      "attributes": {
+        "event_version": 1,
+        "producer": "DOC",
+        "trigger": "Committed domain state transition in the owning module",
+        "business_meaning": "RetentionDispositioned occurred in Documents",
+        "payload": {
+          "envelope": [
+            "event_id",
+            "event_type",
+            "event_version",
+            "occurred_at",
+            "workspace_id",
+            "actor_id",
+            "correlation_id",
+            "causation_id",
+            "aggregate_type",
+            "aggregate_id"
+          ],
+          "domain_fields": [],
+          "domain_payload_status": "requires_domain_owner_approval"
+        },
+        "compatibility": "Additive within v1; breaking semantic/schema change requires a new major event version",
+        "idempotent_consumption_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "EVT-000063",
+      "type": "event",
+      "name": "NotificationQueued",
+      "description": "Versioned business fact produced by Notifications; exact domain payload requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-EVT-001",
+        "Notifications.NotificationQueued/v1"
+      ],
+      "tags": [],
+      "attributes": {
+        "event_version": 1,
+        "producer": "NOT",
+        "trigger": "Committed domain state transition in the owning module",
+        "business_meaning": "NotificationQueued occurred in Notifications",
+        "payload": {
+          "envelope": [
+            "event_id",
+            "event_type",
+            "event_version",
+            "occurred_at",
+            "workspace_id",
+            "actor_id",
+            "correlation_id",
+            "causation_id",
+            "aggregate_type",
+            "aggregate_id"
+          ],
+          "domain_fields": [],
+          "domain_payload_status": "requires_domain_owner_approval"
+        },
+        "compatibility": "Additive within v1; breaking semantic/schema change requires a new major event version",
+        "idempotent_consumption_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "EVT-000064",
+      "type": "event",
+      "name": "NotificationDelivered",
+      "description": "Versioned business fact produced by Notifications; exact domain payload requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-EVT-002",
+        "Notifications.NotificationDelivered/v1"
+      ],
+      "tags": [],
+      "attributes": {
+        "event_version": 1,
+        "producer": "NOT",
+        "trigger": "Committed domain state transition in the owning module",
+        "business_meaning": "NotificationDelivered occurred in Notifications",
+        "payload": {
+          "envelope": [
+            "event_id",
+            "event_type",
+            "event_version",
+            "occurred_at",
+            "workspace_id",
+            "actor_id",
+            "correlation_id",
+            "causation_id",
+            "aggregate_type",
+            "aggregate_id"
+          ],
+          "domain_fields": [],
+          "domain_payload_status": "requires_domain_owner_approval"
+        },
+        "compatibility": "Additive within v1; breaking semantic/schema change requires a new major event version",
+        "idempotent_consumption_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "EVT-000065",
+      "type": "event",
+      "name": "NotificationRead",
+      "description": "Versioned business fact produced by Notifications; exact domain payload requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-EVT-003",
+        "Notifications.NotificationRead/v1"
+      ],
+      "tags": [],
+      "attributes": {
+        "event_version": 1,
+        "producer": "NOT",
+        "trigger": "Committed domain state transition in the owning module",
+        "business_meaning": "NotificationRead occurred in Notifications",
+        "payload": {
+          "envelope": [
+            "event_id",
+            "event_type",
+            "event_version",
+            "occurred_at",
+            "workspace_id",
+            "actor_id",
+            "correlation_id",
+            "causation_id",
+            "aggregate_type",
+            "aggregate_id"
+          ],
+          "domain_fields": [],
+          "domain_payload_status": "requires_domain_owner_approval"
+        },
+        "compatibility": "Additive within v1; breaking semantic/schema change requires a new major event version",
+        "idempotent_consumption_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "EVT-000066",
+      "type": "event",
+      "name": "NotificationActioned",
+      "description": "Versioned business fact produced by Notifications; exact domain payload requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-EVT-004",
+        "Notifications.NotificationActioned/v1"
+      ],
+      "tags": [],
+      "attributes": {
+        "event_version": 1,
+        "producer": "NOT",
+        "trigger": "Committed domain state transition in the owning module",
+        "business_meaning": "NotificationActioned occurred in Notifications",
+        "payload": {
+          "envelope": [
+            "event_id",
+            "event_type",
+            "event_version",
+            "occurred_at",
+            "workspace_id",
+            "actor_id",
+            "correlation_id",
+            "causation_id",
+            "aggregate_type",
+            "aggregate_id"
+          ],
+          "domain_fields": [],
+          "domain_payload_status": "requires_domain_owner_approval"
+        },
+        "compatibility": "Additive within v1; breaking semantic/schema change requires a new major event version",
+        "idempotent_consumption_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "EVT-000067",
+      "type": "event",
+      "name": "NotificationFailed",
+      "description": "Versioned business fact produced by Notifications; exact domain payload requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-EVT-005",
+        "Notifications.NotificationFailed/v1"
+      ],
+      "tags": [],
+      "attributes": {
+        "event_version": 1,
+        "producer": "NOT",
+        "trigger": "Committed domain state transition in the owning module",
+        "business_meaning": "NotificationFailed occurred in Notifications",
+        "payload": {
+          "envelope": [
+            "event_id",
+            "event_type",
+            "event_version",
+            "occurred_at",
+            "workspace_id",
+            "actor_id",
+            "correlation_id",
+            "causation_id",
+            "aggregate_type",
+            "aggregate_id"
+          ],
+          "domain_fields": [],
+          "domain_payload_status": "requires_domain_owner_approval"
+        },
+        "compatibility": "Additive within v1; breaking semantic/schema change requires a new major event version",
+        "idempotent_consumption_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "EVT-000068",
+      "type": "event",
+      "name": "DigestSent",
+      "description": "Versioned business fact produced by Notifications; exact domain payload requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-EVT-006",
+        "Notifications.DigestSent/v1"
+      ],
+      "tags": [],
+      "attributes": {
+        "event_version": 1,
+        "producer": "NOT",
+        "trigger": "Committed domain state transition in the owning module",
+        "business_meaning": "DigestSent occurred in Notifications",
+        "payload": {
+          "envelope": [
+            "event_id",
+            "event_type",
+            "event_version",
+            "occurred_at",
+            "workspace_id",
+            "actor_id",
+            "correlation_id",
+            "causation_id",
+            "aggregate_type",
+            "aggregate_id"
+          ],
+          "domain_fields": [],
+          "domain_payload_status": "requires_domain_owner_approval"
+        },
+        "compatibility": "Additive within v1; breaking semantic/schema change requires a new major event version",
+        "idempotent_consumption_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "EVT-000069",
+      "type": "event",
+      "name": "EscalationTriggered",
+      "description": "Versioned business fact produced by Notifications; exact domain payload requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-EVT-007",
+        "Notifications.EscalationTriggered/v1"
+      ],
+      "tags": [],
+      "attributes": {
+        "event_version": 1,
+        "producer": "NOT",
+        "trigger": "Committed domain state transition in the owning module",
+        "business_meaning": "EscalationTriggered occurred in Notifications",
+        "payload": {
+          "envelope": [
+            "event_id",
+            "event_type",
+            "event_version",
+            "occurred_at",
+            "workspace_id",
+            "actor_id",
+            "correlation_id",
+            "causation_id",
+            "aggregate_type",
+            "aggregate_id"
+          ],
+          "domain_fields": [],
+          "domain_payload_status": "requires_domain_owner_approval"
+        },
+        "compatibility": "Additive within v1; breaking semantic/schema change requires a new major event version",
+        "idempotent_consumption_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "EVT-000070",
+      "type": "event",
+      "name": "CandidateHired",
+      "description": "Versioned business fact produced by Human Resources; exact domain payload requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-EVT-001",
+        "Human Resources.CandidateHired/v1"
+      ],
+      "tags": [],
+      "attributes": {
+        "event_version": 1,
+        "producer": "HR",
+        "trigger": "Committed domain state transition in the owning module",
+        "business_meaning": "CandidateHired occurred in Human Resources",
+        "payload": {
+          "envelope": [
+            "event_id",
+            "event_type",
+            "event_version",
+            "occurred_at",
+            "workspace_id",
+            "actor_id",
+            "correlation_id",
+            "causation_id",
+            "aggregate_type",
+            "aggregate_id"
+          ],
+          "domain_fields": [],
+          "domain_payload_status": "requires_domain_owner_approval"
+        },
+        "compatibility": "Additive within v1; breaking semantic/schema change requires a new major event version",
+        "idempotent_consumption_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "EVT-000071",
+      "type": "event",
+      "name": "EmployeeOnboarded",
+      "description": "Versioned business fact produced by Human Resources; exact domain payload requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-EVT-002",
+        "Human Resources.EmployeeOnboarded/v1"
+      ],
+      "tags": [],
+      "attributes": {
+        "event_version": 1,
+        "producer": "HR",
+        "trigger": "Committed domain state transition in the owning module",
+        "business_meaning": "EmployeeOnboarded occurred in Human Resources",
+        "payload": {
+          "envelope": [
+            "event_id",
+            "event_type",
+            "event_version",
+            "occurred_at",
+            "workspace_id",
+            "actor_id",
+            "correlation_id",
+            "causation_id",
+            "aggregate_type",
+            "aggregate_id"
+          ],
+          "domain_fields": [],
+          "domain_payload_status": "requires_domain_owner_approval"
+        },
+        "compatibility": "Additive within v1; breaking semantic/schema change requires a new major event version",
+        "idempotent_consumption_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "EVT-000072",
+      "type": "event",
+      "name": "EmployeeChanged",
+      "description": "Versioned business fact produced by Human Resources; exact domain payload requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-EVT-003",
+        "Human Resources.EmployeeChanged/v1"
+      ],
+      "tags": [],
+      "attributes": {
+        "event_version": 1,
+        "producer": "HR",
+        "trigger": "Committed domain state transition in the owning module",
+        "business_meaning": "EmployeeChanged occurred in Human Resources",
+        "payload": {
+          "envelope": [
+            "event_id",
+            "event_type",
+            "event_version",
+            "occurred_at",
+            "workspace_id",
+            "actor_id",
+            "correlation_id",
+            "causation_id",
+            "aggregate_type",
+            "aggregate_id"
+          ],
+          "domain_fields": [],
+          "domain_payload_status": "requires_domain_owner_approval"
+        },
+        "compatibility": "Additive within v1; breaking semantic/schema change requires a new major event version",
+        "idempotent_consumption_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "EVT-000073",
+      "type": "event",
+      "name": "LeaveApproved",
+      "description": "Versioned business fact produced by Human Resources; exact domain payload requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-EVT-004",
+        "Human Resources.LeaveApproved/v1"
+      ],
+      "tags": [],
+      "attributes": {
+        "event_version": 1,
+        "producer": "HR",
+        "trigger": "Committed domain state transition in the owning module",
+        "business_meaning": "LeaveApproved occurred in Human Resources",
+        "payload": {
+          "envelope": [
+            "event_id",
+            "event_type",
+            "event_version",
+            "occurred_at",
+            "workspace_id",
+            "actor_id",
+            "correlation_id",
+            "causation_id",
+            "aggregate_type",
+            "aggregate_id"
+          ],
+          "domain_fields": [],
+          "domain_payload_status": "requires_domain_owner_approval"
+        },
+        "compatibility": "Additive within v1; breaking semantic/schema change requires a new major event version",
+        "idempotent_consumption_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "EVT-000074",
+      "type": "event",
+      "name": "PerformanceReviewCompleted",
+      "description": "Versioned business fact produced by Human Resources; exact domain payload requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-EVT-005",
+        "Human Resources.PerformanceReviewCompleted/v1"
+      ],
+      "tags": [],
+      "attributes": {
+        "event_version": 1,
+        "producer": "HR",
+        "trigger": "Committed domain state transition in the owning module",
+        "business_meaning": "PerformanceReviewCompleted occurred in Human Resources",
+        "payload": {
+          "envelope": [
+            "event_id",
+            "event_type",
+            "event_version",
+            "occurred_at",
+            "workspace_id",
+            "actor_id",
+            "correlation_id",
+            "causation_id",
+            "aggregate_type",
+            "aggregate_id"
+          ],
+          "domain_fields": [],
+          "domain_payload_status": "requires_domain_owner_approval"
+        },
+        "compatibility": "Additive within v1; breaking semantic/schema change requires a new major event version",
+        "idempotent_consumption_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "EVT-000075",
+      "type": "event",
+      "name": "CompensationApproved",
+      "description": "Versioned business fact produced by Human Resources; exact domain payload requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-EVT-006",
+        "Human Resources.CompensationApproved/v1"
+      ],
+      "tags": [],
+      "attributes": {
+        "event_version": 1,
+        "producer": "HR",
+        "trigger": "Committed domain state transition in the owning module",
+        "business_meaning": "CompensationApproved occurred in Human Resources",
+        "payload": {
+          "envelope": [
+            "event_id",
+            "event_type",
+            "event_version",
+            "occurred_at",
+            "workspace_id",
+            "actor_id",
+            "correlation_id",
+            "causation_id",
+            "aggregate_type",
+            "aggregate_id"
+          ],
+          "domain_fields": [],
+          "domain_payload_status": "requires_domain_owner_approval"
+        },
+        "compatibility": "Additive within v1; breaking semantic/schema change requires a new major event version",
+        "idempotent_consumption_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "EVT-000076",
+      "type": "event",
+      "name": "EmployeeOffboarded",
+      "description": "Versioned business fact produced by Human Resources; exact domain payload requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-EVT-007",
+        "Human Resources.EmployeeOffboarded/v1"
+      ],
+      "tags": [],
+      "attributes": {
+        "event_version": 1,
+        "producer": "HR",
+        "trigger": "Committed domain state transition in the owning module",
+        "business_meaning": "EmployeeOffboarded occurred in Human Resources",
+        "payload": {
+          "envelope": [
+            "event_id",
+            "event_type",
+            "event_version",
+            "occurred_at",
+            "workspace_id",
+            "actor_id",
+            "correlation_id",
+            "causation_id",
+            "aggregate_type",
+            "aggregate_id"
+          ],
+          "domain_fields": [],
+          "domain_payload_status": "requires_domain_owner_approval"
+        },
+        "compatibility": "Additive within v1; breaking semantic/schema change requires a new major event version",
+        "idempotent_consumption_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "EVT-000077",
+      "type": "event",
+      "name": "ProductionOrderReleased",
+      "description": "Versioned business fact produced by Manufacturing; exact domain payload requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-EVT-001",
+        "Manufacturing.ProductionOrderReleased/v1"
+      ],
+      "tags": [],
+      "attributes": {
+        "event_version": 1,
+        "producer": "MFG",
+        "trigger": "Committed domain state transition in the owning module",
+        "business_meaning": "ProductionOrderReleased occurred in Manufacturing",
+        "payload": {
+          "envelope": [
+            "event_id",
+            "event_type",
+            "event_version",
+            "occurred_at",
+            "workspace_id",
+            "actor_id",
+            "correlation_id",
+            "causation_id",
+            "aggregate_type",
+            "aggregate_id"
+          ],
+          "domain_fields": [],
+          "domain_payload_status": "requires_domain_owner_approval"
+        },
+        "compatibility": "Additive within v1; breaking semantic/schema change requires a new major event version",
+        "idempotent_consumption_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "EVT-000078",
+      "type": "event",
+      "name": "MaterialIssued",
+      "description": "Versioned business fact produced by Manufacturing; exact domain payload requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-EVT-002",
+        "Manufacturing.MaterialIssued/v1"
+      ],
+      "tags": [],
+      "attributes": {
+        "event_version": 1,
+        "producer": "MFG",
+        "trigger": "Committed domain state transition in the owning module",
+        "business_meaning": "MaterialIssued occurred in Manufacturing",
+        "payload": {
+          "envelope": [
+            "event_id",
+            "event_type",
+            "event_version",
+            "occurred_at",
+            "workspace_id",
+            "actor_id",
+            "correlation_id",
+            "causation_id",
+            "aggregate_type",
+            "aggregate_id"
+          ],
+          "domain_fields": [],
+          "domain_payload_status": "requires_domain_owner_approval"
+        },
+        "compatibility": "Additive within v1; breaking semantic/schema change requires a new major event version",
+        "idempotent_consumption_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "EVT-000079",
+      "type": "event",
+      "name": "OperationCompleted",
+      "description": "Versioned business fact produced by Manufacturing; exact domain payload requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-EVT-003",
+        "Manufacturing.OperationCompleted/v1"
+      ],
+      "tags": [],
+      "attributes": {
+        "event_version": 1,
+        "producer": "MFG",
+        "trigger": "Committed domain state transition in the owning module",
+        "business_meaning": "OperationCompleted occurred in Manufacturing",
+        "payload": {
+          "envelope": [
+            "event_id",
+            "event_type",
+            "event_version",
+            "occurred_at",
+            "workspace_id",
+            "actor_id",
+            "correlation_id",
+            "causation_id",
+            "aggregate_type",
+            "aggregate_id"
+          ],
+          "domain_fields": [],
+          "domain_payload_status": "requires_domain_owner_approval"
+        },
+        "compatibility": "Additive within v1; breaking semantic/schema change requires a new major event version",
+        "idempotent_consumption_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "EVT-000080",
+      "type": "event",
+      "name": "ProductionReceived",
+      "description": "Versioned business fact produced by Manufacturing; exact domain payload requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-EVT-004",
+        "Manufacturing.ProductionReceived/v1"
+      ],
+      "tags": [],
+      "attributes": {
+        "event_version": 1,
+        "producer": "MFG",
+        "trigger": "Committed domain state transition in the owning module",
+        "business_meaning": "ProductionReceived occurred in Manufacturing",
+        "payload": {
+          "envelope": [
+            "event_id",
+            "event_type",
+            "event_version",
+            "occurred_at",
+            "workspace_id",
+            "actor_id",
+            "correlation_id",
+            "causation_id",
+            "aggregate_type",
+            "aggregate_id"
+          ],
+          "domain_fields": [],
+          "domain_payload_status": "requires_domain_owner_approval"
+        },
+        "compatibility": "Additive within v1; breaking semantic/schema change requires a new major event version",
+        "idempotent_consumption_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "EVT-000081",
+      "type": "event",
+      "name": "QualityHoldPlaced",
+      "description": "Versioned business fact produced by Manufacturing; exact domain payload requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-EVT-005",
+        "Manufacturing.QualityHoldPlaced/v1"
+      ],
+      "tags": [],
+      "attributes": {
+        "event_version": 1,
+        "producer": "MFG",
+        "trigger": "Committed domain state transition in the owning module",
+        "business_meaning": "QualityHoldPlaced occurred in Manufacturing",
+        "payload": {
+          "envelope": [
+            "event_id",
+            "event_type",
+            "event_version",
+            "occurred_at",
+            "workspace_id",
+            "actor_id",
+            "correlation_id",
+            "causation_id",
+            "aggregate_type",
+            "aggregate_id"
+          ],
+          "domain_fields": [],
+          "domain_payload_status": "requires_domain_owner_approval"
+        },
+        "compatibility": "Additive within v1; breaking semantic/schema change requires a new major event version",
+        "idempotent_consumption_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "EVT-000082",
+      "type": "event",
+      "name": "NonconformanceOpened",
+      "description": "Versioned business fact produced by Manufacturing; exact domain payload requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-EVT-006",
+        "Manufacturing.NonconformanceOpened/v1"
+      ],
+      "tags": [],
+      "attributes": {
+        "event_version": 1,
+        "producer": "MFG",
+        "trigger": "Committed domain state transition in the owning module",
+        "business_meaning": "NonconformanceOpened occurred in Manufacturing",
+        "payload": {
+          "envelope": [
+            "event_id",
+            "event_type",
+            "event_version",
+            "occurred_at",
+            "workspace_id",
+            "actor_id",
+            "correlation_id",
+            "causation_id",
+            "aggregate_type",
+            "aggregate_id"
+          ],
+          "domain_fields": [],
+          "domain_payload_status": "requires_domain_owner_approval"
+        },
+        "compatibility": "Additive within v1; breaking semantic/schema change requires a new major event version",
+        "idempotent_consumption_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "EVT-000083",
+      "type": "event",
+      "name": "ProductionOrderClosed",
+      "description": "Versioned business fact produced by Manufacturing; exact domain payload requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-EVT-007",
+        "Manufacturing.ProductionOrderClosed/v1"
+      ],
+      "tags": [],
+      "attributes": {
+        "event_version": 1,
+        "producer": "MFG",
+        "trigger": "Committed domain state transition in the owning module",
+        "business_meaning": "ProductionOrderClosed occurred in Manufacturing",
+        "payload": {
+          "envelope": [
+            "event_id",
+            "event_type",
+            "event_version",
+            "occurred_at",
+            "workspace_id",
+            "actor_id",
+            "correlation_id",
+            "causation_id",
+            "aggregate_type",
+            "aggregate_id"
+          ],
+          "domain_fields": [],
+          "domain_payload_status": "requires_domain_owner_approval"
+        },
+        "compatibility": "Additive within v1; breaking semantic/schema change requires a new major event version",
+        "idempotent_consumption_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "EVT-000084",
+      "type": "event",
+      "name": "CapacityRiskDetected",
+      "description": "Versioned business fact produced by Manufacturing; exact domain payload requires Build Pack approval.",
+      "status": "Specified",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-EVT-008",
+        "Manufacturing.CapacityRiskDetected/v1"
+      ],
+      "tags": [],
+      "attributes": {
+        "event_version": 1,
+        "producer": "MFG",
+        "trigger": "Committed domain state transition in the owning module",
+        "business_meaning": "CapacityRiskDetected occurred in Manufacturing",
+        "payload": {
+          "envelope": [
+            "event_id",
+            "event_type",
+            "event_version",
+            "occurred_at",
+            "workspace_id",
+            "actor_id",
+            "correlation_id",
+            "causation_id",
+            "aggregate_type",
+            "aggregate_id"
+          ],
+          "domain_fields": [],
+          "domain_payload_status": "requires_domain_owner_approval"
+        },
+        "compatibility": "Additive within v1; breaking semantic/schema change requires a new major event version",
+        "idempotent_consumption_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    }
+  ]
+}

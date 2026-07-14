@@ -1,0 +1,1270 @@
+# Impact Intelligence Report: CAP-000004 [capability] Identity, Workspace, Permissions & Audit Core Capability (Specified)
+
+Generated: 2026-07-12T03:13:46.994Z  
+Depth: 4  
+Gate: **BLOCKED_PENDING_REVIEW**  
+Severity: **Critical**  
+Compatibility: Structural or additive change; verify transitive consumers  
+Affected: 1231
+
+## Required actions
+
+- Review affected records: 1231
+- Route required approvals: 18
+- Review or invalidate artifacts: 48
+- Rerun selected tests: 10
+- Reassess affected releases: 2
+- Define migration and rollback: 0
+
+## Owners and approvals
+
+- TEAM-000001 — Product Architecture Office: 51 records
+- TEAM-000002 — Platform Engineering: 1 records
+- TEAM-000003 — Design Office: 9 records
+- TEAM-000006 — AI and Decision Intelligence: 54 records
+- TEAM-000007 — Decision Center Team: 86 records
+- TEAM-000008 — Business Memory Team: 83 records
+- TEAM-000009 — AI Engine Team: 83 records
+- TEAM-000010 — Identity, Workspace, Permissions & Audit Team: 140 records
+- TEAM-000011 — Finance Team: 95 records
+- TEAM-000012 — Inventory Team: 93 records
+- TEAM-000013 — CRM Team: 92 records
+- TEAM-000014 — Analytics Team: 87 records
+- TEAM-000015 — Documents Team: 90 records
+- TEAM-000016 — Notifications Team: 87 records
+- TEAM-000017 — Human Resources Team: 90 records
+- TEAM-000018 — Manufacturing Team: 90 records
+
+## Explainable paths
+
+- **Medium** AICAP-000012 — Identity, Workspace, Permissions & Audit: Risk signal explanation: CAP-000004 -uses-> AICAP-000012
+- **Medium** AICAP-000013 — Identity, Workspace, Permissions & Audit: Access review assistance: CAP-000004 -uses-> AICAP-000013
+- **Medium** AICAP-000014 — Identity, Workspace, Permissions & Audit: Anomalous sign-in triage: CAP-000004 -uses-> AICAP-000014
+- **High** ART-000012 — ZYVORA Identity, Workspace, Permissions & Audit PRD v1.0: CAP-000004 -documented_by-> ART-000012
+- **High** ART-000025 — ZYVORA Identity, Workspace, Permissions & Audit Technical Specification v1.0: CAP-000004 -specified_by-> ART-000025
+- **High** ART-000029 — ZYVORA BP-000 Platform Blueprint v1.0: CAP-000004 -specified_by-> ART-000029
+- **High** ART-000030 — ZYVORA BP-001 UI Blueprint v1.0: CAP-000004 -specified_by-> ART-000030
+- **High** ART-000031 — ZYVORA BP-002 Backend Blueprint v1.0: CAP-000004 -specified_by-> ART-000031
+- **High** ART-000032 — ZYVORA BP-003 Database Blueprint v1.0: CAP-000004 -specified_by-> ART-000032
+- **High** ART-000033 — ZYVORA BP-004 API Blueprint v1.0: CAP-000004 -specified_by-> ART-000033
+- **High** ART-000034 — ZYVORA BP-005 AI Blueprint v1.0: CAP-000004 -specified_by-> ART-000034
+- **High** ART-000035 — ZYVORA BP-006 Security Blueprint v1.0: CAP-000004 -specified_by-> ART-000035
+- **High** ART-000036 — ZYVORA BP-007 Infrastructure Blueprint v1.0: CAP-000004 -specified_by-> ART-000036
+- **Medium** DEC-000013 — Who may access this workspace?: CAP-000004 -supports-> DEC-000013
+- **Medium** DEC-000014 — What may this actor do?: CAP-000004 -supports-> DEC-000014
+- **Medium** DEC-000015 — Who changed what and why?: CAP-000004 -supports-> DEC-000015
+- **Medium** DEC-000016 — How is compromised access revoked?: CAP-000004 -supports-> DEC-000016
+- **Medium** IMPACT-000001 — Governance Center v2.0 MVP Impact Assessment: CAP-000004 <-assesses- IMPACT-000001
+- **Medium** INT-000013 — Supabase Auth behind interface: CAP-000004 -uses-> INT-000013
+- **Medium** INT-000014 — OIDC/SAML future providers: CAP-000004 -uses-> INT-000014
+- **Medium** INT-000015 — PostgreSQL RLS: CAP-000004 -uses-> INT-000015
+- **Medium** INT-000016 — Redis session/cache: CAP-000004 -uses-> INT-000016
+- **Medium** INT-000017 — All modules: CAP-000004 -uses-> INT-000017
+- **Critical** MET-000020 — Cross-tenant violations: CAP-000004 -measured_by-> MET-000020
+- **Critical** MET-000021 — MFA adoption: CAP-000004 -measured_by-> MET-000021
+- **Critical** MET-000022 — Invite acceptance: CAP-000004 -measured_by-> MET-000022
+- **Critical** MET-000023 — Access review completion: CAP-000004 -measured_by-> MET-000023
+- **Critical** MET-000024 — Permission denial accuracy: CAP-000004 -measured_by-> MET-000024
+- **Critical** MET-000025 — Session revocation time: CAP-000004 -measured_by-> MET-000025
+- **Critical** MET-000026 — Audit completeness: CAP-000004 -measured_by-> MET-000026
+- **High** API-000025 — Identity, Workspace, Permissions & Audit Authentication adapter API: CAP-000004 -specified_by-> ART-000025 | ART-000025 <-specified_by- API-000025
+- **High** API-000026 — Identity, Workspace, Permissions & Audit Workspace lifecycle API: CAP-000004 -specified_by-> ART-000025 | ART-000025 <-specified_by- API-000026
+- **High** API-000027 — Identity, Workspace, Permissions & Audit Invitation and membership API: CAP-000004 -specified_by-> ART-000025 | ART-000025 <-specified_by- API-000027
+- **High** API-000028 — Identity, Workspace, Permissions & Audit Roles and permission grants API: CAP-000004 -specified_by-> ART-000025 | ART-000025 <-specified_by- API-000028
+- **High** API-000029 — Identity, Workspace, Permissions & Audit Policy evaluation API: CAP-000004 -specified_by-> ART-000025 | ART-000025 <-specified_by- API-000029
+- **High** API-000030 — Identity, Workspace, Permissions & Audit MFA and session management API: CAP-000004 -specified_by-> ART-000025 | ART-000025 <-specified_by- API-000030
+- **High** API-000031 — Identity, Workspace, Permissions & Audit API keys and service identities API: CAP-000004 -specified_by-> ART-000025 | ART-000025 <-specified_by- API-000031
+- **High** API-000032 — Identity, Workspace, Permissions & Audit Audit explorer and evidence export API: CAP-000004 -specified_by-> ART-000025 | ART-000025 <-specified_by- API-000032
+- **High** BR-000025 — Identity, Workspace, Permissions & Audit Rule 1: CAP-000004 -documented_by-> ART-000012 | ART-000012 <-documented_by- BR-000025
+- **High** BR-000026 — Identity, Workspace, Permissions & Audit Rule 2: CAP-000004 -documented_by-> ART-000012 | ART-000012 <-documented_by- BR-000026
+- **High** BR-000027 — Identity, Workspace, Permissions & Audit Rule 3: CAP-000004 -documented_by-> ART-000012 | ART-000012 <-documented_by- BR-000027
+- **High** BR-000028 — Identity, Workspace, Permissions & Audit Rule 4: CAP-000004 -documented_by-> ART-000012 | ART-000012 <-documented_by- BR-000028
+- **High** BR-000029 — Identity, Workspace, Permissions & Audit Rule 5: CAP-000004 -documented_by-> ART-000012 | ART-000012 <-documented_by- BR-000029
+- **High** BR-000030 — Identity, Workspace, Permissions & Audit Rule 6: CAP-000004 -documented_by-> ART-000012 | ART-000012 <-documented_by- BR-000030
+- **High** BR-000031 — Identity, Workspace, Permissions & Audit Rule 7: CAP-000004 -documented_by-> ART-000012 | ART-000012 <-documented_by- BR-000031
+- **High** BR-000032 — Identity, Workspace, Permissions & Audit Rule 8: CAP-000004 -documented_by-> ART-000012 | ART-000012 <-documented_by- BR-000032
+- **Medium** CAP-000001 — Decision Center Core Capability: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000001
+- **Medium** CAP-000002 — Business Memory Core Capability: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000002
+- **Medium** CAP-000003 — AI Engine Core Capability: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000003
+- **Medium** CAP-000005 — Finance Core Capability: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000005
+- **Medium** CAP-000006 — Inventory Core Capability: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000006
+- **Medium** CAP-000007 — CRM Core Capability: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000007
+- **Medium** CAP-000008 — Analytics Core Capability: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000008
+- **Medium** CAP-000009 — Documents Core Capability: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000009
+- **Medium** CAP-000010 — Notifications Core Capability: CAP-000004 -uses-> INT-000017 | INT-000017 <-uses- CAP-000010
+- **Medium** CAP-000011 — Human Resources Core Capability: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000011
+- **Medium** CAP-000012 — Manufacturing Core Capability: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000012
+- **Medium** CR-000001 — Governance Center v2.0 MVP: CAP-000004 <-assesses- IMPACT-000001 | IMPACT-000001 -assesses-> CR-000001
+- **Medium** DASH-000004 — Identity, Workspace, Permissions & Audit Decision Dashboard: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- DASH-000004
+- **High** ENT-000027 — User: CAP-000004 -supports-> DEC-000013 | DEC-000013 -uses-> ENT-000027
+- **High** ENT-000028 — Workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 -uses-> ENT-000028
+- **High** ENT-000029 — Membership: CAP-000004 -supports-> DEC-000013 | DEC-000013 -uses-> ENT-000029
+- **High** EVT-000018 — WorkspaceCreated: CAP-000004 -specified_by-> ART-000025 | ART-000025 <-specified_by- EVT-000018
+- **High** EVT-000019 — MembershipActivated: CAP-000004 -specified_by-> ART-000025 | ART-000025 <-specified_by- EVT-000019
+- **High** EVT-000020 — MembershipRevoked: CAP-000004 -specified_by-> ART-000025 | ART-000025 <-specified_by- EVT-000020
+- **High** EVT-000021 — RoleChanged: CAP-000004 -specified_by-> ART-000025 | ART-000025 <-specified_by- EVT-000021
+- **High** EVT-000022 — PermissionChanged: CAP-000004 -specified_by-> ART-000025 | ART-000025 <-specified_by- EVT-000022
+- **High** EVT-000023 — SessionRevoked: CAP-000004 -specified_by-> ART-000025 | ART-000025 <-specified_by- EVT-000023
+- **High** EVT-000024 — AuthenticationRiskDetected: CAP-000004 -specified_by-> ART-000025 | ART-000025 <-specified_by- EVT-000024
+- **High** EVT-000025 — AuditEventRecorded: CAP-000004 -specified_by-> ART-000025 | ART-000025 <-specified_by- EVT-000025
+- **Medium** FEAT-000025 — Authentication adapter: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- FEAT-000025
+- **Medium** FEAT-000026 — Workspace lifecycle: CAP-000004 -supports-> DEC-000014 | DEC-000014 <-supports- FEAT-000026
+- **Medium** FEAT-000027 — Invitation and membership: CAP-000004 -supports-> DEC-000015 | DEC-000015 <-supports- FEAT-000027
+- **Medium** FEAT-000028 — Roles and permission grants: CAP-000004 -supports-> DEC-000016 | DEC-000016 <-supports- FEAT-000028
+- **Medium** FEAT-000029 — Policy evaluation: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- FEAT-000029
+- **Medium** FEAT-000030 — MFA and session management: CAP-000004 -supports-> DEC-000014 | DEC-000014 <-supports- FEAT-000030
+- **Medium** FEAT-000031 — API keys and service identities: CAP-000004 -supports-> DEC-000015 | DEC-000015 <-supports- FEAT-000031
+- **Medium** FEAT-000032 — Audit explorer and evidence export: CAP-000004 -supports-> DEC-000016 | DEC-000016 <-supports- FEAT-000032
+- **High** PROMPT-000012 — Identity, Workspace, Permissions & Audit: Risk signal explanation Prompt: CAP-000004 -uses-> AICAP-000012 | AICAP-000012 -uses_prompt-> PROMPT-000012
+- **High** PROMPT-000013 — Identity, Workspace, Permissions & Audit: Access review assistance Prompt: CAP-000004 -uses-> AICAP-000013 | AICAP-000013 -uses_prompt-> PROMPT-000013
+- **High** PROMPT-000014 — Identity, Workspace, Permissions & Audit: Anomalous sign-in triage Prompt: CAP-000004 -uses-> AICAP-000014 | AICAP-000014 -uses_prompt-> PROMPT-000014
+- **High** REL-000001 — Architecture Knowledge System 1.0: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001
+- **Medium** RPT-000016 — Membership and role inventory: CAP-000004 -measured_by-> MET-000020 | MET-000020 <-uses- RPT-000016
+- **Medium** RPT-000017 — Access review: CAP-000004 -measured_by-> MET-000021 | MET-000021 <-uses- RPT-000017
+- **Medium** RPT-000018 — Authentication risk: CAP-000004 -measured_by-> MET-000022 | MET-000022 <-uses- RPT-000018
+- **Medium** RPT-000019 — Audit evidence: CAP-000004 -measured_by-> MET-000023 | MET-000023 <-uses- RPT-000019
+- **Medium** RPT-000020 — Service credential health: CAP-000004 -measured_by-> MET-000024 | MET-000024 <-uses- RPT-000020
+- **Medium** SCR-000028 — Identity, Workspace, Permissions & Audit Decision Dashboard: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028
+- **Medium** SCR-000029 — Authentication adapter Workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000029
+- **Medium** SCR-000030 — Workspace lifecycle Workspace: CAP-000004 -supports-> DEC-000014 | DEC-000014 <-supports- SCR-000030
+- **Medium** SCR-000031 — Invitation and membership Workspace: CAP-000004 -supports-> DEC-000015 | DEC-000015 <-supports- SCR-000031
+- **Medium** SCR-000032 — Roles and permission grants Workspace: CAP-000004 -supports-> DEC-000016 | DEC-000016 <-supports- SCR-000032
+- **Medium** SCR-000033 — Policy evaluation Workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000033
+- **Medium** SCR-000034 — MFA and session management Workspace: CAP-000004 -supports-> DEC-000014 | DEC-000014 <-supports- SCR-000034
+- **Medium** SCR-000035 — API keys and service identities Workspace: CAP-000004 -supports-> DEC-000015 | DEC-000015 <-supports- SCR-000035
+- **Medium** SCR-000036 — Audit explorer and evidence export Workspace: CAP-000004 -supports-> DEC-000016 | DEC-000016 <-supports- SCR-000036
+- **Medium** UF-000028 — Identity, Workspace, Permissions & Audit UI Flow 1: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- UF-000028
+- **Medium** UF-000029 — Identity, Workspace, Permissions & Audit UI Flow 2: CAP-000004 -supports-> DEC-000014 | DEC-000014 <-supports- UF-000029
+- **Medium** UF-000030 — Identity, Workspace, Permissions & Audit UI Flow 3: CAP-000004 -supports-> DEC-000015 | DEC-000015 <-supports- UF-000030
+- **Medium** UF-000031 — Identity, Workspace, Permissions & Audit UI Flow 4: CAP-000004 -supports-> DEC-000016 | DEC-000016 <-supports- UF-000031
+- **Medium** UF-000032 — Identity, Workspace, Permissions & Audit UI Flow 5: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- UF-000032
+- **Medium** UF-000033 — Identity, Workspace, Permissions & Audit UI Flow 6: CAP-000004 -supports-> DEC-000014 | DEC-000014 <-supports- UF-000033
+- **Medium** UF-000034 — Identity, Workspace, Permissions & Audit UI Flow 7: CAP-000004 -supports-> DEC-000015 | DEC-000015 <-supports- UF-000034
+- **Medium** UF-000035 — Identity, Workspace, Permissions & Audit UI Flow 8: CAP-000004 -supports-> DEC-000016 | DEC-000016 <-supports- UF-000035
+- **Medium** UF-000036 — Identity, Workspace, Permissions & Audit UI Flow 9: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- UF-000036
+- **Medium** UJ-000023 — Create workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- UJ-000023
+- **Medium** UJ-000024 — Invite and onboard member: CAP-000004 -supports-> DEC-000014 | DEC-000014 <-supports- UJ-000024
+- **Medium** UJ-000025 — Change role: CAP-000004 -supports-> DEC-000015 | DEC-000015 <-supports- UJ-000025
+- **Medium** UJ-000026 — Suspend or revoke access: CAP-000004 -supports-> DEC-000016 | DEC-000016 <-supports- UJ-000026
+- **Medium** UJ-000027 — Authenticate and refresh: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- UJ-000027
+- **Medium** UJ-000028 — Revoke session: CAP-000004 -supports-> DEC-000014 | DEC-000014 <-supports- UJ-000028
+- **Medium** UJ-000029 — Evaluate permission: CAP-000004 -supports-> DEC-000015 | DEC-000015 <-supports- UJ-000029
+- **Medium** UJ-000030 — Investigate audit trail: CAP-000004 -supports-> DEC-000016 | DEC-000016 <-supports- UJ-000030
+- **Low** AICAP-000001 — Decision Center: Priority assistance: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000001 | CAP-000001 -uses-> AICAP-000001
+- **Low** AICAP-000002 — Decision Center: Alternative generation: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000001 | CAP-000001 -uses-> AICAP-000002
+- **Low** AICAP-000003 — Decision Center: Trade-off explanation: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000001 | CAP-000001 -uses-> AICAP-000003
+- **Low** AICAP-000004 — Decision Center: Outcome comparison: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000001 | CAP-000001 -uses-> AICAP-000004
+- **Low** AICAP-000005 — Decision Center: Similar-decision retrieval: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000001 | CAP-000001 -uses-> AICAP-000005
+- **Low** AICAP-000006 — Business Memory: Semantic retrieval: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000002 | CAP-000002 -uses-> AICAP-000006
+- **Low** AICAP-000007 — Business Memory: Summarization with citations: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000002 | CAP-000002 -uses-> AICAP-000007
+- **Low** AICAP-000008 — Business Memory: Similar-case discovery: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000002 | CAP-000002 -uses-> AICAP-000008
+- **Low** AICAP-000009 — Business Memory: Lesson extraction: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000002 | CAP-000002 -uses-> AICAP-000009
+- **Low** AICAP-000010 — Business Memory: Memory quality classification: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000002 | CAP-000002 -uses-> AICAP-000010
+- **Low** AICAP-000011 — AI Engine: All capabilities are AI capabilities; core business workflows remain usable without them: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000003 | CAP-000003 -uses-> AICAP-000011
+- **Low** AICAP-000015 — Finance: Cash forecast: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000005 | CAP-000005 -uses-> AICAP-000015
+- **Low** AICAP-000016 — Finance: Anomaly detection: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000005 | CAP-000005 -uses-> AICAP-000016
+- **Low** AICAP-000017 — Finance: Reconciliation suggestions: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000005 | CAP-000005 -uses-> AICAP-000017
+- **Low** AICAP-000018 — Finance: Collection priority: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000005 | CAP-000005 -uses-> AICAP-000018
+- **Low** AICAP-000019 — Finance: Variance explanation: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000005 | CAP-000005 -uses-> AICAP-000019
+- **Low** AICAP-000020 — Inventory: Demand forecast: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000006 | CAP-000006 -uses-> AICAP-000020
+- **Low** AICAP-000021 — Inventory: Reorder quantity: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000006 | CAP-000006 -uses-> AICAP-000021
+- **Low** AICAP-000022 — Inventory: Supplier comparison: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000006 | CAP-000006 -uses-> AICAP-000022
+- **Low** AICAP-000023 — Inventory: Anomaly and shrinkage detection: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000006 | CAP-000006 -uses-> AICAP-000023
+- **Low** AICAP-000024 — Inventory: Slow-moving stock explanation: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000006 | CAP-000006 -uses-> AICAP-000024
+- **Low** AICAP-000025 — CRM: Lead scoring: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000007 | CAP-000007 -uses-> AICAP-000025
+- **Low** AICAP-000026 — CRM: Next best action: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000007 | CAP-000007 -uses-> AICAP-000026
+- **Low** AICAP-000027 — CRM: Churn risk: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000007 | CAP-000007 -uses-> AICAP-000027
+- **Low** AICAP-000028 — CRM: Opportunity forecast: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000007 | CAP-000007 -uses-> AICAP-000028
+- **Low** AICAP-000029 — CRM: Interaction summary: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000007 | CAP-000007 -uses-> AICAP-000029
+- **Low** AICAP-000030 — CRM: Win/loss explanation: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000007 | CAP-000007 -uses-> AICAP-000030
+- **Low** AICAP-000031 — Analytics: Narrative explanation: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000008 | CAP-000008 -uses-> AICAP-000031
+- **Low** AICAP-000032 — Analytics: Anomaly detection: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000008 | CAP-000008 -uses-> AICAP-000032
+- **Low** AICAP-000033 — Analytics: Forecast overlay: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000008 | CAP-000008 -uses-> AICAP-000033
+- **Low** AICAP-000034 — Analytics: Natural language query: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000008 | CAP-000008 -uses-> AICAP-000034
+- **Low** AICAP-000035 — Analytics: Chart recommendation: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000008 | CAP-000008 -uses-> AICAP-000035
+- **Low** AICAP-000036 — Documents: Classification: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000009 | CAP-000009 -uses-> AICAP-000036
+- **Low** AICAP-000037 — Documents: Field extraction: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000009 | CAP-000009 -uses-> AICAP-000037
+- **Low** AICAP-000038 — Documents: Document summary: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000009 | CAP-000009 -uses-> AICAP-000038
+- **Low** AICAP-000039 — Documents: Clause comparison: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000009 | CAP-000009 -uses-> AICAP-000039
+- **Low** AICAP-000040 — Documents: Template assistance: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000009 | CAP-000009 -uses-> AICAP-000040
+- **Low** AICAP-000041 — Notifications: Priority suggestion: CAP-000004 -uses-> INT-000017 | INT-000017 <-uses- CAP-000010 | CAP-000010 -uses-> AICAP-000041
+- **Low** AICAP-000042 — Notifications: Digest summarization: CAP-000004 -uses-> INT-000017 | INT-000017 <-uses- CAP-000010 | CAP-000010 -uses-> AICAP-000042
+- **Low** AICAP-000043 — Notifications: Send-time optimization: CAP-000004 -uses-> INT-000017 | INT-000017 <-uses- CAP-000010 | CAP-000010 -uses-> AICAP-000043
+- **Low** AICAP-000044 — Notifications: Noise detection: CAP-000004 -uses-> INT-000017 | INT-000017 <-uses- CAP-000010 | CAP-000010 -uses-> AICAP-000044
+- **Low** AICAP-000045 — Human Resources: Candidate matching: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000011 | CAP-000011 -uses-> AICAP-000045
+- **Low** AICAP-000046 — Human Resources: Capacity forecast: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000011 | CAP-000011 -uses-> AICAP-000046
+- **Low** AICAP-000047 — Human Resources: Turnover risk: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000011 | CAP-000011 -uses-> AICAP-000047
+- **Low** AICAP-000048 — Human Resources: Review summarization: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000011 | CAP-000011 -uses-> AICAP-000048
+- **Low** AICAP-000049 — Human Resources: Policy question answering: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000011 | CAP-000011 -uses-> AICAP-000049
+- **Low** AICAP-000050 — Manufacturing: Demand and capacity forecast: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000012 | CAP-000012 -uses-> AICAP-000050
+- **Low** AICAP-000051 — Manufacturing: Schedule optimization: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000012 | CAP-000012 -uses-> AICAP-000051
+- **Low** AICAP-000052 — Manufacturing: Quality anomaly: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000012 | CAP-000012 -uses-> AICAP-000052
+- **Low** AICAP-000053 — Manufacturing: Predictive maintenance signal: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000012 | CAP-000012 -uses-> AICAP-000053
+- **Low** AICAP-000054 — Manufacturing: Cost variance explanation: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000012 | CAP-000012 -uses-> AICAP-000054
+- **High** ART-000001 — ZYVORA Design System & UI/UX Bible v1.0: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000001
+- **High** ART-000002 — ZYVORA ZYVORA Product PRD v1.0: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000002
+- **High** ART-000003 — ZYVORA Master Product Bible v1.0: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000003
+- **High** ART-000004 — ZYVORA AI Engine PRD v1.0: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000004
+- **High** ART-000005 — ZYVORA Analytics PRD v1.0: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000005
+- **High** ART-000006 — ZYVORA Business Memory PRD v1.0: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000006
+- **High** ART-000007 — ZYVORA CRM PRD v1.0: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000007
+- **High** ART-000008 — ZYVORA Decision Center PRD v1.0: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000008
+- **High** ART-000009 — ZYVORA Documents PRD v1.0: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000009
+- **High** ART-000010 — ZYVORA Finance PRD v1.0: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000010
+- **High** ART-000011 — ZYVORA Human Resources PRD v1.0: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000011
+- **High** ART-000013 — ZYVORA Inventory PRD v1.0: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000013
+- **High** ART-000014 — ZYVORA Manufacturing PRD v1.0: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000014
+- **High** ART-000015 — ZYVORA Notifications PRD v1.0: CAP-000004 -uses-> INT-000017 | INT-000017 <-uses- CAP-000010 | CAP-000010 -documented_by-> ART-000015
+- **High** ART-000016 — ZYVORA ZYVORA Product Technical Specification v1.0: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000016
+- **High** ART-000017 — ZYVORA AI Engine Technical Specification v1.0: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000017
+- **High** ART-000018 — ZYVORA Analytics Technical Specification v1.0: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000018
+- **High** ART-000019 — ZYVORA Business Memory Technical Specification v1.0: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000019
+- **High** ART-000020 — ZYVORA CRM Technical Specification v1.0: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000020
+- **High** ART-000021 — ZYVORA Decision Center Technical Specification v1.0: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000021
+- **High** ART-000022 — ZYVORA Documents Technical Specification v1.0: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000022
+- **High** ART-000023 — ZYVORA Finance Technical Specification v1.0: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000023
+- **High** ART-000024 — ZYVORA Human Resources Technical Specification v1.0: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000024
+- **High** ART-000026 — ZYVORA Inventory Technical Specification v1.0: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000026
+- **High** ART-000027 — ZYVORA Manufacturing Technical Specification v1.0: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000027
+- **High** ART-000028 — ZYVORA Notifications Technical Specification v1.0: CAP-000004 -uses-> INT-000017 | INT-000017 <-uses- CAP-000010 | CAP-000010 -specified_by-> ART-000028
+- **High** ART-000037 — ZYVORA Build Pack Standard v1.0: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000037
+- **High** ART-000038 — ZYVORA QA Pack Standard v1.0: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000038
+- **High** ART-000039 — ZYVORA Developer Standards v1.0: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000039
+- **High** ART-000040 — ZYVORA AKG Ontology and Registry Standard v1.0: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000040
+- **High** ART-000041 — ZYVORA Architecture Knowledge Graph Constitution v1.0: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000041
+- **High** ART-000042 — ZYVORA Governance Engine v1.1 Operating Specification: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000042
+- **High** ART-000043 — ZYVORA Team Implementation Handoff Guide v1.0: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000043
+- **High** ART-000044 — ZYVORA Architecture Overview v1.0: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000044
+- **High** ART-000045 — ZYVORA Platform PRD v1.0: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000045
+- **High** ART-000046 — ZYVORA Product Architecture Library Manifest v1.0: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000046
+- **Low** AUTO-000018 — Invitation Automation: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- FEAT-000025 | FEAT-000025 <-automates- AUTO-000018
+- **Low** AUTO-000019 — Role changed Automation: CAP-000004 -supports-> DEC-000014 | DEC-000014 <-supports- FEAT-000026 | FEAT-000026 <-automates- AUTO-000019
+- **Low** AUTO-000020 — MFA/security alert Automation: CAP-000004 -supports-> DEC-000015 | DEC-000015 <-supports- FEAT-000027 | FEAT-000027 <-automates- AUTO-000020
+- **Low** AUTO-000021 — Session revoked Automation: CAP-000004 -supports-> DEC-000016 | DEC-000016 <-supports- FEAT-000028 | FEAT-000028 <-automates- AUTO-000021
+- **Low** AUTO-000022 — Access review due Automation: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- FEAT-000029 | FEAT-000029 <-automates- AUTO-000022
+- **Low** AUTO-000023 — Sensitive export Automation: CAP-000004 -supports-> DEC-000014 | DEC-000014 <-supports- FEAT-000030 | FEAT-000030 <-automates- AUTO-000023
+- **High** BUILD-000001 — ZYVORA BUILD-001 Workspace Identity & Audit Foundation v1.0: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- FEAT-000025 | FEAT-000025 -implemented_by-> BUILD-000001
+- **Low** CMP-000001 — Decision Card: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000001
+- **Low** CMP-000002 — Metric Tile: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000002
+- **Low** CMP-000003 — Data Table: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000029 | SCR-000029 -uses-> CMP-000003
+- **Low** CMP-000004 — Filter Bar: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000004
+- **Low** CMP-000005 — Status Badge: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000029 | SCR-000029 -uses-> CMP-000005
+- **Low** CMP-000006 — Audit Timeline: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000029 | SCR-000029 -uses-> CMP-000006
+- **Low** CMP-000009 — Empty State: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000009
+- **Low** CMP-000010 — Error Recovery Panel: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000010
+- **Low** CMP-000012 — Chart Frame: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000012
+- **Low** DEC-000001 — What requires attention now?: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000001 | CAP-000001 -supports-> DEC-000001
+- **Low** DEC-000002 — Which action should be taken?: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000001 | CAP-000001 -supports-> DEC-000002
+- **Low** DEC-000003 — Who must decide or approve?: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000001 | CAP-000001 -supports-> DEC-000003
+- **Low** DEC-000004 — Did the decision produce the expected outcome?: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000001 | CAP-000001 -supports-> DEC-000004
+- **Low** DEC-000005 — What happened before?: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000002 | CAP-000002 -supports-> DEC-000005
+- **Low** DEC-000006 — Why was a decision made?: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000002 | CAP-000002 -supports-> DEC-000006
+- **Low** DEC-000007 — What did we learn?: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000002 | CAP-000002 -supports-> DEC-000007
+- **Low** DEC-000008 — Which past situation is comparable?: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000002 | CAP-000002 -supports-> DEC-000008
+- **Low** DEC-000009 — Which recommendation is supported?: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000003 | CAP-000003 -supports-> DEC-000009
+- **Low** DEC-000010 — What is likely to happen?: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000003 | CAP-000003 -supports-> DEC-000010
+- **Low** DEC-000011 — What is anomalous?: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000003 | CAP-000003 -supports-> DEC-000011
+- **Low** DEC-000012 — How confident should the Builder be?: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000003 | CAP-000003 -supports-> DEC-000012
+- **Low** DEC-000017 — Can the business afford this action?: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000005 | CAP-000005 -supports-> DEC-000017
+- **Low** DEC-000018 — What is driving profit and cash?: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000005 | CAP-000005 -supports-> DEC-000018
+- **Low** DEC-000019 — Which receivable or payable needs action?: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000005 | CAP-000005 -supports-> DEC-000019
+- **Low** DEC-000020 — Are the books complete and controlled?: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000005 | CAP-000005 -supports-> DEC-000020
+- **Low** DEC-000021 — What should be reordered, when, and how much?: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000006 | CAP-000006 -supports-> DEC-000021
+- **Low** DEC-000022 — Where is stock available?: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000006 | CAP-000006 -supports-> DEC-000022
+- **Low** DEC-000023 — Which movement or variance requires investigation?: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000006 | CAP-000006 -supports-> DEC-000023
+- **Low** DEC-000024 — Which supplier and purchase action is best?: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000006 | CAP-000006 -supports-> DEC-000024
+- **Low** DEC-000025 — Which lead or opportunity deserves attention?: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000007 | CAP-000007 -supports-> DEC-000025
+- **Low** DEC-000026 — Which customer is at risk?: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000007 | CAP-000007 -supports-> DEC-000026
+- **Low** DEC-000027 — What is the next best action?: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000007 | CAP-000007 -supports-> DEC-000027
+- **Low** DEC-000028 — Which segment or campaign should be prioritized?: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000007 | CAP-000007 -supports-> DEC-000028
+- **Low** DEC-000029 — What changed?: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000008 | CAP-000008 -supports-> DEC-000029
+- **Low** DEC-000030 — Why did it change?: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000008 | CAP-000008 -supports-> DEC-000030
+- **Low** DEC-000031 — Does it require attention?: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000008 | CAP-000008 -supports-> DEC-000031
+- **Low** DEC-000032 — Which underlying records explain the metric?: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000008 | CAP-000008 -supports-> DEC-000032
+- **Low** DEC-000033 — Which document is authoritative?: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000009 | CAP-000009 -supports-> DEC-000033
+- **Low** DEC-000034 — Who must review or sign it?: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000009 | CAP-000009 -supports-> DEC-000034
+- **Low** DEC-000035 — What changed between versions?: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000009 | CAP-000009 -supports-> DEC-000035
+- **Low** DEC-000036 — When may it be archived or deleted?: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000009 | CAP-000009 -supports-> DEC-000036
+- **Low** DEC-000037 — Who needs to know or act?: CAP-000004 -uses-> INT-000017 | INT-000017 <-uses- CAP-000010 | CAP-000010 -supports-> DEC-000037
+- **Low** DEC-000038 — Which channel and time are appropriate?: CAP-000004 -uses-> INT-000017 | INT-000017 <-uses- CAP-000010 | CAP-000010 -supports-> DEC-000038
+- **Low** DEC-000039 — Did delivery succeed?: CAP-000004 -uses-> INT-000017 | INT-000017 <-uses- CAP-000010 | CAP-000010 -supports-> DEC-000039
+- **Low** DEC-000040 — Should the alert escalate?: CAP-000004 -uses-> INT-000017 | INT-000017 <-uses- CAP-000010 | CAP-000010 -supports-> DEC-000040
+- **Low** DEC-000041 — Whom should we hire and when?: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000011 | CAP-000011 -supports-> DEC-000041
+- **Low** DEC-000042 — Is the team adequately staffed?: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000011 | CAP-000011 -supports-> DEC-000042
+- **Low** DEC-000043 — Which employee action requires attention?: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000011 | CAP-000011 -supports-> DEC-000043
+- **Low** DEC-000044 — What is the workforce cost and risk?: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000011 | CAP-000011 -supports-> DEC-000044
+- **Low** DEC-000045 — What should be produced and when?: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000012 | CAP-000012 -supports-> DEC-000045
+- **Low** DEC-000046 — Are materials and capacity sufficient?: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000012 | CAP-000012 -supports-> DEC-000046
+- **Low** DEC-000047 — Which quality or schedule exception needs action?: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000012 | CAP-000012 -supports-> DEC-000047
+- **Low** DEC-000048 — What is the actual production cost and yield?: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000012 | CAP-000012 -supports-> DEC-000048
+- **High** ENT-000030 — Invitation: CAP-000004 -supports-> DEC-000016 | DEC-000016 <-supports- FEAT-000028 | FEAT-000028 -persists-> ENT-000030
+- **High** ENT-000031 — Role: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- FEAT-000029 | FEAT-000029 -persists-> ENT-000031
+- **High** ENT-000032 — Permission: CAP-000004 -supports-> DEC-000014 | DEC-000014 <-supports- FEAT-000030 | FEAT-000030 -persists-> ENT-000032
+- **High** ENT-000033 — Session: CAP-000004 -supports-> DEC-000015 | DEC-000015 <-supports- FEAT-000031 | FEAT-000031 -persists-> ENT-000033
+- **High** ENT-000034 — ApiCredential: CAP-000004 -supports-> DEC-000016 | DEC-000016 <-supports- FEAT-000032 | FEAT-000032 -persists-> ENT-000034
+- **High** ENT-000035 — PolicyDecision: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- FEAT-000025 | FEAT-000025 -persists-> ENT-000035
+- **High** ENT-000036 — AuditEvent: CAP-000004 -supports-> DEC-000014 | DEC-000014 <-supports- FEAT-000026 | FEAT-000026 -persists-> ENT-000036
+- **Low** INT-000001 — Business Memory: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000001 | CAP-000001 -uses-> INT-000001
+- **Low** INT-000002 — AI Engine: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000001 | CAP-000001 -uses-> INT-000002
+- **Low** INT-000003 — Notifications: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000001 | CAP-000001 -uses-> INT-000003
+- **Low** INT-000004 — Analytics: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000001 | CAP-000001 -uses-> INT-000004
+- **Low** INT-000005 — Every domain module: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000001 | CAP-000001 -uses-> INT-000005
+- **Low** INT-000006 — Decision Center: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000002 | CAP-000002 -uses-> INT-000006
+- **Low** INT-000007 — Documents: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000002 | CAP-000002 -uses-> INT-000007
+- **Low** INT-000008 — Privacy and retention services: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000002 | CAP-000002 -uses-> INT-000008
+- **Low** INT-000009 — OpenAI through abstraction: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000003 | CAP-000003 -uses-> INT-000009
+- **Low** INT-000010 — Future approved model providers: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000003 | CAP-000003 -uses-> INT-000010
+- **Low** INT-000011 — pgvector: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000003 | CAP-000003 -uses-> INT-000011
+- **Low** INT-000012 — Sentry/OpenTelemetry: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000003 | CAP-000003 -uses-> INT-000012
+- **Low** INT-000018 — Bank feeds: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000005 | CAP-000005 -uses-> INT-000018
+- **Low** INT-000019 — Payment providers: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000005 | CAP-000005 -uses-> INT-000019
+- **Low** INT-000020 — Tax services: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000005 | CAP-000005 -uses-> INT-000020
+- **Low** INT-000021 — QuickBooks/Xero adapters: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000005 | CAP-000005 -uses-> INT-000021
+- **Low** INT-000022 — Inventory: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000005 | CAP-000005 -uses-> INT-000022
+- **Low** INT-000023 — CRM: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000005 | CAP-000005 -uses-> INT-000023
+- **Low** INT-000024 — HR: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000005 | CAP-000005 -uses-> INT-000024
+- **Low** INT-000025 — Barcode devices: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000006 | CAP-000006 -uses-> INT-000025
+- **Low** INT-000026 — E-commerce: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000006 | CAP-000006 -uses-> INT-000026
+- **Low** INT-000027 — Shipping: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000006 | CAP-000006 -uses-> INT-000027
+- **Low** INT-000028 — Suppliers: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000006 | CAP-000006 -uses-> INT-000028
+- **Low** INT-000029 — Finance: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000006 | CAP-000006 -uses-> INT-000029
+- **Low** INT-000030 — Manufacturing: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000006 | CAP-000006 -uses-> INT-000030
+- **Low** INT-000031 — Email: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000007 | CAP-000007 -uses-> INT-000031
+- **Low** INT-000032 — Calendar: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000007 | CAP-000007 -uses-> INT-000032
+- **Low** INT-000033 — Telephony: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000007 | CAP-000007 -uses-> INT-000033
+- **Low** INT-000034 — Marketing platforms: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000007 | CAP-000007 -uses-> INT-000034
+- **Low** INT-000035 — All ZYVORA modules: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000008 | CAP-000008 -uses-> INT-000035
+- **Low** INT-000036 — PostgreSQL read models: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000008 | CAP-000008 -uses-> INT-000036
+- **Low** INT-000037 — Object storage: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000008 | CAP-000008 -uses-> INT-000037
+- **Low** INT-000038 — Notification service: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000008 | CAP-000008 -uses-> INT-000038
+- **Low** INT-000039 — Future BI connectors: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000008 | CAP-000008 -uses-> INT-000039
+- **Low** INT-000040 — Supabase/S3-compatible storage: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000009 | CAP-000009 -uses-> INT-000040
+- **Low** INT-000041 — PDF generation: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000009 | CAP-000009 -uses-> INT-000041
+- **Low** INT-000042 — Office formats: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000009 | CAP-000009 -uses-> INT-000042
+- **Low** INT-000043 — Signature providers: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000009 | CAP-000009 -uses-> INT-000043
+- **Low** INT-000044 — OCR providers: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000009 | CAP-000009 -uses-> INT-000044
+- **Low** INT-000045 — Email providers: CAP-000004 -uses-> INT-000017 | INT-000017 <-uses- CAP-000010 | CAP-000010 -uses-> INT-000045
+- **Low** INT-000046 — SMS providers: CAP-000004 -uses-> INT-000017 | INT-000017 <-uses- CAP-000010 | CAP-000010 -uses-> INT-000046
+- **Low** INT-000047 — WhatsApp providers: CAP-000004 -uses-> INT-000017 | INT-000017 <-uses- CAP-000010 | CAP-000010 -uses-> INT-000047
+- **Low** INT-000048 — Push providers: CAP-000004 -uses-> INT-000017 | INT-000017 <-uses- CAP-000010 | CAP-000010 -uses-> INT-000048
+- **Low** INT-000049 — Identity & Access: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000011 | CAP-000011 -uses-> INT-000049
+- **Low** INT-000050 — Finance/payroll: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000011 | CAP-000011 -uses-> INT-000050
+- **Low** INT-000051 — Documents/signature: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000011 | CAP-000011 -uses-> INT-000051
+- **Low** INT-000052 — Background-check providers: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000011 | CAP-000011 -uses-> INT-000052
+- **Low** INT-000053 — Maintenance systems: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000012 | CAP-000012 -uses-> INT-000053
+- **Low** INT-000054 — Quality devices: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000012 | CAP-000012 -uses-> INT-000054
+- **Low** INT-000055 — Barcode/IoT: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000012 | CAP-000012 -uses-> INT-000055
+- **High** MET-000001 — Median time to decision: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000001 | CAP-000001 -measured_by-> MET-000001
+- **High** MET-000002 — Unowned decision rate: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000001 | CAP-000001 -measured_by-> MET-000002
+- **High** MET-000003 — Approval cycle time: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000001 | CAP-000001 -measured_by-> MET-000003
+- **High** MET-000004 — Outcome capture rate: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000001 | CAP-000001 -measured_by-> MET-000004
+- **High** MET-000005 — Decision reopen rate: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000001 | CAP-000001 -measured_by-> MET-000005
+- **High** MET-000006 — Recommendation acceptance with reason: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000001 | CAP-000001 -measured_by-> MET-000006
+- **High** MET-000007 — Outcome-linked memory rate: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000002 | CAP-000002 -measured_by-> MET-000007
+- **High** MET-000008 — Useful search result rate: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000002 | CAP-000002 -measured_by-> MET-000008
+- **High** MET-000009 — Source citation rate: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000002 | CAP-000002 -measured_by-> MET-000009
+- **High** MET-000010 — Stale index rate: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000002 | CAP-000002 -measured_by-> MET-000010
+- **High** MET-000011 — Unauthorized retrieval incidents: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000002 | CAP-000002 -measured_by-> MET-000011
+- **High** MET-000012 — Lesson reuse rate: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000002 | CAP-000002 -measured_by-> MET-000012
+- **High** MET-000013 — Task quality score: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000003 | CAP-000003 -measured_by-> MET-000013
+- **High** MET-000014 — Calibration error: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000003 | CAP-000003 -measured_by-> MET-000014
+- **High** MET-000015 — Grounded citation rate: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000003 | CAP-000003 -measured_by-> MET-000015
+- **High** MET-000016 — Fallback rate: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000003 | CAP-000003 -measured_by-> MET-000016
+- **High** MET-000017 — Safety incident rate: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000003 | CAP-000003 -measured_by-> MET-000017
+- **High** MET-000018 — Cost per useful decision: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000003 | CAP-000003 -measured_by-> MET-000018
+- **High** MET-000019 — p95 latency: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000003 | CAP-000003 -measured_by-> MET-000019
+- **High** MET-000027 — Cash runway: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000005 | CAP-000005 -measured_by-> MET-000027
+- **High** MET-000028 — Operating cash flow: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000005 | CAP-000005 -measured_by-> MET-000028
+- **High** MET-000029 — Gross margin: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000005 | CAP-000005 -measured_by-> MET-000029
+- **High** MET-000030 — Days sales outstanding: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000005 | CAP-000005 -measured_by-> MET-000030
+- **High** MET-000031 — Days payable outstanding: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000005 | CAP-000005 -measured_by-> MET-000031
+- **High** MET-000032 — Budget variance: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000005 | CAP-000005 -measured_by-> MET-000032
+- **High** MET-000033 — Close duration: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000005 | CAP-000005 -measured_by-> MET-000033
+- **High** MET-000034 — Reconciliation exception rate: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000005 | CAP-000005 -measured_by-> MET-000034
+- **High** MET-000035 — Stockout rate: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000006 | CAP-000006 -measured_by-> MET-000035
+- **High** MET-000036 — Inventory turns: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000006 | CAP-000006 -measured_by-> MET-000036
+- **High** MET-000037 — Forecast accuracy: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000006 | CAP-000006 -measured_by-> MET-000037
+- **High** MET-000038 — Count accuracy: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000006 | CAP-000006 -measured_by-> MET-000038
+- **High** MET-000039 — Fill rate: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000006 | CAP-000006 -measured_by-> MET-000039
+- **High** MET-000040 — Excess/obsolete value: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000006 | CAP-000006 -measured_by-> MET-000040
+- **High** MET-000041 — Supplier lead-time variance: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000006 | CAP-000006 -measured_by-> MET-000041
+- **High** MET-000042 — Working capital in stock: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000006 | CAP-000006 -measured_by-> MET-000042
+- **High** MET-000043 — Pipeline value: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000007 | CAP-000007 -measured_by-> MET-000043
+- **High** MET-000044 — Win rate: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000007 | CAP-000007 -measured_by-> MET-000044
+- **High** MET-000045 — Sales cycle: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000007 | CAP-000007 -measured_by-> MET-000045
+- **High** MET-000046 — Lead response time: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000007 | CAP-000007 -measured_by-> MET-000046
+- **High** MET-000047 — Forecast accuracy: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000007 | CAP-000007 -measured_by-> MET-000047
+- **High** MET-000048 — Retention: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000007 | CAP-000007 -measured_by-> MET-000048
+- **High** MET-000049 — Customer lifetime value: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000007 | CAP-000007 -measured_by-> MET-000049
+- **High** MET-000050 — Consent compliance: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000007 | CAP-000007 -measured_by-> MET-000050
+- **High** MET-000051 — Metric freshness: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000008 | CAP-000008 -measured_by-> MET-000051
+- **High** MET-000052 — Dashboard decision-action rate: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000008 | CAP-000008 -measured_by-> MET-000052
+- **High** MET-000053 — Drill-down success: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000008 | CAP-000008 -measured_by-> MET-000053
+- **High** MET-000054 — Report delivery success: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000008 | CAP-000008 -measured_by-> MET-000054
+- **High** MET-000055 — Data-quality pass rate: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000008 | CAP-000008 -measured_by-> MET-000055
+- **High** MET-000056 — Export completion time: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000008 | CAP-000008 -measured_by-> MET-000056
+- **High** MET-000057 — Retrieval success: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000009 | CAP-000009 -measured_by-> MET-000057
+- **High** MET-000058 — Approval time: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000009 | CAP-000009 -measured_by-> MET-000058
+- **High** MET-000059 — Signature completion: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000009 | CAP-000009 -measured_by-> MET-000059
+- **High** MET-000060 — Version conflict rate: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000009 | CAP-000009 -measured_by-> MET-000060
+- **High** MET-000061 — OCR accuracy: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000009 | CAP-000009 -measured_by-> MET-000061
+- **High** MET-000062 — Retention compliance: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000009 | CAP-000009 -measured_by-> MET-000062
+- **High** MET-000063 — Storage cost per document: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000009 | CAP-000009 -measured_by-> MET-000063
+- **High** MET-000064 — Actionable notification ratio: CAP-000004 -uses-> INT-000017 | INT-000017 <-uses- CAP-000010 | CAP-000010 -measured_by-> MET-000064
+- **High** MET-000065 — Delivery success: CAP-000004 -uses-> INT-000017 | INT-000017 <-uses- CAP-000010 | CAP-000010 -measured_by-> MET-000065
+- **High** MET-000066 — Time to delivery: CAP-000004 -uses-> INT-000017 | INT-000017 <-uses- CAP-000010 | CAP-000010 -measured_by-> MET-000066
+- **High** MET-000067 — Duplicate prevention: CAP-000004 -uses-> INT-000017 | INT-000017 <-uses- CAP-000010 | CAP-000010 -measured_by-> MET-000067
+- **High** MET-000068 — Opt-out rate: CAP-000004 -uses-> INT-000017 | INT-000017 <-uses- CAP-000010 | CAP-000010 -measured_by-> MET-000068
+- **High** MET-000069 — Notification-driven action rate: CAP-000004 -uses-> INT-000017 | INT-000017 <-uses- CAP-000010 | CAP-000010 -measured_by-> MET-000069
+- **High** MET-000070 — Terminal failure age: CAP-000004 -uses-> INT-000017 | INT-000017 <-uses- CAP-000010 | CAP-000010 -measured_by-> MET-000070
+- **High** MET-000071 — Time to hire: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000011 | CAP-000011 -measured_by-> MET-000071
+- **High** MET-000072 — Onboarding completion: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000011 | CAP-000011 -measured_by-> MET-000072
+- **High** MET-000073 — Voluntary turnover: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000011 | CAP-000011 -measured_by-> MET-000073
+- **High** MET-000074 — Absence rate: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000011 | CAP-000011 -measured_by-> MET-000074
+- **High** MET-000075 — Goal completion: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000011 | CAP-000011 -measured_by-> MET-000075
+- **High** MET-000076 — Review completion: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000011 | CAP-000011 -measured_by-> MET-000076
+- **High** MET-000077 — Workforce cost: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000011 | CAP-000011 -measured_by-> MET-000077
+- **High** MET-000078 — Capacity gap: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000011 | CAP-000011 -measured_by-> MET-000078
+- **High** MET-000079 — Schedule adherence: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000012 | CAP-000012 -measured_by-> MET-000079
+- **High** MET-000080 — Overall equipment effectiveness: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000012 | CAP-000012 -measured_by-> MET-000080
+- **High** MET-000081 — First-pass yield: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000012 | CAP-000012 -measured_by-> MET-000081
+- **High** MET-000082 — Scrap rate: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000012 | CAP-000012 -measured_by-> MET-000082
+- **High** MET-000083 — Cycle time: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000012 | CAP-000012 -measured_by-> MET-000083
+- **High** MET-000084 — Capacity utilization: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000012 | CAP-000012 -measured_by-> MET-000084
+- **High** MET-000085 — Production cost variance: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000012 | CAP-000012 -measured_by-> MET-000085
+- **High** MET-000086 — On-time completion: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000012 | CAP-000012 -measured_by-> MET-000086
+- **Low** MOD-000001 — Decision Center: CAP-000004 -specified_by-> ART-000025 | ART-000025 <-specified_by- EVT-000020 | EVT-000020 <-consumes- MOD-000001
+- **Low** MOD-000002 — Business Memory: CAP-000004 -specified_by-> ART-000025 | ART-000025 <-specified_by- EVT-000025 | EVT-000025 <-consumes- MOD-000002
+- **Low** MOD-000004 — Identity, Workspace, Permissions & Audit: CAP-000004 -specified_by-> ART-000025 | ART-000025 <-specified_by- EVT-000018 | EVT-000018 <-produces- MOD-000004
+- **Low** MOD-000011 — Human Resources: CAP-000004 -specified_by-> ART-000025 | ART-000025 <-specified_by- EVT-000019 | EVT-000019 <-consumes- MOD-000011
+- **High** PERM-000049 — Read Authentication adapter: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- FEAT-000025 | FEAT-000025 <-governs- PERM-000049
+- **High** PERM-000050 — Manage Authentication adapter: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- FEAT-000025 | FEAT-000025 <-governs- PERM-000050
+- **High** PERM-000051 — Read Workspace lifecycle: CAP-000004 -supports-> DEC-000014 | DEC-000014 <-supports- FEAT-000026 | FEAT-000026 <-governs- PERM-000051
+- **High** PERM-000052 — Manage Workspace lifecycle: CAP-000004 -supports-> DEC-000014 | DEC-000014 <-supports- FEAT-000026 | FEAT-000026 <-governs- PERM-000052
+- **High** PERM-000053 — Read Invitation and membership: CAP-000004 -supports-> DEC-000015 | DEC-000015 <-supports- FEAT-000027 | FEAT-000027 <-governs- PERM-000053
+- **High** PERM-000054 — Manage Invitation and membership: CAP-000004 -supports-> DEC-000015 | DEC-000015 <-supports- FEAT-000027 | FEAT-000027 <-governs- PERM-000054
+- **High** PERM-000055 — Read Roles and permission grants: CAP-000004 -supports-> DEC-000016 | DEC-000016 <-supports- FEAT-000028 | FEAT-000028 <-governs- PERM-000055
+- **High** PERM-000056 — Manage Roles and permission grants: CAP-000004 -supports-> DEC-000016 | DEC-000016 <-supports- FEAT-000028 | FEAT-000028 <-governs- PERM-000056
+- **High** PERM-000057 — Read Policy evaluation: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- FEAT-000029 | FEAT-000029 <-governs- PERM-000057
+- **High** PERM-000058 — Manage Policy evaluation: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- FEAT-000029 | FEAT-000029 <-governs- PERM-000058
+- **High** PERM-000059 — Read MFA and session management: CAP-000004 -supports-> DEC-000014 | DEC-000014 <-supports- FEAT-000030 | FEAT-000030 <-governs- PERM-000059
+- **High** PERM-000060 — Manage MFA and session management: CAP-000004 -supports-> DEC-000014 | DEC-000014 <-supports- FEAT-000030 | FEAT-000030 <-governs- PERM-000060
+- **High** PERM-000061 — Read API keys and service identities: CAP-000004 -supports-> DEC-000015 | DEC-000015 <-supports- FEAT-000031 | FEAT-000031 <-governs- PERM-000061
+- **High** PERM-000062 — Manage API keys and service identities: CAP-000004 -supports-> DEC-000015 | DEC-000015 <-supports- FEAT-000031 | FEAT-000031 <-governs- PERM-000062
+- **High** PERM-000063 — Read Audit explorer and evidence export: CAP-000004 -supports-> DEC-000016 | DEC-000016 <-supports- FEAT-000032 | FEAT-000032 <-governs- PERM-000063
+- **High** PERM-000064 — Manage Audit explorer and evidence export: CAP-000004 -supports-> DEC-000016 | DEC-000016 <-supports- FEAT-000032 | FEAT-000032 <-governs- PERM-000064
+- **High** QA-000001 — ZYVORA QA-001 Workspace Identity & Audit Foundation v1.0: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- QA-000001
+- **High** TEST-000001 — Create workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- FEAT-000025 | FEAT-000025 <-tests- TEST-000001
+- **High** TEST-000002 — Invite and accept: CAP-000004 -supports-> DEC-000014 | DEC-000014 <-supports- FEAT-000026 | FEAT-000026 <-tests- TEST-000002
+- **High** TEST-000003 — Expired/revoked invitation: CAP-000004 -supports-> DEC-000015 | DEC-000015 <-supports- FEAT-000027 | FEAT-000027 <-tests- TEST-000003
+- **High** TEST-000004 — Change role: CAP-000004 -supports-> DEC-000016 | DEC-000016 <-supports- FEAT-000028 | FEAT-000028 <-tests- TEST-000004
+- **High** TEST-000005 — Self escalation: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- FEAT-000029 | FEAT-000029 <-tests- TEST-000005
+- **High** TEST-000006 — Last owner protection: CAP-000004 -supports-> DEC-000014 | DEC-000014 <-supports- FEAT-000030 | FEAT-000030 <-tests- TEST-000006
+- **High** TEST-000007 — Concurrent membership update: CAP-000004 -supports-> DEC-000015 | DEC-000015 <-supports- FEAT-000031 | FEAT-000031 <-tests- TEST-000007
+- **High** TEST-000008 — Session revoke: CAP-000004 -supports-> DEC-000016 | DEC-000016 <-supports- FEAT-000032 | FEAT-000032 <-tests- TEST-000008
+- **High** TEST-000009 — Audit query/export: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- FEAT-000025 | FEAT-000025 <-tests- TEST-000009
+- **High** TEST-000010 — Idempotent invitation: CAP-000004 -supports-> DEC-000014 | DEC-000014 <-supports- FEAT-000026 | FEAT-000026 <-tests- TEST-000010
+- **High** WF-000023 — Create workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- FEAT-000025 | FEAT-000025 <-uses- WF-000023
+- **High** WF-000024 — Invite and onboard member: CAP-000004 -supports-> DEC-000014 | DEC-000014 <-supports- FEAT-000026 | FEAT-000026 <-uses- WF-000024
+- **High** WF-000025 — Change role: CAP-000004 -supports-> DEC-000015 | DEC-000015 <-supports- FEAT-000027 | FEAT-000027 <-uses- WF-000025
+- **High** WF-000026 — Suspend or revoke access: CAP-000004 -supports-> DEC-000016 | DEC-000016 <-supports- FEAT-000028 | FEAT-000028 <-uses- WF-000026
+- **High** WF-000027 — Authenticate and refresh: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- FEAT-000029 | FEAT-000029 <-uses- WF-000027
+- **High** WF-000028 — Revoke session: CAP-000004 -supports-> DEC-000014 | DEC-000014 <-supports- FEAT-000030 | FEAT-000030 <-uses- WF-000028
+- **High** WF-000029 — Evaluate permission: CAP-000004 -supports-> DEC-000015 | DEC-000015 <-supports- FEAT-000031 | FEAT-000031 <-uses- WF-000029
+- **High** WF-000030 — Investigate audit trail: CAP-000004 -supports-> DEC-000016 | DEC-000016 <-supports- FEAT-000032 | FEAT-000032 <-uses- WF-000030
+- **High** API-000001 — Decision Center Decision inbox and saved views API: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000021 | ART-000021 <-specified_by- API-000001
+- **High** API-000002 — Decision Center Priority and urgency explanation API: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000021 | ART-000021 <-specified_by- API-000002
+- **High** API-000003 — Decision Center Decision detail and evidence bundle API: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000021 | ART-000021 <-specified_by- API-000003
+- **High** API-000004 — Decision Center Alternative and trade-off comparison API: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000021 | ART-000021 <-specified_by- API-000004
+- **High** API-000005 — Decision Center Assignment and due-date control API: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000021 | ART-000021 <-specified_by- API-000005
+- **High** API-000006 — Decision Center Approval and escalation API: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000021 | ART-000021 <-specified_by- API-000006
+- **High** API-000007 — Decision Center Action and rationale recording API: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000021 | ART-000021 <-specified_by- API-000007
+- **High** API-000008 — Decision Center Outcome follow-up and learning API: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000021 | ART-000021 <-specified_by- API-000008
+- **High** API-000009 — Business Memory Decision timeline API: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000019 | ART-000019 <-specified_by- API-000009
+- **High** API-000010 — Business Memory Immutable context snapshots API: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000019 | ART-000019 <-specified_by- API-000010
+- **High** API-000011 — Business Memory Outcome and lesson capture API: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000019 | ART-000019 <-specified_by- API-000011
+- **High** API-000012 — Business Memory Structured and semantic search API: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000019 | ART-000019 <-specified_by- API-000012
+- **High** API-000013 — Business Memory Source and freshness lineage API: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000019 | ART-000019 <-specified_by- API-000013
+- **High** API-000014 — Business Memory Memory collections and tags API: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000019 | ART-000019 <-specified_by- API-000014
+- **High** API-000015 — Business Memory Retention and privacy control API: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000019 | ART-000019 <-specified_by- API-000015
+- **High** API-000016 — Business Memory Citation-ready retrieval API: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000019 | ART-000019 <-specified_by- API-000016
+- **High** API-000017 — AI Engine Model Gateway API: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000017 | ART-000017 <-specified_by- API-000017
+- **High** API-000018 — AI Engine Prompt Registry API: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000017 | ART-000017 <-specified_by- API-000018
+- **High** API-000019 — AI Engine Retrieval service API: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000017 | ART-000017 <-specified_by- API-000019
+- **High** API-000020 — AI Engine Recommendation service API: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000017 | ART-000017 <-specified_by- API-000020
+- **High** API-000021 — AI Engine Forecasting service API: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000017 | ART-000017 <-specified_by- API-000021
+- **High** API-000022 — AI Engine Explainability service API: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000017 | ART-000017 <-specified_by- API-000022
+- **High** API-000023 — AI Engine Evaluation and release gates API: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000017 | ART-000017 <-specified_by- API-000023
+- **High** API-000024 — AI Engine Cost, latency, safety, and drift monitoring API: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000017 | ART-000017 <-specified_by- API-000024
+- **High** API-000033 — Finance Chart of accounts API: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000023 | ART-000023 <-specified_by- API-000033
+- **High** API-000034 — Finance Double-entry journals API: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000023 | ART-000023 <-specified_by- API-000034
+- **High** API-000035 — Finance Accounts receivable and invoicing API: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000023 | ART-000023 <-specified_by- API-000035
+- **High** API-000036 — Finance Accounts payable and bills API: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000023 | ART-000023 <-specified_by- API-000036
+- **High** API-000037 — Finance Payments and reconciliation API: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000023 | ART-000023 <-specified_by- API-000037
+- **High** API-000038 — Finance Budgets and variance API: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000023 | ART-000023 <-specified_by- API-000038
+- **High** API-000039 — Finance Cash-flow forecasting API: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000023 | ART-000023 <-specified_by- API-000039
+- **High** API-000040 — Finance Financial statements and close API: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000023 | ART-000023 <-specified_by- API-000040
+- **High** API-000041 — Inventory Product and SKU catalog API: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000026 | ART-000026 <-specified_by- API-000041
+- **High** API-000042 — Inventory Warehouse and location model API: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000026 | ART-000026 <-specified_by- API-000042
+- **High** API-000043 — Inventory Stock ledger and availability API: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000026 | ART-000026 <-specified_by- API-000043
+- **High** API-000044 — Inventory Reservations and allocations API: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000026 | ART-000026 <-specified_by- API-000044
+- **High** API-000045 — Inventory Purchase orders and receipts API: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000026 | ART-000026 <-specified_by- API-000045
+- **High** API-000046 — Inventory Transfers and adjustments API: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000026 | ART-000026 <-specified_by- API-000046
+- **High** API-000047 — Inventory Lot/serial/batch traceability API: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000026 | ART-000026 <-specified_by- API-000047
+- **High** API-000048 — Inventory Reorder and demand planning API: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000026 | ART-000026 <-specified_by- API-000048
+- **High** API-000049 — CRM Contacts and organizations API: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000020 | ART-000020 <-specified_by- API-000049
+- **High** API-000050 — CRM Lead capture and qualification API: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000020 | ART-000020 <-specified_by- API-000050
+- **High** API-000051 — CRM Opportunity pipelines API: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000020 | ART-000020 <-specified_by- API-000051
+- **High** API-000052 — CRM Activities and tasks API: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000020 | ART-000020 <-specified_by- API-000052
+- **High** API-000053 — CRM Segmentation API: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000020 | ART-000020 <-specified_by- API-000053
+- **High** API-000054 — CRM Customer value and health API: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000020 | ART-000020 <-specified_by- API-000054
+- **High** API-000055 — CRM Campaign attribution API: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000020 | ART-000020 <-specified_by- API-000055
+- **High** API-000056 — CRM Consent and communication history API: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000020 | ART-000020 <-specified_by- API-000056
+- **High** API-000057 — Analytics Metric registry API: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000018 | ART-000018 <-specified_by- API-000057
+- **High** API-000058 — Analytics Semantic definitions API: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000018 | ART-000018 <-specified_by- API-000058
+- **High** API-000059 — Analytics Dashboard composition API: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000018 | ART-000018 <-specified_by- API-000059
+- **High** API-000060 — Analytics Filters and saved views API: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000018 | ART-000018 <-specified_by- API-000060
+- **High** API-000061 — Analytics Drill-down and lineage API: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000018 | ART-000018 <-specified_by- API-000061
+- **High** API-000062 — Analytics Scheduled reports API: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000018 | ART-000018 <-specified_by- API-000062
+- **High** API-000063 — Analytics Exports API: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000018 | ART-000018 <-specified_by- API-000063
+- **High** API-000064 — Analytics Annotations and forecast overlays API: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000018 | ART-000018 <-specified_by- API-000064
+- **High** API-000065 — Documents Document metadata and storage API: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000022 | ART-000022 <-specified_by- API-000065
+- **High** API-000066 — Documents Templates API: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000022 | ART-000022 <-specified_by- API-000066
+- **High** API-000067 — Documents Generation API: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000022 | ART-000022 <-specified_by- API-000067
+- **High** API-000068 — Documents Versioning API: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000022 | ART-000022 <-specified_by- API-000068
+- **High** API-000069 — Documents Review and approval API: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000022 | ART-000022 <-specified_by- API-000069
+- **High** API-000070 — Documents Electronic signature adapters API: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000022 | ART-000022 <-specified_by- API-000070
+- **High** API-000071 — Documents OCR/import API: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000022 | ART-000022 <-specified_by- API-000071
+- **High** API-000072 — Documents Retention and legal hold API: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000022 | ART-000022 <-specified_by- API-000072
+- **High** API-000073 — Notifications Unified notification events API: CAP-000004 -uses-> INT-000017 | INT-000017 <-uses- CAP-000010 | CAP-000010 -specified_by-> ART-000028 | ART-000028 <-specified_by- API-000073
+- **High** API-000074 — Notifications Templates and versions API: CAP-000004 -uses-> INT-000017 | INT-000017 <-uses- CAP-000010 | CAP-000010 -specified_by-> ART-000028 | ART-000028 <-specified_by- API-000074
+- **High** API-000075 — Notifications Category and priority API: CAP-000004 -uses-> INT-000017 | INT-000017 <-uses- CAP-000010 | CAP-000010 -specified_by-> ART-000028 | ART-000028 <-specified_by- API-000075
+- **High** API-000076 — Notifications User preferences and quiet hours API: CAP-000004 -uses-> INT-000017 | INT-000017 <-uses- CAP-000010 | CAP-000010 -specified_by-> ART-000028 | ART-000028 <-specified_by- API-000076
+- **High** API-000077 — Notifications Channel routing API: CAP-000004 -uses-> INT-000017 | INT-000017 <-uses- CAP-000010 | CAP-000010 -specified_by-> ART-000028 | ART-000028 <-specified_by- API-000077
+- **High** API-000078 — Notifications Delivery retries API: CAP-000004 -uses-> INT-000017 | INT-000017 <-uses- CAP-000010 | CAP-000010 -specified_by-> ART-000028 | ART-000028 <-specified_by- API-000078
+- **High** API-000079 — Notifications Digest and grouping API: CAP-000004 -uses-> INT-000017 | INT-000017 <-uses- CAP-000010 | CAP-000010 -specified_by-> ART-000028 | ART-000028 <-specified_by- API-000079
+- **High** API-000080 — Notifications Escalation and audit API: CAP-000004 -uses-> INT-000017 | INT-000017 <-uses- CAP-000010 | CAP-000010 -specified_by-> ART-000028 | ART-000028 <-specified_by- API-000080
+- **High** API-000081 — Human Resources Employee records API: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000024 | ART-000024 <-specified_by- API-000081
+- **High** API-000082 — Human Resources Organization and positions API: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000024 | ART-000024 <-specified_by- API-000082
+- **High** API-000083 — Human Resources Recruitment API: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000024 | ART-000024 <-specified_by- API-000083
+- **High** API-000084 — Human Resources Onboarding/offboarding API: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000024 | ART-000024 <-specified_by- API-000084
+- **High** API-000085 — Human Resources Leave and attendance API: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000024 | ART-000024 <-specified_by- API-000085
+- **High** API-000086 — Human Resources Performance and goals API: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000024 | ART-000024 <-specified_by- API-000086
+- **High** API-000087 — Human Resources Compensation records API: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000024 | ART-000024 <-specified_by- API-000087
+- **High** API-000088 — Human Resources Workforce planning and compliance API: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000024 | ART-000024 <-specified_by- API-000088
+- **High** API-000089 — Manufacturing Bills of materials API: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000027 | ART-000027 <-specified_by- API-000089
+- **High** API-000090 — Manufacturing Routings and work centers API: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000027 | ART-000027 <-specified_by- API-000090
+- **High** API-000091 — Manufacturing Production orders API: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000027 | ART-000027 <-specified_by- API-000091
+- **High** API-000092 — Manufacturing Material requirements API: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000027 | ART-000027 <-specified_by- API-000092
+- **High** API-000093 — Manufacturing Scheduling and capacity API: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000027 | ART-000027 <-specified_by- API-000093
+- **High** API-000094 — Manufacturing Issue/consume/produce API: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000027 | ART-000027 <-specified_by- API-000094
+- **High** API-000095 — Manufacturing Quality control API: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000027 | ART-000027 <-specified_by- API-000095
+- **High** API-000096 — Manufacturing Yield, scrap, downtime, and cost API: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000027 | ART-000027 <-specified_by- API-000096
+- **High** BR-000001 — Decision Center Rule 1: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000008 | ART-000008 <-documented_by- BR-000001
+- **High** BR-000002 — Decision Center Rule 2: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000008 | ART-000008 <-documented_by- BR-000002
+- **High** BR-000003 — Decision Center Rule 3: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000008 | ART-000008 <-documented_by- BR-000003
+- **High** BR-000004 — Decision Center Rule 4: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000008 | ART-000008 <-documented_by- BR-000004
+- **High** BR-000005 — Decision Center Rule 5: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000008 | ART-000008 <-documented_by- BR-000005
+- **High** BR-000006 — Decision Center Rule 6: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000008 | ART-000008 <-documented_by- BR-000006
+- **High** BR-000007 — Decision Center Rule 7: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000008 | ART-000008 <-documented_by- BR-000007
+- **High** BR-000008 — Decision Center Rule 8: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000008 | ART-000008 <-documented_by- BR-000008
+- **High** BR-000009 — Business Memory Rule 1: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000006 | ART-000006 <-documented_by- BR-000009
+- **High** BR-000010 — Business Memory Rule 2: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000006 | ART-000006 <-documented_by- BR-000010
+- **High** BR-000011 — Business Memory Rule 3: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000006 | ART-000006 <-documented_by- BR-000011
+- **High** BR-000012 — Business Memory Rule 4: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000006 | ART-000006 <-documented_by- BR-000012
+- **High** BR-000013 — Business Memory Rule 5: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000006 | ART-000006 <-documented_by- BR-000013
+- **High** BR-000014 — Business Memory Rule 6: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000006 | ART-000006 <-documented_by- BR-000014
+- **High** BR-000015 — Business Memory Rule 7: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000006 | ART-000006 <-documented_by- BR-000015
+- **High** BR-000016 — Business Memory Rule 8: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000006 | ART-000006 <-documented_by- BR-000016
+- **High** BR-000017 — AI Engine Rule 1: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000004 | ART-000004 <-documented_by- BR-000017
+- **High** BR-000018 — AI Engine Rule 2: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000004 | ART-000004 <-documented_by- BR-000018
+- **High** BR-000019 — AI Engine Rule 3: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000004 | ART-000004 <-documented_by- BR-000019
+- **High** BR-000020 — AI Engine Rule 4: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000004 | ART-000004 <-documented_by- BR-000020
+- **High** BR-000021 — AI Engine Rule 5: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000004 | ART-000004 <-documented_by- BR-000021
+- **High** BR-000022 — AI Engine Rule 6: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000004 | ART-000004 <-documented_by- BR-000022
+- **High** BR-000023 — AI Engine Rule 7: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000004 | ART-000004 <-documented_by- BR-000023
+- **High** BR-000024 — AI Engine Rule 8: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000004 | ART-000004 <-documented_by- BR-000024
+- **High** BR-000033 — Finance Rule 1: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000010 | ART-000010 <-documented_by- BR-000033
+- **High** BR-000034 — Finance Rule 2: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000010 | ART-000010 <-documented_by- BR-000034
+- **High** BR-000035 — Finance Rule 3: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000010 | ART-000010 <-documented_by- BR-000035
+- **High** BR-000036 — Finance Rule 4: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000010 | ART-000010 <-documented_by- BR-000036
+- **High** BR-000037 — Finance Rule 5: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000010 | ART-000010 <-documented_by- BR-000037
+- **High** BR-000038 — Finance Rule 6: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000010 | ART-000010 <-documented_by- BR-000038
+- **High** BR-000039 — Finance Rule 7: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000010 | ART-000010 <-documented_by- BR-000039
+- **High** BR-000040 — Finance Rule 8: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000010 | ART-000010 <-documented_by- BR-000040
+- **High** BR-000041 — Inventory Rule 1: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000013 | ART-000013 <-documented_by- BR-000041
+- **High** BR-000042 — Inventory Rule 2: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000013 | ART-000013 <-documented_by- BR-000042
+- **High** BR-000043 — Inventory Rule 3: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000013 | ART-000013 <-documented_by- BR-000043
+- **High** BR-000044 — Inventory Rule 4: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000013 | ART-000013 <-documented_by- BR-000044
+- **High** BR-000045 — Inventory Rule 5: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000013 | ART-000013 <-documented_by- BR-000045
+- **High** BR-000046 — Inventory Rule 6: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000013 | ART-000013 <-documented_by- BR-000046
+- **High** BR-000047 — Inventory Rule 7: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000013 | ART-000013 <-documented_by- BR-000047
+- **High** BR-000048 — Inventory Rule 8: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000013 | ART-000013 <-documented_by- BR-000048
+- **High** BR-000049 — CRM Rule 1: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000007 | ART-000007 <-documented_by- BR-000049
+- **High** BR-000050 — CRM Rule 2: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000007 | ART-000007 <-documented_by- BR-000050
+- **High** BR-000051 — CRM Rule 3: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000007 | ART-000007 <-documented_by- BR-000051
+- **High** BR-000052 — CRM Rule 4: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000007 | ART-000007 <-documented_by- BR-000052
+- **High** BR-000053 — CRM Rule 5: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000007 | ART-000007 <-documented_by- BR-000053
+- **High** BR-000054 — CRM Rule 6: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000007 | ART-000007 <-documented_by- BR-000054
+- **High** BR-000055 — CRM Rule 7: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000007 | ART-000007 <-documented_by- BR-000055
+- **High** BR-000056 — CRM Rule 8: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000007 | ART-000007 <-documented_by- BR-000056
+- **High** BR-000057 — Analytics Rule 1: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000005 | ART-000005 <-documented_by- BR-000057
+- **High** BR-000058 — Analytics Rule 2: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000005 | ART-000005 <-documented_by- BR-000058
+- **High** BR-000059 — Analytics Rule 3: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000005 | ART-000005 <-documented_by- BR-000059
+- **High** BR-000060 — Analytics Rule 4: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000005 | ART-000005 <-documented_by- BR-000060
+- **High** BR-000061 — Analytics Rule 5: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000005 | ART-000005 <-documented_by- BR-000061
+- **High** BR-000062 — Analytics Rule 6: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000005 | ART-000005 <-documented_by- BR-000062
+- **High** BR-000063 — Analytics Rule 7: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000005 | ART-000005 <-documented_by- BR-000063
+- **High** BR-000064 — Analytics Rule 8: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000005 | ART-000005 <-documented_by- BR-000064
+- **High** BR-000065 — Documents Rule 1: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000009 | ART-000009 <-documented_by- BR-000065
+- **High** BR-000066 — Documents Rule 2: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000009 | ART-000009 <-documented_by- BR-000066
+- **High** BR-000067 — Documents Rule 3: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000009 | ART-000009 <-documented_by- BR-000067
+- **High** BR-000068 — Documents Rule 4: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000009 | ART-000009 <-documented_by- BR-000068
+- **High** BR-000069 — Documents Rule 5: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000009 | ART-000009 <-documented_by- BR-000069
+- **High** BR-000070 — Documents Rule 6: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000009 | ART-000009 <-documented_by- BR-000070
+- **High** BR-000071 — Documents Rule 7: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000009 | ART-000009 <-documented_by- BR-000071
+- **High** BR-000072 — Documents Rule 8: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000009 | ART-000009 <-documented_by- BR-000072
+- **High** BR-000073 — Notifications Rule 1: CAP-000004 -uses-> INT-000017 | INT-000017 <-uses- CAP-000010 | CAP-000010 -documented_by-> ART-000015 | ART-000015 <-documented_by- BR-000073
+- **High** BR-000074 — Notifications Rule 2: CAP-000004 -uses-> INT-000017 | INT-000017 <-uses- CAP-000010 | CAP-000010 -documented_by-> ART-000015 | ART-000015 <-documented_by- BR-000074
+- **High** BR-000075 — Notifications Rule 3: CAP-000004 -uses-> INT-000017 | INT-000017 <-uses- CAP-000010 | CAP-000010 -documented_by-> ART-000015 | ART-000015 <-documented_by- BR-000075
+- **High** BR-000076 — Notifications Rule 4: CAP-000004 -uses-> INT-000017 | INT-000017 <-uses- CAP-000010 | CAP-000010 -documented_by-> ART-000015 | ART-000015 <-documented_by- BR-000076
+- **High** BR-000077 — Notifications Rule 5: CAP-000004 -uses-> INT-000017 | INT-000017 <-uses- CAP-000010 | CAP-000010 -documented_by-> ART-000015 | ART-000015 <-documented_by- BR-000077
+- **High** BR-000078 — Notifications Rule 6: CAP-000004 -uses-> INT-000017 | INT-000017 <-uses- CAP-000010 | CAP-000010 -documented_by-> ART-000015 | ART-000015 <-documented_by- BR-000078
+- **High** BR-000079 — Notifications Rule 7: CAP-000004 -uses-> INT-000017 | INT-000017 <-uses- CAP-000010 | CAP-000010 -documented_by-> ART-000015 | ART-000015 <-documented_by- BR-000079
+- **High** BR-000080 — Notifications Rule 8: CAP-000004 -uses-> INT-000017 | INT-000017 <-uses- CAP-000010 | CAP-000010 -documented_by-> ART-000015 | ART-000015 <-documented_by- BR-000080
+- **High** BR-000081 — Human Resources Rule 1: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000011 | ART-000011 <-documented_by- BR-000081
+- **High** BR-000082 — Human Resources Rule 2: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000011 | ART-000011 <-documented_by- BR-000082
+- **High** BR-000083 — Human Resources Rule 3: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000011 | ART-000011 <-documented_by- BR-000083
+- **High** BR-000084 — Human Resources Rule 4: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000011 | ART-000011 <-documented_by- BR-000084
+- **High** BR-000085 — Human Resources Rule 5: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000011 | ART-000011 <-documented_by- BR-000085
+- **High** BR-000086 — Human Resources Rule 6: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000011 | ART-000011 <-documented_by- BR-000086
+- **High** BR-000087 — Human Resources Rule 7: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000011 | ART-000011 <-documented_by- BR-000087
+- **High** BR-000088 — Human Resources Rule 8: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000011 | ART-000011 <-documented_by- BR-000088
+- **High** BR-000089 — Manufacturing Rule 1: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000014 | ART-000014 <-documented_by- BR-000089
+- **High** BR-000090 — Manufacturing Rule 2: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000014 | ART-000014 <-documented_by- BR-000090
+- **High** BR-000091 — Manufacturing Rule 3: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000014 | ART-000014 <-documented_by- BR-000091
+- **High** BR-000092 — Manufacturing Rule 4: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000014 | ART-000014 <-documented_by- BR-000092
+- **High** BR-000093 — Manufacturing Rule 5: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000014 | ART-000014 <-documented_by- BR-000093
+- **High** BR-000094 — Manufacturing Rule 6: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000014 | ART-000014 <-documented_by- BR-000094
+- **High** BR-000095 — Manufacturing Rule 7: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000014 | ART-000014 <-documented_by- BR-000095
+- **High** BR-000096 — Manufacturing Rule 8: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000014 | ART-000014 <-documented_by- BR-000096
+- **Low** DASH-000001 — Decision Center Decision Dashboard: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000001 | CAP-000001 -supports-> DEC-000001 | DEC-000001 <-supports- DASH-000001
+- **Low** DASH-000002 — Business Memory Decision Dashboard: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000002 | CAP-000002 -supports-> DEC-000005 | DEC-000005 <-supports- DASH-000002
+- **Low** DASH-000003 — AI Engine Decision Dashboard: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000003 | CAP-000003 -supports-> DEC-000009 | DEC-000009 <-supports- DASH-000003
+- **Low** DASH-000005 — Finance Decision Dashboard: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000005 | CAP-000005 -supports-> DEC-000017 | DEC-000017 <-supports- DASH-000005
+- **Low** DASH-000006 — Inventory Decision Dashboard: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000006 | CAP-000006 -supports-> DEC-000021 | DEC-000021 <-supports- DASH-000006
+- **Low** DASH-000007 — CRM Decision Dashboard: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000007 | CAP-000007 -supports-> DEC-000025 | DEC-000025 <-supports- DASH-000007
+- **Low** DASH-000008 — Analytics Decision Dashboard: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000008 | CAP-000008 -supports-> DEC-000029 | DEC-000029 <-supports- DASH-000008
+- **Low** DASH-000009 — Documents Decision Dashboard: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000009 | CAP-000009 -supports-> DEC-000033 | DEC-000033 <-supports- DASH-000009
+- **Low** DASH-000010 — Notifications Decision Dashboard: CAP-000004 -uses-> INT-000017 | INT-000017 <-uses- CAP-000010 | CAP-000010 -supports-> DEC-000037 | DEC-000037 <-supports- DASH-000010
+- **Low** DASH-000011 — Human Resources Decision Dashboard: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000011 | CAP-000011 -supports-> DEC-000041 | DEC-000041 <-supports- DASH-000011
+- **Low** DASH-000012 — Manufacturing Decision Dashboard: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000012 | CAP-000012 -supports-> DEC-000045 | DEC-000045 <-supports- DASH-000012
+- **High** ENT-000001 — DecisionContext: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000001 | CAP-000001 -supports-> DEC-000001 | DEC-000001 -uses-> ENT-000001
+- **High** ENT-000002 — DecisionEvidence: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000001 | CAP-000001 -supports-> DEC-000001 | DEC-000001 -uses-> ENT-000002
+- **High** ENT-000003 — DecisionAlternative: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000001 | CAP-000001 -supports-> DEC-000001 | DEC-000001 -uses-> ENT-000003
+- **High** ENT-000009 — MemoryRecord: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000002 | CAP-000002 -supports-> DEC-000005 | DEC-000005 -uses-> ENT-000009
+- **High** ENT-000010 — ContextSnapshot: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000002 | CAP-000002 -supports-> DEC-000005 | DEC-000005 -uses-> ENT-000010
+- **High** ENT-000011 — MemorySource: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000002 | CAP-000002 -supports-> DEC-000005 | DEC-000005 -uses-> ENT-000011
+- **High** ENT-000017 — ModelProvider: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000003 | CAP-000003 -supports-> DEC-000009 | DEC-000009 -uses-> ENT-000017
+- **High** ENT-000018 — ModelRoute: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000003 | CAP-000003 -supports-> DEC-000009 | DEC-000009 -uses-> ENT-000018
+- **High** ENT-000019 — PromptTemplate: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000003 | CAP-000003 -supports-> DEC-000009 | DEC-000009 -uses-> ENT-000019
+- **High** ENT-000037 — Account: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000005 | CAP-000005 -supports-> DEC-000017 | DEC-000017 -uses-> ENT-000037
+- **High** ENT-000038 — JournalEntry: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000005 | CAP-000005 -supports-> DEC-000017 | DEC-000017 -uses-> ENT-000038
+- **High** ENT-000039 — JournalLine: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000005 | CAP-000005 -supports-> DEC-000017 | DEC-000017 -uses-> ENT-000039
+- **High** ENT-000048 — Product: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000006 | CAP-000006 -supports-> DEC-000021 | DEC-000021 -uses-> ENT-000048
+- **High** ENT-000049 — Variant: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000006 | CAP-000006 -supports-> DEC-000021 | DEC-000021 -uses-> ENT-000049
+- **High** ENT-000050 — Warehouse: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000006 | CAP-000006 -supports-> DEC-000021 | DEC-000021 -uses-> ENT-000050
+- **High** ENT-000060 — Contact: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000007 | CAP-000007 -supports-> DEC-000025 | DEC-000025 -uses-> ENT-000060
+- **High** ENT-000061 — Organization: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000007 | CAP-000007 -supports-> DEC-000025 | DEC-000025 -uses-> ENT-000061
+- **High** ENT-000062 — Lead: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000007 | CAP-000007 -supports-> DEC-000025 | DEC-000025 -uses-> ENT-000062
+- **High** ENT-000072 — MetricDefinition: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000008 | CAP-000008 -supports-> DEC-000029 | DEC-000029 -uses-> ENT-000072
+- **High** ENT-000073 — MetricVersion: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000008 | CAP-000008 -supports-> DEC-000029 | DEC-000029 -uses-> ENT-000073
+- **High** ENT-000074 — Dataset: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000008 | CAP-000008 -supports-> DEC-000029 | DEC-000029 -uses-> ENT-000074
+- **High** ENT-000082 — Document: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000009 | CAP-000009 -supports-> DEC-000033 | DEC-000033 -uses-> ENT-000082
+- **High** ENT-000083 — DocumentVersion: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000009 | CAP-000009 -supports-> DEC-000033 | DEC-000033 -uses-> ENT-000083
+- **High** ENT-000084 — DocumentTemplate: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000009 | CAP-000009 -supports-> DEC-000033 | DEC-000033 -uses-> ENT-000084
+- **High** ENT-000092 — Notification: CAP-000004 -uses-> INT-000017 | INT-000017 <-uses- CAP-000010 | CAP-000010 -supports-> DEC-000037 | DEC-000037 -uses-> ENT-000092
+- **High** ENT-000093 — NotificationTemplate: CAP-000004 -uses-> INT-000017 | INT-000017 <-uses- CAP-000010 | CAP-000010 -supports-> DEC-000037 | DEC-000037 -uses-> ENT-000093
+- **High** ENT-000094 — TemplateVersion: CAP-000004 -uses-> INT-000017 | INT-000017 <-uses- CAP-000010 | CAP-000010 -supports-> DEC-000037 | DEC-000037 -uses-> ENT-000094
+- **High** ENT-000101 — Employee: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000011 | CAP-000011 -supports-> DEC-000041 | DEC-000041 -uses-> ENT-000101
+- **High** ENT-000102 — Employment: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000011 | CAP-000011 -supports-> DEC-000041 | DEC-000041 -uses-> ENT-000102
+- **High** ENT-000103 — Position: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000011 | CAP-000011 -supports-> DEC-000041 | DEC-000041 -uses-> ENT-000103
+- **High** ENT-000113 — BillOfMaterial: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000012 | CAP-000012 -supports-> DEC-000045 | DEC-000045 -uses-> ENT-000113
+- **High** ENT-000114 — BOMVersion: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000012 | CAP-000012 -supports-> DEC-000045 | DEC-000045 -uses-> ENT-000114
+- **High** ENT-000115 — Routing: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000012 | CAP-000012 -supports-> DEC-000045 | DEC-000045 -uses-> ENT-000115
+- **High** EVT-000001 — DecisionQueued: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000021 | ART-000021 <-specified_by- EVT-000001
+- **High** EVT-000002 — DecisionPriorityChanged: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000021 | ART-000021 <-specified_by- EVT-000002
+- **High** EVT-000003 — DecisionAssigned: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000021 | ART-000021 <-specified_by- EVT-000003
+- **High** EVT-000004 — ApprovalRequested: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000021 | ART-000021 <-specified_by- EVT-000004
+- **High** EVT-000005 — DecisionRecorded: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000021 | ART-000021 <-specified_by- EVT-000005
+- **High** EVT-000006 — DecisionOutcomeCaptured: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000021 | ART-000021 <-specified_by- EVT-000006
+- **High** EVT-000007 — MemoryCaptured: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000019 | ART-000019 <-specified_by- EVT-000007
+- **High** EVT-000008 — MemoryIndexed: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000019 | ART-000019 <-specified_by- EVT-000008
+- **High** EVT-000009 — LessonRecorded: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000019 | ART-000019 <-specified_by- EVT-000009
+- **High** EVT-000010 — MemorySuperseded: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000019 | ART-000019 <-specified_by- EVT-000010
+- **High** EVT-000011 — MemoryDispositioned: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000019 | ART-000019 <-specified_by- EVT-000011
+- **High** EVT-000012 — RecommendationGenerated: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000017 | ART-000017 <-specified_by- EVT-000012
+- **High** EVT-000013 — ForecastUpdated: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000017 | ART-000017 <-specified_by- EVT-000013
+- **High** EVT-000014 — AnomalyDetected: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000017 | ART-000017 <-specified_by- EVT-000014
+- **High** EVT-000015 — AIQualityDegraded: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000017 | ART-000017 <-specified_by- EVT-000015
+- **High** EVT-000016 — ModelRouteChanged: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000017 | ART-000017 <-specified_by- EVT-000016
+- **High** EVT-000017 — SafetyIncidentOpened: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000017 | ART-000017 <-specified_by- EVT-000017
+- **High** EVT-000026 — JournalPosted: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000023 | ART-000023 <-specified_by- EVT-000026
+- **High** EVT-000027 — InvoiceIssued: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000023 | ART-000023 <-specified_by- EVT-000027
+- **High** EVT-000028 — InvoiceOverdue: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000023 | ART-000023 <-specified_by- EVT-000028
+- **High** EVT-000029 — PaymentRecorded: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000023 | ART-000023 <-specified_by- EVT-000029
+- **High** EVT-000030 — BillApproved: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000023 | ART-000023 <-specified_by- EVT-000030
+- **High** EVT-000031 — BudgetExceeded: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000023 | ART-000023 <-specified_by- EVT-000031
+- **High** EVT-000032 — PeriodClosed: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000023 | ART-000023 <-specified_by- EVT-000032
+- **High** EVT-000033 — CashForecastUpdated: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000023 | ART-000023 <-specified_by- EVT-000033
+- **High** EVT-000034 — ProductCreated: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000026 | ART-000026 <-specified_by- EVT-000034
+- **High** EVT-000035 — StockLevelChanged: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000026 | ART-000026 <-specified_by- EVT-000035
+- **High** EVT-000036 — StockReserved: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000026 | ART-000026 <-specified_by- EVT-000036
+- **High** EVT-000037 — StockReceived: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000026 | ART-000026 <-specified_by- EVT-000037
+- **High** EVT-000038 — StockTransferred: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000026 | ART-000026 <-specified_by- EVT-000038
+- **High** EVT-000039 — InventoryAdjusted: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000026 | ART-000026 <-specified_by- EVT-000039
+- **High** EVT-000040 — CountVarianceDetected: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000026 | ART-000026 <-specified_by- EVT-000040
+- **High** EVT-000041 — ReorderRecommended: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000026 | ART-000026 <-specified_by- EVT-000041
+- **High** EVT-000042 — LeadCaptured: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000020 | ART-000020 <-specified_by- EVT-000042
+- **High** EVT-000043 — LeadQualified: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000020 | ART-000020 <-specified_by- EVT-000043
+- **High** EVT-000044 — OpportunityStageChanged: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000020 | ART-000020 <-specified_by- EVT-000044
+- **High** EVT-000045 — OpportunityWon: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000020 | ART-000020 <-specified_by- EVT-000045
+- **High** EVT-000046 — OpportunityLost: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000020 | ART-000020 <-specified_by- EVT-000046
+- **High** EVT-000047 — ActivityCompleted: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000020 | ART-000020 <-specified_by- EVT-000047
+- **High** EVT-000048 — ChurnRiskDetected: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000020 | ART-000020 <-specified_by- EVT-000048
+- **High** EVT-000049 — ConsentChanged: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000020 | ART-000020 <-specified_by- EVT-000049
+- **High** EVT-000050 — MetricUpdated: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000018 | ART-000018 <-specified_by- EVT-000050
+- **High** EVT-000051 — MetricThresholdBreached: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000018 | ART-000018 <-specified_by- EVT-000051
+- **High** EVT-000052 — DashboardPublished: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000018 | ART-000018 <-specified_by- EVT-000052
+- **High** EVT-000053 — ReportCompleted: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000018 | ART-000018 <-specified_by- EVT-000053
+- **High** EVT-000054 — ReportFailed: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000018 | ART-000018 <-specified_by- EVT-000054
+- **High** EVT-000055 — DataQualityFailed: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000018 | ART-000018 <-specified_by- EVT-000055
+- **High** EVT-000056 — DocumentUploaded: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000022 | ART-000022 <-specified_by- EVT-000056
+- **High** EVT-000057 — DocumentGenerated: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000022 | ART-000022 <-specified_by- EVT-000057
+- **High** EVT-000058 — DocumentVersionCreated: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000022 | ART-000022 <-specified_by- EVT-000058
+- **High** EVT-000059 — DocumentApproved: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000022 | ART-000022 <-specified_by- EVT-000059
+- **High** EVT-000060 — SignatureCompleted: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000022 | ART-000022 <-specified_by- EVT-000060
+- **High** EVT-000061 — DocumentArchived: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000022 | ART-000022 <-specified_by- EVT-000061
+- **High** EVT-000062 — RetentionDispositioned: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000022 | ART-000022 <-specified_by- EVT-000062
+- **High** EVT-000063 — NotificationQueued: CAP-000004 -uses-> INT-000017 | INT-000017 <-uses- CAP-000010 | CAP-000010 -specified_by-> ART-000028 | ART-000028 <-specified_by- EVT-000063
+- **High** EVT-000064 — NotificationDelivered: CAP-000004 -uses-> INT-000017 | INT-000017 <-uses- CAP-000010 | CAP-000010 -specified_by-> ART-000028 | ART-000028 <-specified_by- EVT-000064
+- **High** EVT-000065 — NotificationRead: CAP-000004 -uses-> INT-000017 | INT-000017 <-uses- CAP-000010 | CAP-000010 -specified_by-> ART-000028 | ART-000028 <-specified_by- EVT-000065
+- **High** EVT-000066 — NotificationActioned: CAP-000004 -uses-> INT-000017 | INT-000017 <-uses- CAP-000010 | CAP-000010 -specified_by-> ART-000028 | ART-000028 <-specified_by- EVT-000066
+- **High** EVT-000067 — NotificationFailed: CAP-000004 -uses-> INT-000017 | INT-000017 <-uses- CAP-000010 | CAP-000010 -specified_by-> ART-000028 | ART-000028 <-specified_by- EVT-000067
+- **High** EVT-000068 — DigestSent: CAP-000004 -uses-> INT-000017 | INT-000017 <-uses- CAP-000010 | CAP-000010 -specified_by-> ART-000028 | ART-000028 <-specified_by- EVT-000068
+- **High** EVT-000069 — EscalationTriggered: CAP-000004 -uses-> INT-000017 | INT-000017 <-uses- CAP-000010 | CAP-000010 -specified_by-> ART-000028 | ART-000028 <-specified_by- EVT-000069
+- **High** EVT-000070 — CandidateHired: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000024 | ART-000024 <-specified_by- EVT-000070
+- **High** EVT-000071 — EmployeeOnboarded: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000024 | ART-000024 <-specified_by- EVT-000071
+- **High** EVT-000072 — EmployeeChanged: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000024 | ART-000024 <-specified_by- EVT-000072
+- **High** EVT-000073 — LeaveApproved: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000024 | ART-000024 <-specified_by- EVT-000073
+- **High** EVT-000074 — PerformanceReviewCompleted: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000024 | ART-000024 <-specified_by- EVT-000074
+- **High** EVT-000075 — CompensationApproved: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000024 | ART-000024 <-specified_by- EVT-000075
+- **High** EVT-000076 — EmployeeOffboarded: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000024 | ART-000024 <-specified_by- EVT-000076
+- **High** EVT-000077 — ProductionOrderReleased: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000027 | ART-000027 <-specified_by- EVT-000077
+- **High** EVT-000078 — MaterialIssued: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000027 | ART-000027 <-specified_by- EVT-000078
+- **High** EVT-000079 — OperationCompleted: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000027 | ART-000027 <-specified_by- EVT-000079
+- **High** EVT-000080 — ProductionReceived: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000027 | ART-000027 <-specified_by- EVT-000080
+- **High** EVT-000081 — QualityHoldPlaced: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000027 | ART-000027 <-specified_by- EVT-000081
+- **High** EVT-000082 — NonconformanceOpened: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000027 | ART-000027 <-specified_by- EVT-000082
+- **High** EVT-000083 — ProductionOrderClosed: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000027 | ART-000027 <-specified_by- EVT-000083
+- **High** EVT-000084 — CapacityRiskDetected: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000027 | ART-000027 <-specified_by- EVT-000084
+- **Low** FEAT-000001 — Decision inbox and saved views: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000008 | ART-000008 <-documented_by- FEAT-000001
+- **Low** FEAT-000002 — Priority and urgency explanation: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000008 | ART-000008 <-documented_by- FEAT-000002
+- **Low** FEAT-000003 — Decision detail and evidence bundle: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000008 | ART-000008 <-documented_by- FEAT-000003
+- **Low** FEAT-000004 — Alternative and trade-off comparison: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000008 | ART-000008 <-documented_by- FEAT-000004
+- **Low** FEAT-000005 — Assignment and due-date control: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000008 | ART-000008 <-documented_by- FEAT-000005
+- **Low** FEAT-000006 — Approval and escalation: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000008 | ART-000008 <-documented_by- FEAT-000006
+- **Low** FEAT-000007 — Action and rationale recording: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000008 | ART-000008 <-documented_by- FEAT-000007
+- **Low** FEAT-000008 — Outcome follow-up and learning: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000008 | ART-000008 <-documented_by- FEAT-000008
+- **Low** FEAT-000009 — Decision timeline: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000006 | ART-000006 <-documented_by- FEAT-000009
+- **Low** FEAT-000010 — Immutable context snapshots: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000006 | ART-000006 <-documented_by- FEAT-000010
+- **Low** FEAT-000011 — Outcome and lesson capture: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000006 | ART-000006 <-documented_by- FEAT-000011
+- **Low** FEAT-000012 — Structured and semantic search: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000006 | ART-000006 <-documented_by- FEAT-000012
+- **Low** FEAT-000013 — Source and freshness lineage: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000006 | ART-000006 <-documented_by- FEAT-000013
+- **Low** FEAT-000014 — Memory collections and tags: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000006 | ART-000006 <-documented_by- FEAT-000014
+- **Low** FEAT-000015 — Retention and privacy control: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000006 | ART-000006 <-documented_by- FEAT-000015
+- **Low** FEAT-000016 — Citation-ready retrieval: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000006 | ART-000006 <-documented_by- FEAT-000016
+- **Low** FEAT-000017 — Model Gateway: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000004 | ART-000004 <-documented_by- FEAT-000017
+- **Low** FEAT-000018 — Prompt Registry: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000004 | ART-000004 <-documented_by- FEAT-000018
+- **Low** FEAT-000019 — Retrieval service: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000004 | ART-000004 <-documented_by- FEAT-000019
+- **Low** FEAT-000020 — Recommendation service: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000004 | ART-000004 <-documented_by- FEAT-000020
+- **Low** FEAT-000021 — Forecasting service: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000004 | ART-000004 <-documented_by- FEAT-000021
+- **Low** FEAT-000022 — Explainability service: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000004 | ART-000004 <-documented_by- FEAT-000022
+- **Low** FEAT-000023 — Evaluation and release gates: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000004 | ART-000004 <-documented_by- FEAT-000023
+- **Low** FEAT-000024 — Cost, latency, safety, and drift monitoring: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000004 | ART-000004 <-documented_by- FEAT-000024
+- **Low** FEAT-000033 — Chart of accounts: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000010 | ART-000010 <-documented_by- FEAT-000033
+- **Low** FEAT-000034 — Double-entry journals: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000010 | ART-000010 <-documented_by- FEAT-000034
+- **Low** FEAT-000035 — Accounts receivable and invoicing: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000010 | ART-000010 <-documented_by- FEAT-000035
+- **Low** FEAT-000036 — Accounts payable and bills: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000010 | ART-000010 <-documented_by- FEAT-000036
+- **Low** FEAT-000037 — Payments and reconciliation: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000010 | ART-000010 <-documented_by- FEAT-000037
+- **Low** FEAT-000038 — Budgets and variance: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000010 | ART-000010 <-documented_by- FEAT-000038
+- **Low** FEAT-000039 — Cash-flow forecasting: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000010 | ART-000010 <-documented_by- FEAT-000039
+- **Low** FEAT-000040 — Financial statements and close: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000010 | ART-000010 <-documented_by- FEAT-000040
+- **Low** FEAT-000041 — Product and SKU catalog: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000013 | ART-000013 <-documented_by- FEAT-000041
+- **Low** FEAT-000042 — Warehouse and location model: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000013 | ART-000013 <-documented_by- FEAT-000042
+- **Low** FEAT-000043 — Stock ledger and availability: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000013 | ART-000013 <-documented_by- FEAT-000043
+- **Low** FEAT-000044 — Reservations and allocations: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000013 | ART-000013 <-documented_by- FEAT-000044
+- **Low** FEAT-000045 — Purchase orders and receipts: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000013 | ART-000013 <-documented_by- FEAT-000045
+- **Low** FEAT-000046 — Transfers and adjustments: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000013 | ART-000013 <-documented_by- FEAT-000046
+- **Low** FEAT-000047 — Lot/serial/batch traceability: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000013 | ART-000013 <-documented_by- FEAT-000047
+- **Low** FEAT-000048 — Reorder and demand planning: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000013 | ART-000013 <-documented_by- FEAT-000048
+- **Low** FEAT-000049 — Contacts and organizations: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000007 | ART-000007 <-documented_by- FEAT-000049
+- **Low** FEAT-000050 — Lead capture and qualification: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000007 | ART-000007 <-documented_by- FEAT-000050
+- **Low** FEAT-000051 — Opportunity pipelines: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000007 | ART-000007 <-documented_by- FEAT-000051
+- **Low** FEAT-000052 — Activities and tasks: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000007 | ART-000007 <-documented_by- FEAT-000052
+- **Low** FEAT-000053 — Segmentation: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000007 | ART-000007 <-documented_by- FEAT-000053
+- **Low** FEAT-000054 — Customer value and health: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000007 | ART-000007 <-documented_by- FEAT-000054
+- **Low** FEAT-000055 — Campaign attribution: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000007 | ART-000007 <-documented_by- FEAT-000055
+- **Low** FEAT-000056 — Consent and communication history: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000007 | ART-000007 <-documented_by- FEAT-000056
+- **Low** FEAT-000057 — Metric registry: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000005 | ART-000005 <-documented_by- FEAT-000057
+- **Low** FEAT-000058 — Semantic definitions: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000005 | ART-000005 <-documented_by- FEAT-000058
+- **Low** FEAT-000059 — Dashboard composition: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000005 | ART-000005 <-documented_by- FEAT-000059
+- **Low** FEAT-000060 — Filters and saved views: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000005 | ART-000005 <-documented_by- FEAT-000060
+- **Low** FEAT-000061 — Drill-down and lineage: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000005 | ART-000005 <-documented_by- FEAT-000061
+- **Low** FEAT-000062 — Scheduled reports: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000005 | ART-000005 <-documented_by- FEAT-000062
+- **Low** FEAT-000063 — Exports: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000005 | ART-000005 <-documented_by- FEAT-000063
+- **Low** FEAT-000064 — Annotations and forecast overlays: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000005 | ART-000005 <-documented_by- FEAT-000064
+- **Low** FEAT-000065 — Document metadata and storage: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000009 | ART-000009 <-documented_by- FEAT-000065
+- **Low** FEAT-000066 — Templates: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000009 | ART-000009 <-documented_by- FEAT-000066
+- **Low** FEAT-000067 — Generation: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000009 | ART-000009 <-documented_by- FEAT-000067
+- **Low** FEAT-000068 — Versioning: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000009 | ART-000009 <-documented_by- FEAT-000068
+- **Low** FEAT-000069 — Review and approval: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000009 | ART-000009 <-documented_by- FEAT-000069
+- **Low** FEAT-000070 — Electronic signature adapters: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000009 | ART-000009 <-documented_by- FEAT-000070
+- **Low** FEAT-000071 — OCR/import: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000009 | ART-000009 <-documented_by- FEAT-000071
+- **Low** FEAT-000072 — Retention and legal hold: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000009 | ART-000009 <-documented_by- FEAT-000072
+- **Low** FEAT-000073 — Unified notification events: CAP-000004 -uses-> INT-000017 | INT-000017 <-uses- CAP-000010 | CAP-000010 -supports-> DEC-000037 | DEC-000037 <-supports- FEAT-000073
+- **Low** FEAT-000074 — Templates and versions: CAP-000004 -uses-> INT-000017 | INT-000017 <-uses- CAP-000010 | CAP-000010 -supports-> DEC-000038 | DEC-000038 <-supports- FEAT-000074
+- **Low** FEAT-000075 — Category and priority: CAP-000004 -uses-> INT-000017 | INT-000017 <-uses- CAP-000010 | CAP-000010 -supports-> DEC-000039 | DEC-000039 <-supports- FEAT-000075
+- **Low** FEAT-000076 — User preferences and quiet hours: CAP-000004 -uses-> INT-000017 | INT-000017 <-uses- CAP-000010 | CAP-000010 -supports-> DEC-000040 | DEC-000040 <-supports- FEAT-000076
+- **Low** FEAT-000077 — Channel routing: CAP-000004 -uses-> INT-000017 | INT-000017 <-uses- CAP-000010 | CAP-000010 -supports-> DEC-000037 | DEC-000037 <-supports- FEAT-000077
+- **Low** FEAT-000078 — Delivery retries: CAP-000004 -uses-> INT-000017 | INT-000017 <-uses- CAP-000010 | CAP-000010 -supports-> DEC-000038 | DEC-000038 <-supports- FEAT-000078
+- **Low** FEAT-000079 — Digest and grouping: CAP-000004 -uses-> INT-000017 | INT-000017 <-uses- CAP-000010 | CAP-000010 -supports-> DEC-000039 | DEC-000039 <-supports- FEAT-000079
+- **Low** FEAT-000080 — Escalation and audit: CAP-000004 -uses-> INT-000017 | INT-000017 <-uses- CAP-000010 | CAP-000010 -supports-> DEC-000040 | DEC-000040 <-supports- FEAT-000080
+- **Low** FEAT-000081 — Employee records: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000011 | ART-000011 <-documented_by- FEAT-000081
+- **Low** FEAT-000082 — Organization and positions: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000011 | ART-000011 <-documented_by- FEAT-000082
+- **Low** FEAT-000083 — Recruitment: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000011 | ART-000011 <-documented_by- FEAT-000083
+- **Low** FEAT-000084 — Onboarding/offboarding: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000011 | ART-000011 <-documented_by- FEAT-000084
+- **Low** FEAT-000085 — Leave and attendance: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000011 | ART-000011 <-documented_by- FEAT-000085
+- **Low** FEAT-000086 — Performance and goals: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000011 | ART-000011 <-documented_by- FEAT-000086
+- **Low** FEAT-000087 — Compensation records: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000011 | ART-000011 <-documented_by- FEAT-000087
+- **Low** FEAT-000088 — Workforce planning and compliance: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000011 | ART-000011 <-documented_by- FEAT-000088
+- **Low** FEAT-000089 — Bills of materials: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000014 | ART-000014 <-documented_by- FEAT-000089
+- **Low** FEAT-000090 — Routings and work centers: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000014 | ART-000014 <-documented_by- FEAT-000090
+- **Low** FEAT-000091 — Production orders: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000014 | ART-000014 <-documented_by- FEAT-000091
+- **Low** FEAT-000092 — Material requirements: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000014 | ART-000014 <-documented_by- FEAT-000092
+- **Low** FEAT-000093 — Scheduling and capacity: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000014 | ART-000014 <-documented_by- FEAT-000093
+- **Low** FEAT-000094 — Issue/consume/produce: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000014 | ART-000014 <-documented_by- FEAT-000094
+- **Low** FEAT-000095 — Quality control: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000014 | ART-000014 <-documented_by- FEAT-000095
+- **Low** FEAT-000096 — Yield, scrap, downtime, and cost: CAP-000004 -documented_by-> ART-000012 | ART-000012 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000014 | ART-000014 <-documented_by- FEAT-000096
+- **Low** MOD-000003 — AI Engine: CAP-000004 -specified_by-> ART-000025 | ART-000025 <-specified_by- EVT-000020 | EVT-000020 <-consumes- MOD-000001 | MOD-000001 -depends_on-> MOD-000003
+- **Low** MOD-000005 — Finance: CAP-000004 -specified_by-> ART-000025 | ART-000025 <-specified_by- EVT-000019 | EVT-000019 <-consumes- MOD-000011 | MOD-000011 -depends_on-> MOD-000005
+- **Low** MOD-000008 — Analytics: CAP-000004 -specified_by-> ART-000025 | ART-000025 <-specified_by- EVT-000020 | EVT-000020 <-consumes- MOD-000001 | MOD-000001 -depends_on-> MOD-000008
+- **Low** MOD-000009 — Documents: CAP-000004 -specified_by-> ART-000025 | ART-000025 <-specified_by- EVT-000019 | EVT-000019 <-consumes- MOD-000011 | MOD-000011 -depends_on-> MOD-000009
+- **Low** MOD-000010 — Notifications: CAP-000004 -specified_by-> ART-000025 | ART-000025 <-specified_by- EVT-000019 | EVT-000019 <-consumes- MOD-000011 | MOD-000011 -depends_on-> MOD-000010
+- **Low** NOT-000018 — Invitation: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- FEAT-000025 | FEAT-000025 <-automates- AUTO-000018 | AUTO-000018 -notifies-> NOT-000018
+- **Low** NOT-000019 — Role changed: CAP-000004 -supports-> DEC-000014 | DEC-000014 <-supports- FEAT-000026 | FEAT-000026 <-automates- AUTO-000019 | AUTO-000019 -notifies-> NOT-000019
+- **Low** NOT-000020 — MFA/security alert: CAP-000004 -supports-> DEC-000015 | DEC-000015 <-supports- FEAT-000027 | FEAT-000027 <-automates- AUTO-000020 | AUTO-000020 -notifies-> NOT-000020
+- **Low** NOT-000021 — Session revoked: CAP-000004 -supports-> DEC-000016 | DEC-000016 <-supports- FEAT-000028 | FEAT-000028 <-automates- AUTO-000021 | AUTO-000021 -notifies-> NOT-000021
+- **Low** NOT-000022 — Access review due: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- FEAT-000029 | FEAT-000029 <-automates- AUTO-000022 | AUTO-000022 -notifies-> NOT-000022
+- **Low** NOT-000023 — Sensitive export: CAP-000004 -supports-> DEC-000014 | DEC-000014 <-supports- FEAT-000030 | FEAT-000030 <-automates- AUTO-000023 | AUTO-000023 -notifies-> NOT-000023
+- **High** PROMPT-000001 — Decision Center: Priority assistance Prompt: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000001 | CAP-000001 -uses-> AICAP-000001 | AICAP-000001 -uses_prompt-> PROMPT-000001
+- **High** PROMPT-000002 — Decision Center: Alternative generation Prompt: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000001 | CAP-000001 -uses-> AICAP-000002 | AICAP-000002 -uses_prompt-> PROMPT-000002
+- **High** PROMPT-000003 — Decision Center: Trade-off explanation Prompt: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000001 | CAP-000001 -uses-> AICAP-000003 | AICAP-000003 -uses_prompt-> PROMPT-000003
+- **High** PROMPT-000004 — Decision Center: Outcome comparison Prompt: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000001 | CAP-000001 -uses-> AICAP-000004 | AICAP-000004 -uses_prompt-> PROMPT-000004
+- **High** PROMPT-000005 — Decision Center: Similar-decision retrieval Prompt: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000001 | CAP-000001 -uses-> AICAP-000005 | AICAP-000005 -uses_prompt-> PROMPT-000005
+- **High** PROMPT-000006 — Business Memory: Semantic retrieval Prompt: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000002 | CAP-000002 -uses-> AICAP-000006 | AICAP-000006 -uses_prompt-> PROMPT-000006
+- **High** PROMPT-000007 — Business Memory: Summarization with citations Prompt: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000002 | CAP-000002 -uses-> AICAP-000007 | AICAP-000007 -uses_prompt-> PROMPT-000007
+- **High** PROMPT-000008 — Business Memory: Similar-case discovery Prompt: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000002 | CAP-000002 -uses-> AICAP-000008 | AICAP-000008 -uses_prompt-> PROMPT-000008
+- **High** PROMPT-000009 — Business Memory: Lesson extraction Prompt: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000002 | CAP-000002 -uses-> AICAP-000009 | AICAP-000009 -uses_prompt-> PROMPT-000009
+- **High** PROMPT-000010 — Business Memory: Memory quality classification Prompt: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000002 | CAP-000002 -uses-> AICAP-000010 | AICAP-000010 -uses_prompt-> PROMPT-000010
+- **High** PROMPT-000011 — AI Engine: All capabilities are AI capabilities; core business workflows remain usable without them Prompt: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000003 | CAP-000003 -uses-> AICAP-000011 | AICAP-000011 -uses_prompt-> PROMPT-000011
+- **High** PROMPT-000015 — Finance: Cash forecast Prompt: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000005 | CAP-000005 -uses-> AICAP-000015 | AICAP-000015 -uses_prompt-> PROMPT-000015
+- **High** PROMPT-000016 — Finance: Anomaly detection Prompt: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000005 | CAP-000005 -uses-> AICAP-000016 | AICAP-000016 -uses_prompt-> PROMPT-000016
+- **High** PROMPT-000017 — Finance: Reconciliation suggestions Prompt: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000005 | CAP-000005 -uses-> AICAP-000017 | AICAP-000017 -uses_prompt-> PROMPT-000017
+- **High** PROMPT-000018 — Finance: Collection priority Prompt: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000005 | CAP-000005 -uses-> AICAP-000018 | AICAP-000018 -uses_prompt-> PROMPT-000018
+- **High** PROMPT-000019 — Finance: Variance explanation Prompt: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000005 | CAP-000005 -uses-> AICAP-000019 | AICAP-000019 -uses_prompt-> PROMPT-000019
+- **High** PROMPT-000020 — Inventory: Demand forecast Prompt: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000006 | CAP-000006 -uses-> AICAP-000020 | AICAP-000020 -uses_prompt-> PROMPT-000020
+- **High** PROMPT-000021 — Inventory: Reorder quantity Prompt: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000006 | CAP-000006 -uses-> AICAP-000021 | AICAP-000021 -uses_prompt-> PROMPT-000021
+- **High** PROMPT-000022 — Inventory: Supplier comparison Prompt: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000006 | CAP-000006 -uses-> AICAP-000022 | AICAP-000022 -uses_prompt-> PROMPT-000022
+- **High** PROMPT-000023 — Inventory: Anomaly and shrinkage detection Prompt: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000006 | CAP-000006 -uses-> AICAP-000023 | AICAP-000023 -uses_prompt-> PROMPT-000023
+- **High** PROMPT-000024 — Inventory: Slow-moving stock explanation Prompt: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000006 | CAP-000006 -uses-> AICAP-000024 | AICAP-000024 -uses_prompt-> PROMPT-000024
+- **High** PROMPT-000025 — CRM: Lead scoring Prompt: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000007 | CAP-000007 -uses-> AICAP-000025 | AICAP-000025 -uses_prompt-> PROMPT-000025
+- **High** PROMPT-000026 — CRM: Next best action Prompt: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000007 | CAP-000007 -uses-> AICAP-000026 | AICAP-000026 -uses_prompt-> PROMPT-000026
+- **High** PROMPT-000027 — CRM: Churn risk Prompt: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000007 | CAP-000007 -uses-> AICAP-000027 | AICAP-000027 -uses_prompt-> PROMPT-000027
+- **High** PROMPT-000028 — CRM: Opportunity forecast Prompt: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000007 | CAP-000007 -uses-> AICAP-000028 | AICAP-000028 -uses_prompt-> PROMPT-000028
+- **High** PROMPT-000029 — CRM: Interaction summary Prompt: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000007 | CAP-000007 -uses-> AICAP-000029 | AICAP-000029 -uses_prompt-> PROMPT-000029
+- **High** PROMPT-000030 — CRM: Win/loss explanation Prompt: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000007 | CAP-000007 -uses-> AICAP-000030 | AICAP-000030 -uses_prompt-> PROMPT-000030
+- **High** PROMPT-000031 — Analytics: Narrative explanation Prompt: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000008 | CAP-000008 -uses-> AICAP-000031 | AICAP-000031 -uses_prompt-> PROMPT-000031
+- **High** PROMPT-000032 — Analytics: Anomaly detection Prompt: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000008 | CAP-000008 -uses-> AICAP-000032 | AICAP-000032 -uses_prompt-> PROMPT-000032
+- **High** PROMPT-000033 — Analytics: Forecast overlay Prompt: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000008 | CAP-000008 -uses-> AICAP-000033 | AICAP-000033 -uses_prompt-> PROMPT-000033
+- **High** PROMPT-000034 — Analytics: Natural language query Prompt: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000008 | CAP-000008 -uses-> AICAP-000034 | AICAP-000034 -uses_prompt-> PROMPT-000034
+- **High** PROMPT-000035 — Analytics: Chart recommendation Prompt: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000008 | CAP-000008 -uses-> AICAP-000035 | AICAP-000035 -uses_prompt-> PROMPT-000035
+- **High** PROMPT-000036 — Documents: Classification Prompt: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000009 | CAP-000009 -uses-> AICAP-000036 | AICAP-000036 -uses_prompt-> PROMPT-000036
+- **High** PROMPT-000037 — Documents: Field extraction Prompt: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000009 | CAP-000009 -uses-> AICAP-000037 | AICAP-000037 -uses_prompt-> PROMPT-000037
+- **High** PROMPT-000038 — Documents: Document summary Prompt: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000009 | CAP-000009 -uses-> AICAP-000038 | AICAP-000038 -uses_prompt-> PROMPT-000038
+- **High** PROMPT-000039 — Documents: Clause comparison Prompt: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000009 | CAP-000009 -uses-> AICAP-000039 | AICAP-000039 -uses_prompt-> PROMPT-000039
+- **High** PROMPT-000040 — Documents: Template assistance Prompt: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000009 | CAP-000009 -uses-> AICAP-000040 | AICAP-000040 -uses_prompt-> PROMPT-000040
+- **High** PROMPT-000041 — Notifications: Priority suggestion Prompt: CAP-000004 -uses-> INT-000017 | INT-000017 <-uses- CAP-000010 | CAP-000010 -uses-> AICAP-000041 | AICAP-000041 -uses_prompt-> PROMPT-000041
+- **High** PROMPT-000042 — Notifications: Digest summarization Prompt: CAP-000004 -uses-> INT-000017 | INT-000017 <-uses- CAP-000010 | CAP-000010 -uses-> AICAP-000042 | AICAP-000042 -uses_prompt-> PROMPT-000042
+- **High** PROMPT-000043 — Notifications: Send-time optimization Prompt: CAP-000004 -uses-> INT-000017 | INT-000017 <-uses- CAP-000010 | CAP-000010 -uses-> AICAP-000043 | AICAP-000043 -uses_prompt-> PROMPT-000043
+- **High** PROMPT-000044 — Notifications: Noise detection Prompt: CAP-000004 -uses-> INT-000017 | INT-000017 <-uses- CAP-000010 | CAP-000010 -uses-> AICAP-000044 | AICAP-000044 -uses_prompt-> PROMPT-000044
+- **High** PROMPT-000045 — Human Resources: Candidate matching Prompt: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000011 | CAP-000011 -uses-> AICAP-000045 | AICAP-000045 -uses_prompt-> PROMPT-000045
+- **High** PROMPT-000046 — Human Resources: Capacity forecast Prompt: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000011 | CAP-000011 -uses-> AICAP-000046 | AICAP-000046 -uses_prompt-> PROMPT-000046
+- **High** PROMPT-000047 — Human Resources: Turnover risk Prompt: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000011 | CAP-000011 -uses-> AICAP-000047 | AICAP-000047 -uses_prompt-> PROMPT-000047
+- **High** PROMPT-000048 — Human Resources: Review summarization Prompt: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000011 | CAP-000011 -uses-> AICAP-000048 | AICAP-000048 -uses_prompt-> PROMPT-000048
+- **High** PROMPT-000049 — Human Resources: Policy question answering Prompt: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000011 | CAP-000011 -uses-> AICAP-000049 | AICAP-000049 -uses_prompt-> PROMPT-000049
+- **High** PROMPT-000050 — Manufacturing: Demand and capacity forecast Prompt: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000012 | CAP-000012 -uses-> AICAP-000050 | AICAP-000050 -uses_prompt-> PROMPT-000050
+- **High** PROMPT-000051 — Manufacturing: Schedule optimization Prompt: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000012 | CAP-000012 -uses-> AICAP-000051 | AICAP-000051 -uses_prompt-> PROMPT-000051
+- **High** PROMPT-000052 — Manufacturing: Quality anomaly Prompt: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000012 | CAP-000012 -uses-> AICAP-000052 | AICAP-000052 -uses_prompt-> PROMPT-000052
+- **High** PROMPT-000053 — Manufacturing: Predictive maintenance signal Prompt: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000012 | CAP-000012 -uses-> AICAP-000053 | AICAP-000053 -uses_prompt-> PROMPT-000053
+- **High** PROMPT-000054 — Manufacturing: Cost variance explanation Prompt: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000012 | CAP-000012 -uses-> AICAP-000054 | AICAP-000054 -uses_prompt-> PROMPT-000054
+- **High** REL-000002 — Platform Foundation 1.0: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- FEAT-000025 | FEAT-000025 -implemented_by-> BUILD-000001 | BUILD-000001 -released_in-> REL-000002
+- **Low** RPT-000001 — Decision effectiveness: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000001 | CAP-000001 -measured_by-> MET-000001 | MET-000001 <-uses- RPT-000001
+- **Low** RPT-000002 — Approval performance: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000001 | CAP-000001 -measured_by-> MET-000002 | MET-000002 <-uses- RPT-000002
+- **Low** RPT-000003 — Overdue decisions: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000001 | CAP-000001 -measured_by-> MET-000003 | MET-000003 <-uses- RPT-000003
+- **Low** RPT-000004 — Outcome variance: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000001 | CAP-000001 -measured_by-> MET-000004 | MET-000004 <-uses- RPT-000004
+- **Low** RPT-000005 — Decision quality and trust: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000001 | CAP-000001 -measured_by-> MET-000005 | MET-000005 <-uses- RPT-000005
+- **Low** RPT-000006 — Memory growth and use: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000002 | CAP-000002 -measured_by-> MET-000007 | MET-000007 <-uses- RPT-000006
+- **Low** RPT-000007 — Outcome learning: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000002 | CAP-000002 -measured_by-> MET-000008 | MET-000008 <-uses- RPT-000007
+- **Low** RPT-000008 — Retrieval quality: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000002 | CAP-000002 -measured_by-> MET-000009 | MET-000009 <-uses- RPT-000008
+- **Low** RPT-000009 — Retention compliance: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000002 | CAP-000002 -measured_by-> MET-000010 | MET-000010 <-uses- RPT-000009
+- **Low** RPT-000010 — Source coverage: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000002 | CAP-000002 -measured_by-> MET-000011 | MET-000011 <-uses- RPT-000010
+- **Low** RPT-000011 — AI quality: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000003 | CAP-000003 -measured_by-> MET-000013 | MET-000013 <-uses- RPT-000011
+- **Low** RPT-000012 — AI operations: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000003 | CAP-000003 -measured_by-> MET-000014 | MET-000014 <-uses- RPT-000012
+- **Low** RPT-000013 — Cost and latency: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000003 | CAP-000003 -measured_by-> MET-000015 | MET-000015 <-uses- RPT-000013
+- **Low** RPT-000014 — Safety and privacy: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000003 | CAP-000003 -measured_by-> MET-000016 | MET-000016 <-uses- RPT-000014
+- **Low** RPT-000015 — Recommendation outcomes: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000003 | CAP-000003 -measured_by-> MET-000017 | MET-000017 <-uses- RPT-000015
+- **Low** RPT-000021 — Profit and loss: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000005 | CAP-000005 -measured_by-> MET-000027 | MET-000027 <-uses- RPT-000021
+- **Low** RPT-000022 — Balance sheet: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000005 | CAP-000005 -measured_by-> MET-000028 | MET-000028 <-uses- RPT-000022
+- **Low** RPT-000023 — Cash flow: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000005 | CAP-000005 -measured_by-> MET-000029 | MET-000029 <-uses- RPT-000023
+- **Low** RPT-000024 — Aged receivables/payables: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000005 | CAP-000005 -measured_by-> MET-000030 | MET-000030 <-uses- RPT-000024
+- **Low** RPT-000025 — Budget variance: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000005 | CAP-000005 -measured_by-> MET-000031 | MET-000031 <-uses- RPT-000025
+- **Low** RPT-000026 — Tax summary: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000005 | CAP-000005 -measured_by-> MET-000032 | MET-000032 <-uses- RPT-000026
+- **Low** RPT-000027 — Audit trail: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000005 | CAP-000005 -measured_by-> MET-000033 | MET-000033 <-uses- RPT-000027
+- **Low** RPT-000028 — Stock valuation: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000006 | CAP-000006 -measured_by-> MET-000035 | MET-000035 <-uses- RPT-000028
+- **Low** RPT-000029 — Availability: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000006 | CAP-000006 -measured_by-> MET-000036 | MET-000036 <-uses- RPT-000029
+- **Low** RPT-000030 — Movement ledger: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000006 | CAP-000006 -measured_by-> MET-000037 | MET-000037 <-uses- RPT-000030
+- **Low** RPT-000031 — Reorder plan: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000006 | CAP-000006 -measured_by-> MET-000038 | MET-000038 <-uses- RPT-000031
+- **Low** RPT-000032 — Supplier performance: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000006 | CAP-000006 -measured_by-> MET-000039 | MET-000039 <-uses- RPT-000032
+- **Low** RPT-000033 — Count variance: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000006 | CAP-000006 -measured_by-> MET-000040 | MET-000040 <-uses- RPT-000033
+- **Low** RPT-000034 — Aging and obsolescence: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000006 | CAP-000006 -measured_by-> MET-000041 | MET-000041 <-uses- RPT-000034
+- **Low** RPT-000035 — Pipeline: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000007 | CAP-000007 -measured_by-> MET-000043 | MET-000043 <-uses- RPT-000035
+- **Low** RPT-000036 — Forecast: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000007 | CAP-000007 -measured_by-> MET-000044 | MET-000044 <-uses- RPT-000036
+- **Low** RPT-000037 — Lead source: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000007 | CAP-000007 -measured_by-> MET-000045 | MET-000045 <-uses- RPT-000037
+- **Low** RPT-000038 — Sales activity: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000007 | CAP-000007 -measured_by-> MET-000046 | MET-000046 <-uses- RPT-000038
+- **Low** RPT-000039 — Retention and churn: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000007 | CAP-000007 -measured_by-> MET-000047 | MET-000047 <-uses- RPT-000039
+- **Low** RPT-000040 — Customer value: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000007 | CAP-000007 -measured_by-> MET-000048 | MET-000048 <-uses- RPT-000040
+- **Low** RPT-000041 — Campaign attribution: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000007 | CAP-000007 -measured_by-> MET-000049 | MET-000049 <-uses- RPT-000041
+- **Low** RPT-000042 — Executive command center: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000008 | CAP-000008 -measured_by-> MET-000051 | MET-000051 <-uses- RPT-000042
+- **Low** RPT-000043 — Business health: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000008 | CAP-000008 -measured_by-> MET-000052 | MET-000052 <-uses- RPT-000043
+- **Low** RPT-000044 — Module dashboards: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000008 | CAP-000008 -measured_by-> MET-000053 | MET-000053 <-uses- RPT-000044
+- **Low** RPT-000045 — Decision effectiveness: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000008 | CAP-000008 -measured_by-> MET-000054 | MET-000054 <-uses- RPT-000045
+- **Low** RPT-000046 — Operational reliability: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000008 | CAP-000008 -measured_by-> MET-000055 | MET-000055 <-uses- RPT-000046
+- **Low** RPT-000047 — Document inventory: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000009 | CAP-000009 -measured_by-> MET-000057 | MET-000057 <-uses- RPT-000047
+- **Low** RPT-000048 — Approval and signature: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000009 | CAP-000009 -measured_by-> MET-000058 | MET-000058 <-uses- RPT-000048
+- **Low** RPT-000049 — Retention: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000009 | CAP-000009 -measured_by-> MET-000059 | MET-000059 <-uses- RPT-000049
+- **Low** RPT-000050 — Storage: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000009 | CAP-000009 -measured_by-> MET-000060 | MET-000060 <-uses- RPT-000050
+- **Low** RPT-000051 — Template usage: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000009 | CAP-000009 -measured_by-> MET-000061 | MET-000061 <-uses- RPT-000051
+- **Low** RPT-000052 — Access audit: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000009 | CAP-000009 -measured_by-> MET-000062 | MET-000062 <-uses- RPT-000052
+- **Low** RPT-000053 — Delivery and engagement: CAP-000004 -uses-> INT-000017 | INT-000017 <-uses- CAP-000010 | CAP-000010 -measured_by-> MET-000064 | MET-000064 <-uses- RPT-000053
+- **Low** RPT-000054 — Channel health: CAP-000004 -uses-> INT-000017 | INT-000017 <-uses- CAP-000010 | CAP-000010 -measured_by-> MET-000065 | MET-000065 <-uses- RPT-000054
+- **Low** RPT-000055 — Preference and opt-out: CAP-000004 -uses-> INT-000017 | INT-000017 <-uses- CAP-000010 | CAP-000010 -measured_by-> MET-000066 | MET-000066 <-uses- RPT-000055
+- **Low** RPT-000056 — Template performance: CAP-000004 -uses-> INT-000017 | INT-000017 <-uses- CAP-000010 | CAP-000010 -measured_by-> MET-000067 | MET-000067 <-uses- RPT-000056
+- **Low** RPT-000057 — Failure and escalation: CAP-000004 -uses-> INT-000017 | INT-000017 <-uses- CAP-000010 | CAP-000010 -measured_by-> MET-000068 | MET-000068 <-uses- RPT-000057
+- **Low** RPT-000058 — Headcount and cost: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000011 | CAP-000011 -measured_by-> MET-000071 | MET-000071 <-uses- RPT-000058
+- **Low** RPT-000059 — Recruitment funnel: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000011 | CAP-000011 -measured_by-> MET-000072 | MET-000072 <-uses- RPT-000059
+- **Low** RPT-000060 — Leave and attendance: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000011 | CAP-000011 -measured_by-> MET-000073 | MET-000073 <-uses- RPT-000060
+- **Low** RPT-000061 — Performance cycle: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000011 | CAP-000011 -measured_by-> MET-000074 | MET-000074 <-uses- RPT-000061
+- **Low** RPT-000062 — Turnover: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000011 | CAP-000011 -measured_by-> MET-000075 | MET-000075 <-uses- RPT-000062
+- **Low** RPT-000063 — Compliance tasks: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000011 | CAP-000011 -measured_by-> MET-000076 | MET-000076 <-uses- RPT-000063
+- **Low** RPT-000064 — Production status: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000012 | CAP-000012 -measured_by-> MET-000079 | MET-000079 <-uses- RPT-000064
+- **Low** RPT-000065 — Capacity load: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000012 | CAP-000012 -measured_by-> MET-000080 | MET-000080 <-uses- RPT-000065
+- **Low** RPT-000066 — Material shortage: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000012 | CAP-000012 -measured_by-> MET-000081 | MET-000081 <-uses- RPT-000066
+- **Low** RPT-000067 — Yield and scrap: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000012 | CAP-000012 -measured_by-> MET-000082 | MET-000082 <-uses- RPT-000067
+- **Low** RPT-000068 — Quality: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000012 | CAP-000012 -measured_by-> MET-000083 | MET-000083 <-uses- RPT-000068
+- **Low** RPT-000069 — Cost variance: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000012 | CAP-000012 -measured_by-> MET-000084 | MET-000084 <-uses- RPT-000069
+- **Low** RPT-000070 — OEE: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000012 | CAP-000012 -measured_by-> MET-000085 | MET-000085 <-uses- RPT-000070
+- **Low** SCR-000001 — Decision Center Decision Dashboard: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000001 | CMP-000001 <-uses- SCR-000001
+- **Low** SCR-000002 — Decision inbox and saved views Workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000002
+- **Low** SCR-000003 — Priority and urgency explanation Workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000003
+- **Low** SCR-000004 — Decision detail and evidence bundle Workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000004
+- **Low** SCR-000005 — Alternative and trade-off comparison Workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000005
+- **Low** SCR-000006 — Assignment and due-date control Workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000006
+- **Low** SCR-000007 — Approval and escalation Workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000007
+- **Low** SCR-000008 — Action and rationale recording Workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000008
+- **Low** SCR-000009 — Outcome follow-up and learning Workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000009
+- **Low** SCR-000010 — Business Memory Decision Dashboard: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000001 | CMP-000001 <-uses- SCR-000010
+- **Low** SCR-000011 — Decision timeline Workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000011
+- **Low** SCR-000012 — Immutable context snapshots Workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000012
+- **Low** SCR-000013 — Outcome and lesson capture Workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000013
+- **Low** SCR-000014 — Structured and semantic search Workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000014
+- **Low** SCR-000015 — Source and freshness lineage Workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000015
+- **Low** SCR-000016 — Memory collections and tags Workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000016
+- **Low** SCR-000017 — Retention and privacy control Workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000017
+- **Low** SCR-000018 — Citation-ready retrieval Workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000018
+- **Low** SCR-000019 — AI Engine Decision Dashboard: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000001 | CMP-000001 <-uses- SCR-000019
+- **Low** SCR-000020 — Model Gateway Workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000020
+- **Low** SCR-000021 — Prompt Registry Workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000021
+- **Low** SCR-000022 — Retrieval service Workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000022
+- **Low** SCR-000023 — Recommendation service Workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000023
+- **Low** SCR-000024 — Forecasting service Workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000024
+- **Low** SCR-000025 — Explainability service Workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000025
+- **Low** SCR-000026 — Evaluation and release gates Workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000026
+- **Low** SCR-000027 — Cost, latency, safety, and drift monitoring Workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000027
+- **Low** SCR-000037 — Finance Decision Dashboard: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000001 | CMP-000001 <-uses- SCR-000037
+- **Low** SCR-000038 — Chart of accounts Workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000038
+- **Low** SCR-000039 — Double-entry journals Workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000039
+- **Low** SCR-000040 — Accounts receivable and invoicing Workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000040
+- **Low** SCR-000041 — Accounts payable and bills Workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000041
+- **Low** SCR-000042 — Payments and reconciliation Workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000042
+- **Low** SCR-000043 — Budgets and variance Workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000043
+- **Low** SCR-000044 — Cash-flow forecasting Workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000044
+- **Low** SCR-000045 — Financial statements and close Workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000045
+- **Low** SCR-000046 — Inventory Decision Dashboard: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000001 | CMP-000001 <-uses- SCR-000046
+- **Low** SCR-000047 — Product and SKU catalog Workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000047
+- **Low** SCR-000048 — Warehouse and location model Workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000048
+- **Low** SCR-000049 — Stock ledger and availability Workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000049
+- **Low** SCR-000050 — Reservations and allocations Workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000050
+- **Low** SCR-000051 — Purchase orders and receipts Workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000051
+- **Low** SCR-000052 — Transfers and adjustments Workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000052
+- **Low** SCR-000053 — Lot/serial/batch traceability Workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000053
+- **Low** SCR-000054 — Reorder and demand planning Workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000054
+- **Low** SCR-000055 — CRM Decision Dashboard: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000001 | CMP-000001 <-uses- SCR-000055
+- **Low** SCR-000056 — Contacts and organizations Workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000056
+- **Low** SCR-000057 — Lead capture and qualification Workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000057
+- **Low** SCR-000058 — Opportunity pipelines Workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000058
+- **Low** SCR-000059 — Activities and tasks Workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000059
+- **Low** SCR-000060 — Segmentation Workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000060
+- **Low** SCR-000061 — Customer value and health Workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000061
+- **Low** SCR-000062 — Campaign attribution Workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000062
+- **Low** SCR-000063 — Consent and communication history Workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000063
+- **Low** SCR-000064 — Analytics Decision Dashboard: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000001 | CMP-000001 <-uses- SCR-000064
+- **Low** SCR-000065 — Metric registry Workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000065
+- **Low** SCR-000066 — Semantic definitions Workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000066
+- **Low** SCR-000067 — Dashboard composition Workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000067
+- **Low** SCR-000068 — Filters and saved views Workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000068
+- **Low** SCR-000069 — Drill-down and lineage Workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000069
+- **Low** SCR-000070 — Scheduled reports Workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000070
+- **Low** SCR-000071 — Exports Workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000071
+- **Low** SCR-000072 — Annotations and forecast overlays Workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000072
+- **Low** SCR-000073 — Documents Decision Dashboard: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000001 | CMP-000001 <-uses- SCR-000073
+- **Low** SCR-000074 — Document metadata and storage Workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000074
+- **Low** SCR-000075 — Templates Workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000075
+- **Low** SCR-000076 — Generation Workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000076
+- **Low** SCR-000077 — Versioning Workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000077
+- **Low** SCR-000078 — Review and approval Workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000078
+- **Low** SCR-000079 — Electronic signature adapters Workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000079
+- **Low** SCR-000080 — OCR/import Workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000080
+- **Low** SCR-000081 — Retention and legal hold Workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000081
+- **Low** SCR-000082 — Notifications Decision Dashboard: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000001 | CMP-000001 <-uses- SCR-000082
+- **Low** SCR-000083 — Unified notification events Workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000083
+- **Low** SCR-000084 — Templates and versions Workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000084
+- **Low** SCR-000085 — Category and priority Workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000085
+- **Low** SCR-000086 — User preferences and quiet hours Workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000086
+- **Low** SCR-000087 — Channel routing Workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000087
+- **Low** SCR-000088 — Delivery retries Workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000088
+- **Low** SCR-000089 — Digest and grouping Workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000089
+- **Low** SCR-000090 — Escalation and audit Workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000090
+- **Low** SCR-000091 — Human Resources Decision Dashboard: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000001 | CMP-000001 <-uses- SCR-000091
+- **Low** SCR-000092 — Employee records Workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000092
+- **Low** SCR-000093 — Organization and positions Workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000093
+- **Low** SCR-000094 — Recruitment Workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000094
+- **Low** SCR-000095 — Onboarding/offboarding Workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000095
+- **Low** SCR-000096 — Leave and attendance Workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000096
+- **Low** SCR-000097 — Performance and goals Workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000097
+- **Low** SCR-000098 — Compensation records Workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000098
+- **Low** SCR-000099 — Workforce planning and compliance Workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000099
+- **Low** SCR-000100 — Manufacturing Decision Dashboard: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000001 | CMP-000001 <-uses- SCR-000100
+- **Low** SCR-000101 — Bills of materials Workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000101
+- **Low** SCR-000102 — Routings and work centers Workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000102
+- **Low** SCR-000103 — Production orders Workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000103
+- **Low** SCR-000104 — Material requirements Workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000104
+- **Low** SCR-000105 — Scheduling and capacity Workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000105
+- **Low** SCR-000106 — Issue/consume/produce Workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000106
+- **Low** SCR-000107 — Quality control Workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000107
+- **Low** SCR-000108 — Yield, scrap, downtime, and cost Workspace: CAP-000004 -supports-> DEC-000013 | DEC-000013 <-supports- SCR-000028 | SCR-000028 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000108
+- **Low** UF-000001 — Decision Center UI Flow 1: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000001 | CAP-000001 -supports-> DEC-000001 | DEC-000001 <-supports- UF-000001
+- **Low** UF-000002 — Decision Center UI Flow 2: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000001 | CAP-000001 -supports-> DEC-000002 | DEC-000002 <-supports- UF-000002
+- **Low** UF-000003 — Decision Center UI Flow 3: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000001 | CAP-000001 -supports-> DEC-000003 | DEC-000003 <-supports- UF-000003
+- **Low** UF-000004 — Decision Center UI Flow 4: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000001 | CAP-000001 -supports-> DEC-000004 | DEC-000004 <-supports- UF-000004
+- **Low** UF-000005 — Decision Center UI Flow 5: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000001 | CAP-000001 -supports-> DEC-000001 | DEC-000001 <-supports- UF-000005
+- **Low** UF-000006 — Decision Center UI Flow 6: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000001 | CAP-000001 -supports-> DEC-000002 | DEC-000002 <-supports- UF-000006
+- **Low** UF-000007 — Decision Center UI Flow 7: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000001 | CAP-000001 -supports-> DEC-000003 | DEC-000003 <-supports- UF-000007
+- **Low** UF-000008 — Decision Center UI Flow 8: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000001 | CAP-000001 -supports-> DEC-000004 | DEC-000004 <-supports- UF-000008
+- **Low** UF-000009 — Decision Center UI Flow 9: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000001 | CAP-000001 -supports-> DEC-000001 | DEC-000001 <-supports- UF-000009
+- **Low** UF-000010 — Business Memory UI Flow 1: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000002 | CAP-000002 -supports-> DEC-000005 | DEC-000005 <-supports- UF-000010
+- **Low** UF-000011 — Business Memory UI Flow 2: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000002 | CAP-000002 -supports-> DEC-000006 | DEC-000006 <-supports- UF-000011
+- **Low** UF-000012 — Business Memory UI Flow 3: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000002 | CAP-000002 -supports-> DEC-000007 | DEC-000007 <-supports- UF-000012
+- **Low** UF-000013 — Business Memory UI Flow 4: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000002 | CAP-000002 -supports-> DEC-000008 | DEC-000008 <-supports- UF-000013
+- **Low** UF-000014 — Business Memory UI Flow 5: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000002 | CAP-000002 -supports-> DEC-000005 | DEC-000005 <-supports- UF-000014
+- **Low** UF-000015 — Business Memory UI Flow 6: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000002 | CAP-000002 -supports-> DEC-000006 | DEC-000006 <-supports- UF-000015
+- **Low** UF-000016 — Business Memory UI Flow 7: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000002 | CAP-000002 -supports-> DEC-000007 | DEC-000007 <-supports- UF-000016
+- **Low** UF-000017 — Business Memory UI Flow 8: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000002 | CAP-000002 -supports-> DEC-000008 | DEC-000008 <-supports- UF-000017
+- **Low** UF-000018 — Business Memory UI Flow 9: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000002 | CAP-000002 -supports-> DEC-000005 | DEC-000005 <-supports- UF-000018
+- **Low** UF-000019 — AI Engine UI Flow 1: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000003 | CAP-000003 -supports-> DEC-000009 | DEC-000009 <-supports- UF-000019
+- **Low** UF-000020 — AI Engine UI Flow 2: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000003 | CAP-000003 -supports-> DEC-000010 | DEC-000010 <-supports- UF-000020
+- **Low** UF-000021 — AI Engine UI Flow 3: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000003 | CAP-000003 -supports-> DEC-000011 | DEC-000011 <-supports- UF-000021
+- **Low** UF-000022 — AI Engine UI Flow 4: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000003 | CAP-000003 -supports-> DEC-000012 | DEC-000012 <-supports- UF-000022
+- **Low** UF-000023 — AI Engine UI Flow 5: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000003 | CAP-000003 -supports-> DEC-000009 | DEC-000009 <-supports- UF-000023
+- **Low** UF-000024 — AI Engine UI Flow 6: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000003 | CAP-000003 -supports-> DEC-000010 | DEC-000010 <-supports- UF-000024
+- **Low** UF-000025 — AI Engine UI Flow 7: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000003 | CAP-000003 -supports-> DEC-000011 | DEC-000011 <-supports- UF-000025
+- **Low** UF-000026 — AI Engine UI Flow 8: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000003 | CAP-000003 -supports-> DEC-000012 | DEC-000012 <-supports- UF-000026
+- **Low** UF-000027 — AI Engine UI Flow 9: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000003 | CAP-000003 -supports-> DEC-000009 | DEC-000009 <-supports- UF-000027
+- **Low** UF-000037 — Finance UI Flow 1: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000005 | CAP-000005 -supports-> DEC-000017 | DEC-000017 <-supports- UF-000037
+- **Low** UF-000038 — Finance UI Flow 2: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000005 | CAP-000005 -supports-> DEC-000018 | DEC-000018 <-supports- UF-000038
+- **Low** UF-000039 — Finance UI Flow 3: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000005 | CAP-000005 -supports-> DEC-000019 | DEC-000019 <-supports- UF-000039
+- **Low** UF-000040 — Finance UI Flow 4: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000005 | CAP-000005 -supports-> DEC-000020 | DEC-000020 <-supports- UF-000040
+- **Low** UF-000041 — Finance UI Flow 5: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000005 | CAP-000005 -supports-> DEC-000017 | DEC-000017 <-supports- UF-000041
+- **Low** UF-000042 — Finance UI Flow 6: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000005 | CAP-000005 -supports-> DEC-000018 | DEC-000018 <-supports- UF-000042
+- **Low** UF-000043 — Finance UI Flow 7: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000005 | CAP-000005 -supports-> DEC-000019 | DEC-000019 <-supports- UF-000043
+- **Low** UF-000044 — Finance UI Flow 8: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000005 | CAP-000005 -supports-> DEC-000020 | DEC-000020 <-supports- UF-000044
+- **Low** UF-000045 — Finance UI Flow 9: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000005 | CAP-000005 -supports-> DEC-000017 | DEC-000017 <-supports- UF-000045
+- **Low** UF-000046 — Inventory UI Flow 1: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000006 | CAP-000006 -supports-> DEC-000021 | DEC-000021 <-supports- UF-000046
+- **Low** UF-000047 — Inventory UI Flow 2: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000006 | CAP-000006 -supports-> DEC-000022 | DEC-000022 <-supports- UF-000047
+- **Low** UF-000048 — Inventory UI Flow 3: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000006 | CAP-000006 -supports-> DEC-000023 | DEC-000023 <-supports- UF-000048
+- **Low** UF-000049 — Inventory UI Flow 4: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000006 | CAP-000006 -supports-> DEC-000024 | DEC-000024 <-supports- UF-000049
+- **Low** UF-000050 — Inventory UI Flow 5: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000006 | CAP-000006 -supports-> DEC-000021 | DEC-000021 <-supports- UF-000050
+- **Low** UF-000051 — Inventory UI Flow 6: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000006 | CAP-000006 -supports-> DEC-000022 | DEC-000022 <-supports- UF-000051
+- **Low** UF-000052 — Inventory UI Flow 7: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000006 | CAP-000006 -supports-> DEC-000023 | DEC-000023 <-supports- UF-000052
+- **Low** UF-000053 — Inventory UI Flow 8: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000006 | CAP-000006 -supports-> DEC-000024 | DEC-000024 <-supports- UF-000053
+- **Low** UF-000054 — Inventory UI Flow 9: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000006 | CAP-000006 -supports-> DEC-000021 | DEC-000021 <-supports- UF-000054
+- **Low** UF-000055 — CRM UI Flow 1: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000007 | CAP-000007 -supports-> DEC-000025 | DEC-000025 <-supports- UF-000055
+- **Low** UF-000056 — CRM UI Flow 2: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000007 | CAP-000007 -supports-> DEC-000026 | DEC-000026 <-supports- UF-000056
+- **Low** UF-000057 — CRM UI Flow 3: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000007 | CAP-000007 -supports-> DEC-000027 | DEC-000027 <-supports- UF-000057
+- **Low** UF-000058 — CRM UI Flow 4: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000007 | CAP-000007 -supports-> DEC-000028 | DEC-000028 <-supports- UF-000058
+- **Low** UF-000059 — CRM UI Flow 5: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000007 | CAP-000007 -supports-> DEC-000025 | DEC-000025 <-supports- UF-000059
+- **Low** UF-000060 — CRM UI Flow 6: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000007 | CAP-000007 -supports-> DEC-000026 | DEC-000026 <-supports- UF-000060
+- **Low** UF-000061 — CRM UI Flow 7: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000007 | CAP-000007 -supports-> DEC-000027 | DEC-000027 <-supports- UF-000061
+- **Low** UF-000062 — CRM UI Flow 8: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000007 | CAP-000007 -supports-> DEC-000028 | DEC-000028 <-supports- UF-000062
+- **Low** UF-000063 — CRM UI Flow 9: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000007 | CAP-000007 -supports-> DEC-000025 | DEC-000025 <-supports- UF-000063
+- **Low** UF-000064 — Analytics UI Flow 1: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000008 | CAP-000008 -supports-> DEC-000029 | DEC-000029 <-supports- UF-000064
+- **Low** UF-000065 — Analytics UI Flow 2: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000008 | CAP-000008 -supports-> DEC-000030 | DEC-000030 <-supports- UF-000065
+- **Low** UF-000066 — Analytics UI Flow 3: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000008 | CAP-000008 -supports-> DEC-000031 | DEC-000031 <-supports- UF-000066
+- **Low** UF-000067 — Analytics UI Flow 4: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000008 | CAP-000008 -supports-> DEC-000032 | DEC-000032 <-supports- UF-000067
+- **Low** UF-000068 — Analytics UI Flow 5: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000008 | CAP-000008 -supports-> DEC-000029 | DEC-000029 <-supports- UF-000068
+- **Low** UF-000069 — Analytics UI Flow 6: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000008 | CAP-000008 -supports-> DEC-000030 | DEC-000030 <-supports- UF-000069
+- **Low** UF-000070 — Analytics UI Flow 7: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000008 | CAP-000008 -supports-> DEC-000031 | DEC-000031 <-supports- UF-000070
+- **Low** UF-000071 — Analytics UI Flow 8: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000008 | CAP-000008 -supports-> DEC-000032 | DEC-000032 <-supports- UF-000071
+- **Low** UF-000072 — Analytics UI Flow 9: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000008 | CAP-000008 -supports-> DEC-000029 | DEC-000029 <-supports- UF-000072
+- **Low** UF-000073 — Documents UI Flow 1: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000009 | CAP-000009 -supports-> DEC-000033 | DEC-000033 <-supports- UF-000073
+- **Low** UF-000074 — Documents UI Flow 2: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000009 | CAP-000009 -supports-> DEC-000034 | DEC-000034 <-supports- UF-000074
+- **Low** UF-000075 — Documents UI Flow 3: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000009 | CAP-000009 -supports-> DEC-000035 | DEC-000035 <-supports- UF-000075
+- **Low** UF-000076 — Documents UI Flow 4: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000009 | CAP-000009 -supports-> DEC-000036 | DEC-000036 <-supports- UF-000076
+- **Low** UF-000077 — Documents UI Flow 5: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000009 | CAP-000009 -supports-> DEC-000033 | DEC-000033 <-supports- UF-000077
+- **Low** UF-000078 — Documents UI Flow 6: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000009 | CAP-000009 -supports-> DEC-000034 | DEC-000034 <-supports- UF-000078
+- **Low** UF-000079 — Documents UI Flow 7: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000009 | CAP-000009 -supports-> DEC-000035 | DEC-000035 <-supports- UF-000079
+- **Low** UF-000080 — Documents UI Flow 8: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000009 | CAP-000009 -supports-> DEC-000036 | DEC-000036 <-supports- UF-000080
+- **Low** UF-000081 — Documents UI Flow 9: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000009 | CAP-000009 -supports-> DEC-000033 | DEC-000033 <-supports- UF-000081
+- **Low** UF-000082 — Notifications UI Flow 1: CAP-000004 -uses-> INT-000017 | INT-000017 <-uses- CAP-000010 | CAP-000010 -supports-> DEC-000037 | DEC-000037 <-supports- UF-000082
+- **Low** UF-000083 — Notifications UI Flow 2: CAP-000004 -uses-> INT-000017 | INT-000017 <-uses- CAP-000010 | CAP-000010 -supports-> DEC-000038 | DEC-000038 <-supports- UF-000083
+- **Low** UF-000084 — Notifications UI Flow 3: CAP-000004 -uses-> INT-000017 | INT-000017 <-uses- CAP-000010 | CAP-000010 -supports-> DEC-000039 | DEC-000039 <-supports- UF-000084
+- **Low** UF-000085 — Notifications UI Flow 4: CAP-000004 -uses-> INT-000017 | INT-000017 <-uses- CAP-000010 | CAP-000010 -supports-> DEC-000040 | DEC-000040 <-supports- UF-000085
+- **Low** UF-000086 — Notifications UI Flow 5: CAP-000004 -uses-> INT-000017 | INT-000017 <-uses- CAP-000010 | CAP-000010 -supports-> DEC-000037 | DEC-000037 <-supports- UF-000086
+- **Low** UF-000087 — Notifications UI Flow 6: CAP-000004 -uses-> INT-000017 | INT-000017 <-uses- CAP-000010 | CAP-000010 -supports-> DEC-000038 | DEC-000038 <-supports- UF-000087
+- **Low** UF-000088 — Notifications UI Flow 7: CAP-000004 -uses-> INT-000017 | INT-000017 <-uses- CAP-000010 | CAP-000010 -supports-> DEC-000039 | DEC-000039 <-supports- UF-000088
+- **Low** UF-000089 — Notifications UI Flow 8: CAP-000004 -uses-> INT-000017 | INT-000017 <-uses- CAP-000010 | CAP-000010 -supports-> DEC-000040 | DEC-000040 <-supports- UF-000089
+- **Low** UF-000090 — Notifications UI Flow 9: CAP-000004 -uses-> INT-000017 | INT-000017 <-uses- CAP-000010 | CAP-000010 -supports-> DEC-000037 | DEC-000037 <-supports- UF-000090
+- **Low** UF-000091 — Human Resources UI Flow 1: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000011 | CAP-000011 -supports-> DEC-000041 | DEC-000041 <-supports- UF-000091
+- **Low** UF-000092 — Human Resources UI Flow 2: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000011 | CAP-000011 -supports-> DEC-000042 | DEC-000042 <-supports- UF-000092
+- **Low** UF-000093 — Human Resources UI Flow 3: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000011 | CAP-000011 -supports-> DEC-000043 | DEC-000043 <-supports- UF-000093
+- **Low** UF-000094 — Human Resources UI Flow 4: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000011 | CAP-000011 -supports-> DEC-000044 | DEC-000044 <-supports- UF-000094
+- **Low** UF-000095 — Human Resources UI Flow 5: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000011 | CAP-000011 -supports-> DEC-000041 | DEC-000041 <-supports- UF-000095
+- **Low** UF-000096 — Human Resources UI Flow 6: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000011 | CAP-000011 -supports-> DEC-000042 | DEC-000042 <-supports- UF-000096
+- **Low** UF-000097 — Human Resources UI Flow 7: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000011 | CAP-000011 -supports-> DEC-000043 | DEC-000043 <-supports- UF-000097
+- **Low** UF-000098 — Human Resources UI Flow 8: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000011 | CAP-000011 -supports-> DEC-000044 | DEC-000044 <-supports- UF-000098
+- **Low** UF-000099 — Human Resources UI Flow 9: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000011 | CAP-000011 -supports-> DEC-000041 | DEC-000041 <-supports- UF-000099
+- **Low** UF-000100 — Manufacturing UI Flow 1: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000012 | CAP-000012 -supports-> DEC-000045 | DEC-000045 <-supports- UF-000100
+- **Low** UF-000101 — Manufacturing UI Flow 2: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000012 | CAP-000012 -supports-> DEC-000046 | DEC-000046 <-supports- UF-000101
+- **Low** UF-000102 — Manufacturing UI Flow 3: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000012 | CAP-000012 -supports-> DEC-000047 | DEC-000047 <-supports- UF-000102
+- **Low** UF-000103 — Manufacturing UI Flow 4: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000012 | CAP-000012 -supports-> DEC-000048 | DEC-000048 <-supports- UF-000103
+- **Low** UF-000104 — Manufacturing UI Flow 5: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000012 | CAP-000012 -supports-> DEC-000045 | DEC-000045 <-supports- UF-000104
+- **Low** UF-000105 — Manufacturing UI Flow 6: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000012 | CAP-000012 -supports-> DEC-000046 | DEC-000046 <-supports- UF-000105
+- **Low** UF-000106 — Manufacturing UI Flow 7: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000012 | CAP-000012 -supports-> DEC-000047 | DEC-000047 <-supports- UF-000106
+- **Low** UF-000107 — Manufacturing UI Flow 8: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000012 | CAP-000012 -supports-> DEC-000048 | DEC-000048 <-supports- UF-000107
+- **Low** UF-000108 — Manufacturing UI Flow 9: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000012 | CAP-000012 -supports-> DEC-000045 | DEC-000045 <-supports- UF-000108
+- **Low** UJ-000001 — Signal-to-decision creation: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000001 | CAP-000001 -supports-> DEC-000001 | DEC-000001 <-supports- UJ-000001
+- **Low** UJ-000002 — Decision triage: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000001 | CAP-000001 -supports-> DEC-000002 | DEC-000002 <-supports- UJ-000002
+- **Low** UJ-000003 — Evidence review: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000001 | CAP-000001 -supports-> DEC-000003 | DEC-000003 <-supports- UJ-000003
+- **Low** UJ-000004 — Approval path: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000001 | CAP-000001 -supports-> DEC-000004 | DEC-000004 <-supports- UJ-000004
+- **Low** UJ-000005 — Action recording: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000001 | CAP-000001 -supports-> DEC-000001 | DEC-000001 <-supports- UJ-000005
+- **Low** UJ-000006 — Outcome review: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000001 | CAP-000001 -supports-> DEC-000002 | DEC-000002 <-supports- UJ-000006
+- **Low** UJ-000007 — Reopen and recovery: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000001 | CAP-000001 -supports-> DEC-000003 | DEC-000003 <-supports- UJ-000007
+- **Low** UJ-000008 — Capture memory: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000002 | CAP-000002 -supports-> DEC-000005 | DEC-000005 <-supports- UJ-000008
+- **Low** UJ-000009 — Enrich and index: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000002 | CAP-000002 -supports-> DEC-000006 | DEC-000006 <-supports- UJ-000009
+- **Low** UJ-000010 — Search and retrieve: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000002 | CAP-000002 -supports-> DEC-000007 | DEC-000007 <-supports- UJ-000010
+- **Low** UJ-000011 — Inspect source lineage: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000002 | CAP-000002 -supports-> DEC-000008 | DEC-000008 <-supports- UJ-000011
+- **Low** UJ-000012 — Correct by supersession: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000002 | CAP-000002 -supports-> DEC-000005 | DEC-000005 <-supports- UJ-000012
+- **Low** UJ-000013 — Apply retention: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000002 | CAP-000002 -supports-> DEC-000006 | DEC-000006 <-supports- UJ-000013
+- **Low** UJ-000014 — Export authorized memory: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000002 | CAP-000002 -supports-> DEC-000007 | DEC-000007 <-supports- UJ-000014
+- **Low** UJ-000015 — Govern prompt version: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000003 | CAP-000003 -supports-> DEC-000009 | DEC-000009 <-supports- UJ-000015
+- **Low** UJ-000016 — Route model request: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000003 | CAP-000003 -supports-> DEC-000010 | DEC-000010 <-supports- UJ-000016
+- **Low** UJ-000017 — Retrieve governed context: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000003 | CAP-000003 -supports-> DEC-000011 | DEC-000011 <-supports- UJ-000017
+- **Low** UJ-000018 — Validate structured output: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000003 | CAP-000003 -supports-> DEC-000012 | DEC-000012 <-supports- UJ-000018
+- **Low** UJ-000019 — Human review: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000003 | CAP-000003 -supports-> DEC-000009 | DEC-000009 <-supports- UJ-000019
+- **Low** UJ-000020 — Evaluate release: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000003 | CAP-000003 -supports-> DEC-000010 | DEC-000010 <-supports- UJ-000020
+- **Low** UJ-000021 — Fallback and recovery: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000003 | CAP-000003 -supports-> DEC-000011 | DEC-000011 <-supports- UJ-000021
+- **Low** UJ-000022 — Measure outcome: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000003 | CAP-000003 -supports-> DEC-000012 | DEC-000012 <-supports- UJ-000022
+- **Low** UJ-000031 — Post journal: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000005 | CAP-000005 -supports-> DEC-000017 | DEC-000017 <-supports- UJ-000031
+- **Low** UJ-000032 — Issue and collect invoice: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000005 | CAP-000005 -supports-> DEC-000018 | DEC-000018 <-supports- UJ-000032
+- **Low** UJ-000033 — Record and pay bill: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000005 | CAP-000005 -supports-> DEC-000019 | DEC-000019 <-supports- UJ-000033
+- **Low** UJ-000034 — Import and reconcile bank activity: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000005 | CAP-000005 -supports-> DEC-000020 | DEC-000020 <-supports- UJ-000034
+- **Low** UJ-000035 — Close fiscal period: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000005 | CAP-000005 -supports-> DEC-000017 | DEC-000017 <-supports- UJ-000035
+- **Low** UJ-000036 — Approve budget: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000005 | CAP-000005 -supports-> DEC-000018 | DEC-000018 <-supports- UJ-000036
+- **Low** UJ-000037 — Forecast cash: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000005 | CAP-000005 -supports-> DEC-000019 | DEC-000019 <-supports- UJ-000037
+- **Low** UJ-000038 — Reverse incorrect posting: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000005 | CAP-000005 -supports-> DEC-000020 | DEC-000020 <-supports- UJ-000038
+- **Low** UJ-000039 — Create product: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000006 | CAP-000006 -supports-> DEC-000021 | DEC-000021 <-supports- UJ-000039
+- **Low** UJ-000040 — Receive stock: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000006 | CAP-000006 -supports-> DEC-000022 | DEC-000022 <-supports- UJ-000040
+- **Low** UJ-000041 — Reserve and release: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000006 | CAP-000006 -supports-> DEC-000023 | DEC-000023 <-supports- UJ-000041
+- **Low** UJ-000042 — Transfer stock: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000006 | CAP-000006 -supports-> DEC-000024 | DEC-000024 <-supports- UJ-000042
+- **Low** UJ-000043 — Adjust with reason: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000006 | CAP-000006 -supports-> DEC-000021 | DEC-000021 <-supports- UJ-000043
+- **Low** UJ-000044 — Cycle count: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000006 | CAP-000006 -supports-> DEC-000022 | DEC-000022 <-supports- UJ-000044
+- **Low** UJ-000045 — Purchase and receive: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000006 | CAP-000006 -supports-> DEC-000023 | DEC-000023 <-supports- UJ-000045
+- **Low** UJ-000046 — Reorder decision: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000006 | CAP-000006 -supports-> DEC-000024 | DEC-000024 <-supports- UJ-000046
+- **Low** UJ-000047 — Capture and deduplicate lead: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000007 | CAP-000007 -supports-> DEC-000025 | DEC-000025 <-supports- UJ-000047
+- **Low** UJ-000048 — Qualify lead: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000007 | CAP-000007 -supports-> DEC-000026 | DEC-000026 <-supports- UJ-000048
+- **Low** UJ-000049 — Progress opportunity: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000007 | CAP-000007 -supports-> DEC-000027 | DEC-000027 <-supports- UJ-000049
+- **Low** UJ-000050 — Record activity: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000007 | CAP-000007 -supports-> DEC-000028 | DEC-000028 <-supports- UJ-000050
+- **Low** UJ-000051 — Assign next action: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000007 | CAP-000007 -supports-> DEC-000025 | DEC-000025 <-supports- UJ-000051
+- **Low** UJ-000052 — Build segment: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000007 | CAP-000007 -supports-> DEC-000026 | DEC-000026 <-supports- UJ-000052
+- **Low** UJ-000053 — Detect churn risk: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000007 | CAP-000007 -supports-> DEC-000027 | DEC-000027 <-supports- UJ-000053
+- **Low** UJ-000054 — Win/loss review: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000007 | CAP-000007 -supports-> DEC-000028 | DEC-000028 <-supports- UJ-000054
+- **Low** UJ-000055 — Define and approve metric: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000008 | CAP-000008 -supports-> DEC-000029 | DEC-000029 <-supports- UJ-000055
+- **Low** UJ-000056 — Compute metric: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000008 | CAP-000008 -supports-> DEC-000030 | DEC-000030 <-supports- UJ-000056
+- **Low** UJ-000057 — Compose dashboard: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000008 | CAP-000008 -supports-> DEC-000031 | DEC-000031 <-supports- UJ-000057
+- **Low** UJ-000058 — Filter and drill down: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000008 | CAP-000008 -supports-> DEC-000032 | DEC-000032 <-supports- UJ-000058
+- **Low** UJ-000059 — Annotate change: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000008 | CAP-000008 -supports-> DEC-000029 | DEC-000029 <-supports- UJ-000059
+- **Low** UJ-000060 — Schedule report: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000008 | CAP-000008 -supports-> DEC-000030 | DEC-000030 <-supports- UJ-000060
+- **Low** UJ-000061 — Export data: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000008 | CAP-000008 -supports-> DEC-000031 | DEC-000031 <-supports- UJ-000061
+- **Low** UJ-000062 — Handle data-quality failure: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000008 | CAP-000008 -supports-> DEC-000032 | DEC-000032 <-supports- UJ-000062
+- **Low** UJ-000063 — Upload and classify: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000009 | CAP-000009 -supports-> DEC-000033 | DEC-000033 <-supports- UJ-000063
+- **Low** UJ-000064 — Generate from template: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000009 | CAP-000009 -supports-> DEC-000034 | DEC-000034 <-supports- UJ-000064
+- **Low** UJ-000065 — Create new version: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000009 | CAP-000009 -supports-> DEC-000035 | DEC-000035 <-supports- UJ-000065
+- **Low** UJ-000066 — Review and approve: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000009 | CAP-000009 -supports-> DEC-000036 | DEC-000036 <-supports- UJ-000066
+- **Low** UJ-000067 — Send for signature: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000009 | CAP-000009 -supports-> DEC-000033 | DEC-000033 <-supports- UJ-000067
+- **Low** UJ-000068 — Extract and index: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000009 | CAP-000009 -supports-> DEC-000034 | DEC-000034 <-supports- UJ-000068
+- **Low** UJ-000069 — Place legal hold: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000009 | CAP-000009 -supports-> DEC-000035 | DEC-000035 <-supports- UJ-000069
+- **Low** UJ-000070 — Archive or dispose: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000009 | CAP-000009 -supports-> DEC-000036 | DEC-000036 <-supports- UJ-000070
+- **Low** UJ-000071 — Create notification: CAP-000004 -uses-> INT-000017 | INT-000017 <-uses- CAP-000010 | CAP-000010 -supports-> DEC-000037 | DEC-000037 <-supports- UJ-000071
+- **Low** UJ-000072 — Evaluate policy: CAP-000004 -uses-> INT-000017 | INT-000017 <-uses- CAP-000010 | CAP-000010 -supports-> DEC-000038 | DEC-000038 <-supports- UJ-000072
+- **Low** UJ-000073 — Render template: CAP-000004 -uses-> INT-000017 | INT-000017 <-uses- CAP-000010 | CAP-000010 -supports-> DEC-000039 | DEC-000039 <-supports- UJ-000073
+- **Low** UJ-000074 — Route channel: CAP-000004 -uses-> INT-000017 | INT-000017 <-uses- CAP-000010 | CAP-000010 -supports-> DEC-000040 | DEC-000040 <-supports- UJ-000074
+- **Low** UJ-000075 — Deliver and retry: CAP-000004 -uses-> INT-000017 | INT-000017 <-uses- CAP-000010 | CAP-000010 -supports-> DEC-000037 | DEC-000037 <-supports- UJ-000075
+- **Low** UJ-000076 — Group digest: CAP-000004 -uses-> INT-000017 | INT-000017 <-uses- CAP-000010 | CAP-000010 -supports-> DEC-000038 | DEC-000038 <-supports- UJ-000076
+- **Low** UJ-000077 — Escalate failure: CAP-000004 -uses-> INT-000017 | INT-000017 <-uses- CAP-000010 | CAP-000010 -supports-> DEC-000039 | DEC-000039 <-supports- UJ-000077
+- **Low** UJ-000078 — Read/dismiss/act: CAP-000004 -uses-> INT-000017 | INT-000017 <-uses- CAP-000010 | CAP-000010 -supports-> DEC-000040 | DEC-000040 <-supports- UJ-000078
+- **Low** UJ-000079 — Recruit and hire: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000011 | CAP-000011 -supports-> DEC-000041 | DEC-000041 <-supports- UJ-000079
+- **Low** UJ-000080 — Onboard employee: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000011 | CAP-000011 -supports-> DEC-000042 | DEC-000042 <-supports- UJ-000080
+- **Low** UJ-000081 — Request and approve leave: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000011 | CAP-000011 -supports-> DEC-000043 | DEC-000043 <-supports- UJ-000081
+- **Low** UJ-000082 — Record attendance exception: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000011 | CAP-000011 -supports-> DEC-000044 | DEC-000044 <-supports- UJ-000082
+- **Low** UJ-000083 — Set and review goals: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000011 | CAP-000011 -supports-> DEC-000041 | DEC-000041 <-supports- UJ-000083
+- **Low** UJ-000084 — Change position/compensation: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000011 | CAP-000011 -supports-> DEC-000042 | DEC-000042 <-supports- UJ-000084
+- **Low** UJ-000085 — Offboard and revoke access: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000011 | CAP-000011 -supports-> DEC-000043 | DEC-000043 <-supports- UJ-000085
+- **Low** UJ-000086 — Plan capacity: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000011 | CAP-000011 -supports-> DEC-000044 | DEC-000044 <-supports- UJ-000086
+- **Low** UJ-000087 — Release production order: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000012 | CAP-000012 -supports-> DEC-000045 | DEC-000045 <-supports- UJ-000087
+- **Low** UJ-000088 — Plan material: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000012 | CAP-000012 -supports-> DEC-000046 | DEC-000046 <-supports- UJ-000088
+- **Low** UJ-000089 — Schedule operation: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000012 | CAP-000012 -supports-> DEC-000047 | DEC-000047 <-supports- UJ-000089
+- **Low** UJ-000090 — Issue material: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000012 | CAP-000012 -supports-> DEC-000048 | DEC-000048 <-supports- UJ-000090
+- **Low** UJ-000091 — Record production: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000012 | CAP-000012 -supports-> DEC-000045 | DEC-000045 <-supports- UJ-000091
+- **Low** UJ-000092 — Inspect quality: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000012 | CAP-000012 -supports-> DEC-000046 | DEC-000046 <-supports- UJ-000092
+- **Low** UJ-000093 — Handle nonconformance: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000012 | CAP-000012 -supports-> DEC-000047 | DEC-000047 <-supports- UJ-000093
+- **Low** UJ-000094 — Close and cost order: CAP-000004 -specified_by-> ART-000029 | ART-000029 <-specified_by- CAP-000012 | CAP-000012 -supports-> DEC-000048 | DEC-000048 <-supports- UJ-000094

@@ -1,0 +1,691 @@
+# Impact Intelligence Report: BR-000001 [business_rule] Decision Center Rule 1 (Specified)
+
+Generated: 2026-07-12T03:13:46.734Z  
+Depth: 4  
+Gate: **BLOCKED_PENDING_REVIEW**  
+Severity: **Critical**  
+Compatibility: Potentially breaking contract or behavior change  
+Affected: 652
+
+## Required actions
+
+- Review affected records: 652
+- Route required approvals: 18
+- Review or invalidate artifacts: 48
+- Rerun selected tests: 0
+- Reassess affected releases: 2
+- Define migration and rollback: 1
+
+## Owners and approvals
+
+- TEAM-000001 — Product Architecture Office: 49 records
+- TEAM-000002 — Platform Engineering: 1 records
+- TEAM-000003 — Design Office: 9 records
+- TEAM-000006 — AI and Decision Intelligence: 5 records
+- TEAM-000007 — Decision Center Team: 125 records
+- TEAM-000008 — Business Memory Team: 40 records
+- TEAM-000009 — AI Engine Team: 41 records
+- TEAM-000010 — Identity, Workspace, Permissions & Audit Team: 43 records
+- TEAM-000011 — Finance Team: 43 records
+- TEAM-000012 — Inventory Team: 43 records
+- TEAM-000013 — CRM Team: 43 records
+- TEAM-000014 — Analytics Team: 41 records
+- TEAM-000015 — Documents Team: 42 records
+- TEAM-000016 — Notifications Team: 42 records
+- TEAM-000017 — Human Resources Team: 42 records
+- TEAM-000018 — Manufacturing Team: 43 records
+
+## Explainable paths
+
+- **High** ART-000008 — ZYVORA Decision Center PRD v1.0: BR-000001 -documented_by-> ART-000008
+- **High** ART-000021 — ZYVORA Decision Center Technical Specification v1.0: BR-000001 -specified_by-> ART-000021
+- **Critical** FEAT-000001 — Decision inbox and saved views: BR-000001 -governs-> FEAT-000001
+- **High** API-000001 — Decision Center Decision inbox and saved views API: BR-000001 -governs-> FEAT-000001 | FEAT-000001 -exposes-> API-000001
+- **High** API-000002 — Decision Center Priority and urgency explanation API: BR-000001 -specified_by-> ART-000021 | ART-000021 <-specified_by- API-000002
+- **High** API-000003 — Decision Center Decision detail and evidence bundle API: BR-000001 -specified_by-> ART-000021 | ART-000021 <-specified_by- API-000003
+- **High** API-000004 — Decision Center Alternative and trade-off comparison API: BR-000001 -specified_by-> ART-000021 | ART-000021 <-specified_by- API-000004
+- **High** API-000005 — Decision Center Assignment and due-date control API: BR-000001 -specified_by-> ART-000021 | ART-000021 <-specified_by- API-000005
+- **High** API-000006 — Decision Center Approval and escalation API: BR-000001 -specified_by-> ART-000021 | ART-000021 <-specified_by- API-000006
+- **High** API-000007 — Decision Center Action and rationale recording API: BR-000001 -specified_by-> ART-000021 | ART-000021 <-specified_by- API-000007
+- **High** API-000008 — Decision Center Outcome follow-up and learning API: BR-000001 -specified_by-> ART-000021 | ART-000021 <-specified_by- API-000008
+- **Medium** AUTO-000001 — New assignment Automation: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-automates- AUTO-000001
+- **High** BR-000002 — Decision Center Rule 2: BR-000001 -documented_by-> ART-000008 | ART-000008 <-documented_by- BR-000002
+- **High** BR-000003 — Decision Center Rule 3: BR-000001 -documented_by-> ART-000008 | ART-000008 <-documented_by- BR-000003
+- **High** BR-000004 — Decision Center Rule 4: BR-000001 -documented_by-> ART-000008 | ART-000008 <-documented_by- BR-000004
+- **High** BR-000005 — Decision Center Rule 5: BR-000001 -documented_by-> ART-000008 | ART-000008 <-documented_by- BR-000005
+- **High** BR-000006 — Decision Center Rule 6: BR-000001 -documented_by-> ART-000008 | ART-000008 <-documented_by- BR-000006
+- **High** BR-000007 — Decision Center Rule 7: BR-000001 -documented_by-> ART-000008 | ART-000008 <-documented_by- BR-000007
+- **High** BR-000008 — Decision Center Rule 8: BR-000001 -documented_by-> ART-000008 | ART-000008 <-documented_by- BR-000008
+- **Medium** CAP-000001 — Decision Center Core Capability: BR-000001 -documented_by-> ART-000008 | ART-000008 <-documented_by- CAP-000001
+- **Medium** DEC-000001 — What requires attention now?: BR-000001 -governs-> FEAT-000001 | FEAT-000001 -supports-> DEC-000001
+- **High** ENT-000001 — DecisionContext: BR-000001 -governs-> FEAT-000001 | FEAT-000001 -persists-> ENT-000001
+- **High** EVT-000001 — DecisionQueued: BR-000001 -specified_by-> ART-000021 | ART-000021 <-specified_by- EVT-000001
+- **High** EVT-000002 — DecisionPriorityChanged: BR-000001 -specified_by-> ART-000021 | ART-000021 <-specified_by- EVT-000002
+- **High** EVT-000003 — DecisionAssigned: BR-000001 -specified_by-> ART-000021 | ART-000021 <-specified_by- EVT-000003
+- **High** EVT-000004 — ApprovalRequested: BR-000001 -specified_by-> ART-000021 | ART-000021 <-specified_by- EVT-000004
+- **High** EVT-000005 — DecisionRecorded: BR-000001 -specified_by-> ART-000021 | ART-000021 <-specified_by- EVT-000005
+- **High** EVT-000006 — DecisionOutcomeCaptured: BR-000001 -specified_by-> ART-000021 | ART-000021 <-specified_by- EVT-000006
+- **Medium** FEAT-000002 — Priority and urgency explanation: BR-000001 -documented_by-> ART-000008 | ART-000008 <-documented_by- FEAT-000002
+- **Medium** FEAT-000003 — Decision detail and evidence bundle: BR-000001 -documented_by-> ART-000008 | ART-000008 <-documented_by- FEAT-000003
+- **Medium** FEAT-000004 — Alternative and trade-off comparison: BR-000001 -documented_by-> ART-000008 | ART-000008 <-documented_by- FEAT-000004
+- **Medium** FEAT-000005 — Assignment and due-date control: BR-000001 -documented_by-> ART-000008 | ART-000008 <-documented_by- FEAT-000005
+- **Medium** FEAT-000006 — Approval and escalation: BR-000001 -documented_by-> ART-000008 | ART-000008 <-documented_by- FEAT-000006
+- **Medium** FEAT-000007 — Action and rationale recording: BR-000001 -documented_by-> ART-000008 | ART-000008 <-documented_by- FEAT-000007
+- **Medium** FEAT-000008 — Outcome follow-up and learning: BR-000001 -documented_by-> ART-000008 | ART-000008 <-documented_by- FEAT-000008
+- **High** PERM-000001 — Read Decision inbox and saved views: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-governs- PERM-000001
+- **High** PERM-000002 — Manage Decision inbox and saved views: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-governs- PERM-000002
+- **High** REL-000001 — Architecture Knowledge System 1.0: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001
+- **Medium** SCR-000002 — Decision inbox and saved views Workspace: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002
+- **High** WF-000001 — Signal-to-decision creation: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- WF-000001
+- **Low** AICAP-000001 — Decision Center: Priority assistance: BR-000001 -governs-> FEAT-000001 | FEAT-000001 -supports-> DEC-000001 | DEC-000001 -uses-> AICAP-000001
+- **Low** AICAP-000002 — Decision Center: Alternative generation: BR-000001 -documented_by-> ART-000008 | ART-000008 <-documented_by- CAP-000001 | CAP-000001 -uses-> AICAP-000002
+- **Low** AICAP-000003 — Decision Center: Trade-off explanation: BR-000001 -documented_by-> ART-000008 | ART-000008 <-documented_by- CAP-000001 | CAP-000001 -uses-> AICAP-000003
+- **Low** AICAP-000004 — Decision Center: Outcome comparison: BR-000001 -documented_by-> ART-000008 | ART-000008 <-documented_by- CAP-000001 | CAP-000001 -uses-> AICAP-000004
+- **Low** AICAP-000005 — Decision Center: Similar-decision retrieval: BR-000001 -documented_by-> ART-000008 | ART-000008 <-documented_by- CAP-000001 | CAP-000001 -uses-> AICAP-000005
+- **High** ART-000001 — ZYVORA Design System & UI/UX Bible v1.0: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000001
+- **High** ART-000002 — ZYVORA ZYVORA Product PRD v1.0: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000002
+- **High** ART-000003 — ZYVORA Master Product Bible v1.0: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000003
+- **High** ART-000004 — ZYVORA AI Engine PRD v1.0: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000004
+- **High** ART-000005 — ZYVORA Analytics PRD v1.0: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000005
+- **High** ART-000006 — ZYVORA Business Memory PRD v1.0: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000006
+- **High** ART-000007 — ZYVORA CRM PRD v1.0: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000007
+- **High** ART-000009 — ZYVORA Documents PRD v1.0: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000009
+- **High** ART-000010 — ZYVORA Finance PRD v1.0: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000010
+- **High** ART-000011 — ZYVORA Human Resources PRD v1.0: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000011
+- **High** ART-000012 — ZYVORA Identity, Workspace, Permissions & Audit PRD v1.0: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000012
+- **High** ART-000013 — ZYVORA Inventory PRD v1.0: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000013
+- **High** ART-000014 — ZYVORA Manufacturing PRD v1.0: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000014
+- **High** ART-000015 — ZYVORA Notifications PRD v1.0: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000015
+- **High** ART-000016 — ZYVORA ZYVORA Product Technical Specification v1.0: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000016
+- **High** ART-000017 — ZYVORA AI Engine Technical Specification v1.0: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000017
+- **High** ART-000018 — ZYVORA Analytics Technical Specification v1.0: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000018
+- **High** ART-000019 — ZYVORA Business Memory Technical Specification v1.0: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000019
+- **High** ART-000020 — ZYVORA CRM Technical Specification v1.0: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000020
+- **High** ART-000022 — ZYVORA Documents Technical Specification v1.0: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000022
+- **High** ART-000023 — ZYVORA Finance Technical Specification v1.0: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000023
+- **High** ART-000024 — ZYVORA Human Resources Technical Specification v1.0: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000024
+- **High** ART-000025 — ZYVORA Identity, Workspace, Permissions & Audit Technical Specification v1.0: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000025
+- **High** ART-000026 — ZYVORA Inventory Technical Specification v1.0: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000026
+- **High** ART-000027 — ZYVORA Manufacturing Technical Specification v1.0: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000027
+- **High** ART-000028 — ZYVORA Notifications Technical Specification v1.0: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000028
+- **High** ART-000029 — ZYVORA BP-000 Platform Blueprint v1.0: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000029
+- **High** ART-000030 — ZYVORA BP-001 UI Blueprint v1.0: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000030
+- **High** ART-000031 — ZYVORA BP-002 Backend Blueprint v1.0: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000031
+- **High** ART-000032 — ZYVORA BP-003 Database Blueprint v1.0: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000032
+- **High** ART-000033 — ZYVORA BP-004 API Blueprint v1.0: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000033
+- **High** ART-000034 — ZYVORA BP-005 AI Blueprint v1.0: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000034
+- **High** ART-000035 — ZYVORA BP-006 Security Blueprint v1.0: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000035
+- **High** ART-000036 — ZYVORA BP-007 Infrastructure Blueprint v1.0: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000036
+- **High** ART-000037 — ZYVORA Build Pack Standard v1.0: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000037
+- **High** ART-000038 — ZYVORA QA Pack Standard v1.0: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000038
+- **High** ART-000039 — ZYVORA Developer Standards v1.0: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000039
+- **High** ART-000040 — ZYVORA AKG Ontology and Registry Standard v1.0: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000040
+- **High** ART-000041 — ZYVORA Architecture Knowledge Graph Constitution v1.0: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000041
+- **High** ART-000042 — ZYVORA Governance Engine v1.1 Operating Specification: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000042
+- **High** ART-000043 — ZYVORA Team Implementation Handoff Guide v1.0: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000043
+- **High** ART-000044 — ZYVORA Architecture Overview v1.0: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000044
+- **High** ART-000045 — ZYVORA Platform PRD v1.0: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000045
+- **High** ART-000046 — ZYVORA Product Architecture Library Manifest v1.0: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000046
+- **Low** AUTO-000002 — Approval requested Automation: BR-000001 -documented_by-> ART-000008 | ART-000008 <-documented_by- FEAT-000002 | FEAT-000002 <-automates- AUTO-000002
+- **Low** AUTO-000003 — Due soon Automation: BR-000001 -documented_by-> ART-000008 | ART-000008 <-documented_by- FEAT-000003 | FEAT-000003 <-automates- AUTO-000003
+- **Low** AUTO-000004 — Overdue escalation Automation: BR-000001 -documented_by-> ART-000008 | ART-000008 <-documented_by- FEAT-000004 | FEAT-000004 <-automates- AUTO-000004
+- **Low** AUTO-000005 — Outcome review due Automation: BR-000001 -documented_by-> ART-000008 | ART-000008 <-documented_by- FEAT-000005 | FEAT-000005 <-automates- AUTO-000005
+- **Low** AUTO-000006 — Decision materially changed Automation: BR-000001 -documented_by-> ART-000008 | ART-000008 <-documented_by- FEAT-000006 | FEAT-000006 <-automates- AUTO-000006
+- **High** BUILD-000001 — ZYVORA BUILD-001 Workspace Identity & Audit Foundation v1.0: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- BUILD-000001
+- **Low** CMP-000003 — Data Table: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000003
+- **Low** CMP-000004 — Filter Bar: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000004
+- **Low** CMP-000005 — Status Badge: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000005
+- **Low** CMP-000006 — Audit Timeline: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000006
+- **Low** CMP-000009 — Empty State: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000009
+- **Low** CMP-000010 — Error Recovery Panel: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000010
+- **Low** DASH-000001 — Decision Center Decision Dashboard: BR-000001 -governs-> FEAT-000001 | FEAT-000001 -supports-> DEC-000001 | DEC-000001 <-supports- DASH-000001
+- **Low** DEC-000002 — Which action should be taken?: BR-000001 -governs-> FEAT-000001 | FEAT-000001 -persists-> ENT-000001 | ENT-000001 <-uses- DEC-000002
+- **Low** DEC-000003 — Who must decide or approve?: BR-000001 -governs-> FEAT-000001 | FEAT-000001 -persists-> ENT-000001 | ENT-000001 <-uses- DEC-000003
+- **Low** DEC-000004 — Did the decision produce the expected outcome?: BR-000001 -governs-> FEAT-000001 | FEAT-000001 -persists-> ENT-000001 | ENT-000001 <-uses- DEC-000004
+- **High** ENT-000002 — DecisionEvidence: BR-000001 -governs-> FEAT-000001 | FEAT-000001 -supports-> DEC-000001 | DEC-000001 -uses-> ENT-000002
+- **High** ENT-000003 — DecisionAlternative: BR-000001 -governs-> FEAT-000001 | FEAT-000001 -supports-> DEC-000001 | DEC-000001 -uses-> ENT-000003
+- **High** ENT-000004 — DecisionAssignment: BR-000001 -documented_by-> ART-000008 | ART-000008 <-documented_by- FEAT-000004 | FEAT-000004 -persists-> ENT-000004
+- **High** ENT-000005 — ApprovalRequest: BR-000001 -documented_by-> ART-000008 | ART-000008 <-documented_by- FEAT-000005 | FEAT-000005 -persists-> ENT-000005
+- **High** ENT-000006 — DecisionAction: BR-000001 -documented_by-> ART-000008 | ART-000008 <-documented_by- FEAT-000006 | FEAT-000006 -persists-> ENT-000006
+- **High** ENT-000007 — DecisionOutcome: BR-000001 -documented_by-> ART-000008 | ART-000008 <-documented_by- FEAT-000007 | FEAT-000007 -persists-> ENT-000007
+- **High** ENT-000008 — DecisionComment: BR-000001 -documented_by-> ART-000008 | ART-000008 <-documented_by- FEAT-000008 | FEAT-000008 -persists-> ENT-000008
+- **Low** INT-000001 — Business Memory: BR-000001 -documented_by-> ART-000008 | ART-000008 <-documented_by- CAP-000001 | CAP-000001 -uses-> INT-000001
+- **Low** INT-000002 — AI Engine: BR-000001 -documented_by-> ART-000008 | ART-000008 <-documented_by- CAP-000001 | CAP-000001 -uses-> INT-000002
+- **Low** INT-000003 — Notifications: BR-000001 -documented_by-> ART-000008 | ART-000008 <-documented_by- CAP-000001 | CAP-000001 -uses-> INT-000003
+- **Low** INT-000004 — Analytics: BR-000001 -documented_by-> ART-000008 | ART-000008 <-documented_by- CAP-000001 | CAP-000001 -uses-> INT-000004
+- **Low** INT-000005 — Every domain module: BR-000001 -documented_by-> ART-000008 | ART-000008 <-documented_by- CAP-000001 | CAP-000001 -uses-> INT-000005
+- **High** MET-000001 — Median time to decision: BR-000001 -governs-> FEAT-000001 | FEAT-000001 -supports-> DEC-000001 | DEC-000001 -measured_by-> MET-000001
+- **High** MET-000002 — Unowned decision rate: BR-000001 -documented_by-> ART-000008 | ART-000008 <-documented_by- CAP-000001 | CAP-000001 -measured_by-> MET-000002
+- **High** MET-000003 — Approval cycle time: BR-000001 -documented_by-> ART-000008 | ART-000008 <-documented_by- CAP-000001 | CAP-000001 -measured_by-> MET-000003
+- **High** MET-000004 — Outcome capture rate: BR-000001 -documented_by-> ART-000008 | ART-000008 <-documented_by- CAP-000001 | CAP-000001 -measured_by-> MET-000004
+- **High** MET-000005 — Decision reopen rate: BR-000001 -documented_by-> ART-000008 | ART-000008 <-documented_by- CAP-000001 | CAP-000001 -measured_by-> MET-000005
+- **High** MET-000006 — Recommendation acceptance with reason: BR-000001 -documented_by-> ART-000008 | ART-000008 <-documented_by- CAP-000001 | CAP-000001 -measured_by-> MET-000006
+- **Low** MOD-000001 — Decision Center: BR-000001 -specified_by-> ART-000021 | ART-000021 <-specified_by- EVT-000001 | EVT-000001 <-produces- MOD-000001
+- **Low** MOD-000002 — Business Memory: BR-000001 -specified_by-> ART-000021 | ART-000021 <-specified_by- EVT-000005 | EVT-000005 <-consumes- MOD-000002
+- **Low** MOD-000008 — Analytics: BR-000001 -specified_by-> ART-000021 | ART-000021 <-specified_by- EVT-000005 | EVT-000005 <-consumes- MOD-000008
+- **Low** MOD-000009 — Documents: BR-000001 -specified_by-> ART-000021 | ART-000021 <-specified_by- EVT-000005 | EVT-000005 <-consumes- MOD-000009
+- **Low** MOD-000010 — Notifications: BR-000001 -specified_by-> ART-000021 | ART-000021 <-specified_by- EVT-000003 | EVT-000003 <-consumes- MOD-000010
+- **Low** NOT-000001 — New assignment: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-automates- AUTO-000001 | AUTO-000001 -notifies-> NOT-000001
+- **High** PERM-000003 — Read Priority and urgency explanation: BR-000001 -documented_by-> ART-000008 | ART-000008 <-documented_by- FEAT-000002 | FEAT-000002 <-governs- PERM-000003
+- **High** PERM-000004 — Manage Priority and urgency explanation: BR-000001 -documented_by-> ART-000008 | ART-000008 <-documented_by- FEAT-000002 | FEAT-000002 <-governs- PERM-000004
+- **High** PERM-000005 — Read Decision detail and evidence bundle: BR-000001 -documented_by-> ART-000008 | ART-000008 <-documented_by- FEAT-000003 | FEAT-000003 <-governs- PERM-000005
+- **High** PERM-000006 — Manage Decision detail and evidence bundle: BR-000001 -documented_by-> ART-000008 | ART-000008 <-documented_by- FEAT-000003 | FEAT-000003 <-governs- PERM-000006
+- **High** PERM-000007 — Read Alternative and trade-off comparison: BR-000001 -documented_by-> ART-000008 | ART-000008 <-documented_by- FEAT-000004 | FEAT-000004 <-governs- PERM-000007
+- **High** PERM-000008 — Manage Alternative and trade-off comparison: BR-000001 -documented_by-> ART-000008 | ART-000008 <-documented_by- FEAT-000004 | FEAT-000004 <-governs- PERM-000008
+- **High** PERM-000009 — Read Assignment and due-date control: BR-000001 -documented_by-> ART-000008 | ART-000008 <-documented_by- FEAT-000005 | FEAT-000005 <-governs- PERM-000009
+- **High** PERM-000010 — Manage Assignment and due-date control: BR-000001 -documented_by-> ART-000008 | ART-000008 <-documented_by- FEAT-000005 | FEAT-000005 <-governs- PERM-000010
+- **High** PERM-000011 — Read Approval and escalation: BR-000001 -documented_by-> ART-000008 | ART-000008 <-documented_by- FEAT-000006 | FEAT-000006 <-governs- PERM-000011
+- **High** PERM-000012 — Manage Approval and escalation: BR-000001 -documented_by-> ART-000008 | ART-000008 <-documented_by- FEAT-000006 | FEAT-000006 <-governs- PERM-000012
+- **High** PERM-000013 — Read Action and rationale recording: BR-000001 -documented_by-> ART-000008 | ART-000008 <-documented_by- FEAT-000007 | FEAT-000007 <-governs- PERM-000013
+- **High** PERM-000014 — Manage Action and rationale recording: BR-000001 -documented_by-> ART-000008 | ART-000008 <-documented_by- FEAT-000007 | FEAT-000007 <-governs- PERM-000014
+- **High** PERM-000015 — Read Outcome follow-up and learning: BR-000001 -documented_by-> ART-000008 | ART-000008 <-documented_by- FEAT-000008 | FEAT-000008 <-governs- PERM-000015
+- **High** PERM-000016 — Manage Outcome follow-up and learning: BR-000001 -documented_by-> ART-000008 | ART-000008 <-documented_by- FEAT-000008 | FEAT-000008 <-governs- PERM-000016
+- **High** QA-000001 — ZYVORA QA-001 Workspace Identity & Audit Foundation v1.0: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- QA-000001
+- **Low** SCR-000001 — Decision Center Decision Dashboard: BR-000001 -governs-> FEAT-000001 | FEAT-000001 -supports-> DEC-000001 | DEC-000001 <-supports- SCR-000001
+- **Low** SCR-000003 — Priority and urgency explanation Workspace: BR-000001 -documented_by-> ART-000008 | ART-000008 <-documented_by- FEAT-000002 | FEAT-000002 <-uses- SCR-000003
+- **Low** SCR-000004 — Decision detail and evidence bundle Workspace: BR-000001 -documented_by-> ART-000008 | ART-000008 <-documented_by- FEAT-000003 | FEAT-000003 <-uses- SCR-000004
+- **Low** SCR-000005 — Alternative and trade-off comparison Workspace: BR-000001 -documented_by-> ART-000008 | ART-000008 <-documented_by- FEAT-000004 | FEAT-000004 <-uses- SCR-000005
+- **Low** SCR-000006 — Assignment and due-date control Workspace: BR-000001 -governs-> FEAT-000001 | FEAT-000001 -supports-> DEC-000001 | DEC-000001 <-supports- SCR-000006
+- **Low** SCR-000007 — Approval and escalation Workspace: BR-000001 -documented_by-> ART-000008 | ART-000008 <-documented_by- FEAT-000006 | FEAT-000006 <-uses- SCR-000007
+- **Low** SCR-000008 — Action and rationale recording Workspace: BR-000001 -documented_by-> ART-000008 | ART-000008 <-documented_by- FEAT-000007 | FEAT-000007 <-uses- SCR-000008
+- **Low** SCR-000009 — Outcome follow-up and learning Workspace: BR-000001 -documented_by-> ART-000008 | ART-000008 <-documented_by- FEAT-000008 | FEAT-000008 <-uses- SCR-000009
+- **Low** UF-000001 — Decision Center UI Flow 1: BR-000001 -governs-> FEAT-000001 | FEAT-000001 -supports-> DEC-000001 | DEC-000001 <-supports- UF-000001
+- **Low** UF-000002 — Decision Center UI Flow 2: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 <-renders- UF-000002
+- **Low** UF-000005 — Decision Center UI Flow 5: BR-000001 -governs-> FEAT-000001 | FEAT-000001 -supports-> DEC-000001 | DEC-000001 <-supports- UF-000005
+- **Low** UF-000009 — Decision Center UI Flow 9: BR-000001 -governs-> FEAT-000001 | FEAT-000001 -supports-> DEC-000001 | DEC-000001 <-supports- UF-000009
+- **Low** UJ-000001 — Signal-to-decision creation: BR-000001 -governs-> FEAT-000001 | FEAT-000001 -supports-> DEC-000001 | DEC-000001 <-supports- UJ-000001
+- **Low** UJ-000005 — Action recording: BR-000001 -governs-> FEAT-000001 | FEAT-000001 -supports-> DEC-000001 | DEC-000001 <-supports- UJ-000005
+- **High** WF-000002 — Decision triage: BR-000001 -documented_by-> ART-000008 | ART-000008 <-documented_by- FEAT-000002 | FEAT-000002 <-uses- WF-000002
+- **High** WF-000003 — Evidence review: BR-000001 -documented_by-> ART-000008 | ART-000008 <-documented_by- FEAT-000003 | FEAT-000003 <-uses- WF-000003
+- **High** WF-000004 — Approval path: BR-000001 -documented_by-> ART-000008 | ART-000008 <-documented_by- FEAT-000004 | FEAT-000004 <-uses- WF-000004
+- **High** WF-000005 — Action recording: BR-000001 -documented_by-> ART-000008 | ART-000008 <-documented_by- FEAT-000005 | FEAT-000005 <-uses- WF-000005
+- **High** WF-000006 — Outcome review: BR-000001 -documented_by-> ART-000008 | ART-000008 <-documented_by- FEAT-000006 | FEAT-000006 <-uses- WF-000006
+- **High** WF-000007 — Reopen and recovery: BR-000001 -documented_by-> ART-000008 | ART-000008 <-documented_by- FEAT-000007 | FEAT-000007 <-uses- WF-000007
+- **High** API-000009 — Business Memory Decision timeline API: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000019 | ART-000019 <-specified_by- API-000009
+- **High** API-000010 — Business Memory Immutable context snapshots API: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000019 | ART-000019 <-specified_by- API-000010
+- **High** API-000011 — Business Memory Outcome and lesson capture API: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000019 | ART-000019 <-specified_by- API-000011
+- **High** API-000012 — Business Memory Structured and semantic search API: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000019 | ART-000019 <-specified_by- API-000012
+- **High** API-000013 — Business Memory Source and freshness lineage API: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000019 | ART-000019 <-specified_by- API-000013
+- **High** API-000014 — Business Memory Memory collections and tags API: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000019 | ART-000019 <-specified_by- API-000014
+- **High** API-000015 — Business Memory Retention and privacy control API: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000019 | ART-000019 <-specified_by- API-000015
+- **High** API-000016 — Business Memory Citation-ready retrieval API: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000019 | ART-000019 <-specified_by- API-000016
+- **High** API-000017 — AI Engine Model Gateway API: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000017 | ART-000017 <-specified_by- API-000017
+- **High** API-000018 — AI Engine Prompt Registry API: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000017 | ART-000017 <-specified_by- API-000018
+- **High** API-000019 — AI Engine Retrieval service API: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000017 | ART-000017 <-specified_by- API-000019
+- **High** API-000020 — AI Engine Recommendation service API: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000017 | ART-000017 <-specified_by- API-000020
+- **High** API-000021 — AI Engine Forecasting service API: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000017 | ART-000017 <-specified_by- API-000021
+- **High** API-000022 — AI Engine Explainability service API: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000017 | ART-000017 <-specified_by- API-000022
+- **High** API-000023 — AI Engine Evaluation and release gates API: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000017 | ART-000017 <-specified_by- API-000023
+- **High** API-000024 — AI Engine Cost, latency, safety, and drift monitoring API: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000017 | ART-000017 <-specified_by- API-000024
+- **High** API-000025 — Identity, Workspace, Permissions & Audit Authentication adapter API: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000025 | ART-000025 <-specified_by- API-000025
+- **High** API-000026 — Identity, Workspace, Permissions & Audit Workspace lifecycle API: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000025 | ART-000025 <-specified_by- API-000026
+- **High** API-000027 — Identity, Workspace, Permissions & Audit Invitation and membership API: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000025 | ART-000025 <-specified_by- API-000027
+- **High** API-000028 — Identity, Workspace, Permissions & Audit Roles and permission grants API: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000025 | ART-000025 <-specified_by- API-000028
+- **High** API-000029 — Identity, Workspace, Permissions & Audit Policy evaluation API: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000025 | ART-000025 <-specified_by- API-000029
+- **High** API-000030 — Identity, Workspace, Permissions & Audit MFA and session management API: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000025 | ART-000025 <-specified_by- API-000030
+- **High** API-000031 — Identity, Workspace, Permissions & Audit API keys and service identities API: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000025 | ART-000025 <-specified_by- API-000031
+- **High** API-000032 — Identity, Workspace, Permissions & Audit Audit explorer and evidence export API: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000025 | ART-000025 <-specified_by- API-000032
+- **High** API-000033 — Finance Chart of accounts API: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000023 | ART-000023 <-specified_by- API-000033
+- **High** API-000034 — Finance Double-entry journals API: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000023 | ART-000023 <-specified_by- API-000034
+- **High** API-000035 — Finance Accounts receivable and invoicing API: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000023 | ART-000023 <-specified_by- API-000035
+- **High** API-000036 — Finance Accounts payable and bills API: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000023 | ART-000023 <-specified_by- API-000036
+- **High** API-000037 — Finance Payments and reconciliation API: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000023 | ART-000023 <-specified_by- API-000037
+- **High** API-000038 — Finance Budgets and variance API: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000023 | ART-000023 <-specified_by- API-000038
+- **High** API-000039 — Finance Cash-flow forecasting API: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000023 | ART-000023 <-specified_by- API-000039
+- **High** API-000040 — Finance Financial statements and close API: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000023 | ART-000023 <-specified_by- API-000040
+- **High** API-000041 — Inventory Product and SKU catalog API: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000026 | ART-000026 <-specified_by- API-000041
+- **High** API-000042 — Inventory Warehouse and location model API: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000026 | ART-000026 <-specified_by- API-000042
+- **High** API-000043 — Inventory Stock ledger and availability API: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000026 | ART-000026 <-specified_by- API-000043
+- **High** API-000044 — Inventory Reservations and allocations API: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000026 | ART-000026 <-specified_by- API-000044
+- **High** API-000045 — Inventory Purchase orders and receipts API: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000026 | ART-000026 <-specified_by- API-000045
+- **High** API-000046 — Inventory Transfers and adjustments API: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000026 | ART-000026 <-specified_by- API-000046
+- **High** API-000047 — Inventory Lot/serial/batch traceability API: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000026 | ART-000026 <-specified_by- API-000047
+- **High** API-000048 — Inventory Reorder and demand planning API: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000026 | ART-000026 <-specified_by- API-000048
+- **High** API-000049 — CRM Contacts and organizations API: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000020 | ART-000020 <-specified_by- API-000049
+- **High** API-000050 — CRM Lead capture and qualification API: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000020 | ART-000020 <-specified_by- API-000050
+- **High** API-000051 — CRM Opportunity pipelines API: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000020 | ART-000020 <-specified_by- API-000051
+- **High** API-000052 — CRM Activities and tasks API: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000020 | ART-000020 <-specified_by- API-000052
+- **High** API-000053 — CRM Segmentation API: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000020 | ART-000020 <-specified_by- API-000053
+- **High** API-000054 — CRM Customer value and health API: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000020 | ART-000020 <-specified_by- API-000054
+- **High** API-000055 — CRM Campaign attribution API: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000020 | ART-000020 <-specified_by- API-000055
+- **High** API-000056 — CRM Consent and communication history API: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000020 | ART-000020 <-specified_by- API-000056
+- **High** API-000057 — Analytics Metric registry API: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000018 | ART-000018 <-specified_by- API-000057
+- **High** API-000058 — Analytics Semantic definitions API: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000018 | ART-000018 <-specified_by- API-000058
+- **High** API-000059 — Analytics Dashboard composition API: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000018 | ART-000018 <-specified_by- API-000059
+- **High** API-000060 — Analytics Filters and saved views API: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000018 | ART-000018 <-specified_by- API-000060
+- **High** API-000061 — Analytics Drill-down and lineage API: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000018 | ART-000018 <-specified_by- API-000061
+- **High** API-000062 — Analytics Scheduled reports API: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000018 | ART-000018 <-specified_by- API-000062
+- **High** API-000063 — Analytics Exports API: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000018 | ART-000018 <-specified_by- API-000063
+- **High** API-000064 — Analytics Annotations and forecast overlays API: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000018 | ART-000018 <-specified_by- API-000064
+- **High** API-000065 — Documents Document metadata and storage API: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000022 | ART-000022 <-specified_by- API-000065
+- **High** API-000066 — Documents Templates API: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000022 | ART-000022 <-specified_by- API-000066
+- **High** API-000067 — Documents Generation API: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000022 | ART-000022 <-specified_by- API-000067
+- **High** API-000068 — Documents Versioning API: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000022 | ART-000022 <-specified_by- API-000068
+- **High** API-000069 — Documents Review and approval API: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000022 | ART-000022 <-specified_by- API-000069
+- **High** API-000070 — Documents Electronic signature adapters API: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000022 | ART-000022 <-specified_by- API-000070
+- **High** API-000071 — Documents OCR/import API: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000022 | ART-000022 <-specified_by- API-000071
+- **High** API-000072 — Documents Retention and legal hold API: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000022 | ART-000022 <-specified_by- API-000072
+- **High** API-000073 — Notifications Unified notification events API: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000028 | ART-000028 <-specified_by- API-000073
+- **High** API-000074 — Notifications Templates and versions API: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000028 | ART-000028 <-specified_by- API-000074
+- **High** API-000075 — Notifications Category and priority API: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000028 | ART-000028 <-specified_by- API-000075
+- **High** API-000076 — Notifications User preferences and quiet hours API: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000028 | ART-000028 <-specified_by- API-000076
+- **High** API-000077 — Notifications Channel routing API: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000028 | ART-000028 <-specified_by- API-000077
+- **High** API-000078 — Notifications Delivery retries API: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000028 | ART-000028 <-specified_by- API-000078
+- **High** API-000079 — Notifications Digest and grouping API: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000028 | ART-000028 <-specified_by- API-000079
+- **High** API-000080 — Notifications Escalation and audit API: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000028 | ART-000028 <-specified_by- API-000080
+- **High** API-000081 — Human Resources Employee records API: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000024 | ART-000024 <-specified_by- API-000081
+- **High** API-000082 — Human Resources Organization and positions API: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000024 | ART-000024 <-specified_by- API-000082
+- **High** API-000083 — Human Resources Recruitment API: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000024 | ART-000024 <-specified_by- API-000083
+- **High** API-000084 — Human Resources Onboarding/offboarding API: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000024 | ART-000024 <-specified_by- API-000084
+- **High** API-000085 — Human Resources Leave and attendance API: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000024 | ART-000024 <-specified_by- API-000085
+- **High** API-000086 — Human Resources Performance and goals API: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000024 | ART-000024 <-specified_by- API-000086
+- **High** API-000087 — Human Resources Compensation records API: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000024 | ART-000024 <-specified_by- API-000087
+- **High** API-000088 — Human Resources Workforce planning and compliance API: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000024 | ART-000024 <-specified_by- API-000088
+- **High** API-000089 — Manufacturing Bills of materials API: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000027 | ART-000027 <-specified_by- API-000089
+- **High** API-000090 — Manufacturing Routings and work centers API: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000027 | ART-000027 <-specified_by- API-000090
+- **High** API-000091 — Manufacturing Production orders API: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000027 | ART-000027 <-specified_by- API-000091
+- **High** API-000092 — Manufacturing Material requirements API: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000027 | ART-000027 <-specified_by- API-000092
+- **High** API-000093 — Manufacturing Scheduling and capacity API: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000027 | ART-000027 <-specified_by- API-000093
+- **High** API-000094 — Manufacturing Issue/consume/produce API: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000027 | ART-000027 <-specified_by- API-000094
+- **High** API-000095 — Manufacturing Quality control API: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000027 | ART-000027 <-specified_by- API-000095
+- **High** API-000096 — Manufacturing Yield, scrap, downtime, and cost API: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000027 | ART-000027 <-specified_by- API-000096
+- **High** BR-000009 — Business Memory Rule 1: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000006 | ART-000006 <-documented_by- BR-000009
+- **High** BR-000010 — Business Memory Rule 2: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000006 | ART-000006 <-documented_by- BR-000010
+- **High** BR-000011 — Business Memory Rule 3: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000006 | ART-000006 <-documented_by- BR-000011
+- **High** BR-000012 — Business Memory Rule 4: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000006 | ART-000006 <-documented_by- BR-000012
+- **High** BR-000013 — Business Memory Rule 5: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000006 | ART-000006 <-documented_by- BR-000013
+- **High** BR-000014 — Business Memory Rule 6: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000006 | ART-000006 <-documented_by- BR-000014
+- **High** BR-000015 — Business Memory Rule 7: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000006 | ART-000006 <-documented_by- BR-000015
+- **High** BR-000016 — Business Memory Rule 8: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000006 | ART-000006 <-documented_by- BR-000016
+- **High** BR-000017 — AI Engine Rule 1: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000004 | ART-000004 <-documented_by- BR-000017
+- **High** BR-000018 — AI Engine Rule 2: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000004 | ART-000004 <-documented_by- BR-000018
+- **High** BR-000019 — AI Engine Rule 3: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000004 | ART-000004 <-documented_by- BR-000019
+- **High** BR-000020 — AI Engine Rule 4: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000004 | ART-000004 <-documented_by- BR-000020
+- **High** BR-000021 — AI Engine Rule 5: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000004 | ART-000004 <-documented_by- BR-000021
+- **High** BR-000022 — AI Engine Rule 6: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000004 | ART-000004 <-documented_by- BR-000022
+- **High** BR-000023 — AI Engine Rule 7: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000004 | ART-000004 <-documented_by- BR-000023
+- **High** BR-000024 — AI Engine Rule 8: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000004 | ART-000004 <-documented_by- BR-000024
+- **High** BR-000025 — Identity, Workspace, Permissions & Audit Rule 1: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000012 | ART-000012 <-documented_by- BR-000025
+- **High** BR-000026 — Identity, Workspace, Permissions & Audit Rule 2: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000012 | ART-000012 <-documented_by- BR-000026
+- **High** BR-000027 — Identity, Workspace, Permissions & Audit Rule 3: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000012 | ART-000012 <-documented_by- BR-000027
+- **High** BR-000028 — Identity, Workspace, Permissions & Audit Rule 4: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000012 | ART-000012 <-documented_by- BR-000028
+- **High** BR-000029 — Identity, Workspace, Permissions & Audit Rule 5: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000012 | ART-000012 <-documented_by- BR-000029
+- **High** BR-000030 — Identity, Workspace, Permissions & Audit Rule 6: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000012 | ART-000012 <-documented_by- BR-000030
+- **High** BR-000031 — Identity, Workspace, Permissions & Audit Rule 7: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000012 | ART-000012 <-documented_by- BR-000031
+- **High** BR-000032 — Identity, Workspace, Permissions & Audit Rule 8: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000012 | ART-000012 <-documented_by- BR-000032
+- **High** BR-000033 — Finance Rule 1: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000010 | ART-000010 <-documented_by- BR-000033
+- **High** BR-000034 — Finance Rule 2: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000010 | ART-000010 <-documented_by- BR-000034
+- **High** BR-000035 — Finance Rule 3: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000010 | ART-000010 <-documented_by- BR-000035
+- **High** BR-000036 — Finance Rule 4: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000010 | ART-000010 <-documented_by- BR-000036
+- **High** BR-000037 — Finance Rule 5: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000010 | ART-000010 <-documented_by- BR-000037
+- **High** BR-000038 — Finance Rule 6: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000010 | ART-000010 <-documented_by- BR-000038
+- **High** BR-000039 — Finance Rule 7: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000010 | ART-000010 <-documented_by- BR-000039
+- **High** BR-000040 — Finance Rule 8: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000010 | ART-000010 <-documented_by- BR-000040
+- **High** BR-000041 — Inventory Rule 1: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000013 | ART-000013 <-documented_by- BR-000041
+- **High** BR-000042 — Inventory Rule 2: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000013 | ART-000013 <-documented_by- BR-000042
+- **High** BR-000043 — Inventory Rule 3: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000013 | ART-000013 <-documented_by- BR-000043
+- **High** BR-000044 — Inventory Rule 4: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000013 | ART-000013 <-documented_by- BR-000044
+- **High** BR-000045 — Inventory Rule 5: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000013 | ART-000013 <-documented_by- BR-000045
+- **High** BR-000046 — Inventory Rule 6: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000013 | ART-000013 <-documented_by- BR-000046
+- **High** BR-000047 — Inventory Rule 7: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000013 | ART-000013 <-documented_by- BR-000047
+- **High** BR-000048 — Inventory Rule 8: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000013 | ART-000013 <-documented_by- BR-000048
+- **High** BR-000049 — CRM Rule 1: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000007 | ART-000007 <-documented_by- BR-000049
+- **High** BR-000050 — CRM Rule 2: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000007 | ART-000007 <-documented_by- BR-000050
+- **High** BR-000051 — CRM Rule 3: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000007 | ART-000007 <-documented_by- BR-000051
+- **High** BR-000052 — CRM Rule 4: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000007 | ART-000007 <-documented_by- BR-000052
+- **High** BR-000053 — CRM Rule 5: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000007 | ART-000007 <-documented_by- BR-000053
+- **High** BR-000054 — CRM Rule 6: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000007 | ART-000007 <-documented_by- BR-000054
+- **High** BR-000055 — CRM Rule 7: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000007 | ART-000007 <-documented_by- BR-000055
+- **High** BR-000056 — CRM Rule 8: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000007 | ART-000007 <-documented_by- BR-000056
+- **High** BR-000057 — Analytics Rule 1: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000005 | ART-000005 <-documented_by- BR-000057
+- **High** BR-000058 — Analytics Rule 2: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000005 | ART-000005 <-documented_by- BR-000058
+- **High** BR-000059 — Analytics Rule 3: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000005 | ART-000005 <-documented_by- BR-000059
+- **High** BR-000060 — Analytics Rule 4: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000005 | ART-000005 <-documented_by- BR-000060
+- **High** BR-000061 — Analytics Rule 5: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000005 | ART-000005 <-documented_by- BR-000061
+- **High** BR-000062 — Analytics Rule 6: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000005 | ART-000005 <-documented_by- BR-000062
+- **High** BR-000063 — Analytics Rule 7: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000005 | ART-000005 <-documented_by- BR-000063
+- **High** BR-000064 — Analytics Rule 8: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000005 | ART-000005 <-documented_by- BR-000064
+- **High** BR-000065 — Documents Rule 1: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000009 | ART-000009 <-documented_by- BR-000065
+- **High** BR-000066 — Documents Rule 2: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000009 | ART-000009 <-documented_by- BR-000066
+- **High** BR-000067 — Documents Rule 3: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000009 | ART-000009 <-documented_by- BR-000067
+- **High** BR-000068 — Documents Rule 4: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000009 | ART-000009 <-documented_by- BR-000068
+- **High** BR-000069 — Documents Rule 5: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000009 | ART-000009 <-documented_by- BR-000069
+- **High** BR-000070 — Documents Rule 6: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000009 | ART-000009 <-documented_by- BR-000070
+- **High** BR-000071 — Documents Rule 7: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000009 | ART-000009 <-documented_by- BR-000071
+- **High** BR-000072 — Documents Rule 8: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000009 | ART-000009 <-documented_by- BR-000072
+- **High** BR-000073 — Notifications Rule 1: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000015 | ART-000015 <-documented_by- BR-000073
+- **High** BR-000074 — Notifications Rule 2: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000015 | ART-000015 <-documented_by- BR-000074
+- **High** BR-000075 — Notifications Rule 3: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000015 | ART-000015 <-documented_by- BR-000075
+- **High** BR-000076 — Notifications Rule 4: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000015 | ART-000015 <-documented_by- BR-000076
+- **High** BR-000077 — Notifications Rule 5: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000015 | ART-000015 <-documented_by- BR-000077
+- **High** BR-000078 — Notifications Rule 6: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000015 | ART-000015 <-documented_by- BR-000078
+- **High** BR-000079 — Notifications Rule 7: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000015 | ART-000015 <-documented_by- BR-000079
+- **High** BR-000080 — Notifications Rule 8: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000015 | ART-000015 <-documented_by- BR-000080
+- **High** BR-000081 — Human Resources Rule 1: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000011 | ART-000011 <-documented_by- BR-000081
+- **High** BR-000082 — Human Resources Rule 2: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000011 | ART-000011 <-documented_by- BR-000082
+- **High** BR-000083 — Human Resources Rule 3: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000011 | ART-000011 <-documented_by- BR-000083
+- **High** BR-000084 — Human Resources Rule 4: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000011 | ART-000011 <-documented_by- BR-000084
+- **High** BR-000085 — Human Resources Rule 5: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000011 | ART-000011 <-documented_by- BR-000085
+- **High** BR-000086 — Human Resources Rule 6: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000011 | ART-000011 <-documented_by- BR-000086
+- **High** BR-000087 — Human Resources Rule 7: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000011 | ART-000011 <-documented_by- BR-000087
+- **High** BR-000088 — Human Resources Rule 8: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000011 | ART-000011 <-documented_by- BR-000088
+- **High** BR-000089 — Manufacturing Rule 1: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000014 | ART-000014 <-documented_by- BR-000089
+- **High** BR-000090 — Manufacturing Rule 2: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000014 | ART-000014 <-documented_by- BR-000090
+- **High** BR-000091 — Manufacturing Rule 3: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000014 | ART-000014 <-documented_by- BR-000091
+- **High** BR-000092 — Manufacturing Rule 4: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000014 | ART-000014 <-documented_by- BR-000092
+- **High** BR-000093 — Manufacturing Rule 5: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000014 | ART-000014 <-documented_by- BR-000093
+- **High** BR-000094 — Manufacturing Rule 6: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000014 | ART-000014 <-documented_by- BR-000094
+- **High** BR-000095 — Manufacturing Rule 7: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000014 | ART-000014 <-documented_by- BR-000095
+- **High** BR-000096 — Manufacturing Rule 8: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000014 | ART-000014 <-documented_by- BR-000096
+- **Low** CAP-000002 — Business Memory Core Capability: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000006 | ART-000006 <-documented_by- CAP-000002
+- **Low** CAP-000003 — AI Engine Core Capability: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000004 | ART-000004 <-documented_by- CAP-000003
+- **Low** CAP-000004 — Identity, Workspace, Permissions & Audit Core Capability: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000012 | ART-000012 <-documented_by- CAP-000004
+- **Low** CAP-000005 — Finance Core Capability: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000010 | ART-000010 <-documented_by- CAP-000005
+- **Low** CAP-000006 — Inventory Core Capability: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000013 | ART-000013 <-documented_by- CAP-000006
+- **Low** CAP-000007 — CRM Core Capability: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000007 | ART-000007 <-documented_by- CAP-000007
+- **Low** CAP-000008 — Analytics Core Capability: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000005 | ART-000005 <-documented_by- CAP-000008
+- **Low** CAP-000009 — Documents Core Capability: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000009 | ART-000009 <-documented_by- CAP-000009
+- **Low** CAP-000010 — Notifications Core Capability: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000015 | ART-000015 <-documented_by- CAP-000010
+- **Low** CAP-000011 — Human Resources Core Capability: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000011 | ART-000011 <-documented_by- CAP-000011
+- **Low** CAP-000012 — Manufacturing Core Capability: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000014 | ART-000014 <-documented_by- CAP-000012
+- **Low** CMP-000001 — Decision Card: BR-000001 -governs-> FEAT-000001 | FEAT-000001 -supports-> DEC-000001 | DEC-000001 <-supports- SCR-000001 | SCR-000001 -uses-> CMP-000001
+- **Low** CMP-000002 — Metric Tile: BR-000001 -governs-> FEAT-000001 | FEAT-000001 -supports-> DEC-000001 | DEC-000001 <-supports- SCR-000001 | SCR-000001 -uses-> CMP-000002
+- **Low** CMP-000012 — Chart Frame: BR-000001 -governs-> FEAT-000001 | FEAT-000001 -supports-> DEC-000001 | DEC-000001 <-supports- SCR-000001 | SCR-000001 -uses-> CMP-000012
+- **High** EVT-000007 — MemoryCaptured: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000019 | ART-000019 <-specified_by- EVT-000007
+- **High** EVT-000008 — MemoryIndexed: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000019 | ART-000019 <-specified_by- EVT-000008
+- **High** EVT-000009 — LessonRecorded: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000019 | ART-000019 <-specified_by- EVT-000009
+- **High** EVT-000010 — MemorySuperseded: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000019 | ART-000019 <-specified_by- EVT-000010
+- **High** EVT-000011 — MemoryDispositioned: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000019 | ART-000019 <-specified_by- EVT-000011
+- **High** EVT-000012 — RecommendationGenerated: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000017 | ART-000017 <-specified_by- EVT-000012
+- **High** EVT-000013 — ForecastUpdated: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000017 | ART-000017 <-specified_by- EVT-000013
+- **High** EVT-000014 — AnomalyDetected: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000017 | ART-000017 <-specified_by- EVT-000014
+- **High** EVT-000015 — AIQualityDegraded: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000017 | ART-000017 <-specified_by- EVT-000015
+- **High** EVT-000016 — ModelRouteChanged: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000017 | ART-000017 <-specified_by- EVT-000016
+- **High** EVT-000017 — SafetyIncidentOpened: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000017 | ART-000017 <-specified_by- EVT-000017
+- **High** EVT-000018 — WorkspaceCreated: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000025 | ART-000025 <-specified_by- EVT-000018
+- **High** EVT-000019 — MembershipActivated: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000025 | ART-000025 <-specified_by- EVT-000019
+- **High** EVT-000020 — MembershipRevoked: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000025 | ART-000025 <-specified_by- EVT-000020
+- **High** EVT-000021 — RoleChanged: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000025 | ART-000025 <-specified_by- EVT-000021
+- **High** EVT-000022 — PermissionChanged: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000025 | ART-000025 <-specified_by- EVT-000022
+- **High** EVT-000023 — SessionRevoked: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000025 | ART-000025 <-specified_by- EVT-000023
+- **High** EVT-000024 — AuthenticationRiskDetected: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000025 | ART-000025 <-specified_by- EVT-000024
+- **High** EVT-000025 — AuditEventRecorded: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000025 | ART-000025 <-specified_by- EVT-000025
+- **High** EVT-000026 — JournalPosted: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000023 | ART-000023 <-specified_by- EVT-000026
+- **High** EVT-000027 — InvoiceIssued: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000023 | ART-000023 <-specified_by- EVT-000027
+- **High** EVT-000028 — InvoiceOverdue: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000023 | ART-000023 <-specified_by- EVT-000028
+- **High** EVT-000029 — PaymentRecorded: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000023 | ART-000023 <-specified_by- EVT-000029
+- **High** EVT-000030 — BillApproved: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000023 | ART-000023 <-specified_by- EVT-000030
+- **High** EVT-000031 — BudgetExceeded: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000023 | ART-000023 <-specified_by- EVT-000031
+- **High** EVT-000032 — PeriodClosed: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000023 | ART-000023 <-specified_by- EVT-000032
+- **High** EVT-000033 — CashForecastUpdated: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000023 | ART-000023 <-specified_by- EVT-000033
+- **High** EVT-000034 — ProductCreated: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000026 | ART-000026 <-specified_by- EVT-000034
+- **High** EVT-000035 — StockLevelChanged: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000026 | ART-000026 <-specified_by- EVT-000035
+- **High** EVT-000036 — StockReserved: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000026 | ART-000026 <-specified_by- EVT-000036
+- **High** EVT-000037 — StockReceived: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000026 | ART-000026 <-specified_by- EVT-000037
+- **High** EVT-000038 — StockTransferred: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000026 | ART-000026 <-specified_by- EVT-000038
+- **High** EVT-000039 — InventoryAdjusted: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000026 | ART-000026 <-specified_by- EVT-000039
+- **High** EVT-000040 — CountVarianceDetected: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000026 | ART-000026 <-specified_by- EVT-000040
+- **High** EVT-000041 — ReorderRecommended: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000026 | ART-000026 <-specified_by- EVT-000041
+- **High** EVT-000042 — LeadCaptured: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000020 | ART-000020 <-specified_by- EVT-000042
+- **High** EVT-000043 — LeadQualified: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000020 | ART-000020 <-specified_by- EVT-000043
+- **High** EVT-000044 — OpportunityStageChanged: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000020 | ART-000020 <-specified_by- EVT-000044
+- **High** EVT-000045 — OpportunityWon: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000020 | ART-000020 <-specified_by- EVT-000045
+- **High** EVT-000046 — OpportunityLost: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000020 | ART-000020 <-specified_by- EVT-000046
+- **High** EVT-000047 — ActivityCompleted: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000020 | ART-000020 <-specified_by- EVT-000047
+- **High** EVT-000048 — ChurnRiskDetected: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000020 | ART-000020 <-specified_by- EVT-000048
+- **High** EVT-000049 — ConsentChanged: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000020 | ART-000020 <-specified_by- EVT-000049
+- **High** EVT-000050 — MetricUpdated: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000018 | ART-000018 <-specified_by- EVT-000050
+- **High** EVT-000051 — MetricThresholdBreached: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000018 | ART-000018 <-specified_by- EVT-000051
+- **High** EVT-000052 — DashboardPublished: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000018 | ART-000018 <-specified_by- EVT-000052
+- **High** EVT-000053 — ReportCompleted: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000018 | ART-000018 <-specified_by- EVT-000053
+- **High** EVT-000054 — ReportFailed: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000018 | ART-000018 <-specified_by- EVT-000054
+- **High** EVT-000055 — DataQualityFailed: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000018 | ART-000018 <-specified_by- EVT-000055
+- **High** EVT-000056 — DocumentUploaded: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000022 | ART-000022 <-specified_by- EVT-000056
+- **High** EVT-000057 — DocumentGenerated: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000022 | ART-000022 <-specified_by- EVT-000057
+- **High** EVT-000058 — DocumentVersionCreated: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000022 | ART-000022 <-specified_by- EVT-000058
+- **High** EVT-000059 — DocumentApproved: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000022 | ART-000022 <-specified_by- EVT-000059
+- **High** EVT-000060 — SignatureCompleted: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000022 | ART-000022 <-specified_by- EVT-000060
+- **High** EVT-000061 — DocumentArchived: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000022 | ART-000022 <-specified_by- EVT-000061
+- **High** EVT-000062 — RetentionDispositioned: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000022 | ART-000022 <-specified_by- EVT-000062
+- **High** EVT-000063 — NotificationQueued: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000028 | ART-000028 <-specified_by- EVT-000063
+- **High** EVT-000064 — NotificationDelivered: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000028 | ART-000028 <-specified_by- EVT-000064
+- **High** EVT-000065 — NotificationRead: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000028 | ART-000028 <-specified_by- EVT-000065
+- **High** EVT-000066 — NotificationActioned: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000028 | ART-000028 <-specified_by- EVT-000066
+- **High** EVT-000067 — NotificationFailed: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000028 | ART-000028 <-specified_by- EVT-000067
+- **High** EVT-000068 — DigestSent: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000028 | ART-000028 <-specified_by- EVT-000068
+- **High** EVT-000069 — EscalationTriggered: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000028 | ART-000028 <-specified_by- EVT-000069
+- **High** EVT-000070 — CandidateHired: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000024 | ART-000024 <-specified_by- EVT-000070
+- **High** EVT-000071 — EmployeeOnboarded: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000024 | ART-000024 <-specified_by- EVT-000071
+- **High** EVT-000072 — EmployeeChanged: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000024 | ART-000024 <-specified_by- EVT-000072
+- **High** EVT-000073 — LeaveApproved: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000024 | ART-000024 <-specified_by- EVT-000073
+- **High** EVT-000074 — PerformanceReviewCompleted: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000024 | ART-000024 <-specified_by- EVT-000074
+- **High** EVT-000075 — CompensationApproved: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000024 | ART-000024 <-specified_by- EVT-000075
+- **High** EVT-000076 — EmployeeOffboarded: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000024 | ART-000024 <-specified_by- EVT-000076
+- **High** EVT-000077 — ProductionOrderReleased: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000027 | ART-000027 <-specified_by- EVT-000077
+- **High** EVT-000078 — MaterialIssued: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000027 | ART-000027 <-specified_by- EVT-000078
+- **High** EVT-000079 — OperationCompleted: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000027 | ART-000027 <-specified_by- EVT-000079
+- **High** EVT-000080 — ProductionReceived: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000027 | ART-000027 <-specified_by- EVT-000080
+- **High** EVT-000081 — QualityHoldPlaced: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000027 | ART-000027 <-specified_by- EVT-000081
+- **High** EVT-000082 — NonconformanceOpened: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000027 | ART-000027 <-specified_by- EVT-000082
+- **High** EVT-000083 — ProductionOrderClosed: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000027 | ART-000027 <-specified_by- EVT-000083
+- **High** EVT-000084 — CapacityRiskDetected: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000027 | ART-000027 <-specified_by- EVT-000084
+- **Low** FEAT-000009 — Decision timeline: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000006 | ART-000006 <-documented_by- FEAT-000009
+- **Low** FEAT-000010 — Immutable context snapshots: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000006 | ART-000006 <-documented_by- FEAT-000010
+- **Low** FEAT-000011 — Outcome and lesson capture: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000006 | ART-000006 <-documented_by- FEAT-000011
+- **Low** FEAT-000012 — Structured and semantic search: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000006 | ART-000006 <-documented_by- FEAT-000012
+- **Low** FEAT-000013 — Source and freshness lineage: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000006 | ART-000006 <-documented_by- FEAT-000013
+- **Low** FEAT-000014 — Memory collections and tags: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000006 | ART-000006 <-documented_by- FEAT-000014
+- **Low** FEAT-000015 — Retention and privacy control: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000006 | ART-000006 <-documented_by- FEAT-000015
+- **Low** FEAT-000016 — Citation-ready retrieval: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000006 | ART-000006 <-documented_by- FEAT-000016
+- **Low** FEAT-000017 — Model Gateway: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000004 | ART-000004 <-documented_by- FEAT-000017
+- **Low** FEAT-000018 — Prompt Registry: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000004 | ART-000004 <-documented_by- FEAT-000018
+- **Low** FEAT-000019 — Retrieval service: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000004 | ART-000004 <-documented_by- FEAT-000019
+- **Low** FEAT-000020 — Recommendation service: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000004 | ART-000004 <-documented_by- FEAT-000020
+- **Low** FEAT-000021 — Forecasting service: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000004 | ART-000004 <-documented_by- FEAT-000021
+- **Low** FEAT-000022 — Explainability service: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000004 | ART-000004 <-documented_by- FEAT-000022
+- **Low** FEAT-000023 — Evaluation and release gates: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000004 | ART-000004 <-documented_by- FEAT-000023
+- **Low** FEAT-000024 — Cost, latency, safety, and drift monitoring: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000004 | ART-000004 <-documented_by- FEAT-000024
+- **Low** FEAT-000025 — Authentication adapter: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000012 | ART-000012 <-documented_by- FEAT-000025
+- **Low** FEAT-000026 — Workspace lifecycle: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000012 | ART-000012 <-documented_by- FEAT-000026
+- **Low** FEAT-000027 — Invitation and membership: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000012 | ART-000012 <-documented_by- FEAT-000027
+- **Low** FEAT-000028 — Roles and permission grants: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000012 | ART-000012 <-documented_by- FEAT-000028
+- **Low** FEAT-000029 — Policy evaluation: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000012 | ART-000012 <-documented_by- FEAT-000029
+- **Low** FEAT-000030 — MFA and session management: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000012 | ART-000012 <-documented_by- FEAT-000030
+- **Low** FEAT-000031 — API keys and service identities: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000012 | ART-000012 <-documented_by- FEAT-000031
+- **Low** FEAT-000032 — Audit explorer and evidence export: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000012 | ART-000012 <-documented_by- FEAT-000032
+- **Low** FEAT-000033 — Chart of accounts: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000010 | ART-000010 <-documented_by- FEAT-000033
+- **Low** FEAT-000034 — Double-entry journals: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000010 | ART-000010 <-documented_by- FEAT-000034
+- **Low** FEAT-000035 — Accounts receivable and invoicing: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000010 | ART-000010 <-documented_by- FEAT-000035
+- **Low** FEAT-000036 — Accounts payable and bills: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000010 | ART-000010 <-documented_by- FEAT-000036
+- **Low** FEAT-000037 — Payments and reconciliation: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000010 | ART-000010 <-documented_by- FEAT-000037
+- **Low** FEAT-000038 — Budgets and variance: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000010 | ART-000010 <-documented_by- FEAT-000038
+- **Low** FEAT-000039 — Cash-flow forecasting: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000010 | ART-000010 <-documented_by- FEAT-000039
+- **Low** FEAT-000040 — Financial statements and close: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000010 | ART-000010 <-documented_by- FEAT-000040
+- **Low** FEAT-000041 — Product and SKU catalog: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000013 | ART-000013 <-documented_by- FEAT-000041
+- **Low** FEAT-000042 — Warehouse and location model: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000013 | ART-000013 <-documented_by- FEAT-000042
+- **Low** FEAT-000043 — Stock ledger and availability: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000013 | ART-000013 <-documented_by- FEAT-000043
+- **Low** FEAT-000044 — Reservations and allocations: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000013 | ART-000013 <-documented_by- FEAT-000044
+- **Low** FEAT-000045 — Purchase orders and receipts: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000013 | ART-000013 <-documented_by- FEAT-000045
+- **Low** FEAT-000046 — Transfers and adjustments: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000013 | ART-000013 <-documented_by- FEAT-000046
+- **Low** FEAT-000047 — Lot/serial/batch traceability: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000013 | ART-000013 <-documented_by- FEAT-000047
+- **Low** FEAT-000048 — Reorder and demand planning: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000013 | ART-000013 <-documented_by- FEAT-000048
+- **Low** FEAT-000049 — Contacts and organizations: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000007 | ART-000007 <-documented_by- FEAT-000049
+- **Low** FEAT-000050 — Lead capture and qualification: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000007 | ART-000007 <-documented_by- FEAT-000050
+- **Low** FEAT-000051 — Opportunity pipelines: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000007 | ART-000007 <-documented_by- FEAT-000051
+- **Low** FEAT-000052 — Activities and tasks: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000007 | ART-000007 <-documented_by- FEAT-000052
+- **Low** FEAT-000053 — Segmentation: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000007 | ART-000007 <-documented_by- FEAT-000053
+- **Low** FEAT-000054 — Customer value and health: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000007 | ART-000007 <-documented_by- FEAT-000054
+- **Low** FEAT-000055 — Campaign attribution: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000007 | ART-000007 <-documented_by- FEAT-000055
+- **Low** FEAT-000056 — Consent and communication history: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000007 | ART-000007 <-documented_by- FEAT-000056
+- **Low** FEAT-000057 — Metric registry: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000005 | ART-000005 <-documented_by- FEAT-000057
+- **Low** FEAT-000058 — Semantic definitions: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000005 | ART-000005 <-documented_by- FEAT-000058
+- **Low** FEAT-000059 — Dashboard composition: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000005 | ART-000005 <-documented_by- FEAT-000059
+- **Low** FEAT-000060 — Filters and saved views: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000005 | ART-000005 <-documented_by- FEAT-000060
+- **Low** FEAT-000061 — Drill-down and lineage: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000005 | ART-000005 <-documented_by- FEAT-000061
+- **Low** FEAT-000062 — Scheduled reports: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000005 | ART-000005 <-documented_by- FEAT-000062
+- **Low** FEAT-000063 — Exports: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000005 | ART-000005 <-documented_by- FEAT-000063
+- **Low** FEAT-000064 — Annotations and forecast overlays: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000005 | ART-000005 <-documented_by- FEAT-000064
+- **Low** FEAT-000065 — Document metadata and storage: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000009 | ART-000009 <-documented_by- FEAT-000065
+- **Low** FEAT-000066 — Templates: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000009 | ART-000009 <-documented_by- FEAT-000066
+- **Low** FEAT-000067 — Generation: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000009 | ART-000009 <-documented_by- FEAT-000067
+- **Low** FEAT-000068 — Versioning: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000009 | ART-000009 <-documented_by- FEAT-000068
+- **Low** FEAT-000069 — Review and approval: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000009 | ART-000009 <-documented_by- FEAT-000069
+- **Low** FEAT-000070 — Electronic signature adapters: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000009 | ART-000009 <-documented_by- FEAT-000070
+- **Low** FEAT-000071 — OCR/import: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000009 | ART-000009 <-documented_by- FEAT-000071
+- **Low** FEAT-000072 — Retention and legal hold: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000009 | ART-000009 <-documented_by- FEAT-000072
+- **Low** FEAT-000073 — Unified notification events: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000015 | ART-000015 <-documented_by- FEAT-000073
+- **Low** FEAT-000074 — Templates and versions: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000015 | ART-000015 <-documented_by- FEAT-000074
+- **Low** FEAT-000075 — Category and priority: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000015 | ART-000015 <-documented_by- FEAT-000075
+- **Low** FEAT-000076 — User preferences and quiet hours: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000015 | ART-000015 <-documented_by- FEAT-000076
+- **Low** FEAT-000077 — Channel routing: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000015 | ART-000015 <-documented_by- FEAT-000077
+- **Low** FEAT-000078 — Delivery retries: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000015 | ART-000015 <-documented_by- FEAT-000078
+- **Low** FEAT-000079 — Digest and grouping: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000015 | ART-000015 <-documented_by- FEAT-000079
+- **Low** FEAT-000080 — Escalation and audit: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000015 | ART-000015 <-documented_by- FEAT-000080
+- **Low** FEAT-000081 — Employee records: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000011 | ART-000011 <-documented_by- FEAT-000081
+- **Low** FEAT-000082 — Organization and positions: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000011 | ART-000011 <-documented_by- FEAT-000082
+- **Low** FEAT-000083 — Recruitment: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000011 | ART-000011 <-documented_by- FEAT-000083
+- **Low** FEAT-000084 — Onboarding/offboarding: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000011 | ART-000011 <-documented_by- FEAT-000084
+- **Low** FEAT-000085 — Leave and attendance: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000011 | ART-000011 <-documented_by- FEAT-000085
+- **Low** FEAT-000086 — Performance and goals: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000011 | ART-000011 <-documented_by- FEAT-000086
+- **Low** FEAT-000087 — Compensation records: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000011 | ART-000011 <-documented_by- FEAT-000087
+- **Low** FEAT-000088 — Workforce planning and compliance: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000011 | ART-000011 <-documented_by- FEAT-000088
+- **Low** FEAT-000089 — Bills of materials: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000014 | ART-000014 <-documented_by- FEAT-000089
+- **Low** FEAT-000090 — Routings and work centers: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000014 | ART-000014 <-documented_by- FEAT-000090
+- **Low** FEAT-000091 — Production orders: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000014 | ART-000014 <-documented_by- FEAT-000091
+- **Low** FEAT-000092 — Material requirements: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000014 | ART-000014 <-documented_by- FEAT-000092
+- **Low** FEAT-000093 — Scheduling and capacity: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000014 | ART-000014 <-documented_by- FEAT-000093
+- **Low** FEAT-000094 — Issue/consume/produce: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000014 | ART-000014 <-documented_by- FEAT-000094
+- **Low** FEAT-000095 — Quality control: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000014 | ART-000014 <-documented_by- FEAT-000095
+- **Low** FEAT-000096 — Yield, scrap, downtime, and cost: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- ART-000014 | ART-000014 <-documented_by- FEAT-000096
+- **Low** MOD-000003 — AI Engine: BR-000001 -specified_by-> ART-000021 | ART-000021 <-specified_by- EVT-000001 | EVT-000001 <-produces- MOD-000001 | MOD-000001 -depends_on-> MOD-000003
+- **Low** MOD-000004 — Identity, Workspace, Permissions & Audit: BR-000001 -specified_by-> ART-000021 | ART-000021 <-specified_by- EVT-000005 | EVT-000005 <-consumes- MOD-000002 | MOD-000002 -depends_on-> MOD-000004
+- **Low** MOD-000005 — Finance: BR-000001 -specified_by-> ART-000021 | ART-000021 <-specified_by- EVT-000005 | EVT-000005 <-consumes- MOD-000008 | MOD-000008 <-depends_on- MOD-000005
+- **Low** MOD-000006 — Inventory: BR-000001 -specified_by-> ART-000021 | ART-000021 <-specified_by- EVT-000005 | EVT-000005 <-consumes- MOD-000008 | MOD-000008 <-depends_on- MOD-000006
+- **Low** MOD-000007 — CRM: BR-000001 -specified_by-> ART-000021 | ART-000021 <-specified_by- EVT-000003 | EVT-000003 <-consumes- MOD-000010 | MOD-000010 <-depends_on- MOD-000007
+- **Low** MOD-000011 — Human Resources: BR-000001 -specified_by-> ART-000021 | ART-000021 <-specified_by- EVT-000003 | EVT-000003 <-consumes- MOD-000010 | MOD-000010 <-depends_on- MOD-000011
+- **Low** MOD-000012 — Manufacturing: BR-000001 -specified_by-> ART-000021 | ART-000021 <-specified_by- EVT-000005 | EVT-000005 <-consumes- MOD-000008 | MOD-000008 <-depends_on- MOD-000012
+- **Low** NOT-000002 — Approval requested: BR-000001 -documented_by-> ART-000008 | ART-000008 <-documented_by- FEAT-000002 | FEAT-000002 <-automates- AUTO-000002 | AUTO-000002 -notifies-> NOT-000002
+- **Low** NOT-000003 — Due soon: BR-000001 -documented_by-> ART-000008 | ART-000008 <-documented_by- FEAT-000003 | FEAT-000003 <-automates- AUTO-000003 | AUTO-000003 -notifies-> NOT-000003
+- **Low** NOT-000004 — Overdue escalation: BR-000001 -documented_by-> ART-000008 | ART-000008 <-documented_by- FEAT-000004 | FEAT-000004 <-automates- AUTO-000004 | AUTO-000004 -notifies-> NOT-000004
+- **Low** NOT-000005 — Outcome review due: BR-000001 -documented_by-> ART-000008 | ART-000008 <-documented_by- FEAT-000005 | FEAT-000005 <-automates- AUTO-000005 | AUTO-000005 -notifies-> NOT-000005
+- **Low** NOT-000006 — Decision materially changed: BR-000001 -documented_by-> ART-000008 | ART-000008 <-documented_by- FEAT-000006 | FEAT-000006 <-automates- AUTO-000006 | AUTO-000006 -notifies-> NOT-000006
+- **High** PROMPT-000001 — Decision Center: Priority assistance Prompt: BR-000001 -governs-> FEAT-000001 | FEAT-000001 -supports-> DEC-000001 | DEC-000001 -uses-> AICAP-000001 | AICAP-000001 -uses_prompt-> PROMPT-000001
+- **High** PROMPT-000002 — Decision Center: Alternative generation Prompt: BR-000001 -documented_by-> ART-000008 | ART-000008 <-documented_by- CAP-000001 | CAP-000001 -uses-> AICAP-000002 | AICAP-000002 -uses_prompt-> PROMPT-000002
+- **High** PROMPT-000003 — Decision Center: Trade-off explanation Prompt: BR-000001 -documented_by-> ART-000008 | ART-000008 <-documented_by- CAP-000001 | CAP-000001 -uses-> AICAP-000003 | AICAP-000003 -uses_prompt-> PROMPT-000003
+- **High** PROMPT-000004 — Decision Center: Outcome comparison Prompt: BR-000001 -documented_by-> ART-000008 | ART-000008 <-documented_by- CAP-000001 | CAP-000001 -uses-> AICAP-000004 | AICAP-000004 -uses_prompt-> PROMPT-000004
+- **High** PROMPT-000005 — Decision Center: Similar-decision retrieval Prompt: BR-000001 -documented_by-> ART-000008 | ART-000008 <-documented_by- CAP-000001 | CAP-000001 -uses-> AICAP-000005 | AICAP-000005 -uses_prompt-> PROMPT-000005
+- **High** REL-000002 — Platform Foundation 1.0: BR-000001 -documented_by-> ART-000008 | ART-000008 -released_in-> REL-000001 | REL-000001 <-released_in- BUILD-000001 | BUILD-000001 -released_in-> REL-000002
+- **Low** RPT-000001 — Decision effectiveness: BR-000001 -governs-> FEAT-000001 | FEAT-000001 -supports-> DEC-000001 | DEC-000001 -measured_by-> MET-000001 | MET-000001 <-uses- RPT-000001
+- **Low** RPT-000002 — Approval performance: BR-000001 -documented_by-> ART-000008 | ART-000008 <-documented_by- CAP-000001 | CAP-000001 -measured_by-> MET-000002 | MET-000002 <-uses- RPT-000002
+- **Low** RPT-000003 — Overdue decisions: BR-000001 -documented_by-> ART-000008 | ART-000008 <-documented_by- CAP-000001 | CAP-000001 -measured_by-> MET-000003 | MET-000003 <-uses- RPT-000003
+- **Low** RPT-000004 — Outcome variance: BR-000001 -documented_by-> ART-000008 | ART-000008 <-documented_by- CAP-000001 | CAP-000001 -measured_by-> MET-000004 | MET-000004 <-uses- RPT-000004
+- **Low** RPT-000005 — Decision quality and trust: BR-000001 -documented_by-> ART-000008 | ART-000008 <-documented_by- CAP-000001 | CAP-000001 -measured_by-> MET-000005 | MET-000005 <-uses- RPT-000005
+- **Low** SCR-000010 — Business Memory Decision Dashboard: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000010
+- **Low** SCR-000011 — Decision timeline Workspace: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000003 | CMP-000003 <-uses- SCR-000011
+- **Low** SCR-000012 — Immutable context snapshots Workspace: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000003 | CMP-000003 <-uses- SCR-000012
+- **Low** SCR-000013 — Outcome and lesson capture Workspace: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000003 | CMP-000003 <-uses- SCR-000013
+- **Low** SCR-000014 — Structured and semantic search Workspace: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000003 | CMP-000003 <-uses- SCR-000014
+- **Low** SCR-000015 — Source and freshness lineage Workspace: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000003 | CMP-000003 <-uses- SCR-000015
+- **Low** SCR-000016 — Memory collections and tags Workspace: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000003 | CMP-000003 <-uses- SCR-000016
+- **Low** SCR-000017 — Retention and privacy control Workspace: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000003 | CMP-000003 <-uses- SCR-000017
+- **Low** SCR-000018 — Citation-ready retrieval Workspace: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000003 | CMP-000003 <-uses- SCR-000018
+- **Low** SCR-000019 — AI Engine Decision Dashboard: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000019
+- **Low** SCR-000020 — Model Gateway Workspace: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000003 | CMP-000003 <-uses- SCR-000020
+- **Low** SCR-000021 — Prompt Registry Workspace: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000003 | CMP-000003 <-uses- SCR-000021
+- **Low** SCR-000022 — Retrieval service Workspace: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000003 | CMP-000003 <-uses- SCR-000022
+- **Low** SCR-000023 — Recommendation service Workspace: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000003 | CMP-000003 <-uses- SCR-000023
+- **Low** SCR-000024 — Forecasting service Workspace: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000003 | CMP-000003 <-uses- SCR-000024
+- **Low** SCR-000025 — Explainability service Workspace: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000003 | CMP-000003 <-uses- SCR-000025
+- **Low** SCR-000026 — Evaluation and release gates Workspace: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000003 | CMP-000003 <-uses- SCR-000026
+- **Low** SCR-000027 — Cost, latency, safety, and drift monitoring Workspace: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000003 | CMP-000003 <-uses- SCR-000027
+- **Low** SCR-000028 — Identity, Workspace, Permissions & Audit Decision Dashboard: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000028
+- **Low** SCR-000029 — Authentication adapter Workspace: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000003 | CMP-000003 <-uses- SCR-000029
+- **Low** SCR-000030 — Workspace lifecycle Workspace: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000003 | CMP-000003 <-uses- SCR-000030
+- **Low** SCR-000031 — Invitation and membership Workspace: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000003 | CMP-000003 <-uses- SCR-000031
+- **Low** SCR-000032 — Roles and permission grants Workspace: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000003 | CMP-000003 <-uses- SCR-000032
+- **Low** SCR-000033 — Policy evaluation Workspace: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000003 | CMP-000003 <-uses- SCR-000033
+- **Low** SCR-000034 — MFA and session management Workspace: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000003 | CMP-000003 <-uses- SCR-000034
+- **Low** SCR-000035 — API keys and service identities Workspace: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000003 | CMP-000003 <-uses- SCR-000035
+- **Low** SCR-000036 — Audit explorer and evidence export Workspace: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000003 | CMP-000003 <-uses- SCR-000036
+- **Low** SCR-000037 — Finance Decision Dashboard: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000037
+- **Low** SCR-000038 — Chart of accounts Workspace: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000003 | CMP-000003 <-uses- SCR-000038
+- **Low** SCR-000039 — Double-entry journals Workspace: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000003 | CMP-000003 <-uses- SCR-000039
+- **Low** SCR-000040 — Accounts receivable and invoicing Workspace: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000003 | CMP-000003 <-uses- SCR-000040
+- **Low** SCR-000041 — Accounts payable and bills Workspace: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000003 | CMP-000003 <-uses- SCR-000041
+- **Low** SCR-000042 — Payments and reconciliation Workspace: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000003 | CMP-000003 <-uses- SCR-000042
+- **Low** SCR-000043 — Budgets and variance Workspace: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000003 | CMP-000003 <-uses- SCR-000043
+- **Low** SCR-000044 — Cash-flow forecasting Workspace: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000003 | CMP-000003 <-uses- SCR-000044
+- **Low** SCR-000045 — Financial statements and close Workspace: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000003 | CMP-000003 <-uses- SCR-000045
+- **Low** SCR-000046 — Inventory Decision Dashboard: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000046
+- **Low** SCR-000047 — Product and SKU catalog Workspace: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000003 | CMP-000003 <-uses- SCR-000047
+- **Low** SCR-000048 — Warehouse and location model Workspace: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000003 | CMP-000003 <-uses- SCR-000048
+- **Low** SCR-000049 — Stock ledger and availability Workspace: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000003 | CMP-000003 <-uses- SCR-000049
+- **Low** SCR-000050 — Reservations and allocations Workspace: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000003 | CMP-000003 <-uses- SCR-000050
+- **Low** SCR-000051 — Purchase orders and receipts Workspace: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000003 | CMP-000003 <-uses- SCR-000051
+- **Low** SCR-000052 — Transfers and adjustments Workspace: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000003 | CMP-000003 <-uses- SCR-000052
+- **Low** SCR-000053 — Lot/serial/batch traceability Workspace: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000003 | CMP-000003 <-uses- SCR-000053
+- **Low** SCR-000054 — Reorder and demand planning Workspace: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000003 | CMP-000003 <-uses- SCR-000054
+- **Low** SCR-000055 — CRM Decision Dashboard: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000055
+- **Low** SCR-000056 — Contacts and organizations Workspace: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000003 | CMP-000003 <-uses- SCR-000056
+- **Low** SCR-000057 — Lead capture and qualification Workspace: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000003 | CMP-000003 <-uses- SCR-000057
+- **Low** SCR-000058 — Opportunity pipelines Workspace: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000003 | CMP-000003 <-uses- SCR-000058
+- **Low** SCR-000059 — Activities and tasks Workspace: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000003 | CMP-000003 <-uses- SCR-000059
+- **Low** SCR-000060 — Segmentation Workspace: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000003 | CMP-000003 <-uses- SCR-000060
+- **Low** SCR-000061 — Customer value and health Workspace: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000003 | CMP-000003 <-uses- SCR-000061
+- **Low** SCR-000062 — Campaign attribution Workspace: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000003 | CMP-000003 <-uses- SCR-000062
+- **Low** SCR-000063 — Consent and communication history Workspace: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000003 | CMP-000003 <-uses- SCR-000063
+- **Low** SCR-000064 — Analytics Decision Dashboard: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000064
+- **Low** SCR-000065 — Metric registry Workspace: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000003 | CMP-000003 <-uses- SCR-000065
+- **Low** SCR-000066 — Semantic definitions Workspace: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000003 | CMP-000003 <-uses- SCR-000066
+- **Low** SCR-000067 — Dashboard composition Workspace: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000003 | CMP-000003 <-uses- SCR-000067
+- **Low** SCR-000068 — Filters and saved views Workspace: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000003 | CMP-000003 <-uses- SCR-000068
+- **Low** SCR-000069 — Drill-down and lineage Workspace: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000003 | CMP-000003 <-uses- SCR-000069
+- **Low** SCR-000070 — Scheduled reports Workspace: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000003 | CMP-000003 <-uses- SCR-000070
+- **Low** SCR-000071 — Exports Workspace: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000003 | CMP-000003 <-uses- SCR-000071
+- **Low** SCR-000072 — Annotations and forecast overlays Workspace: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000003 | CMP-000003 <-uses- SCR-000072
+- **Low** SCR-000073 — Documents Decision Dashboard: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000073
+- **Low** SCR-000074 — Document metadata and storage Workspace: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000003 | CMP-000003 <-uses- SCR-000074
+- **Low** SCR-000075 — Templates Workspace: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000003 | CMP-000003 <-uses- SCR-000075
+- **Low** SCR-000076 — Generation Workspace: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000003 | CMP-000003 <-uses- SCR-000076
+- **Low** SCR-000077 — Versioning Workspace: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000003 | CMP-000003 <-uses- SCR-000077
+- **Low** SCR-000078 — Review and approval Workspace: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000003 | CMP-000003 <-uses- SCR-000078
+- **Low** SCR-000079 — Electronic signature adapters Workspace: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000003 | CMP-000003 <-uses- SCR-000079
+- **Low** SCR-000080 — OCR/import Workspace: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000003 | CMP-000003 <-uses- SCR-000080
+- **Low** SCR-000081 — Retention and legal hold Workspace: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000003 | CMP-000003 <-uses- SCR-000081
+- **Low** SCR-000082 — Notifications Decision Dashboard: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000082
+- **Low** SCR-000083 — Unified notification events Workspace: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000003 | CMP-000003 <-uses- SCR-000083
+- **Low** SCR-000084 — Templates and versions Workspace: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000003 | CMP-000003 <-uses- SCR-000084
+- **Low** SCR-000085 — Category and priority Workspace: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000003 | CMP-000003 <-uses- SCR-000085
+- **Low** SCR-000086 — User preferences and quiet hours Workspace: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000003 | CMP-000003 <-uses- SCR-000086
+- **Low** SCR-000087 — Channel routing Workspace: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000003 | CMP-000003 <-uses- SCR-000087
+- **Low** SCR-000088 — Delivery retries Workspace: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000003 | CMP-000003 <-uses- SCR-000088
+- **Low** SCR-000089 — Digest and grouping Workspace: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000003 | CMP-000003 <-uses- SCR-000089
+- **Low** SCR-000090 — Escalation and audit Workspace: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000003 | CMP-000003 <-uses- SCR-000090
+- **Low** SCR-000091 — Human Resources Decision Dashboard: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000091
+- **Low** SCR-000092 — Employee records Workspace: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000003 | CMP-000003 <-uses- SCR-000092
+- **Low** SCR-000093 — Organization and positions Workspace: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000003 | CMP-000003 <-uses- SCR-000093
+- **Low** SCR-000094 — Recruitment Workspace: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000003 | CMP-000003 <-uses- SCR-000094
+- **Low** SCR-000095 — Onboarding/offboarding Workspace: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000003 | CMP-000003 <-uses- SCR-000095
+- **Low** SCR-000096 — Leave and attendance Workspace: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000003 | CMP-000003 <-uses- SCR-000096
+- **Low** SCR-000097 — Performance and goals Workspace: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000003 | CMP-000003 <-uses- SCR-000097
+- **Low** SCR-000098 — Compensation records Workspace: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000003 | CMP-000003 <-uses- SCR-000098
+- **Low** SCR-000099 — Workforce planning and compliance Workspace: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000003 | CMP-000003 <-uses- SCR-000099
+- **Low** SCR-000100 — Manufacturing Decision Dashboard: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000004 | CMP-000004 <-uses- SCR-000100
+- **Low** SCR-000101 — Bills of materials Workspace: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000003 | CMP-000003 <-uses- SCR-000101
+- **Low** SCR-000102 — Routings and work centers Workspace: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000003 | CMP-000003 <-uses- SCR-000102
+- **Low** SCR-000103 — Production orders Workspace: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000003 | CMP-000003 <-uses- SCR-000103
+- **Low** SCR-000104 — Material requirements Workspace: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000003 | CMP-000003 <-uses- SCR-000104
+- **Low** SCR-000105 — Scheduling and capacity Workspace: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000003 | CMP-000003 <-uses- SCR-000105
+- **Low** SCR-000106 — Issue/consume/produce Workspace: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000003 | CMP-000003 <-uses- SCR-000106
+- **Low** SCR-000107 — Quality control Workspace: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000003 | CMP-000003 <-uses- SCR-000107
+- **Low** SCR-000108 — Yield, scrap, downtime, and cost Workspace: BR-000001 -governs-> FEAT-000001 | FEAT-000001 <-uses- SCR-000002 | SCR-000002 -uses-> CMP-000003 | CMP-000003 <-uses- SCR-000108
+- **Low** UF-000003 — Decision Center UI Flow 3: BR-000001 -governs-> FEAT-000001 | FEAT-000001 -persists-> ENT-000001 | ENT-000001 <-uses- DEC-000003 | DEC-000003 <-supports- UF-000003
+- **Low** UF-000004 — Decision Center UI Flow 4: BR-000001 -governs-> FEAT-000001 | FEAT-000001 -persists-> ENT-000001 | ENT-000001 <-uses- DEC-000004 | DEC-000004 <-supports- UF-000004
+- **Low** UF-000006 — Decision Center UI Flow 6: BR-000001 -governs-> FEAT-000001 | FEAT-000001 -supports-> DEC-000001 | DEC-000001 <-supports- SCR-000006 | SCR-000006 <-renders- UF-000006
+- **Low** UF-000007 — Decision Center UI Flow 7: BR-000001 -governs-> FEAT-000001 | FEAT-000001 -persists-> ENT-000001 | ENT-000001 <-uses- DEC-000003 | DEC-000003 <-supports- UF-000007
+- **Low** UF-000008 — Decision Center UI Flow 8: BR-000001 -governs-> FEAT-000001 | FEAT-000001 -persists-> ENT-000001 | ENT-000001 <-uses- DEC-000004 | DEC-000004 <-supports- UF-000008
+- **Low** UJ-000002 — Decision triage: BR-000001 -governs-> FEAT-000001 | FEAT-000001 -persists-> ENT-000001 | ENT-000001 <-uses- DEC-000002 | DEC-000002 <-supports- UJ-000002
+- **Low** UJ-000003 — Evidence review: BR-000001 -governs-> FEAT-000001 | FEAT-000001 -persists-> ENT-000001 | ENT-000001 <-uses- DEC-000003 | DEC-000003 <-supports- UJ-000003
+- **Low** UJ-000004 — Approval path: BR-000001 -governs-> FEAT-000001 | FEAT-000001 -persists-> ENT-000001 | ENT-000001 <-uses- DEC-000004 | DEC-000004 <-supports- UJ-000004
+- **Low** UJ-000006 — Outcome review: BR-000001 -governs-> FEAT-000001 | FEAT-000001 -persists-> ENT-000001 | ENT-000001 <-uses- DEC-000002 | DEC-000002 <-supports- UJ-000006
+- **Low** UJ-000007 — Reopen and recovery: BR-000001 -governs-> FEAT-000001 | FEAT-000001 -persists-> ENT-000001 | ENT-000001 <-uses- DEC-000003 | DEC-000003 <-supports- UJ-000007

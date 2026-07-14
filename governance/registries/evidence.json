@@ -1,0 +1,127 @@
+{
+  "registry": "evidence",
+  "version": "1.0.0",
+  "generated_at": "2026-07-12T03:39:37Z",
+  "records": [
+    {
+      "id": "EVD-000001",
+      "type": "evidence",
+      "name": "Structural Validation Evidence",
+      "description": "Schema, identifier, reference, and lifecycle validation",
+      "status": "Released",
+      "owner": "TEAM-000001",
+      "version": "1.0.0",
+      "aliases": [
+        "GOV-EVD-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "evidence_type": "automated_validation",
+        "location": "knowledge/reports",
+        "producer": "Governance Engine",
+        "integrity_required": true,
+        "retention": "Permanent with governed release history"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000001",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "EVD-000002",
+      "type": "evidence",
+      "name": "Deep Registry Contract Evidence",
+      "description": "Type-specific registry contract validation",
+      "status": "Released",
+      "owner": "TEAM-000001",
+      "version": "1.0.0",
+      "aliases": [
+        "GOV-EVD-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "evidence_type": "automated_validation",
+        "location": "knowledge/reports/deep-validation.json",
+        "producer": "Governance Engine",
+        "integrity_required": true,
+        "retention": "Permanent with governed release history"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000001",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "EVD-000003",
+      "type": "evidence",
+      "name": "Artifact Drift Evidence",
+      "description": "Controlled document checksum reconciliation",
+      "status": "Released",
+      "owner": "TEAM-000001",
+      "version": "1.0.0",
+      "aliases": [
+        "GOV-EVD-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "evidence_type": "automated_validation",
+        "location": "knowledge/reports/artifact-drift.json",
+        "producer": "Governance Engine",
+        "integrity_required": true,
+        "retention": "Permanent with governed release history"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000001",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "EVD-000004",
+      "type": "evidence",
+      "name": "Dependency Registry Evidence",
+      "description": "Generated direct dependency inventory",
+      "status": "Released",
+      "owner": "TEAM-000001",
+      "version": "1.0.0",
+      "aliases": [
+        "GOV-EVD-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "evidence_type": "automated_validation",
+        "location": "knowledge/relationships/dependency-registry.json",
+        "producer": "Governance Engine",
+        "integrity_required": true,
+        "retention": "Permanent with governed release history"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000001",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    }
+  ]
+}

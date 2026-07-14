@@ -1,0 +1,3787 @@
+{
+  "registry": "ui_flows",
+  "version": "1.0.0",
+  "generated_at": "2026-07-12T03:39:37Z",
+  "records": [
+    {
+      "id": "UF-000001",
+      "type": "ui_flow",
+      "name": "Decision Center UI Flow 1",
+      "description": "Governed interaction flow for Decision Center; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-UF-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000001",
+        "nodes": [
+          "SCR-000001"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000002",
+      "type": "ui_flow",
+      "name": "Decision Center UI Flow 2",
+      "description": "Governed interaction flow for Decision Center; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-UF-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000002",
+        "nodes": [
+          "SCR-000002"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000003",
+      "type": "ui_flow",
+      "name": "Decision Center UI Flow 3",
+      "description": "Governed interaction flow for Decision Center; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-UF-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000003",
+        "nodes": [
+          "SCR-000003"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000004",
+      "type": "ui_flow",
+      "name": "Decision Center UI Flow 4",
+      "description": "Governed interaction flow for Decision Center; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-UF-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000004",
+        "nodes": [
+          "SCR-000004"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000005",
+      "type": "ui_flow",
+      "name": "Decision Center UI Flow 5",
+      "description": "Governed interaction flow for Decision Center; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-UF-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000005",
+        "nodes": [
+          "SCR-000005"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000006",
+      "type": "ui_flow",
+      "name": "Decision Center UI Flow 6",
+      "description": "Governed interaction flow for Decision Center; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-UF-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000006",
+        "nodes": [
+          "SCR-000006"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000007",
+      "type": "ui_flow",
+      "name": "Decision Center UI Flow 7",
+      "description": "Governed interaction flow for Decision Center; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-UF-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000007",
+        "nodes": [
+          "SCR-000007"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000008",
+      "type": "ui_flow",
+      "name": "Decision Center UI Flow 8",
+      "description": "Governed interaction flow for Decision Center; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-UF-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000008",
+        "nodes": [
+          "SCR-000008"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000009",
+      "type": "ui_flow",
+      "name": "Decision Center UI Flow 9",
+      "description": "Governed interaction flow for Decision Center; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-UF-009"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000009",
+        "nodes": [
+          "SCR-000009"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000010",
+      "type": "ui_flow",
+      "name": "Business Memory UI Flow 1",
+      "description": "Governed interaction flow for Business Memory; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-UF-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000010",
+        "nodes": [
+          "SCR-000010"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000011",
+      "type": "ui_flow",
+      "name": "Business Memory UI Flow 2",
+      "description": "Governed interaction flow for Business Memory; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-UF-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000011",
+        "nodes": [
+          "SCR-000011"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000012",
+      "type": "ui_flow",
+      "name": "Business Memory UI Flow 3",
+      "description": "Governed interaction flow for Business Memory; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-UF-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000012",
+        "nodes": [
+          "SCR-000012"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000013",
+      "type": "ui_flow",
+      "name": "Business Memory UI Flow 4",
+      "description": "Governed interaction flow for Business Memory; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-UF-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000013",
+        "nodes": [
+          "SCR-000013"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000014",
+      "type": "ui_flow",
+      "name": "Business Memory UI Flow 5",
+      "description": "Governed interaction flow for Business Memory; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-UF-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000014",
+        "nodes": [
+          "SCR-000014"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000015",
+      "type": "ui_flow",
+      "name": "Business Memory UI Flow 6",
+      "description": "Governed interaction flow for Business Memory; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-UF-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000015",
+        "nodes": [
+          "SCR-000015"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000016",
+      "type": "ui_flow",
+      "name": "Business Memory UI Flow 7",
+      "description": "Governed interaction flow for Business Memory; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-UF-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000016",
+        "nodes": [
+          "SCR-000016"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000017",
+      "type": "ui_flow",
+      "name": "Business Memory UI Flow 8",
+      "description": "Governed interaction flow for Business Memory; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-UF-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000017",
+        "nodes": [
+          "SCR-000017"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000018",
+      "type": "ui_flow",
+      "name": "Business Memory UI Flow 9",
+      "description": "Governed interaction flow for Business Memory; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-UF-009"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000018",
+        "nodes": [
+          "SCR-000018"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000019",
+      "type": "ui_flow",
+      "name": "AI Engine UI Flow 1",
+      "description": "Governed interaction flow for AI Engine; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-UF-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000019",
+        "nodes": [
+          "SCR-000019"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000020",
+      "type": "ui_flow",
+      "name": "AI Engine UI Flow 2",
+      "description": "Governed interaction flow for AI Engine; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-UF-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000020",
+        "nodes": [
+          "SCR-000020"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000021",
+      "type": "ui_flow",
+      "name": "AI Engine UI Flow 3",
+      "description": "Governed interaction flow for AI Engine; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-UF-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000021",
+        "nodes": [
+          "SCR-000021"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000022",
+      "type": "ui_flow",
+      "name": "AI Engine UI Flow 4",
+      "description": "Governed interaction flow for AI Engine; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-UF-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000022",
+        "nodes": [
+          "SCR-000022"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000023",
+      "type": "ui_flow",
+      "name": "AI Engine UI Flow 5",
+      "description": "Governed interaction flow for AI Engine; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-UF-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000023",
+        "nodes": [
+          "SCR-000023"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000024",
+      "type": "ui_flow",
+      "name": "AI Engine UI Flow 6",
+      "description": "Governed interaction flow for AI Engine; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-UF-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000024",
+        "nodes": [
+          "SCR-000024"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000025",
+      "type": "ui_flow",
+      "name": "AI Engine UI Flow 7",
+      "description": "Governed interaction flow for AI Engine; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-UF-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000025",
+        "nodes": [
+          "SCR-000025"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000026",
+      "type": "ui_flow",
+      "name": "AI Engine UI Flow 8",
+      "description": "Governed interaction flow for AI Engine; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-UF-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000026",
+        "nodes": [
+          "SCR-000026"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000027",
+      "type": "ui_flow",
+      "name": "AI Engine UI Flow 9",
+      "description": "Governed interaction flow for AI Engine; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-UF-009"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000027",
+        "nodes": [
+          "SCR-000027"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000028",
+      "type": "ui_flow",
+      "name": "Identity, Workspace, Permissions & Audit UI Flow 1",
+      "description": "Governed interaction flow for Identity, Workspace, Permissions & Audit; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-UF-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000028",
+        "nodes": [
+          "SCR-000028"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000029",
+      "type": "ui_flow",
+      "name": "Identity, Workspace, Permissions & Audit UI Flow 2",
+      "description": "Governed interaction flow for Identity, Workspace, Permissions & Audit; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-UF-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000029",
+        "nodes": [
+          "SCR-000029"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000030",
+      "type": "ui_flow",
+      "name": "Identity, Workspace, Permissions & Audit UI Flow 3",
+      "description": "Governed interaction flow for Identity, Workspace, Permissions & Audit; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-UF-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000030",
+        "nodes": [
+          "SCR-000030"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000031",
+      "type": "ui_flow",
+      "name": "Identity, Workspace, Permissions & Audit UI Flow 4",
+      "description": "Governed interaction flow for Identity, Workspace, Permissions & Audit; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-UF-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000031",
+        "nodes": [
+          "SCR-000031"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000032",
+      "type": "ui_flow",
+      "name": "Identity, Workspace, Permissions & Audit UI Flow 5",
+      "description": "Governed interaction flow for Identity, Workspace, Permissions & Audit; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-UF-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000032",
+        "nodes": [
+          "SCR-000032"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000033",
+      "type": "ui_flow",
+      "name": "Identity, Workspace, Permissions & Audit UI Flow 6",
+      "description": "Governed interaction flow for Identity, Workspace, Permissions & Audit; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-UF-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000033",
+        "nodes": [
+          "SCR-000033"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000034",
+      "type": "ui_flow",
+      "name": "Identity, Workspace, Permissions & Audit UI Flow 7",
+      "description": "Governed interaction flow for Identity, Workspace, Permissions & Audit; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-UF-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000034",
+        "nodes": [
+          "SCR-000034"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000035",
+      "type": "ui_flow",
+      "name": "Identity, Workspace, Permissions & Audit UI Flow 8",
+      "description": "Governed interaction flow for Identity, Workspace, Permissions & Audit; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-UF-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000035",
+        "nodes": [
+          "SCR-000035"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000036",
+      "type": "ui_flow",
+      "name": "Identity, Workspace, Permissions & Audit UI Flow 9",
+      "description": "Governed interaction flow for Identity, Workspace, Permissions & Audit; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-UF-009"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000036",
+        "nodes": [
+          "SCR-000036"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000037",
+      "type": "ui_flow",
+      "name": "Finance UI Flow 1",
+      "description": "Governed interaction flow for Finance; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-UF-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000037",
+        "nodes": [
+          "SCR-000037"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000038",
+      "type": "ui_flow",
+      "name": "Finance UI Flow 2",
+      "description": "Governed interaction flow for Finance; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-UF-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000038",
+        "nodes": [
+          "SCR-000038"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000039",
+      "type": "ui_flow",
+      "name": "Finance UI Flow 3",
+      "description": "Governed interaction flow for Finance; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-UF-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000039",
+        "nodes": [
+          "SCR-000039"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000040",
+      "type": "ui_flow",
+      "name": "Finance UI Flow 4",
+      "description": "Governed interaction flow for Finance; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-UF-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000040",
+        "nodes": [
+          "SCR-000040"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000041",
+      "type": "ui_flow",
+      "name": "Finance UI Flow 5",
+      "description": "Governed interaction flow for Finance; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-UF-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000041",
+        "nodes": [
+          "SCR-000041"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000042",
+      "type": "ui_flow",
+      "name": "Finance UI Flow 6",
+      "description": "Governed interaction flow for Finance; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-UF-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000042",
+        "nodes": [
+          "SCR-000042"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000043",
+      "type": "ui_flow",
+      "name": "Finance UI Flow 7",
+      "description": "Governed interaction flow for Finance; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-UF-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000043",
+        "nodes": [
+          "SCR-000043"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000044",
+      "type": "ui_flow",
+      "name": "Finance UI Flow 8",
+      "description": "Governed interaction flow for Finance; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-UF-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000044",
+        "nodes": [
+          "SCR-000044"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000045",
+      "type": "ui_flow",
+      "name": "Finance UI Flow 9",
+      "description": "Governed interaction flow for Finance; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-UF-009"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000045",
+        "nodes": [
+          "SCR-000045"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000046",
+      "type": "ui_flow",
+      "name": "Inventory UI Flow 1",
+      "description": "Governed interaction flow for Inventory; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-UF-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000046",
+        "nodes": [
+          "SCR-000046"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000047",
+      "type": "ui_flow",
+      "name": "Inventory UI Flow 2",
+      "description": "Governed interaction flow for Inventory; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-UF-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000047",
+        "nodes": [
+          "SCR-000047"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000048",
+      "type": "ui_flow",
+      "name": "Inventory UI Flow 3",
+      "description": "Governed interaction flow for Inventory; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-UF-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000048",
+        "nodes": [
+          "SCR-000048"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000049",
+      "type": "ui_flow",
+      "name": "Inventory UI Flow 4",
+      "description": "Governed interaction flow for Inventory; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-UF-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000049",
+        "nodes": [
+          "SCR-000049"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000050",
+      "type": "ui_flow",
+      "name": "Inventory UI Flow 5",
+      "description": "Governed interaction flow for Inventory; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-UF-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000050",
+        "nodes": [
+          "SCR-000050"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000051",
+      "type": "ui_flow",
+      "name": "Inventory UI Flow 6",
+      "description": "Governed interaction flow for Inventory; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-UF-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000051",
+        "nodes": [
+          "SCR-000051"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000052",
+      "type": "ui_flow",
+      "name": "Inventory UI Flow 7",
+      "description": "Governed interaction flow for Inventory; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-UF-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000052",
+        "nodes": [
+          "SCR-000052"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000053",
+      "type": "ui_flow",
+      "name": "Inventory UI Flow 8",
+      "description": "Governed interaction flow for Inventory; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-UF-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000053",
+        "nodes": [
+          "SCR-000053"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000054",
+      "type": "ui_flow",
+      "name": "Inventory UI Flow 9",
+      "description": "Governed interaction flow for Inventory; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-UF-009"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000054",
+        "nodes": [
+          "SCR-000054"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000055",
+      "type": "ui_flow",
+      "name": "CRM UI Flow 1",
+      "description": "Governed interaction flow for CRM; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-UF-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000055",
+        "nodes": [
+          "SCR-000055"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000056",
+      "type": "ui_flow",
+      "name": "CRM UI Flow 2",
+      "description": "Governed interaction flow for CRM; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-UF-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000056",
+        "nodes": [
+          "SCR-000056"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000057",
+      "type": "ui_flow",
+      "name": "CRM UI Flow 3",
+      "description": "Governed interaction flow for CRM; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-UF-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000057",
+        "nodes": [
+          "SCR-000057"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000058",
+      "type": "ui_flow",
+      "name": "CRM UI Flow 4",
+      "description": "Governed interaction flow for CRM; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-UF-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000058",
+        "nodes": [
+          "SCR-000058"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000059",
+      "type": "ui_flow",
+      "name": "CRM UI Flow 5",
+      "description": "Governed interaction flow for CRM; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-UF-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000059",
+        "nodes": [
+          "SCR-000059"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000060",
+      "type": "ui_flow",
+      "name": "CRM UI Flow 6",
+      "description": "Governed interaction flow for CRM; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-UF-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000060",
+        "nodes": [
+          "SCR-000060"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000061",
+      "type": "ui_flow",
+      "name": "CRM UI Flow 7",
+      "description": "Governed interaction flow for CRM; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-UF-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000061",
+        "nodes": [
+          "SCR-000061"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000062",
+      "type": "ui_flow",
+      "name": "CRM UI Flow 8",
+      "description": "Governed interaction flow for CRM; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-UF-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000062",
+        "nodes": [
+          "SCR-000062"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000063",
+      "type": "ui_flow",
+      "name": "CRM UI Flow 9",
+      "description": "Governed interaction flow for CRM; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-UF-009"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000063",
+        "nodes": [
+          "SCR-000063"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000064",
+      "type": "ui_flow",
+      "name": "Analytics UI Flow 1",
+      "description": "Governed interaction flow for Analytics; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-UF-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000064",
+        "nodes": [
+          "SCR-000064"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000065",
+      "type": "ui_flow",
+      "name": "Analytics UI Flow 2",
+      "description": "Governed interaction flow for Analytics; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-UF-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000065",
+        "nodes": [
+          "SCR-000065"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000066",
+      "type": "ui_flow",
+      "name": "Analytics UI Flow 3",
+      "description": "Governed interaction flow for Analytics; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-UF-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000066",
+        "nodes": [
+          "SCR-000066"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000067",
+      "type": "ui_flow",
+      "name": "Analytics UI Flow 4",
+      "description": "Governed interaction flow for Analytics; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-UF-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000067",
+        "nodes": [
+          "SCR-000067"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000068",
+      "type": "ui_flow",
+      "name": "Analytics UI Flow 5",
+      "description": "Governed interaction flow for Analytics; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-UF-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000068",
+        "nodes": [
+          "SCR-000068"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000069",
+      "type": "ui_flow",
+      "name": "Analytics UI Flow 6",
+      "description": "Governed interaction flow for Analytics; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-UF-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000069",
+        "nodes": [
+          "SCR-000069"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000070",
+      "type": "ui_flow",
+      "name": "Analytics UI Flow 7",
+      "description": "Governed interaction flow for Analytics; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-UF-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000070",
+        "nodes": [
+          "SCR-000070"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000071",
+      "type": "ui_flow",
+      "name": "Analytics UI Flow 8",
+      "description": "Governed interaction flow for Analytics; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-UF-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000071",
+        "nodes": [
+          "SCR-000071"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000072",
+      "type": "ui_flow",
+      "name": "Analytics UI Flow 9",
+      "description": "Governed interaction flow for Analytics; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-UF-009"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000072",
+        "nodes": [
+          "SCR-000072"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000073",
+      "type": "ui_flow",
+      "name": "Documents UI Flow 1",
+      "description": "Governed interaction flow for Documents; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-UF-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000073",
+        "nodes": [
+          "SCR-000073"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000074",
+      "type": "ui_flow",
+      "name": "Documents UI Flow 2",
+      "description": "Governed interaction flow for Documents; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-UF-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000074",
+        "nodes": [
+          "SCR-000074"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000075",
+      "type": "ui_flow",
+      "name": "Documents UI Flow 3",
+      "description": "Governed interaction flow for Documents; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-UF-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000075",
+        "nodes": [
+          "SCR-000075"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000076",
+      "type": "ui_flow",
+      "name": "Documents UI Flow 4",
+      "description": "Governed interaction flow for Documents; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-UF-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000076",
+        "nodes": [
+          "SCR-000076"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000077",
+      "type": "ui_flow",
+      "name": "Documents UI Flow 5",
+      "description": "Governed interaction flow for Documents; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-UF-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000077",
+        "nodes": [
+          "SCR-000077"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000078",
+      "type": "ui_flow",
+      "name": "Documents UI Flow 6",
+      "description": "Governed interaction flow for Documents; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-UF-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000078",
+        "nodes": [
+          "SCR-000078"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000079",
+      "type": "ui_flow",
+      "name": "Documents UI Flow 7",
+      "description": "Governed interaction flow for Documents; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-UF-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000079",
+        "nodes": [
+          "SCR-000079"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000080",
+      "type": "ui_flow",
+      "name": "Documents UI Flow 8",
+      "description": "Governed interaction flow for Documents; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-UF-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000080",
+        "nodes": [
+          "SCR-000080"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000081",
+      "type": "ui_flow",
+      "name": "Documents UI Flow 9",
+      "description": "Governed interaction flow for Documents; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-UF-009"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000081",
+        "nodes": [
+          "SCR-000081"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000082",
+      "type": "ui_flow",
+      "name": "Notifications UI Flow 1",
+      "description": "Governed interaction flow for Notifications; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-UF-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000082",
+        "nodes": [
+          "SCR-000082"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000083",
+      "type": "ui_flow",
+      "name": "Notifications UI Flow 2",
+      "description": "Governed interaction flow for Notifications; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-UF-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000083",
+        "nodes": [
+          "SCR-000083"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000084",
+      "type": "ui_flow",
+      "name": "Notifications UI Flow 3",
+      "description": "Governed interaction flow for Notifications; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-UF-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000084",
+        "nodes": [
+          "SCR-000084"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000085",
+      "type": "ui_flow",
+      "name": "Notifications UI Flow 4",
+      "description": "Governed interaction flow for Notifications; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-UF-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000085",
+        "nodes": [
+          "SCR-000085"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000086",
+      "type": "ui_flow",
+      "name": "Notifications UI Flow 5",
+      "description": "Governed interaction flow for Notifications; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-UF-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000086",
+        "nodes": [
+          "SCR-000086"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000087",
+      "type": "ui_flow",
+      "name": "Notifications UI Flow 6",
+      "description": "Governed interaction flow for Notifications; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-UF-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000087",
+        "nodes": [
+          "SCR-000087"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000088",
+      "type": "ui_flow",
+      "name": "Notifications UI Flow 7",
+      "description": "Governed interaction flow for Notifications; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-UF-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000088",
+        "nodes": [
+          "SCR-000088"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000089",
+      "type": "ui_flow",
+      "name": "Notifications UI Flow 8",
+      "description": "Governed interaction flow for Notifications; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-UF-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000089",
+        "nodes": [
+          "SCR-000089"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000090",
+      "type": "ui_flow",
+      "name": "Notifications UI Flow 9",
+      "description": "Governed interaction flow for Notifications; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-UF-009"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000090",
+        "nodes": [
+          "SCR-000090"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000091",
+      "type": "ui_flow",
+      "name": "Human Resources UI Flow 1",
+      "description": "Governed interaction flow for Human Resources; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-UF-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000091",
+        "nodes": [
+          "SCR-000091"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000092",
+      "type": "ui_flow",
+      "name": "Human Resources UI Flow 2",
+      "description": "Governed interaction flow for Human Resources; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-UF-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000092",
+        "nodes": [
+          "SCR-000092"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000093",
+      "type": "ui_flow",
+      "name": "Human Resources UI Flow 3",
+      "description": "Governed interaction flow for Human Resources; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-UF-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000093",
+        "nodes": [
+          "SCR-000093"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000094",
+      "type": "ui_flow",
+      "name": "Human Resources UI Flow 4",
+      "description": "Governed interaction flow for Human Resources; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-UF-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000094",
+        "nodes": [
+          "SCR-000094"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000095",
+      "type": "ui_flow",
+      "name": "Human Resources UI Flow 5",
+      "description": "Governed interaction flow for Human Resources; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-UF-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000095",
+        "nodes": [
+          "SCR-000095"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000096",
+      "type": "ui_flow",
+      "name": "Human Resources UI Flow 6",
+      "description": "Governed interaction flow for Human Resources; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-UF-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000096",
+        "nodes": [
+          "SCR-000096"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000097",
+      "type": "ui_flow",
+      "name": "Human Resources UI Flow 7",
+      "description": "Governed interaction flow for Human Resources; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-UF-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000097",
+        "nodes": [
+          "SCR-000097"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000098",
+      "type": "ui_flow",
+      "name": "Human Resources UI Flow 8",
+      "description": "Governed interaction flow for Human Resources; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-UF-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000098",
+        "nodes": [
+          "SCR-000098"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000099",
+      "type": "ui_flow",
+      "name": "Human Resources UI Flow 9",
+      "description": "Governed interaction flow for Human Resources; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-UF-009"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000099",
+        "nodes": [
+          "SCR-000099"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000100",
+      "type": "ui_flow",
+      "name": "Manufacturing UI Flow 1",
+      "description": "Governed interaction flow for Manufacturing; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-UF-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000100",
+        "nodes": [
+          "SCR-000100"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000101",
+      "type": "ui_flow",
+      "name": "Manufacturing UI Flow 2",
+      "description": "Governed interaction flow for Manufacturing; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-UF-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000101",
+        "nodes": [
+          "SCR-000101"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000102",
+      "type": "ui_flow",
+      "name": "Manufacturing UI Flow 3",
+      "description": "Governed interaction flow for Manufacturing; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-UF-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000102",
+        "nodes": [
+          "SCR-000102"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000103",
+      "type": "ui_flow",
+      "name": "Manufacturing UI Flow 4",
+      "description": "Governed interaction flow for Manufacturing; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-UF-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000103",
+        "nodes": [
+          "SCR-000103"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000104",
+      "type": "ui_flow",
+      "name": "Manufacturing UI Flow 5",
+      "description": "Governed interaction flow for Manufacturing; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-UF-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000104",
+        "nodes": [
+          "SCR-000104"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000105",
+      "type": "ui_flow",
+      "name": "Manufacturing UI Flow 6",
+      "description": "Governed interaction flow for Manufacturing; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-UF-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000105",
+        "nodes": [
+          "SCR-000105"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000106",
+      "type": "ui_flow",
+      "name": "Manufacturing UI Flow 7",
+      "description": "Governed interaction flow for Manufacturing; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-UF-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000106",
+        "nodes": [
+          "SCR-000106"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000107",
+      "type": "ui_flow",
+      "name": "Manufacturing UI Flow 8",
+      "description": "Governed interaction flow for Manufacturing; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-UF-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000107",
+        "nodes": [
+          "SCR-000107"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "UF-000108",
+      "type": "ui_flow",
+      "name": "Manufacturing UI Flow 9",
+      "description": "Governed interaction flow for Manufacturing; exact navigation, dialog, validation, confirmation, recovery, and notification transitions require Design approval.",
+      "status": "In Design",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-UF-009"
+      ],
+      "tags": [],
+      "attributes": {
+        "entry_screen": "SCR-000108",
+        "nodes": [
+          "SCR-000108"
+        ],
+        "transitions": [],
+        "validation_states": [],
+        "confirmation_states": [],
+        "recovery_states": [],
+        "flow_definition_status": "requires_design_owner_approval",
+        "accessibility_review_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    }
+  ]
+}

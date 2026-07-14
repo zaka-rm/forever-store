@@ -1,0 +1,2047 @@
+{
+  "registry": "notifications",
+  "version": "1.0.0",
+  "generated_at": "2026-07-12T03:39:37Z",
+  "records": [
+    {
+      "id": "NOT-000001",
+      "type": "notification",
+      "name": "New assignment",
+      "description": "Notification behavior for new assignment.",
+      "status": "Specified",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-NOT-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "channels": [
+          "in_app",
+          "email"
+        ],
+        "preference_class": "policy-controlled"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "NOT-000002",
+      "type": "notification",
+      "name": "Approval requested",
+      "description": "Notification behavior for approval requested.",
+      "status": "Specified",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-NOT-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "channels": [
+          "in_app",
+          "email"
+        ],
+        "preference_class": "policy-controlled"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "NOT-000003",
+      "type": "notification",
+      "name": "Due soon",
+      "description": "Notification behavior for due soon.",
+      "status": "Specified",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-NOT-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "channels": [
+          "in_app",
+          "email"
+        ],
+        "preference_class": "policy-controlled"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "NOT-000004",
+      "type": "notification",
+      "name": "Overdue escalation",
+      "description": "Notification behavior for overdue escalation.",
+      "status": "Specified",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-NOT-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "channels": [
+          "in_app",
+          "email"
+        ],
+        "preference_class": "policy-controlled"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "NOT-000005",
+      "type": "notification",
+      "name": "Outcome review due",
+      "description": "Notification behavior for outcome review due.",
+      "status": "Specified",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-NOT-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "channels": [
+          "in_app",
+          "email"
+        ],
+        "preference_class": "policy-controlled"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "NOT-000006",
+      "type": "notification",
+      "name": "Decision materially changed",
+      "description": "Notification behavior for decision materially changed.",
+      "status": "Specified",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-NOT-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "channels": [
+          "in_app",
+          "email"
+        ],
+        "preference_class": "policy-controlled"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "NOT-000007",
+      "type": "notification",
+      "name": "Outcome review due",
+      "description": "Notification behavior for outcome review due.",
+      "status": "Specified",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-NOT-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "channels": [
+          "in_app",
+          "email"
+        ],
+        "preference_class": "policy-controlled"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "NOT-000008",
+      "type": "notification",
+      "name": "Memory index failed",
+      "description": "Notification behavior for memory index failed.",
+      "status": "Specified",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-NOT-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "channels": [
+          "in_app",
+          "email"
+        ],
+        "preference_class": "policy-controlled"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "NOT-000009",
+      "type": "notification",
+      "name": "Retention action pending",
+      "description": "Notification behavior for retention action pending.",
+      "status": "Specified",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-NOT-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "channels": [
+          "in_app",
+          "email"
+        ],
+        "preference_class": "policy-controlled"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "NOT-000010",
+      "type": "notification",
+      "name": "Legal hold changed",
+      "description": "Notification behavior for legal hold changed.",
+      "status": "Specified",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-NOT-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "channels": [
+          "in_app",
+          "email"
+        ],
+        "preference_class": "policy-controlled"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "NOT-000011",
+      "type": "notification",
+      "name": "Source access revoked",
+      "description": "Notification behavior for source access revoked.",
+      "status": "Specified",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-NOT-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "channels": [
+          "in_app",
+          "email"
+        ],
+        "preference_class": "policy-controlled"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "NOT-000012",
+      "type": "notification",
+      "name": "Recommendation ready",
+      "description": "Notification behavior for recommendation ready.",
+      "status": "Specified",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-NOT-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "channels": [
+          "in_app",
+          "email"
+        ],
+        "preference_class": "policy-controlled"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "NOT-000013",
+      "type": "notification",
+      "name": "Human review required",
+      "description": "Notification behavior for human review required.",
+      "status": "Specified",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-NOT-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "channels": [
+          "in_app",
+          "email"
+        ],
+        "preference_class": "policy-controlled"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "NOT-000014",
+      "type": "notification",
+      "name": "Quality threshold breached",
+      "description": "Notification behavior for quality threshold breached.",
+      "status": "Specified",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-NOT-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "channels": [
+          "in_app",
+          "email"
+        ],
+        "preference_class": "policy-controlled"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "NOT-000015",
+      "type": "notification",
+      "name": "Budget threshold reached",
+      "description": "Notification behavior for budget threshold reached.",
+      "status": "Specified",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-NOT-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "channels": [
+          "in_app",
+          "email"
+        ],
+        "preference_class": "policy-controlled"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "NOT-000016",
+      "type": "notification",
+      "name": "Provider degraded",
+      "description": "Notification behavior for provider degraded.",
+      "status": "Specified",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-NOT-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "channels": [
+          "in_app",
+          "email"
+        ],
+        "preference_class": "policy-controlled"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "NOT-000017",
+      "type": "notification",
+      "name": "Safety incident",
+      "description": "Notification behavior for safety incident.",
+      "status": "Specified",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-NOT-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "channels": [
+          "in_app",
+          "email"
+        ],
+        "preference_class": "policy-controlled"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "NOT-000018",
+      "type": "notification",
+      "name": "Invitation",
+      "description": "Notification behavior for invitation.",
+      "status": "Specified",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-NOT-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "channels": [
+          "in_app",
+          "email"
+        ],
+        "preference_class": "policy-controlled"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "NOT-000019",
+      "type": "notification",
+      "name": "Role changed",
+      "description": "Notification behavior for role changed.",
+      "status": "Specified",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-NOT-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "channels": [
+          "in_app",
+          "email"
+        ],
+        "preference_class": "policy-controlled"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "NOT-000020",
+      "type": "notification",
+      "name": "MFA/security alert",
+      "description": "Notification behavior for mfa/security alert.",
+      "status": "Specified",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-NOT-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "channels": [
+          "in_app",
+          "email"
+        ],
+        "preference_class": "policy-controlled"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "NOT-000021",
+      "type": "notification",
+      "name": "Session revoked",
+      "description": "Notification behavior for session revoked.",
+      "status": "Specified",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-NOT-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "channels": [
+          "in_app",
+          "email"
+        ],
+        "preference_class": "policy-controlled"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "NOT-000022",
+      "type": "notification",
+      "name": "Access review due",
+      "description": "Notification behavior for access review due.",
+      "status": "Specified",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-NOT-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "channels": [
+          "in_app",
+          "email"
+        ],
+        "preference_class": "policy-controlled"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "NOT-000023",
+      "type": "notification",
+      "name": "Sensitive export",
+      "description": "Notification behavior for sensitive export.",
+      "status": "Specified",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-NOT-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "channels": [
+          "in_app",
+          "email"
+        ],
+        "preference_class": "policy-controlled"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "NOT-000024",
+      "type": "notification",
+      "name": "Invoice overdue",
+      "description": "Notification behavior for invoice overdue.",
+      "status": "Specified",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-NOT-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "channels": [
+          "in_app",
+          "email"
+        ],
+        "preference_class": "policy-controlled"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "NOT-000025",
+      "type": "notification",
+      "name": "Bill approval",
+      "description": "Notification behavior for bill approval.",
+      "status": "Specified",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-NOT-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "channels": [
+          "in_app",
+          "email"
+        ],
+        "preference_class": "policy-controlled"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "NOT-000026",
+      "type": "notification",
+      "name": "Cash risk",
+      "description": "Notification behavior for cash risk.",
+      "status": "Specified",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-NOT-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "channels": [
+          "in_app",
+          "email"
+        ],
+        "preference_class": "policy-controlled"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "NOT-000027",
+      "type": "notification",
+      "name": "Budget threshold",
+      "description": "Notification behavior for budget threshold.",
+      "status": "Specified",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-NOT-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "channels": [
+          "in_app",
+          "email"
+        ],
+        "preference_class": "policy-controlled"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "NOT-000028",
+      "type": "notification",
+      "name": "Reconciliation exception",
+      "description": "Notification behavior for reconciliation exception.",
+      "status": "Specified",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-NOT-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "channels": [
+          "in_app",
+          "email"
+        ],
+        "preference_class": "policy-controlled"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "NOT-000029",
+      "type": "notification",
+      "name": "Period close task",
+      "description": "Notification behavior for period close task.",
+      "status": "Specified",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-NOT-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "channels": [
+          "in_app",
+          "email"
+        ],
+        "preference_class": "policy-controlled"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "NOT-000030",
+      "type": "notification",
+      "name": "Low stock",
+      "description": "Notification behavior for low stock.",
+      "status": "Specified",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-NOT-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "channels": [
+          "in_app",
+          "email"
+        ],
+        "preference_class": "policy-controlled"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "NOT-000031",
+      "type": "notification",
+      "name": "Stockout risk",
+      "description": "Notification behavior for stockout risk.",
+      "status": "Specified",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-NOT-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "channels": [
+          "in_app",
+          "email"
+        ],
+        "preference_class": "policy-controlled"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "NOT-000032",
+      "type": "notification",
+      "name": "Purchase approval",
+      "description": "Notification behavior for purchase approval.",
+      "status": "Specified",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-NOT-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "channels": [
+          "in_app",
+          "email"
+        ],
+        "preference_class": "policy-controlled"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "NOT-000033",
+      "type": "notification",
+      "name": "Receipt variance",
+      "description": "Notification behavior for receipt variance.",
+      "status": "Specified",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-NOT-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "channels": [
+          "in_app",
+          "email"
+        ],
+        "preference_class": "policy-controlled"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "NOT-000034",
+      "type": "notification",
+      "name": "Count variance",
+      "description": "Notification behavior for count variance.",
+      "status": "Specified",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-NOT-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "channels": [
+          "in_app",
+          "email"
+        ],
+        "preference_class": "policy-controlled"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "NOT-000035",
+      "type": "notification",
+      "name": "Transfer delay",
+      "description": "Notification behavior for transfer delay.",
+      "status": "Specified",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-NOT-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "channels": [
+          "in_app",
+          "email"
+        ],
+        "preference_class": "policy-controlled"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "NOT-000036",
+      "type": "notification",
+      "name": "Expiring lot",
+      "description": "Notification behavior for expiring lot.",
+      "status": "Specified",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-NOT-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "channels": [
+          "in_app",
+          "email"
+        ],
+        "preference_class": "policy-controlled"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "NOT-000037",
+      "type": "notification",
+      "name": "New assignment",
+      "description": "Notification behavior for new assignment.",
+      "status": "Specified",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-NOT-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "channels": [
+          "in_app",
+          "email"
+        ],
+        "preference_class": "policy-controlled"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "NOT-000038",
+      "type": "notification",
+      "name": "Lead SLA",
+      "description": "Notification behavior for lead sla.",
+      "status": "Specified",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-NOT-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "channels": [
+          "in_app",
+          "email"
+        ],
+        "preference_class": "policy-controlled"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "NOT-000039",
+      "type": "notification",
+      "name": "Opportunity risk",
+      "description": "Notification behavior for opportunity risk.",
+      "status": "Specified",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-NOT-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "channels": [
+          "in_app",
+          "email"
+        ],
+        "preference_class": "policy-controlled"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "NOT-000040",
+      "type": "notification",
+      "name": "Next action due",
+      "description": "Notification behavior for next action due.",
+      "status": "Specified",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-NOT-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "channels": [
+          "in_app",
+          "email"
+        ],
+        "preference_class": "policy-controlled"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "NOT-000041",
+      "type": "notification",
+      "name": "Churn risk",
+      "description": "Notification behavior for churn risk.",
+      "status": "Specified",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-NOT-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "channels": [
+          "in_app",
+          "email"
+        ],
+        "preference_class": "policy-controlled"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "NOT-000042",
+      "type": "notification",
+      "name": "Consent issue",
+      "description": "Notification behavior for consent issue.",
+      "status": "Specified",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-NOT-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "channels": [
+          "in_app",
+          "email"
+        ],
+        "preference_class": "policy-controlled"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "NOT-000043",
+      "type": "notification",
+      "name": "Customer milestone",
+      "description": "Notification behavior for customer milestone.",
+      "status": "Specified",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-NOT-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "channels": [
+          "in_app",
+          "email"
+        ],
+        "preference_class": "policy-controlled"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "NOT-000044",
+      "type": "notification",
+      "name": "Threshold breached",
+      "description": "Notification behavior for threshold breached.",
+      "status": "Specified",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-NOT-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "channels": [
+          "in_app",
+          "email"
+        ],
+        "preference_class": "policy-controlled"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "NOT-000045",
+      "type": "notification",
+      "name": "Report ready",
+      "description": "Notification behavior for report ready.",
+      "status": "Specified",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-NOT-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "channels": [
+          "in_app",
+          "email"
+        ],
+        "preference_class": "policy-controlled"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "NOT-000046",
+      "type": "notification",
+      "name": "Report failed",
+      "description": "Notification behavior for report failed.",
+      "status": "Specified",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-NOT-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "channels": [
+          "in_app",
+          "email"
+        ],
+        "preference_class": "policy-controlled"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "NOT-000047",
+      "type": "notification",
+      "name": "Data stale",
+      "description": "Notification behavior for data stale.",
+      "status": "Specified",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-NOT-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "channels": [
+          "in_app",
+          "email"
+        ],
+        "preference_class": "policy-controlled"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "NOT-000048",
+      "type": "notification",
+      "name": "Data quality failed",
+      "description": "Notification behavior for data quality failed.",
+      "status": "Specified",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-NOT-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "channels": [
+          "in_app",
+          "email"
+        ],
+        "preference_class": "policy-controlled"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "NOT-000049",
+      "type": "notification",
+      "name": "Metric definition changed",
+      "description": "Notification behavior for metric definition changed.",
+      "status": "Specified",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-NOT-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "channels": [
+          "in_app",
+          "email"
+        ],
+        "preference_class": "policy-controlled"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "NOT-000050",
+      "type": "notification",
+      "name": "Review requested",
+      "description": "Notification behavior for review requested.",
+      "status": "Specified",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-NOT-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "channels": [
+          "in_app",
+          "email"
+        ],
+        "preference_class": "policy-controlled"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "NOT-000051",
+      "type": "notification",
+      "name": "Approval due",
+      "description": "Notification behavior for approval due.",
+      "status": "Specified",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-NOT-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "channels": [
+          "in_app",
+          "email"
+        ],
+        "preference_class": "policy-controlled"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "NOT-000052",
+      "type": "notification",
+      "name": "Signature due",
+      "description": "Notification behavior for signature due.",
+      "status": "Specified",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-NOT-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "channels": [
+          "in_app",
+          "email"
+        ],
+        "preference_class": "policy-controlled"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "NOT-000053",
+      "type": "notification",
+      "name": "Document expiring",
+      "description": "Notification behavior for document expiring.",
+      "status": "Specified",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-NOT-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "channels": [
+          "in_app",
+          "email"
+        ],
+        "preference_class": "policy-controlled"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "NOT-000054",
+      "type": "notification",
+      "name": "Retention action",
+      "description": "Notification behavior for retention action.",
+      "status": "Specified",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-NOT-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "channels": [
+          "in_app",
+          "email"
+        ],
+        "preference_class": "policy-controlled"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "NOT-000055",
+      "type": "notification",
+      "name": "Extraction failed",
+      "description": "Notification behavior for extraction failed.",
+      "status": "Specified",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-NOT-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "channels": [
+          "in_app",
+          "email"
+        ],
+        "preference_class": "policy-controlled"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "NOT-000056",
+      "type": "notification",
+      "name": "The module owns all platform notifications",
+      "description": "Notification behavior for the module owns all platform notifications.",
+      "status": "Specified",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-NOT-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "channels": [
+          "in_app",
+          "email"
+        ],
+        "preference_class": "policy-controlled"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "NOT-000057",
+      "type": "notification",
+      "name": "Interview task",
+      "description": "Notification behavior for interview task.",
+      "status": "Specified",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-NOT-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "channels": [
+          "in_app",
+          "email"
+        ],
+        "preference_class": "policy-controlled"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "NOT-000058",
+      "type": "notification",
+      "name": "Onboarding due",
+      "description": "Notification behavior for onboarding due.",
+      "status": "Specified",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-NOT-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "channels": [
+          "in_app",
+          "email"
+        ],
+        "preference_class": "policy-controlled"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "NOT-000059",
+      "type": "notification",
+      "name": "Leave request",
+      "description": "Notification behavior for leave request.",
+      "status": "Specified",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-NOT-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "channels": [
+          "in_app",
+          "email"
+        ],
+        "preference_class": "policy-controlled"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "NOT-000060",
+      "type": "notification",
+      "name": "Review due",
+      "description": "Notification behavior for review due.",
+      "status": "Specified",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-NOT-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "channels": [
+          "in_app",
+          "email"
+        ],
+        "preference_class": "policy-controlled"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "NOT-000061",
+      "type": "notification",
+      "name": "Contract/credential expiry",
+      "description": "Notification behavior for contract/credential expiry.",
+      "status": "Specified",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-NOT-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "channels": [
+          "in_app",
+          "email"
+        ],
+        "preference_class": "policy-controlled"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "NOT-000062",
+      "type": "notification",
+      "name": "Offboarding task",
+      "description": "Notification behavior for offboarding task.",
+      "status": "Specified",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-NOT-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "channels": [
+          "in_app",
+          "email"
+        ],
+        "preference_class": "policy-controlled"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "NOT-000063",
+      "type": "notification",
+      "name": "Material shortage",
+      "description": "Notification behavior for material shortage.",
+      "status": "Specified",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-NOT-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "channels": [
+          "in_app",
+          "email"
+        ],
+        "preference_class": "policy-controlled"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "NOT-000064",
+      "type": "notification",
+      "name": "Operation delayed",
+      "description": "Notification behavior for operation delayed.",
+      "status": "Specified",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-NOT-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "channels": [
+          "in_app",
+          "email"
+        ],
+        "preference_class": "policy-controlled"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "NOT-000065",
+      "type": "notification",
+      "name": "Quality failure",
+      "description": "Notification behavior for quality failure.",
+      "status": "Specified",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-NOT-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "channels": [
+          "in_app",
+          "email"
+        ],
+        "preference_class": "policy-controlled"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "NOT-000066",
+      "type": "notification",
+      "name": "Capacity overload",
+      "description": "Notification behavior for capacity overload.",
+      "status": "Specified",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-NOT-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "channels": [
+          "in_app",
+          "email"
+        ],
+        "preference_class": "policy-controlled"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "NOT-000067",
+      "type": "notification",
+      "name": "Downtime",
+      "description": "Notification behavior for downtime.",
+      "status": "Specified",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-NOT-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "channels": [
+          "in_app",
+          "email"
+        ],
+        "preference_class": "policy-controlled"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "NOT-000068",
+      "type": "notification",
+      "name": "Order ready to close",
+      "description": "Notification behavior for order ready to close.",
+      "status": "Specified",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-NOT-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "channels": [
+          "in_app",
+          "email"
+        ],
+        "preference_class": "policy-controlled"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    }
+  ]
+}

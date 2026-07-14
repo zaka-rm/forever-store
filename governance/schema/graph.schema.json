@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://zyvora.local/schema/graph.schema.json",
+  "title": "ZYVORA Complete Knowledge Graph",
+  "type": "object",
+  "required": ["version", "nodes", "edges"],
+  "additionalProperties": false,
+  "properties": {
+    "version": {"type": "string"},
+    "nodes": {"type": "array", "items": {"$ref": "node.schema.json"}},
+    "edges": {"type": "array", "items": {"$ref": "edge.schema.json"}}
+  }
+}

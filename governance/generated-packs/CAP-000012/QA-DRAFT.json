@@ -1,0 +1,1800 @@
+{
+  "generator_version": "2.3.0",
+  "generated_at": "2026-07-12T03:39:43.143Z",
+  "source_capability": {
+    "id": "CAP-000012",
+    "type": "capability",
+    "name": "Manufacturing Core Capability",
+    "status": "Specified",
+    "version": "1.0.0",
+    "owner": "TEAM-000018"
+  },
+  "source_fingerprint": "4148231f397f9650313cdb509be26ea1f8858713095b949904de26d7f91cc908",
+  "authority": "DRAFT_NOT_AUTHORIZED",
+  "promotion_gate": "BLOCKED_SOURCE_INCOMPLETE",
+  "blockers": [
+    "MET-000079: metric formula is not approved",
+    "MET-000080: metric formula is not approved",
+    "MET-000081: metric formula is not approved",
+    "MET-000082: metric formula is not approved",
+    "MET-000083: metric formula is not approved",
+    "MET-000084: metric formula is not approved",
+    "MET-000085: metric formula is not approved",
+    "MET-000086: metric formula is not approved",
+    "PROMPT-000050: prompt template and evaluation are not approved",
+    "PROMPT-000051: prompt template and evaluation are not approved",
+    "PROMPT-000052: prompt template and evaluation are not approved",
+    "PROMPT-000053: prompt template and evaluation are not approved",
+    "PROMPT-000054: prompt template and evaluation are not approved",
+    "WF-000087: ordered workflow steps are not approved",
+    "WF-000088: ordered workflow steps are not approved",
+    "WF-000089: ordered workflow steps are not approved",
+    "WF-000090: ordered workflow steps are not approved",
+    "WF-000091: ordered workflow steps are not approved",
+    "WF-000092: ordered workflow steps are not approved",
+    "WF-000093: ordered workflow steps are not approved",
+    "WF-000094: ordered workflow steps are not approved",
+    "UF-000100: UI transitions and recovery states are not approved",
+    "UF-000101: UI transitions and recovery states are not approved",
+    "UF-000102: UI transitions and recovery states are not approved",
+    "UF-000103: UI transitions and recovery states are not approved",
+    "UF-000104: UI transitions and recovery states are not approved",
+    "UF-000105: UI transitions and recovery states are not approved",
+    "UF-000106: UI transitions and recovery states are not approved",
+    "UF-000107: UI transitions and recovery states are not approved",
+    "UF-000108: UI transitions and recovery states are not approved",
+    "EVT-000077: event domain payload is not approved",
+    "EVT-000078: event domain payload is not approved",
+    "EVT-000079: event domain payload is not approved",
+    "EVT-000080: event domain payload is not approved",
+    "EVT-000081: event domain payload is not approved",
+    "EVT-000082: event domain payload is not approved",
+    "EVT-000083: event domain payload is not approved",
+    "EVT-000084: event domain payload is not approved",
+    "API-000089: API request and response schema is not approved",
+    "API-000090: API request and response schema is not approved",
+    "API-000091: API request and response schema is not approved",
+    "API-000092: API request and response schema is not approved",
+    "API-000093: API request and response schema is not approved",
+    "API-000094: API request and response schema is not approved",
+    "API-000095: API request and response schema is not approved",
+    "API-000096: API request and response schema is not approved"
+  ],
+  "completeness": {
+    "source_records": 145,
+    "blocker_count": 46,
+    "traceability_gate": "PASS_CURRENT_MATURITY",
+    "traceability_coverage_percent": 55
+  },
+  "provenance": [
+    {
+      "id": "CAP-000012",
+      "type": "capability",
+      "name": "Manufacturing Core Capability",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "MOD-000012",
+      "type": "module",
+      "name": "Manufacturing",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "DEC-000045",
+      "type": "decision",
+      "name": "What should be produced and when?",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "DEC-000046",
+      "type": "decision",
+      "name": "Are materials and capacity sufficient?",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "DEC-000047",
+      "type": "decision",
+      "name": "Which quality or schedule exception needs action?",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "DEC-000048",
+      "type": "decision",
+      "name": "What is the actual production cost and yield?",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "FEAT-000089",
+      "type": "feature",
+      "name": "Bills of materials",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "FEAT-000090",
+      "type": "feature",
+      "name": "Routings and work centers",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "FEAT-000091",
+      "type": "feature",
+      "name": "Production orders",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "FEAT-000092",
+      "type": "feature",
+      "name": "Material requirements",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "FEAT-000093",
+      "type": "feature",
+      "name": "Scheduling and capacity",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "FEAT-000094",
+      "type": "feature",
+      "name": "Issue/consume/produce",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "FEAT-000095",
+      "type": "feature",
+      "name": "Quality control",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "FEAT-000096",
+      "type": "feature",
+      "name": "Yield, scrap, downtime, and cost",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "BR-000089",
+      "type": "business_rule",
+      "name": "Manufacturing Rule 1",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "BR-000090",
+      "type": "business_rule",
+      "name": "Manufacturing Rule 2",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "BR-000091",
+      "type": "business_rule",
+      "name": "Manufacturing Rule 3",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "BR-000092",
+      "type": "business_rule",
+      "name": "Manufacturing Rule 4",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "BR-000093",
+      "type": "business_rule",
+      "name": "Manufacturing Rule 5",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "BR-000094",
+      "type": "business_rule",
+      "name": "Manufacturing Rule 6",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "BR-000095",
+      "type": "business_rule",
+      "name": "Manufacturing Rule 7",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "BR-000096",
+      "type": "business_rule",
+      "name": "Manufacturing Rule 8",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "WF-000087",
+      "type": "workflow",
+      "name": "Release production order",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "WF-000088",
+      "type": "workflow",
+      "name": "Plan material",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "WF-000089",
+      "type": "workflow",
+      "name": "Schedule operation",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "WF-000090",
+      "type": "workflow",
+      "name": "Issue material",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "WF-000091",
+      "type": "workflow",
+      "name": "Record production",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "WF-000092",
+      "type": "workflow",
+      "name": "Inspect quality",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "WF-000093",
+      "type": "workflow",
+      "name": "Handle nonconformance",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "WF-000094",
+      "type": "workflow",
+      "name": "Close and cost order",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "ENT-000113",
+      "type": "entity",
+      "name": "BillOfMaterial",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "ENT-000114",
+      "type": "entity",
+      "name": "BOMVersion",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "ENT-000115",
+      "type": "entity",
+      "name": "Routing",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "ENT-000116",
+      "type": "entity",
+      "name": "WorkCenter",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "ENT-000117",
+      "type": "entity",
+      "name": "ProductionOrder",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "ENT-000118",
+      "type": "entity",
+      "name": "Operation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "ENT-000119",
+      "type": "entity",
+      "name": "MaterialRequirement",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "ENT-000120",
+      "type": "entity",
+      "name": "MaterialIssue",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "ENT-000121",
+      "type": "entity",
+      "name": "ProductionReceipt",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "ENT-000122",
+      "type": "entity",
+      "name": "QualityInspection",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "ENT-000123",
+      "type": "entity",
+      "name": "Nonconformance",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "ENT-000124",
+      "type": "entity",
+      "name": "DowntimeEvent",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "API-000089",
+      "type": "api",
+      "name": "Manufacturing Bills of materials API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "API-000090",
+      "type": "api",
+      "name": "Manufacturing Routings and work centers API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "API-000091",
+      "type": "api",
+      "name": "Manufacturing Production orders API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "API-000092",
+      "type": "api",
+      "name": "Manufacturing Material requirements API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "API-000093",
+      "type": "api",
+      "name": "Manufacturing Scheduling and capacity API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "API-000094",
+      "type": "api",
+      "name": "Manufacturing Issue/consume/produce API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "API-000095",
+      "type": "api",
+      "name": "Manufacturing Quality control API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "API-000096",
+      "type": "api",
+      "name": "Manufacturing Yield, scrap, downtime, and cost API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "EVT-000077",
+      "type": "event",
+      "name": "ProductionOrderReleased",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "EVT-000078",
+      "type": "event",
+      "name": "MaterialIssued",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "EVT-000079",
+      "type": "event",
+      "name": "OperationCompleted",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "EVT-000080",
+      "type": "event",
+      "name": "ProductionReceived",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "EVT-000081",
+      "type": "event",
+      "name": "QualityHoldPlaced",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "EVT-000082",
+      "type": "event",
+      "name": "NonconformanceOpened",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "EVT-000083",
+      "type": "event",
+      "name": "ProductionOrderClosed",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "EVT-000084",
+      "type": "event",
+      "name": "CapacityRiskDetected",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "PERM-000177",
+      "type": "permission",
+      "name": "Read Bills of materials",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "PERM-000178",
+      "type": "permission",
+      "name": "Manage Bills of materials",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "PERM-000179",
+      "type": "permission",
+      "name": "Read Routings and work centers",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "PERM-000180",
+      "type": "permission",
+      "name": "Manage Routings and work centers",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "PERM-000181",
+      "type": "permission",
+      "name": "Read Production orders",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "PERM-000182",
+      "type": "permission",
+      "name": "Manage Production orders",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "PERM-000183",
+      "type": "permission",
+      "name": "Read Material requirements",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "PERM-000184",
+      "type": "permission",
+      "name": "Manage Material requirements",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "PERM-000185",
+      "type": "permission",
+      "name": "Read Scheduling and capacity",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "PERM-000186",
+      "type": "permission",
+      "name": "Manage Scheduling and capacity",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "PERM-000187",
+      "type": "permission",
+      "name": "Read Issue/consume/produce",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "PERM-000188",
+      "type": "permission",
+      "name": "Manage Issue/consume/produce",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "PERM-000189",
+      "type": "permission",
+      "name": "Read Quality control",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "PERM-000190",
+      "type": "permission",
+      "name": "Manage Quality control",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "PERM-000191",
+      "type": "permission",
+      "name": "Read Yield, scrap, downtime, and cost",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "PERM-000192",
+      "type": "permission",
+      "name": "Manage Yield, scrap, downtime, and cost",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "SCR-000100",
+      "type": "screen",
+      "name": "Manufacturing Decision Dashboard",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "SCR-000101",
+      "type": "screen",
+      "name": "Bills of materials Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "SCR-000102",
+      "type": "screen",
+      "name": "Routings and work centers Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "SCR-000103",
+      "type": "screen",
+      "name": "Production orders Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "SCR-000104",
+      "type": "screen",
+      "name": "Material requirements Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "SCR-000105",
+      "type": "screen",
+      "name": "Scheduling and capacity Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "SCR-000106",
+      "type": "screen",
+      "name": "Issue/consume/produce Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "SCR-000107",
+      "type": "screen",
+      "name": "Quality control Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "SCR-000108",
+      "type": "screen",
+      "name": "Yield, scrap, downtime, and cost Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "UF-000100",
+      "type": "ui_flow",
+      "name": "Manufacturing UI Flow 1",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "UF-000101",
+      "type": "ui_flow",
+      "name": "Manufacturing UI Flow 2",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "UF-000102",
+      "type": "ui_flow",
+      "name": "Manufacturing UI Flow 3",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "UF-000103",
+      "type": "ui_flow",
+      "name": "Manufacturing UI Flow 4",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "UF-000104",
+      "type": "ui_flow",
+      "name": "Manufacturing UI Flow 5",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "UF-000105",
+      "type": "ui_flow",
+      "name": "Manufacturing UI Flow 6",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "UF-000106",
+      "type": "ui_flow",
+      "name": "Manufacturing UI Flow 7",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "UF-000107",
+      "type": "ui_flow",
+      "name": "Manufacturing UI Flow 8",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "UF-000108",
+      "type": "ui_flow",
+      "name": "Manufacturing UI Flow 9",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "MET-000079",
+      "type": "metric",
+      "name": "Schedule adherence",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "MET-000080",
+      "type": "metric",
+      "name": "Overall equipment effectiveness",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "MET-000081",
+      "type": "metric",
+      "name": "First-pass yield",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "MET-000082",
+      "type": "metric",
+      "name": "Scrap rate",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "MET-000083",
+      "type": "metric",
+      "name": "Cycle time",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "MET-000084",
+      "type": "metric",
+      "name": "Capacity utilization",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "MET-000085",
+      "type": "metric",
+      "name": "Production cost variance",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "MET-000086",
+      "type": "metric",
+      "name": "On-time completion",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "AICAP-000050",
+      "type": "ai_capability",
+      "name": "Manufacturing: Demand and capacity forecast",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "AICAP-000051",
+      "type": "ai_capability",
+      "name": "Manufacturing: Schedule optimization",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "AICAP-000052",
+      "type": "ai_capability",
+      "name": "Manufacturing: Quality anomaly",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "AICAP-000053",
+      "type": "ai_capability",
+      "name": "Manufacturing: Predictive maintenance signal",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "AICAP-000054",
+      "type": "ai_capability",
+      "name": "Manufacturing: Cost variance explanation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "PROMPT-000050",
+      "type": "prompt",
+      "name": "Manufacturing: Demand and capacity forecast Prompt",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000006"
+    },
+    {
+      "id": "PROMPT-000051",
+      "type": "prompt",
+      "name": "Manufacturing: Schedule optimization Prompt",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000006"
+    },
+    {
+      "id": "PROMPT-000052",
+      "type": "prompt",
+      "name": "Manufacturing: Quality anomaly Prompt",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000006"
+    },
+    {
+      "id": "PROMPT-000053",
+      "type": "prompt",
+      "name": "Manufacturing: Predictive maintenance signal Prompt",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000006"
+    },
+    {
+      "id": "PROMPT-000054",
+      "type": "prompt",
+      "name": "Manufacturing: Cost variance explanation Prompt",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000006"
+    },
+    {
+      "id": "AUTO-000063",
+      "type": "automation",
+      "name": "Material shortage Automation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "AUTO-000064",
+      "type": "automation",
+      "name": "Operation delayed Automation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "AUTO-000065",
+      "type": "automation",
+      "name": "Quality failure Automation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "AUTO-000066",
+      "type": "automation",
+      "name": "Capacity overload Automation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "AUTO-000067",
+      "type": "automation",
+      "name": "Downtime Automation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "AUTO-000068",
+      "type": "automation",
+      "name": "Order ready to close Automation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "NOT-000063",
+      "type": "notification",
+      "name": "Material shortage",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "NOT-000064",
+      "type": "notification",
+      "name": "Operation delayed",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "NOT-000065",
+      "type": "notification",
+      "name": "Quality failure",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "NOT-000066",
+      "type": "notification",
+      "name": "Capacity overload",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "NOT-000067",
+      "type": "notification",
+      "name": "Downtime",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "NOT-000068",
+      "type": "notification",
+      "name": "Order ready to close",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "RPT-000064",
+      "type": "report",
+      "name": "Production status",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "RPT-000065",
+      "type": "report",
+      "name": "Capacity load",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "RPT-000066",
+      "type": "report",
+      "name": "Material shortage",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "RPT-000067",
+      "type": "report",
+      "name": "Yield and scrap",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "RPT-000068",
+      "type": "report",
+      "name": "Quality",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "RPT-000069",
+      "type": "report",
+      "name": "Cost variance",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "RPT-000070",
+      "type": "report",
+      "name": "OEE",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "INT-000022",
+      "type": "integration",
+      "name": "Inventory",
+      "status": "Planned",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "INT-000029",
+      "type": "integration",
+      "name": "Finance",
+      "status": "Planned",
+      "version": "1.0.0",
+      "owner": "TEAM-000012"
+    },
+    {
+      "id": "INT-000024",
+      "type": "integration",
+      "name": "HR",
+      "status": "Planned",
+      "version": "1.0.0",
+      "owner": "TEAM-000011"
+    },
+    {
+      "id": "INT-000053",
+      "type": "integration",
+      "name": "Maintenance systems",
+      "status": "Planned",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "INT-000054",
+      "type": "integration",
+      "name": "Quality devices",
+      "status": "Planned",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "INT-000055",
+      "type": "integration",
+      "name": "Barcode/IoT",
+      "status": "Planned",
+      "version": "1.0.0",
+      "owner": "TEAM-000018"
+    },
+    {
+      "id": "ART-000014",
+      "type": "artifact",
+      "name": "ZYVORA Manufacturing PRD v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000027",
+      "type": "artifact",
+      "name": "ZYVORA Manufacturing Technical Specification v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000029",
+      "type": "artifact",
+      "name": "ZYVORA BP-000 Platform Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000030",
+      "type": "artifact",
+      "name": "ZYVORA BP-001 UI Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000031",
+      "type": "artifact",
+      "name": "ZYVORA BP-002 Backend Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000032",
+      "type": "artifact",
+      "name": "ZYVORA BP-003 Database Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000033",
+      "type": "artifact",
+      "name": "ZYVORA BP-004 API Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000034",
+      "type": "artifact",
+      "name": "ZYVORA BP-005 AI Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000035",
+      "type": "artifact",
+      "name": "ZYVORA BP-006 Security Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000036",
+      "type": "artifact",
+      "name": "ZYVORA BP-007 Infrastructure Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    }
+  ],
+  "kind": "draft_qa_pack",
+  "paired_build_fingerprint": "4148231f397f9650313cdb509be26ea1f8858713095b949904de26d7f91cc908",
+  "test_scenarios": [
+    {
+      "id": "RULE-BR-000089",
+      "type": "unit_and_domain",
+      "source": "BR-000089",
+      "scenario": "Verify business rule: Released orders reference approved BOM and routing versions.",
+      "expected": "Exact approved rule holds for valid, invalid, boundary, and concurrent cases."
+    },
+    {
+      "id": "RULE-BR-000090",
+      "type": "unit_and_domain",
+      "source": "BR-000090",
+      "scenario": "Verify business rule: Material consumption and output create inventory movements.",
+      "expected": "Exact approved rule holds for valid, invalid, boundary, and concurrent cases."
+    },
+    {
+      "id": "RULE-BR-000091",
+      "type": "unit_and_domain",
+      "source": "BR-000091",
+      "scenario": "Verify business rule: Produced quantity, scrap, rework, and yield reconcile.",
+      "expected": "Exact approved rule holds for valid, invalid, boundary, and concurrent cases."
+    },
+    {
+      "id": "RULE-BR-000092",
+      "type": "unit_and_domain",
+      "source": "BR-000092",
+      "scenario": "Verify business rule: Quality holds prevent unauthorized use or shipment.",
+      "expected": "Exact approved rule holds for valid, invalid, boundary, and concurrent cases."
+    },
+    {
+      "id": "RULE-BR-000093",
+      "type": "unit_and_domain",
+      "source": "BR-000093",
+      "scenario": "Verify business rule: Capacity scheduling respects calendar, efficiency, and committed load.",
+      "expected": "Exact approved rule holds for valid, invalid, boundary, and concurrent cases."
+    },
+    {
+      "id": "RULE-BR-000094",
+      "type": "unit_and_domain",
+      "source": "BR-000094",
+      "scenario": "Verify business rule: Closed production orders are corrected through controlled adjustments.",
+      "expected": "Exact approved rule holds for valid, invalid, boundary, and concurrent cases."
+    },
+    {
+      "id": "RULE-BR-000095",
+      "type": "unit_and_domain",
+      "source": "BR-000095",
+      "scenario": "Verify business rule: Actual cost reconciles material, labor, overhead, scrap, and variance.",
+      "expected": "Exact approved rule holds for valid, invalid, boundary, and concurrent cases."
+    },
+    {
+      "id": "RULE-BR-000096",
+      "type": "unit_and_domain",
+      "source": "BR-000096",
+      "scenario": "Verify business rule: AI schedules and forecasts require human approval before release.",
+      "expected": "Exact approved rule holds for valid, invalid, boundary, and concurrent cases."
+    },
+    {
+      "id": "WF-WF-000087",
+      "type": "end_to_end",
+      "source": "WF-000087",
+      "scenario": "Verify happy, alternative, failure, and recovery paths for Release production order",
+      "expected": "Approved workflow outcome, evidence, timing, and recovery requirements are satisfied."
+    },
+    {
+      "id": "WF-WF-000088",
+      "type": "end_to_end",
+      "source": "WF-000088",
+      "scenario": "Verify happy, alternative, failure, and recovery paths for Plan material",
+      "expected": "Approved workflow outcome, evidence, timing, and recovery requirements are satisfied."
+    },
+    {
+      "id": "WF-WF-000089",
+      "type": "end_to_end",
+      "source": "WF-000089",
+      "scenario": "Verify happy, alternative, failure, and recovery paths for Schedule operation",
+      "expected": "Approved workflow outcome, evidence, timing, and recovery requirements are satisfied."
+    },
+    {
+      "id": "WF-WF-000090",
+      "type": "end_to_end",
+      "source": "WF-000090",
+      "scenario": "Verify happy, alternative, failure, and recovery paths for Issue material",
+      "expected": "Approved workflow outcome, evidence, timing, and recovery requirements are satisfied."
+    },
+    {
+      "id": "WF-WF-000091",
+      "type": "end_to_end",
+      "source": "WF-000091",
+      "scenario": "Verify happy, alternative, failure, and recovery paths for Record production",
+      "expected": "Approved workflow outcome, evidence, timing, and recovery requirements are satisfied."
+    },
+    {
+      "id": "WF-WF-000092",
+      "type": "end_to_end",
+      "source": "WF-000092",
+      "scenario": "Verify happy, alternative, failure, and recovery paths for Inspect quality",
+      "expected": "Approved workflow outcome, evidence, timing, and recovery requirements are satisfied."
+    },
+    {
+      "id": "WF-WF-000093",
+      "type": "end_to_end",
+      "source": "WF-000093",
+      "scenario": "Verify happy, alternative, failure, and recovery paths for Handle nonconformance",
+      "expected": "Approved workflow outcome, evidence, timing, and recovery requirements are satisfied."
+    },
+    {
+      "id": "WF-WF-000094",
+      "type": "end_to_end",
+      "source": "WF-000094",
+      "scenario": "Verify happy, alternative, failure, and recovery paths for Close and cost order",
+      "expected": "Approved workflow outcome, evidence, timing, and recovery requirements are satisfied."
+    },
+    {
+      "id": "API-API-000089",
+      "type": "contract_and_security",
+      "source": "API-000089",
+      "scenario": "Verify request, response, authorization, idempotency, pagination, validation, and errors for Manufacturing Bills of materials API",
+      "expected": "Approved API contract and security policy are preserved."
+    },
+    {
+      "id": "API-API-000090",
+      "type": "contract_and_security",
+      "source": "API-000090",
+      "scenario": "Verify request, response, authorization, idempotency, pagination, validation, and errors for Manufacturing Routings and work centers API",
+      "expected": "Approved API contract and security policy are preserved."
+    },
+    {
+      "id": "API-API-000091",
+      "type": "contract_and_security",
+      "source": "API-000091",
+      "scenario": "Verify request, response, authorization, idempotency, pagination, validation, and errors for Manufacturing Production orders API",
+      "expected": "Approved API contract and security policy are preserved."
+    },
+    {
+      "id": "API-API-000092",
+      "type": "contract_and_security",
+      "source": "API-000092",
+      "scenario": "Verify request, response, authorization, idempotency, pagination, validation, and errors for Manufacturing Material requirements API",
+      "expected": "Approved API contract and security policy are preserved."
+    },
+    {
+      "id": "API-API-000093",
+      "type": "contract_and_security",
+      "source": "API-000093",
+      "scenario": "Verify request, response, authorization, idempotency, pagination, validation, and errors for Manufacturing Scheduling and capacity API",
+      "expected": "Approved API contract and security policy are preserved."
+    },
+    {
+      "id": "API-API-000094",
+      "type": "contract_and_security",
+      "source": "API-000094",
+      "scenario": "Verify request, response, authorization, idempotency, pagination, validation, and errors for Manufacturing Issue/consume/produce API",
+      "expected": "Approved API contract and security policy are preserved."
+    },
+    {
+      "id": "API-API-000095",
+      "type": "contract_and_security",
+      "source": "API-000095",
+      "scenario": "Verify request, response, authorization, idempotency, pagination, validation, and errors for Manufacturing Quality control API",
+      "expected": "Approved API contract and security policy are preserved."
+    },
+    {
+      "id": "API-API-000096",
+      "type": "contract_and_security",
+      "source": "API-000096",
+      "scenario": "Verify request, response, authorization, idempotency, pagination, validation, and errors for Manufacturing Yield, scrap, downtime, and cost API",
+      "expected": "Approved API contract and security policy are preserved."
+    },
+    {
+      "id": "EVT-EVT-000077",
+      "type": "integration",
+      "source": "EVT-000077",
+      "scenario": "Verify production, schema compatibility, ordering, duplication, retry, and idempotent consumption for ProductionOrderReleased",
+      "expected": "Versioned event meaning and compatibility contract are preserved."
+    },
+    {
+      "id": "EVT-EVT-000078",
+      "type": "integration",
+      "source": "EVT-000078",
+      "scenario": "Verify production, schema compatibility, ordering, duplication, retry, and idempotent consumption for MaterialIssued",
+      "expected": "Versioned event meaning and compatibility contract are preserved."
+    },
+    {
+      "id": "EVT-EVT-000079",
+      "type": "integration",
+      "source": "EVT-000079",
+      "scenario": "Verify production, schema compatibility, ordering, duplication, retry, and idempotent consumption for OperationCompleted",
+      "expected": "Versioned event meaning and compatibility contract are preserved."
+    },
+    {
+      "id": "EVT-EVT-000080",
+      "type": "integration",
+      "source": "EVT-000080",
+      "scenario": "Verify production, schema compatibility, ordering, duplication, retry, and idempotent consumption for ProductionReceived",
+      "expected": "Versioned event meaning and compatibility contract are preserved."
+    },
+    {
+      "id": "EVT-EVT-000081",
+      "type": "integration",
+      "source": "EVT-000081",
+      "scenario": "Verify production, schema compatibility, ordering, duplication, retry, and idempotent consumption for QualityHoldPlaced",
+      "expected": "Versioned event meaning and compatibility contract are preserved."
+    },
+    {
+      "id": "EVT-EVT-000082",
+      "type": "integration",
+      "source": "EVT-000082",
+      "scenario": "Verify production, schema compatibility, ordering, duplication, retry, and idempotent consumption for NonconformanceOpened",
+      "expected": "Versioned event meaning and compatibility contract are preserved."
+    },
+    {
+      "id": "EVT-EVT-000083",
+      "type": "integration",
+      "source": "EVT-000083",
+      "scenario": "Verify production, schema compatibility, ordering, duplication, retry, and idempotent consumption for ProductionOrderClosed",
+      "expected": "Versioned event meaning and compatibility contract are preserved."
+    },
+    {
+      "id": "EVT-EVT-000084",
+      "type": "integration",
+      "source": "EVT-000084",
+      "scenario": "Verify production, schema compatibility, ordering, duplication, retry, and idempotent consumption for CapacityRiskDetected",
+      "expected": "Versioned event meaning and compatibility contract are preserved."
+    },
+    {
+      "id": "PERM-PERM-000177",
+      "type": "security",
+      "source": "PERM-000177",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Read Bills of materials",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000178",
+      "type": "security",
+      "source": "PERM-000178",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Manage Bills of materials",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000179",
+      "type": "security",
+      "source": "PERM-000179",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Read Routings and work centers",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000180",
+      "type": "security",
+      "source": "PERM-000180",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Manage Routings and work centers",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000181",
+      "type": "security",
+      "source": "PERM-000181",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Read Production orders",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000182",
+      "type": "security",
+      "source": "PERM-000182",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Manage Production orders",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000183",
+      "type": "security",
+      "source": "PERM-000183",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Read Material requirements",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000184",
+      "type": "security",
+      "source": "PERM-000184",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Manage Material requirements",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000185",
+      "type": "security",
+      "source": "PERM-000185",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Read Scheduling and capacity",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000186",
+      "type": "security",
+      "source": "PERM-000186",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Manage Scheduling and capacity",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000187",
+      "type": "security",
+      "source": "PERM-000187",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Read Issue/consume/produce",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000188",
+      "type": "security",
+      "source": "PERM-000188",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Manage Issue/consume/produce",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000189",
+      "type": "security",
+      "source": "PERM-000189",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Read Quality control",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000190",
+      "type": "security",
+      "source": "PERM-000190",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Manage Quality control",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000191",
+      "type": "security",
+      "source": "PERM-000191",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Read Yield, scrap, downtime, and cost",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000192",
+      "type": "security",
+      "source": "PERM-000192",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Manage Yield, scrap, downtime, and cost",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "SCR-SCR-000100",
+      "type": "ui_accessibility",
+      "source": "SCR-000100",
+      "scenario": "Verify responsive, keyboard, screen-reader, loading, empty, error, stale, and permission states for Manufacturing Decision Dashboard",
+      "expected": "Decision purpose remains clear and WCAG 2.1 AA obligations pass."
+    },
+    {
+      "id": "SCR-SCR-000101",
+      "type": "ui_accessibility",
+      "source": "SCR-000101",
+      "scenario": "Verify responsive, keyboard, screen-reader, loading, empty, error, stale, and permission states for Bills of materials Workspace",
+      "expected": "Decision purpose remains clear and WCAG 2.1 AA obligations pass."
+    },
+    {
+      "id": "SCR-SCR-000102",
+      "type": "ui_accessibility",
+      "source": "SCR-000102",
+      "scenario": "Verify responsive, keyboard, screen-reader, loading, empty, error, stale, and permission states for Routings and work centers Workspace",
+      "expected": "Decision purpose remains clear and WCAG 2.1 AA obligations pass."
+    },
+    {
+      "id": "SCR-SCR-000103",
+      "type": "ui_accessibility",
+      "source": "SCR-000103",
+      "scenario": "Verify responsive, keyboard, screen-reader, loading, empty, error, stale, and permission states for Production orders Workspace",
+      "expected": "Decision purpose remains clear and WCAG 2.1 AA obligations pass."
+    },
+    {
+      "id": "SCR-SCR-000104",
+      "type": "ui_accessibility",
+      "source": "SCR-000104",
+      "scenario": "Verify responsive, keyboard, screen-reader, loading, empty, error, stale, and permission states for Material requirements Workspace",
+      "expected": "Decision purpose remains clear and WCAG 2.1 AA obligations pass."
+    },
+    {
+      "id": "SCR-SCR-000105",
+      "type": "ui_accessibility",
+      "source": "SCR-000105",
+      "scenario": "Verify responsive, keyboard, screen-reader, loading, empty, error, stale, and permission states for Scheduling and capacity Workspace",
+      "expected": "Decision purpose remains clear and WCAG 2.1 AA obligations pass."
+    },
+    {
+      "id": "SCR-SCR-000106",
+      "type": "ui_accessibility",
+      "source": "SCR-000106",
+      "scenario": "Verify responsive, keyboard, screen-reader, loading, empty, error, stale, and permission states for Issue/consume/produce Workspace",
+      "expected": "Decision purpose remains clear and WCAG 2.1 AA obligations pass."
+    },
+    {
+      "id": "SCR-SCR-000107",
+      "type": "ui_accessibility",
+      "source": "SCR-000107",
+      "scenario": "Verify responsive, keyboard, screen-reader, loading, empty, error, stale, and permission states for Quality control Workspace",
+      "expected": "Decision purpose remains clear and WCAG 2.1 AA obligations pass."
+    },
+    {
+      "id": "SCR-SCR-000108",
+      "type": "ui_accessibility",
+      "source": "SCR-000108",
+      "scenario": "Verify responsive, keyboard, screen-reader, loading, empty, error, stale, and permission states for Yield, scrap, downtime, and cost Workspace",
+      "expected": "Decision purpose remains clear and WCAG 2.1 AA obligations pass."
+    }
+  ],
+  "regression_scope": [
+    "CAP-000012",
+    "MOD-000012",
+    "DEC-000045",
+    "DEC-000046",
+    "DEC-000047",
+    "DEC-000048",
+    "FEAT-000089",
+    "FEAT-000090",
+    "FEAT-000091",
+    "FEAT-000092",
+    "FEAT-000093",
+    "FEAT-000094",
+    "FEAT-000095",
+    "FEAT-000096",
+    "BR-000089",
+    "BR-000090",
+    "BR-000091",
+    "BR-000092",
+    "BR-000093",
+    "BR-000094",
+    "BR-000095",
+    "BR-000096",
+    "WF-000087",
+    "WF-000088",
+    "WF-000089",
+    "WF-000090",
+    "WF-000091",
+    "WF-000092",
+    "WF-000093",
+    "WF-000094",
+    "ENT-000113",
+    "ENT-000114",
+    "ENT-000115",
+    "ENT-000116",
+    "ENT-000117",
+    "ENT-000118",
+    "ENT-000119",
+    "ENT-000120",
+    "ENT-000121",
+    "ENT-000122",
+    "ENT-000123",
+    "ENT-000124",
+    "API-000089",
+    "API-000090",
+    "API-000091",
+    "API-000092",
+    "API-000093",
+    "API-000094",
+    "API-000095",
+    "API-000096",
+    "EVT-000077",
+    "EVT-000078",
+    "EVT-000079",
+    "EVT-000080",
+    "EVT-000081",
+    "EVT-000082",
+    "EVT-000083",
+    "EVT-000084",
+    "PERM-000177",
+    "PERM-000178",
+    "PERM-000179",
+    "PERM-000180",
+    "PERM-000181",
+    "PERM-000182",
+    "PERM-000183",
+    "PERM-000184",
+    "PERM-000185",
+    "PERM-000186",
+    "PERM-000187",
+    "PERM-000188",
+    "PERM-000189",
+    "PERM-000190",
+    "PERM-000191",
+    "PERM-000192",
+    "SCR-000100",
+    "SCR-000101",
+    "SCR-000102",
+    "SCR-000103",
+    "SCR-000104",
+    "SCR-000105",
+    "SCR-000106",
+    "SCR-000107",
+    "SCR-000108",
+    "UF-000100",
+    "UF-000101",
+    "UF-000102",
+    "UF-000103",
+    "UF-000104",
+    "UF-000105",
+    "UF-000106",
+    "UF-000107",
+    "UF-000108",
+    "MET-000079",
+    "MET-000080",
+    "MET-000081",
+    "MET-000082",
+    "MET-000083",
+    "MET-000084",
+    "MET-000085",
+    "MET-000086",
+    "AICAP-000050",
+    "AICAP-000051",
+    "AICAP-000052",
+    "AICAP-000053",
+    "AICAP-000054",
+    "PROMPT-000050",
+    "PROMPT-000051",
+    "PROMPT-000052",
+    "PROMPT-000053",
+    "PROMPT-000054",
+    "AUTO-000063",
+    "AUTO-000064",
+    "AUTO-000065",
+    "AUTO-000066",
+    "AUTO-000067",
+    "AUTO-000068",
+    "NOT-000063",
+    "NOT-000064",
+    "NOT-000065",
+    "NOT-000066",
+    "NOT-000067",
+    "NOT-000068",
+    "RPT-000064",
+    "RPT-000065",
+    "RPT-000066",
+    "RPT-000067",
+    "RPT-000068",
+    "RPT-000069",
+    "RPT-000070",
+    "INT-000022",
+    "INT-000029",
+    "INT-000024",
+    "INT-000053",
+    "INT-000054",
+    "INT-000055",
+    "ART-000014",
+    "ART-000027",
+    "ART-000029",
+    "ART-000030",
+    "ART-000031",
+    "ART-000032",
+    "ART-000033",
+    "ART-000034",
+    "ART-000035",
+    "ART-000036"
+  ],
+  "performance_requirements": [
+    "Validate published performance budgets from the approved Technical Specification.",
+    "Verify no unbounded query, queue, retry, export, or AI workload."
+  ],
+  "security_requirements": [
+    "Tenant isolation",
+    "Authorization deny paths",
+    "Sensitive-data handling",
+    "Audit completeness",
+    "Rate limiting and abuse controls"
+  ],
+  "evidence_required": [
+    "Automated test results",
+    "Accessibility results",
+    "Security results",
+    "Performance results",
+    "Manual exploratory record",
+    "Deployment and rollback rehearsal"
+  ]
+}

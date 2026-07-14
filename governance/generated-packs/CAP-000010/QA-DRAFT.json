@@ -1,0 +1,1610 @@
+{
+  "generator_version": "2.3.0",
+  "generated_at": "2026-07-12T03:39:43.131Z",
+  "source_capability": {
+    "id": "CAP-000010",
+    "type": "capability",
+    "name": "Notifications Core Capability",
+    "status": "Specified",
+    "version": "1.0.0",
+    "owner": "TEAM-000016"
+  },
+  "source_fingerprint": "bc318cba3ed3296e2402fbb5cd2f94e5dc5326989cd26e542eeff9f41df8636e",
+  "authority": "DRAFT_NOT_AUTHORIZED",
+  "promotion_gate": "BLOCKED_SOURCE_INCOMPLETE",
+  "blockers": [
+    "MET-000064: metric formula is not approved",
+    "MET-000065: metric formula is not approved",
+    "MET-000066: metric formula is not approved",
+    "MET-000067: metric formula is not approved",
+    "MET-000068: metric formula is not approved",
+    "MET-000069: metric formula is not approved",
+    "MET-000070: metric formula is not approved",
+    "PROMPT-000041: prompt template and evaluation are not approved",
+    "PROMPT-000042: prompt template and evaluation are not approved",
+    "PROMPT-000043: prompt template and evaluation are not approved",
+    "PROMPT-000044: prompt template and evaluation are not approved",
+    "WF-000071: ordered workflow steps are not approved",
+    "WF-000072: ordered workflow steps are not approved",
+    "WF-000073: ordered workflow steps are not approved",
+    "WF-000074: ordered workflow steps are not approved",
+    "WF-000075: ordered workflow steps are not approved",
+    "WF-000076: ordered workflow steps are not approved",
+    "WF-000077: ordered workflow steps are not approved",
+    "WF-000078: ordered workflow steps are not approved",
+    "UF-000082: UI transitions and recovery states are not approved",
+    "UF-000083: UI transitions and recovery states are not approved",
+    "UF-000084: UI transitions and recovery states are not approved",
+    "UF-000085: UI transitions and recovery states are not approved",
+    "UF-000086: UI transitions and recovery states are not approved",
+    "UF-000087: UI transitions and recovery states are not approved",
+    "UF-000088: UI transitions and recovery states are not approved",
+    "UF-000089: UI transitions and recovery states are not approved",
+    "UF-000090: UI transitions and recovery states are not approved",
+    "EVT-000063: event domain payload is not approved",
+    "EVT-000064: event domain payload is not approved",
+    "EVT-000065: event domain payload is not approved",
+    "EVT-000066: event domain payload is not approved",
+    "EVT-000067: event domain payload is not approved",
+    "EVT-000068: event domain payload is not approved",
+    "EVT-000069: event domain payload is not approved",
+    "API-000073: API request and response schema is not approved",
+    "API-000074: API request and response schema is not approved",
+    "API-000075: API request and response schema is not approved",
+    "API-000076: API request and response schema is not approved",
+    "API-000077: API request and response schema is not approved",
+    "API-000078: API request and response schema is not approved",
+    "API-000079: API request and response schema is not approved",
+    "API-000080: API request and response schema is not approved"
+  ],
+  "completeness": {
+    "source_records": 125,
+    "blocker_count": 43,
+    "traceability_gate": "PASS_CURRENT_MATURITY",
+    "traceability_coverage_percent": 55
+  },
+  "provenance": [
+    {
+      "id": "CAP-000010",
+      "type": "capability",
+      "name": "Notifications Core Capability",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "MOD-000010",
+      "type": "module",
+      "name": "Notifications",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "DEC-000037",
+      "type": "decision",
+      "name": "Who needs to know or act?",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "DEC-000038",
+      "type": "decision",
+      "name": "Which channel and time are appropriate?",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "DEC-000039",
+      "type": "decision",
+      "name": "Did delivery succeed?",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "DEC-000040",
+      "type": "decision",
+      "name": "Should the alert escalate?",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "FEAT-000073",
+      "type": "feature",
+      "name": "Unified notification events",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "FEAT-000074",
+      "type": "feature",
+      "name": "Templates and versions",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "FEAT-000075",
+      "type": "feature",
+      "name": "Category and priority",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "FEAT-000076",
+      "type": "feature",
+      "name": "User preferences and quiet hours",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "FEAT-000077",
+      "type": "feature",
+      "name": "Channel routing",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "FEAT-000078",
+      "type": "feature",
+      "name": "Delivery retries",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "FEAT-000079",
+      "type": "feature",
+      "name": "Digest and grouping",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "FEAT-000080",
+      "type": "feature",
+      "name": "Escalation and audit",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "BR-000073",
+      "type": "business_rule",
+      "name": "Notifications Rule 1",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "BR-000074",
+      "type": "business_rule",
+      "name": "Notifications Rule 2",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "BR-000075",
+      "type": "business_rule",
+      "name": "Notifications Rule 3",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "BR-000076",
+      "type": "business_rule",
+      "name": "Notifications Rule 4",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "BR-000077",
+      "type": "business_rule",
+      "name": "Notifications Rule 5",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "BR-000078",
+      "type": "business_rule",
+      "name": "Notifications Rule 6",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "BR-000079",
+      "type": "business_rule",
+      "name": "Notifications Rule 7",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "BR-000080",
+      "type": "business_rule",
+      "name": "Notifications Rule 8",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "WF-000071",
+      "type": "workflow",
+      "name": "Create notification",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "WF-000072",
+      "type": "workflow",
+      "name": "Evaluate policy",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "WF-000073",
+      "type": "workflow",
+      "name": "Render template",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "WF-000074",
+      "type": "workflow",
+      "name": "Route channel",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "WF-000075",
+      "type": "workflow",
+      "name": "Deliver and retry",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "WF-000076",
+      "type": "workflow",
+      "name": "Group digest",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "WF-000077",
+      "type": "workflow",
+      "name": "Escalate failure",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "WF-000078",
+      "type": "workflow",
+      "name": "Read/dismiss/act",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "ENT-000092",
+      "type": "entity",
+      "name": "Notification",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "ENT-000093",
+      "type": "entity",
+      "name": "NotificationTemplate",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "ENT-000094",
+      "type": "entity",
+      "name": "TemplateVersion",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "ENT-000095",
+      "type": "entity",
+      "name": "NotificationPreference",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "ENT-000096",
+      "type": "entity",
+      "name": "DeliveryAttempt",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "ENT-000097",
+      "type": "entity",
+      "name": "ChannelProvider",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "ENT-000098",
+      "type": "entity",
+      "name": "DigestBatch",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "ENT-000099",
+      "type": "entity",
+      "name": "EscalationPolicy",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "ENT-000100",
+      "type": "entity",
+      "name": "SuppressionEntry",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "API-000073",
+      "type": "api",
+      "name": "Notifications Unified notification events API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "API-000074",
+      "type": "api",
+      "name": "Notifications Templates and versions API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "API-000075",
+      "type": "api",
+      "name": "Notifications Category and priority API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "API-000076",
+      "type": "api",
+      "name": "Notifications User preferences and quiet hours API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "API-000077",
+      "type": "api",
+      "name": "Notifications Channel routing API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "API-000078",
+      "type": "api",
+      "name": "Notifications Delivery retries API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "API-000079",
+      "type": "api",
+      "name": "Notifications Digest and grouping API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "API-000080",
+      "type": "api",
+      "name": "Notifications Escalation and audit API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "EVT-000063",
+      "type": "event",
+      "name": "NotificationQueued",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "EVT-000064",
+      "type": "event",
+      "name": "NotificationDelivered",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "EVT-000065",
+      "type": "event",
+      "name": "NotificationRead",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "EVT-000066",
+      "type": "event",
+      "name": "NotificationActioned",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "EVT-000067",
+      "type": "event",
+      "name": "NotificationFailed",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "EVT-000068",
+      "type": "event",
+      "name": "DigestSent",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "EVT-000069",
+      "type": "event",
+      "name": "EscalationTriggered",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "PERM-000145",
+      "type": "permission",
+      "name": "Read Unified notification events",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "PERM-000146",
+      "type": "permission",
+      "name": "Manage Unified notification events",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "PERM-000147",
+      "type": "permission",
+      "name": "Read Templates and versions",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "PERM-000148",
+      "type": "permission",
+      "name": "Manage Templates and versions",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "PERM-000149",
+      "type": "permission",
+      "name": "Read Category and priority",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "PERM-000150",
+      "type": "permission",
+      "name": "Manage Category and priority",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "PERM-000151",
+      "type": "permission",
+      "name": "Read User preferences and quiet hours",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "PERM-000152",
+      "type": "permission",
+      "name": "Manage User preferences and quiet hours",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "PERM-000153",
+      "type": "permission",
+      "name": "Read Channel routing",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "PERM-000154",
+      "type": "permission",
+      "name": "Manage Channel routing",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "PERM-000155",
+      "type": "permission",
+      "name": "Read Delivery retries",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "PERM-000156",
+      "type": "permission",
+      "name": "Manage Delivery retries",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "PERM-000157",
+      "type": "permission",
+      "name": "Read Digest and grouping",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "PERM-000158",
+      "type": "permission",
+      "name": "Manage Digest and grouping",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "PERM-000159",
+      "type": "permission",
+      "name": "Read Escalation and audit",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "PERM-000160",
+      "type": "permission",
+      "name": "Manage Escalation and audit",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "SCR-000082",
+      "type": "screen",
+      "name": "Notifications Decision Dashboard",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "SCR-000083",
+      "type": "screen",
+      "name": "Unified notification events Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "SCR-000084",
+      "type": "screen",
+      "name": "Templates and versions Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "SCR-000085",
+      "type": "screen",
+      "name": "Category and priority Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "SCR-000086",
+      "type": "screen",
+      "name": "User preferences and quiet hours Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "SCR-000087",
+      "type": "screen",
+      "name": "Channel routing Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "SCR-000088",
+      "type": "screen",
+      "name": "Delivery retries Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "SCR-000089",
+      "type": "screen",
+      "name": "Digest and grouping Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "SCR-000090",
+      "type": "screen",
+      "name": "Escalation and audit Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "UF-000082",
+      "type": "ui_flow",
+      "name": "Notifications UI Flow 1",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "UF-000083",
+      "type": "ui_flow",
+      "name": "Notifications UI Flow 2",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "UF-000084",
+      "type": "ui_flow",
+      "name": "Notifications UI Flow 3",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "UF-000085",
+      "type": "ui_flow",
+      "name": "Notifications UI Flow 4",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "UF-000086",
+      "type": "ui_flow",
+      "name": "Notifications UI Flow 5",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "UF-000087",
+      "type": "ui_flow",
+      "name": "Notifications UI Flow 6",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "UF-000088",
+      "type": "ui_flow",
+      "name": "Notifications UI Flow 7",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "UF-000089",
+      "type": "ui_flow",
+      "name": "Notifications UI Flow 8",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "UF-000090",
+      "type": "ui_flow",
+      "name": "Notifications UI Flow 9",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "MET-000064",
+      "type": "metric",
+      "name": "Actionable notification ratio",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "MET-000065",
+      "type": "metric",
+      "name": "Delivery success",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "MET-000066",
+      "type": "metric",
+      "name": "Time to delivery",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "MET-000067",
+      "type": "metric",
+      "name": "Duplicate prevention",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "MET-000068",
+      "type": "metric",
+      "name": "Opt-out rate",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "MET-000069",
+      "type": "metric",
+      "name": "Notification-driven action rate",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "MET-000070",
+      "type": "metric",
+      "name": "Terminal failure age",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "AICAP-000041",
+      "type": "ai_capability",
+      "name": "Notifications: Priority suggestion",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "AICAP-000042",
+      "type": "ai_capability",
+      "name": "Notifications: Digest summarization",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "AICAP-000043",
+      "type": "ai_capability",
+      "name": "Notifications: Send-time optimization",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "AICAP-000044",
+      "type": "ai_capability",
+      "name": "Notifications: Noise detection",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "PROMPT-000041",
+      "type": "prompt",
+      "name": "Notifications: Priority suggestion Prompt",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000006"
+    },
+    {
+      "id": "PROMPT-000042",
+      "type": "prompt",
+      "name": "Notifications: Digest summarization Prompt",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000006"
+    },
+    {
+      "id": "PROMPT-000043",
+      "type": "prompt",
+      "name": "Notifications: Send-time optimization Prompt",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000006"
+    },
+    {
+      "id": "PROMPT-000044",
+      "type": "prompt",
+      "name": "Notifications: Noise detection Prompt",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000006"
+    },
+    {
+      "id": "AUTO-000056",
+      "type": "automation",
+      "name": "The module owns all platform notifications Automation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "NOT-000056",
+      "type": "notification",
+      "name": "The module owns all platform notifications",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "RPT-000053",
+      "type": "report",
+      "name": "Delivery and engagement",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "RPT-000054",
+      "type": "report",
+      "name": "Channel health",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "RPT-000055",
+      "type": "report",
+      "name": "Preference and opt-out",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "RPT-000056",
+      "type": "report",
+      "name": "Template performance",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "RPT-000057",
+      "type": "report",
+      "name": "Failure and escalation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "INT-000045",
+      "type": "integration",
+      "name": "Email providers",
+      "status": "Planned",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "INT-000046",
+      "type": "integration",
+      "name": "SMS providers",
+      "status": "Planned",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "INT-000047",
+      "type": "integration",
+      "name": "WhatsApp providers",
+      "status": "Planned",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "INT-000048",
+      "type": "integration",
+      "name": "Push providers",
+      "status": "Planned",
+      "version": "1.0.0",
+      "owner": "TEAM-000016"
+    },
+    {
+      "id": "INT-000017",
+      "type": "integration",
+      "name": "All modules",
+      "status": "Planned",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "ART-000015",
+      "type": "artifact",
+      "name": "ZYVORA Notifications PRD v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000028",
+      "type": "artifact",
+      "name": "ZYVORA Notifications Technical Specification v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000029",
+      "type": "artifact",
+      "name": "ZYVORA BP-000 Platform Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000030",
+      "type": "artifact",
+      "name": "ZYVORA BP-001 UI Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000031",
+      "type": "artifact",
+      "name": "ZYVORA BP-002 Backend Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000032",
+      "type": "artifact",
+      "name": "ZYVORA BP-003 Database Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000033",
+      "type": "artifact",
+      "name": "ZYVORA BP-004 API Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000034",
+      "type": "artifact",
+      "name": "ZYVORA BP-005 AI Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000035",
+      "type": "artifact",
+      "name": "ZYVORA BP-006 Security Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000036",
+      "type": "artifact",
+      "name": "ZYVORA BP-007 Infrastructure Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    }
+  ],
+  "kind": "draft_qa_pack",
+  "paired_build_fingerprint": "bc318cba3ed3296e2402fbb5cd2f94e5dc5326989cd26e542eeff9f41df8636e",
+  "test_scenarios": [
+    {
+      "id": "RULE-BR-000073",
+      "type": "unit_and_domain",
+      "source": "BR-000073",
+      "scenario": "Verify business rule: Every notification names the triggering event and intended action.",
+      "expected": "Exact approved rule holds for valid, invalid, boundary, and concurrent cases."
+    },
+    {
+      "id": "RULE-BR-000074",
+      "type": "unit_and_domain",
+      "source": "BR-000074",
+      "scenario": "Verify business rule: Mandatory security and approval notices cannot be disabled.",
+      "expected": "Exact approved rule holds for valid, invalid, boundary, and concurrent cases."
+    },
+    {
+      "id": "RULE-BR-000075",
+      "type": "unit_and_domain",
+      "source": "BR-000075",
+      "scenario": "Verify business rule: Preferences and quiet hours are evaluated before optional delivery.",
+      "expected": "Exact approved rule holds for valid, invalid, boundary, and concurrent cases."
+    },
+    {
+      "id": "RULE-BR-000076",
+      "type": "unit_and_domain",
+      "source": "BR-000076",
+      "scenario": "Verify business rule: Duplicate source events create one user-visible effect.",
+      "expected": "Exact approved rule holds for valid, invalid, boundary, and concurrent cases."
+    },
+    {
+      "id": "RULE-BR-000077",
+      "type": "unit_and_domain",
+      "source": "BR-000077",
+      "scenario": "Verify business rule: Template versions are immutable after publication.",
+      "expected": "Exact approved rule holds for valid, invalid, boundary, and concurrent cases."
+    },
+    {
+      "id": "RULE-BR-000078",
+      "type": "unit_and_domain",
+      "source": "BR-000078",
+      "scenario": "Verify business rule: Retries are bounded and terminal failure has an owner.",
+      "expected": "Exact approved rule holds for valid, invalid, boundary, and concurrent cases."
+    },
+    {
+      "id": "RULE-BR-000079",
+      "type": "unit_and_domain",
+      "source": "BR-000079",
+      "scenario": "Verify business rule: Sensitive content is minimized by channel.",
+      "expected": "Exact approved rule holds for valid, invalid, boundary, and concurrent cases."
+    },
+    {
+      "id": "RULE-BR-000080",
+      "type": "unit_and_domain",
+      "source": "BR-000080",
+      "scenario": "Verify business rule: Status is derived from per-channel delivery evidence.",
+      "expected": "Exact approved rule holds for valid, invalid, boundary, and concurrent cases."
+    },
+    {
+      "id": "WF-WF-000071",
+      "type": "end_to_end",
+      "source": "WF-000071",
+      "scenario": "Verify happy, alternative, failure, and recovery paths for Create notification",
+      "expected": "Approved workflow outcome, evidence, timing, and recovery requirements are satisfied."
+    },
+    {
+      "id": "WF-WF-000072",
+      "type": "end_to_end",
+      "source": "WF-000072",
+      "scenario": "Verify happy, alternative, failure, and recovery paths for Evaluate policy",
+      "expected": "Approved workflow outcome, evidence, timing, and recovery requirements are satisfied."
+    },
+    {
+      "id": "WF-WF-000073",
+      "type": "end_to_end",
+      "source": "WF-000073",
+      "scenario": "Verify happy, alternative, failure, and recovery paths for Render template",
+      "expected": "Approved workflow outcome, evidence, timing, and recovery requirements are satisfied."
+    },
+    {
+      "id": "WF-WF-000074",
+      "type": "end_to_end",
+      "source": "WF-000074",
+      "scenario": "Verify happy, alternative, failure, and recovery paths for Route channel",
+      "expected": "Approved workflow outcome, evidence, timing, and recovery requirements are satisfied."
+    },
+    {
+      "id": "WF-WF-000075",
+      "type": "end_to_end",
+      "source": "WF-000075",
+      "scenario": "Verify happy, alternative, failure, and recovery paths for Deliver and retry",
+      "expected": "Approved workflow outcome, evidence, timing, and recovery requirements are satisfied."
+    },
+    {
+      "id": "WF-WF-000076",
+      "type": "end_to_end",
+      "source": "WF-000076",
+      "scenario": "Verify happy, alternative, failure, and recovery paths for Group digest",
+      "expected": "Approved workflow outcome, evidence, timing, and recovery requirements are satisfied."
+    },
+    {
+      "id": "WF-WF-000077",
+      "type": "end_to_end",
+      "source": "WF-000077",
+      "scenario": "Verify happy, alternative, failure, and recovery paths for Escalate failure",
+      "expected": "Approved workflow outcome, evidence, timing, and recovery requirements are satisfied."
+    },
+    {
+      "id": "WF-WF-000078",
+      "type": "end_to_end",
+      "source": "WF-000078",
+      "scenario": "Verify happy, alternative, failure, and recovery paths for Read/dismiss/act",
+      "expected": "Approved workflow outcome, evidence, timing, and recovery requirements are satisfied."
+    },
+    {
+      "id": "API-API-000073",
+      "type": "contract_and_security",
+      "source": "API-000073",
+      "scenario": "Verify request, response, authorization, idempotency, pagination, validation, and errors for Notifications Unified notification events API",
+      "expected": "Approved API contract and security policy are preserved."
+    },
+    {
+      "id": "API-API-000074",
+      "type": "contract_and_security",
+      "source": "API-000074",
+      "scenario": "Verify request, response, authorization, idempotency, pagination, validation, and errors for Notifications Templates and versions API",
+      "expected": "Approved API contract and security policy are preserved."
+    },
+    {
+      "id": "API-API-000075",
+      "type": "contract_and_security",
+      "source": "API-000075",
+      "scenario": "Verify request, response, authorization, idempotency, pagination, validation, and errors for Notifications Category and priority API",
+      "expected": "Approved API contract and security policy are preserved."
+    },
+    {
+      "id": "API-API-000076",
+      "type": "contract_and_security",
+      "source": "API-000076",
+      "scenario": "Verify request, response, authorization, idempotency, pagination, validation, and errors for Notifications User preferences and quiet hours API",
+      "expected": "Approved API contract and security policy are preserved."
+    },
+    {
+      "id": "API-API-000077",
+      "type": "contract_and_security",
+      "source": "API-000077",
+      "scenario": "Verify request, response, authorization, idempotency, pagination, validation, and errors for Notifications Channel routing API",
+      "expected": "Approved API contract and security policy are preserved."
+    },
+    {
+      "id": "API-API-000078",
+      "type": "contract_and_security",
+      "source": "API-000078",
+      "scenario": "Verify request, response, authorization, idempotency, pagination, validation, and errors for Notifications Delivery retries API",
+      "expected": "Approved API contract and security policy are preserved."
+    },
+    {
+      "id": "API-API-000079",
+      "type": "contract_and_security",
+      "source": "API-000079",
+      "scenario": "Verify request, response, authorization, idempotency, pagination, validation, and errors for Notifications Digest and grouping API",
+      "expected": "Approved API contract and security policy are preserved."
+    },
+    {
+      "id": "API-API-000080",
+      "type": "contract_and_security",
+      "source": "API-000080",
+      "scenario": "Verify request, response, authorization, idempotency, pagination, validation, and errors for Notifications Escalation and audit API",
+      "expected": "Approved API contract and security policy are preserved."
+    },
+    {
+      "id": "EVT-EVT-000063",
+      "type": "integration",
+      "source": "EVT-000063",
+      "scenario": "Verify production, schema compatibility, ordering, duplication, retry, and idempotent consumption for NotificationQueued",
+      "expected": "Versioned event meaning and compatibility contract are preserved."
+    },
+    {
+      "id": "EVT-EVT-000064",
+      "type": "integration",
+      "source": "EVT-000064",
+      "scenario": "Verify production, schema compatibility, ordering, duplication, retry, and idempotent consumption for NotificationDelivered",
+      "expected": "Versioned event meaning and compatibility contract are preserved."
+    },
+    {
+      "id": "EVT-EVT-000065",
+      "type": "integration",
+      "source": "EVT-000065",
+      "scenario": "Verify production, schema compatibility, ordering, duplication, retry, and idempotent consumption for NotificationRead",
+      "expected": "Versioned event meaning and compatibility contract are preserved."
+    },
+    {
+      "id": "EVT-EVT-000066",
+      "type": "integration",
+      "source": "EVT-000066",
+      "scenario": "Verify production, schema compatibility, ordering, duplication, retry, and idempotent consumption for NotificationActioned",
+      "expected": "Versioned event meaning and compatibility contract are preserved."
+    },
+    {
+      "id": "EVT-EVT-000067",
+      "type": "integration",
+      "source": "EVT-000067",
+      "scenario": "Verify production, schema compatibility, ordering, duplication, retry, and idempotent consumption for NotificationFailed",
+      "expected": "Versioned event meaning and compatibility contract are preserved."
+    },
+    {
+      "id": "EVT-EVT-000068",
+      "type": "integration",
+      "source": "EVT-000068",
+      "scenario": "Verify production, schema compatibility, ordering, duplication, retry, and idempotent consumption for DigestSent",
+      "expected": "Versioned event meaning and compatibility contract are preserved."
+    },
+    {
+      "id": "EVT-EVT-000069",
+      "type": "integration",
+      "source": "EVT-000069",
+      "scenario": "Verify production, schema compatibility, ordering, duplication, retry, and idempotent consumption for EscalationTriggered",
+      "expected": "Versioned event meaning and compatibility contract are preserved."
+    },
+    {
+      "id": "PERM-PERM-000145",
+      "type": "security",
+      "source": "PERM-000145",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Read Unified notification events",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000146",
+      "type": "security",
+      "source": "PERM-000146",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Manage Unified notification events",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000147",
+      "type": "security",
+      "source": "PERM-000147",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Read Templates and versions",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000148",
+      "type": "security",
+      "source": "PERM-000148",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Manage Templates and versions",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000149",
+      "type": "security",
+      "source": "PERM-000149",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Read Category and priority",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000150",
+      "type": "security",
+      "source": "PERM-000150",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Manage Category and priority",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000151",
+      "type": "security",
+      "source": "PERM-000151",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Read User preferences and quiet hours",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000152",
+      "type": "security",
+      "source": "PERM-000152",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Manage User preferences and quiet hours",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000153",
+      "type": "security",
+      "source": "PERM-000153",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Read Channel routing",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000154",
+      "type": "security",
+      "source": "PERM-000154",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Manage Channel routing",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000155",
+      "type": "security",
+      "source": "PERM-000155",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Read Delivery retries",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000156",
+      "type": "security",
+      "source": "PERM-000156",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Manage Delivery retries",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000157",
+      "type": "security",
+      "source": "PERM-000157",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Read Digest and grouping",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000158",
+      "type": "security",
+      "source": "PERM-000158",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Manage Digest and grouping",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000159",
+      "type": "security",
+      "source": "PERM-000159",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Read Escalation and audit",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000160",
+      "type": "security",
+      "source": "PERM-000160",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Manage Escalation and audit",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "SCR-SCR-000082",
+      "type": "ui_accessibility",
+      "source": "SCR-000082",
+      "scenario": "Verify responsive, keyboard, screen-reader, loading, empty, error, stale, and permission states for Notifications Decision Dashboard",
+      "expected": "Decision purpose remains clear and WCAG 2.1 AA obligations pass."
+    },
+    {
+      "id": "SCR-SCR-000083",
+      "type": "ui_accessibility",
+      "source": "SCR-000083",
+      "scenario": "Verify responsive, keyboard, screen-reader, loading, empty, error, stale, and permission states for Unified notification events Workspace",
+      "expected": "Decision purpose remains clear and WCAG 2.1 AA obligations pass."
+    },
+    {
+      "id": "SCR-SCR-000084",
+      "type": "ui_accessibility",
+      "source": "SCR-000084",
+      "scenario": "Verify responsive, keyboard, screen-reader, loading, empty, error, stale, and permission states for Templates and versions Workspace",
+      "expected": "Decision purpose remains clear and WCAG 2.1 AA obligations pass."
+    },
+    {
+      "id": "SCR-SCR-000085",
+      "type": "ui_accessibility",
+      "source": "SCR-000085",
+      "scenario": "Verify responsive, keyboard, screen-reader, loading, empty, error, stale, and permission states for Category and priority Workspace",
+      "expected": "Decision purpose remains clear and WCAG 2.1 AA obligations pass."
+    },
+    {
+      "id": "SCR-SCR-000086",
+      "type": "ui_accessibility",
+      "source": "SCR-000086",
+      "scenario": "Verify responsive, keyboard, screen-reader, loading, empty, error, stale, and permission states for User preferences and quiet hours Workspace",
+      "expected": "Decision purpose remains clear and WCAG 2.1 AA obligations pass."
+    },
+    {
+      "id": "SCR-SCR-000087",
+      "type": "ui_accessibility",
+      "source": "SCR-000087",
+      "scenario": "Verify responsive, keyboard, screen-reader, loading, empty, error, stale, and permission states for Channel routing Workspace",
+      "expected": "Decision purpose remains clear and WCAG 2.1 AA obligations pass."
+    },
+    {
+      "id": "SCR-SCR-000088",
+      "type": "ui_accessibility",
+      "source": "SCR-000088",
+      "scenario": "Verify responsive, keyboard, screen-reader, loading, empty, error, stale, and permission states for Delivery retries Workspace",
+      "expected": "Decision purpose remains clear and WCAG 2.1 AA obligations pass."
+    },
+    {
+      "id": "SCR-SCR-000089",
+      "type": "ui_accessibility",
+      "source": "SCR-000089",
+      "scenario": "Verify responsive, keyboard, screen-reader, loading, empty, error, stale, and permission states for Digest and grouping Workspace",
+      "expected": "Decision purpose remains clear and WCAG 2.1 AA obligations pass."
+    },
+    {
+      "id": "SCR-SCR-000090",
+      "type": "ui_accessibility",
+      "source": "SCR-000090",
+      "scenario": "Verify responsive, keyboard, screen-reader, loading, empty, error, stale, and permission states for Escalation and audit Workspace",
+      "expected": "Decision purpose remains clear and WCAG 2.1 AA obligations pass."
+    }
+  ],
+  "regression_scope": [
+    "CAP-000010",
+    "MOD-000010",
+    "DEC-000037",
+    "DEC-000038",
+    "DEC-000039",
+    "DEC-000040",
+    "FEAT-000073",
+    "FEAT-000074",
+    "FEAT-000075",
+    "FEAT-000076",
+    "FEAT-000077",
+    "FEAT-000078",
+    "FEAT-000079",
+    "FEAT-000080",
+    "BR-000073",
+    "BR-000074",
+    "BR-000075",
+    "BR-000076",
+    "BR-000077",
+    "BR-000078",
+    "BR-000079",
+    "BR-000080",
+    "WF-000071",
+    "WF-000072",
+    "WF-000073",
+    "WF-000074",
+    "WF-000075",
+    "WF-000076",
+    "WF-000077",
+    "WF-000078",
+    "ENT-000092",
+    "ENT-000093",
+    "ENT-000094",
+    "ENT-000095",
+    "ENT-000096",
+    "ENT-000097",
+    "ENT-000098",
+    "ENT-000099",
+    "ENT-000100",
+    "API-000073",
+    "API-000074",
+    "API-000075",
+    "API-000076",
+    "API-000077",
+    "API-000078",
+    "API-000079",
+    "API-000080",
+    "EVT-000063",
+    "EVT-000064",
+    "EVT-000065",
+    "EVT-000066",
+    "EVT-000067",
+    "EVT-000068",
+    "EVT-000069",
+    "PERM-000145",
+    "PERM-000146",
+    "PERM-000147",
+    "PERM-000148",
+    "PERM-000149",
+    "PERM-000150",
+    "PERM-000151",
+    "PERM-000152",
+    "PERM-000153",
+    "PERM-000154",
+    "PERM-000155",
+    "PERM-000156",
+    "PERM-000157",
+    "PERM-000158",
+    "PERM-000159",
+    "PERM-000160",
+    "SCR-000082",
+    "SCR-000083",
+    "SCR-000084",
+    "SCR-000085",
+    "SCR-000086",
+    "SCR-000087",
+    "SCR-000088",
+    "SCR-000089",
+    "SCR-000090",
+    "UF-000082",
+    "UF-000083",
+    "UF-000084",
+    "UF-000085",
+    "UF-000086",
+    "UF-000087",
+    "UF-000088",
+    "UF-000089",
+    "UF-000090",
+    "MET-000064",
+    "MET-000065",
+    "MET-000066",
+    "MET-000067",
+    "MET-000068",
+    "MET-000069",
+    "MET-000070",
+    "AICAP-000041",
+    "AICAP-000042",
+    "AICAP-000043",
+    "AICAP-000044",
+    "PROMPT-000041",
+    "PROMPT-000042",
+    "PROMPT-000043",
+    "PROMPT-000044",
+    "AUTO-000056",
+    "NOT-000056",
+    "RPT-000053",
+    "RPT-000054",
+    "RPT-000055",
+    "RPT-000056",
+    "RPT-000057",
+    "INT-000045",
+    "INT-000046",
+    "INT-000047",
+    "INT-000048",
+    "INT-000017",
+    "ART-000015",
+    "ART-000028",
+    "ART-000029",
+    "ART-000030",
+    "ART-000031",
+    "ART-000032",
+    "ART-000033",
+    "ART-000034",
+    "ART-000035",
+    "ART-000036"
+  ],
+  "performance_requirements": [
+    "Validate published performance budgets from the approved Technical Specification.",
+    "Verify no unbounded query, queue, retry, export, or AI workload."
+  ],
+  "security_requirements": [
+    "Tenant isolation",
+    "Authorization deny paths",
+    "Sensitive-data handling",
+    "Audit completeness",
+    "Rate limiting and abuse controls"
+  ],
+  "evidence_required": [
+    "Automated test results",
+    "Accessibility results",
+    "Security results",
+    "Performance results",
+    "Manual exploratory record",
+    "Deployment and rollback rehearsal"
+  ]
+}

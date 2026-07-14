@@ -1,0 +1,39 @@
+name: ZYVORA Knowledge Graph
+
+on:
+  pull_request:
+    paths:
+      - "knowledge/**"
+  push:
+    branches: [main]
+    paths:
+      - "knowledge/**"
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Validate governed knowledge
+        run: node knowledge/tools/validate.mjs
+      - name: Enforce registry contracts and lifecycle evidence
+        run: node knowledge/tools/deep-validate.mjs
+      - name: Generate dependency registry
+        run: node knowledge/tools/generate-dependency-registry.mjs
+      - name: Generate traceability intelligence
+        run: node knowledge/tools/traceability-report.mjs --all
+      - name: Generate draft Build and QA Packs
+        run: node knowledge/tools/generate-draft-packs.mjs --all
+      - name: Synchronize implementation evidence
+        run: node knowledge/tools/sync-implementation.mjs
+      - name: Detect artifact drift
+        run: node knowledge/tools/drift-detect.mjs
+      - name: Regenerate views
+        run: node knowledge/tools/generate-views.mjs
+      - name: Synchronize Governance Center projection
+        run: node knowledge/tools/sync-governance-center.mjs
+      - name: Fail on uncommitted generated-view drift
+        run: git diff --exit-code -- knowledge/views knowledge/registries/dependencies.json knowledge/reports governance-center/app/product-model.json

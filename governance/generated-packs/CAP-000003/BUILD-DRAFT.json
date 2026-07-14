@@ -1,0 +1,2111 @@
+{
+  "generator_version": "2.3.0",
+  "generated_at": "2026-07-12T03:39:43.094Z",
+  "source_capability": {
+    "id": "CAP-000003",
+    "type": "capability",
+    "name": "AI Engine Core Capability",
+    "status": "Specified",
+    "version": "1.0.0",
+    "owner": "TEAM-000009"
+  },
+  "source_fingerprint": "0279637a821318b1370cf1eba53c5578ce7c0cff39ca3ce1dc21141458b3270c",
+  "authority": "DRAFT_NOT_AUTHORIZED",
+  "promotion_gate": "BLOCKED_SOURCE_INCOMPLETE",
+  "blockers": [
+    "MET-000013: metric formula is not approved",
+    "MET-000014: metric formula is not approved",
+    "MET-000015: metric formula is not approved",
+    "MET-000016: metric formula is not approved",
+    "MET-000017: metric formula is not approved",
+    "MET-000018: metric formula is not approved",
+    "MET-000019: metric formula is not approved",
+    "PROMPT-000011: prompt template and evaluation are not approved",
+    "WF-000015: ordered workflow steps are not approved",
+    "WF-000016: ordered workflow steps are not approved",
+    "WF-000017: ordered workflow steps are not approved",
+    "WF-000018: ordered workflow steps are not approved",
+    "WF-000019: ordered workflow steps are not approved",
+    "WF-000020: ordered workflow steps are not approved",
+    "WF-000021: ordered workflow steps are not approved",
+    "WF-000022: ordered workflow steps are not approved",
+    "UF-000019: UI transitions and recovery states are not approved",
+    "UF-000020: UI transitions and recovery states are not approved",
+    "UF-000021: UI transitions and recovery states are not approved",
+    "UF-000022: UI transitions and recovery states are not approved",
+    "UF-000023: UI transitions and recovery states are not approved",
+    "UF-000024: UI transitions and recovery states are not approved",
+    "UF-000025: UI transitions and recovery states are not approved",
+    "UF-000026: UI transitions and recovery states are not approved",
+    "UF-000027: UI transitions and recovery states are not approved",
+    "EVT-000012: event domain payload is not approved",
+    "EVT-000013: event domain payload is not approved",
+    "EVT-000014: event domain payload is not approved",
+    "EVT-000015: event domain payload is not approved",
+    "EVT-000016: event domain payload is not approved",
+    "EVT-000017: event domain payload is not approved",
+    "API-000017: API request and response schema is not approved",
+    "API-000018: API request and response schema is not approved",
+    "API-000019: API request and response schema is not approved",
+    "API-000020: API request and response schema is not approved",
+    "API-000021: API request and response schema is not approved",
+    "API-000022: API request and response schema is not approved",
+    "API-000023: API request and response schema is not approved",
+    "API-000024: API request and response schema is not approved"
+  ],
+  "completeness": {
+    "source_records": 129,
+    "blocker_count": 39,
+    "traceability_gate": "PASS_CURRENT_MATURITY",
+    "traceability_coverage_percent": 55
+  },
+  "provenance": [
+    {
+      "id": "CAP-000003",
+      "type": "capability",
+      "name": "AI Engine Core Capability",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "MOD-000003",
+      "type": "module",
+      "name": "AI Engine",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "DEC-000009",
+      "type": "decision",
+      "name": "Which recommendation is supported?",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "DEC-000010",
+      "type": "decision",
+      "name": "What is likely to happen?",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "DEC-000011",
+      "type": "decision",
+      "name": "What is anomalous?",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "DEC-000012",
+      "type": "decision",
+      "name": "How confident should the Builder be?",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "FEAT-000017",
+      "type": "feature",
+      "name": "Model Gateway",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "FEAT-000018",
+      "type": "feature",
+      "name": "Prompt Registry",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "FEAT-000019",
+      "type": "feature",
+      "name": "Retrieval service",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "FEAT-000020",
+      "type": "feature",
+      "name": "Recommendation service",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "FEAT-000021",
+      "type": "feature",
+      "name": "Forecasting service",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "FEAT-000022",
+      "type": "feature",
+      "name": "Explainability service",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "FEAT-000023",
+      "type": "feature",
+      "name": "Evaluation and release gates",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "FEAT-000024",
+      "type": "feature",
+      "name": "Cost, latency, safety, and drift monitoring",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "BR-000017",
+      "type": "business_rule",
+      "name": "AI Engine Rule 1",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "BR-000018",
+      "type": "business_rule",
+      "name": "AI Engine Rule 2",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "BR-000019",
+      "type": "business_rule",
+      "name": "AI Engine Rule 3",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "BR-000020",
+      "type": "business_rule",
+      "name": "AI Engine Rule 4",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "BR-000021",
+      "type": "business_rule",
+      "name": "AI Engine Rule 5",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "BR-000022",
+      "type": "business_rule",
+      "name": "AI Engine Rule 6",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "BR-000023",
+      "type": "business_rule",
+      "name": "AI Engine Rule 7",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "BR-000024",
+      "type": "business_rule",
+      "name": "AI Engine Rule 8",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "WF-000015",
+      "type": "workflow",
+      "name": "Govern prompt version",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "WF-000016",
+      "type": "workflow",
+      "name": "Route model request",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "WF-000017",
+      "type": "workflow",
+      "name": "Retrieve governed context",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "WF-000018",
+      "type": "workflow",
+      "name": "Validate structured output",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "WF-000019",
+      "type": "workflow",
+      "name": "Human review",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "WF-000020",
+      "type": "workflow",
+      "name": "Evaluate release",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "WF-000021",
+      "type": "workflow",
+      "name": "Fallback and recovery",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "WF-000022",
+      "type": "workflow",
+      "name": "Measure outcome",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "ENT-000017",
+      "type": "entity",
+      "name": "ModelProvider",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "ENT-000018",
+      "type": "entity",
+      "name": "ModelRoute",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "ENT-000019",
+      "type": "entity",
+      "name": "PromptTemplate",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "ENT-000020",
+      "type": "entity",
+      "name": "PromptVersion",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "ENT-000021",
+      "type": "entity",
+      "name": "AIRequest",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "ENT-000022",
+      "type": "entity",
+      "name": "AIResponse",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "ENT-000023",
+      "type": "entity",
+      "name": "EvaluationRun",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "ENT-000024",
+      "type": "entity",
+      "name": "FeedbackRecord",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "ENT-000025",
+      "type": "entity",
+      "name": "SafetyIncident",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "ENT-000026",
+      "type": "entity",
+      "name": "CostLedger",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "API-000017",
+      "type": "api",
+      "name": "AI Engine Model Gateway API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "API-000018",
+      "type": "api",
+      "name": "AI Engine Prompt Registry API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "API-000019",
+      "type": "api",
+      "name": "AI Engine Retrieval service API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "API-000020",
+      "type": "api",
+      "name": "AI Engine Recommendation service API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "API-000021",
+      "type": "api",
+      "name": "AI Engine Forecasting service API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "API-000022",
+      "type": "api",
+      "name": "AI Engine Explainability service API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "API-000023",
+      "type": "api",
+      "name": "AI Engine Evaluation and release gates API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "API-000024",
+      "type": "api",
+      "name": "AI Engine Cost, latency, safety, and drift monitoring API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "EVT-000012",
+      "type": "event",
+      "name": "RecommendationGenerated",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "EVT-000013",
+      "type": "event",
+      "name": "ForecastUpdated",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "EVT-000014",
+      "type": "event",
+      "name": "AnomalyDetected",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "EVT-000015",
+      "type": "event",
+      "name": "AIQualityDegraded",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "EVT-000016",
+      "type": "event",
+      "name": "ModelRouteChanged",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "EVT-000017",
+      "type": "event",
+      "name": "SafetyIncidentOpened",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "PERM-000033",
+      "type": "permission",
+      "name": "Read Model Gateway",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "PERM-000034",
+      "type": "permission",
+      "name": "Manage Model Gateway",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "PERM-000035",
+      "type": "permission",
+      "name": "Read Prompt Registry",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "PERM-000036",
+      "type": "permission",
+      "name": "Manage Prompt Registry",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "PERM-000037",
+      "type": "permission",
+      "name": "Read Retrieval service",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "PERM-000038",
+      "type": "permission",
+      "name": "Manage Retrieval service",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "PERM-000039",
+      "type": "permission",
+      "name": "Read Recommendation service",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "PERM-000040",
+      "type": "permission",
+      "name": "Manage Recommendation service",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "PERM-000041",
+      "type": "permission",
+      "name": "Read Forecasting service",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "PERM-000042",
+      "type": "permission",
+      "name": "Manage Forecasting service",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "PERM-000043",
+      "type": "permission",
+      "name": "Read Explainability service",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "PERM-000044",
+      "type": "permission",
+      "name": "Manage Explainability service",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "PERM-000045",
+      "type": "permission",
+      "name": "Read Evaluation and release gates",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "PERM-000046",
+      "type": "permission",
+      "name": "Manage Evaluation and release gates",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "PERM-000047",
+      "type": "permission",
+      "name": "Read Cost, latency, safety, and drift monitoring",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "PERM-000048",
+      "type": "permission",
+      "name": "Manage Cost, latency, safety, and drift monitoring",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "SCR-000019",
+      "type": "screen",
+      "name": "AI Engine Decision Dashboard",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "SCR-000020",
+      "type": "screen",
+      "name": "Model Gateway Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "SCR-000021",
+      "type": "screen",
+      "name": "Prompt Registry Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "SCR-000022",
+      "type": "screen",
+      "name": "Retrieval service Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "SCR-000023",
+      "type": "screen",
+      "name": "Recommendation service Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "SCR-000024",
+      "type": "screen",
+      "name": "Forecasting service Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "SCR-000025",
+      "type": "screen",
+      "name": "Explainability service Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "SCR-000026",
+      "type": "screen",
+      "name": "Evaluation and release gates Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "SCR-000027",
+      "type": "screen",
+      "name": "Cost, latency, safety, and drift monitoring Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "UF-000019",
+      "type": "ui_flow",
+      "name": "AI Engine UI Flow 1",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "UF-000020",
+      "type": "ui_flow",
+      "name": "AI Engine UI Flow 2",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "UF-000021",
+      "type": "ui_flow",
+      "name": "AI Engine UI Flow 3",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "UF-000022",
+      "type": "ui_flow",
+      "name": "AI Engine UI Flow 4",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "UF-000023",
+      "type": "ui_flow",
+      "name": "AI Engine UI Flow 5",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "UF-000024",
+      "type": "ui_flow",
+      "name": "AI Engine UI Flow 6",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "UF-000025",
+      "type": "ui_flow",
+      "name": "AI Engine UI Flow 7",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "UF-000026",
+      "type": "ui_flow",
+      "name": "AI Engine UI Flow 8",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "UF-000027",
+      "type": "ui_flow",
+      "name": "AI Engine UI Flow 9",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "MET-000013",
+      "type": "metric",
+      "name": "Task quality score",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "MET-000014",
+      "type": "metric",
+      "name": "Calibration error",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "MET-000015",
+      "type": "metric",
+      "name": "Grounded citation rate",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "MET-000016",
+      "type": "metric",
+      "name": "Fallback rate",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "MET-000017",
+      "type": "metric",
+      "name": "Safety incident rate",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "MET-000018",
+      "type": "metric",
+      "name": "Cost per useful decision",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "MET-000019",
+      "type": "metric",
+      "name": "p95 latency",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "AICAP-000011",
+      "type": "ai_capability",
+      "name": "AI Engine: All capabilities are AI capabilities; core business workflows remain usable without them",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "PROMPT-000011",
+      "type": "prompt",
+      "name": "AI Engine: All capabilities are AI capabilities; core business workflows remain usable without them Prompt",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000006"
+    },
+    {
+      "id": "AUTO-000012",
+      "type": "automation",
+      "name": "Recommendation ready Automation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "AUTO-000013",
+      "type": "automation",
+      "name": "Human review required Automation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "AUTO-000014",
+      "type": "automation",
+      "name": "Quality threshold breached Automation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "AUTO-000015",
+      "type": "automation",
+      "name": "Budget threshold reached Automation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "AUTO-000016",
+      "type": "automation",
+      "name": "Provider degraded Automation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "AUTO-000017",
+      "type": "automation",
+      "name": "Safety incident Automation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "NOT-000012",
+      "type": "notification",
+      "name": "Recommendation ready",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "NOT-000013",
+      "type": "notification",
+      "name": "Human review required",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "NOT-000014",
+      "type": "notification",
+      "name": "Quality threshold breached",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "NOT-000015",
+      "type": "notification",
+      "name": "Budget threshold reached",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "NOT-000016",
+      "type": "notification",
+      "name": "Provider degraded",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "NOT-000017",
+      "type": "notification",
+      "name": "Safety incident",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "RPT-000011",
+      "type": "report",
+      "name": "AI quality",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "RPT-000012",
+      "type": "report",
+      "name": "AI operations",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "RPT-000013",
+      "type": "report",
+      "name": "Cost and latency",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "RPT-000014",
+      "type": "report",
+      "name": "Safety and privacy",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "RPT-000015",
+      "type": "report",
+      "name": "Recommendation outcomes",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "INT-000009",
+      "type": "integration",
+      "name": "OpenAI through abstraction",
+      "status": "Planned",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "INT-000010",
+      "type": "integration",
+      "name": "Future approved model providers",
+      "status": "Planned",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "INT-000011",
+      "type": "integration",
+      "name": "pgvector",
+      "status": "Planned",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "INT-000001",
+      "type": "integration",
+      "name": "Business Memory",
+      "status": "Planned",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "INT-000012",
+      "type": "integration",
+      "name": "Sentry/OpenTelemetry",
+      "status": "Planned",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "ART-000004",
+      "type": "artifact",
+      "name": "ZYVORA AI Engine PRD v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000017",
+      "type": "artifact",
+      "name": "ZYVORA AI Engine Technical Specification v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000029",
+      "type": "artifact",
+      "name": "ZYVORA BP-000 Platform Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000030",
+      "type": "artifact",
+      "name": "ZYVORA BP-001 UI Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000031",
+      "type": "artifact",
+      "name": "ZYVORA BP-002 Backend Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000032",
+      "type": "artifact",
+      "name": "ZYVORA BP-003 Database Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000033",
+      "type": "artifact",
+      "name": "ZYVORA BP-004 API Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000034",
+      "type": "artifact",
+      "name": "ZYVORA BP-005 AI Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000035",
+      "type": "artifact",
+      "name": "ZYVORA BP-006 Security Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000036",
+      "type": "artifact",
+      "name": "ZYVORA BP-007 Infrastructure Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    }
+  ],
+  "kind": "draft_build_pack",
+  "objective": "Provide provider-agnostic, explainable, evaluated intelligence that augments human judgment across ZYVORA.",
+  "module": {
+    "id": "MOD-000003",
+    "type": "module",
+    "name": "AI Engine",
+    "status": "Specified",
+    "version": "1.0.0",
+    "owner": "TEAM-000009"
+  },
+  "supported_decisions": [
+    {
+      "id": "DEC-000009",
+      "type": "decision",
+      "name": "Which recommendation is supported?",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "DEC-000010",
+      "type": "decision",
+      "name": "What is likely to happen?",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "DEC-000011",
+      "type": "decision",
+      "name": "What is anomalous?",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "DEC-000012",
+      "type": "decision",
+      "name": "How confident should the Builder be?",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    }
+  ],
+  "scope": [
+    {
+      "id": "FEAT-000017",
+      "type": "feature",
+      "name": "Model Gateway",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "FEAT-000018",
+      "type": "feature",
+      "name": "Prompt Registry",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "FEAT-000019",
+      "type": "feature",
+      "name": "Retrieval service",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "FEAT-000020",
+      "type": "feature",
+      "name": "Recommendation service",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "FEAT-000021",
+      "type": "feature",
+      "name": "Forecasting service",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "FEAT-000022",
+      "type": "feature",
+      "name": "Explainability service",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "FEAT-000023",
+      "type": "feature",
+      "name": "Evaluation and release gates",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "FEAT-000024",
+      "type": "feature",
+      "name": "Cost, latency, safety, and drift monitoring",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    }
+  ],
+  "business_rules": [
+    {
+      "id": "BR-000017",
+      "type": "business_rule",
+      "name": "AI Engine Rule 1",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "BR-000018",
+      "type": "business_rule",
+      "name": "AI Engine Rule 2",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "BR-000019",
+      "type": "business_rule",
+      "name": "AI Engine Rule 3",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "BR-000020",
+      "type": "business_rule",
+      "name": "AI Engine Rule 4",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "BR-000021",
+      "type": "business_rule",
+      "name": "AI Engine Rule 5",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "BR-000022",
+      "type": "business_rule",
+      "name": "AI Engine Rule 6",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "BR-000023",
+      "type": "business_rule",
+      "name": "AI Engine Rule 7",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "BR-000024",
+      "type": "business_rule",
+      "name": "AI Engine Rule 8",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    }
+  ],
+  "workflows": [
+    {
+      "id": "WF-000015",
+      "type": "workflow",
+      "name": "Govern prompt version",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "WF-000016",
+      "type": "workflow",
+      "name": "Route model request",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "WF-000017",
+      "type": "workflow",
+      "name": "Retrieve governed context",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "WF-000018",
+      "type": "workflow",
+      "name": "Validate structured output",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "WF-000019",
+      "type": "workflow",
+      "name": "Human review",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "WF-000020",
+      "type": "workflow",
+      "name": "Evaluate release",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "WF-000021",
+      "type": "workflow",
+      "name": "Fallback and recovery",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "WF-000022",
+      "type": "workflow",
+      "name": "Measure outcome",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    }
+  ],
+  "data_entities": [
+    {
+      "id": "ENT-000017",
+      "type": "entity",
+      "name": "ModelProvider",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "ENT-000018",
+      "type": "entity",
+      "name": "ModelRoute",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "ENT-000019",
+      "type": "entity",
+      "name": "PromptTemplate",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "ENT-000020",
+      "type": "entity",
+      "name": "PromptVersion",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "ENT-000021",
+      "type": "entity",
+      "name": "AIRequest",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "ENT-000022",
+      "type": "entity",
+      "name": "AIResponse",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "ENT-000023",
+      "type": "entity",
+      "name": "EvaluationRun",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "ENT-000024",
+      "type": "entity",
+      "name": "FeedbackRecord",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "ENT-000025",
+      "type": "entity",
+      "name": "SafetyIncident",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "ENT-000026",
+      "type": "entity",
+      "name": "CostLedger",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    }
+  ],
+  "api_contracts": [
+    {
+      "id": "API-000017",
+      "type": "api",
+      "name": "AI Engine Model Gateway API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "API-000018",
+      "type": "api",
+      "name": "AI Engine Prompt Registry API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "API-000019",
+      "type": "api",
+      "name": "AI Engine Retrieval service API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "API-000020",
+      "type": "api",
+      "name": "AI Engine Recommendation service API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "API-000021",
+      "type": "api",
+      "name": "AI Engine Forecasting service API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "API-000022",
+      "type": "api",
+      "name": "AI Engine Explainability service API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "API-000023",
+      "type": "api",
+      "name": "AI Engine Evaluation and release gates API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "API-000024",
+      "type": "api",
+      "name": "AI Engine Cost, latency, safety, and drift monitoring API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    }
+  ],
+  "event_contracts": [
+    {
+      "id": "EVT-000012",
+      "type": "event",
+      "name": "RecommendationGenerated",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "EVT-000013",
+      "type": "event",
+      "name": "ForecastUpdated",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "EVT-000014",
+      "type": "event",
+      "name": "AnomalyDetected",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "EVT-000015",
+      "type": "event",
+      "name": "AIQualityDegraded",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "EVT-000016",
+      "type": "event",
+      "name": "ModelRouteChanged",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "EVT-000017",
+      "type": "event",
+      "name": "SafetyIncidentOpened",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    }
+  ],
+  "permissions": [
+    {
+      "id": "PERM-000033",
+      "type": "permission",
+      "name": "Read Model Gateway",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "PERM-000034",
+      "type": "permission",
+      "name": "Manage Model Gateway",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "PERM-000035",
+      "type": "permission",
+      "name": "Read Prompt Registry",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "PERM-000036",
+      "type": "permission",
+      "name": "Manage Prompt Registry",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "PERM-000037",
+      "type": "permission",
+      "name": "Read Retrieval service",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "PERM-000038",
+      "type": "permission",
+      "name": "Manage Retrieval service",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "PERM-000039",
+      "type": "permission",
+      "name": "Read Recommendation service",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "PERM-000040",
+      "type": "permission",
+      "name": "Manage Recommendation service",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "PERM-000041",
+      "type": "permission",
+      "name": "Read Forecasting service",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "PERM-000042",
+      "type": "permission",
+      "name": "Manage Forecasting service",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "PERM-000043",
+      "type": "permission",
+      "name": "Read Explainability service",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "PERM-000044",
+      "type": "permission",
+      "name": "Manage Explainability service",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "PERM-000045",
+      "type": "permission",
+      "name": "Read Evaluation and release gates",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "PERM-000046",
+      "type": "permission",
+      "name": "Manage Evaluation and release gates",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "PERM-000047",
+      "type": "permission",
+      "name": "Read Cost, latency, safety, and drift monitoring",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "PERM-000048",
+      "type": "permission",
+      "name": "Manage Cost, latency, safety, and drift monitoring",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    }
+  ],
+  "screens": [
+    {
+      "id": "SCR-000019",
+      "type": "screen",
+      "name": "AI Engine Decision Dashboard",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "SCR-000020",
+      "type": "screen",
+      "name": "Model Gateway Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "SCR-000021",
+      "type": "screen",
+      "name": "Prompt Registry Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "SCR-000022",
+      "type": "screen",
+      "name": "Retrieval service Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "SCR-000023",
+      "type": "screen",
+      "name": "Recommendation service Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "SCR-000024",
+      "type": "screen",
+      "name": "Forecasting service Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "SCR-000025",
+      "type": "screen",
+      "name": "Explainability service Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "SCR-000026",
+      "type": "screen",
+      "name": "Evaluation and release gates Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "SCR-000027",
+      "type": "screen",
+      "name": "Cost, latency, safety, and drift monitoring Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    }
+  ],
+  "ui_flows": [
+    {
+      "id": "UF-000019",
+      "type": "ui_flow",
+      "name": "AI Engine UI Flow 1",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "UF-000020",
+      "type": "ui_flow",
+      "name": "AI Engine UI Flow 2",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "UF-000021",
+      "type": "ui_flow",
+      "name": "AI Engine UI Flow 3",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "UF-000022",
+      "type": "ui_flow",
+      "name": "AI Engine UI Flow 4",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "UF-000023",
+      "type": "ui_flow",
+      "name": "AI Engine UI Flow 5",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "UF-000024",
+      "type": "ui_flow",
+      "name": "AI Engine UI Flow 6",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "UF-000025",
+      "type": "ui_flow",
+      "name": "AI Engine UI Flow 7",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "UF-000026",
+      "type": "ui_flow",
+      "name": "AI Engine UI Flow 8",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "UF-000027",
+      "type": "ui_flow",
+      "name": "AI Engine UI Flow 9",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    }
+  ],
+  "ai_and_prompts": [
+    {
+      "id": "AICAP-000011",
+      "type": "ai_capability",
+      "name": "AI Engine: All capabilities are AI capabilities; core business workflows remain usable without them",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "PROMPT-000011",
+      "type": "prompt",
+      "name": "AI Engine: All capabilities are AI capabilities; core business workflows remain usable without them Prompt",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000006"
+    }
+  ],
+  "automations": [
+    {
+      "id": "AUTO-000012",
+      "type": "automation",
+      "name": "Recommendation ready Automation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "AUTO-000013",
+      "type": "automation",
+      "name": "Human review required Automation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "AUTO-000014",
+      "type": "automation",
+      "name": "Quality threshold breached Automation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "AUTO-000015",
+      "type": "automation",
+      "name": "Budget threshold reached Automation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "AUTO-000016",
+      "type": "automation",
+      "name": "Provider degraded Automation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "AUTO-000017",
+      "type": "automation",
+      "name": "Safety incident Automation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    }
+  ],
+  "notifications": [
+    {
+      "id": "NOT-000012",
+      "type": "notification",
+      "name": "Recommendation ready",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "NOT-000013",
+      "type": "notification",
+      "name": "Human review required",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "NOT-000014",
+      "type": "notification",
+      "name": "Quality threshold breached",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "NOT-000015",
+      "type": "notification",
+      "name": "Budget threshold reached",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "NOT-000016",
+      "type": "notification",
+      "name": "Provider degraded",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "NOT-000017",
+      "type": "notification",
+      "name": "Safety incident",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    }
+  ],
+  "reports": [
+    {
+      "id": "RPT-000011",
+      "type": "report",
+      "name": "AI quality",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "RPT-000012",
+      "type": "report",
+      "name": "AI operations",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "RPT-000013",
+      "type": "report",
+      "name": "Cost and latency",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "RPT-000014",
+      "type": "report",
+      "name": "Safety and privacy",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "RPT-000015",
+      "type": "report",
+      "name": "Recommendation outcomes",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    }
+  ],
+  "integrations": [
+    {
+      "id": "INT-000009",
+      "type": "integration",
+      "name": "OpenAI through abstraction",
+      "status": "Planned",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "INT-000010",
+      "type": "integration",
+      "name": "Future approved model providers",
+      "status": "Planned",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "INT-000011",
+      "type": "integration",
+      "name": "pgvector",
+      "status": "Planned",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    },
+    {
+      "id": "INT-000001",
+      "type": "integration",
+      "name": "Business Memory",
+      "status": "Planned",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "INT-000012",
+      "type": "integration",
+      "name": "Sentry/OpenTelemetry",
+      "status": "Planned",
+      "version": "1.0.0",
+      "owner": "TEAM-000009"
+    }
+  ],
+  "source_artifacts": [
+    {
+      "id": "ART-000004",
+      "type": "artifact",
+      "name": "ZYVORA AI Engine PRD v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000017",
+      "type": "artifact",
+      "name": "ZYVORA AI Engine Technical Specification v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000029",
+      "type": "artifact",
+      "name": "ZYVORA BP-000 Platform Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000030",
+      "type": "artifact",
+      "name": "ZYVORA BP-001 UI Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000031",
+      "type": "artifact",
+      "name": "ZYVORA BP-002 Backend Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000032",
+      "type": "artifact",
+      "name": "ZYVORA BP-003 Database Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000033",
+      "type": "artifact",
+      "name": "ZYVORA BP-004 API Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000034",
+      "type": "artifact",
+      "name": "ZYVORA BP-005 AI Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000035",
+      "type": "artifact",
+      "name": "ZYVORA BP-006 Security Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000036",
+      "type": "artifact",
+      "name": "ZYVORA BP-007 Infrastructure Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    }
+  ],
+  "implementation_constraints": [
+    "Preserve permanent IDs in code, commits, tests, and telemetry.",
+    "Do not implement blocked or unapproved semantics.",
+    "Provider-specific services remain behind interfaces.",
+    "Implementation must attach repository, test, deployment, and runtime evidence."
+  ],
+  "acceptance_gate": [
+    "All blockers resolved by accountable owners.",
+    "Impact assessment approved.",
+    "Build Pack and paired QA Pack approved.",
+    "Deployment and rollback approved.",
+    "No open Critical or High governance exception."
+  ]
+}

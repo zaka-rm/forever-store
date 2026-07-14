@@ -1,0 +1,82 @@
+{
+  "version": "2.0.0",
+  "contracts": {
+    "capability": {
+      "required_attributes": ["business_objective", "supported_decision", "current_release"],
+      "required_outgoing_edges": ["belongs_to", "supports", "documented_by", "specified_by", "governed_by"],
+      "implementation_ready_edges": ["implemented_by", "verified_by"],
+      "release_edges": ["released_in"]
+    },
+    "business_rule": {
+      "required_attributes": ["rule_text", "severity", "release_introduced", "implementation_evidence_status", "automated_test_status"],
+      "required_outgoing_edges": ["belongs_to", "governs", "documented_by", "specified_by"],
+      "release_ready_evidence": ["implemented_by", "verified_by"]
+    },
+    "event": {
+      "required_attributes": ["event_version", "producer", "trigger", "business_meaning", "payload", "compatibility", "idempotent_consumption_required"],
+      "required_incoming_edges": ["produces"],
+      "blueprint_ready_requirements": ["approved_domain_payload", "known_consumers", "compatibility_tests"]
+    },
+    "metric": {
+      "required_attributes": ["formula", "formula_status", "inputs", "units", "refresh_cadence", "rounding_and_time_treatment"],
+      "specified_requirements": ["approved_formula", "approved_inputs", "approved_units", "approved_cadence", "source_lineage"]
+    },
+    "decision": {
+      "required_attributes": ["decision_question", "required_inputs", "expected_outcome", "success_metrics", "authority"],
+      "required_incoming_edges": ["supports"],
+      "required_outgoing_edges": ["uses", "measured_by"]
+    },
+    "dependency": {
+      "source": "relationships/edges.json",
+      "edge_types": ["depends_on", "uses", "consumes", "produces", "persists", "exposes", "implemented_by", "verified_by"],
+      "required_edge_attributes": ["semantic_class", "criticality"]
+    },
+    "user_journey": {
+      "required_attributes": ["primary_actor", "entry_condition", "success_outcome", "failure_and_recovery_required", "measurement_required"],
+      "required_outgoing_edges": ["belongs_to", "traces_to", "supports"]
+    },
+    "workflow": {
+      "required_attributes": ["measurable", "has_happy_failure_recovery_paths", "steps", "step_definition_status", "actors", "inputs", "outputs", "exceptions", "timing_and_sla"],
+      "required_outgoing_edges": ["belongs_to", "uses"]
+    },
+    "screen": {
+      "required_attributes": ["route_intent", "screen_purpose", "responsive_strategy", "accessibility", "states"],
+      "required_outgoing_edges": ["belongs_to", "supports", "uses"]
+    },
+    "component": {
+      "required_attributes": ["design_system_owner", "accessibility", "responsive", "variants_and_states_required"],
+      "required_outgoing_edges": ["governed_by"]
+    },
+    "ui_flow": {
+      "required_attributes": ["entry_screen", "nodes", "transitions", "validation_states", "confirmation_states", "recovery_states", "flow_definition_status", "accessibility_review_required"],
+      "required_outgoing_edges": ["belongs_to", "renders", "supports"]
+    },
+    "prompt": {
+      "required_attributes": ["prompt_template", "template_status", "inputs", "outputs", "guardrails", "evaluation_tests", "model_policy", "deployment_status"],
+      "required_outgoing_edges": ["belongs_to", "governed_by"]
+    },
+    "change_request": {
+      "required_attributes": ["change_kind", "reason", "requested_by", "approved_by", "impact_report_required", "rollback_required", "implemented_version"],
+      "required_outgoing_edges": ["proposes_change_to"]
+    },
+    "evidence": {
+      "required_attributes": ["evidence_type", "location", "producer", "integrity_required", "retention"],
+      "required_outgoing_edges": ["provides_evidence_for"]
+    },
+    "impact_assessment": {
+      "required_attributes": ["source_change_request", "primary_target", "max_depth", "severity", "compatibility", "status_reason", "report_location", "path_explanations_required", "owner_routing_required", "invalidation_required", "test_selection_required", "release_gate_required"],
+      "required_outgoing_edges": ["assesses", "required_approval_from"]
+    },
+    "traceability_assessment": {
+      "required_attributes": ["capability", "stages", "covered_stages", "total_stages", "coverage_percent", "freshness", "traceability_gate", "missing_stages", "current_maturity_required_stages"],
+      "required_outgoing_edges": ["assesses"]
+    },
+    "implementation_evidence": {
+      "required_attributes": ["source_kind", "location", "evidence_status", "authority", "canonical_overwrite_permitted", "approval_required"]
+    },
+    "orchestration_assessment": {
+      "required_attributes": ["capability", "authorized_to_start", "state", "source_blockers", "required_gates", "missing_gates", "agent_start_policy"],
+      "required_outgoing_edges": ["assesses"]
+    }
+  }
+}

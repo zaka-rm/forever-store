@@ -1,0 +1,1911 @@
+{
+  "registry": "automations",
+  "version": "1.0.0",
+  "generated_at": "2026-07-12T03:39:37Z",
+  "records": [
+    {
+      "id": "AUTO-000001",
+      "type": "automation",
+      "name": "New assignment Automation",
+      "description": "Explainable automation that evaluates conditions and initiates new assignment.",
+      "status": "Specified",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-AUTO-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "bounded_retries": true,
+        "audit_required": true,
+        "human_approval_when_high_impact": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AUTO-000002",
+      "type": "automation",
+      "name": "Approval requested Automation",
+      "description": "Explainable automation that evaluates conditions and initiates approval requested.",
+      "status": "Specified",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-AUTO-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "bounded_retries": true,
+        "audit_required": true,
+        "human_approval_when_high_impact": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AUTO-000003",
+      "type": "automation",
+      "name": "Due soon Automation",
+      "description": "Explainable automation that evaluates conditions and initiates due soon.",
+      "status": "Specified",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-AUTO-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "bounded_retries": true,
+        "audit_required": true,
+        "human_approval_when_high_impact": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AUTO-000004",
+      "type": "automation",
+      "name": "Overdue escalation Automation",
+      "description": "Explainable automation that evaluates conditions and initiates overdue escalation.",
+      "status": "Specified",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-AUTO-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "bounded_retries": true,
+        "audit_required": true,
+        "human_approval_when_high_impact": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AUTO-000005",
+      "type": "automation",
+      "name": "Outcome review due Automation",
+      "description": "Explainable automation that evaluates conditions and initiates outcome review due.",
+      "status": "Specified",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-AUTO-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "bounded_retries": true,
+        "audit_required": true,
+        "human_approval_when_high_impact": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AUTO-000006",
+      "type": "automation",
+      "name": "Decision materially changed Automation",
+      "description": "Explainable automation that evaluates conditions and initiates decision materially changed.",
+      "status": "Specified",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-AUTO-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "bounded_retries": true,
+        "audit_required": true,
+        "human_approval_when_high_impact": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AUTO-000007",
+      "type": "automation",
+      "name": "Outcome review due Automation",
+      "description": "Explainable automation that evaluates conditions and initiates outcome review due.",
+      "status": "Specified",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-AUTO-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "bounded_retries": true,
+        "audit_required": true,
+        "human_approval_when_high_impact": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AUTO-000008",
+      "type": "automation",
+      "name": "Memory index failed Automation",
+      "description": "Explainable automation that evaluates conditions and initiates memory index failed.",
+      "status": "Specified",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-AUTO-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "bounded_retries": true,
+        "audit_required": true,
+        "human_approval_when_high_impact": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AUTO-000009",
+      "type": "automation",
+      "name": "Retention action pending Automation",
+      "description": "Explainable automation that evaluates conditions and initiates retention action pending.",
+      "status": "Specified",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-AUTO-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "bounded_retries": true,
+        "audit_required": true,
+        "human_approval_when_high_impact": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AUTO-000010",
+      "type": "automation",
+      "name": "Legal hold changed Automation",
+      "description": "Explainable automation that evaluates conditions and initiates legal hold changed.",
+      "status": "Specified",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-AUTO-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "bounded_retries": true,
+        "audit_required": true,
+        "human_approval_when_high_impact": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AUTO-000011",
+      "type": "automation",
+      "name": "Source access revoked Automation",
+      "description": "Explainable automation that evaluates conditions and initiates source access revoked.",
+      "status": "Specified",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-AUTO-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "bounded_retries": true,
+        "audit_required": true,
+        "human_approval_when_high_impact": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AUTO-000012",
+      "type": "automation",
+      "name": "Recommendation ready Automation",
+      "description": "Explainable automation that evaluates conditions and initiates recommendation ready.",
+      "status": "Specified",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-AUTO-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "bounded_retries": true,
+        "audit_required": true,
+        "human_approval_when_high_impact": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AUTO-000013",
+      "type": "automation",
+      "name": "Human review required Automation",
+      "description": "Explainable automation that evaluates conditions and initiates human review required.",
+      "status": "Specified",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-AUTO-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "bounded_retries": true,
+        "audit_required": true,
+        "human_approval_when_high_impact": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AUTO-000014",
+      "type": "automation",
+      "name": "Quality threshold breached Automation",
+      "description": "Explainable automation that evaluates conditions and initiates quality threshold breached.",
+      "status": "Specified",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-AUTO-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "bounded_retries": true,
+        "audit_required": true,
+        "human_approval_when_high_impact": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AUTO-000015",
+      "type": "automation",
+      "name": "Budget threshold reached Automation",
+      "description": "Explainable automation that evaluates conditions and initiates budget threshold reached.",
+      "status": "Specified",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-AUTO-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "bounded_retries": true,
+        "audit_required": true,
+        "human_approval_when_high_impact": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AUTO-000016",
+      "type": "automation",
+      "name": "Provider degraded Automation",
+      "description": "Explainable automation that evaluates conditions and initiates provider degraded.",
+      "status": "Specified",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-AUTO-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "bounded_retries": true,
+        "audit_required": true,
+        "human_approval_when_high_impact": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AUTO-000017",
+      "type": "automation",
+      "name": "Safety incident Automation",
+      "description": "Explainable automation that evaluates conditions and initiates safety incident.",
+      "status": "Specified",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-AUTO-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "bounded_retries": true,
+        "audit_required": true,
+        "human_approval_when_high_impact": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AUTO-000018",
+      "type": "automation",
+      "name": "Invitation Automation",
+      "description": "Explainable automation that evaluates conditions and initiates invitation.",
+      "status": "Specified",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-AUTO-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "bounded_retries": true,
+        "audit_required": true,
+        "human_approval_when_high_impact": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AUTO-000019",
+      "type": "automation",
+      "name": "Role changed Automation",
+      "description": "Explainable automation that evaluates conditions and initiates role changed.",
+      "status": "Specified",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-AUTO-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "bounded_retries": true,
+        "audit_required": true,
+        "human_approval_when_high_impact": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AUTO-000020",
+      "type": "automation",
+      "name": "MFA/security alert Automation",
+      "description": "Explainable automation that evaluates conditions and initiates mfa/security alert.",
+      "status": "Specified",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-AUTO-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "bounded_retries": true,
+        "audit_required": true,
+        "human_approval_when_high_impact": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AUTO-000021",
+      "type": "automation",
+      "name": "Session revoked Automation",
+      "description": "Explainable automation that evaluates conditions and initiates session revoked.",
+      "status": "Specified",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-AUTO-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "bounded_retries": true,
+        "audit_required": true,
+        "human_approval_when_high_impact": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AUTO-000022",
+      "type": "automation",
+      "name": "Access review due Automation",
+      "description": "Explainable automation that evaluates conditions and initiates access review due.",
+      "status": "Specified",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-AUTO-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "bounded_retries": true,
+        "audit_required": true,
+        "human_approval_when_high_impact": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AUTO-000023",
+      "type": "automation",
+      "name": "Sensitive export Automation",
+      "description": "Explainable automation that evaluates conditions and initiates sensitive export.",
+      "status": "Specified",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-AUTO-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "bounded_retries": true,
+        "audit_required": true,
+        "human_approval_when_high_impact": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AUTO-000024",
+      "type": "automation",
+      "name": "Invoice overdue Automation",
+      "description": "Explainable automation that evaluates conditions and initiates invoice overdue.",
+      "status": "Specified",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-AUTO-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "bounded_retries": true,
+        "audit_required": true,
+        "human_approval_when_high_impact": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AUTO-000025",
+      "type": "automation",
+      "name": "Bill approval Automation",
+      "description": "Explainable automation that evaluates conditions and initiates bill approval.",
+      "status": "Specified",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-AUTO-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "bounded_retries": true,
+        "audit_required": true,
+        "human_approval_when_high_impact": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AUTO-000026",
+      "type": "automation",
+      "name": "Cash risk Automation",
+      "description": "Explainable automation that evaluates conditions and initiates cash risk.",
+      "status": "Specified",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-AUTO-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "bounded_retries": true,
+        "audit_required": true,
+        "human_approval_when_high_impact": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AUTO-000027",
+      "type": "automation",
+      "name": "Budget threshold Automation",
+      "description": "Explainable automation that evaluates conditions and initiates budget threshold.",
+      "status": "Specified",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-AUTO-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "bounded_retries": true,
+        "audit_required": true,
+        "human_approval_when_high_impact": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AUTO-000028",
+      "type": "automation",
+      "name": "Reconciliation exception Automation",
+      "description": "Explainable automation that evaluates conditions and initiates reconciliation exception.",
+      "status": "Specified",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-AUTO-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "bounded_retries": true,
+        "audit_required": true,
+        "human_approval_when_high_impact": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AUTO-000029",
+      "type": "automation",
+      "name": "Period close task Automation",
+      "description": "Explainable automation that evaluates conditions and initiates period close task.",
+      "status": "Specified",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-AUTO-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "bounded_retries": true,
+        "audit_required": true,
+        "human_approval_when_high_impact": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AUTO-000030",
+      "type": "automation",
+      "name": "Low stock Automation",
+      "description": "Explainable automation that evaluates conditions and initiates low stock.",
+      "status": "Specified",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-AUTO-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "bounded_retries": true,
+        "audit_required": true,
+        "human_approval_when_high_impact": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AUTO-000031",
+      "type": "automation",
+      "name": "Stockout risk Automation",
+      "description": "Explainable automation that evaluates conditions and initiates stockout risk.",
+      "status": "Specified",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-AUTO-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "bounded_retries": true,
+        "audit_required": true,
+        "human_approval_when_high_impact": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AUTO-000032",
+      "type": "automation",
+      "name": "Purchase approval Automation",
+      "description": "Explainable automation that evaluates conditions and initiates purchase approval.",
+      "status": "Specified",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-AUTO-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "bounded_retries": true,
+        "audit_required": true,
+        "human_approval_when_high_impact": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AUTO-000033",
+      "type": "automation",
+      "name": "Receipt variance Automation",
+      "description": "Explainable automation that evaluates conditions and initiates receipt variance.",
+      "status": "Specified",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-AUTO-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "bounded_retries": true,
+        "audit_required": true,
+        "human_approval_when_high_impact": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AUTO-000034",
+      "type": "automation",
+      "name": "Count variance Automation",
+      "description": "Explainable automation that evaluates conditions and initiates count variance.",
+      "status": "Specified",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-AUTO-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "bounded_retries": true,
+        "audit_required": true,
+        "human_approval_when_high_impact": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AUTO-000035",
+      "type": "automation",
+      "name": "Transfer delay Automation",
+      "description": "Explainable automation that evaluates conditions and initiates transfer delay.",
+      "status": "Specified",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-AUTO-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "bounded_retries": true,
+        "audit_required": true,
+        "human_approval_when_high_impact": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AUTO-000036",
+      "type": "automation",
+      "name": "Expiring lot Automation",
+      "description": "Explainable automation that evaluates conditions and initiates expiring lot.",
+      "status": "Specified",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-AUTO-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "bounded_retries": true,
+        "audit_required": true,
+        "human_approval_when_high_impact": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AUTO-000037",
+      "type": "automation",
+      "name": "New assignment Automation",
+      "description": "Explainable automation that evaluates conditions and initiates new assignment.",
+      "status": "Specified",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-AUTO-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "bounded_retries": true,
+        "audit_required": true,
+        "human_approval_when_high_impact": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AUTO-000038",
+      "type": "automation",
+      "name": "Lead SLA Automation",
+      "description": "Explainable automation that evaluates conditions and initiates lead sla.",
+      "status": "Specified",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-AUTO-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "bounded_retries": true,
+        "audit_required": true,
+        "human_approval_when_high_impact": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AUTO-000039",
+      "type": "automation",
+      "name": "Opportunity risk Automation",
+      "description": "Explainable automation that evaluates conditions and initiates opportunity risk.",
+      "status": "Specified",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-AUTO-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "bounded_retries": true,
+        "audit_required": true,
+        "human_approval_when_high_impact": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AUTO-000040",
+      "type": "automation",
+      "name": "Next action due Automation",
+      "description": "Explainable automation that evaluates conditions and initiates next action due.",
+      "status": "Specified",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-AUTO-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "bounded_retries": true,
+        "audit_required": true,
+        "human_approval_when_high_impact": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AUTO-000041",
+      "type": "automation",
+      "name": "Churn risk Automation",
+      "description": "Explainable automation that evaluates conditions and initiates churn risk.",
+      "status": "Specified",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-AUTO-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "bounded_retries": true,
+        "audit_required": true,
+        "human_approval_when_high_impact": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AUTO-000042",
+      "type": "automation",
+      "name": "Consent issue Automation",
+      "description": "Explainable automation that evaluates conditions and initiates consent issue.",
+      "status": "Specified",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-AUTO-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "bounded_retries": true,
+        "audit_required": true,
+        "human_approval_when_high_impact": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AUTO-000043",
+      "type": "automation",
+      "name": "Customer milestone Automation",
+      "description": "Explainable automation that evaluates conditions and initiates customer milestone.",
+      "status": "Specified",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-AUTO-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "bounded_retries": true,
+        "audit_required": true,
+        "human_approval_when_high_impact": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AUTO-000044",
+      "type": "automation",
+      "name": "Threshold breached Automation",
+      "description": "Explainable automation that evaluates conditions and initiates threshold breached.",
+      "status": "Specified",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-AUTO-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "bounded_retries": true,
+        "audit_required": true,
+        "human_approval_when_high_impact": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AUTO-000045",
+      "type": "automation",
+      "name": "Report ready Automation",
+      "description": "Explainable automation that evaluates conditions and initiates report ready.",
+      "status": "Specified",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-AUTO-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "bounded_retries": true,
+        "audit_required": true,
+        "human_approval_when_high_impact": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AUTO-000046",
+      "type": "automation",
+      "name": "Report failed Automation",
+      "description": "Explainable automation that evaluates conditions and initiates report failed.",
+      "status": "Specified",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-AUTO-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "bounded_retries": true,
+        "audit_required": true,
+        "human_approval_when_high_impact": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AUTO-000047",
+      "type": "automation",
+      "name": "Data stale Automation",
+      "description": "Explainable automation that evaluates conditions and initiates data stale.",
+      "status": "Specified",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-AUTO-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "bounded_retries": true,
+        "audit_required": true,
+        "human_approval_when_high_impact": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AUTO-000048",
+      "type": "automation",
+      "name": "Data quality failed Automation",
+      "description": "Explainable automation that evaluates conditions and initiates data quality failed.",
+      "status": "Specified",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-AUTO-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "bounded_retries": true,
+        "audit_required": true,
+        "human_approval_when_high_impact": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AUTO-000049",
+      "type": "automation",
+      "name": "Metric definition changed Automation",
+      "description": "Explainable automation that evaluates conditions and initiates metric definition changed.",
+      "status": "Specified",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-AUTO-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "bounded_retries": true,
+        "audit_required": true,
+        "human_approval_when_high_impact": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AUTO-000050",
+      "type": "automation",
+      "name": "Review requested Automation",
+      "description": "Explainable automation that evaluates conditions and initiates review requested.",
+      "status": "Specified",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-AUTO-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "bounded_retries": true,
+        "audit_required": true,
+        "human_approval_when_high_impact": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AUTO-000051",
+      "type": "automation",
+      "name": "Approval due Automation",
+      "description": "Explainable automation that evaluates conditions and initiates approval due.",
+      "status": "Specified",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-AUTO-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "bounded_retries": true,
+        "audit_required": true,
+        "human_approval_when_high_impact": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AUTO-000052",
+      "type": "automation",
+      "name": "Signature due Automation",
+      "description": "Explainable automation that evaluates conditions and initiates signature due.",
+      "status": "Specified",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-AUTO-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "bounded_retries": true,
+        "audit_required": true,
+        "human_approval_when_high_impact": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AUTO-000053",
+      "type": "automation",
+      "name": "Document expiring Automation",
+      "description": "Explainable automation that evaluates conditions and initiates document expiring.",
+      "status": "Specified",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-AUTO-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "bounded_retries": true,
+        "audit_required": true,
+        "human_approval_when_high_impact": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AUTO-000054",
+      "type": "automation",
+      "name": "Retention action Automation",
+      "description": "Explainable automation that evaluates conditions and initiates retention action.",
+      "status": "Specified",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-AUTO-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "bounded_retries": true,
+        "audit_required": true,
+        "human_approval_when_high_impact": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AUTO-000055",
+      "type": "automation",
+      "name": "Extraction failed Automation",
+      "description": "Explainable automation that evaluates conditions and initiates extraction failed.",
+      "status": "Specified",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-AUTO-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "bounded_retries": true,
+        "audit_required": true,
+        "human_approval_when_high_impact": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AUTO-000056",
+      "type": "automation",
+      "name": "The module owns all platform notifications Automation",
+      "description": "Explainable automation that evaluates conditions and initiates the module owns all platform notifications.",
+      "status": "Specified",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-AUTO-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "bounded_retries": true,
+        "audit_required": true,
+        "human_approval_when_high_impact": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AUTO-000057",
+      "type": "automation",
+      "name": "Interview task Automation",
+      "description": "Explainable automation that evaluates conditions and initiates interview task.",
+      "status": "Specified",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-AUTO-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "bounded_retries": true,
+        "audit_required": true,
+        "human_approval_when_high_impact": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AUTO-000058",
+      "type": "automation",
+      "name": "Onboarding due Automation",
+      "description": "Explainable automation that evaluates conditions and initiates onboarding due.",
+      "status": "Specified",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-AUTO-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "bounded_retries": true,
+        "audit_required": true,
+        "human_approval_when_high_impact": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AUTO-000059",
+      "type": "automation",
+      "name": "Leave request Automation",
+      "description": "Explainable automation that evaluates conditions and initiates leave request.",
+      "status": "Specified",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-AUTO-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "bounded_retries": true,
+        "audit_required": true,
+        "human_approval_when_high_impact": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AUTO-000060",
+      "type": "automation",
+      "name": "Review due Automation",
+      "description": "Explainable automation that evaluates conditions and initiates review due.",
+      "status": "Specified",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-AUTO-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "bounded_retries": true,
+        "audit_required": true,
+        "human_approval_when_high_impact": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AUTO-000061",
+      "type": "automation",
+      "name": "Contract/credential expiry Automation",
+      "description": "Explainable automation that evaluates conditions and initiates contract/credential expiry.",
+      "status": "Specified",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-AUTO-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "bounded_retries": true,
+        "audit_required": true,
+        "human_approval_when_high_impact": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AUTO-000062",
+      "type": "automation",
+      "name": "Offboarding task Automation",
+      "description": "Explainable automation that evaluates conditions and initiates offboarding task.",
+      "status": "Specified",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-AUTO-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "bounded_retries": true,
+        "audit_required": true,
+        "human_approval_when_high_impact": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AUTO-000063",
+      "type": "automation",
+      "name": "Material shortage Automation",
+      "description": "Explainable automation that evaluates conditions and initiates material shortage.",
+      "status": "Specified",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-AUTO-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "bounded_retries": true,
+        "audit_required": true,
+        "human_approval_when_high_impact": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AUTO-000064",
+      "type": "automation",
+      "name": "Operation delayed Automation",
+      "description": "Explainable automation that evaluates conditions and initiates operation delayed.",
+      "status": "Specified",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-AUTO-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "bounded_retries": true,
+        "audit_required": true,
+        "human_approval_when_high_impact": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AUTO-000065",
+      "type": "automation",
+      "name": "Quality failure Automation",
+      "description": "Explainable automation that evaluates conditions and initiates quality failure.",
+      "status": "Specified",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-AUTO-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "bounded_retries": true,
+        "audit_required": true,
+        "human_approval_when_high_impact": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AUTO-000066",
+      "type": "automation",
+      "name": "Capacity overload Automation",
+      "description": "Explainable automation that evaluates conditions and initiates capacity overload.",
+      "status": "Specified",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-AUTO-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "bounded_retries": true,
+        "audit_required": true,
+        "human_approval_when_high_impact": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AUTO-000067",
+      "type": "automation",
+      "name": "Downtime Automation",
+      "description": "Explainable automation that evaluates conditions and initiates downtime.",
+      "status": "Specified",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-AUTO-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "bounded_retries": true,
+        "audit_required": true,
+        "human_approval_when_high_impact": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "AUTO-000068",
+      "type": "automation",
+      "name": "Order ready to close Automation",
+      "description": "Explainable automation that evaluates conditions and initiates order ready to close.",
+      "status": "Specified",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-AUTO-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "bounded_retries": true,
+        "audit_required": true,
+        "human_approval_when_high_impact": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    }
+  ]
+}

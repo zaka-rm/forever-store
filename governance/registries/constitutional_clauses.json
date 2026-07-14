@@ -1,0 +1,631 @@
+{
+  "registry": "constitutional_clauses",
+  "version": "1.0.0",
+  "generated_at": "2026-07-12T03:39:37Z",
+  "records": [
+    {
+      "id": "CLAUSE-000001",
+      "type": "constitutional_clause",
+      "name": "Product Constitution Clause 1",
+      "description": "Every capability supports at least one permanent Builder decision.",
+      "status": "Released",
+      "owner": "TEAM-000001",
+      "version": "1.0.0",
+      "aliases": [
+        "CON-000001-C01"
+      ],
+      "tags": [],
+      "attributes": {
+        "text": "Every capability supports at least one permanent Builder decision."
+      },
+      "governance": {
+        "responsible_team": "TEAM-000001",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "CLAUSE-000002",
+      "type": "constitutional_clause",
+      "name": "Product Constitution Clause 2",
+      "description": "No artifact may invent functionality outside approved product knowledge.",
+      "status": "Released",
+      "owner": "TEAM-000001",
+      "version": "1.0.0",
+      "aliases": [
+        "CON-000001-C02"
+      ],
+      "tags": [],
+      "attributes": {
+        "text": "No artifact may invent functionality outside approved product knowledge."
+      },
+      "governance": {
+        "responsible_team": "TEAM-000001",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "CLAUSE-000003",
+      "type": "constitutional_clause",
+      "name": "Product Constitution Clause 3",
+      "description": "Human authority remains explicit for high-impact business action.",
+      "status": "Released",
+      "owner": "TEAM-000001",
+      "version": "1.0.0",
+      "aliases": [
+        "CON-000001-C03"
+      ],
+      "tags": [],
+      "attributes": {
+        "text": "Human authority remains explicit for high-impact business action."
+      },
+      "governance": {
+        "responsible_team": "TEAM-000001",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "CLAUSE-000004",
+      "type": "constitutional_clause",
+      "name": "Product Constitution Clause 4",
+      "description": "Every product change has an owner, measurable outcome, and traceability chain.",
+      "status": "Released",
+      "owner": "TEAM-000001",
+      "version": "1.0.0",
+      "aliases": [
+        "CON-000001-C04"
+      ],
+      "tags": [],
+      "attributes": {
+        "text": "Every product change has an owner, measurable outcome, and traceability chain."
+      },
+      "governance": {
+        "responsible_team": "TEAM-000001",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "CLAUSE-000005",
+      "type": "constitutional_clause",
+      "name": "Architecture Constitution Clause 1",
+      "description": "Bounded contexts own their data and business rules.",
+      "status": "Released",
+      "owner": "TEAM-000001",
+      "version": "1.0.0",
+      "aliases": [
+        "CON-000002-C01"
+      ],
+      "tags": [],
+      "attributes": {
+        "text": "Bounded contexts own their data and business rules."
+      },
+      "governance": {
+        "responsible_team": "TEAM-000001",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "CLAUSE-000006",
+      "type": "constitutional_clause",
+      "name": "Architecture Constitution Clause 2",
+      "description": "Cross-module collaboration uses versioned APIs or events.",
+      "status": "Released",
+      "owner": "TEAM-000001",
+      "version": "1.0.0",
+      "aliases": [
+        "CON-000002-C02"
+      ],
+      "tags": [],
+      "attributes": {
+        "text": "Cross-module collaboration uses versioned APIs or events."
+      },
+      "governance": {
+        "responsible_team": "TEAM-000001",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "CLAUSE-000007",
+      "type": "constitutional_clause",
+      "name": "Architecture Constitution Clause 3",
+      "description": "Provider-specific dependencies remain behind interfaces.",
+      "status": "Released",
+      "owner": "TEAM-000001",
+      "version": "1.0.0",
+      "aliases": [
+        "CON-000002-C03"
+      ],
+      "tags": [],
+      "attributes": {
+        "text": "Provider-specific dependencies remain behind interfaces."
+      },
+      "governance": {
+        "responsible_team": "TEAM-000001",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "CLAUSE-000008",
+      "type": "constitutional_clause",
+      "name": "Architecture Constitution Clause 4",
+      "description": "Security, observability, testability, migration, and rollback are designed before implementation.",
+      "status": "Released",
+      "owner": "TEAM-000001",
+      "version": "1.0.0",
+      "aliases": [
+        "CON-000002-C04"
+      ],
+      "tags": [],
+      "attributes": {
+        "text": "Security, observability, testability, migration, and rollback are designed before implementation."
+      },
+      "governance": {
+        "responsible_team": "TEAM-000001",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "CLAUSE-000009",
+      "type": "constitutional_clause",
+      "name": "Design Constitution Clause 1",
+      "description": "Every screen exists for a supported decision or necessary work outcome.",
+      "status": "Released",
+      "owner": "TEAM-000003",
+      "version": "1.0.0",
+      "aliases": [
+        "CON-000003-C01"
+      ],
+      "tags": [],
+      "attributes": {
+        "text": "Every screen exists for a supported decision or necessary work outcome."
+      },
+      "governance": {
+        "responsible_team": "TEAM-000003",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "CLAUSE-000010",
+      "type": "constitutional_clause",
+      "name": "Design Constitution Clause 2",
+      "description": "Progressive disclosure reduces cognitive load.",
+      "status": "Released",
+      "owner": "TEAM-000003",
+      "version": "1.0.0",
+      "aliases": [
+        "CON-000003-C02"
+      ],
+      "tags": [],
+      "attributes": {
+        "text": "Progressive disclosure reduces cognitive load."
+      },
+      "governance": {
+        "responsible_team": "TEAM-000003",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "CLAUSE-000011",
+      "type": "constitutional_clause",
+      "name": "Design Constitution Clause 3",
+      "description": "Trust signals and recovery are visible.",
+      "status": "Released",
+      "owner": "TEAM-000003",
+      "version": "1.0.0",
+      "aliases": [
+        "CON-000003-C03"
+      ],
+      "tags": [],
+      "attributes": {
+        "text": "Trust signals and recovery are visible."
+      },
+      "governance": {
+        "responsible_team": "TEAM-000003",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "CLAUSE-000012",
+      "type": "constitutional_clause",
+      "name": "Design Constitution Clause 4",
+      "description": "WCAG 2.1 AA and responsive redesign are release gates.",
+      "status": "Released",
+      "owner": "TEAM-000003",
+      "version": "1.0.0",
+      "aliases": [
+        "CON-000003-C04"
+      ],
+      "tags": [],
+      "attributes": {
+        "text": "WCAG 2.1 AA and responsive redesign are release gates."
+      },
+      "governance": {
+        "responsible_team": "TEAM-000003",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "CLAUSE-000013",
+      "type": "constitutional_clause",
+      "name": "Security Constitution Clause 1",
+      "description": "Least privilege and defense in depth apply at every boundary.",
+      "status": "Released",
+      "owner": "TEAM-000004",
+      "version": "1.0.0",
+      "aliases": [
+        "CON-000004-C01"
+      ],
+      "tags": [],
+      "attributes": {
+        "text": "Least privilege and defense in depth apply at every boundary."
+      },
+      "governance": {
+        "responsible_team": "TEAM-000004",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "CLAUSE-000014",
+      "type": "constitutional_clause",
+      "name": "Security Constitution Clause 2",
+      "description": "No cross-workspace disclosure is acceptable.",
+      "status": "Released",
+      "owner": "TEAM-000004",
+      "version": "1.0.0",
+      "aliases": [
+        "CON-000004-C02"
+      ],
+      "tags": [],
+      "attributes": {
+        "text": "No cross-workspace disclosure is acceptable."
+      },
+      "governance": {
+        "responsible_team": "TEAM-000004",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "CLAUSE-000015",
+      "type": "constitutional_clause",
+      "name": "Security Constitution Clause 3",
+      "description": "Sensitive access and changes are auditable and recoverable.",
+      "status": "Released",
+      "owner": "TEAM-000004",
+      "version": "1.0.0",
+      "aliases": [
+        "CON-000004-C03"
+      ],
+      "tags": [],
+      "attributes": {
+        "text": "Sensitive access and changes are auditable and recoverable."
+      },
+      "governance": {
+        "responsible_team": "TEAM-000004",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "CLAUSE-000016",
+      "type": "constitutional_clause",
+      "name": "Security Constitution Clause 4",
+      "description": "Secrets and protected data are minimized, encrypted, and lifecycle-controlled.",
+      "status": "Released",
+      "owner": "TEAM-000004",
+      "version": "1.0.0",
+      "aliases": [
+        "CON-000004-C04"
+      ],
+      "tags": [],
+      "attributes": {
+        "text": "Secrets and protected data are minimized, encrypted, and lifecycle-controlled."
+      },
+      "governance": {
+        "responsible_team": "TEAM-000004",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "CLAUSE-000017",
+      "type": "constitutional_clause",
+      "name": "Data Constitution Clause 1",
+      "description": "Every entity and metric has one accountable owner.",
+      "status": "Released",
+      "owner": "TEAM-000005",
+      "version": "1.0.0",
+      "aliases": [
+        "CON-000005-C01"
+      ],
+      "tags": [],
+      "attributes": {
+        "text": "Every entity and metric has one accountable owner."
+      },
+      "governance": {
+        "responsible_team": "TEAM-000005",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "CLAUSE-000018",
+      "type": "constitutional_clause",
+      "name": "Data Constitution Clause 2",
+      "description": "Completed evidence is immutable or corrected through explicit reversal or supersession.",
+      "status": "Released",
+      "owner": "TEAM-000005",
+      "version": "1.0.0",
+      "aliases": [
+        "CON-000005-C02"
+      ],
+      "tags": [],
+      "attributes": {
+        "text": "Completed evidence is immutable or corrected through explicit reversal or supersession."
+      },
+      "governance": {
+        "responsible_team": "TEAM-000005",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "CLAUSE-000019",
+      "type": "constitutional_clause",
+      "name": "Data Constitution Clause 3",
+      "description": "Lineage, freshness, version, retention, and quality are explicit.",
+      "status": "Released",
+      "owner": "TEAM-000005",
+      "version": "1.0.0",
+      "aliases": [
+        "CON-000005-C03"
+      ],
+      "tags": [],
+      "attributes": {
+        "text": "Lineage, freshness, version, retention, and quality are explicit."
+      },
+      "governance": {
+        "responsible_team": "TEAM-000005",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "CLAUSE-000020",
+      "type": "constitutional_clause",
+      "name": "Data Constitution Clause 4",
+      "description": "Tenant context is enforced for storage, query, export, search, and AI retrieval.",
+      "status": "Released",
+      "owner": "TEAM-000005",
+      "version": "1.0.0",
+      "aliases": [
+        "CON-000005-C04"
+      ],
+      "tags": [],
+      "attributes": {
+        "text": "Tenant context is enforced for storage, query, export, search, and AI retrieval."
+      },
+      "governance": {
+        "responsible_team": "TEAM-000005",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "CLAUSE-000021",
+      "type": "constitutional_clause",
+      "name": "AI Constitution Clause 1",
+      "description": "Every AI output is traceable to inputs, sources, prompt, model route, and evaluation.",
+      "status": "Released",
+      "owner": "TEAM-000006",
+      "version": "1.0.0",
+      "aliases": [
+        "CON-000006-C01"
+      ],
+      "tags": [],
+      "attributes": {
+        "text": "Every AI output is traceable to inputs, sources, prompt, model route, and evaluation."
+      },
+      "governance": {
+        "responsible_team": "TEAM-000006",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "CLAUSE-000022",
+      "type": "constitutional_clause",
+      "name": "AI Constitution Clause 2",
+      "description": "Confidence never grants permission or removes required approval.",
+      "status": "Released",
+      "owner": "TEAM-000006",
+      "version": "1.0.0",
+      "aliases": [
+        "CON-000006-C02"
+      ],
+      "tags": [],
+      "attributes": {
+        "text": "Confidence never grants permission or removes required approval."
+      },
+      "governance": {
+        "responsible_team": "TEAM-000006",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "CLAUSE-000023",
+      "type": "constitutional_clause",
+      "name": "AI Constitution Clause 3",
+      "description": "Core workflows remain available without AI.",
+      "status": "Released",
+      "owner": "TEAM-000006",
+      "version": "1.0.0",
+      "aliases": [
+        "CON-000006-C03"
+      ],
+      "tags": [],
+      "attributes": {
+        "text": "Core workflows remain available without AI."
+      },
+      "governance": {
+        "responsible_team": "TEAM-000006",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "CLAUSE-000024",
+      "type": "constitutional_clause",
+      "name": "AI Constitution Clause 4",
+      "description": "Tenant data is not used for general model training without explicit authorization.",
+      "status": "Released",
+      "owner": "TEAM-000006",
+      "version": "1.0.0",
+      "aliases": [
+        "CON-000006-C04"
+      ],
+      "tags": [],
+      "attributes": {
+        "text": "Tenant data is not used for general model training without explicit authorization."
+      },
+      "governance": {
+        "responsible_team": "TEAM-000006",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    }
+  ]
+}

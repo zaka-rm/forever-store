@@ -1,0 +1,87 @@
+{
+  "version": "1.0.0",
+  "assessed_at": "2026-07-12",
+  "assessor": "implementation review of zyvora/ MVP against Canonical Product Model v3.0",
+  "legend": {
+    "implemented": "Feature works in the app and is verified",
+    "partial": "Core of the feature exists but not to the spec's full depth",
+    "not_started": "Not present in the app yet"
+  },
+  "features": {
+    "FEAT-000001": {"status": "partial", "evidence": "zyvora/src/ui/Today.tsx", "note": "Ranked decision queue; no saved views"},
+    "FEAT-000002": {"status": "implemented", "evidence": "zyvora/src/core/engine.ts", "note": "Insights ranked by weight, layer badges, urgency in claims"},
+    "FEAT-000003": {"status": "implemented", "evidence": "zyvora/src/ui/InsightCard.tsx", "note": "Evidence + confidence + reasoning per decision"},
+    "FEAT-000004": {"status": "implemented", "evidence": "zyvora/src/core/engine.ts", "note": "Options Table: 2-4 options, gains/costs/reversibility/falsifier + null option"},
+    "FEAT-000005": {"status": "not_started", "note": "Assignment/due-dates require multi-user"},
+    "FEAT-000006": {"status": "not_started", "note": "Approval/escalation require roles"},
+    "FEAT-000007": {"status": "implemented", "evidence": "zyvora/src/ui/InsightCard.tsx", "note": "Record decision with written rationale"},
+    "FEAT-000008": {"status": "implemented", "evidence": "zyvora/src/ui/Memory.tsx", "note": "Outcome recording against decisions"},
+
+    "FEAT-000009": {"status": "implemented", "evidence": "zyvora/src/ui/Memory.tsx", "note": "Four-stream timeline"},
+    "FEAT-000010": {"status": "implemented", "evidence": "zyvora/src/core/memory.ts", "note": "Append-only; interpretation snapshots captured at decision time"},
+    "FEAT-000011": {"status": "implemented", "evidence": "zyvora/src/core/projections.ts", "note": "Outcome + rationale streams"},
+    "FEAT-000012": {"status": "not_started", "note": "No structured/semantic search over memory"},
+    "FEAT-000013": {"status": "partial", "evidence": "zyvora/src/core/engine.ts", "note": "Insights carry source + freshness in evidence"},
+    "FEAT-000014": {"status": "not_started", "note": "No collections/tags on memory"},
+    "FEAT-000015": {"status": "partial", "evidence": "zyvora/src/core/memory.ts", "note": "Permanence + export; no retention/privacy controls"},
+    "FEAT-000016": {"status": "partial", "evidence": "zyvora/src/core/assistant.ts", "note": "Assistant cites evidence figures"},
+
+    "FEAT-000017": {"status": "not_started", "note": "Rules-based Engine; no model gateway"},
+    "FEAT-000018": {"status": "not_started", "note": "No prompt registry"},
+    "FEAT-000019": {"status": "partial", "evidence": "zyvora/src/core/assistant.ts", "note": "Deterministic retrieval over projections"},
+    "FEAT-000020": {"status": "implemented", "evidence": "zyvora/src/core/engine.ts", "note": "Recommendation = Guidance with reasons"},
+    "FEAT-000021": {"status": "implemented", "evidence": "zyvora/src/core/projections.ts", "note": "forecast(): revenue/cash/stockout with ranges + assumptions"},
+    "FEAT-000022": {"status": "implemented", "evidence": "zyvora/src/ui/InsightCard.tsx", "note": "Four transparency layers + falsifier"},
+    "FEAT-000023": {"status": "partial", "evidence": "zyvora/scripts/verify.ts", "note": "65-check suite; not model eval gates"},
+    "FEAT-000024": {"status": "not_started", "note": "No cost/latency/safety/drift monitoring"},
+
+    "FEAT-000025": {"status": "implemented", "evidence": "zyvora/src/core/cloud.ts", "note": "Supabase auth adapter"},
+    "FEAT-000026": {"status": "partial", "evidence": "zyvora/src/App.tsx", "note": "Create + start-fresh workspace; no full lifecycle"},
+    "FEAT-000027": {"status": "not_started", "note": "No invitations/membership"},
+    "FEAT-000028": {"status": "not_started", "note": "No roles/permission grants"},
+    "FEAT-000029": {"status": "not_started", "note": "No policy evaluation"},
+    "FEAT-000030": {"status": "partial", "evidence": "zyvora/src/core/cloud.ts", "note": "Supabase session; no MFA"},
+    "FEAT-000031": {"status": "not_started", "note": "No API keys/service identities"},
+    "FEAT-000032": {"status": "partial", "evidence": "zyvora/src/core/memory.ts", "note": "Append-only event trail + export; no audit explorer"},
+
+    "FEAT-000033": {"status": "not_started", "note": "No chart of accounts"},
+    "FEAT-000034": {"status": "not_started", "note": "No double-entry journals"},
+    "FEAT-000035": {"status": "partial", "evidence": "zyvora/src/ui/Domains.tsx", "note": "Invoices + mark-paid; not full AR"},
+    "FEAT-000036": {"status": "partial", "evidence": "zyvora/src/ui/Domains.tsx", "note": "Expenses; not formal AP/bills"},
+    "FEAT-000037": {"status": "partial", "evidence": "zyvora/src/core/projections.ts", "note": "COD cash collection; no bank reconciliation"},
+    "FEAT-000038": {"status": "partial", "evidence": "zyvora/src/ui/FinanceTools.tsx", "note": "Goals + 3 envelopes; not formal budgets/variance"},
+    "FEAT-000039": {"status": "implemented", "evidence": "zyvora/src/core/projections.ts", "note": "Cash forecast with assumptions"},
+    "FEAT-000040": {"status": "not_started", "note": "No financial statements/period close"},
+
+    "FEAT-000041": {"status": "implemented", "evidence": "zyvora/src/core/storeConnect.ts", "note": "Product catalog + real Forever catalog import"},
+    "FEAT-000042": {"status": "not_started", "note": "Single location; no warehouse model"},
+    "FEAT-000043": {"status": "implemented", "evidence": "zyvora/src/core/projections.ts", "note": "Stock + available = stock - reserved"},
+    "FEAT-000044": {"status": "implemented", "evidence": "zyvora/src/core/projections.ts", "note": "Order reservations"},
+    "FEAT-000045": {"status": "not_started", "note": "No purchase orders/receipts"},
+    "FEAT-000046": {"status": "partial", "evidence": "zyvora/src/ui/Domains.tsx", "note": "Manual stock adjustments; no transfers"},
+    "FEAT-000047": {"status": "not_started", "note": "No lot/serial/batch"},
+    "FEAT-000048": {"status": "implemented", "evidence": "zyvora/src/core/engine.ts", "note": "Stockout brain + reorder recommendation"},
+
+    "FEAT-000049": {"status": "partial", "evidence": "zyvora/src/core/projections.ts", "note": "Customers derived from orders/invoices; no contact records"},
+    "FEAT-000050": {"status": "not_started", "note": "No lead capture"},
+    "FEAT-000051": {"status": "not_started", "note": "No opportunity pipelines"},
+    "FEAT-000052": {"status": "not_started", "note": "No activities/tasks"},
+    "FEAT-000053": {"status": "partial", "evidence": "zyvora/src/core/projections.ts", "note": "Auto-tags (VIP/at-risk/new)"},
+    "FEAT-000054": {"status": "implemented", "evidence": "zyvora/src/core/projections.ts", "note": "Lifetime value, CLV, COD reliability, health"},
+    "FEAT-000055": {"status": "partial", "evidence": "zyvora/src/core/engine.ts", "note": "Promo profitability; not full campaign attribution"},
+    "FEAT-000056": {"status": "not_started", "note": "No consent/communication history"},
+
+    "FEAT-000057": {"status": "not_started", "note": "Metrics computed inline; no governed registry"},
+    "FEAT-000058": {"status": "partial", "evidence": "zyvora/src/core/engine.ts", "note": "Single calculation owners; not a semantic layer"},
+    "FEAT-000059": {"status": "partial", "evidence": "zyvora/src/ui/Analytics.tsx", "note": "Fixed dashboards; no composition"},
+    "FEAT-000060": {"status": "not_started", "note": "No filters/saved views"},
+    "FEAT-000061": {"status": "not_started", "note": "No drill-down/lineage"},
+    "FEAT-000062": {"status": "not_started", "note": "No scheduled reports"},
+    "FEAT-000063": {"status": "implemented", "evidence": "zyvora/src/ui/Analytics.tsx", "note": "CSV exports"},
+    "FEAT-000064": {"status": "partial", "evidence": "zyvora/src/ui/Analytics.tsx", "note": "Forecast section; no annotations"},
+
+    "FEAT-000067": {"status": "partial", "evidence": "zyvora/src/ui/Orders.tsx", "note": "Printable receipts (generation only)"},
+
+    "FEAT-000073": {"status": "partial", "evidence": "zyvora/src/core/engine.ts", "note": "Insights are decision events; no delivery channels"}
+  }
+}

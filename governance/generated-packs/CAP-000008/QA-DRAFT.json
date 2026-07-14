@@ -1,0 +1,1701 @@
+{
+  "generator_version": "2.3.0",
+  "generated_at": "2026-07-12T03:39:43.121Z",
+  "source_capability": {
+    "id": "CAP-000008",
+    "type": "capability",
+    "name": "Analytics Core Capability",
+    "status": "Specified",
+    "version": "1.0.0",
+    "owner": "TEAM-000014"
+  },
+  "source_fingerprint": "b805e977a300194ebdf58e6dee48a851b87c2b4fd6272d49d95f9d4879aea063",
+  "authority": "DRAFT_NOT_AUTHORIZED",
+  "promotion_gate": "BLOCKED_SOURCE_INCOMPLETE",
+  "blockers": [
+    "MET-000051: metric formula is not approved",
+    "MET-000052: metric formula is not approved",
+    "MET-000053: metric formula is not approved",
+    "MET-000054: metric formula is not approved",
+    "MET-000055: metric formula is not approved",
+    "MET-000056: metric formula is not approved",
+    "PROMPT-000031: prompt template and evaluation are not approved",
+    "PROMPT-000032: prompt template and evaluation are not approved",
+    "PROMPT-000033: prompt template and evaluation are not approved",
+    "PROMPT-000034: prompt template and evaluation are not approved",
+    "PROMPT-000035: prompt template and evaluation are not approved",
+    "WF-000055: ordered workflow steps are not approved",
+    "WF-000056: ordered workflow steps are not approved",
+    "WF-000057: ordered workflow steps are not approved",
+    "WF-000058: ordered workflow steps are not approved",
+    "WF-000059: ordered workflow steps are not approved",
+    "WF-000060: ordered workflow steps are not approved",
+    "WF-000061: ordered workflow steps are not approved",
+    "WF-000062: ordered workflow steps are not approved",
+    "UF-000064: UI transitions and recovery states are not approved",
+    "UF-000065: UI transitions and recovery states are not approved",
+    "UF-000066: UI transitions and recovery states are not approved",
+    "UF-000067: UI transitions and recovery states are not approved",
+    "UF-000068: UI transitions and recovery states are not approved",
+    "UF-000069: UI transitions and recovery states are not approved",
+    "UF-000070: UI transitions and recovery states are not approved",
+    "UF-000071: UI transitions and recovery states are not approved",
+    "UF-000072: UI transitions and recovery states are not approved",
+    "EVT-000050: event domain payload is not approved",
+    "EVT-000051: event domain payload is not approved",
+    "EVT-000052: event domain payload is not approved",
+    "EVT-000053: event domain payload is not approved",
+    "EVT-000054: event domain payload is not approved",
+    "EVT-000055: event domain payload is not approved",
+    "API-000057: API request and response schema is not approved",
+    "API-000058: API request and response schema is not approved",
+    "API-000059: API request and response schema is not approved",
+    "API-000060: API request and response schema is not approved",
+    "API-000061: API request and response schema is not approved",
+    "API-000062: API request and response schema is not approved",
+    "API-000063: API request and response schema is not approved",
+    "API-000064: API request and response schema is not approved"
+  ],
+  "completeness": {
+    "source_records": 136,
+    "blocker_count": 42,
+    "traceability_gate": "PASS_CURRENT_MATURITY",
+    "traceability_coverage_percent": 55
+  },
+  "provenance": [
+    {
+      "id": "CAP-000008",
+      "type": "capability",
+      "name": "Analytics Core Capability",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "MOD-000008",
+      "type": "module",
+      "name": "Analytics",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "DEC-000029",
+      "type": "decision",
+      "name": "What changed?",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "DEC-000030",
+      "type": "decision",
+      "name": "Why did it change?",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "DEC-000031",
+      "type": "decision",
+      "name": "Does it require attention?",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "DEC-000032",
+      "type": "decision",
+      "name": "Which underlying records explain the metric?",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "FEAT-000057",
+      "type": "feature",
+      "name": "Metric registry",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "FEAT-000058",
+      "type": "feature",
+      "name": "Semantic definitions",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "FEAT-000059",
+      "type": "feature",
+      "name": "Dashboard composition",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "FEAT-000060",
+      "type": "feature",
+      "name": "Filters and saved views",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "FEAT-000061",
+      "type": "feature",
+      "name": "Drill-down and lineage",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "FEAT-000062",
+      "type": "feature",
+      "name": "Scheduled reports",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "FEAT-000063",
+      "type": "feature",
+      "name": "Exports",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "FEAT-000064",
+      "type": "feature",
+      "name": "Annotations and forecast overlays",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "BR-000057",
+      "type": "business_rule",
+      "name": "Analytics Rule 1",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "BR-000058",
+      "type": "business_rule",
+      "name": "Analytics Rule 2",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "BR-000059",
+      "type": "business_rule",
+      "name": "Analytics Rule 3",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "BR-000060",
+      "type": "business_rule",
+      "name": "Analytics Rule 4",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "BR-000061",
+      "type": "business_rule",
+      "name": "Analytics Rule 5",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "BR-000062",
+      "type": "business_rule",
+      "name": "Analytics Rule 6",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "BR-000063",
+      "type": "business_rule",
+      "name": "Analytics Rule 7",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "BR-000064",
+      "type": "business_rule",
+      "name": "Analytics Rule 8",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "WF-000055",
+      "type": "workflow",
+      "name": "Define and approve metric",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "WF-000056",
+      "type": "workflow",
+      "name": "Compute metric",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "WF-000057",
+      "type": "workflow",
+      "name": "Compose dashboard",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "WF-000058",
+      "type": "workflow",
+      "name": "Filter and drill down",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "WF-000059",
+      "type": "workflow",
+      "name": "Annotate change",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "WF-000060",
+      "type": "workflow",
+      "name": "Schedule report",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "WF-000061",
+      "type": "workflow",
+      "name": "Export data",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "WF-000062",
+      "type": "workflow",
+      "name": "Handle data-quality failure",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "ENT-000072",
+      "type": "entity",
+      "name": "MetricDefinition",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "ENT-000073",
+      "type": "entity",
+      "name": "MetricVersion",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "ENT-000074",
+      "type": "entity",
+      "name": "Dataset",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "ENT-000075",
+      "type": "entity",
+      "name": "Dashboard",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "ENT-000076",
+      "type": "entity",
+      "name": "DashboardWidget",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "ENT-000077",
+      "type": "entity",
+      "name": "SavedView",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "ENT-000078",
+      "type": "entity",
+      "name": "ReportDefinition",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "ENT-000079",
+      "type": "entity",
+      "name": "ReportRun",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "ENT-000080",
+      "type": "entity",
+      "name": "Annotation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "ENT-000081",
+      "type": "entity",
+      "name": "DataQualityResult",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "API-000057",
+      "type": "api",
+      "name": "Analytics Metric registry API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "API-000058",
+      "type": "api",
+      "name": "Analytics Semantic definitions API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "API-000059",
+      "type": "api",
+      "name": "Analytics Dashboard composition API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "API-000060",
+      "type": "api",
+      "name": "Analytics Filters and saved views API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "API-000061",
+      "type": "api",
+      "name": "Analytics Drill-down and lineage API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "API-000062",
+      "type": "api",
+      "name": "Analytics Scheduled reports API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "API-000063",
+      "type": "api",
+      "name": "Analytics Exports API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "API-000064",
+      "type": "api",
+      "name": "Analytics Annotations and forecast overlays API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "EVT-000050",
+      "type": "event",
+      "name": "MetricUpdated",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "EVT-000051",
+      "type": "event",
+      "name": "MetricThresholdBreached",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "EVT-000052",
+      "type": "event",
+      "name": "DashboardPublished",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "EVT-000053",
+      "type": "event",
+      "name": "ReportCompleted",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "EVT-000054",
+      "type": "event",
+      "name": "ReportFailed",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "EVT-000055",
+      "type": "event",
+      "name": "DataQualityFailed",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "PERM-000113",
+      "type": "permission",
+      "name": "Read Metric registry",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "PERM-000114",
+      "type": "permission",
+      "name": "Manage Metric registry",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "PERM-000115",
+      "type": "permission",
+      "name": "Read Semantic definitions",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "PERM-000116",
+      "type": "permission",
+      "name": "Manage Semantic definitions",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "PERM-000117",
+      "type": "permission",
+      "name": "Read Dashboard composition",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "PERM-000118",
+      "type": "permission",
+      "name": "Manage Dashboard composition",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "PERM-000119",
+      "type": "permission",
+      "name": "Read Filters and saved views",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "PERM-000120",
+      "type": "permission",
+      "name": "Manage Filters and saved views",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "PERM-000121",
+      "type": "permission",
+      "name": "Read Drill-down and lineage",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "PERM-000122",
+      "type": "permission",
+      "name": "Manage Drill-down and lineage",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "PERM-000123",
+      "type": "permission",
+      "name": "Read Scheduled reports",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "PERM-000124",
+      "type": "permission",
+      "name": "Manage Scheduled reports",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "PERM-000125",
+      "type": "permission",
+      "name": "Read Exports",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "PERM-000126",
+      "type": "permission",
+      "name": "Manage Exports",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "PERM-000127",
+      "type": "permission",
+      "name": "Read Annotations and forecast overlays",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "PERM-000128",
+      "type": "permission",
+      "name": "Manage Annotations and forecast overlays",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "SCR-000064",
+      "type": "screen",
+      "name": "Analytics Decision Dashboard",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "SCR-000065",
+      "type": "screen",
+      "name": "Metric registry Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "SCR-000066",
+      "type": "screen",
+      "name": "Semantic definitions Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "SCR-000067",
+      "type": "screen",
+      "name": "Dashboard composition Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "SCR-000068",
+      "type": "screen",
+      "name": "Filters and saved views Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "SCR-000069",
+      "type": "screen",
+      "name": "Drill-down and lineage Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "SCR-000070",
+      "type": "screen",
+      "name": "Scheduled reports Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "SCR-000071",
+      "type": "screen",
+      "name": "Exports Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "SCR-000072",
+      "type": "screen",
+      "name": "Annotations and forecast overlays Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "UF-000064",
+      "type": "ui_flow",
+      "name": "Analytics UI Flow 1",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "UF-000065",
+      "type": "ui_flow",
+      "name": "Analytics UI Flow 2",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "UF-000066",
+      "type": "ui_flow",
+      "name": "Analytics UI Flow 3",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "UF-000067",
+      "type": "ui_flow",
+      "name": "Analytics UI Flow 4",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "UF-000068",
+      "type": "ui_flow",
+      "name": "Analytics UI Flow 5",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "UF-000069",
+      "type": "ui_flow",
+      "name": "Analytics UI Flow 6",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "UF-000070",
+      "type": "ui_flow",
+      "name": "Analytics UI Flow 7",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "UF-000071",
+      "type": "ui_flow",
+      "name": "Analytics UI Flow 8",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "UF-000072",
+      "type": "ui_flow",
+      "name": "Analytics UI Flow 9",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "MET-000051",
+      "type": "metric",
+      "name": "Metric freshness",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "MET-000052",
+      "type": "metric",
+      "name": "Dashboard decision-action rate",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "MET-000053",
+      "type": "metric",
+      "name": "Drill-down success",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "MET-000054",
+      "type": "metric",
+      "name": "Report delivery success",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "MET-000055",
+      "type": "metric",
+      "name": "Data-quality pass rate",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "MET-000056",
+      "type": "metric",
+      "name": "Export completion time",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "AICAP-000031",
+      "type": "ai_capability",
+      "name": "Analytics: Narrative explanation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "AICAP-000032",
+      "type": "ai_capability",
+      "name": "Analytics: Anomaly detection",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "AICAP-000033",
+      "type": "ai_capability",
+      "name": "Analytics: Forecast overlay",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "AICAP-000034",
+      "type": "ai_capability",
+      "name": "Analytics: Natural language query",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "AICAP-000035",
+      "type": "ai_capability",
+      "name": "Analytics: Chart recommendation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "PROMPT-000031",
+      "type": "prompt",
+      "name": "Analytics: Narrative explanation Prompt",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000006"
+    },
+    {
+      "id": "PROMPT-000032",
+      "type": "prompt",
+      "name": "Analytics: Anomaly detection Prompt",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000006"
+    },
+    {
+      "id": "PROMPT-000033",
+      "type": "prompt",
+      "name": "Analytics: Forecast overlay Prompt",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000006"
+    },
+    {
+      "id": "PROMPT-000034",
+      "type": "prompt",
+      "name": "Analytics: Natural language query Prompt",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000006"
+    },
+    {
+      "id": "PROMPT-000035",
+      "type": "prompt",
+      "name": "Analytics: Chart recommendation Prompt",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000006"
+    },
+    {
+      "id": "AUTO-000044",
+      "type": "automation",
+      "name": "Threshold breached Automation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "AUTO-000045",
+      "type": "automation",
+      "name": "Report ready Automation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "AUTO-000046",
+      "type": "automation",
+      "name": "Report failed Automation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "AUTO-000047",
+      "type": "automation",
+      "name": "Data stale Automation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "AUTO-000048",
+      "type": "automation",
+      "name": "Data quality failed Automation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "AUTO-000049",
+      "type": "automation",
+      "name": "Metric definition changed Automation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "NOT-000044",
+      "type": "notification",
+      "name": "Threshold breached",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "NOT-000045",
+      "type": "notification",
+      "name": "Report ready",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "NOT-000046",
+      "type": "notification",
+      "name": "Report failed",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "NOT-000047",
+      "type": "notification",
+      "name": "Data stale",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "NOT-000048",
+      "type": "notification",
+      "name": "Data quality failed",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "NOT-000049",
+      "type": "notification",
+      "name": "Metric definition changed",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "RPT-000042",
+      "type": "report",
+      "name": "Executive command center",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "RPT-000043",
+      "type": "report",
+      "name": "Business health",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "RPT-000044",
+      "type": "report",
+      "name": "Module dashboards",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "RPT-000045",
+      "type": "report",
+      "name": "Decision effectiveness",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "RPT-000046",
+      "type": "report",
+      "name": "Operational reliability",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "INT-000035",
+      "type": "integration",
+      "name": "All ZYVORA modules",
+      "status": "Planned",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "INT-000036",
+      "type": "integration",
+      "name": "PostgreSQL read models",
+      "status": "Planned",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "INT-000037",
+      "type": "integration",
+      "name": "Object storage",
+      "status": "Planned",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "INT-000038",
+      "type": "integration",
+      "name": "Notification service",
+      "status": "Planned",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "INT-000039",
+      "type": "integration",
+      "name": "Future BI connectors",
+      "status": "Planned",
+      "version": "1.0.0",
+      "owner": "TEAM-000014"
+    },
+    {
+      "id": "ART-000005",
+      "type": "artifact",
+      "name": "ZYVORA Analytics PRD v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000018",
+      "type": "artifact",
+      "name": "ZYVORA Analytics Technical Specification v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000029",
+      "type": "artifact",
+      "name": "ZYVORA BP-000 Platform Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000030",
+      "type": "artifact",
+      "name": "ZYVORA BP-001 UI Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000031",
+      "type": "artifact",
+      "name": "ZYVORA BP-002 Backend Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000032",
+      "type": "artifact",
+      "name": "ZYVORA BP-003 Database Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000033",
+      "type": "artifact",
+      "name": "ZYVORA BP-004 API Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000034",
+      "type": "artifact",
+      "name": "ZYVORA BP-005 AI Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000035",
+      "type": "artifact",
+      "name": "ZYVORA BP-006 Security Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000036",
+      "type": "artifact",
+      "name": "ZYVORA BP-007 Infrastructure Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    }
+  ],
+  "kind": "draft_qa_pack",
+  "paired_build_fingerprint": "b805e977a300194ebdf58e6dee48a851b87c2b4fd6272d49d95f9d4879aea063",
+  "test_scenarios": [
+    {
+      "id": "RULE-BR-000057",
+      "type": "unit_and_domain",
+      "source": "BR-000057",
+      "scenario": "Verify business rule: Every metric has one owner, formula, unit, sources, filters, refresh policy, and version.",
+      "expected": "Exact approved rule holds for valid, invalid, boundary, and concurrent cases."
+    },
+    {
+      "id": "RULE-BR-000058",
+      "type": "unit_and_domain",
+      "source": "BR-000058",
+      "scenario": "Verify business rule: Dashboards answer a declared decision question.",
+      "expected": "Exact approved rule holds for valid, invalid, boundary, and concurrent cases."
+    },
+    {
+      "id": "RULE-BR-000059",
+      "type": "unit_and_domain",
+      "source": "BR-000059",
+      "scenario": "Verify business rule: Drill-down reconciles to the displayed value within documented rounding.",
+      "expected": "Exact approved rule holds for valid, invalid, boundary, and concurrent cases."
+    },
+    {
+      "id": "RULE-BR-000060",
+      "type": "unit_and_domain",
+      "source": "BR-000060",
+      "scenario": "Verify business rule: Stale or failed data is visible and never silently presented as current.",
+      "expected": "Exact approved rule holds for valid, invalid, boundary, and concurrent cases."
+    },
+    {
+      "id": "RULE-BR-000061",
+      "type": "unit_and_domain",
+      "source": "BR-000061",
+      "scenario": "Verify business rule: Exports enforce the same permissions as interactive views.",
+      "expected": "Exact approved rule holds for valid, invalid, boundary, and concurrent cases."
+    },
+    {
+      "id": "RULE-BR-000062",
+      "type": "unit_and_domain",
+      "source": "BR-000062",
+      "scenario": "Verify business rule: Metric changes create a new version and effective date.",
+      "expected": "Exact approved rule holds for valid, invalid, boundary, and concurrent cases."
+    },
+    {
+      "id": "RULE-BR-000063",
+      "type": "unit_and_domain",
+      "source": "BR-000063",
+      "scenario": "Verify business rule: Charts include accessible text or tabular alternatives.",
+      "expected": "Exact approved rule holds for valid, invalid, boundary, and concurrent cases."
+    },
+    {
+      "id": "RULE-BR-000064",
+      "type": "unit_and_domain",
+      "source": "BR-000064",
+      "scenario": "Verify business rule: Scheduled reports record parameters and source freshness.",
+      "expected": "Exact approved rule holds for valid, invalid, boundary, and concurrent cases."
+    },
+    {
+      "id": "WF-WF-000055",
+      "type": "end_to_end",
+      "source": "WF-000055",
+      "scenario": "Verify happy, alternative, failure, and recovery paths for Define and approve metric",
+      "expected": "Approved workflow outcome, evidence, timing, and recovery requirements are satisfied."
+    },
+    {
+      "id": "WF-WF-000056",
+      "type": "end_to_end",
+      "source": "WF-000056",
+      "scenario": "Verify happy, alternative, failure, and recovery paths for Compute metric",
+      "expected": "Approved workflow outcome, evidence, timing, and recovery requirements are satisfied."
+    },
+    {
+      "id": "WF-WF-000057",
+      "type": "end_to_end",
+      "source": "WF-000057",
+      "scenario": "Verify happy, alternative, failure, and recovery paths for Compose dashboard",
+      "expected": "Approved workflow outcome, evidence, timing, and recovery requirements are satisfied."
+    },
+    {
+      "id": "WF-WF-000058",
+      "type": "end_to_end",
+      "source": "WF-000058",
+      "scenario": "Verify happy, alternative, failure, and recovery paths for Filter and drill down",
+      "expected": "Approved workflow outcome, evidence, timing, and recovery requirements are satisfied."
+    },
+    {
+      "id": "WF-WF-000059",
+      "type": "end_to_end",
+      "source": "WF-000059",
+      "scenario": "Verify happy, alternative, failure, and recovery paths for Annotate change",
+      "expected": "Approved workflow outcome, evidence, timing, and recovery requirements are satisfied."
+    },
+    {
+      "id": "WF-WF-000060",
+      "type": "end_to_end",
+      "source": "WF-000060",
+      "scenario": "Verify happy, alternative, failure, and recovery paths for Schedule report",
+      "expected": "Approved workflow outcome, evidence, timing, and recovery requirements are satisfied."
+    },
+    {
+      "id": "WF-WF-000061",
+      "type": "end_to_end",
+      "source": "WF-000061",
+      "scenario": "Verify happy, alternative, failure, and recovery paths for Export data",
+      "expected": "Approved workflow outcome, evidence, timing, and recovery requirements are satisfied."
+    },
+    {
+      "id": "WF-WF-000062",
+      "type": "end_to_end",
+      "source": "WF-000062",
+      "scenario": "Verify happy, alternative, failure, and recovery paths for Handle data-quality failure",
+      "expected": "Approved workflow outcome, evidence, timing, and recovery requirements are satisfied."
+    },
+    {
+      "id": "API-API-000057",
+      "type": "contract_and_security",
+      "source": "API-000057",
+      "scenario": "Verify request, response, authorization, idempotency, pagination, validation, and errors for Analytics Metric registry API",
+      "expected": "Approved API contract and security policy are preserved."
+    },
+    {
+      "id": "API-API-000058",
+      "type": "contract_and_security",
+      "source": "API-000058",
+      "scenario": "Verify request, response, authorization, idempotency, pagination, validation, and errors for Analytics Semantic definitions API",
+      "expected": "Approved API contract and security policy are preserved."
+    },
+    {
+      "id": "API-API-000059",
+      "type": "contract_and_security",
+      "source": "API-000059",
+      "scenario": "Verify request, response, authorization, idempotency, pagination, validation, and errors for Analytics Dashboard composition API",
+      "expected": "Approved API contract and security policy are preserved."
+    },
+    {
+      "id": "API-API-000060",
+      "type": "contract_and_security",
+      "source": "API-000060",
+      "scenario": "Verify request, response, authorization, idempotency, pagination, validation, and errors for Analytics Filters and saved views API",
+      "expected": "Approved API contract and security policy are preserved."
+    },
+    {
+      "id": "API-API-000061",
+      "type": "contract_and_security",
+      "source": "API-000061",
+      "scenario": "Verify request, response, authorization, idempotency, pagination, validation, and errors for Analytics Drill-down and lineage API",
+      "expected": "Approved API contract and security policy are preserved."
+    },
+    {
+      "id": "API-API-000062",
+      "type": "contract_and_security",
+      "source": "API-000062",
+      "scenario": "Verify request, response, authorization, idempotency, pagination, validation, and errors for Analytics Scheduled reports API",
+      "expected": "Approved API contract and security policy are preserved."
+    },
+    {
+      "id": "API-API-000063",
+      "type": "contract_and_security",
+      "source": "API-000063",
+      "scenario": "Verify request, response, authorization, idempotency, pagination, validation, and errors for Analytics Exports API",
+      "expected": "Approved API contract and security policy are preserved."
+    },
+    {
+      "id": "API-API-000064",
+      "type": "contract_and_security",
+      "source": "API-000064",
+      "scenario": "Verify request, response, authorization, idempotency, pagination, validation, and errors for Analytics Annotations and forecast overlays API",
+      "expected": "Approved API contract and security policy are preserved."
+    },
+    {
+      "id": "EVT-EVT-000050",
+      "type": "integration",
+      "source": "EVT-000050",
+      "scenario": "Verify production, schema compatibility, ordering, duplication, retry, and idempotent consumption for MetricUpdated",
+      "expected": "Versioned event meaning and compatibility contract are preserved."
+    },
+    {
+      "id": "EVT-EVT-000051",
+      "type": "integration",
+      "source": "EVT-000051",
+      "scenario": "Verify production, schema compatibility, ordering, duplication, retry, and idempotent consumption for MetricThresholdBreached",
+      "expected": "Versioned event meaning and compatibility contract are preserved."
+    },
+    {
+      "id": "EVT-EVT-000052",
+      "type": "integration",
+      "source": "EVT-000052",
+      "scenario": "Verify production, schema compatibility, ordering, duplication, retry, and idempotent consumption for DashboardPublished",
+      "expected": "Versioned event meaning and compatibility contract are preserved."
+    },
+    {
+      "id": "EVT-EVT-000053",
+      "type": "integration",
+      "source": "EVT-000053",
+      "scenario": "Verify production, schema compatibility, ordering, duplication, retry, and idempotent consumption for ReportCompleted",
+      "expected": "Versioned event meaning and compatibility contract are preserved."
+    },
+    {
+      "id": "EVT-EVT-000054",
+      "type": "integration",
+      "source": "EVT-000054",
+      "scenario": "Verify production, schema compatibility, ordering, duplication, retry, and idempotent consumption for ReportFailed",
+      "expected": "Versioned event meaning and compatibility contract are preserved."
+    },
+    {
+      "id": "EVT-EVT-000055",
+      "type": "integration",
+      "source": "EVT-000055",
+      "scenario": "Verify production, schema compatibility, ordering, duplication, retry, and idempotent consumption for DataQualityFailed",
+      "expected": "Versioned event meaning and compatibility contract are preserved."
+    },
+    {
+      "id": "PERM-PERM-000113",
+      "type": "security",
+      "source": "PERM-000113",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Read Metric registry",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000114",
+      "type": "security",
+      "source": "PERM-000114",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Manage Metric registry",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000115",
+      "type": "security",
+      "source": "PERM-000115",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Read Semantic definitions",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000116",
+      "type": "security",
+      "source": "PERM-000116",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Manage Semantic definitions",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000117",
+      "type": "security",
+      "source": "PERM-000117",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Read Dashboard composition",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000118",
+      "type": "security",
+      "source": "PERM-000118",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Manage Dashboard composition",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000119",
+      "type": "security",
+      "source": "PERM-000119",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Read Filters and saved views",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000120",
+      "type": "security",
+      "source": "PERM-000120",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Manage Filters and saved views",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000121",
+      "type": "security",
+      "source": "PERM-000121",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Read Drill-down and lineage",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000122",
+      "type": "security",
+      "source": "PERM-000122",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Manage Drill-down and lineage",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000123",
+      "type": "security",
+      "source": "PERM-000123",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Read Scheduled reports",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000124",
+      "type": "security",
+      "source": "PERM-000124",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Manage Scheduled reports",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000125",
+      "type": "security",
+      "source": "PERM-000125",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Read Exports",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000126",
+      "type": "security",
+      "source": "PERM-000126",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Manage Exports",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000127",
+      "type": "security",
+      "source": "PERM-000127",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Read Annotations and forecast overlays",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000128",
+      "type": "security",
+      "source": "PERM-000128",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Manage Annotations and forecast overlays",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "SCR-SCR-000064",
+      "type": "ui_accessibility",
+      "source": "SCR-000064",
+      "scenario": "Verify responsive, keyboard, screen-reader, loading, empty, error, stale, and permission states for Analytics Decision Dashboard",
+      "expected": "Decision purpose remains clear and WCAG 2.1 AA obligations pass."
+    },
+    {
+      "id": "SCR-SCR-000065",
+      "type": "ui_accessibility",
+      "source": "SCR-000065",
+      "scenario": "Verify responsive, keyboard, screen-reader, loading, empty, error, stale, and permission states for Metric registry Workspace",
+      "expected": "Decision purpose remains clear and WCAG 2.1 AA obligations pass."
+    },
+    {
+      "id": "SCR-SCR-000066",
+      "type": "ui_accessibility",
+      "source": "SCR-000066",
+      "scenario": "Verify responsive, keyboard, screen-reader, loading, empty, error, stale, and permission states for Semantic definitions Workspace",
+      "expected": "Decision purpose remains clear and WCAG 2.1 AA obligations pass."
+    },
+    {
+      "id": "SCR-SCR-000067",
+      "type": "ui_accessibility",
+      "source": "SCR-000067",
+      "scenario": "Verify responsive, keyboard, screen-reader, loading, empty, error, stale, and permission states for Dashboard composition Workspace",
+      "expected": "Decision purpose remains clear and WCAG 2.1 AA obligations pass."
+    },
+    {
+      "id": "SCR-SCR-000068",
+      "type": "ui_accessibility",
+      "source": "SCR-000068",
+      "scenario": "Verify responsive, keyboard, screen-reader, loading, empty, error, stale, and permission states for Filters and saved views Workspace",
+      "expected": "Decision purpose remains clear and WCAG 2.1 AA obligations pass."
+    },
+    {
+      "id": "SCR-SCR-000069",
+      "type": "ui_accessibility",
+      "source": "SCR-000069",
+      "scenario": "Verify responsive, keyboard, screen-reader, loading, empty, error, stale, and permission states for Drill-down and lineage Workspace",
+      "expected": "Decision purpose remains clear and WCAG 2.1 AA obligations pass."
+    },
+    {
+      "id": "SCR-SCR-000070",
+      "type": "ui_accessibility",
+      "source": "SCR-000070",
+      "scenario": "Verify responsive, keyboard, screen-reader, loading, empty, error, stale, and permission states for Scheduled reports Workspace",
+      "expected": "Decision purpose remains clear and WCAG 2.1 AA obligations pass."
+    },
+    {
+      "id": "SCR-SCR-000071",
+      "type": "ui_accessibility",
+      "source": "SCR-000071",
+      "scenario": "Verify responsive, keyboard, screen-reader, loading, empty, error, stale, and permission states for Exports Workspace",
+      "expected": "Decision purpose remains clear and WCAG 2.1 AA obligations pass."
+    },
+    {
+      "id": "SCR-SCR-000072",
+      "type": "ui_accessibility",
+      "source": "SCR-000072",
+      "scenario": "Verify responsive, keyboard, screen-reader, loading, empty, error, stale, and permission states for Annotations and forecast overlays Workspace",
+      "expected": "Decision purpose remains clear and WCAG 2.1 AA obligations pass."
+    }
+  ],
+  "regression_scope": [
+    "CAP-000008",
+    "MOD-000008",
+    "DEC-000029",
+    "DEC-000030",
+    "DEC-000031",
+    "DEC-000032",
+    "FEAT-000057",
+    "FEAT-000058",
+    "FEAT-000059",
+    "FEAT-000060",
+    "FEAT-000061",
+    "FEAT-000062",
+    "FEAT-000063",
+    "FEAT-000064",
+    "BR-000057",
+    "BR-000058",
+    "BR-000059",
+    "BR-000060",
+    "BR-000061",
+    "BR-000062",
+    "BR-000063",
+    "BR-000064",
+    "WF-000055",
+    "WF-000056",
+    "WF-000057",
+    "WF-000058",
+    "WF-000059",
+    "WF-000060",
+    "WF-000061",
+    "WF-000062",
+    "ENT-000072",
+    "ENT-000073",
+    "ENT-000074",
+    "ENT-000075",
+    "ENT-000076",
+    "ENT-000077",
+    "ENT-000078",
+    "ENT-000079",
+    "ENT-000080",
+    "ENT-000081",
+    "API-000057",
+    "API-000058",
+    "API-000059",
+    "API-000060",
+    "API-000061",
+    "API-000062",
+    "API-000063",
+    "API-000064",
+    "EVT-000050",
+    "EVT-000051",
+    "EVT-000052",
+    "EVT-000053",
+    "EVT-000054",
+    "EVT-000055",
+    "PERM-000113",
+    "PERM-000114",
+    "PERM-000115",
+    "PERM-000116",
+    "PERM-000117",
+    "PERM-000118",
+    "PERM-000119",
+    "PERM-000120",
+    "PERM-000121",
+    "PERM-000122",
+    "PERM-000123",
+    "PERM-000124",
+    "PERM-000125",
+    "PERM-000126",
+    "PERM-000127",
+    "PERM-000128",
+    "SCR-000064",
+    "SCR-000065",
+    "SCR-000066",
+    "SCR-000067",
+    "SCR-000068",
+    "SCR-000069",
+    "SCR-000070",
+    "SCR-000071",
+    "SCR-000072",
+    "UF-000064",
+    "UF-000065",
+    "UF-000066",
+    "UF-000067",
+    "UF-000068",
+    "UF-000069",
+    "UF-000070",
+    "UF-000071",
+    "UF-000072",
+    "MET-000051",
+    "MET-000052",
+    "MET-000053",
+    "MET-000054",
+    "MET-000055",
+    "MET-000056",
+    "AICAP-000031",
+    "AICAP-000032",
+    "AICAP-000033",
+    "AICAP-000034",
+    "AICAP-000035",
+    "PROMPT-000031",
+    "PROMPT-000032",
+    "PROMPT-000033",
+    "PROMPT-000034",
+    "PROMPT-000035",
+    "AUTO-000044",
+    "AUTO-000045",
+    "AUTO-000046",
+    "AUTO-000047",
+    "AUTO-000048",
+    "AUTO-000049",
+    "NOT-000044",
+    "NOT-000045",
+    "NOT-000046",
+    "NOT-000047",
+    "NOT-000048",
+    "NOT-000049",
+    "RPT-000042",
+    "RPT-000043",
+    "RPT-000044",
+    "RPT-000045",
+    "RPT-000046",
+    "INT-000035",
+    "INT-000036",
+    "INT-000037",
+    "INT-000038",
+    "INT-000039",
+    "ART-000005",
+    "ART-000018",
+    "ART-000029",
+    "ART-000030",
+    "ART-000031",
+    "ART-000032",
+    "ART-000033",
+    "ART-000034",
+    "ART-000035",
+    "ART-000036"
+  ],
+  "performance_requirements": [
+    "Validate published performance budgets from the approved Technical Specification.",
+    "Verify no unbounded query, queue, retry, export, or AI workload."
+  ],
+  "security_requirements": [
+    "Tenant isolation",
+    "Authorization deny paths",
+    "Sensitive-data handling",
+    "Audit completeness",
+    "Rate limiting and abuse controls"
+  ],
+  "evidence_required": [
+    "Automated test results",
+    "Accessibility results",
+    "Security results",
+    "Performance results",
+    "Manual exploratory record",
+    "Deployment and rollback rehearsal"
+  ]
+}

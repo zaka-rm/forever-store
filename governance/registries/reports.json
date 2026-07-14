@@ -1,0 +1,2037 @@
+{
+  "registry": "reports",
+  "version": "1.0.0",
+  "generated_at": "2026-07-12T03:39:37Z",
+  "records": [
+    {
+      "id": "RPT-000001",
+      "type": "report",
+      "name": "Decision effectiveness",
+      "description": "Governed Decision Center report.",
+      "status": "Specified",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-RPT-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "filters": true,
+        "export": true,
+        "scheduled": true,
+        "drill_down": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "RPT-000002",
+      "type": "report",
+      "name": "Approval performance",
+      "description": "Governed Decision Center report.",
+      "status": "Specified",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-RPT-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "filters": true,
+        "export": true,
+        "scheduled": true,
+        "drill_down": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "RPT-000003",
+      "type": "report",
+      "name": "Overdue decisions",
+      "description": "Governed Decision Center report.",
+      "status": "Specified",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-RPT-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "filters": true,
+        "export": true,
+        "scheduled": true,
+        "drill_down": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "RPT-000004",
+      "type": "report",
+      "name": "Outcome variance",
+      "description": "Governed Decision Center report.",
+      "status": "Specified",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-RPT-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "filters": true,
+        "export": true,
+        "scheduled": true,
+        "drill_down": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "RPT-000005",
+      "type": "report",
+      "name": "Decision quality and trust",
+      "description": "Governed Decision Center report.",
+      "status": "Specified",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-RPT-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "filters": true,
+        "export": true,
+        "scheduled": true,
+        "drill_down": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "RPT-000006",
+      "type": "report",
+      "name": "Memory growth and use",
+      "description": "Governed Business Memory report.",
+      "status": "Specified",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-RPT-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "filters": true,
+        "export": true,
+        "scheduled": true,
+        "drill_down": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "RPT-000007",
+      "type": "report",
+      "name": "Outcome learning",
+      "description": "Governed Business Memory report.",
+      "status": "Specified",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-RPT-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "filters": true,
+        "export": true,
+        "scheduled": true,
+        "drill_down": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "RPT-000008",
+      "type": "report",
+      "name": "Retrieval quality",
+      "description": "Governed Business Memory report.",
+      "status": "Specified",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-RPT-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "filters": true,
+        "export": true,
+        "scheduled": true,
+        "drill_down": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "RPT-000009",
+      "type": "report",
+      "name": "Retention compliance",
+      "description": "Governed Business Memory report.",
+      "status": "Specified",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-RPT-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "filters": true,
+        "export": true,
+        "scheduled": true,
+        "drill_down": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "RPT-000010",
+      "type": "report",
+      "name": "Source coverage",
+      "description": "Governed Business Memory report.",
+      "status": "Specified",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-RPT-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "filters": true,
+        "export": true,
+        "scheduled": true,
+        "drill_down": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "RPT-000011",
+      "type": "report",
+      "name": "AI quality",
+      "description": "Governed AI Engine report.",
+      "status": "Specified",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-RPT-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "filters": true,
+        "export": true,
+        "scheduled": true,
+        "drill_down": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "RPT-000012",
+      "type": "report",
+      "name": "AI operations",
+      "description": "Governed AI Engine report.",
+      "status": "Specified",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-RPT-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "filters": true,
+        "export": true,
+        "scheduled": true,
+        "drill_down": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "RPT-000013",
+      "type": "report",
+      "name": "Cost and latency",
+      "description": "Governed AI Engine report.",
+      "status": "Specified",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-RPT-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "filters": true,
+        "export": true,
+        "scheduled": true,
+        "drill_down": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "RPT-000014",
+      "type": "report",
+      "name": "Safety and privacy",
+      "description": "Governed AI Engine report.",
+      "status": "Specified",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-RPT-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "filters": true,
+        "export": true,
+        "scheduled": true,
+        "drill_down": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "RPT-000015",
+      "type": "report",
+      "name": "Recommendation outcomes",
+      "description": "Governed AI Engine report.",
+      "status": "Specified",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-RPT-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "filters": true,
+        "export": true,
+        "scheduled": true,
+        "drill_down": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "RPT-000016",
+      "type": "report",
+      "name": "Membership and role inventory",
+      "description": "Governed Identity, Workspace, Permissions & Audit report.",
+      "status": "Specified",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-RPT-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "filters": true,
+        "export": true,
+        "scheduled": true,
+        "drill_down": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "RPT-000017",
+      "type": "report",
+      "name": "Access review",
+      "description": "Governed Identity, Workspace, Permissions & Audit report.",
+      "status": "Specified",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-RPT-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "filters": true,
+        "export": true,
+        "scheduled": true,
+        "drill_down": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "RPT-000018",
+      "type": "report",
+      "name": "Authentication risk",
+      "description": "Governed Identity, Workspace, Permissions & Audit report.",
+      "status": "Specified",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-RPT-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "filters": true,
+        "export": true,
+        "scheduled": true,
+        "drill_down": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "RPT-000019",
+      "type": "report",
+      "name": "Audit evidence",
+      "description": "Governed Identity, Workspace, Permissions & Audit report.",
+      "status": "Specified",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-RPT-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "filters": true,
+        "export": true,
+        "scheduled": true,
+        "drill_down": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "RPT-000020",
+      "type": "report",
+      "name": "Service credential health",
+      "description": "Governed Identity, Workspace, Permissions & Audit report.",
+      "status": "Specified",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-RPT-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "filters": true,
+        "export": true,
+        "scheduled": true,
+        "drill_down": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "RPT-000021",
+      "type": "report",
+      "name": "Profit and loss",
+      "description": "Governed Finance report.",
+      "status": "Specified",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-RPT-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "filters": true,
+        "export": true,
+        "scheduled": true,
+        "drill_down": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "RPT-000022",
+      "type": "report",
+      "name": "Balance sheet",
+      "description": "Governed Finance report.",
+      "status": "Specified",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-RPT-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "filters": true,
+        "export": true,
+        "scheduled": true,
+        "drill_down": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "RPT-000023",
+      "type": "report",
+      "name": "Cash flow",
+      "description": "Governed Finance report.",
+      "status": "Specified",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-RPT-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "filters": true,
+        "export": true,
+        "scheduled": true,
+        "drill_down": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "RPT-000024",
+      "type": "report",
+      "name": "Aged receivables/payables",
+      "description": "Governed Finance report.",
+      "status": "Specified",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-RPT-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "filters": true,
+        "export": true,
+        "scheduled": true,
+        "drill_down": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "RPT-000025",
+      "type": "report",
+      "name": "Budget variance",
+      "description": "Governed Finance report.",
+      "status": "Specified",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-RPT-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "filters": true,
+        "export": true,
+        "scheduled": true,
+        "drill_down": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "RPT-000026",
+      "type": "report",
+      "name": "Tax summary",
+      "description": "Governed Finance report.",
+      "status": "Specified",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-RPT-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "filters": true,
+        "export": true,
+        "scheduled": true,
+        "drill_down": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "RPT-000027",
+      "type": "report",
+      "name": "Audit trail",
+      "description": "Governed Finance report.",
+      "status": "Specified",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-RPT-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "filters": true,
+        "export": true,
+        "scheduled": true,
+        "drill_down": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "RPT-000028",
+      "type": "report",
+      "name": "Stock valuation",
+      "description": "Governed Inventory report.",
+      "status": "Specified",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-RPT-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "filters": true,
+        "export": true,
+        "scheduled": true,
+        "drill_down": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "RPT-000029",
+      "type": "report",
+      "name": "Availability",
+      "description": "Governed Inventory report.",
+      "status": "Specified",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-RPT-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "filters": true,
+        "export": true,
+        "scheduled": true,
+        "drill_down": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "RPT-000030",
+      "type": "report",
+      "name": "Movement ledger",
+      "description": "Governed Inventory report.",
+      "status": "Specified",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-RPT-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "filters": true,
+        "export": true,
+        "scheduled": true,
+        "drill_down": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "RPT-000031",
+      "type": "report",
+      "name": "Reorder plan",
+      "description": "Governed Inventory report.",
+      "status": "Specified",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-RPT-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "filters": true,
+        "export": true,
+        "scheduled": true,
+        "drill_down": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "RPT-000032",
+      "type": "report",
+      "name": "Supplier performance",
+      "description": "Governed Inventory report.",
+      "status": "Specified",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-RPT-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "filters": true,
+        "export": true,
+        "scheduled": true,
+        "drill_down": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "RPT-000033",
+      "type": "report",
+      "name": "Count variance",
+      "description": "Governed Inventory report.",
+      "status": "Specified",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-RPT-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "filters": true,
+        "export": true,
+        "scheduled": true,
+        "drill_down": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "RPT-000034",
+      "type": "report",
+      "name": "Aging and obsolescence",
+      "description": "Governed Inventory report.",
+      "status": "Specified",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-RPT-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "filters": true,
+        "export": true,
+        "scheduled": true,
+        "drill_down": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "RPT-000035",
+      "type": "report",
+      "name": "Pipeline",
+      "description": "Governed CRM report.",
+      "status": "Specified",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-RPT-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "filters": true,
+        "export": true,
+        "scheduled": true,
+        "drill_down": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "RPT-000036",
+      "type": "report",
+      "name": "Forecast",
+      "description": "Governed CRM report.",
+      "status": "Specified",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-RPT-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "filters": true,
+        "export": true,
+        "scheduled": true,
+        "drill_down": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "RPT-000037",
+      "type": "report",
+      "name": "Lead source",
+      "description": "Governed CRM report.",
+      "status": "Specified",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-RPT-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "filters": true,
+        "export": true,
+        "scheduled": true,
+        "drill_down": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "RPT-000038",
+      "type": "report",
+      "name": "Sales activity",
+      "description": "Governed CRM report.",
+      "status": "Specified",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-RPT-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "filters": true,
+        "export": true,
+        "scheduled": true,
+        "drill_down": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "RPT-000039",
+      "type": "report",
+      "name": "Retention and churn",
+      "description": "Governed CRM report.",
+      "status": "Specified",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-RPT-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "filters": true,
+        "export": true,
+        "scheduled": true,
+        "drill_down": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "RPT-000040",
+      "type": "report",
+      "name": "Customer value",
+      "description": "Governed CRM report.",
+      "status": "Specified",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-RPT-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "filters": true,
+        "export": true,
+        "scheduled": true,
+        "drill_down": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "RPT-000041",
+      "type": "report",
+      "name": "Campaign attribution",
+      "description": "Governed CRM report.",
+      "status": "Specified",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-RPT-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "filters": true,
+        "export": true,
+        "scheduled": true,
+        "drill_down": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "RPT-000042",
+      "type": "report",
+      "name": "Executive command center",
+      "description": "Governed Analytics report.",
+      "status": "Specified",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-RPT-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "filters": true,
+        "export": true,
+        "scheduled": true,
+        "drill_down": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "RPT-000043",
+      "type": "report",
+      "name": "Business health",
+      "description": "Governed Analytics report.",
+      "status": "Specified",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-RPT-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "filters": true,
+        "export": true,
+        "scheduled": true,
+        "drill_down": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "RPT-000044",
+      "type": "report",
+      "name": "Module dashboards",
+      "description": "Governed Analytics report.",
+      "status": "Specified",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-RPT-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "filters": true,
+        "export": true,
+        "scheduled": true,
+        "drill_down": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "RPT-000045",
+      "type": "report",
+      "name": "Decision effectiveness",
+      "description": "Governed Analytics report.",
+      "status": "Specified",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-RPT-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "filters": true,
+        "export": true,
+        "scheduled": true,
+        "drill_down": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "RPT-000046",
+      "type": "report",
+      "name": "Operational reliability",
+      "description": "Governed Analytics report.",
+      "status": "Specified",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-RPT-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "filters": true,
+        "export": true,
+        "scheduled": true,
+        "drill_down": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "RPT-000047",
+      "type": "report",
+      "name": "Document inventory",
+      "description": "Governed Documents report.",
+      "status": "Specified",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-RPT-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "filters": true,
+        "export": true,
+        "scheduled": true,
+        "drill_down": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "RPT-000048",
+      "type": "report",
+      "name": "Approval and signature",
+      "description": "Governed Documents report.",
+      "status": "Specified",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-RPT-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "filters": true,
+        "export": true,
+        "scheduled": true,
+        "drill_down": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "RPT-000049",
+      "type": "report",
+      "name": "Retention",
+      "description": "Governed Documents report.",
+      "status": "Specified",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-RPT-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "filters": true,
+        "export": true,
+        "scheduled": true,
+        "drill_down": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "RPT-000050",
+      "type": "report",
+      "name": "Storage",
+      "description": "Governed Documents report.",
+      "status": "Specified",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-RPT-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "filters": true,
+        "export": true,
+        "scheduled": true,
+        "drill_down": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "RPT-000051",
+      "type": "report",
+      "name": "Template usage",
+      "description": "Governed Documents report.",
+      "status": "Specified",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-RPT-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "filters": true,
+        "export": true,
+        "scheduled": true,
+        "drill_down": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "RPT-000052",
+      "type": "report",
+      "name": "Access audit",
+      "description": "Governed Documents report.",
+      "status": "Specified",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-RPT-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "filters": true,
+        "export": true,
+        "scheduled": true,
+        "drill_down": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "RPT-000053",
+      "type": "report",
+      "name": "Delivery and engagement",
+      "description": "Governed Notifications report.",
+      "status": "Specified",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-RPT-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "filters": true,
+        "export": true,
+        "scheduled": true,
+        "drill_down": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "RPT-000054",
+      "type": "report",
+      "name": "Channel health",
+      "description": "Governed Notifications report.",
+      "status": "Specified",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-RPT-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "filters": true,
+        "export": true,
+        "scheduled": true,
+        "drill_down": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "RPT-000055",
+      "type": "report",
+      "name": "Preference and opt-out",
+      "description": "Governed Notifications report.",
+      "status": "Specified",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-RPT-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "filters": true,
+        "export": true,
+        "scheduled": true,
+        "drill_down": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "RPT-000056",
+      "type": "report",
+      "name": "Template performance",
+      "description": "Governed Notifications report.",
+      "status": "Specified",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-RPT-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "filters": true,
+        "export": true,
+        "scheduled": true,
+        "drill_down": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "RPT-000057",
+      "type": "report",
+      "name": "Failure and escalation",
+      "description": "Governed Notifications report.",
+      "status": "Specified",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-RPT-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "filters": true,
+        "export": true,
+        "scheduled": true,
+        "drill_down": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "RPT-000058",
+      "type": "report",
+      "name": "Headcount and cost",
+      "description": "Governed Human Resources report.",
+      "status": "Specified",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-RPT-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "filters": true,
+        "export": true,
+        "scheduled": true,
+        "drill_down": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "RPT-000059",
+      "type": "report",
+      "name": "Recruitment funnel",
+      "description": "Governed Human Resources report.",
+      "status": "Specified",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-RPT-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "filters": true,
+        "export": true,
+        "scheduled": true,
+        "drill_down": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "RPT-000060",
+      "type": "report",
+      "name": "Leave and attendance",
+      "description": "Governed Human Resources report.",
+      "status": "Specified",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-RPT-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "filters": true,
+        "export": true,
+        "scheduled": true,
+        "drill_down": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "RPT-000061",
+      "type": "report",
+      "name": "Performance cycle",
+      "description": "Governed Human Resources report.",
+      "status": "Specified",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-RPT-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "filters": true,
+        "export": true,
+        "scheduled": true,
+        "drill_down": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "RPT-000062",
+      "type": "report",
+      "name": "Turnover",
+      "description": "Governed Human Resources report.",
+      "status": "Specified",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-RPT-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "filters": true,
+        "export": true,
+        "scheduled": true,
+        "drill_down": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "RPT-000063",
+      "type": "report",
+      "name": "Compliance tasks",
+      "description": "Governed Human Resources report.",
+      "status": "Specified",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-RPT-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "filters": true,
+        "export": true,
+        "scheduled": true,
+        "drill_down": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "RPT-000064",
+      "type": "report",
+      "name": "Production status",
+      "description": "Governed Manufacturing report.",
+      "status": "Specified",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-RPT-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "filters": true,
+        "export": true,
+        "scheduled": true,
+        "drill_down": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "RPT-000065",
+      "type": "report",
+      "name": "Capacity load",
+      "description": "Governed Manufacturing report.",
+      "status": "Specified",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-RPT-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "filters": true,
+        "export": true,
+        "scheduled": true,
+        "drill_down": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "RPT-000066",
+      "type": "report",
+      "name": "Material shortage",
+      "description": "Governed Manufacturing report.",
+      "status": "Specified",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-RPT-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "filters": true,
+        "export": true,
+        "scheduled": true,
+        "drill_down": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "RPT-000067",
+      "type": "report",
+      "name": "Yield and scrap",
+      "description": "Governed Manufacturing report.",
+      "status": "Specified",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-RPT-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "filters": true,
+        "export": true,
+        "scheduled": true,
+        "drill_down": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "RPT-000068",
+      "type": "report",
+      "name": "Quality",
+      "description": "Governed Manufacturing report.",
+      "status": "Specified",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-RPT-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "filters": true,
+        "export": true,
+        "scheduled": true,
+        "drill_down": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "RPT-000069",
+      "type": "report",
+      "name": "Cost variance",
+      "description": "Governed Manufacturing report.",
+      "status": "Specified",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-RPT-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "filters": true,
+        "export": true,
+        "scheduled": true,
+        "drill_down": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "RPT-000070",
+      "type": "report",
+      "name": "OEE",
+      "description": "Governed Manufacturing report.",
+      "status": "Specified",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-RPT-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "filters": true,
+        "export": true,
+        "scheduled": true,
+        "drill_down": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    }
+  ]
+}

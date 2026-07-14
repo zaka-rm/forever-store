@@ -1,0 +1,595 @@
+{
+  "registry": "orchestration_assessments",
+  "version": "1.0.0",
+  "generated_at": "2026-07-12T03:39:37Z",
+  "records": [
+    {
+      "id": "ORCH-000001",
+      "type": "orchestration_assessment",
+      "name": "Decision Center Engineering Orchestration Assessment",
+      "description": "Fail-closed assessment determining whether an engineering agent may receive an immutable work order for Decision Center.",
+      "status": "Released",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-ORCH-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "capability": "CAP-000001",
+        "authorized_to_start": false,
+        "state": "Blocked",
+        "source_blockers": 41,
+        "required_gates": [
+          "implementation_authorized_build_pack",
+          "paired_qa_pack",
+          "zero_source_blockers",
+          "approved_impact_assessment",
+          "current_traceability",
+          "repository_scope",
+          "engineering_owner",
+          "rollback_plan",
+          "no_open_critical_or_high_exception"
+        ],
+        "missing_gates": [
+          "implementation_authorized_build_pack",
+          "zero_source_blockers",
+          "approved_impact_assessment",
+          "repository_scope",
+          "engineering_owner",
+          "rollback_plan"
+        ],
+        "agent_start_policy": "Agent start is prohibited until every required gate passes"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ORCH-000002",
+      "type": "orchestration_assessment",
+      "name": "Business Memory Engineering Orchestration Assessment",
+      "description": "Fail-closed assessment determining whether an engineering agent may receive an immutable work order for Business Memory.",
+      "status": "Released",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-ORCH-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "capability": "CAP-000002",
+        "authorized_to_start": false,
+        "state": "Blocked",
+        "source_blockers": 40,
+        "required_gates": [
+          "implementation_authorized_build_pack",
+          "paired_qa_pack",
+          "zero_source_blockers",
+          "approved_impact_assessment",
+          "current_traceability",
+          "repository_scope",
+          "engineering_owner",
+          "rollback_plan",
+          "no_open_critical_or_high_exception"
+        ],
+        "missing_gates": [
+          "implementation_authorized_build_pack",
+          "zero_source_blockers",
+          "approved_impact_assessment",
+          "repository_scope",
+          "engineering_owner",
+          "rollback_plan"
+        ],
+        "agent_start_policy": "Agent start is prohibited until every required gate passes"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ORCH-000003",
+      "type": "orchestration_assessment",
+      "name": "AI Engine Engineering Orchestration Assessment",
+      "description": "Fail-closed assessment determining whether an engineering agent may receive an immutable work order for AI Engine.",
+      "status": "Released",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-ORCH-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "capability": "CAP-000003",
+        "authorized_to_start": false,
+        "state": "Blocked",
+        "source_blockers": 39,
+        "required_gates": [
+          "implementation_authorized_build_pack",
+          "paired_qa_pack",
+          "zero_source_blockers",
+          "approved_impact_assessment",
+          "current_traceability",
+          "repository_scope",
+          "engineering_owner",
+          "rollback_plan",
+          "no_open_critical_or_high_exception"
+        ],
+        "missing_gates": [
+          "implementation_authorized_build_pack",
+          "zero_source_blockers",
+          "approved_impact_assessment",
+          "repository_scope",
+          "engineering_owner",
+          "rollback_plan"
+        ],
+        "agent_start_policy": "Agent start is prohibited until every required gate passes"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ORCH-000004",
+      "type": "orchestration_assessment",
+      "name": "Identity, Workspace, Permissions & Audit Engineering Orchestration Assessment",
+      "description": "Fail-closed assessment determining whether an engineering agent may receive an immutable work order for Identity, Workspace, Permissions & Audit.",
+      "status": "Released",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-ORCH-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "capability": "CAP-000004",
+        "authorized_to_start": false,
+        "state": "Blocked",
+        "source_blockers": 43,
+        "required_gates": [
+          "implementation_authorized_build_pack",
+          "paired_qa_pack",
+          "zero_source_blockers",
+          "approved_impact_assessment",
+          "current_traceability",
+          "repository_scope",
+          "engineering_owner",
+          "rollback_plan",
+          "no_open_critical_or_high_exception"
+        ],
+        "missing_gates": [
+          "implementation_authorized_build_pack",
+          "zero_source_blockers",
+          "approved_impact_assessment",
+          "repository_scope",
+          "engineering_owner",
+          "rollback_plan"
+        ],
+        "agent_start_policy": "Agent start is prohibited until every required gate passes"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ORCH-000005",
+      "type": "orchestration_assessment",
+      "name": "Finance Engineering Orchestration Assessment",
+      "description": "Fail-closed assessment determining whether an engineering agent may receive an immutable work order for Finance.",
+      "status": "Released",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-ORCH-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "capability": "CAP-000005",
+        "authorized_to_start": false,
+        "state": "Blocked",
+        "source_blockers": 46,
+        "required_gates": [
+          "implementation_authorized_build_pack",
+          "paired_qa_pack",
+          "zero_source_blockers",
+          "approved_impact_assessment",
+          "current_traceability",
+          "repository_scope",
+          "engineering_owner",
+          "rollback_plan",
+          "no_open_critical_or_high_exception"
+        ],
+        "missing_gates": [
+          "implementation_authorized_build_pack",
+          "zero_source_blockers",
+          "approved_impact_assessment",
+          "repository_scope",
+          "engineering_owner",
+          "rollback_plan"
+        ],
+        "agent_start_policy": "Agent start is prohibited until every required gate passes"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ORCH-000006",
+      "type": "orchestration_assessment",
+      "name": "Inventory Engineering Orchestration Assessment",
+      "description": "Fail-closed assessment determining whether an engineering agent may receive an immutable work order for Inventory.",
+      "status": "Released",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-ORCH-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "capability": "CAP-000006",
+        "authorized_to_start": false,
+        "state": "Blocked",
+        "source_blockers": 46,
+        "required_gates": [
+          "implementation_authorized_build_pack",
+          "paired_qa_pack",
+          "zero_source_blockers",
+          "approved_impact_assessment",
+          "current_traceability",
+          "repository_scope",
+          "engineering_owner",
+          "rollback_plan",
+          "no_open_critical_or_high_exception"
+        ],
+        "missing_gates": [
+          "implementation_authorized_build_pack",
+          "zero_source_blockers",
+          "approved_impact_assessment",
+          "repository_scope",
+          "engineering_owner",
+          "rollback_plan"
+        ],
+        "agent_start_policy": "Agent start is prohibited until every required gate passes"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ORCH-000007",
+      "type": "orchestration_assessment",
+      "name": "CRM Engineering Orchestration Assessment",
+      "description": "Fail-closed assessment determining whether an engineering agent may receive an immutable work order for CRM.",
+      "status": "Released",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-ORCH-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "capability": "CAP-000007",
+        "authorized_to_start": false,
+        "state": "Blocked",
+        "source_blockers": 47,
+        "required_gates": [
+          "implementation_authorized_build_pack",
+          "paired_qa_pack",
+          "zero_source_blockers",
+          "approved_impact_assessment",
+          "current_traceability",
+          "repository_scope",
+          "engineering_owner",
+          "rollback_plan",
+          "no_open_critical_or_high_exception"
+        ],
+        "missing_gates": [
+          "implementation_authorized_build_pack",
+          "zero_source_blockers",
+          "approved_impact_assessment",
+          "repository_scope",
+          "engineering_owner",
+          "rollback_plan"
+        ],
+        "agent_start_policy": "Agent start is prohibited until every required gate passes"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ORCH-000008",
+      "type": "orchestration_assessment",
+      "name": "Analytics Engineering Orchestration Assessment",
+      "description": "Fail-closed assessment determining whether an engineering agent may receive an immutable work order for Analytics.",
+      "status": "Released",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-ORCH-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "capability": "CAP-000008",
+        "authorized_to_start": false,
+        "state": "Blocked",
+        "source_blockers": 42,
+        "required_gates": [
+          "implementation_authorized_build_pack",
+          "paired_qa_pack",
+          "zero_source_blockers",
+          "approved_impact_assessment",
+          "current_traceability",
+          "repository_scope",
+          "engineering_owner",
+          "rollback_plan",
+          "no_open_critical_or_high_exception"
+        ],
+        "missing_gates": [
+          "implementation_authorized_build_pack",
+          "zero_source_blockers",
+          "approved_impact_assessment",
+          "repository_scope",
+          "engineering_owner",
+          "rollback_plan"
+        ],
+        "agent_start_policy": "Agent start is prohibited until every required gate passes"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ORCH-000009",
+      "type": "orchestration_assessment",
+      "name": "Documents Engineering Orchestration Assessment",
+      "description": "Fail-closed assessment determining whether an engineering agent may receive an immutable work order for Documents.",
+      "status": "Released",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-ORCH-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "capability": "CAP-000009",
+        "authorized_to_start": false,
+        "state": "Blocked",
+        "source_blockers": 44,
+        "required_gates": [
+          "implementation_authorized_build_pack",
+          "paired_qa_pack",
+          "zero_source_blockers",
+          "approved_impact_assessment",
+          "current_traceability",
+          "repository_scope",
+          "engineering_owner",
+          "rollback_plan",
+          "no_open_critical_or_high_exception"
+        ],
+        "missing_gates": [
+          "implementation_authorized_build_pack",
+          "zero_source_blockers",
+          "approved_impact_assessment",
+          "repository_scope",
+          "engineering_owner",
+          "rollback_plan"
+        ],
+        "agent_start_policy": "Agent start is prohibited until every required gate passes"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ORCH-000010",
+      "type": "orchestration_assessment",
+      "name": "Notifications Engineering Orchestration Assessment",
+      "description": "Fail-closed assessment determining whether an engineering agent may receive an immutable work order for Notifications.",
+      "status": "Released",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-ORCH-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "capability": "CAP-000010",
+        "authorized_to_start": false,
+        "state": "Blocked",
+        "source_blockers": 43,
+        "required_gates": [
+          "implementation_authorized_build_pack",
+          "paired_qa_pack",
+          "zero_source_blockers",
+          "approved_impact_assessment",
+          "current_traceability",
+          "repository_scope",
+          "engineering_owner",
+          "rollback_plan",
+          "no_open_critical_or_high_exception"
+        ],
+        "missing_gates": [
+          "implementation_authorized_build_pack",
+          "zero_source_blockers",
+          "approved_impact_assessment",
+          "repository_scope",
+          "engineering_owner",
+          "rollback_plan"
+        ],
+        "agent_start_policy": "Agent start is prohibited until every required gate passes"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ORCH-000011",
+      "type": "orchestration_assessment",
+      "name": "Human Resources Engineering Orchestration Assessment",
+      "description": "Fail-closed assessment determining whether an engineering agent may receive an immutable work order for Human Resources.",
+      "status": "Released",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-ORCH-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "capability": "CAP-000011",
+        "authorized_to_start": false,
+        "state": "Blocked",
+        "source_blockers": 45,
+        "required_gates": [
+          "implementation_authorized_build_pack",
+          "paired_qa_pack",
+          "zero_source_blockers",
+          "approved_impact_assessment",
+          "current_traceability",
+          "repository_scope",
+          "engineering_owner",
+          "rollback_plan",
+          "no_open_critical_or_high_exception"
+        ],
+        "missing_gates": [
+          "implementation_authorized_build_pack",
+          "zero_source_blockers",
+          "approved_impact_assessment",
+          "repository_scope",
+          "engineering_owner",
+          "rollback_plan"
+        ],
+        "agent_start_policy": "Agent start is prohibited until every required gate passes"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ORCH-000012",
+      "type": "orchestration_assessment",
+      "name": "Manufacturing Engineering Orchestration Assessment",
+      "description": "Fail-closed assessment determining whether an engineering agent may receive an immutable work order for Manufacturing.",
+      "status": "Released",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-ORCH-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "capability": "CAP-000012",
+        "authorized_to_start": false,
+        "state": "Blocked",
+        "source_blockers": 46,
+        "required_gates": [
+          "implementation_authorized_build_pack",
+          "paired_qa_pack",
+          "zero_source_blockers",
+          "approved_impact_assessment",
+          "current_traceability",
+          "repository_scope",
+          "engineering_owner",
+          "rollback_plan",
+          "no_open_critical_or_high_exception"
+        ],
+        "missing_gates": [
+          "implementation_authorized_build_pack",
+          "zero_source_blockers",
+          "approved_impact_assessment",
+          "repository_scope",
+          "engineering_owner",
+          "rollback_plan"
+        ],
+        "agent_start_policy": "Agent start is prohibited until every required gate passes"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    }
+  ]
+}

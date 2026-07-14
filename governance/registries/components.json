@@ -1,0 +1,355 @@
+{
+  "registry": "components",
+  "version": "1.0.0",
+  "generated_at": "2026-07-12T03:39:37Z",
+  "records": [
+    {
+      "id": "CMP-000001",
+      "type": "component",
+      "name": "Decision Card",
+      "description": "Presents a decision, rationale, confidence, trade-offs, and next action.",
+      "status": "Specified",
+      "owner": "TEAM-000003",
+      "version": "1.0.0",
+      "aliases": [
+        "DS-CMP-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "design_system_owner": "TEAM-000003",
+        "accessibility": "WCAG 2.1 AA",
+        "responsive": true,
+        "variants_and_states_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000003",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "CMP-000002",
+      "type": "component",
+      "name": "Metric Tile",
+      "description": "Presents a governed metric with freshness, unit, status, and drill-down.",
+      "status": "Specified",
+      "owner": "TEAM-000003",
+      "version": "1.0.0",
+      "aliases": [
+        "DS-CMP-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "design_system_owner": "TEAM-000003",
+        "accessibility": "WCAG 2.1 AA",
+        "responsive": true,
+        "variants_and_states_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000003",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "CMP-000003",
+      "type": "component",
+      "name": "Data Table",
+      "description": "Accessible, filterable enterprise record table with bulk-action governance.",
+      "status": "Specified",
+      "owner": "TEAM-000003",
+      "version": "1.0.0",
+      "aliases": [
+        "DS-CMP-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "design_system_owner": "TEAM-000003",
+        "accessibility": "WCAG 2.1 AA",
+        "responsive": true,
+        "variants_and_states_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000003",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "CMP-000004",
+      "type": "component",
+      "name": "Filter Bar",
+      "description": "Consistent query, saved-view, date, workspace, and scope controls.",
+      "status": "Specified",
+      "owner": "TEAM-000003",
+      "version": "1.0.0",
+      "aliases": [
+        "DS-CMP-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "design_system_owner": "TEAM-000003",
+        "accessibility": "WCAG 2.1 AA",
+        "responsive": true,
+        "variants_and_states_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000003",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "CMP-000005",
+      "type": "component",
+      "name": "Status Badge",
+      "description": "Text-and-color lifecycle or operational status indicator.",
+      "status": "Specified",
+      "owner": "TEAM-000003",
+      "version": "1.0.0",
+      "aliases": [
+        "DS-CMP-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "design_system_owner": "TEAM-000003",
+        "accessibility": "WCAG 2.1 AA",
+        "responsive": true,
+        "variants_and_states_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000003",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "CMP-000006",
+      "type": "component",
+      "name": "Audit Timeline",
+      "description": "Chronological actor, action, reason, evidence, and timestamp history.",
+      "status": "Specified",
+      "owner": "TEAM-000003",
+      "version": "1.0.0",
+      "aliases": [
+        "DS-CMP-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "design_system_owner": "TEAM-000003",
+        "accessibility": "WCAG 2.1 AA",
+        "responsive": true,
+        "variants_and_states_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000003",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "CMP-000007",
+      "type": "component",
+      "name": "Explainability Panel",
+      "description": "Displays sources, reasoning, confidence, limitations, and review controls.",
+      "status": "Specified",
+      "owner": "TEAM-000003",
+      "version": "1.0.0",
+      "aliases": [
+        "DS-CMP-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "design_system_owner": "TEAM-000003",
+        "accessibility": "WCAG 2.1 AA",
+        "responsive": true,
+        "variants_and_states_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000003",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "CMP-000008",
+      "type": "component",
+      "name": "Approval Dialog",
+      "description": "Captures decision, reason, authority, consequences, and confirmation.",
+      "status": "Specified",
+      "owner": "TEAM-000003",
+      "version": "1.0.0",
+      "aliases": [
+        "DS-CMP-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "design_system_owner": "TEAM-000003",
+        "accessibility": "WCAG 2.1 AA",
+        "responsive": true,
+        "variants_and_states_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000003",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "CMP-000009",
+      "type": "component",
+      "name": "Empty State",
+      "description": "Explains missing content, value, prerequisites, and the safe next action.",
+      "status": "Specified",
+      "owner": "TEAM-000003",
+      "version": "1.0.0",
+      "aliases": [
+        "DS-CMP-009"
+      ],
+      "tags": [],
+      "attributes": {
+        "design_system_owner": "TEAM-000003",
+        "accessibility": "WCAG 2.1 AA",
+        "responsive": true,
+        "variants_and_states_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000003",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "CMP-000010",
+      "type": "component",
+      "name": "Error Recovery Panel",
+      "description": "Explains failure, impact, retry or recovery options, and support context.",
+      "status": "Specified",
+      "owner": "TEAM-000003",
+      "version": "1.0.0",
+      "aliases": [
+        "DS-CMP-010"
+      ],
+      "tags": [],
+      "attributes": {
+        "design_system_owner": "TEAM-000003",
+        "accessibility": "WCAG 2.1 AA",
+        "responsive": true,
+        "variants_and_states_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000003",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "CMP-000011",
+      "type": "component",
+      "name": "Command Palette",
+      "description": "Keyboard-first navigation, search, and permission-aware actions.",
+      "status": "Specified",
+      "owner": "TEAM-000003",
+      "version": "1.0.0",
+      "aliases": [
+        "DS-CMP-011"
+      ],
+      "tags": [],
+      "attributes": {
+        "design_system_owner": "TEAM-000003",
+        "accessibility": "WCAG 2.1 AA",
+        "responsive": true,
+        "variants_and_states_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000003",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "CMP-000012",
+      "type": "component",
+      "name": "Chart Frame",
+      "description": "Accessible chart container with question, provenance, filters, drill-down, and export.",
+      "status": "Specified",
+      "owner": "TEAM-000003",
+      "version": "1.0.0",
+      "aliases": [
+        "DS-CMP-012"
+      ],
+      "tags": [],
+      "attributes": {
+        "design_system_owner": "TEAM-000003",
+        "accessibility": "WCAG 2.1 AA",
+        "responsive": true,
+        "variants_and_states_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000003",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    }
+  ]
+}

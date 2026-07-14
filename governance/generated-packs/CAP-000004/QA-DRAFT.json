@@ -1,0 +1,1707 @@
+{
+  "generator_version": "2.3.0",
+  "generated_at": "2026-07-12T03:39:43.099Z",
+  "source_capability": {
+    "id": "CAP-000004",
+    "type": "capability",
+    "name": "Identity, Workspace, Permissions & Audit Core Capability",
+    "status": "Specified",
+    "version": "1.0.0",
+    "owner": "TEAM-000010"
+  },
+  "source_fingerprint": "90ec06c49ae9ef56654fc6bb7e5c1e19dba64f138f741a12225d3a8904c0ef23",
+  "authority": "DRAFT_NOT_AUTHORIZED",
+  "promotion_gate": "BLOCKED_SOURCE_INCOMPLETE",
+  "blockers": [
+    "MET-000020: metric formula is not approved",
+    "MET-000021: metric formula is not approved",
+    "MET-000022: metric formula is not approved",
+    "MET-000023: metric formula is not approved",
+    "MET-000024: metric formula is not approved",
+    "MET-000025: metric formula is not approved",
+    "MET-000026: metric formula is not approved",
+    "PROMPT-000012: prompt template and evaluation are not approved",
+    "PROMPT-000013: prompt template and evaluation are not approved",
+    "PROMPT-000014: prompt template and evaluation are not approved",
+    "WF-000023: ordered workflow steps are not approved",
+    "WF-000024: ordered workflow steps are not approved",
+    "WF-000025: ordered workflow steps are not approved",
+    "WF-000026: ordered workflow steps are not approved",
+    "WF-000027: ordered workflow steps are not approved",
+    "WF-000028: ordered workflow steps are not approved",
+    "WF-000029: ordered workflow steps are not approved",
+    "WF-000030: ordered workflow steps are not approved",
+    "UF-000028: UI transitions and recovery states are not approved",
+    "UF-000029: UI transitions and recovery states are not approved",
+    "UF-000030: UI transitions and recovery states are not approved",
+    "UF-000031: UI transitions and recovery states are not approved",
+    "UF-000032: UI transitions and recovery states are not approved",
+    "UF-000033: UI transitions and recovery states are not approved",
+    "UF-000034: UI transitions and recovery states are not approved",
+    "UF-000035: UI transitions and recovery states are not approved",
+    "UF-000036: UI transitions and recovery states are not approved",
+    "EVT-000018: event domain payload is not approved",
+    "EVT-000019: event domain payload is not approved",
+    "EVT-000020: event domain payload is not approved",
+    "EVT-000021: event domain payload is not approved",
+    "EVT-000022: event domain payload is not approved",
+    "EVT-000023: event domain payload is not approved",
+    "EVT-000024: event domain payload is not approved",
+    "EVT-000025: event domain payload is not approved",
+    "API-000025: API request and response schema is not approved",
+    "API-000026: API request and response schema is not approved",
+    "API-000027: API request and response schema is not approved",
+    "API-000028: API request and response schema is not approved",
+    "API-000029: API request and response schema is not approved",
+    "API-000030: API request and response schema is not approved",
+    "API-000031: API request and response schema is not approved",
+    "API-000032: API request and response schema is not approved"
+  ],
+  "completeness": {
+    "source_records": 135,
+    "blocker_count": 43,
+    "traceability_gate": "PASS_CURRENT_MATURITY",
+    "traceability_coverage_percent": 82
+  },
+  "provenance": [
+    {
+      "id": "CAP-000004",
+      "type": "capability",
+      "name": "Identity, Workspace, Permissions & Audit Core Capability",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "MOD-000004",
+      "type": "module",
+      "name": "Identity, Workspace, Permissions & Audit",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "DEC-000013",
+      "type": "decision",
+      "name": "Who may access this workspace?",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "DEC-000014",
+      "type": "decision",
+      "name": "What may this actor do?",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "DEC-000015",
+      "type": "decision",
+      "name": "Who changed what and why?",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "DEC-000016",
+      "type": "decision",
+      "name": "How is compromised access revoked?",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "FEAT-000025",
+      "type": "feature",
+      "name": "Authentication adapter",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "FEAT-000026",
+      "type": "feature",
+      "name": "Workspace lifecycle",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "FEAT-000027",
+      "type": "feature",
+      "name": "Invitation and membership",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "FEAT-000028",
+      "type": "feature",
+      "name": "Roles and permission grants",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "FEAT-000029",
+      "type": "feature",
+      "name": "Policy evaluation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "FEAT-000030",
+      "type": "feature",
+      "name": "MFA and session management",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "FEAT-000031",
+      "type": "feature",
+      "name": "API keys and service identities",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "FEAT-000032",
+      "type": "feature",
+      "name": "Audit explorer and evidence export",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "BR-000025",
+      "type": "business_rule",
+      "name": "Identity, Workspace, Permissions & Audit Rule 1",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "BR-000026",
+      "type": "business_rule",
+      "name": "Identity, Workspace, Permissions & Audit Rule 2",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "BR-000027",
+      "type": "business_rule",
+      "name": "Identity, Workspace, Permissions & Audit Rule 3",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "BR-000028",
+      "type": "business_rule",
+      "name": "Identity, Workspace, Permissions & Audit Rule 4",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "BR-000029",
+      "type": "business_rule",
+      "name": "Identity, Workspace, Permissions & Audit Rule 5",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "BR-000030",
+      "type": "business_rule",
+      "name": "Identity, Workspace, Permissions & Audit Rule 6",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "BR-000031",
+      "type": "business_rule",
+      "name": "Identity, Workspace, Permissions & Audit Rule 7",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "BR-000032",
+      "type": "business_rule",
+      "name": "Identity, Workspace, Permissions & Audit Rule 8",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "WF-000023",
+      "type": "workflow",
+      "name": "Create workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "WF-000024",
+      "type": "workflow",
+      "name": "Invite and onboard member",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "WF-000025",
+      "type": "workflow",
+      "name": "Change role",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "WF-000026",
+      "type": "workflow",
+      "name": "Suspend or revoke access",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "WF-000027",
+      "type": "workflow",
+      "name": "Authenticate and refresh",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "WF-000028",
+      "type": "workflow",
+      "name": "Revoke session",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "WF-000029",
+      "type": "workflow",
+      "name": "Evaluate permission",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "WF-000030",
+      "type": "workflow",
+      "name": "Investigate audit trail",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "ENT-000027",
+      "type": "entity",
+      "name": "User",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "ENT-000028",
+      "type": "entity",
+      "name": "Workspace",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "ENT-000029",
+      "type": "entity",
+      "name": "Membership",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "ENT-000030",
+      "type": "entity",
+      "name": "Invitation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "ENT-000031",
+      "type": "entity",
+      "name": "Role",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "ENT-000032",
+      "type": "entity",
+      "name": "Permission",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "ENT-000033",
+      "type": "entity",
+      "name": "Session",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "ENT-000034",
+      "type": "entity",
+      "name": "ApiCredential",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "ENT-000035",
+      "type": "entity",
+      "name": "PolicyDecision",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "ENT-000036",
+      "type": "entity",
+      "name": "AuditEvent",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "API-000025",
+      "type": "api",
+      "name": "Identity, Workspace, Permissions & Audit Authentication adapter API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "API-000026",
+      "type": "api",
+      "name": "Identity, Workspace, Permissions & Audit Workspace lifecycle API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "API-000027",
+      "type": "api",
+      "name": "Identity, Workspace, Permissions & Audit Invitation and membership API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "API-000028",
+      "type": "api",
+      "name": "Identity, Workspace, Permissions & Audit Roles and permission grants API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "API-000029",
+      "type": "api",
+      "name": "Identity, Workspace, Permissions & Audit Policy evaluation API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "API-000030",
+      "type": "api",
+      "name": "Identity, Workspace, Permissions & Audit MFA and session management API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "API-000031",
+      "type": "api",
+      "name": "Identity, Workspace, Permissions & Audit API keys and service identities API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "API-000032",
+      "type": "api",
+      "name": "Identity, Workspace, Permissions & Audit Audit explorer and evidence export API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "EVT-000018",
+      "type": "event",
+      "name": "WorkspaceCreated",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "EVT-000019",
+      "type": "event",
+      "name": "MembershipActivated",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "EVT-000020",
+      "type": "event",
+      "name": "MembershipRevoked",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "EVT-000021",
+      "type": "event",
+      "name": "RoleChanged",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "EVT-000022",
+      "type": "event",
+      "name": "PermissionChanged",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "EVT-000023",
+      "type": "event",
+      "name": "SessionRevoked",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "EVT-000024",
+      "type": "event",
+      "name": "AuthenticationRiskDetected",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "EVT-000025",
+      "type": "event",
+      "name": "AuditEventRecorded",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "PERM-000049",
+      "type": "permission",
+      "name": "Read Authentication adapter",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "PERM-000050",
+      "type": "permission",
+      "name": "Manage Authentication adapter",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "PERM-000051",
+      "type": "permission",
+      "name": "Read Workspace lifecycle",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "PERM-000052",
+      "type": "permission",
+      "name": "Manage Workspace lifecycle",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "PERM-000053",
+      "type": "permission",
+      "name": "Read Invitation and membership",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "PERM-000054",
+      "type": "permission",
+      "name": "Manage Invitation and membership",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "PERM-000055",
+      "type": "permission",
+      "name": "Read Roles and permission grants",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "PERM-000056",
+      "type": "permission",
+      "name": "Manage Roles and permission grants",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "PERM-000057",
+      "type": "permission",
+      "name": "Read Policy evaluation",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "PERM-000058",
+      "type": "permission",
+      "name": "Manage Policy evaluation",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "PERM-000059",
+      "type": "permission",
+      "name": "Read MFA and session management",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "PERM-000060",
+      "type": "permission",
+      "name": "Manage MFA and session management",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "PERM-000061",
+      "type": "permission",
+      "name": "Read API keys and service identities",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "PERM-000062",
+      "type": "permission",
+      "name": "Manage API keys and service identities",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "PERM-000063",
+      "type": "permission",
+      "name": "Read Audit explorer and evidence export",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "PERM-000064",
+      "type": "permission",
+      "name": "Manage Audit explorer and evidence export",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "SCR-000028",
+      "type": "screen",
+      "name": "Identity, Workspace, Permissions & Audit Decision Dashboard",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "SCR-000029",
+      "type": "screen",
+      "name": "Authentication adapter Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "SCR-000030",
+      "type": "screen",
+      "name": "Workspace lifecycle Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "SCR-000031",
+      "type": "screen",
+      "name": "Invitation and membership Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "SCR-000032",
+      "type": "screen",
+      "name": "Roles and permission grants Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "SCR-000033",
+      "type": "screen",
+      "name": "Policy evaluation Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "SCR-000034",
+      "type": "screen",
+      "name": "MFA and session management Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "SCR-000035",
+      "type": "screen",
+      "name": "API keys and service identities Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "SCR-000036",
+      "type": "screen",
+      "name": "Audit explorer and evidence export Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "UF-000028",
+      "type": "ui_flow",
+      "name": "Identity, Workspace, Permissions & Audit UI Flow 1",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "UF-000029",
+      "type": "ui_flow",
+      "name": "Identity, Workspace, Permissions & Audit UI Flow 2",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "UF-000030",
+      "type": "ui_flow",
+      "name": "Identity, Workspace, Permissions & Audit UI Flow 3",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "UF-000031",
+      "type": "ui_flow",
+      "name": "Identity, Workspace, Permissions & Audit UI Flow 4",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "UF-000032",
+      "type": "ui_flow",
+      "name": "Identity, Workspace, Permissions & Audit UI Flow 5",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "UF-000033",
+      "type": "ui_flow",
+      "name": "Identity, Workspace, Permissions & Audit UI Flow 6",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "UF-000034",
+      "type": "ui_flow",
+      "name": "Identity, Workspace, Permissions & Audit UI Flow 7",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "UF-000035",
+      "type": "ui_flow",
+      "name": "Identity, Workspace, Permissions & Audit UI Flow 8",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "UF-000036",
+      "type": "ui_flow",
+      "name": "Identity, Workspace, Permissions & Audit UI Flow 9",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "MET-000020",
+      "type": "metric",
+      "name": "Cross-tenant violations",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "MET-000021",
+      "type": "metric",
+      "name": "MFA adoption",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "MET-000022",
+      "type": "metric",
+      "name": "Invite acceptance",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "MET-000023",
+      "type": "metric",
+      "name": "Access review completion",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "MET-000024",
+      "type": "metric",
+      "name": "Permission denial accuracy",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "MET-000025",
+      "type": "metric",
+      "name": "Session revocation time",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "MET-000026",
+      "type": "metric",
+      "name": "Audit completeness",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "AICAP-000012",
+      "type": "ai_capability",
+      "name": "Identity, Workspace, Permissions & Audit: Risk signal explanation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "AICAP-000013",
+      "type": "ai_capability",
+      "name": "Identity, Workspace, Permissions & Audit: Access review assistance",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "AICAP-000014",
+      "type": "ai_capability",
+      "name": "Identity, Workspace, Permissions & Audit: Anomalous sign-in triage",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "PROMPT-000012",
+      "type": "prompt",
+      "name": "Identity, Workspace, Permissions & Audit: Risk signal explanation Prompt",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000006"
+    },
+    {
+      "id": "PROMPT-000013",
+      "type": "prompt",
+      "name": "Identity, Workspace, Permissions & Audit: Access review assistance Prompt",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000006"
+    },
+    {
+      "id": "PROMPT-000014",
+      "type": "prompt",
+      "name": "Identity, Workspace, Permissions & Audit: Anomalous sign-in triage Prompt",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000006"
+    },
+    {
+      "id": "AUTO-000018",
+      "type": "automation",
+      "name": "Invitation Automation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "AUTO-000019",
+      "type": "automation",
+      "name": "Role changed Automation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "AUTO-000020",
+      "type": "automation",
+      "name": "MFA/security alert Automation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "AUTO-000021",
+      "type": "automation",
+      "name": "Session revoked Automation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "AUTO-000022",
+      "type": "automation",
+      "name": "Access review due Automation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "AUTO-000023",
+      "type": "automation",
+      "name": "Sensitive export Automation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "NOT-000018",
+      "type": "notification",
+      "name": "Invitation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "NOT-000019",
+      "type": "notification",
+      "name": "Role changed",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "NOT-000020",
+      "type": "notification",
+      "name": "MFA/security alert",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "NOT-000021",
+      "type": "notification",
+      "name": "Session revoked",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "NOT-000022",
+      "type": "notification",
+      "name": "Access review due",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "NOT-000023",
+      "type": "notification",
+      "name": "Sensitive export",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "RPT-000016",
+      "type": "report",
+      "name": "Membership and role inventory",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "RPT-000017",
+      "type": "report",
+      "name": "Access review",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "RPT-000018",
+      "type": "report",
+      "name": "Authentication risk",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "RPT-000019",
+      "type": "report",
+      "name": "Audit evidence",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "RPT-000020",
+      "type": "report",
+      "name": "Service credential health",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "INT-000013",
+      "type": "integration",
+      "name": "Supabase Auth behind interface",
+      "status": "Planned",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "INT-000014",
+      "type": "integration",
+      "name": "OIDC/SAML future providers",
+      "status": "Planned",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "INT-000015",
+      "type": "integration",
+      "name": "PostgreSQL RLS",
+      "status": "Planned",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "INT-000016",
+      "type": "integration",
+      "name": "Redis session/cache",
+      "status": "Planned",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "INT-000017",
+      "type": "integration",
+      "name": "All modules",
+      "status": "Planned",
+      "version": "1.0.0",
+      "owner": "TEAM-000010"
+    },
+    {
+      "id": "ART-000012",
+      "type": "artifact",
+      "name": "ZYVORA Identity, Workspace, Permissions & Audit PRD v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000025",
+      "type": "artifact",
+      "name": "ZYVORA Identity, Workspace, Permissions & Audit Technical Specification v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000029",
+      "type": "artifact",
+      "name": "ZYVORA BP-000 Platform Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000030",
+      "type": "artifact",
+      "name": "ZYVORA BP-001 UI Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000031",
+      "type": "artifact",
+      "name": "ZYVORA BP-002 Backend Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000032",
+      "type": "artifact",
+      "name": "ZYVORA BP-003 Database Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000033",
+      "type": "artifact",
+      "name": "ZYVORA BP-004 API Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000034",
+      "type": "artifact",
+      "name": "ZYVORA BP-005 AI Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000035",
+      "type": "artifact",
+      "name": "ZYVORA BP-006 Security Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000036",
+      "type": "artifact",
+      "name": "ZYVORA BP-007 Infrastructure Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    }
+  ],
+  "kind": "draft_qa_pack",
+  "paired_build_fingerprint": "90ec06c49ae9ef56654fc6bb7e5c1e19dba64f138f741a12225d3a8904c0ef23",
+  "test_scenarios": [
+    {
+      "id": "RULE-BR-000025",
+      "type": "unit_and_domain",
+      "source": "BR-000025",
+      "scenario": "Verify business rule: Every active workspace has at least one protected owner.",
+      "expected": "Exact approved rule holds for valid, invalid, boundary, and concurrent cases."
+    },
+    {
+      "id": "RULE-BR-000026",
+      "type": "unit_and_domain",
+      "source": "BR-000026",
+      "scenario": "Verify business rule: A user may delegate only permissions they possess and may delegate.",
+      "expected": "Exact approved rule holds for valid, invalid, boundary, and concurrent cases."
+    },
+    {
+      "id": "RULE-BR-000027",
+      "type": "unit_and_domain",
+      "source": "BR-000027",
+      "scenario": "Verify business rule: Workspace context is derived server-side.",
+      "expected": "Exact approved rule holds for valid, invalid, boundary, and concurrent cases."
+    },
+    {
+      "id": "RULE-BR-000028",
+      "type": "unit_and_domain",
+      "source": "BR-000028",
+      "scenario": "Verify business rule: Direct routes remain server-authorized even when hidden in UI.",
+      "expected": "Exact approved rule holds for valid, invalid, boundary, and concurrent cases."
+    },
+    {
+      "id": "RULE-BR-000029",
+      "type": "unit_and_domain",
+      "source": "BR-000029",
+      "scenario": "Verify business rule: Sensitive changes require recent authentication.",
+      "expected": "Exact approved rule holds for valid, invalid, boundary, and concurrent cases."
+    },
+    {
+      "id": "RULE-BR-000030",
+      "type": "unit_and_domain",
+      "source": "BR-000030",
+      "scenario": "Verify business rule: Role changes are versioned and auditable.",
+      "expected": "Exact approved rule holds for valid, invalid, boundary, and concurrent cases."
+    },
+    {
+      "id": "RULE-BR-000031",
+      "type": "unit_and_domain",
+      "source": "BR-000031",
+      "scenario": "Verify business rule: Audit records are append-only and tamper-evident.",
+      "expected": "Exact approved rule holds for valid, invalid, boundary, and concurrent cases."
+    },
+    {
+      "id": "RULE-BR-000032",
+      "type": "unit_and_domain",
+      "source": "BR-000032",
+      "scenario": "Verify business rule: Support access is time-, purpose-, and permission-bound.",
+      "expected": "Exact approved rule holds for valid, invalid, boundary, and concurrent cases."
+    },
+    {
+      "id": "WF-WF-000023",
+      "type": "end_to_end",
+      "source": "WF-000023",
+      "scenario": "Verify happy, alternative, failure, and recovery paths for Create workspace",
+      "expected": "Approved workflow outcome, evidence, timing, and recovery requirements are satisfied."
+    },
+    {
+      "id": "WF-WF-000024",
+      "type": "end_to_end",
+      "source": "WF-000024",
+      "scenario": "Verify happy, alternative, failure, and recovery paths for Invite and onboard member",
+      "expected": "Approved workflow outcome, evidence, timing, and recovery requirements are satisfied."
+    },
+    {
+      "id": "WF-WF-000025",
+      "type": "end_to_end",
+      "source": "WF-000025",
+      "scenario": "Verify happy, alternative, failure, and recovery paths for Change role",
+      "expected": "Approved workflow outcome, evidence, timing, and recovery requirements are satisfied."
+    },
+    {
+      "id": "WF-WF-000026",
+      "type": "end_to_end",
+      "source": "WF-000026",
+      "scenario": "Verify happy, alternative, failure, and recovery paths for Suspend or revoke access",
+      "expected": "Approved workflow outcome, evidence, timing, and recovery requirements are satisfied."
+    },
+    {
+      "id": "WF-WF-000027",
+      "type": "end_to_end",
+      "source": "WF-000027",
+      "scenario": "Verify happy, alternative, failure, and recovery paths for Authenticate and refresh",
+      "expected": "Approved workflow outcome, evidence, timing, and recovery requirements are satisfied."
+    },
+    {
+      "id": "WF-WF-000028",
+      "type": "end_to_end",
+      "source": "WF-000028",
+      "scenario": "Verify happy, alternative, failure, and recovery paths for Revoke session",
+      "expected": "Approved workflow outcome, evidence, timing, and recovery requirements are satisfied."
+    },
+    {
+      "id": "WF-WF-000029",
+      "type": "end_to_end",
+      "source": "WF-000029",
+      "scenario": "Verify happy, alternative, failure, and recovery paths for Evaluate permission",
+      "expected": "Approved workflow outcome, evidence, timing, and recovery requirements are satisfied."
+    },
+    {
+      "id": "WF-WF-000030",
+      "type": "end_to_end",
+      "source": "WF-000030",
+      "scenario": "Verify happy, alternative, failure, and recovery paths for Investigate audit trail",
+      "expected": "Approved workflow outcome, evidence, timing, and recovery requirements are satisfied."
+    },
+    {
+      "id": "API-API-000025",
+      "type": "contract_and_security",
+      "source": "API-000025",
+      "scenario": "Verify request, response, authorization, idempotency, pagination, validation, and errors for Identity, Workspace, Permissions & Audit Authentication adapter API",
+      "expected": "Approved API contract and security policy are preserved."
+    },
+    {
+      "id": "API-API-000026",
+      "type": "contract_and_security",
+      "source": "API-000026",
+      "scenario": "Verify request, response, authorization, idempotency, pagination, validation, and errors for Identity, Workspace, Permissions & Audit Workspace lifecycle API",
+      "expected": "Approved API contract and security policy are preserved."
+    },
+    {
+      "id": "API-API-000027",
+      "type": "contract_and_security",
+      "source": "API-000027",
+      "scenario": "Verify request, response, authorization, idempotency, pagination, validation, and errors for Identity, Workspace, Permissions & Audit Invitation and membership API",
+      "expected": "Approved API contract and security policy are preserved."
+    },
+    {
+      "id": "API-API-000028",
+      "type": "contract_and_security",
+      "source": "API-000028",
+      "scenario": "Verify request, response, authorization, idempotency, pagination, validation, and errors for Identity, Workspace, Permissions & Audit Roles and permission grants API",
+      "expected": "Approved API contract and security policy are preserved."
+    },
+    {
+      "id": "API-API-000029",
+      "type": "contract_and_security",
+      "source": "API-000029",
+      "scenario": "Verify request, response, authorization, idempotency, pagination, validation, and errors for Identity, Workspace, Permissions & Audit Policy evaluation API",
+      "expected": "Approved API contract and security policy are preserved."
+    },
+    {
+      "id": "API-API-000030",
+      "type": "contract_and_security",
+      "source": "API-000030",
+      "scenario": "Verify request, response, authorization, idempotency, pagination, validation, and errors for Identity, Workspace, Permissions & Audit MFA and session management API",
+      "expected": "Approved API contract and security policy are preserved."
+    },
+    {
+      "id": "API-API-000031",
+      "type": "contract_and_security",
+      "source": "API-000031",
+      "scenario": "Verify request, response, authorization, idempotency, pagination, validation, and errors for Identity, Workspace, Permissions & Audit API keys and service identities API",
+      "expected": "Approved API contract and security policy are preserved."
+    },
+    {
+      "id": "API-API-000032",
+      "type": "contract_and_security",
+      "source": "API-000032",
+      "scenario": "Verify request, response, authorization, idempotency, pagination, validation, and errors for Identity, Workspace, Permissions & Audit Audit explorer and evidence export API",
+      "expected": "Approved API contract and security policy are preserved."
+    },
+    {
+      "id": "EVT-EVT-000018",
+      "type": "integration",
+      "source": "EVT-000018",
+      "scenario": "Verify production, schema compatibility, ordering, duplication, retry, and idempotent consumption for WorkspaceCreated",
+      "expected": "Versioned event meaning and compatibility contract are preserved."
+    },
+    {
+      "id": "EVT-EVT-000019",
+      "type": "integration",
+      "source": "EVT-000019",
+      "scenario": "Verify production, schema compatibility, ordering, duplication, retry, and idempotent consumption for MembershipActivated",
+      "expected": "Versioned event meaning and compatibility contract are preserved."
+    },
+    {
+      "id": "EVT-EVT-000020",
+      "type": "integration",
+      "source": "EVT-000020",
+      "scenario": "Verify production, schema compatibility, ordering, duplication, retry, and idempotent consumption for MembershipRevoked",
+      "expected": "Versioned event meaning and compatibility contract are preserved."
+    },
+    {
+      "id": "EVT-EVT-000021",
+      "type": "integration",
+      "source": "EVT-000021",
+      "scenario": "Verify production, schema compatibility, ordering, duplication, retry, and idempotent consumption for RoleChanged",
+      "expected": "Versioned event meaning and compatibility contract are preserved."
+    },
+    {
+      "id": "EVT-EVT-000022",
+      "type": "integration",
+      "source": "EVT-000022",
+      "scenario": "Verify production, schema compatibility, ordering, duplication, retry, and idempotent consumption for PermissionChanged",
+      "expected": "Versioned event meaning and compatibility contract are preserved."
+    },
+    {
+      "id": "EVT-EVT-000023",
+      "type": "integration",
+      "source": "EVT-000023",
+      "scenario": "Verify production, schema compatibility, ordering, duplication, retry, and idempotent consumption for SessionRevoked",
+      "expected": "Versioned event meaning and compatibility contract are preserved."
+    },
+    {
+      "id": "EVT-EVT-000024",
+      "type": "integration",
+      "source": "EVT-000024",
+      "scenario": "Verify production, schema compatibility, ordering, duplication, retry, and idempotent consumption for AuthenticationRiskDetected",
+      "expected": "Versioned event meaning and compatibility contract are preserved."
+    },
+    {
+      "id": "EVT-EVT-000025",
+      "type": "integration",
+      "source": "EVT-000025",
+      "scenario": "Verify production, schema compatibility, ordering, duplication, retry, and idempotent consumption for AuditEventRecorded",
+      "expected": "Versioned event meaning and compatibility contract are preserved."
+    },
+    {
+      "id": "PERM-PERM-000049",
+      "type": "security",
+      "source": "PERM-000049",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Read Authentication adapter",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000050",
+      "type": "security",
+      "source": "PERM-000050",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Manage Authentication adapter",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000051",
+      "type": "security",
+      "source": "PERM-000051",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Read Workspace lifecycle",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000052",
+      "type": "security",
+      "source": "PERM-000052",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Manage Workspace lifecycle",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000053",
+      "type": "security",
+      "source": "PERM-000053",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Read Invitation and membership",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000054",
+      "type": "security",
+      "source": "PERM-000054",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Manage Invitation and membership",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000055",
+      "type": "security",
+      "source": "PERM-000055",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Read Roles and permission grants",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000056",
+      "type": "security",
+      "source": "PERM-000056",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Manage Roles and permission grants",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000057",
+      "type": "security",
+      "source": "PERM-000057",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Read Policy evaluation",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000058",
+      "type": "security",
+      "source": "PERM-000058",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Manage Policy evaluation",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000059",
+      "type": "security",
+      "source": "PERM-000059",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Read MFA and session management",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000060",
+      "type": "security",
+      "source": "PERM-000060",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Manage MFA and session management",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000061",
+      "type": "security",
+      "source": "PERM-000061",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Read API keys and service identities",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000062",
+      "type": "security",
+      "source": "PERM-000062",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Manage API keys and service identities",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000063",
+      "type": "security",
+      "source": "PERM-000063",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Read Audit explorer and evidence export",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000064",
+      "type": "security",
+      "source": "PERM-000064",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Manage Audit explorer and evidence export",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "SCR-SCR-000028",
+      "type": "ui_accessibility",
+      "source": "SCR-000028",
+      "scenario": "Verify responsive, keyboard, screen-reader, loading, empty, error, stale, and permission states for Identity, Workspace, Permissions & Audit Decision Dashboard",
+      "expected": "Decision purpose remains clear and WCAG 2.1 AA obligations pass."
+    },
+    {
+      "id": "SCR-SCR-000029",
+      "type": "ui_accessibility",
+      "source": "SCR-000029",
+      "scenario": "Verify responsive, keyboard, screen-reader, loading, empty, error, stale, and permission states for Authentication adapter Workspace",
+      "expected": "Decision purpose remains clear and WCAG 2.1 AA obligations pass."
+    },
+    {
+      "id": "SCR-SCR-000030",
+      "type": "ui_accessibility",
+      "source": "SCR-000030",
+      "scenario": "Verify responsive, keyboard, screen-reader, loading, empty, error, stale, and permission states for Workspace lifecycle Workspace",
+      "expected": "Decision purpose remains clear and WCAG 2.1 AA obligations pass."
+    },
+    {
+      "id": "SCR-SCR-000031",
+      "type": "ui_accessibility",
+      "source": "SCR-000031",
+      "scenario": "Verify responsive, keyboard, screen-reader, loading, empty, error, stale, and permission states for Invitation and membership Workspace",
+      "expected": "Decision purpose remains clear and WCAG 2.1 AA obligations pass."
+    },
+    {
+      "id": "SCR-SCR-000032",
+      "type": "ui_accessibility",
+      "source": "SCR-000032",
+      "scenario": "Verify responsive, keyboard, screen-reader, loading, empty, error, stale, and permission states for Roles and permission grants Workspace",
+      "expected": "Decision purpose remains clear and WCAG 2.1 AA obligations pass."
+    },
+    {
+      "id": "SCR-SCR-000033",
+      "type": "ui_accessibility",
+      "source": "SCR-000033",
+      "scenario": "Verify responsive, keyboard, screen-reader, loading, empty, error, stale, and permission states for Policy evaluation Workspace",
+      "expected": "Decision purpose remains clear and WCAG 2.1 AA obligations pass."
+    },
+    {
+      "id": "SCR-SCR-000034",
+      "type": "ui_accessibility",
+      "source": "SCR-000034",
+      "scenario": "Verify responsive, keyboard, screen-reader, loading, empty, error, stale, and permission states for MFA and session management Workspace",
+      "expected": "Decision purpose remains clear and WCAG 2.1 AA obligations pass."
+    },
+    {
+      "id": "SCR-SCR-000035",
+      "type": "ui_accessibility",
+      "source": "SCR-000035",
+      "scenario": "Verify responsive, keyboard, screen-reader, loading, empty, error, stale, and permission states for API keys and service identities Workspace",
+      "expected": "Decision purpose remains clear and WCAG 2.1 AA obligations pass."
+    },
+    {
+      "id": "SCR-SCR-000036",
+      "type": "ui_accessibility",
+      "source": "SCR-000036",
+      "scenario": "Verify responsive, keyboard, screen-reader, loading, empty, error, stale, and permission states for Audit explorer and evidence export Workspace",
+      "expected": "Decision purpose remains clear and WCAG 2.1 AA obligations pass."
+    }
+  ],
+  "regression_scope": [
+    "CAP-000004",
+    "MOD-000004",
+    "DEC-000013",
+    "DEC-000014",
+    "DEC-000015",
+    "DEC-000016",
+    "FEAT-000025",
+    "FEAT-000026",
+    "FEAT-000027",
+    "FEAT-000028",
+    "FEAT-000029",
+    "FEAT-000030",
+    "FEAT-000031",
+    "FEAT-000032",
+    "BR-000025",
+    "BR-000026",
+    "BR-000027",
+    "BR-000028",
+    "BR-000029",
+    "BR-000030",
+    "BR-000031",
+    "BR-000032",
+    "WF-000023",
+    "WF-000024",
+    "WF-000025",
+    "WF-000026",
+    "WF-000027",
+    "WF-000028",
+    "WF-000029",
+    "WF-000030",
+    "ENT-000027",
+    "ENT-000028",
+    "ENT-000029",
+    "ENT-000030",
+    "ENT-000031",
+    "ENT-000032",
+    "ENT-000033",
+    "ENT-000034",
+    "ENT-000035",
+    "ENT-000036",
+    "API-000025",
+    "API-000026",
+    "API-000027",
+    "API-000028",
+    "API-000029",
+    "API-000030",
+    "API-000031",
+    "API-000032",
+    "EVT-000018",
+    "EVT-000019",
+    "EVT-000020",
+    "EVT-000021",
+    "EVT-000022",
+    "EVT-000023",
+    "EVT-000024",
+    "EVT-000025",
+    "PERM-000049",
+    "PERM-000050",
+    "PERM-000051",
+    "PERM-000052",
+    "PERM-000053",
+    "PERM-000054",
+    "PERM-000055",
+    "PERM-000056",
+    "PERM-000057",
+    "PERM-000058",
+    "PERM-000059",
+    "PERM-000060",
+    "PERM-000061",
+    "PERM-000062",
+    "PERM-000063",
+    "PERM-000064",
+    "SCR-000028",
+    "SCR-000029",
+    "SCR-000030",
+    "SCR-000031",
+    "SCR-000032",
+    "SCR-000033",
+    "SCR-000034",
+    "SCR-000035",
+    "SCR-000036",
+    "UF-000028",
+    "UF-000029",
+    "UF-000030",
+    "UF-000031",
+    "UF-000032",
+    "UF-000033",
+    "UF-000034",
+    "UF-000035",
+    "UF-000036",
+    "MET-000020",
+    "MET-000021",
+    "MET-000022",
+    "MET-000023",
+    "MET-000024",
+    "MET-000025",
+    "MET-000026",
+    "AICAP-000012",
+    "AICAP-000013",
+    "AICAP-000014",
+    "PROMPT-000012",
+    "PROMPT-000013",
+    "PROMPT-000014",
+    "AUTO-000018",
+    "AUTO-000019",
+    "AUTO-000020",
+    "AUTO-000021",
+    "AUTO-000022",
+    "AUTO-000023",
+    "NOT-000018",
+    "NOT-000019",
+    "NOT-000020",
+    "NOT-000021",
+    "NOT-000022",
+    "NOT-000023",
+    "RPT-000016",
+    "RPT-000017",
+    "RPT-000018",
+    "RPT-000019",
+    "RPT-000020",
+    "INT-000013",
+    "INT-000014",
+    "INT-000015",
+    "INT-000016",
+    "INT-000017",
+    "ART-000012",
+    "ART-000025",
+    "ART-000029",
+    "ART-000030",
+    "ART-000031",
+    "ART-000032",
+    "ART-000033",
+    "ART-000034",
+    "ART-000035",
+    "ART-000036"
+  ],
+  "performance_requirements": [
+    "Validate published performance budgets from the approved Technical Specification.",
+    "Verify no unbounded query, queue, retry, export, or AI workload."
+  ],
+  "security_requirements": [
+    "Tenant isolation",
+    "Authorization deny paths",
+    "Sensitive-data handling",
+    "Audit completeness",
+    "Rate limiting and abuse controls"
+  ],
+  "evidence_required": [
+    "Automated test results",
+    "Accessibility results",
+    "Security results",
+    "Performance results",
+    "Manual exploratory record",
+    "Deployment and rollback rehearsal"
+  ]
+}

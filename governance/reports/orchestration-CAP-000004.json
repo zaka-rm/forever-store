@@ -1,0 +1,63 @@
+{
+  "version": "3.0.0",
+  "generated_at": "2026-07-12T03:39:44.748Z",
+  "capability": "CAP-000004",
+  "agent": "codex",
+  "source_fingerprint": "90ec06c49ae9ef56654fc6bb7e5c1e19dba64f138f741a12225d3a8904c0ef23",
+  "state": "Blocked",
+  "authorized_to_start": false,
+  "gates": [
+    {
+      "gate": "implementation_authorized_build_pack",
+      "pass": false,
+      "evidence": "DRAFT_NOT_AUTHORIZED"
+    },
+    {
+      "gate": "paired_qa_pack",
+      "pass": true,
+      "evidence": "90ec06c49ae9ef56654fc6bb7e5c1e19dba64f138f741a12225d3a8904c0ef23"
+    },
+    {
+      "gate": "zero_source_blockers",
+      "pass": false,
+      "evidence": "43 blockers"
+    },
+    {
+      "gate": "approved_impact_assessment",
+      "pass": false,
+      "evidence": "No approved capability-specific impact assessment attached to generated draft"
+    },
+    {
+      "gate": "current_traceability",
+      "pass": true,
+      "evidence": "PASS_CURRENT_MATURITY/CURRENT"
+    },
+    {
+      "gate": "repository_scope",
+      "pass": true,
+      "evidence": "apps/web"
+    },
+    {
+      "gate": "engineering_owner",
+      "pass": true,
+      "evidence": "TEAM-000002"
+    },
+    {
+      "gate": "rollback_plan",
+      "pass": false,
+      "evidence": "No approved rollback plan attached"
+    },
+    {
+      "gate": "no_open_critical_or_high_exception",
+      "pass": true,
+      "evidence": "0 registered exceptions"
+    }
+  ],
+  "missing_gates": [
+    "implementation_authorized_build_pack",
+    "zero_source_blockers",
+    "approved_impact_assessment",
+    "rollback_plan"
+  ],
+  "policy": "Creating a work order does not start an agent. Starting requires a separately approved, immutable work order."
+}

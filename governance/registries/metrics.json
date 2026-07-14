@@ -1,0 +1,2759 @@
+{
+  "registry": "metrics",
+  "version": "1.0.0",
+  "generated_at": "2026-07-12T03:39:37Z",
+  "records": [
+    {
+      "id": "MET-000001",
+      "type": "metric",
+      "name": "Median time to decision",
+      "description": "Governed Decision Center metric awaiting domain-owner approval of formula, units, inputs, and cadence.",
+      "status": "In Design",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-MET-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "formula": null,
+        "formula_status": "requires_domain_owner_approval",
+        "inputs": [],
+        "units": "requires_domain_owner_approval",
+        "refresh_cadence": "requires_domain_owner_approval",
+        "rounding_and_time_treatment": "requires_domain_owner_approval",
+        "source_lineage_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MET-000002",
+      "type": "metric",
+      "name": "Unowned decision rate",
+      "description": "Governed Decision Center metric awaiting domain-owner approval of formula, units, inputs, and cadence.",
+      "status": "In Design",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-MET-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "formula": null,
+        "formula_status": "requires_domain_owner_approval",
+        "inputs": [],
+        "units": "requires_domain_owner_approval",
+        "refresh_cadence": "requires_domain_owner_approval",
+        "rounding_and_time_treatment": "requires_domain_owner_approval",
+        "source_lineage_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MET-000003",
+      "type": "metric",
+      "name": "Approval cycle time",
+      "description": "Governed Decision Center metric awaiting domain-owner approval of formula, units, inputs, and cadence.",
+      "status": "In Design",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-MET-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "formula": null,
+        "formula_status": "requires_domain_owner_approval",
+        "inputs": [],
+        "units": "requires_domain_owner_approval",
+        "refresh_cadence": "requires_domain_owner_approval",
+        "rounding_and_time_treatment": "requires_domain_owner_approval",
+        "source_lineage_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MET-000004",
+      "type": "metric",
+      "name": "Outcome capture rate",
+      "description": "Governed Decision Center metric awaiting domain-owner approval of formula, units, inputs, and cadence.",
+      "status": "In Design",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-MET-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "formula": null,
+        "formula_status": "requires_domain_owner_approval",
+        "inputs": [],
+        "units": "requires_domain_owner_approval",
+        "refresh_cadence": "requires_domain_owner_approval",
+        "rounding_and_time_treatment": "requires_domain_owner_approval",
+        "source_lineage_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MET-000005",
+      "type": "metric",
+      "name": "Decision reopen rate",
+      "description": "Governed Decision Center metric awaiting domain-owner approval of formula, units, inputs, and cadence.",
+      "status": "In Design",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-MET-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "formula": null,
+        "formula_status": "requires_domain_owner_approval",
+        "inputs": [],
+        "units": "requires_domain_owner_approval",
+        "refresh_cadence": "requires_domain_owner_approval",
+        "rounding_and_time_treatment": "requires_domain_owner_approval",
+        "source_lineage_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MET-000006",
+      "type": "metric",
+      "name": "Recommendation acceptance with reason",
+      "description": "Governed Decision Center metric awaiting domain-owner approval of formula, units, inputs, and cadence.",
+      "status": "In Design",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-MET-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "formula": null,
+        "formula_status": "requires_domain_owner_approval",
+        "inputs": [],
+        "units": "requires_domain_owner_approval",
+        "refresh_cadence": "requires_domain_owner_approval",
+        "rounding_and_time_treatment": "requires_domain_owner_approval",
+        "source_lineage_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MET-000007",
+      "type": "metric",
+      "name": "Outcome-linked memory rate",
+      "description": "Governed Business Memory metric awaiting domain-owner approval of formula, units, inputs, and cadence.",
+      "status": "In Design",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-MET-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "formula": null,
+        "formula_status": "requires_domain_owner_approval",
+        "inputs": [],
+        "units": "requires_domain_owner_approval",
+        "refresh_cadence": "requires_domain_owner_approval",
+        "rounding_and_time_treatment": "requires_domain_owner_approval",
+        "source_lineage_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MET-000008",
+      "type": "metric",
+      "name": "Useful search result rate",
+      "description": "Governed Business Memory metric awaiting domain-owner approval of formula, units, inputs, and cadence.",
+      "status": "In Design",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-MET-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "formula": null,
+        "formula_status": "requires_domain_owner_approval",
+        "inputs": [],
+        "units": "requires_domain_owner_approval",
+        "refresh_cadence": "requires_domain_owner_approval",
+        "rounding_and_time_treatment": "requires_domain_owner_approval",
+        "source_lineage_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MET-000009",
+      "type": "metric",
+      "name": "Source citation rate",
+      "description": "Governed Business Memory metric awaiting domain-owner approval of formula, units, inputs, and cadence.",
+      "status": "In Design",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-MET-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "formula": null,
+        "formula_status": "requires_domain_owner_approval",
+        "inputs": [],
+        "units": "requires_domain_owner_approval",
+        "refresh_cadence": "requires_domain_owner_approval",
+        "rounding_and_time_treatment": "requires_domain_owner_approval",
+        "source_lineage_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MET-000010",
+      "type": "metric",
+      "name": "Stale index rate",
+      "description": "Governed Business Memory metric awaiting domain-owner approval of formula, units, inputs, and cadence.",
+      "status": "In Design",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-MET-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "formula": null,
+        "formula_status": "requires_domain_owner_approval",
+        "inputs": [],
+        "units": "requires_domain_owner_approval",
+        "refresh_cadence": "requires_domain_owner_approval",
+        "rounding_and_time_treatment": "requires_domain_owner_approval",
+        "source_lineage_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MET-000011",
+      "type": "metric",
+      "name": "Unauthorized retrieval incidents",
+      "description": "Governed Business Memory metric awaiting domain-owner approval of formula, units, inputs, and cadence.",
+      "status": "In Design",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-MET-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "formula": null,
+        "formula_status": "requires_domain_owner_approval",
+        "inputs": [],
+        "units": "requires_domain_owner_approval",
+        "refresh_cadence": "requires_domain_owner_approval",
+        "rounding_and_time_treatment": "requires_domain_owner_approval",
+        "source_lineage_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MET-000012",
+      "type": "metric",
+      "name": "Lesson reuse rate",
+      "description": "Governed Business Memory metric awaiting domain-owner approval of formula, units, inputs, and cadence.",
+      "status": "In Design",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-MET-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "formula": null,
+        "formula_status": "requires_domain_owner_approval",
+        "inputs": [],
+        "units": "requires_domain_owner_approval",
+        "refresh_cadence": "requires_domain_owner_approval",
+        "rounding_and_time_treatment": "requires_domain_owner_approval",
+        "source_lineage_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MET-000013",
+      "type": "metric",
+      "name": "Task quality score",
+      "description": "Governed AI Engine metric awaiting domain-owner approval of formula, units, inputs, and cadence.",
+      "status": "In Design",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-MET-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "formula": null,
+        "formula_status": "requires_domain_owner_approval",
+        "inputs": [],
+        "units": "requires_domain_owner_approval",
+        "refresh_cadence": "requires_domain_owner_approval",
+        "rounding_and_time_treatment": "requires_domain_owner_approval",
+        "source_lineage_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MET-000014",
+      "type": "metric",
+      "name": "Calibration error",
+      "description": "Governed AI Engine metric awaiting domain-owner approval of formula, units, inputs, and cadence.",
+      "status": "In Design",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-MET-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "formula": null,
+        "formula_status": "requires_domain_owner_approval",
+        "inputs": [],
+        "units": "requires_domain_owner_approval",
+        "refresh_cadence": "requires_domain_owner_approval",
+        "rounding_and_time_treatment": "requires_domain_owner_approval",
+        "source_lineage_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MET-000015",
+      "type": "metric",
+      "name": "Grounded citation rate",
+      "description": "Governed AI Engine metric awaiting domain-owner approval of formula, units, inputs, and cadence.",
+      "status": "In Design",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-MET-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "formula": null,
+        "formula_status": "requires_domain_owner_approval",
+        "inputs": [],
+        "units": "requires_domain_owner_approval",
+        "refresh_cadence": "requires_domain_owner_approval",
+        "rounding_and_time_treatment": "requires_domain_owner_approval",
+        "source_lineage_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MET-000016",
+      "type": "metric",
+      "name": "Fallback rate",
+      "description": "Governed AI Engine metric awaiting domain-owner approval of formula, units, inputs, and cadence.",
+      "status": "In Design",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-MET-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "formula": null,
+        "formula_status": "requires_domain_owner_approval",
+        "inputs": [],
+        "units": "requires_domain_owner_approval",
+        "refresh_cadence": "requires_domain_owner_approval",
+        "rounding_and_time_treatment": "requires_domain_owner_approval",
+        "source_lineage_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MET-000017",
+      "type": "metric",
+      "name": "Safety incident rate",
+      "description": "Governed AI Engine metric awaiting domain-owner approval of formula, units, inputs, and cadence.",
+      "status": "In Design",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-MET-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "formula": null,
+        "formula_status": "requires_domain_owner_approval",
+        "inputs": [],
+        "units": "requires_domain_owner_approval",
+        "refresh_cadence": "requires_domain_owner_approval",
+        "rounding_and_time_treatment": "requires_domain_owner_approval",
+        "source_lineage_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MET-000018",
+      "type": "metric",
+      "name": "Cost per useful decision",
+      "description": "Governed AI Engine metric awaiting domain-owner approval of formula, units, inputs, and cadence.",
+      "status": "In Design",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-MET-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "formula": null,
+        "formula_status": "requires_domain_owner_approval",
+        "inputs": [],
+        "units": "requires_domain_owner_approval",
+        "refresh_cadence": "requires_domain_owner_approval",
+        "rounding_and_time_treatment": "requires_domain_owner_approval",
+        "source_lineage_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MET-000019",
+      "type": "metric",
+      "name": "p95 latency",
+      "description": "Governed AI Engine metric awaiting domain-owner approval of formula, units, inputs, and cadence.",
+      "status": "In Design",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-MET-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "formula": null,
+        "formula_status": "requires_domain_owner_approval",
+        "inputs": [],
+        "units": "requires_domain_owner_approval",
+        "refresh_cadence": "requires_domain_owner_approval",
+        "rounding_and_time_treatment": "requires_domain_owner_approval",
+        "source_lineage_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MET-000020",
+      "type": "metric",
+      "name": "Cross-tenant violations",
+      "description": "Governed Identity, Workspace, Permissions & Audit metric awaiting domain-owner approval of formula, units, inputs, and cadence.",
+      "status": "In Design",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-MET-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "formula": null,
+        "formula_status": "requires_domain_owner_approval",
+        "inputs": [],
+        "units": "requires_domain_owner_approval",
+        "refresh_cadence": "requires_domain_owner_approval",
+        "rounding_and_time_treatment": "requires_domain_owner_approval",
+        "source_lineage_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MET-000021",
+      "type": "metric",
+      "name": "MFA adoption",
+      "description": "Governed Identity, Workspace, Permissions & Audit metric awaiting domain-owner approval of formula, units, inputs, and cadence.",
+      "status": "In Design",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-MET-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "formula": null,
+        "formula_status": "requires_domain_owner_approval",
+        "inputs": [],
+        "units": "requires_domain_owner_approval",
+        "refresh_cadence": "requires_domain_owner_approval",
+        "rounding_and_time_treatment": "requires_domain_owner_approval",
+        "source_lineage_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MET-000022",
+      "type": "metric",
+      "name": "Invite acceptance",
+      "description": "Governed Identity, Workspace, Permissions & Audit metric awaiting domain-owner approval of formula, units, inputs, and cadence.",
+      "status": "In Design",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-MET-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "formula": null,
+        "formula_status": "requires_domain_owner_approval",
+        "inputs": [],
+        "units": "requires_domain_owner_approval",
+        "refresh_cadence": "requires_domain_owner_approval",
+        "rounding_and_time_treatment": "requires_domain_owner_approval",
+        "source_lineage_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MET-000023",
+      "type": "metric",
+      "name": "Access review completion",
+      "description": "Governed Identity, Workspace, Permissions & Audit metric awaiting domain-owner approval of formula, units, inputs, and cadence.",
+      "status": "In Design",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-MET-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "formula": null,
+        "formula_status": "requires_domain_owner_approval",
+        "inputs": [],
+        "units": "requires_domain_owner_approval",
+        "refresh_cadence": "requires_domain_owner_approval",
+        "rounding_and_time_treatment": "requires_domain_owner_approval",
+        "source_lineage_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MET-000024",
+      "type": "metric",
+      "name": "Permission denial accuracy",
+      "description": "Governed Identity, Workspace, Permissions & Audit metric awaiting domain-owner approval of formula, units, inputs, and cadence.",
+      "status": "In Design",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-MET-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "formula": null,
+        "formula_status": "requires_domain_owner_approval",
+        "inputs": [],
+        "units": "requires_domain_owner_approval",
+        "refresh_cadence": "requires_domain_owner_approval",
+        "rounding_and_time_treatment": "requires_domain_owner_approval",
+        "source_lineage_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MET-000025",
+      "type": "metric",
+      "name": "Session revocation time",
+      "description": "Governed Identity, Workspace, Permissions & Audit metric awaiting domain-owner approval of formula, units, inputs, and cadence.",
+      "status": "In Design",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-MET-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "formula": null,
+        "formula_status": "requires_domain_owner_approval",
+        "inputs": [],
+        "units": "requires_domain_owner_approval",
+        "refresh_cadence": "requires_domain_owner_approval",
+        "rounding_and_time_treatment": "requires_domain_owner_approval",
+        "source_lineage_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MET-000026",
+      "type": "metric",
+      "name": "Audit completeness",
+      "description": "Governed Identity, Workspace, Permissions & Audit metric awaiting domain-owner approval of formula, units, inputs, and cadence.",
+      "status": "In Design",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-MET-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "formula": null,
+        "formula_status": "requires_domain_owner_approval",
+        "inputs": [],
+        "units": "requires_domain_owner_approval",
+        "refresh_cadence": "requires_domain_owner_approval",
+        "rounding_and_time_treatment": "requires_domain_owner_approval",
+        "source_lineage_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MET-000027",
+      "type": "metric",
+      "name": "Cash runway",
+      "description": "Governed Finance metric awaiting domain-owner approval of formula, units, inputs, and cadence.",
+      "status": "In Design",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-MET-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "formula": null,
+        "formula_status": "requires_domain_owner_approval",
+        "inputs": [],
+        "units": "requires_domain_owner_approval",
+        "refresh_cadence": "requires_domain_owner_approval",
+        "rounding_and_time_treatment": "requires_domain_owner_approval",
+        "source_lineage_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MET-000028",
+      "type": "metric",
+      "name": "Operating cash flow",
+      "description": "Governed Finance metric awaiting domain-owner approval of formula, units, inputs, and cadence.",
+      "status": "In Design",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-MET-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "formula": null,
+        "formula_status": "requires_domain_owner_approval",
+        "inputs": [],
+        "units": "requires_domain_owner_approval",
+        "refresh_cadence": "requires_domain_owner_approval",
+        "rounding_and_time_treatment": "requires_domain_owner_approval",
+        "source_lineage_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MET-000029",
+      "type": "metric",
+      "name": "Gross margin",
+      "description": "Governed Finance metric awaiting domain-owner approval of formula, units, inputs, and cadence.",
+      "status": "In Design",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-MET-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "formula": null,
+        "formula_status": "requires_domain_owner_approval",
+        "inputs": [],
+        "units": "requires_domain_owner_approval",
+        "refresh_cadence": "requires_domain_owner_approval",
+        "rounding_and_time_treatment": "requires_domain_owner_approval",
+        "source_lineage_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MET-000030",
+      "type": "metric",
+      "name": "Days sales outstanding",
+      "description": "Governed Finance metric awaiting domain-owner approval of formula, units, inputs, and cadence.",
+      "status": "In Design",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-MET-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "formula": null,
+        "formula_status": "requires_domain_owner_approval",
+        "inputs": [],
+        "units": "requires_domain_owner_approval",
+        "refresh_cadence": "requires_domain_owner_approval",
+        "rounding_and_time_treatment": "requires_domain_owner_approval",
+        "source_lineage_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MET-000031",
+      "type": "metric",
+      "name": "Days payable outstanding",
+      "description": "Governed Finance metric awaiting domain-owner approval of formula, units, inputs, and cadence.",
+      "status": "In Design",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-MET-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "formula": null,
+        "formula_status": "requires_domain_owner_approval",
+        "inputs": [],
+        "units": "requires_domain_owner_approval",
+        "refresh_cadence": "requires_domain_owner_approval",
+        "rounding_and_time_treatment": "requires_domain_owner_approval",
+        "source_lineage_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MET-000032",
+      "type": "metric",
+      "name": "Budget variance",
+      "description": "Governed Finance metric awaiting domain-owner approval of formula, units, inputs, and cadence.",
+      "status": "In Design",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-MET-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "formula": null,
+        "formula_status": "requires_domain_owner_approval",
+        "inputs": [],
+        "units": "requires_domain_owner_approval",
+        "refresh_cadence": "requires_domain_owner_approval",
+        "rounding_and_time_treatment": "requires_domain_owner_approval",
+        "source_lineage_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MET-000033",
+      "type": "metric",
+      "name": "Close duration",
+      "description": "Governed Finance metric awaiting domain-owner approval of formula, units, inputs, and cadence.",
+      "status": "In Design",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-MET-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "formula": null,
+        "formula_status": "requires_domain_owner_approval",
+        "inputs": [],
+        "units": "requires_domain_owner_approval",
+        "refresh_cadence": "requires_domain_owner_approval",
+        "rounding_and_time_treatment": "requires_domain_owner_approval",
+        "source_lineage_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MET-000034",
+      "type": "metric",
+      "name": "Reconciliation exception rate",
+      "description": "Governed Finance metric awaiting domain-owner approval of formula, units, inputs, and cadence.",
+      "status": "In Design",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-MET-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "formula": null,
+        "formula_status": "requires_domain_owner_approval",
+        "inputs": [],
+        "units": "requires_domain_owner_approval",
+        "refresh_cadence": "requires_domain_owner_approval",
+        "rounding_and_time_treatment": "requires_domain_owner_approval",
+        "source_lineage_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MET-000035",
+      "type": "metric",
+      "name": "Stockout rate",
+      "description": "Governed Inventory metric awaiting domain-owner approval of formula, units, inputs, and cadence.",
+      "status": "In Design",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-MET-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "formula": null,
+        "formula_status": "requires_domain_owner_approval",
+        "inputs": [],
+        "units": "requires_domain_owner_approval",
+        "refresh_cadence": "requires_domain_owner_approval",
+        "rounding_and_time_treatment": "requires_domain_owner_approval",
+        "source_lineage_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MET-000036",
+      "type": "metric",
+      "name": "Inventory turns",
+      "description": "Governed Inventory metric awaiting domain-owner approval of formula, units, inputs, and cadence.",
+      "status": "In Design",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-MET-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "formula": null,
+        "formula_status": "requires_domain_owner_approval",
+        "inputs": [],
+        "units": "requires_domain_owner_approval",
+        "refresh_cadence": "requires_domain_owner_approval",
+        "rounding_and_time_treatment": "requires_domain_owner_approval",
+        "source_lineage_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MET-000037",
+      "type": "metric",
+      "name": "Forecast accuracy",
+      "description": "Governed Inventory metric awaiting domain-owner approval of formula, units, inputs, and cadence.",
+      "status": "In Design",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-MET-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "formula": null,
+        "formula_status": "requires_domain_owner_approval",
+        "inputs": [],
+        "units": "requires_domain_owner_approval",
+        "refresh_cadence": "requires_domain_owner_approval",
+        "rounding_and_time_treatment": "requires_domain_owner_approval",
+        "source_lineage_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MET-000038",
+      "type": "metric",
+      "name": "Count accuracy",
+      "description": "Governed Inventory metric awaiting domain-owner approval of formula, units, inputs, and cadence.",
+      "status": "In Design",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-MET-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "formula": null,
+        "formula_status": "requires_domain_owner_approval",
+        "inputs": [],
+        "units": "requires_domain_owner_approval",
+        "refresh_cadence": "requires_domain_owner_approval",
+        "rounding_and_time_treatment": "requires_domain_owner_approval",
+        "source_lineage_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MET-000039",
+      "type": "metric",
+      "name": "Fill rate",
+      "description": "Governed Inventory metric awaiting domain-owner approval of formula, units, inputs, and cadence.",
+      "status": "In Design",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-MET-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "formula": null,
+        "formula_status": "requires_domain_owner_approval",
+        "inputs": [],
+        "units": "requires_domain_owner_approval",
+        "refresh_cadence": "requires_domain_owner_approval",
+        "rounding_and_time_treatment": "requires_domain_owner_approval",
+        "source_lineage_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MET-000040",
+      "type": "metric",
+      "name": "Excess/obsolete value",
+      "description": "Governed Inventory metric awaiting domain-owner approval of formula, units, inputs, and cadence.",
+      "status": "In Design",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-MET-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "formula": null,
+        "formula_status": "requires_domain_owner_approval",
+        "inputs": [],
+        "units": "requires_domain_owner_approval",
+        "refresh_cadence": "requires_domain_owner_approval",
+        "rounding_and_time_treatment": "requires_domain_owner_approval",
+        "source_lineage_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MET-000041",
+      "type": "metric",
+      "name": "Supplier lead-time variance",
+      "description": "Governed Inventory metric awaiting domain-owner approval of formula, units, inputs, and cadence.",
+      "status": "In Design",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-MET-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "formula": null,
+        "formula_status": "requires_domain_owner_approval",
+        "inputs": [],
+        "units": "requires_domain_owner_approval",
+        "refresh_cadence": "requires_domain_owner_approval",
+        "rounding_and_time_treatment": "requires_domain_owner_approval",
+        "source_lineage_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MET-000042",
+      "type": "metric",
+      "name": "Working capital in stock",
+      "description": "Governed Inventory metric awaiting domain-owner approval of formula, units, inputs, and cadence.",
+      "status": "In Design",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-MET-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "formula": null,
+        "formula_status": "requires_domain_owner_approval",
+        "inputs": [],
+        "units": "requires_domain_owner_approval",
+        "refresh_cadence": "requires_domain_owner_approval",
+        "rounding_and_time_treatment": "requires_domain_owner_approval",
+        "source_lineage_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MET-000043",
+      "type": "metric",
+      "name": "Pipeline value",
+      "description": "Governed CRM metric awaiting domain-owner approval of formula, units, inputs, and cadence.",
+      "status": "In Design",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-MET-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "formula": null,
+        "formula_status": "requires_domain_owner_approval",
+        "inputs": [],
+        "units": "requires_domain_owner_approval",
+        "refresh_cadence": "requires_domain_owner_approval",
+        "rounding_and_time_treatment": "requires_domain_owner_approval",
+        "source_lineage_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MET-000044",
+      "type": "metric",
+      "name": "Win rate",
+      "description": "Governed CRM metric awaiting domain-owner approval of formula, units, inputs, and cadence.",
+      "status": "In Design",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-MET-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "formula": null,
+        "formula_status": "requires_domain_owner_approval",
+        "inputs": [],
+        "units": "requires_domain_owner_approval",
+        "refresh_cadence": "requires_domain_owner_approval",
+        "rounding_and_time_treatment": "requires_domain_owner_approval",
+        "source_lineage_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MET-000045",
+      "type": "metric",
+      "name": "Sales cycle",
+      "description": "Governed CRM metric awaiting domain-owner approval of formula, units, inputs, and cadence.",
+      "status": "In Design",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-MET-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "formula": null,
+        "formula_status": "requires_domain_owner_approval",
+        "inputs": [],
+        "units": "requires_domain_owner_approval",
+        "refresh_cadence": "requires_domain_owner_approval",
+        "rounding_and_time_treatment": "requires_domain_owner_approval",
+        "source_lineage_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MET-000046",
+      "type": "metric",
+      "name": "Lead response time",
+      "description": "Governed CRM metric awaiting domain-owner approval of formula, units, inputs, and cadence.",
+      "status": "In Design",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-MET-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "formula": null,
+        "formula_status": "requires_domain_owner_approval",
+        "inputs": [],
+        "units": "requires_domain_owner_approval",
+        "refresh_cadence": "requires_domain_owner_approval",
+        "rounding_and_time_treatment": "requires_domain_owner_approval",
+        "source_lineage_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MET-000047",
+      "type": "metric",
+      "name": "Forecast accuracy",
+      "description": "Governed CRM metric awaiting domain-owner approval of formula, units, inputs, and cadence.",
+      "status": "In Design",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-MET-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "formula": null,
+        "formula_status": "requires_domain_owner_approval",
+        "inputs": [],
+        "units": "requires_domain_owner_approval",
+        "refresh_cadence": "requires_domain_owner_approval",
+        "rounding_and_time_treatment": "requires_domain_owner_approval",
+        "source_lineage_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MET-000048",
+      "type": "metric",
+      "name": "Retention",
+      "description": "Governed CRM metric awaiting domain-owner approval of formula, units, inputs, and cadence.",
+      "status": "In Design",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-MET-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "formula": null,
+        "formula_status": "requires_domain_owner_approval",
+        "inputs": [],
+        "units": "requires_domain_owner_approval",
+        "refresh_cadence": "requires_domain_owner_approval",
+        "rounding_and_time_treatment": "requires_domain_owner_approval",
+        "source_lineage_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MET-000049",
+      "type": "metric",
+      "name": "Customer lifetime value",
+      "description": "Governed CRM metric awaiting domain-owner approval of formula, units, inputs, and cadence.",
+      "status": "In Design",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-MET-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "formula": null,
+        "formula_status": "requires_domain_owner_approval",
+        "inputs": [],
+        "units": "requires_domain_owner_approval",
+        "refresh_cadence": "requires_domain_owner_approval",
+        "rounding_and_time_treatment": "requires_domain_owner_approval",
+        "source_lineage_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MET-000050",
+      "type": "metric",
+      "name": "Consent compliance",
+      "description": "Governed CRM metric awaiting domain-owner approval of formula, units, inputs, and cadence.",
+      "status": "In Design",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-MET-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "formula": null,
+        "formula_status": "requires_domain_owner_approval",
+        "inputs": [],
+        "units": "requires_domain_owner_approval",
+        "refresh_cadence": "requires_domain_owner_approval",
+        "rounding_and_time_treatment": "requires_domain_owner_approval",
+        "source_lineage_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MET-000051",
+      "type": "metric",
+      "name": "Metric freshness",
+      "description": "Governed Analytics metric awaiting domain-owner approval of formula, units, inputs, and cadence.",
+      "status": "In Design",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-MET-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "formula": null,
+        "formula_status": "requires_domain_owner_approval",
+        "inputs": [],
+        "units": "requires_domain_owner_approval",
+        "refresh_cadence": "requires_domain_owner_approval",
+        "rounding_and_time_treatment": "requires_domain_owner_approval",
+        "source_lineage_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MET-000052",
+      "type": "metric",
+      "name": "Dashboard decision-action rate",
+      "description": "Governed Analytics metric awaiting domain-owner approval of formula, units, inputs, and cadence.",
+      "status": "In Design",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-MET-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "formula": null,
+        "formula_status": "requires_domain_owner_approval",
+        "inputs": [],
+        "units": "requires_domain_owner_approval",
+        "refresh_cadence": "requires_domain_owner_approval",
+        "rounding_and_time_treatment": "requires_domain_owner_approval",
+        "source_lineage_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MET-000053",
+      "type": "metric",
+      "name": "Drill-down success",
+      "description": "Governed Analytics metric awaiting domain-owner approval of formula, units, inputs, and cadence.",
+      "status": "In Design",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-MET-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "formula": null,
+        "formula_status": "requires_domain_owner_approval",
+        "inputs": [],
+        "units": "requires_domain_owner_approval",
+        "refresh_cadence": "requires_domain_owner_approval",
+        "rounding_and_time_treatment": "requires_domain_owner_approval",
+        "source_lineage_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MET-000054",
+      "type": "metric",
+      "name": "Report delivery success",
+      "description": "Governed Analytics metric awaiting domain-owner approval of formula, units, inputs, and cadence.",
+      "status": "In Design",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-MET-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "formula": null,
+        "formula_status": "requires_domain_owner_approval",
+        "inputs": [],
+        "units": "requires_domain_owner_approval",
+        "refresh_cadence": "requires_domain_owner_approval",
+        "rounding_and_time_treatment": "requires_domain_owner_approval",
+        "source_lineage_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MET-000055",
+      "type": "metric",
+      "name": "Data-quality pass rate",
+      "description": "Governed Analytics metric awaiting domain-owner approval of formula, units, inputs, and cadence.",
+      "status": "In Design",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-MET-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "formula": null,
+        "formula_status": "requires_domain_owner_approval",
+        "inputs": [],
+        "units": "requires_domain_owner_approval",
+        "refresh_cadence": "requires_domain_owner_approval",
+        "rounding_and_time_treatment": "requires_domain_owner_approval",
+        "source_lineage_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MET-000056",
+      "type": "metric",
+      "name": "Export completion time",
+      "description": "Governed Analytics metric awaiting domain-owner approval of formula, units, inputs, and cadence.",
+      "status": "In Design",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-MET-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "formula": null,
+        "formula_status": "requires_domain_owner_approval",
+        "inputs": [],
+        "units": "requires_domain_owner_approval",
+        "refresh_cadence": "requires_domain_owner_approval",
+        "rounding_and_time_treatment": "requires_domain_owner_approval",
+        "source_lineage_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MET-000057",
+      "type": "metric",
+      "name": "Retrieval success",
+      "description": "Governed Documents metric awaiting domain-owner approval of formula, units, inputs, and cadence.",
+      "status": "In Design",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-MET-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "formula": null,
+        "formula_status": "requires_domain_owner_approval",
+        "inputs": [],
+        "units": "requires_domain_owner_approval",
+        "refresh_cadence": "requires_domain_owner_approval",
+        "rounding_and_time_treatment": "requires_domain_owner_approval",
+        "source_lineage_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MET-000058",
+      "type": "metric",
+      "name": "Approval time",
+      "description": "Governed Documents metric awaiting domain-owner approval of formula, units, inputs, and cadence.",
+      "status": "In Design",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-MET-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "formula": null,
+        "formula_status": "requires_domain_owner_approval",
+        "inputs": [],
+        "units": "requires_domain_owner_approval",
+        "refresh_cadence": "requires_domain_owner_approval",
+        "rounding_and_time_treatment": "requires_domain_owner_approval",
+        "source_lineage_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MET-000059",
+      "type": "metric",
+      "name": "Signature completion",
+      "description": "Governed Documents metric awaiting domain-owner approval of formula, units, inputs, and cadence.",
+      "status": "In Design",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-MET-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "formula": null,
+        "formula_status": "requires_domain_owner_approval",
+        "inputs": [],
+        "units": "requires_domain_owner_approval",
+        "refresh_cadence": "requires_domain_owner_approval",
+        "rounding_and_time_treatment": "requires_domain_owner_approval",
+        "source_lineage_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MET-000060",
+      "type": "metric",
+      "name": "Version conflict rate",
+      "description": "Governed Documents metric awaiting domain-owner approval of formula, units, inputs, and cadence.",
+      "status": "In Design",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-MET-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "formula": null,
+        "formula_status": "requires_domain_owner_approval",
+        "inputs": [],
+        "units": "requires_domain_owner_approval",
+        "refresh_cadence": "requires_domain_owner_approval",
+        "rounding_and_time_treatment": "requires_domain_owner_approval",
+        "source_lineage_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MET-000061",
+      "type": "metric",
+      "name": "OCR accuracy",
+      "description": "Governed Documents metric awaiting domain-owner approval of formula, units, inputs, and cadence.",
+      "status": "In Design",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-MET-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "formula": null,
+        "formula_status": "requires_domain_owner_approval",
+        "inputs": [],
+        "units": "requires_domain_owner_approval",
+        "refresh_cadence": "requires_domain_owner_approval",
+        "rounding_and_time_treatment": "requires_domain_owner_approval",
+        "source_lineage_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MET-000062",
+      "type": "metric",
+      "name": "Retention compliance",
+      "description": "Governed Documents metric awaiting domain-owner approval of formula, units, inputs, and cadence.",
+      "status": "In Design",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-MET-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "formula": null,
+        "formula_status": "requires_domain_owner_approval",
+        "inputs": [],
+        "units": "requires_domain_owner_approval",
+        "refresh_cadence": "requires_domain_owner_approval",
+        "rounding_and_time_treatment": "requires_domain_owner_approval",
+        "source_lineage_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MET-000063",
+      "type": "metric",
+      "name": "Storage cost per document",
+      "description": "Governed Documents metric awaiting domain-owner approval of formula, units, inputs, and cadence.",
+      "status": "In Design",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-MET-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "formula": null,
+        "formula_status": "requires_domain_owner_approval",
+        "inputs": [],
+        "units": "requires_domain_owner_approval",
+        "refresh_cadence": "requires_domain_owner_approval",
+        "rounding_and_time_treatment": "requires_domain_owner_approval",
+        "source_lineage_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MET-000064",
+      "type": "metric",
+      "name": "Actionable notification ratio",
+      "description": "Governed Notifications metric awaiting domain-owner approval of formula, units, inputs, and cadence.",
+      "status": "In Design",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-MET-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "formula": null,
+        "formula_status": "requires_domain_owner_approval",
+        "inputs": [],
+        "units": "requires_domain_owner_approval",
+        "refresh_cadence": "requires_domain_owner_approval",
+        "rounding_and_time_treatment": "requires_domain_owner_approval",
+        "source_lineage_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MET-000065",
+      "type": "metric",
+      "name": "Delivery success",
+      "description": "Governed Notifications metric awaiting domain-owner approval of formula, units, inputs, and cadence.",
+      "status": "In Design",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-MET-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "formula": null,
+        "formula_status": "requires_domain_owner_approval",
+        "inputs": [],
+        "units": "requires_domain_owner_approval",
+        "refresh_cadence": "requires_domain_owner_approval",
+        "rounding_and_time_treatment": "requires_domain_owner_approval",
+        "source_lineage_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MET-000066",
+      "type": "metric",
+      "name": "Time to delivery",
+      "description": "Governed Notifications metric awaiting domain-owner approval of formula, units, inputs, and cadence.",
+      "status": "In Design",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-MET-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "formula": null,
+        "formula_status": "requires_domain_owner_approval",
+        "inputs": [],
+        "units": "requires_domain_owner_approval",
+        "refresh_cadence": "requires_domain_owner_approval",
+        "rounding_and_time_treatment": "requires_domain_owner_approval",
+        "source_lineage_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MET-000067",
+      "type": "metric",
+      "name": "Duplicate prevention",
+      "description": "Governed Notifications metric awaiting domain-owner approval of formula, units, inputs, and cadence.",
+      "status": "In Design",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-MET-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "formula": null,
+        "formula_status": "requires_domain_owner_approval",
+        "inputs": [],
+        "units": "requires_domain_owner_approval",
+        "refresh_cadence": "requires_domain_owner_approval",
+        "rounding_and_time_treatment": "requires_domain_owner_approval",
+        "source_lineage_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MET-000068",
+      "type": "metric",
+      "name": "Opt-out rate",
+      "description": "Governed Notifications metric awaiting domain-owner approval of formula, units, inputs, and cadence.",
+      "status": "In Design",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-MET-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "formula": null,
+        "formula_status": "requires_domain_owner_approval",
+        "inputs": [],
+        "units": "requires_domain_owner_approval",
+        "refresh_cadence": "requires_domain_owner_approval",
+        "rounding_and_time_treatment": "requires_domain_owner_approval",
+        "source_lineage_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MET-000069",
+      "type": "metric",
+      "name": "Notification-driven action rate",
+      "description": "Governed Notifications metric awaiting domain-owner approval of formula, units, inputs, and cadence.",
+      "status": "In Design",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-MET-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "formula": null,
+        "formula_status": "requires_domain_owner_approval",
+        "inputs": [],
+        "units": "requires_domain_owner_approval",
+        "refresh_cadence": "requires_domain_owner_approval",
+        "rounding_and_time_treatment": "requires_domain_owner_approval",
+        "source_lineage_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MET-000070",
+      "type": "metric",
+      "name": "Terminal failure age",
+      "description": "Governed Notifications metric awaiting domain-owner approval of formula, units, inputs, and cadence.",
+      "status": "In Design",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-MET-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "formula": null,
+        "formula_status": "requires_domain_owner_approval",
+        "inputs": [],
+        "units": "requires_domain_owner_approval",
+        "refresh_cadence": "requires_domain_owner_approval",
+        "rounding_and_time_treatment": "requires_domain_owner_approval",
+        "source_lineage_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MET-000071",
+      "type": "metric",
+      "name": "Time to hire",
+      "description": "Governed Human Resources metric awaiting domain-owner approval of formula, units, inputs, and cadence.",
+      "status": "In Design",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-MET-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "formula": null,
+        "formula_status": "requires_domain_owner_approval",
+        "inputs": [],
+        "units": "requires_domain_owner_approval",
+        "refresh_cadence": "requires_domain_owner_approval",
+        "rounding_and_time_treatment": "requires_domain_owner_approval",
+        "source_lineage_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MET-000072",
+      "type": "metric",
+      "name": "Onboarding completion",
+      "description": "Governed Human Resources metric awaiting domain-owner approval of formula, units, inputs, and cadence.",
+      "status": "In Design",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-MET-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "formula": null,
+        "formula_status": "requires_domain_owner_approval",
+        "inputs": [],
+        "units": "requires_domain_owner_approval",
+        "refresh_cadence": "requires_domain_owner_approval",
+        "rounding_and_time_treatment": "requires_domain_owner_approval",
+        "source_lineage_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MET-000073",
+      "type": "metric",
+      "name": "Voluntary turnover",
+      "description": "Governed Human Resources metric awaiting domain-owner approval of formula, units, inputs, and cadence.",
+      "status": "In Design",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-MET-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "formula": null,
+        "formula_status": "requires_domain_owner_approval",
+        "inputs": [],
+        "units": "requires_domain_owner_approval",
+        "refresh_cadence": "requires_domain_owner_approval",
+        "rounding_and_time_treatment": "requires_domain_owner_approval",
+        "source_lineage_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MET-000074",
+      "type": "metric",
+      "name": "Absence rate",
+      "description": "Governed Human Resources metric awaiting domain-owner approval of formula, units, inputs, and cadence.",
+      "status": "In Design",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-MET-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "formula": null,
+        "formula_status": "requires_domain_owner_approval",
+        "inputs": [],
+        "units": "requires_domain_owner_approval",
+        "refresh_cadence": "requires_domain_owner_approval",
+        "rounding_and_time_treatment": "requires_domain_owner_approval",
+        "source_lineage_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MET-000075",
+      "type": "metric",
+      "name": "Goal completion",
+      "description": "Governed Human Resources metric awaiting domain-owner approval of formula, units, inputs, and cadence.",
+      "status": "In Design",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-MET-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "formula": null,
+        "formula_status": "requires_domain_owner_approval",
+        "inputs": [],
+        "units": "requires_domain_owner_approval",
+        "refresh_cadence": "requires_domain_owner_approval",
+        "rounding_and_time_treatment": "requires_domain_owner_approval",
+        "source_lineage_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MET-000076",
+      "type": "metric",
+      "name": "Review completion",
+      "description": "Governed Human Resources metric awaiting domain-owner approval of formula, units, inputs, and cadence.",
+      "status": "In Design",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-MET-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "formula": null,
+        "formula_status": "requires_domain_owner_approval",
+        "inputs": [],
+        "units": "requires_domain_owner_approval",
+        "refresh_cadence": "requires_domain_owner_approval",
+        "rounding_and_time_treatment": "requires_domain_owner_approval",
+        "source_lineage_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MET-000077",
+      "type": "metric",
+      "name": "Workforce cost",
+      "description": "Governed Human Resources metric awaiting domain-owner approval of formula, units, inputs, and cadence.",
+      "status": "In Design",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-MET-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "formula": null,
+        "formula_status": "requires_domain_owner_approval",
+        "inputs": [],
+        "units": "requires_domain_owner_approval",
+        "refresh_cadence": "requires_domain_owner_approval",
+        "rounding_and_time_treatment": "requires_domain_owner_approval",
+        "source_lineage_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MET-000078",
+      "type": "metric",
+      "name": "Capacity gap",
+      "description": "Governed Human Resources metric awaiting domain-owner approval of formula, units, inputs, and cadence.",
+      "status": "In Design",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-MET-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "formula": null,
+        "formula_status": "requires_domain_owner_approval",
+        "inputs": [],
+        "units": "requires_domain_owner_approval",
+        "refresh_cadence": "requires_domain_owner_approval",
+        "rounding_and_time_treatment": "requires_domain_owner_approval",
+        "source_lineage_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MET-000079",
+      "type": "metric",
+      "name": "Schedule adherence",
+      "description": "Governed Manufacturing metric awaiting domain-owner approval of formula, units, inputs, and cadence.",
+      "status": "In Design",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-MET-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "formula": null,
+        "formula_status": "requires_domain_owner_approval",
+        "inputs": [],
+        "units": "requires_domain_owner_approval",
+        "refresh_cadence": "requires_domain_owner_approval",
+        "rounding_and_time_treatment": "requires_domain_owner_approval",
+        "source_lineage_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MET-000080",
+      "type": "metric",
+      "name": "Overall equipment effectiveness",
+      "description": "Governed Manufacturing metric awaiting domain-owner approval of formula, units, inputs, and cadence.",
+      "status": "In Design",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-MET-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "formula": null,
+        "formula_status": "requires_domain_owner_approval",
+        "inputs": [],
+        "units": "requires_domain_owner_approval",
+        "refresh_cadence": "requires_domain_owner_approval",
+        "rounding_and_time_treatment": "requires_domain_owner_approval",
+        "source_lineage_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MET-000081",
+      "type": "metric",
+      "name": "First-pass yield",
+      "description": "Governed Manufacturing metric awaiting domain-owner approval of formula, units, inputs, and cadence.",
+      "status": "In Design",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-MET-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "formula": null,
+        "formula_status": "requires_domain_owner_approval",
+        "inputs": [],
+        "units": "requires_domain_owner_approval",
+        "refresh_cadence": "requires_domain_owner_approval",
+        "rounding_and_time_treatment": "requires_domain_owner_approval",
+        "source_lineage_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MET-000082",
+      "type": "metric",
+      "name": "Scrap rate",
+      "description": "Governed Manufacturing metric awaiting domain-owner approval of formula, units, inputs, and cadence.",
+      "status": "In Design",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-MET-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "formula": null,
+        "formula_status": "requires_domain_owner_approval",
+        "inputs": [],
+        "units": "requires_domain_owner_approval",
+        "refresh_cadence": "requires_domain_owner_approval",
+        "rounding_and_time_treatment": "requires_domain_owner_approval",
+        "source_lineage_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MET-000083",
+      "type": "metric",
+      "name": "Cycle time",
+      "description": "Governed Manufacturing metric awaiting domain-owner approval of formula, units, inputs, and cadence.",
+      "status": "In Design",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-MET-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "formula": null,
+        "formula_status": "requires_domain_owner_approval",
+        "inputs": [],
+        "units": "requires_domain_owner_approval",
+        "refresh_cadence": "requires_domain_owner_approval",
+        "rounding_and_time_treatment": "requires_domain_owner_approval",
+        "source_lineage_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MET-000084",
+      "type": "metric",
+      "name": "Capacity utilization",
+      "description": "Governed Manufacturing metric awaiting domain-owner approval of formula, units, inputs, and cadence.",
+      "status": "In Design",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-MET-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "formula": null,
+        "formula_status": "requires_domain_owner_approval",
+        "inputs": [],
+        "units": "requires_domain_owner_approval",
+        "refresh_cadence": "requires_domain_owner_approval",
+        "rounding_and_time_treatment": "requires_domain_owner_approval",
+        "source_lineage_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MET-000085",
+      "type": "metric",
+      "name": "Production cost variance",
+      "description": "Governed Manufacturing metric awaiting domain-owner approval of formula, units, inputs, and cadence.",
+      "status": "In Design",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-MET-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "formula": null,
+        "formula_status": "requires_domain_owner_approval",
+        "inputs": [],
+        "units": "requires_domain_owner_approval",
+        "refresh_cadence": "requires_domain_owner_approval",
+        "rounding_and_time_treatment": "requires_domain_owner_approval",
+        "source_lineage_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "MET-000086",
+      "type": "metric",
+      "name": "On-time completion",
+      "description": "Governed Manufacturing metric awaiting domain-owner approval of formula, units, inputs, and cadence.",
+      "status": "In Design",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-MET-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "formula": null,
+        "formula_status": "requires_domain_owner_approval",
+        "inputs": [],
+        "units": "requires_domain_owner_approval",
+        "refresh_cadence": "requires_domain_owner_approval",
+        "rounding_and_time_treatment": "requires_domain_owner_approval",
+        "source_lineage_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    }
+  ]
+}

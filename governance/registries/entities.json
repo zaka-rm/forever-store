@@ -1,0 +1,3603 @@
+{
+  "registry": "entities",
+  "version": "1.0.0",
+  "generated_at": "2026-07-12T03:39:37Z",
+  "records": [
+    {
+      "id": "ENT-000001",
+      "type": "entity",
+      "name": "DecisionContext",
+      "description": "Authoritative decisioncontext entity owned by Decision Center.",
+      "status": "Specified",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-ENT-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000002",
+      "type": "entity",
+      "name": "DecisionEvidence",
+      "description": "Authoritative decisionevidence entity owned by Decision Center.",
+      "status": "Specified",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-ENT-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000003",
+      "type": "entity",
+      "name": "DecisionAlternative",
+      "description": "Authoritative decisionalternative entity owned by Decision Center.",
+      "status": "Specified",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-ENT-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000004",
+      "type": "entity",
+      "name": "DecisionAssignment",
+      "description": "Authoritative decisionassignment entity owned by Decision Center.",
+      "status": "Specified",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-ENT-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000005",
+      "type": "entity",
+      "name": "ApprovalRequest",
+      "description": "Authoritative approvalrequest entity owned by Decision Center.",
+      "status": "Specified",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-ENT-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000006",
+      "type": "entity",
+      "name": "DecisionAction",
+      "description": "Authoritative decisionaction entity owned by Decision Center.",
+      "status": "Specified",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-ENT-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000007",
+      "type": "entity",
+      "name": "DecisionOutcome",
+      "description": "Authoritative decisionoutcome entity owned by Decision Center.",
+      "status": "Specified",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-ENT-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000008",
+      "type": "entity",
+      "name": "DecisionComment",
+      "description": "Authoritative decisioncomment entity owned by Decision Center.",
+      "status": "Specified",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-ENT-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000009",
+      "type": "entity",
+      "name": "MemoryRecord",
+      "description": "Authoritative memoryrecord entity owned by Business Memory.",
+      "status": "Specified",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-ENT-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000010",
+      "type": "entity",
+      "name": "ContextSnapshot",
+      "description": "Authoritative contextsnapshot entity owned by Business Memory.",
+      "status": "Specified",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-ENT-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000011",
+      "type": "entity",
+      "name": "MemorySource",
+      "description": "Authoritative memorysource entity owned by Business Memory.",
+      "status": "Specified",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-ENT-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000012",
+      "type": "entity",
+      "name": "OutcomeLesson",
+      "description": "Authoritative outcomelesson entity owned by Business Memory.",
+      "status": "Specified",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-ENT-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000013",
+      "type": "entity",
+      "name": "MemoryTag",
+      "description": "Authoritative memorytag entity owned by Business Memory.",
+      "status": "Specified",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-ENT-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000014",
+      "type": "entity",
+      "name": "EmbeddingReference",
+      "description": "Authoritative embeddingreference entity owned by Business Memory.",
+      "status": "Specified",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-ENT-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000015",
+      "type": "entity",
+      "name": "RetentionDisposition",
+      "description": "Authoritative retentiondisposition entity owned by Business Memory.",
+      "status": "Specified",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-ENT-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000016",
+      "type": "entity",
+      "name": "MemoryAccessEvent",
+      "description": "Authoritative memoryaccessevent entity owned by Business Memory.",
+      "status": "Specified",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-ENT-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000017",
+      "type": "entity",
+      "name": "ModelProvider",
+      "description": "Authoritative modelprovider entity owned by AI Engine.",
+      "status": "Specified",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-ENT-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000018",
+      "type": "entity",
+      "name": "ModelRoute",
+      "description": "Authoritative modelroute entity owned by AI Engine.",
+      "status": "Specified",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-ENT-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000019",
+      "type": "entity",
+      "name": "PromptTemplate",
+      "description": "Authoritative prompttemplate entity owned by AI Engine.",
+      "status": "Specified",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-ENT-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000020",
+      "type": "entity",
+      "name": "PromptVersion",
+      "description": "Authoritative promptversion entity owned by AI Engine.",
+      "status": "Specified",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-ENT-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000021",
+      "type": "entity",
+      "name": "AIRequest",
+      "description": "Authoritative airequest entity owned by AI Engine.",
+      "status": "Specified",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-ENT-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000022",
+      "type": "entity",
+      "name": "AIResponse",
+      "description": "Authoritative airesponse entity owned by AI Engine.",
+      "status": "Specified",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-ENT-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000023",
+      "type": "entity",
+      "name": "EvaluationRun",
+      "description": "Authoritative evaluationrun entity owned by AI Engine.",
+      "status": "Specified",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-ENT-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000024",
+      "type": "entity",
+      "name": "FeedbackRecord",
+      "description": "Authoritative feedbackrecord entity owned by AI Engine.",
+      "status": "Specified",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-ENT-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000025",
+      "type": "entity",
+      "name": "SafetyIncident",
+      "description": "Authoritative safetyincident entity owned by AI Engine.",
+      "status": "Specified",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-ENT-009"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000026",
+      "type": "entity",
+      "name": "CostLedger",
+      "description": "Authoritative costledger entity owned by AI Engine.",
+      "status": "Specified",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-ENT-010"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000027",
+      "type": "entity",
+      "name": "User",
+      "description": "Authoritative user entity owned by Identity, Workspace, Permissions & Audit.",
+      "status": "Specified",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-ENT-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000028",
+      "type": "entity",
+      "name": "Workspace",
+      "description": "Authoritative workspace entity owned by Identity, Workspace, Permissions & Audit.",
+      "status": "Specified",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-ENT-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000029",
+      "type": "entity",
+      "name": "Membership",
+      "description": "Authoritative membership entity owned by Identity, Workspace, Permissions & Audit.",
+      "status": "Specified",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-ENT-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000030",
+      "type": "entity",
+      "name": "Invitation",
+      "description": "Authoritative invitation entity owned by Identity, Workspace, Permissions & Audit.",
+      "status": "Specified",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-ENT-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000031",
+      "type": "entity",
+      "name": "Role",
+      "description": "Authoritative role entity owned by Identity, Workspace, Permissions & Audit.",
+      "status": "Specified",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-ENT-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000032",
+      "type": "entity",
+      "name": "Permission",
+      "description": "Authoritative permission entity owned by Identity, Workspace, Permissions & Audit.",
+      "status": "Specified",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-ENT-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000033",
+      "type": "entity",
+      "name": "Session",
+      "description": "Authoritative session entity owned by Identity, Workspace, Permissions & Audit.",
+      "status": "Specified",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-ENT-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000034",
+      "type": "entity",
+      "name": "ApiCredential",
+      "description": "Authoritative apicredential entity owned by Identity, Workspace, Permissions & Audit.",
+      "status": "Specified",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-ENT-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000035",
+      "type": "entity",
+      "name": "PolicyDecision",
+      "description": "Authoritative policydecision entity owned by Identity, Workspace, Permissions & Audit.",
+      "status": "Specified",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-ENT-009"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000036",
+      "type": "entity",
+      "name": "AuditEvent",
+      "description": "Authoritative auditevent entity owned by Identity, Workspace, Permissions & Audit.",
+      "status": "Specified",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-ENT-010"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000037",
+      "type": "entity",
+      "name": "Account",
+      "description": "Authoritative account entity owned by Finance.",
+      "status": "Specified",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-ENT-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000038",
+      "type": "entity",
+      "name": "JournalEntry",
+      "description": "Authoritative journalentry entity owned by Finance.",
+      "status": "Specified",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-ENT-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000039",
+      "type": "entity",
+      "name": "JournalLine",
+      "description": "Authoritative journalline entity owned by Finance.",
+      "status": "Specified",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-ENT-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000040",
+      "type": "entity",
+      "name": "Invoice",
+      "description": "Authoritative invoice entity owned by Finance.",
+      "status": "Specified",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-ENT-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000041",
+      "type": "entity",
+      "name": "Bill",
+      "description": "Authoritative bill entity owned by Finance.",
+      "status": "Specified",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-ENT-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000042",
+      "type": "entity",
+      "name": "Payment",
+      "description": "Authoritative payment entity owned by Finance.",
+      "status": "Specified",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-ENT-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000043",
+      "type": "entity",
+      "name": "BankAccount",
+      "description": "Authoritative bankaccount entity owned by Finance.",
+      "status": "Specified",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-ENT-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000044",
+      "type": "entity",
+      "name": "Reconciliation",
+      "description": "Authoritative reconciliation entity owned by Finance.",
+      "status": "Specified",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-ENT-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000045",
+      "type": "entity",
+      "name": "Budget",
+      "description": "Authoritative budget entity owned by Finance.",
+      "status": "Specified",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-ENT-009"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000046",
+      "type": "entity",
+      "name": "TaxRate",
+      "description": "Authoritative taxrate entity owned by Finance.",
+      "status": "Specified",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-ENT-010"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000047",
+      "type": "entity",
+      "name": "FiscalPeriod",
+      "description": "Authoritative fiscalperiod entity owned by Finance.",
+      "status": "Specified",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-ENT-011"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000048",
+      "type": "entity",
+      "name": "Product",
+      "description": "Authoritative product entity owned by Inventory.",
+      "status": "Specified",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-ENT-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000049",
+      "type": "entity",
+      "name": "Variant",
+      "description": "Authoritative variant entity owned by Inventory.",
+      "status": "Specified",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-ENT-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000050",
+      "type": "entity",
+      "name": "Warehouse",
+      "description": "Authoritative warehouse entity owned by Inventory.",
+      "status": "Specified",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-ENT-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000051",
+      "type": "entity",
+      "name": "Location",
+      "description": "Authoritative location entity owned by Inventory.",
+      "status": "Specified",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-ENT-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000052",
+      "type": "entity",
+      "name": "StockBalance",
+      "description": "Authoritative stockbalance entity owned by Inventory.",
+      "status": "Specified",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-ENT-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000053",
+      "type": "entity",
+      "name": "StockMovement",
+      "description": "Authoritative stockmovement entity owned by Inventory.",
+      "status": "Specified",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-ENT-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000054",
+      "type": "entity",
+      "name": "Reservation",
+      "description": "Authoritative reservation entity owned by Inventory.",
+      "status": "Specified",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-ENT-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000055",
+      "type": "entity",
+      "name": "PurchaseOrder",
+      "description": "Authoritative purchaseorder entity owned by Inventory.",
+      "status": "Specified",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-ENT-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000056",
+      "type": "entity",
+      "name": "GoodsReceipt",
+      "description": "Authoritative goodsreceipt entity owned by Inventory.",
+      "status": "Specified",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-ENT-009"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000057",
+      "type": "entity",
+      "name": "Supplier",
+      "description": "Authoritative supplier entity owned by Inventory.",
+      "status": "Specified",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-ENT-010"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000058",
+      "type": "entity",
+      "name": "TransferOrder",
+      "description": "Authoritative transferorder entity owned by Inventory.",
+      "status": "Specified",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-ENT-011"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000059",
+      "type": "entity",
+      "name": "InventoryCount",
+      "description": "Authoritative inventorycount entity owned by Inventory.",
+      "status": "Specified",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-ENT-012"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000060",
+      "type": "entity",
+      "name": "Contact",
+      "description": "Authoritative contact entity owned by CRM.",
+      "status": "Specified",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-ENT-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000061",
+      "type": "entity",
+      "name": "Organization",
+      "description": "Authoritative organization entity owned by CRM.",
+      "status": "Specified",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-ENT-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000062",
+      "type": "entity",
+      "name": "Lead",
+      "description": "Authoritative lead entity owned by CRM.",
+      "status": "Specified",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-ENT-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000063",
+      "type": "entity",
+      "name": "Opportunity",
+      "description": "Authoritative opportunity entity owned by CRM.",
+      "status": "Specified",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-ENT-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000064",
+      "type": "entity",
+      "name": "Pipeline",
+      "description": "Authoritative pipeline entity owned by CRM.",
+      "status": "Specified",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-ENT-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000065",
+      "type": "entity",
+      "name": "Stage",
+      "description": "Authoritative stage entity owned by CRM.",
+      "status": "Specified",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-ENT-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000066",
+      "type": "entity",
+      "name": "Activity",
+      "description": "Authoritative activity entity owned by CRM.",
+      "status": "Specified",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-ENT-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000067",
+      "type": "entity",
+      "name": "Task",
+      "description": "Authoritative task entity owned by CRM.",
+      "status": "Specified",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-ENT-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000068",
+      "type": "entity",
+      "name": "Segment",
+      "description": "Authoritative segment entity owned by CRM.",
+      "status": "Specified",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-ENT-009"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000069",
+      "type": "entity",
+      "name": "Campaign",
+      "description": "Authoritative campaign entity owned by CRM.",
+      "status": "Specified",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-ENT-010"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000070",
+      "type": "entity",
+      "name": "ConsentRecord",
+      "description": "Authoritative consentrecord entity owned by CRM.",
+      "status": "Specified",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-ENT-011"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000071",
+      "type": "entity",
+      "name": "CustomerHealth",
+      "description": "Authoritative customerhealth entity owned by CRM.",
+      "status": "Specified",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-ENT-012"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000072",
+      "type": "entity",
+      "name": "MetricDefinition",
+      "description": "Authoritative metricdefinition entity owned by Analytics.",
+      "status": "Specified",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-ENT-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000073",
+      "type": "entity",
+      "name": "MetricVersion",
+      "description": "Authoritative metricversion entity owned by Analytics.",
+      "status": "Specified",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-ENT-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000074",
+      "type": "entity",
+      "name": "Dataset",
+      "description": "Authoritative dataset entity owned by Analytics.",
+      "status": "Specified",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-ENT-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000075",
+      "type": "entity",
+      "name": "Dashboard",
+      "description": "Authoritative dashboard entity owned by Analytics.",
+      "status": "Specified",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-ENT-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000076",
+      "type": "entity",
+      "name": "DashboardWidget",
+      "description": "Authoritative dashboardwidget entity owned by Analytics.",
+      "status": "Specified",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-ENT-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000077",
+      "type": "entity",
+      "name": "SavedView",
+      "description": "Authoritative savedview entity owned by Analytics.",
+      "status": "Specified",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-ENT-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000078",
+      "type": "entity",
+      "name": "ReportDefinition",
+      "description": "Authoritative reportdefinition entity owned by Analytics.",
+      "status": "Specified",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-ENT-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000079",
+      "type": "entity",
+      "name": "ReportRun",
+      "description": "Authoritative reportrun entity owned by Analytics.",
+      "status": "Specified",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-ENT-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000080",
+      "type": "entity",
+      "name": "Annotation",
+      "description": "Authoritative annotation entity owned by Analytics.",
+      "status": "Specified",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-ENT-009"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000081",
+      "type": "entity",
+      "name": "DataQualityResult",
+      "description": "Authoritative dataqualityresult entity owned by Analytics.",
+      "status": "Specified",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-ENT-010"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000082",
+      "type": "entity",
+      "name": "Document",
+      "description": "Authoritative document entity owned by Documents.",
+      "status": "Specified",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-ENT-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000083",
+      "type": "entity",
+      "name": "DocumentVersion",
+      "description": "Authoritative documentversion entity owned by Documents.",
+      "status": "Specified",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-ENT-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000084",
+      "type": "entity",
+      "name": "DocumentTemplate",
+      "description": "Authoritative documenttemplate entity owned by Documents.",
+      "status": "Specified",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-ENT-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000085",
+      "type": "entity",
+      "name": "TemplateVersion",
+      "description": "Authoritative templateversion entity owned by Documents.",
+      "status": "Specified",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-ENT-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000086",
+      "type": "entity",
+      "name": "DocumentLink",
+      "description": "Authoritative documentlink entity owned by Documents.",
+      "status": "Specified",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-ENT-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000087",
+      "type": "entity",
+      "name": "ReviewRequest",
+      "description": "Authoritative reviewrequest entity owned by Documents.",
+      "status": "Specified",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-ENT-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000088",
+      "type": "entity",
+      "name": "SignatureRequest",
+      "description": "Authoritative signaturerequest entity owned by Documents.",
+      "status": "Specified",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-ENT-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000089",
+      "type": "entity",
+      "name": "RetentionPolicy",
+      "description": "Authoritative retentionpolicy entity owned by Documents.",
+      "status": "Specified",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-ENT-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000090",
+      "type": "entity",
+      "name": "LegalHold",
+      "description": "Authoritative legalhold entity owned by Documents.",
+      "status": "Specified",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-ENT-009"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000091",
+      "type": "entity",
+      "name": "ExtractionResult",
+      "description": "Authoritative extractionresult entity owned by Documents.",
+      "status": "Specified",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-ENT-010"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000092",
+      "type": "entity",
+      "name": "Notification",
+      "description": "Authoritative notification entity owned by Notifications.",
+      "status": "Specified",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-ENT-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000093",
+      "type": "entity",
+      "name": "NotificationTemplate",
+      "description": "Authoritative notificationtemplate entity owned by Notifications.",
+      "status": "Specified",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-ENT-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000094",
+      "type": "entity",
+      "name": "TemplateVersion",
+      "description": "Authoritative templateversion entity owned by Notifications.",
+      "status": "Specified",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-ENT-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000095",
+      "type": "entity",
+      "name": "NotificationPreference",
+      "description": "Authoritative notificationpreference entity owned by Notifications.",
+      "status": "Specified",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-ENT-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000096",
+      "type": "entity",
+      "name": "DeliveryAttempt",
+      "description": "Authoritative deliveryattempt entity owned by Notifications.",
+      "status": "Specified",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-ENT-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000097",
+      "type": "entity",
+      "name": "ChannelProvider",
+      "description": "Authoritative channelprovider entity owned by Notifications.",
+      "status": "Specified",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-ENT-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000098",
+      "type": "entity",
+      "name": "DigestBatch",
+      "description": "Authoritative digestbatch entity owned by Notifications.",
+      "status": "Specified",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-ENT-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000099",
+      "type": "entity",
+      "name": "EscalationPolicy",
+      "description": "Authoritative escalationpolicy entity owned by Notifications.",
+      "status": "Specified",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-ENT-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000100",
+      "type": "entity",
+      "name": "SuppressionEntry",
+      "description": "Authoritative suppressionentry entity owned by Notifications.",
+      "status": "Specified",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-ENT-009"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000101",
+      "type": "entity",
+      "name": "Employee",
+      "description": "Authoritative employee entity owned by Human Resources.",
+      "status": "Specified",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-ENT-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000102",
+      "type": "entity",
+      "name": "Employment",
+      "description": "Authoritative employment entity owned by Human Resources.",
+      "status": "Specified",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-ENT-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000103",
+      "type": "entity",
+      "name": "Position",
+      "description": "Authoritative position entity owned by Human Resources.",
+      "status": "Specified",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-ENT-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000104",
+      "type": "entity",
+      "name": "Department",
+      "description": "Authoritative department entity owned by Human Resources.",
+      "status": "Specified",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-ENT-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000105",
+      "type": "entity",
+      "name": "Candidate",
+      "description": "Authoritative candidate entity owned by Human Resources.",
+      "status": "Specified",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-ENT-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000106",
+      "type": "entity",
+      "name": "Application",
+      "description": "Authoritative application entity owned by Human Resources.",
+      "status": "Specified",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-ENT-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000107",
+      "type": "entity",
+      "name": "OnboardingPlan",
+      "description": "Authoritative onboardingplan entity owned by Human Resources.",
+      "status": "Specified",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-ENT-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000108",
+      "type": "entity",
+      "name": "LeaveRequest",
+      "description": "Authoritative leaverequest entity owned by Human Resources.",
+      "status": "Specified",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-ENT-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000109",
+      "type": "entity",
+      "name": "AttendanceRecord",
+      "description": "Authoritative attendancerecord entity owned by Human Resources.",
+      "status": "Specified",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-ENT-009"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000110",
+      "type": "entity",
+      "name": "Goal",
+      "description": "Authoritative goal entity owned by Human Resources.",
+      "status": "Specified",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-ENT-010"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000111",
+      "type": "entity",
+      "name": "Review",
+      "description": "Authoritative review entity owned by Human Resources.",
+      "status": "Specified",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-ENT-011"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000112",
+      "type": "entity",
+      "name": "CompensationChange",
+      "description": "Authoritative compensationchange entity owned by Human Resources.",
+      "status": "Specified",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-ENT-012"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000113",
+      "type": "entity",
+      "name": "BillOfMaterial",
+      "description": "Authoritative billofmaterial entity owned by Manufacturing.",
+      "status": "Specified",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-ENT-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000114",
+      "type": "entity",
+      "name": "BOMVersion",
+      "description": "Authoritative bomversion entity owned by Manufacturing.",
+      "status": "Specified",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-ENT-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000115",
+      "type": "entity",
+      "name": "Routing",
+      "description": "Authoritative routing entity owned by Manufacturing.",
+      "status": "Specified",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-ENT-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000116",
+      "type": "entity",
+      "name": "WorkCenter",
+      "description": "Authoritative workcenter entity owned by Manufacturing.",
+      "status": "Specified",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-ENT-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000117",
+      "type": "entity",
+      "name": "ProductionOrder",
+      "description": "Authoritative productionorder entity owned by Manufacturing.",
+      "status": "Specified",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-ENT-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000118",
+      "type": "entity",
+      "name": "Operation",
+      "description": "Authoritative operation entity owned by Manufacturing.",
+      "status": "Specified",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-ENT-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000119",
+      "type": "entity",
+      "name": "MaterialRequirement",
+      "description": "Authoritative materialrequirement entity owned by Manufacturing.",
+      "status": "Specified",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-ENT-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000120",
+      "type": "entity",
+      "name": "MaterialIssue",
+      "description": "Authoritative materialissue entity owned by Manufacturing.",
+      "status": "Specified",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-ENT-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000121",
+      "type": "entity",
+      "name": "ProductionReceipt",
+      "description": "Authoritative productionreceipt entity owned by Manufacturing.",
+      "status": "Specified",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-ENT-009"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000122",
+      "type": "entity",
+      "name": "QualityInspection",
+      "description": "Authoritative qualityinspection entity owned by Manufacturing.",
+      "status": "Specified",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-ENT-010"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000123",
+      "type": "entity",
+      "name": "Nonconformance",
+      "description": "Authoritative nonconformance entity owned by Manufacturing.",
+      "status": "Specified",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-ENT-011"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "ENT-000124",
+      "type": "entity",
+      "name": "DowntimeEvent",
+      "description": "Authoritative downtimeevent entity owned by Manufacturing.",
+      "status": "Specified",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-ENT-012"
+      ],
+      "tags": [],
+      "attributes": {
+        "tenant_scoped": true,
+        "primary_key": "UUID v7",
+        "versioned": true,
+        "retention_defined": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    }
+  ]
+}

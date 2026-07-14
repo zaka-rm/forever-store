@@ -1,0 +1,169 @@
+{
+  "registry": "risks",
+  "version": "1.0.0",
+  "generated_at": "2026-07-12T03:39:37Z",
+  "records": [
+    {
+      "id": "RISK-000001",
+      "type": "risk",
+      "name": "Knowledge graph drifts from documents or code",
+      "description": "Knowledge graph drifts from documents or code",
+      "status": "Specified",
+      "owner": "TEAM-000001",
+      "version": "1.0.0",
+      "aliases": [
+        "AKG-RISK-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "severity": "High",
+        "mitigation": "Generate views, validate graph, and ingest runtime evidence in CI."
+      },
+      "governance": {
+        "responsible_team": "TEAM-000001",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "RISK-000002",
+      "type": "risk",
+      "name": "Over-governance slows delivery",
+      "description": "Over-governance slows delivery",
+      "status": "Specified",
+      "owner": "TEAM-000001",
+      "version": "1.0.0",
+      "aliases": [
+        "AKG-RISK-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "severity": "High",
+        "mitigation": "Use risk-based gates and one feature-sized Build Pack."
+      },
+      "governance": {
+        "responsible_team": "TEAM-000001",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "RISK-000003",
+      "type": "risk",
+      "name": "Permanent IDs are reused or manually altered",
+      "description": "Permanent IDs are reused or manually altered",
+      "status": "Specified",
+      "owner": "TEAM-000001",
+      "version": "1.0.0",
+      "aliases": [
+        "AKG-RISK-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "severity": "Critical",
+        "mitigation": "Automated uniqueness and tombstone validation."
+      },
+      "governance": {
+        "responsible_team": "TEAM-000001",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "RISK-000004",
+      "type": "risk",
+      "name": "Runtime implementation bypasses approved graph",
+      "description": "Runtime implementation bypasses approved graph",
+      "status": "Specified",
+      "owner": "TEAM-000001",
+      "version": "1.0.0",
+      "aliases": [
+        "AKG-RISK-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "severity": "Critical",
+        "mitigation": "CI requires Build/QA trace IDs for governed changes."
+      },
+      "governance": {
+        "responsible_team": "TEAM-000001",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "RISK-000005",
+      "type": "risk",
+      "name": "Manual relationship gaps produce incomplete impact analysis",
+      "description": "Manual relationship gaps produce incomplete impact analysis",
+      "status": "Specified",
+      "owner": "TEAM-000001",
+      "version": "1.0.0",
+      "aliases": [
+        "AKG-RISK-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "severity": "High",
+        "mitigation": "Completeness rules and ownership review."
+      },
+      "governance": {
+        "responsible_team": "TEAM-000001",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "RISK-000006",
+      "type": "risk",
+      "name": "Two sources of truth emerge",
+      "description": "Two sources of truth emerge",
+      "status": "Specified",
+      "owner": "TEAM-000001",
+      "version": "1.0.0",
+      "aliases": [
+        "AKG-RISK-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "severity": "Critical",
+        "mitigation": "Git JSON remains canonical; databases are projections with checksum/version."
+      },
+      "governance": {
+        "responsible_team": "TEAM-000001",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    }
+  ]
+}

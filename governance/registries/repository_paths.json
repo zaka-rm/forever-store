@@ -1,0 +1,215 @@
+{
+  "registry": "repository_paths",
+  "version": "1.0.0",
+  "generated_at": "2026-07-12T03:39:37Z",
+  "records": [
+    {
+      "id": "PATH-000001",
+      "type": "repository_path",
+      "name": "apps/web",
+      "description": "Planned source path for Next.js Web Application.",
+      "status": "Planned",
+      "owner": "TEAM-000002",
+      "version": "1.0.0",
+      "aliases": [
+        "apps/web"
+      ],
+      "tags": [],
+      "attributes": {
+        "path": "apps/web"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000002",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PATH-000002",
+      "type": "repository_path",
+      "name": "apps/api",
+      "description": "Planned source path for NestJS API.",
+      "status": "Planned",
+      "owner": "TEAM-000002",
+      "version": "1.0.0",
+      "aliases": [
+        "apps/api"
+      ],
+      "tags": [],
+      "attributes": {
+        "path": "apps/api"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000002",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PATH-000003",
+      "type": "repository_path",
+      "name": "apps/worker",
+      "description": "Planned source path for Background Worker.",
+      "status": "Planned",
+      "owner": "TEAM-000002",
+      "version": "1.0.0",
+      "aliases": [
+        "apps/worker"
+      ],
+      "tags": [],
+      "attributes": {
+        "path": "apps/worker"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000002",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PATH-000004",
+      "type": "repository_path",
+      "name": "prisma",
+      "description": "Planned source path for PostgreSQL.",
+      "status": "Planned",
+      "owner": "TEAM-000002",
+      "version": "1.0.0",
+      "aliases": [
+        "prisma"
+      ],
+      "tags": [],
+      "attributes": {
+        "path": "prisma"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000002",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PATH-000005",
+      "type": "repository_path",
+      "name": "libs/platform/queue",
+      "description": "Planned source path for Redis and BullMQ.",
+      "status": "Planned",
+      "owner": "TEAM-000002",
+      "version": "1.0.0",
+      "aliases": [
+        "libs/platform/queue"
+      ],
+      "tags": [],
+      "attributes": {
+        "path": "libs/platform/queue"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000002",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PATH-000006",
+      "type": "repository_path",
+      "name": "libs/platform/storage",
+      "description": "Planned source path for Object Storage.",
+      "status": "Planned",
+      "owner": "TEAM-000002",
+      "version": "1.0.0",
+      "aliases": [
+        "libs/platform/storage"
+      ],
+      "tags": [],
+      "attributes": {
+        "path": "libs/platform/storage"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000002",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PATH-000007",
+      "type": "repository_path",
+      "name": "libs/platform/ai",
+      "description": "Planned source path for AI Model Gateway.",
+      "status": "Planned",
+      "owner": "TEAM-000002",
+      "version": "1.0.0",
+      "aliases": [
+        "libs/platform/ai"
+      ],
+      "tags": [],
+      "attributes": {
+        "path": "libs/platform/ai"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000002",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PATH-000008",
+      "type": "repository_path",
+      "name": "libs/platform/observability",
+      "description": "Planned source path for Observability.",
+      "status": "Planned",
+      "owner": "TEAM-000002",
+      "version": "1.0.0",
+      "aliases": [
+        "libs/platform/observability"
+      ],
+      "tags": [],
+      "attributes": {
+        "path": "libs/platform/observability"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000002",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    }
+  ]
+}

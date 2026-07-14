@@ -1,0 +1,688 @@
+{
+  "registry": "traceability_assessments",
+  "version": "1.0.0",
+  "generated_at": "2026-07-12T03:39:37Z",
+  "records": [
+    {
+      "id": "TRACE-000001",
+      "type": "traceability_assessment",
+      "name": "Decision Center Traceability Assessment",
+      "description": "Coverage and freshness assessment for Decision Center at its current lifecycle maturity.",
+      "status": "Released",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-TRACE-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "capability": "CAP-000001",
+        "stages": {
+          "authority": true,
+          "decision": true,
+          "prd": true,
+          "technical_specification": true,
+          "blueprint": true,
+          "build_pack": false,
+          "qa_pack": false,
+          "tests": false,
+          "repository": false,
+          "production": false
+        },
+        "covered_stages": 5,
+        "total_stages": 10,
+        "coverage_percent": 50,
+        "freshness": "Current",
+        "traceability_gate": "PASS_CURRENT_MATURITY",
+        "missing_stages": [
+          "build_pack",
+          "qa_pack",
+          "tests",
+          "repository",
+          "production"
+        ],
+        "current_maturity_required_stages": [
+          "authority",
+          "decision",
+          "prd",
+          "technical_specification",
+          "blueprint"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "TRACE-000002",
+      "type": "traceability_assessment",
+      "name": "Business Memory Traceability Assessment",
+      "description": "Coverage and freshness assessment for Business Memory at its current lifecycle maturity.",
+      "status": "Released",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-TRACE-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "capability": "CAP-000002",
+        "stages": {
+          "authority": true,
+          "decision": true,
+          "prd": true,
+          "technical_specification": true,
+          "blueprint": true,
+          "build_pack": false,
+          "qa_pack": false,
+          "tests": false,
+          "repository": false,
+          "production": false
+        },
+        "covered_stages": 5,
+        "total_stages": 10,
+        "coverage_percent": 50,
+        "freshness": "Current",
+        "traceability_gate": "PASS_CURRENT_MATURITY",
+        "missing_stages": [
+          "build_pack",
+          "qa_pack",
+          "tests",
+          "repository",
+          "production"
+        ],
+        "current_maturity_required_stages": [
+          "authority",
+          "decision",
+          "prd",
+          "technical_specification",
+          "blueprint"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "TRACE-000003",
+      "type": "traceability_assessment",
+      "name": "AI Engine Traceability Assessment",
+      "description": "Coverage and freshness assessment for AI Engine at its current lifecycle maturity.",
+      "status": "Released",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-TRACE-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "capability": "CAP-000003",
+        "stages": {
+          "authority": true,
+          "decision": true,
+          "prd": true,
+          "technical_specification": true,
+          "blueprint": true,
+          "build_pack": false,
+          "qa_pack": false,
+          "tests": false,
+          "repository": false,
+          "production": false
+        },
+        "covered_stages": 5,
+        "total_stages": 10,
+        "coverage_percent": 50,
+        "freshness": "Current",
+        "traceability_gate": "PASS_CURRENT_MATURITY",
+        "missing_stages": [
+          "build_pack",
+          "qa_pack",
+          "tests",
+          "repository",
+          "production"
+        ],
+        "current_maturity_required_stages": [
+          "authority",
+          "decision",
+          "prd",
+          "technical_specification",
+          "blueprint"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "TRACE-000004",
+      "type": "traceability_assessment",
+      "name": "Identity, Workspace, Permissions & Audit Traceability Assessment",
+      "description": "Coverage and freshness assessment for Identity, Workspace, Permissions & Audit at its current lifecycle maturity.",
+      "status": "Released",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-TRACE-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "capability": "CAP-000004",
+        "stages": {
+          "authority": true,
+          "decision": true,
+          "prd": true,
+          "technical_specification": true,
+          "blueprint": true,
+          "build_pack": true,
+          "qa_pack": true,
+          "tests": true,
+          "repository": false,
+          "production": false
+        },
+        "covered_stages": 8,
+        "total_stages": 10,
+        "coverage_percent": 80,
+        "freshness": "Current",
+        "traceability_gate": "PASS_CURRENT_MATURITY",
+        "missing_stages": [
+          "repository",
+          "production"
+        ],
+        "current_maturity_required_stages": [
+          "authority",
+          "decision",
+          "prd",
+          "technical_specification",
+          "blueprint"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "TRACE-000005",
+      "type": "traceability_assessment",
+      "name": "Finance Traceability Assessment",
+      "description": "Coverage and freshness assessment for Finance at its current lifecycle maturity.",
+      "status": "Released",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-TRACE-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "capability": "CAP-000005",
+        "stages": {
+          "authority": true,
+          "decision": true,
+          "prd": true,
+          "technical_specification": true,
+          "blueprint": true,
+          "build_pack": false,
+          "qa_pack": false,
+          "tests": false,
+          "repository": false,
+          "production": false
+        },
+        "covered_stages": 5,
+        "total_stages": 10,
+        "coverage_percent": 50,
+        "freshness": "Current",
+        "traceability_gate": "PASS_CURRENT_MATURITY",
+        "missing_stages": [
+          "build_pack",
+          "qa_pack",
+          "tests",
+          "repository",
+          "production"
+        ],
+        "current_maturity_required_stages": [
+          "authority",
+          "decision",
+          "prd",
+          "technical_specification",
+          "blueprint"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "TRACE-000006",
+      "type": "traceability_assessment",
+      "name": "Inventory Traceability Assessment",
+      "description": "Coverage and freshness assessment for Inventory at its current lifecycle maturity.",
+      "status": "Released",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-TRACE-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "capability": "CAP-000006",
+        "stages": {
+          "authority": true,
+          "decision": true,
+          "prd": true,
+          "technical_specification": true,
+          "blueprint": true,
+          "build_pack": false,
+          "qa_pack": false,
+          "tests": false,
+          "repository": false,
+          "production": false
+        },
+        "covered_stages": 5,
+        "total_stages": 10,
+        "coverage_percent": 50,
+        "freshness": "Current",
+        "traceability_gate": "PASS_CURRENT_MATURITY",
+        "missing_stages": [
+          "build_pack",
+          "qa_pack",
+          "tests",
+          "repository",
+          "production"
+        ],
+        "current_maturity_required_stages": [
+          "authority",
+          "decision",
+          "prd",
+          "technical_specification",
+          "blueprint"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "TRACE-000007",
+      "type": "traceability_assessment",
+      "name": "CRM Traceability Assessment",
+      "description": "Coverage and freshness assessment for CRM at its current lifecycle maturity.",
+      "status": "Released",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-TRACE-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "capability": "CAP-000007",
+        "stages": {
+          "authority": true,
+          "decision": true,
+          "prd": true,
+          "technical_specification": true,
+          "blueprint": true,
+          "build_pack": false,
+          "qa_pack": false,
+          "tests": false,
+          "repository": false,
+          "production": false
+        },
+        "covered_stages": 5,
+        "total_stages": 10,
+        "coverage_percent": 50,
+        "freshness": "Current",
+        "traceability_gate": "PASS_CURRENT_MATURITY",
+        "missing_stages": [
+          "build_pack",
+          "qa_pack",
+          "tests",
+          "repository",
+          "production"
+        ],
+        "current_maturity_required_stages": [
+          "authority",
+          "decision",
+          "prd",
+          "technical_specification",
+          "blueprint"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "TRACE-000008",
+      "type": "traceability_assessment",
+      "name": "Analytics Traceability Assessment",
+      "description": "Coverage and freshness assessment for Analytics at its current lifecycle maturity.",
+      "status": "Released",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-TRACE-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "capability": "CAP-000008",
+        "stages": {
+          "authority": true,
+          "decision": true,
+          "prd": true,
+          "technical_specification": true,
+          "blueprint": true,
+          "build_pack": false,
+          "qa_pack": false,
+          "tests": false,
+          "repository": false,
+          "production": false
+        },
+        "covered_stages": 5,
+        "total_stages": 10,
+        "coverage_percent": 50,
+        "freshness": "Current",
+        "traceability_gate": "PASS_CURRENT_MATURITY",
+        "missing_stages": [
+          "build_pack",
+          "qa_pack",
+          "tests",
+          "repository",
+          "production"
+        ],
+        "current_maturity_required_stages": [
+          "authority",
+          "decision",
+          "prd",
+          "technical_specification",
+          "blueprint"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "TRACE-000009",
+      "type": "traceability_assessment",
+      "name": "Documents Traceability Assessment",
+      "description": "Coverage and freshness assessment for Documents at its current lifecycle maturity.",
+      "status": "Released",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-TRACE-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "capability": "CAP-000009",
+        "stages": {
+          "authority": true,
+          "decision": true,
+          "prd": true,
+          "technical_specification": true,
+          "blueprint": true,
+          "build_pack": false,
+          "qa_pack": false,
+          "tests": false,
+          "repository": false,
+          "production": false
+        },
+        "covered_stages": 5,
+        "total_stages": 10,
+        "coverage_percent": 50,
+        "freshness": "Current",
+        "traceability_gate": "PASS_CURRENT_MATURITY",
+        "missing_stages": [
+          "build_pack",
+          "qa_pack",
+          "tests",
+          "repository",
+          "production"
+        ],
+        "current_maturity_required_stages": [
+          "authority",
+          "decision",
+          "prd",
+          "technical_specification",
+          "blueprint"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "TRACE-000010",
+      "type": "traceability_assessment",
+      "name": "Notifications Traceability Assessment",
+      "description": "Coverage and freshness assessment for Notifications at its current lifecycle maturity.",
+      "status": "Released",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-TRACE-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "capability": "CAP-000010",
+        "stages": {
+          "authority": true,
+          "decision": true,
+          "prd": true,
+          "technical_specification": true,
+          "blueprint": true,
+          "build_pack": false,
+          "qa_pack": false,
+          "tests": false,
+          "repository": false,
+          "production": false
+        },
+        "covered_stages": 5,
+        "total_stages": 10,
+        "coverage_percent": 50,
+        "freshness": "Current",
+        "traceability_gate": "PASS_CURRENT_MATURITY",
+        "missing_stages": [
+          "build_pack",
+          "qa_pack",
+          "tests",
+          "repository",
+          "production"
+        ],
+        "current_maturity_required_stages": [
+          "authority",
+          "decision",
+          "prd",
+          "technical_specification",
+          "blueprint"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "TRACE-000011",
+      "type": "traceability_assessment",
+      "name": "Human Resources Traceability Assessment",
+      "description": "Coverage and freshness assessment for Human Resources at its current lifecycle maturity.",
+      "status": "Released",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-TRACE-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "capability": "CAP-000011",
+        "stages": {
+          "authority": true,
+          "decision": true,
+          "prd": true,
+          "technical_specification": true,
+          "blueprint": true,
+          "build_pack": false,
+          "qa_pack": false,
+          "tests": false,
+          "repository": false,
+          "production": false
+        },
+        "covered_stages": 5,
+        "total_stages": 10,
+        "coverage_percent": 50,
+        "freshness": "Current",
+        "traceability_gate": "PASS_CURRENT_MATURITY",
+        "missing_stages": [
+          "build_pack",
+          "qa_pack",
+          "tests",
+          "repository",
+          "production"
+        ],
+        "current_maturity_required_stages": [
+          "authority",
+          "decision",
+          "prd",
+          "technical_specification",
+          "blueprint"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "TRACE-000012",
+      "type": "traceability_assessment",
+      "name": "Manufacturing Traceability Assessment",
+      "description": "Coverage and freshness assessment for Manufacturing at its current lifecycle maturity.",
+      "status": "Released",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-TRACE-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "capability": "CAP-000012",
+        "stages": {
+          "authority": true,
+          "decision": true,
+          "prd": true,
+          "technical_specification": true,
+          "blueprint": true,
+          "build_pack": false,
+          "qa_pack": false,
+          "tests": false,
+          "repository": false,
+          "production": false
+        },
+        "covered_stages": 5,
+        "total_stages": 10,
+        "coverage_percent": 50,
+        "freshness": "Current",
+        "traceability_gate": "PASS_CURRENT_MATURITY",
+        "missing_stages": [
+          "build_pack",
+          "qa_pack",
+          "tests",
+          "repository",
+          "production"
+        ],
+        "current_maturity_required_stages": [
+          "authority",
+          "decision",
+          "prd",
+          "technical_specification",
+          "blueprint"
+        ]
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    }
+  ]
+}

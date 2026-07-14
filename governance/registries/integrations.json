@@ -1,0 +1,1492 @@
+{
+  "registry": "integrations",
+  "version": "1.0.0",
+  "generated_at": "2026-07-12T03:39:37Z",
+  "records": [
+    {
+      "id": "INT-000001",
+      "type": "integration",
+      "name": "Business Memory",
+      "description": "Provider-neutral integration with Business Memory.",
+      "status": "Planned",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "INT-DC-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "provider_abstraction": true,
+        "reconciliation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "INT-000002",
+      "type": "integration",
+      "name": "AI Engine",
+      "description": "Provider-neutral integration with AI Engine.",
+      "status": "Planned",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "INT-DC-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "provider_abstraction": true,
+        "reconciliation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "INT-000003",
+      "type": "integration",
+      "name": "Notifications",
+      "description": "Provider-neutral integration with Notifications.",
+      "status": "Planned",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "INT-DC-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "provider_abstraction": true,
+        "reconciliation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "INT-000004",
+      "type": "integration",
+      "name": "Analytics",
+      "description": "Provider-neutral integration with Analytics.",
+      "status": "Planned",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "INT-DC-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "provider_abstraction": true,
+        "reconciliation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "INT-000005",
+      "type": "integration",
+      "name": "Every domain module",
+      "description": "Provider-neutral integration with Every domain module.",
+      "status": "Planned",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "INT-DC-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "provider_abstraction": true,
+        "reconciliation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "INT-000006",
+      "type": "integration",
+      "name": "Decision Center",
+      "description": "Provider-neutral integration with Decision Center.",
+      "status": "Planned",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "INT-BM-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "provider_abstraction": true,
+        "reconciliation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "INT-000007",
+      "type": "integration",
+      "name": "Documents",
+      "description": "Provider-neutral integration with Documents.",
+      "status": "Planned",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "INT-BM-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "provider_abstraction": true,
+        "reconciliation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "INT-000008",
+      "type": "integration",
+      "name": "Privacy and retention services",
+      "description": "Provider-neutral integration with Privacy and retention services.",
+      "status": "Planned",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "INT-BM-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "provider_abstraction": true,
+        "reconciliation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "INT-000009",
+      "type": "integration",
+      "name": "OpenAI through abstraction",
+      "description": "Provider-neutral integration with OpenAI through abstraction.",
+      "status": "Planned",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "INT-AI-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "provider_abstraction": true,
+        "reconciliation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "INT-000010",
+      "type": "integration",
+      "name": "Future approved model providers",
+      "description": "Provider-neutral integration with Future approved model providers.",
+      "status": "Planned",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "INT-AI-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "provider_abstraction": true,
+        "reconciliation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "INT-000011",
+      "type": "integration",
+      "name": "pgvector",
+      "description": "Provider-neutral integration with pgvector.",
+      "status": "Planned",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "INT-AI-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "provider_abstraction": true,
+        "reconciliation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "INT-000012",
+      "type": "integration",
+      "name": "Sentry/OpenTelemetry",
+      "description": "Provider-neutral integration with Sentry/OpenTelemetry.",
+      "status": "Planned",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "INT-AI-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "provider_abstraction": true,
+        "reconciliation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "INT-000013",
+      "type": "integration",
+      "name": "Supabase Auth behind interface",
+      "description": "Provider-neutral integration with Supabase Auth behind interface.",
+      "status": "Planned",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "INT-IAM-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "provider_abstraction": true,
+        "reconciliation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "INT-000014",
+      "type": "integration",
+      "name": "OIDC/SAML future providers",
+      "description": "Provider-neutral integration with OIDC/SAML future providers.",
+      "status": "Planned",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "INT-IAM-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "provider_abstraction": true,
+        "reconciliation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "INT-000015",
+      "type": "integration",
+      "name": "PostgreSQL RLS",
+      "description": "Provider-neutral integration with PostgreSQL RLS.",
+      "status": "Planned",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "INT-IAM-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "provider_abstraction": true,
+        "reconciliation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "INT-000016",
+      "type": "integration",
+      "name": "Redis session/cache",
+      "description": "Provider-neutral integration with Redis session/cache.",
+      "status": "Planned",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "INT-IAM-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "provider_abstraction": true,
+        "reconciliation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "INT-000017",
+      "type": "integration",
+      "name": "All modules",
+      "description": "Provider-neutral integration with All modules.",
+      "status": "Planned",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "INT-IAM-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "provider_abstraction": true,
+        "reconciliation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "INT-000018",
+      "type": "integration",
+      "name": "Bank feeds",
+      "description": "Provider-neutral integration with Bank feeds.",
+      "status": "Planned",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "INT-FIN-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "provider_abstraction": true,
+        "reconciliation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "INT-000019",
+      "type": "integration",
+      "name": "Payment providers",
+      "description": "Provider-neutral integration with Payment providers.",
+      "status": "Planned",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "INT-FIN-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "provider_abstraction": true,
+        "reconciliation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "INT-000020",
+      "type": "integration",
+      "name": "Tax services",
+      "description": "Provider-neutral integration with Tax services.",
+      "status": "Planned",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "INT-FIN-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "provider_abstraction": true,
+        "reconciliation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "INT-000021",
+      "type": "integration",
+      "name": "QuickBooks/Xero adapters",
+      "description": "Provider-neutral integration with QuickBooks/Xero adapters.",
+      "status": "Planned",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "INT-FIN-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "provider_abstraction": true,
+        "reconciliation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "INT-000022",
+      "type": "integration",
+      "name": "Inventory",
+      "description": "Provider-neutral integration with Inventory.",
+      "status": "Planned",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "INT-FIN-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "provider_abstraction": true,
+        "reconciliation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "INT-000023",
+      "type": "integration",
+      "name": "CRM",
+      "description": "Provider-neutral integration with CRM.",
+      "status": "Planned",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "INT-FIN-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "provider_abstraction": true,
+        "reconciliation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "INT-000024",
+      "type": "integration",
+      "name": "HR",
+      "description": "Provider-neutral integration with HR.",
+      "status": "Planned",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "INT-FIN-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "provider_abstraction": true,
+        "reconciliation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "INT-000025",
+      "type": "integration",
+      "name": "Barcode devices",
+      "description": "Provider-neutral integration with Barcode devices.",
+      "status": "Planned",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INT-INV-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "provider_abstraction": true,
+        "reconciliation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "INT-000026",
+      "type": "integration",
+      "name": "E-commerce",
+      "description": "Provider-neutral integration with E-commerce.",
+      "status": "Planned",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INT-INV-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "provider_abstraction": true,
+        "reconciliation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "INT-000027",
+      "type": "integration",
+      "name": "Shipping",
+      "description": "Provider-neutral integration with Shipping.",
+      "status": "Planned",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INT-INV-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "provider_abstraction": true,
+        "reconciliation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "INT-000028",
+      "type": "integration",
+      "name": "Suppliers",
+      "description": "Provider-neutral integration with Suppliers.",
+      "status": "Planned",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INT-INV-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "provider_abstraction": true,
+        "reconciliation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "INT-000029",
+      "type": "integration",
+      "name": "Finance",
+      "description": "Provider-neutral integration with Finance.",
+      "status": "Planned",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INT-INV-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "provider_abstraction": true,
+        "reconciliation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "INT-000030",
+      "type": "integration",
+      "name": "Manufacturing",
+      "description": "Provider-neutral integration with Manufacturing.",
+      "status": "Planned",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INT-INV-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "provider_abstraction": true,
+        "reconciliation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "INT-000031",
+      "type": "integration",
+      "name": "Email",
+      "description": "Provider-neutral integration with Email.",
+      "status": "Planned",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "INT-CRM-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "provider_abstraction": true,
+        "reconciliation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "INT-000032",
+      "type": "integration",
+      "name": "Calendar",
+      "description": "Provider-neutral integration with Calendar.",
+      "status": "Planned",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "INT-CRM-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "provider_abstraction": true,
+        "reconciliation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "INT-000033",
+      "type": "integration",
+      "name": "Telephony",
+      "description": "Provider-neutral integration with Telephony.",
+      "status": "Planned",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "INT-CRM-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "provider_abstraction": true,
+        "reconciliation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "INT-000034",
+      "type": "integration",
+      "name": "Marketing platforms",
+      "description": "Provider-neutral integration with Marketing platforms.",
+      "status": "Planned",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "INT-CRM-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "provider_abstraction": true,
+        "reconciliation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "INT-000035",
+      "type": "integration",
+      "name": "All ZYVORA modules",
+      "description": "Provider-neutral integration with All ZYVORA modules.",
+      "status": "Planned",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "INT-ANA-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "provider_abstraction": true,
+        "reconciliation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "INT-000036",
+      "type": "integration",
+      "name": "PostgreSQL read models",
+      "description": "Provider-neutral integration with PostgreSQL read models.",
+      "status": "Planned",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "INT-ANA-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "provider_abstraction": true,
+        "reconciliation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "INT-000037",
+      "type": "integration",
+      "name": "Object storage",
+      "description": "Provider-neutral integration with Object storage.",
+      "status": "Planned",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "INT-ANA-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "provider_abstraction": true,
+        "reconciliation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "INT-000038",
+      "type": "integration",
+      "name": "Notification service",
+      "description": "Provider-neutral integration with Notification service.",
+      "status": "Planned",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "INT-ANA-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "provider_abstraction": true,
+        "reconciliation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "INT-000039",
+      "type": "integration",
+      "name": "Future BI connectors",
+      "description": "Provider-neutral integration with Future BI connectors.",
+      "status": "Planned",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "INT-ANA-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "provider_abstraction": true,
+        "reconciliation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "INT-000040",
+      "type": "integration",
+      "name": "Supabase/S3-compatible storage",
+      "description": "Provider-neutral integration with Supabase/S3-compatible storage.",
+      "status": "Planned",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "INT-DOC-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "provider_abstraction": true,
+        "reconciliation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "INT-000041",
+      "type": "integration",
+      "name": "PDF generation",
+      "description": "Provider-neutral integration with PDF generation.",
+      "status": "Planned",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "INT-DOC-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "provider_abstraction": true,
+        "reconciliation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "INT-000042",
+      "type": "integration",
+      "name": "Office formats",
+      "description": "Provider-neutral integration with Office formats.",
+      "status": "Planned",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "INT-DOC-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "provider_abstraction": true,
+        "reconciliation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "INT-000043",
+      "type": "integration",
+      "name": "Signature providers",
+      "description": "Provider-neutral integration with Signature providers.",
+      "status": "Planned",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "INT-DOC-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "provider_abstraction": true,
+        "reconciliation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "INT-000044",
+      "type": "integration",
+      "name": "OCR providers",
+      "description": "Provider-neutral integration with OCR providers.",
+      "status": "Planned",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "INT-DOC-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "provider_abstraction": true,
+        "reconciliation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "INT-000045",
+      "type": "integration",
+      "name": "Email providers",
+      "description": "Provider-neutral integration with Email providers.",
+      "status": "Planned",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "INT-NOT-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "provider_abstraction": true,
+        "reconciliation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "INT-000046",
+      "type": "integration",
+      "name": "SMS providers",
+      "description": "Provider-neutral integration with SMS providers.",
+      "status": "Planned",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "INT-NOT-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "provider_abstraction": true,
+        "reconciliation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "INT-000047",
+      "type": "integration",
+      "name": "WhatsApp providers",
+      "description": "Provider-neutral integration with WhatsApp providers.",
+      "status": "Planned",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "INT-NOT-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "provider_abstraction": true,
+        "reconciliation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "INT-000048",
+      "type": "integration",
+      "name": "Push providers",
+      "description": "Provider-neutral integration with Push providers.",
+      "status": "Planned",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "INT-NOT-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "provider_abstraction": true,
+        "reconciliation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "INT-000049",
+      "type": "integration",
+      "name": "Identity & Access",
+      "description": "Provider-neutral integration with Identity & Access.",
+      "status": "Planned",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "INT-HR-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "provider_abstraction": true,
+        "reconciliation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "INT-000050",
+      "type": "integration",
+      "name": "Finance/payroll",
+      "description": "Provider-neutral integration with Finance/payroll.",
+      "status": "Planned",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "INT-HR-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "provider_abstraction": true,
+        "reconciliation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "INT-000051",
+      "type": "integration",
+      "name": "Documents/signature",
+      "description": "Provider-neutral integration with Documents/signature.",
+      "status": "Planned",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "INT-HR-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "provider_abstraction": true,
+        "reconciliation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "INT-000052",
+      "type": "integration",
+      "name": "Background-check providers",
+      "description": "Provider-neutral integration with Background-check providers.",
+      "status": "Planned",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "INT-HR-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "provider_abstraction": true,
+        "reconciliation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "INT-000053",
+      "type": "integration",
+      "name": "Maintenance systems",
+      "description": "Provider-neutral integration with Maintenance systems.",
+      "status": "Planned",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "INT-MFG-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "provider_abstraction": true,
+        "reconciliation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "INT-000054",
+      "type": "integration",
+      "name": "Quality devices",
+      "description": "Provider-neutral integration with Quality devices.",
+      "status": "Planned",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "INT-MFG-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "provider_abstraction": true,
+        "reconciliation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "INT-000055",
+      "type": "integration",
+      "name": "Barcode/IoT",
+      "description": "Provider-neutral integration with Barcode/IoT.",
+      "status": "Planned",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "INT-MFG-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "provider_abstraction": true,
+        "reconciliation_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    }
+  ]
+}

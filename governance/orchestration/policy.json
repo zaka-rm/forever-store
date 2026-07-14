@@ -1,0 +1,25 @@
+{
+  "version": "3.0.0",
+  "principle": "No coding agent may start from a draft, incomplete, stale, or unapproved implementation contract.",
+  "work_order_states": ["Proposed", "Blocked", "Ready for Agent", "Running", "Evidence Review", "QA", "Accepted", "Rejected", "Cancelled"],
+  "required_start_gates": [
+    "implementation_authorized_build_pack",
+    "paired_qa_pack",
+    "zero_source_blockers",
+    "approved_impact_assessment",
+    "current_traceability",
+    "repository_scope",
+    "engineering_owner",
+    "rollback_plan",
+    "no_open_critical_or_high_exception"
+  ],
+  "agent_boundaries": [
+    "Agent may change only explicitly allowed repository paths.",
+    "Agent must preserve permanent IDs in code, commits, tests, and evidence.",
+    "Agent may not resolve product ambiguity by inventing requirements.",
+    "Agent may not approve its own Build Pack, QA Pack, security review, or release.",
+    "Agent output is implementation evidence, not canonical product authority.",
+    "Agent must stop when a source fingerprint changes or a new blocker appears."
+  ],
+  "required_completion_evidence": ["source_diff", "commit_sha", "test_results", "security_results", "accessibility_results", "performance_results", "migration_evidence", "rollback_evidence", "review_approvals"]
+}

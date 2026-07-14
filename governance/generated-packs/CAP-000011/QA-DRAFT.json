@@ -1,0 +1,1765 @@
+{
+  "generator_version": "2.3.0",
+  "generated_at": "2026-07-12T03:39:43.137Z",
+  "source_capability": {
+    "id": "CAP-000011",
+    "type": "capability",
+    "name": "Human Resources Core Capability",
+    "status": "Specified",
+    "version": "1.0.0",
+    "owner": "TEAM-000017"
+  },
+  "source_fingerprint": "fdcbccb95edeec10cd54174be1aea3b43aebc674f97ad86b3aed13889db32eca",
+  "authority": "DRAFT_NOT_AUTHORIZED",
+  "promotion_gate": "BLOCKED_SOURCE_INCOMPLETE",
+  "blockers": [
+    "MET-000071: metric formula is not approved",
+    "MET-000072: metric formula is not approved",
+    "MET-000073: metric formula is not approved",
+    "MET-000074: metric formula is not approved",
+    "MET-000075: metric formula is not approved",
+    "MET-000076: metric formula is not approved",
+    "MET-000077: metric formula is not approved",
+    "MET-000078: metric formula is not approved",
+    "PROMPT-000045: prompt template and evaluation are not approved",
+    "PROMPT-000046: prompt template and evaluation are not approved",
+    "PROMPT-000047: prompt template and evaluation are not approved",
+    "PROMPT-000048: prompt template and evaluation are not approved",
+    "PROMPT-000049: prompt template and evaluation are not approved",
+    "WF-000079: ordered workflow steps are not approved",
+    "WF-000080: ordered workflow steps are not approved",
+    "WF-000081: ordered workflow steps are not approved",
+    "WF-000082: ordered workflow steps are not approved",
+    "WF-000083: ordered workflow steps are not approved",
+    "WF-000084: ordered workflow steps are not approved",
+    "WF-000085: ordered workflow steps are not approved",
+    "WF-000086: ordered workflow steps are not approved",
+    "UF-000091: UI transitions and recovery states are not approved",
+    "UF-000092: UI transitions and recovery states are not approved",
+    "UF-000093: UI transitions and recovery states are not approved",
+    "UF-000094: UI transitions and recovery states are not approved",
+    "UF-000095: UI transitions and recovery states are not approved",
+    "UF-000096: UI transitions and recovery states are not approved",
+    "UF-000097: UI transitions and recovery states are not approved",
+    "UF-000098: UI transitions and recovery states are not approved",
+    "UF-000099: UI transitions and recovery states are not approved",
+    "EVT-000070: event domain payload is not approved",
+    "EVT-000071: event domain payload is not approved",
+    "EVT-000072: event domain payload is not approved",
+    "EVT-000073: event domain payload is not approved",
+    "EVT-000074: event domain payload is not approved",
+    "EVT-000075: event domain payload is not approved",
+    "EVT-000076: event domain payload is not approved",
+    "API-000081: API request and response schema is not approved",
+    "API-000082: API request and response schema is not approved",
+    "API-000083: API request and response schema is not approved",
+    "API-000084: API request and response schema is not approved",
+    "API-000085: API request and response schema is not approved",
+    "API-000086: API request and response schema is not approved",
+    "API-000087: API request and response schema is not approved",
+    "API-000088: API request and response schema is not approved"
+  ],
+  "completeness": {
+    "source_records": 142,
+    "blocker_count": 45,
+    "traceability_gate": "PASS_CURRENT_MATURITY",
+    "traceability_coverage_percent": 55
+  },
+  "provenance": [
+    {
+      "id": "CAP-000011",
+      "type": "capability",
+      "name": "Human Resources Core Capability",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "MOD-000011",
+      "type": "module",
+      "name": "Human Resources",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "DEC-000041",
+      "type": "decision",
+      "name": "Whom should we hire and when?",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "DEC-000042",
+      "type": "decision",
+      "name": "Is the team adequately staffed?",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "DEC-000043",
+      "type": "decision",
+      "name": "Which employee action requires attention?",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "DEC-000044",
+      "type": "decision",
+      "name": "What is the workforce cost and risk?",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "FEAT-000081",
+      "type": "feature",
+      "name": "Employee records",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "FEAT-000082",
+      "type": "feature",
+      "name": "Organization and positions",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "FEAT-000083",
+      "type": "feature",
+      "name": "Recruitment",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "FEAT-000084",
+      "type": "feature",
+      "name": "Onboarding/offboarding",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "FEAT-000085",
+      "type": "feature",
+      "name": "Leave and attendance",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "FEAT-000086",
+      "type": "feature",
+      "name": "Performance and goals",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "FEAT-000087",
+      "type": "feature",
+      "name": "Compensation records",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "FEAT-000088",
+      "type": "feature",
+      "name": "Workforce planning and compliance",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "BR-000081",
+      "type": "business_rule",
+      "name": "Human Resources Rule 1",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "BR-000082",
+      "type": "business_rule",
+      "name": "Human Resources Rule 2",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "BR-000083",
+      "type": "business_rule",
+      "name": "Human Resources Rule 3",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "BR-000084",
+      "type": "business_rule",
+      "name": "Human Resources Rule 4",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "BR-000085",
+      "type": "business_rule",
+      "name": "Human Resources Rule 5",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "BR-000086",
+      "type": "business_rule",
+      "name": "Human Resources Rule 6",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "BR-000087",
+      "type": "business_rule",
+      "name": "Human Resources Rule 7",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "BR-000088",
+      "type": "business_rule",
+      "name": "Human Resources Rule 8",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "WF-000079",
+      "type": "workflow",
+      "name": "Recruit and hire",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "WF-000080",
+      "type": "workflow",
+      "name": "Onboard employee",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "WF-000081",
+      "type": "workflow",
+      "name": "Request and approve leave",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "WF-000082",
+      "type": "workflow",
+      "name": "Record attendance exception",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "WF-000083",
+      "type": "workflow",
+      "name": "Set and review goals",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "WF-000084",
+      "type": "workflow",
+      "name": "Change position/compensation",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "WF-000085",
+      "type": "workflow",
+      "name": "Offboard and revoke access",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "WF-000086",
+      "type": "workflow",
+      "name": "Plan capacity",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "ENT-000101",
+      "type": "entity",
+      "name": "Employee",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "ENT-000102",
+      "type": "entity",
+      "name": "Employment",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "ENT-000103",
+      "type": "entity",
+      "name": "Position",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "ENT-000104",
+      "type": "entity",
+      "name": "Department",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "ENT-000105",
+      "type": "entity",
+      "name": "Candidate",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "ENT-000106",
+      "type": "entity",
+      "name": "Application",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "ENT-000107",
+      "type": "entity",
+      "name": "OnboardingPlan",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "ENT-000108",
+      "type": "entity",
+      "name": "LeaveRequest",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "ENT-000109",
+      "type": "entity",
+      "name": "AttendanceRecord",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "ENT-000110",
+      "type": "entity",
+      "name": "Goal",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "ENT-000111",
+      "type": "entity",
+      "name": "Review",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "ENT-000112",
+      "type": "entity",
+      "name": "CompensationChange",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "API-000081",
+      "type": "api",
+      "name": "Human Resources Employee records API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "API-000082",
+      "type": "api",
+      "name": "Human Resources Organization and positions API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "API-000083",
+      "type": "api",
+      "name": "Human Resources Recruitment API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "API-000084",
+      "type": "api",
+      "name": "Human Resources Onboarding/offboarding API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "API-000085",
+      "type": "api",
+      "name": "Human Resources Leave and attendance API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "API-000086",
+      "type": "api",
+      "name": "Human Resources Performance and goals API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "API-000087",
+      "type": "api",
+      "name": "Human Resources Compensation records API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "API-000088",
+      "type": "api",
+      "name": "Human Resources Workforce planning and compliance API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "EVT-000070",
+      "type": "event",
+      "name": "CandidateHired",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "EVT-000071",
+      "type": "event",
+      "name": "EmployeeOnboarded",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "EVT-000072",
+      "type": "event",
+      "name": "EmployeeChanged",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "EVT-000073",
+      "type": "event",
+      "name": "LeaveApproved",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "EVT-000074",
+      "type": "event",
+      "name": "PerformanceReviewCompleted",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "EVT-000075",
+      "type": "event",
+      "name": "CompensationApproved",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "EVT-000076",
+      "type": "event",
+      "name": "EmployeeOffboarded",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "PERM-000161",
+      "type": "permission",
+      "name": "Read Employee records",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "PERM-000162",
+      "type": "permission",
+      "name": "Manage Employee records",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "PERM-000163",
+      "type": "permission",
+      "name": "Read Organization and positions",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "PERM-000164",
+      "type": "permission",
+      "name": "Manage Organization and positions",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "PERM-000165",
+      "type": "permission",
+      "name": "Read Recruitment",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "PERM-000166",
+      "type": "permission",
+      "name": "Manage Recruitment",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "PERM-000167",
+      "type": "permission",
+      "name": "Read Onboarding/offboarding",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "PERM-000168",
+      "type": "permission",
+      "name": "Manage Onboarding/offboarding",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "PERM-000169",
+      "type": "permission",
+      "name": "Read Leave and attendance",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "PERM-000170",
+      "type": "permission",
+      "name": "Manage Leave and attendance",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "PERM-000171",
+      "type": "permission",
+      "name": "Read Performance and goals",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "PERM-000172",
+      "type": "permission",
+      "name": "Manage Performance and goals",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "PERM-000173",
+      "type": "permission",
+      "name": "Read Compensation records",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "PERM-000174",
+      "type": "permission",
+      "name": "Manage Compensation records",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "PERM-000175",
+      "type": "permission",
+      "name": "Read Workforce planning and compliance",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "PERM-000176",
+      "type": "permission",
+      "name": "Manage Workforce planning and compliance",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "SCR-000091",
+      "type": "screen",
+      "name": "Human Resources Decision Dashboard",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "SCR-000092",
+      "type": "screen",
+      "name": "Employee records Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "SCR-000093",
+      "type": "screen",
+      "name": "Organization and positions Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "SCR-000094",
+      "type": "screen",
+      "name": "Recruitment Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "SCR-000095",
+      "type": "screen",
+      "name": "Onboarding/offboarding Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "SCR-000096",
+      "type": "screen",
+      "name": "Leave and attendance Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "SCR-000097",
+      "type": "screen",
+      "name": "Performance and goals Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "SCR-000098",
+      "type": "screen",
+      "name": "Compensation records Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "SCR-000099",
+      "type": "screen",
+      "name": "Workforce planning and compliance Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "UF-000091",
+      "type": "ui_flow",
+      "name": "Human Resources UI Flow 1",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "UF-000092",
+      "type": "ui_flow",
+      "name": "Human Resources UI Flow 2",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "UF-000093",
+      "type": "ui_flow",
+      "name": "Human Resources UI Flow 3",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "UF-000094",
+      "type": "ui_flow",
+      "name": "Human Resources UI Flow 4",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "UF-000095",
+      "type": "ui_flow",
+      "name": "Human Resources UI Flow 5",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "UF-000096",
+      "type": "ui_flow",
+      "name": "Human Resources UI Flow 6",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "UF-000097",
+      "type": "ui_flow",
+      "name": "Human Resources UI Flow 7",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "UF-000098",
+      "type": "ui_flow",
+      "name": "Human Resources UI Flow 8",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "UF-000099",
+      "type": "ui_flow",
+      "name": "Human Resources UI Flow 9",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "MET-000071",
+      "type": "metric",
+      "name": "Time to hire",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "MET-000072",
+      "type": "metric",
+      "name": "Onboarding completion",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "MET-000073",
+      "type": "metric",
+      "name": "Voluntary turnover",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "MET-000074",
+      "type": "metric",
+      "name": "Absence rate",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "MET-000075",
+      "type": "metric",
+      "name": "Goal completion",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "MET-000076",
+      "type": "metric",
+      "name": "Review completion",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "MET-000077",
+      "type": "metric",
+      "name": "Workforce cost",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "MET-000078",
+      "type": "metric",
+      "name": "Capacity gap",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "AICAP-000045",
+      "type": "ai_capability",
+      "name": "Human Resources: Candidate matching",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "AICAP-000046",
+      "type": "ai_capability",
+      "name": "Human Resources: Capacity forecast",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "AICAP-000047",
+      "type": "ai_capability",
+      "name": "Human Resources: Turnover risk",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "AICAP-000048",
+      "type": "ai_capability",
+      "name": "Human Resources: Review summarization",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "AICAP-000049",
+      "type": "ai_capability",
+      "name": "Human Resources: Policy question answering",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "PROMPT-000045",
+      "type": "prompt",
+      "name": "Human Resources: Candidate matching Prompt",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000006"
+    },
+    {
+      "id": "PROMPT-000046",
+      "type": "prompt",
+      "name": "Human Resources: Capacity forecast Prompt",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000006"
+    },
+    {
+      "id": "PROMPT-000047",
+      "type": "prompt",
+      "name": "Human Resources: Turnover risk Prompt",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000006"
+    },
+    {
+      "id": "PROMPT-000048",
+      "type": "prompt",
+      "name": "Human Resources: Review summarization Prompt",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000006"
+    },
+    {
+      "id": "PROMPT-000049",
+      "type": "prompt",
+      "name": "Human Resources: Policy question answering Prompt",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000006"
+    },
+    {
+      "id": "AUTO-000057",
+      "type": "automation",
+      "name": "Interview task Automation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "AUTO-000058",
+      "type": "automation",
+      "name": "Onboarding due Automation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "AUTO-000059",
+      "type": "automation",
+      "name": "Leave request Automation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "AUTO-000060",
+      "type": "automation",
+      "name": "Review due Automation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "AUTO-000061",
+      "type": "automation",
+      "name": "Contract/credential expiry Automation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "AUTO-000062",
+      "type": "automation",
+      "name": "Offboarding task Automation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "NOT-000057",
+      "type": "notification",
+      "name": "Interview task",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "NOT-000058",
+      "type": "notification",
+      "name": "Onboarding due",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "NOT-000059",
+      "type": "notification",
+      "name": "Leave request",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "NOT-000060",
+      "type": "notification",
+      "name": "Review due",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "NOT-000061",
+      "type": "notification",
+      "name": "Contract/credential expiry",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "NOT-000062",
+      "type": "notification",
+      "name": "Offboarding task",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "RPT-000058",
+      "type": "report",
+      "name": "Headcount and cost",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "RPT-000059",
+      "type": "report",
+      "name": "Recruitment funnel",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "RPT-000060",
+      "type": "report",
+      "name": "Leave and attendance",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "RPT-000061",
+      "type": "report",
+      "name": "Performance cycle",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "RPT-000062",
+      "type": "report",
+      "name": "Turnover",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "RPT-000063",
+      "type": "report",
+      "name": "Compliance tasks",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "INT-000049",
+      "type": "integration",
+      "name": "Identity & Access",
+      "status": "Planned",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "INT-000050",
+      "type": "integration",
+      "name": "Finance/payroll",
+      "status": "Planned",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "INT-000051",
+      "type": "integration",
+      "name": "Documents/signature",
+      "status": "Planned",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "INT-000032",
+      "type": "integration",
+      "name": "Calendar",
+      "status": "Planned",
+      "version": "1.0.0",
+      "owner": "TEAM-000013"
+    },
+    {
+      "id": "INT-000052",
+      "type": "integration",
+      "name": "Background-check providers",
+      "status": "Planned",
+      "version": "1.0.0",
+      "owner": "TEAM-000017"
+    },
+    {
+      "id": "ART-000011",
+      "type": "artifact",
+      "name": "ZYVORA Human Resources PRD v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000024",
+      "type": "artifact",
+      "name": "ZYVORA Human Resources Technical Specification v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000029",
+      "type": "artifact",
+      "name": "ZYVORA BP-000 Platform Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000030",
+      "type": "artifact",
+      "name": "ZYVORA BP-001 UI Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000031",
+      "type": "artifact",
+      "name": "ZYVORA BP-002 Backend Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000032",
+      "type": "artifact",
+      "name": "ZYVORA BP-003 Database Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000033",
+      "type": "artifact",
+      "name": "ZYVORA BP-004 API Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000034",
+      "type": "artifact",
+      "name": "ZYVORA BP-005 AI Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000035",
+      "type": "artifact",
+      "name": "ZYVORA BP-006 Security Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000036",
+      "type": "artifact",
+      "name": "ZYVORA BP-007 Infrastructure Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    }
+  ],
+  "kind": "draft_qa_pack",
+  "paired_build_fingerprint": "fdcbccb95edeec10cd54174be1aea3b43aebc674f97ad86b3aed13889db32eca",
+  "test_scenarios": [
+    {
+      "id": "RULE-BR-000081",
+      "type": "unit_and_domain",
+      "source": "BR-000081",
+      "scenario": "Verify business rule: HR sensitive fields use explicit field-level permissions.",
+      "expected": "Exact approved rule holds for valid, invalid, boundary, and concurrent cases."
+    },
+    {
+      "id": "RULE-BR-000082",
+      "type": "unit_and_domain",
+      "source": "BR-000082",
+      "scenario": "Verify business rule: Employment and compensation changes require effective dates and approval.",
+      "expected": "Exact approved rule holds for valid, invalid, boundary, and concurrent cases."
+    },
+    {
+      "id": "RULE-BR-000083",
+      "type": "unit_and_domain",
+      "source": "BR-000083",
+      "scenario": "Verify business rule: Leave balances cannot become negative unless policy permits.",
+      "expected": "Exact approved rule holds for valid, invalid, boundary, and concurrent cases."
+    },
+    {
+      "id": "RULE-BR-000084",
+      "type": "unit_and_domain",
+      "source": "BR-000084",
+      "scenario": "Verify business rule: Offboarding triggers access revocation and asset/document tasks.",
+      "expected": "Exact approved rule holds for valid, invalid, boundary, and concurrent cases."
+    },
+    {
+      "id": "RULE-BR-000085",
+      "type": "unit_and_domain",
+      "source": "BR-000085",
+      "scenario": "Verify business rule: Performance records retain author, period, acknowledgements, and versions.",
+      "expected": "Exact approved rule holds for valid, invalid, boundary, and concurrent cases."
+    },
+    {
+      "id": "RULE-BR-000086",
+      "type": "unit_and_domain",
+      "source": "BR-000086",
+      "scenario": "Verify business rule: Attendance corrections require reason and audit.",
+      "expected": "Exact approved rule holds for valid, invalid, boundary, and concurrent cases."
+    },
+    {
+      "id": "RULE-BR-000087",
+      "type": "unit_and_domain",
+      "source": "BR-000087",
+      "scenario": "Verify business rule: Payroll-impacting outputs reconcile to approved employment terms.",
+      "expected": "Exact approved rule holds for valid, invalid, boundary, and concurrent cases."
+    },
+    {
+      "id": "RULE-BR-000088",
+      "type": "unit_and_domain",
+      "source": "BR-000088",
+      "scenario": "Verify business rule: AI employment recommendations require human review and bias evaluation.",
+      "expected": "Exact approved rule holds for valid, invalid, boundary, and concurrent cases."
+    },
+    {
+      "id": "WF-WF-000079",
+      "type": "end_to_end",
+      "source": "WF-000079",
+      "scenario": "Verify happy, alternative, failure, and recovery paths for Recruit and hire",
+      "expected": "Approved workflow outcome, evidence, timing, and recovery requirements are satisfied."
+    },
+    {
+      "id": "WF-WF-000080",
+      "type": "end_to_end",
+      "source": "WF-000080",
+      "scenario": "Verify happy, alternative, failure, and recovery paths for Onboard employee",
+      "expected": "Approved workflow outcome, evidence, timing, and recovery requirements are satisfied."
+    },
+    {
+      "id": "WF-WF-000081",
+      "type": "end_to_end",
+      "source": "WF-000081",
+      "scenario": "Verify happy, alternative, failure, and recovery paths for Request and approve leave",
+      "expected": "Approved workflow outcome, evidence, timing, and recovery requirements are satisfied."
+    },
+    {
+      "id": "WF-WF-000082",
+      "type": "end_to_end",
+      "source": "WF-000082",
+      "scenario": "Verify happy, alternative, failure, and recovery paths for Record attendance exception",
+      "expected": "Approved workflow outcome, evidence, timing, and recovery requirements are satisfied."
+    },
+    {
+      "id": "WF-WF-000083",
+      "type": "end_to_end",
+      "source": "WF-000083",
+      "scenario": "Verify happy, alternative, failure, and recovery paths for Set and review goals",
+      "expected": "Approved workflow outcome, evidence, timing, and recovery requirements are satisfied."
+    },
+    {
+      "id": "WF-WF-000084",
+      "type": "end_to_end",
+      "source": "WF-000084",
+      "scenario": "Verify happy, alternative, failure, and recovery paths for Change position/compensation",
+      "expected": "Approved workflow outcome, evidence, timing, and recovery requirements are satisfied."
+    },
+    {
+      "id": "WF-WF-000085",
+      "type": "end_to_end",
+      "source": "WF-000085",
+      "scenario": "Verify happy, alternative, failure, and recovery paths for Offboard and revoke access",
+      "expected": "Approved workflow outcome, evidence, timing, and recovery requirements are satisfied."
+    },
+    {
+      "id": "WF-WF-000086",
+      "type": "end_to_end",
+      "source": "WF-000086",
+      "scenario": "Verify happy, alternative, failure, and recovery paths for Plan capacity",
+      "expected": "Approved workflow outcome, evidence, timing, and recovery requirements are satisfied."
+    },
+    {
+      "id": "API-API-000081",
+      "type": "contract_and_security",
+      "source": "API-000081",
+      "scenario": "Verify request, response, authorization, idempotency, pagination, validation, and errors for Human Resources Employee records API",
+      "expected": "Approved API contract and security policy are preserved."
+    },
+    {
+      "id": "API-API-000082",
+      "type": "contract_and_security",
+      "source": "API-000082",
+      "scenario": "Verify request, response, authorization, idempotency, pagination, validation, and errors for Human Resources Organization and positions API",
+      "expected": "Approved API contract and security policy are preserved."
+    },
+    {
+      "id": "API-API-000083",
+      "type": "contract_and_security",
+      "source": "API-000083",
+      "scenario": "Verify request, response, authorization, idempotency, pagination, validation, and errors for Human Resources Recruitment API",
+      "expected": "Approved API contract and security policy are preserved."
+    },
+    {
+      "id": "API-API-000084",
+      "type": "contract_and_security",
+      "source": "API-000084",
+      "scenario": "Verify request, response, authorization, idempotency, pagination, validation, and errors for Human Resources Onboarding/offboarding API",
+      "expected": "Approved API contract and security policy are preserved."
+    },
+    {
+      "id": "API-API-000085",
+      "type": "contract_and_security",
+      "source": "API-000085",
+      "scenario": "Verify request, response, authorization, idempotency, pagination, validation, and errors for Human Resources Leave and attendance API",
+      "expected": "Approved API contract and security policy are preserved."
+    },
+    {
+      "id": "API-API-000086",
+      "type": "contract_and_security",
+      "source": "API-000086",
+      "scenario": "Verify request, response, authorization, idempotency, pagination, validation, and errors for Human Resources Performance and goals API",
+      "expected": "Approved API contract and security policy are preserved."
+    },
+    {
+      "id": "API-API-000087",
+      "type": "contract_and_security",
+      "source": "API-000087",
+      "scenario": "Verify request, response, authorization, idempotency, pagination, validation, and errors for Human Resources Compensation records API",
+      "expected": "Approved API contract and security policy are preserved."
+    },
+    {
+      "id": "API-API-000088",
+      "type": "contract_and_security",
+      "source": "API-000088",
+      "scenario": "Verify request, response, authorization, idempotency, pagination, validation, and errors for Human Resources Workforce planning and compliance API",
+      "expected": "Approved API contract and security policy are preserved."
+    },
+    {
+      "id": "EVT-EVT-000070",
+      "type": "integration",
+      "source": "EVT-000070",
+      "scenario": "Verify production, schema compatibility, ordering, duplication, retry, and idempotent consumption for CandidateHired",
+      "expected": "Versioned event meaning and compatibility contract are preserved."
+    },
+    {
+      "id": "EVT-EVT-000071",
+      "type": "integration",
+      "source": "EVT-000071",
+      "scenario": "Verify production, schema compatibility, ordering, duplication, retry, and idempotent consumption for EmployeeOnboarded",
+      "expected": "Versioned event meaning and compatibility contract are preserved."
+    },
+    {
+      "id": "EVT-EVT-000072",
+      "type": "integration",
+      "source": "EVT-000072",
+      "scenario": "Verify production, schema compatibility, ordering, duplication, retry, and idempotent consumption for EmployeeChanged",
+      "expected": "Versioned event meaning and compatibility contract are preserved."
+    },
+    {
+      "id": "EVT-EVT-000073",
+      "type": "integration",
+      "source": "EVT-000073",
+      "scenario": "Verify production, schema compatibility, ordering, duplication, retry, and idempotent consumption for LeaveApproved",
+      "expected": "Versioned event meaning and compatibility contract are preserved."
+    },
+    {
+      "id": "EVT-EVT-000074",
+      "type": "integration",
+      "source": "EVT-000074",
+      "scenario": "Verify production, schema compatibility, ordering, duplication, retry, and idempotent consumption for PerformanceReviewCompleted",
+      "expected": "Versioned event meaning and compatibility contract are preserved."
+    },
+    {
+      "id": "EVT-EVT-000075",
+      "type": "integration",
+      "source": "EVT-000075",
+      "scenario": "Verify production, schema compatibility, ordering, duplication, retry, and idempotent consumption for CompensationApproved",
+      "expected": "Versioned event meaning and compatibility contract are preserved."
+    },
+    {
+      "id": "EVT-EVT-000076",
+      "type": "integration",
+      "source": "EVT-000076",
+      "scenario": "Verify production, schema compatibility, ordering, duplication, retry, and idempotent consumption for EmployeeOffboarded",
+      "expected": "Versioned event meaning and compatibility contract are preserved."
+    },
+    {
+      "id": "PERM-PERM-000161",
+      "type": "security",
+      "source": "PERM-000161",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Read Employee records",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000162",
+      "type": "security",
+      "source": "PERM-000162",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Manage Employee records",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000163",
+      "type": "security",
+      "source": "PERM-000163",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Read Organization and positions",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000164",
+      "type": "security",
+      "source": "PERM-000164",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Manage Organization and positions",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000165",
+      "type": "security",
+      "source": "PERM-000165",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Read Recruitment",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000166",
+      "type": "security",
+      "source": "PERM-000166",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Manage Recruitment",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000167",
+      "type": "security",
+      "source": "PERM-000167",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Read Onboarding/offboarding",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000168",
+      "type": "security",
+      "source": "PERM-000168",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Manage Onboarding/offboarding",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000169",
+      "type": "security",
+      "source": "PERM-000169",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Read Leave and attendance",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000170",
+      "type": "security",
+      "source": "PERM-000170",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Manage Leave and attendance",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000171",
+      "type": "security",
+      "source": "PERM-000171",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Read Performance and goals",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000172",
+      "type": "security",
+      "source": "PERM-000172",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Manage Performance and goals",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000173",
+      "type": "security",
+      "source": "PERM-000173",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Read Compensation records",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000174",
+      "type": "security",
+      "source": "PERM-000174",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Manage Compensation records",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000175",
+      "type": "security",
+      "source": "PERM-000175",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Read Workforce planning and compliance",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000176",
+      "type": "security",
+      "source": "PERM-000176",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Manage Workforce planning and compliance",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "SCR-SCR-000091",
+      "type": "ui_accessibility",
+      "source": "SCR-000091",
+      "scenario": "Verify responsive, keyboard, screen-reader, loading, empty, error, stale, and permission states for Human Resources Decision Dashboard",
+      "expected": "Decision purpose remains clear and WCAG 2.1 AA obligations pass."
+    },
+    {
+      "id": "SCR-SCR-000092",
+      "type": "ui_accessibility",
+      "source": "SCR-000092",
+      "scenario": "Verify responsive, keyboard, screen-reader, loading, empty, error, stale, and permission states for Employee records Workspace",
+      "expected": "Decision purpose remains clear and WCAG 2.1 AA obligations pass."
+    },
+    {
+      "id": "SCR-SCR-000093",
+      "type": "ui_accessibility",
+      "source": "SCR-000093",
+      "scenario": "Verify responsive, keyboard, screen-reader, loading, empty, error, stale, and permission states for Organization and positions Workspace",
+      "expected": "Decision purpose remains clear and WCAG 2.1 AA obligations pass."
+    },
+    {
+      "id": "SCR-SCR-000094",
+      "type": "ui_accessibility",
+      "source": "SCR-000094",
+      "scenario": "Verify responsive, keyboard, screen-reader, loading, empty, error, stale, and permission states for Recruitment Workspace",
+      "expected": "Decision purpose remains clear and WCAG 2.1 AA obligations pass."
+    },
+    {
+      "id": "SCR-SCR-000095",
+      "type": "ui_accessibility",
+      "source": "SCR-000095",
+      "scenario": "Verify responsive, keyboard, screen-reader, loading, empty, error, stale, and permission states for Onboarding/offboarding Workspace",
+      "expected": "Decision purpose remains clear and WCAG 2.1 AA obligations pass."
+    },
+    {
+      "id": "SCR-SCR-000096",
+      "type": "ui_accessibility",
+      "source": "SCR-000096",
+      "scenario": "Verify responsive, keyboard, screen-reader, loading, empty, error, stale, and permission states for Leave and attendance Workspace",
+      "expected": "Decision purpose remains clear and WCAG 2.1 AA obligations pass."
+    },
+    {
+      "id": "SCR-SCR-000097",
+      "type": "ui_accessibility",
+      "source": "SCR-000097",
+      "scenario": "Verify responsive, keyboard, screen-reader, loading, empty, error, stale, and permission states for Performance and goals Workspace",
+      "expected": "Decision purpose remains clear and WCAG 2.1 AA obligations pass."
+    },
+    {
+      "id": "SCR-SCR-000098",
+      "type": "ui_accessibility",
+      "source": "SCR-000098",
+      "scenario": "Verify responsive, keyboard, screen-reader, loading, empty, error, stale, and permission states for Compensation records Workspace",
+      "expected": "Decision purpose remains clear and WCAG 2.1 AA obligations pass."
+    },
+    {
+      "id": "SCR-SCR-000099",
+      "type": "ui_accessibility",
+      "source": "SCR-000099",
+      "scenario": "Verify responsive, keyboard, screen-reader, loading, empty, error, stale, and permission states for Workforce planning and compliance Workspace",
+      "expected": "Decision purpose remains clear and WCAG 2.1 AA obligations pass."
+    }
+  ],
+  "regression_scope": [
+    "CAP-000011",
+    "MOD-000011",
+    "DEC-000041",
+    "DEC-000042",
+    "DEC-000043",
+    "DEC-000044",
+    "FEAT-000081",
+    "FEAT-000082",
+    "FEAT-000083",
+    "FEAT-000084",
+    "FEAT-000085",
+    "FEAT-000086",
+    "FEAT-000087",
+    "FEAT-000088",
+    "BR-000081",
+    "BR-000082",
+    "BR-000083",
+    "BR-000084",
+    "BR-000085",
+    "BR-000086",
+    "BR-000087",
+    "BR-000088",
+    "WF-000079",
+    "WF-000080",
+    "WF-000081",
+    "WF-000082",
+    "WF-000083",
+    "WF-000084",
+    "WF-000085",
+    "WF-000086",
+    "ENT-000101",
+    "ENT-000102",
+    "ENT-000103",
+    "ENT-000104",
+    "ENT-000105",
+    "ENT-000106",
+    "ENT-000107",
+    "ENT-000108",
+    "ENT-000109",
+    "ENT-000110",
+    "ENT-000111",
+    "ENT-000112",
+    "API-000081",
+    "API-000082",
+    "API-000083",
+    "API-000084",
+    "API-000085",
+    "API-000086",
+    "API-000087",
+    "API-000088",
+    "EVT-000070",
+    "EVT-000071",
+    "EVT-000072",
+    "EVT-000073",
+    "EVT-000074",
+    "EVT-000075",
+    "EVT-000076",
+    "PERM-000161",
+    "PERM-000162",
+    "PERM-000163",
+    "PERM-000164",
+    "PERM-000165",
+    "PERM-000166",
+    "PERM-000167",
+    "PERM-000168",
+    "PERM-000169",
+    "PERM-000170",
+    "PERM-000171",
+    "PERM-000172",
+    "PERM-000173",
+    "PERM-000174",
+    "PERM-000175",
+    "PERM-000176",
+    "SCR-000091",
+    "SCR-000092",
+    "SCR-000093",
+    "SCR-000094",
+    "SCR-000095",
+    "SCR-000096",
+    "SCR-000097",
+    "SCR-000098",
+    "SCR-000099",
+    "UF-000091",
+    "UF-000092",
+    "UF-000093",
+    "UF-000094",
+    "UF-000095",
+    "UF-000096",
+    "UF-000097",
+    "UF-000098",
+    "UF-000099",
+    "MET-000071",
+    "MET-000072",
+    "MET-000073",
+    "MET-000074",
+    "MET-000075",
+    "MET-000076",
+    "MET-000077",
+    "MET-000078",
+    "AICAP-000045",
+    "AICAP-000046",
+    "AICAP-000047",
+    "AICAP-000048",
+    "AICAP-000049",
+    "PROMPT-000045",
+    "PROMPT-000046",
+    "PROMPT-000047",
+    "PROMPT-000048",
+    "PROMPT-000049",
+    "AUTO-000057",
+    "AUTO-000058",
+    "AUTO-000059",
+    "AUTO-000060",
+    "AUTO-000061",
+    "AUTO-000062",
+    "NOT-000057",
+    "NOT-000058",
+    "NOT-000059",
+    "NOT-000060",
+    "NOT-000061",
+    "NOT-000062",
+    "RPT-000058",
+    "RPT-000059",
+    "RPT-000060",
+    "RPT-000061",
+    "RPT-000062",
+    "RPT-000063",
+    "INT-000049",
+    "INT-000050",
+    "INT-000051",
+    "INT-000032",
+    "INT-000052",
+    "ART-000011",
+    "ART-000024",
+    "ART-000029",
+    "ART-000030",
+    "ART-000031",
+    "ART-000032",
+    "ART-000033",
+    "ART-000034",
+    "ART-000035",
+    "ART-000036"
+  ],
+  "performance_requirements": [
+    "Validate published performance budgets from the approved Technical Specification.",
+    "Verify no unbounded query, queue, retry, export, or AI workload."
+  ],
+  "security_requirements": [
+    "Tenant isolation",
+    "Authorization deny paths",
+    "Sensitive-data handling",
+    "Audit completeness",
+    "Rate limiting and abuse controls"
+  ],
+  "evidence_required": [
+    "Automated test results",
+    "Accessibility results",
+    "Security results",
+    "Performance results",
+    "Manual exploratory record",
+    "Deployment and rollback rehearsal"
+  ]
+}

@@ -1,0 +1,223 @@
+{
+  "registry": "runtime_components",
+  "version": "1.0.0",
+  "generated_at": "2026-07-12T03:39:37Z",
+  "records": [
+    {
+      "id": "RUN-000001",
+      "type": "runtime_component",
+      "name": "Next.js Web Application",
+      "description": "Next.js 15 / React 19 / TypeScript",
+      "status": "Planned",
+      "owner": "TEAM-000002",
+      "version": "1.0.0",
+      "aliases": [
+        "RUNTIME-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "technology": "Next.js 15 / React 19 / TypeScript",
+        "runtime_evidence_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000002",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "RUN-000002",
+      "type": "runtime_component",
+      "name": "NestJS API",
+      "description": "NestJS modular monolith / TypeScript / OCI container",
+      "status": "Planned",
+      "owner": "TEAM-000002",
+      "version": "1.0.0",
+      "aliases": [
+        "RUNTIME-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "technology": "NestJS modular monolith / TypeScript / OCI container",
+        "runtime_evidence_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000002",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "RUN-000003",
+      "type": "runtime_component",
+      "name": "Background Worker",
+      "description": "NestJS/BullMQ worker",
+      "status": "Planned",
+      "owner": "TEAM-000002",
+      "version": "1.0.0",
+      "aliases": [
+        "RUNTIME-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "technology": "NestJS/BullMQ worker",
+        "runtime_evidence_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000002",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "RUN-000004",
+      "type": "runtime_component",
+      "name": "PostgreSQL",
+      "description": "PostgreSQL 16+ / Prisma / pgvector",
+      "status": "Planned",
+      "owner": "TEAM-000002",
+      "version": "1.0.0",
+      "aliases": [
+        "RUNTIME-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "technology": "PostgreSQL 16+ / Prisma / pgvector",
+        "runtime_evidence_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000002",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "RUN-000005",
+      "type": "runtime_component",
+      "name": "Redis and BullMQ",
+      "description": "Cache, rate limits, queues, schedules",
+      "status": "Planned",
+      "owner": "TEAM-000002",
+      "version": "1.0.0",
+      "aliases": [
+        "RUNTIME-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "technology": "Cache, rate limits, queues, schedules",
+        "runtime_evidence_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000002",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "RUN-000006",
+      "type": "runtime_component",
+      "name": "Object Storage",
+      "description": "Supabase Storage behind object-storage port",
+      "status": "Planned",
+      "owner": "TEAM-000002",
+      "version": "1.0.0",
+      "aliases": [
+        "RUNTIME-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "technology": "Supabase Storage behind object-storage port",
+        "runtime_evidence_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000002",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "RUN-000007",
+      "type": "runtime_component",
+      "name": "AI Model Gateway",
+      "description": "Provider-agnostic model and prompt gateway",
+      "status": "Planned",
+      "owner": "TEAM-000002",
+      "version": "1.0.0",
+      "aliases": [
+        "RUNTIME-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "technology": "Provider-agnostic model and prompt gateway",
+        "runtime_evidence_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000002",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "RUN-000008",
+      "type": "runtime_component",
+      "name": "Observability",
+      "description": "Sentry and OpenTelemetry",
+      "status": "Planned",
+      "owner": "TEAM-000002",
+      "version": "1.0.0",
+      "aliases": [
+        "RUNTIME-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "technology": "Sentry and OpenTelemetry",
+        "runtime_evidence_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000002",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    }
+  ]
+}

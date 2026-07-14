@@ -29,6 +29,8 @@ export interface OrderRow {
   order_ref: string | null
   locale: string | null
   notes: string | null
+  discount_code?: string | null
+  discount_amount?: number
 }
 
 export interface MessageRow {

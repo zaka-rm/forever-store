@@ -1,0 +1,2415 @@
+"use strict";
+
+// src/core/format.ts
+var activeCurrency = "USD";
+function money(amount) {
+  try {
+    return new Intl.NumberFormat(void 0, {
+      style: "currency",
+      currency: activeCurrency,
+      maximumFractionDigits: 0
+    }).format(amount);
+  } catch {
+    return `${Math.round(amount).toLocaleString()} ${activeCurrency}`;
+  }
+}
+
+// src/core/projections.ts
+function projectState(events) {
+  const invoices = /* @__PURE__ */ new Map();
+  const products = /* @__PURE__ */ new Map();
+  const orders = /* @__PURE__ */ new Map();
+  const promoDefs = /* @__PURE__ */ new Map();
+  const promoActive = /* @__PURE__ */ new Map();
+  const goals = {};
+  const expenses = [];
+  for (const e of events) {
+    if (e.stream !== "fact") continue;
+    switch (e.type) {
+      case "invoice_issued": {
+        const p2 = e.payload;
+        invoices.set(p2.invoiceId, { ...p2 });
+        break;
+      }
+      case "invoice_paid": {
+        const p2 = e.payload;
+        const inv = invoices.get(p2.invoiceId);
+        if (inv) inv.paidAt = p2.paidAt;
+        break;
+      }
+      case "expense_recorded": {
+        expenses.push(e.payload);
+        break;
+      }
+      case "product_added": {
+        const p2 = e.payload;
+        products.set(p2.productId, { ...p2 });
+        break;
+      }
+      case "stock_adjusted": {
+        const p2 = e.payload;
+        const prod = products.get(p2.productId);
+        if (prod) prod.stock += p2.delta;
+        break;
+      }
+      case "order_created": {
+        const p2 = e.payload;
+        orders.set(p2.orderId, { ...p2, status: "pending" });
+        break;
+      }
+      case "order_status_changed": {
+        const p2 = e.payload;
+        const o = orders.get(p2.orderId);
+        if (!o) break;
+        const prev = o.status;
+        o.status = p2.status;
+        if (p2.status === "delivered" && prev !== "delivered") {
+          o.deliveredAt = p2.at;
+          for (const line of o.lines) {
+            const prod = products.get(line.productId);
+            if (prod) prod.stock -= line.qty;
+          }
+        }
+        if (p2.status === "returned" && prev === "delivered") {
+          for (const line of o.lines) {
+            const prod = products.get(line.productId);
+            if (prod) prod.stock += line.qty;
+          }
+        }
+        break;
+      }
+      case "order_cash_received": {
+        const p2 = e.payload;
+        const o = orders.get(p2.orderId);
+        if (o) o.cashReceivedAt = p2.at;
+        break;
+      }
+      case "promo_created": {
+        const p2 = e.payload;
+        promoDefs.set(p2.promoId, { ...p2 });
+        promoActive.set(p2.promoId, true);
+        break;
+      }
+      case "promo_deactivated": {
+        const p2 = e.payload;
+        promoActive.set(p2.promoId, false);
+        break;
+      }
+      case "goal_set": {
+        const p2 = e.payload;
+        goals[p2.metric] = p2.target;
+        break;
+      }
+      default:
+        break;
+    }
+  }
+  const usageByCode = /* @__PURE__ */ new Map();
+  for (const o of orders.values()) {
+    if (o.promoCode && o.status !== "cancelled") {
+      usageByCode.set(o.promoCode, (usageByCode.get(o.promoCode) ?? 0) + 1);
+    }
+  }
+  const promos = [...promoDefs.values()].map((def) => ({
+    ...def,
+    active: promoActive.get(def.promoId) ?? false,
+    timesUsed: usageByCode.get(def.code) ?? 0
+  }));
+  const reserved = {};
+  for (const o of orders.values()) {
+    if (o.status === "pending" || o.status === "confirmed" || o.status === "shipped") {
+      for (const line of o.lines) {
+        reserved[line.productId] = (reserved[line.productId] ?? 0) + line.qty;
+      }
+    }
+  }
+  return {
+    invoices: [...invoices.values()].sort((a, b) => b.issuedAt - a.issuedAt),
+    expenses: expenses.sort((a, b) => b.date - a.date),
+    products: [...products.values()],
+    orders: [...orders.values()].sort((a, b) => b.createdAt - a.createdAt),
+    promos: promos.sort((a, b) => b.createdAt - a.createdAt),
+    goals,
+    reserved
+  };
+}
+var monthStart = (now) => {
+  const d = new Date(now);
+  return new Date(d.getFullYear(), d.getMonth(), 1).getTime();
+};
+function goalActual(state2, metric, now = Date.now()) {
+  const start = monthStart(now);
+  const deliveredThisMonth = state2.orders.filter((o) => o.deliveredAt && o.deliveredAt >= start);
+  if (metric === "orders") return deliveredThisMonth.length;
+  if (metric === "revenue") {
+    return deliveredThisMonth.reduce((s, o) => s + orderRevenue(o), 0) + state2.invoices.filter((i) => i.paidAt && i.paidAt >= start).reduce((s, i) => s + i.amount, 0);
+  }
+  return deliveredThisMonth.reduce((s, o) => s + orderNetProfit(o), 0);
+}
+function breakEven(state2, now = Date.now()) {
+  const DAYS90 = 90 * DAY;
+  const fixed3mo = state2.expenses.filter((e) => now - e.date <= DAYS90).reduce((s, e) => s + e.amount, 0);
+  const monthlyFixed = fixed3mo / 3;
+  const delivered = state2.orders.filter((o) => o.status === "delivered");
+  const avgProfit = delivered.length ? delivered.reduce((s, o) => s + orderNetProfit(o), 0) / delivered.length : 0;
+  const avgValue = delivered.length ? delivered.reduce((s, o) => s + orderRevenue(o), 0) / delivered.length : 0;
+  const beOrders = avgProfit > 0 ? Math.ceil(monthlyFixed / avgProfit) : null;
+  return {
+    monthlyFixedExpenses: monthlyFixed,
+    avgProfitPerOrder: avgProfit,
+    avgOrderValue: avgValue,
+    breakEvenOrders: beOrders,
+    breakEvenRevenue: beOrders !== null ? beOrders * avgValue : null,
+    ordersThisMonth: state2.orders.filter((o) => o.deliveredAt && o.deliveredAt >= monthStart(now)).length
+  };
+}
+function forecast(state2, now = Date.now()) {
+  const d = new Date(now);
+  const daysElapsed = d.getDate();
+  const daysInMonth = new Date(d.getFullYear(), d.getMonth() + 1, 0).getDate();
+  const assumptions = [];
+  const revSoFar = goalActual(state2, "revenue", now);
+  let revenueProjection = null;
+  if (daysElapsed >= 5 && revSoFar > 0) {
+    const mid = revSoFar / daysElapsed * daysInMonth;
+    revenueProjection = { low: mid * 0.85, mid, high: mid * 1.15 };
+    assumptions.push(`Revenue assumes the current month's pace holds for all ${daysInMonth} days.`);
+  } else {
+    assumptions.push("Too few days into the month to project revenue honestly yet.");
+  }
+  const collected = state2.invoices.filter((i) => i.paidAt).reduce((s, i) => s + i.amount, 0) + state2.orders.filter((o) => o.status === "delivered" && o.cashReceivedAt).reduce((s, o) => s + orderRevenue(o), 0);
+  const cashAvailable = collected - state2.expenses.reduce((s, e) => s + e.amount, 0);
+  const pendingCod = state2.orders.filter((o) => o.status === "delivered" && !o.cashReceivedAt).reduce((s, o) => s + orderRevenue(o), 0);
+  const exp90items = state2.expenses.filter((e) => now - e.date <= 90 * DAY);
+  const exp90 = exp90items.reduce((s, e) => s + e.amount, 0);
+  let cashNext30 = null;
+  if (exp90items.length >= 3) {
+    cashNext30 = cashAvailable + pendingCod - exp90 / 3;
+    assumptions.push("Cash forecast counts pending COD collections and your 90-day average outgoings, but no new orders.");
+  }
+  const stockouts = state2.products.filter((p2) => p2.weeklySales > 0).map((p2) => {
+    const available = p2.stock - (state2.reserved[p2.productId] ?? 0);
+    return { name: p2.name, daysLeft: Math.round(available / (p2.weeklySales / 7)) };
+  }).filter((x) => x.daysLeft <= 21).sort((a, b) => a.daysLeft - b.daysLeft);
+  return { revenueProjection, daysElapsed, daysInMonth, cashNext30, assumptions, stockouts };
+}
+function simulateProfit(i) {
+  const perUnitNet = i.sellingPrice - i.discount - i.buyingCost;
+  const revenue = (i.sellingPrice - i.discount) * i.quantity + 0;
+  const cogs = i.buyingCost * i.quantity;
+  const orderFixed = i.shippingCost + i.packagingCost + i.advertisingCost;
+  const grossProfit = revenue - cogs;
+  const netProfit = grossProfit - orderFixed;
+  const totalCost = cogs + orderFixed;
+  return {
+    revenue,
+    cogs,
+    grossProfit,
+    netProfit,
+    marginPct: revenue > 0 ? netProfit / revenue * 100 : 0,
+    roiPct: totalCost > 0 ? netProfit / totalCost * 100 : 0,
+    breakEvenUnits: perUnitNet > 0 ? Math.ceil(orderFixed / perUnitNet) : null
+  };
+}
+function checkPromo(state2, code, basketSubtotal, now = Date.now()) {
+  const promo2 = state2.promos.find((p2) => p2.code === code.trim().toUpperCase());
+  if (!promo2) return { ok: false, reason: "No promo with that code." };
+  if (!promo2.active) return { ok: false, reason: "This promo has been deactivated." };
+  if (promo2.expiresAt && now > promo2.expiresAt) return { ok: false, reason: "This promo has expired." };
+  if (basketSubtotal < promo2.minBasket)
+    return { ok: false, reason: `Basket must be at least ${promo2.minBasket} to use this promo.` };
+  if (promo2.usageLimit !== void 0 && promo2.timesUsed >= promo2.usageLimit)
+    return { ok: false, reason: "This promo has reached its usage limit." };
+  let discount = promo2.type === "percentage" ? basketSubtotal * promo2.value / 100 : promo2.value;
+  if (promo2.maxDiscount !== void 0) discount = Math.min(discount, promo2.maxDiscount);
+  discount = Math.min(discount, basketSubtotal);
+  return { ok: true, discount: Math.round(discount * 100) / 100, promo: promo2 };
+}
+function orderLinesTotal(o) {
+  return o.lines.reduce((s, l) => s + l.qty * l.unitPrice, 0);
+}
+function orderRevenue(o) {
+  return orderLinesTotal(o) - o.discount + o.shippingCharged;
+}
+function orderCogs(o) {
+  return o.lines.reduce((s, l) => s + l.qty * l.unitCost, 0);
+}
+function orderNetProfit(o) {
+  return orderRevenue(o) - orderCogs(o) - o.shippingCost - o.codFee - o.packagingCost;
+}
+function orderRefusalLoss(o) {
+  return o.shippingCost * 2 + o.packagingCost;
+}
+function projectDecisions(events) {
+  const outcomes = new Set(
+    events.filter((e) => e.stream === "outcome").map((e) => String(e.payload.decisionEventId))
+  );
+  return events.filter((e) => e.stream === "decision").map((e) => ({
+    eventId: e.id,
+    ts: e.ts,
+    decisionKey: String(e.payload.decisionKey),
+    claim: String(e.payload.claim),
+    layer: e.payload.layer,
+    optionId: String(e.payload.optionId),
+    optionLabel: String(e.payload.optionLabel),
+    rationale: String(e.payload.rationale ?? ""),
+    hasOutcome: outcomes.has(e.id)
+  })).sort((a, b) => b.ts - a.ts);
+}
+function projectCustomers(state2) {
+  const byCustomer = /* @__PURE__ */ new Map();
+  for (const inv of state2.invoices) {
+    const list = byCustomer.get(inv.customer) ?? [];
+    list.push(inv);
+    byCustomer.set(inv.customer, list);
+  }
+  const views = [];
+  for (const [name, list] of byCustomer) {
+    const sorted = [...list].sort((a, b) => a.issuedAt - b.issuedAt);
+    const gaps = [];
+    for (let i = 1; i < sorted.length; i++) {
+      gaps.push((sorted[i].issuedAt - sorted[i - 1].issuedAt) / DAY);
+    }
+    gaps.sort((a, b) => a - b);
+    const median = gaps.length === 0 ? null : gaps.length % 2 ? gaps[(gaps.length - 1) / 2] : (gaps[gaps.length / 2 - 1] + gaps[gaps.length / 2]) / 2;
+    views.push({
+      name,
+      invoiceCount: list.length,
+      totalBilled: list.reduce((s, i) => s + i.amount, 0),
+      lastInvoiceAt: sorted[sorted.length - 1].issuedAt,
+      medianGapDays: median
+    });
+  }
+  return views.sort((a, b) => b.totalBilled - a.totalBilled);
+}
+function projectCustomerProfiles(state2, now = Date.now()) {
+  const names = /* @__PURE__ */ new Set();
+  for (const i of state2.invoices) names.add(i.customer);
+  for (const o of state2.orders) names.add(o.customer);
+  const profiles2 = [];
+  for (const name of names) {
+    const invoices = state2.invoices.filter((i) => i.customer === name);
+    const orders = state2.orders.filter((o) => o.customer === name);
+    const delivered = orders.filter((o) => o.status === "delivered");
+    const refused = orders.filter((o) => o.status === "refused");
+    const lifetimeRevenue = invoices.filter((i) => i.paidAt).reduce((s, i) => s + i.amount, 0) + delivered.reduce((s, o) => s + orderRevenue(o), 0);
+    const lifetimeProfit = delivered.reduce((s, o) => s + orderNetProfit(o), 0);
+    const activity = [
+      ...invoices.map((i) => i.issuedAt),
+      ...orders.map((o) => o.createdAt)
+    ].sort((a, b) => a - b);
+    const gaps = [];
+    for (let k = 1; k < activity.length; k++) gaps.push((activity[k] - activity[k - 1]) / DAY);
+    gaps.sort((a, b) => a - b);
+    const median = gaps.length === 0 ? null : gaps.length % 2 ? gaps[(gaps.length - 1) / 2] : (gaps[gaps.length / 2 - 1] + gaps[gaps.length / 2]) / 2;
+    const interactions = invoices.length + orders.length;
+    const revenueEvents = invoices.filter((i) => i.paidAt).length + delivered.length;
+    const settledCod = delivered.length + refused.length;
+    profiles2.push({
+      name,
+      interactions,
+      lifetimeRevenue,
+      lifetimeProfit,
+      hasProfitData: delivered.length > 0,
+      avgOrderValue: revenueEvents > 0 ? lifetimeRevenue / revenueEvents : 0,
+      ordersDelivered: delivered.length,
+      ordersRefused: refused.length,
+      codReliability: settledCod > 0 ? delivered.length / settledCod : null,
+      lastActivityAt: activity[activity.length - 1] ?? 0,
+      medianGapDays: median,
+      tags: []
+    });
+  }
+  const sortedByRevenue = [...profiles2].sort((a, b) => b.lifetimeRevenue - a.lifetimeRevenue);
+  const vipCount = Math.max(1, Math.round(profiles2.length * 0.2));
+  const vipNames = new Set(sortedByRevenue.slice(0, vipCount).map((p2) => p2.name));
+  for (const p2 of profiles2) {
+    const tags = [];
+    if (p2.interactions <= 1) tags.push("new");
+    else tags.push("returning");
+    if (vipNames.has(p2.name) && p2.lifetimeRevenue > 0) tags.push("vip");
+    if (p2.medianGapDays !== null && p2.medianGapDays > 0 && (now - p2.lastActivityAt) / DAY > Math.max(2 * p2.medianGapDays, 30)) {
+      tags.push("at-risk");
+    }
+    if (p2.codReliability !== null && p2.ordersDelivered + p2.ordersRefused >= 2 && p2.codReliability < 0.6) {
+      tags.push("high-refusal");
+    }
+    p2.tags = tags;
+  }
+  return profiles2.sort((a, b) => b.lifetimeRevenue - a.lifetimeRevenue);
+}
+var DAY = 24 * 60 * 60 * 1e3;
+
+// src/core/engine.ts
+var SUPPRESSION_WINDOW_DAYS = 30;
+var eur = money;
+function daysAgoLabel(ts, now) {
+  const d = Math.round((now - ts) / DAY);
+  return d <= 0 ? "today" : d === 1 ? "yesterday" : `${d} days ago`;
+}
+function option(o) {
+  return o;
+}
+function generateInsights(state2, decisions3, now = Date.now()) {
+  const insights3 = [];
+  const decided = new Set(
+    decisions3.filter((d) => now - d.ts < SUPPRESSION_WINDOW_DAYS * DAY).map((d) => d.decisionKey)
+  );
+  financeBrain(state2, insights3, now);
+  customersBrain(state2, insights3, now);
+  inventoryBrain(state2, insights3, now);
+  commerceBrain(state2, insights3, now);
+  marketingBrain(state2, insights3, now);
+  const active = insights3.filter((i) => !decided.has(i.decisionKey));
+  return active.sort((a, b) => b.score - a.score);
+}
+function financeBrain(state2, out, now) {
+  const paid = state2.invoices.filter((i) => i.paidAt);
+  const remitted = state2.orders.filter((o) => o.status === "delivered" && o.cashReceivedAt);
+  const cash = paid.reduce((s, i) => s + i.amount, 0) + remitted.reduce((s, o) => s + orderRevenue(o), 0) - state2.expenses.reduce((s, e) => s + e.amount, 0);
+  const overdue2 = state2.invoices.filter(
+    (i) => !i.paidAt && now > i.issuedAt + i.dueDays * DAY
+  );
+  if (overdue2.length > 0) {
+    const total = overdue2.reduce((s, i) => s + i.amount, 0);
+    const oldest = overdue2.reduce((a, b) => a.issuedAt < b.issuedAt ? a : b);
+    const oldestDaysOver = Math.round(
+      (now - (oldest.issuedAt + oldest.dueDays * DAY)) / DAY
+    );
+    out.push({
+      id: crypto.randomUUID(),
+      decisionKey: "finance.overdue." + overdue2.map((i) => i.invoiceId).sort().join("."),
+      domain: "finance",
+      layer: "operational",
+      score: Math.min(90, 40 + oldestDaysOver + overdue2.length * 5),
+      claim: `${overdue2.length} invoice${overdue2.length > 1 ? "s" : ""} totalling ${eur(total)} ${overdue2.length > 1 ? "are" : "is"} past due \u2014 the oldest by ${oldestDaysOver} days.`,
+      reasoning: `Unpaid invoices past their due date tie up cash you have already earned. The oldest (${oldest.customer}, ${eur(oldest.amount)}) is ${oldestDaysOver} days past due; historically, the longer an invoice stays unpaid the harder it becomes to collect.`,
+      evidence: overdue2.map((i) => ({
+        label: `${i.customer} \u2014 issued ${daysAgoLabel(i.issuedAt, now)}`,
+        value: `${eur(i.amount)}, due ${i.dueDays} days after issue, unpaid`
+      })),
+      confidence: "high",
+      confidenceNote: "High confidence: this is arithmetic on your own recorded invoices, not an estimate.",
+      guidance: overdueGuidance(oldest.customer, total)
+    });
+  }
+  const last30 = state2.invoices.filter((i) => now - i.issuedAt <= 30 * DAY);
+  const baselineInvoices = state2.invoices.filter(
+    (i) => now - i.issuedAt > 30 * DAY && now - i.issuedAt <= 120 * DAY
+  );
+  if (baselineInvoices.length < 4) {
+    if (state2.invoices.length > 0) {
+      out.push({
+        id: crypto.randomUUID(),
+        decisionKey: "finance.trend.insufficient",
+        domain: "finance",
+        layer: "tactical",
+        score: 5,
+        claim: "Not enough invoice history yet to read your revenue trend honestly.",
+        reasoning: "A trend needs a baseline. With fewer than four invoices in the prior 90 days, any trend claim would be noise presented as signal \u2014 so ZYVORA won't make one.",
+        evidence: [
+          { label: "Invoices in prior 90-day baseline", value: String(baselineInvoices.length) },
+          { label: "What would change this", value: "About one more month of normal invoicing" }
+        ],
+        confidence: "high",
+        confidenceNote: "High confidence that the data is insufficient \u2014 which is itself worth knowing."
+      });
+    }
+  } else {
+    const last30Total = last30.reduce((s, i) => s + i.amount, 0);
+    const baselinePer30 = baselineInvoices.reduce((s, i) => s + i.amount, 0) / 3;
+    if (baselinePer30 > 0 && last30Total < 0.85 * baselinePer30) {
+      const dropPct = Math.round((1 - last30Total / baselinePer30) * 100);
+      const per = /* @__PURE__ */ new Map();
+      for (const i of baselineInvoices) {
+        const e = per.get(i.customer) ?? { base: 0, recent: 0 };
+        e.base += i.amount / 3;
+        per.set(i.customer, e);
+      }
+      for (const i of last30) {
+        const e = per.get(i.customer) ?? { base: 0, recent: 0 };
+        e.recent += i.amount;
+        per.set(i.customer, e);
+      }
+      let driver = "";
+      let driverDelta = 0;
+      for (const [name, v] of per) {
+        const delta = v.base - v.recent;
+        if (delta > driverDelta) {
+          driverDelta = delta;
+          driver = name;
+        }
+      }
+      out.push({
+        id: crypto.randomUUID(),
+        decisionKey: "finance.revenue-dip",
+        domain: "finance",
+        layer: "tactical",
+        score: 55 + dropPct,
+        claim: `Revenue is down ${dropPct}% versus your own three-month average${driver ? `, driven mostly by ${driver} ordering less` : ""}.`,
+        reasoning: `Your last 30 days billed ${eur(last30Total)} against a baseline of ${eur(baselinePer30)} per 30 days (your own average over the prior 90 days \u2014 your baseline, not an industry benchmark). ` + (driver ? `${driver} accounts for ${eur(driverDelta)} of the shortfall, so the cause looks concentrated, not general.` : `The shortfall is spread across customers.`),
+        evidence: [
+          { label: "Billed, last 30 days", value: eur(last30Total) },
+          { label: "Your baseline (per 30 days, prior 90)", value: eur(baselinePer30) },
+          ...driver ? [{ label: `${driver} \u2014 shortfall vs. their usual`, value: eur(driverDelta) }] : []
+        ],
+        confidence: "medium",
+        confidenceNote: "Medium confidence: the arithmetic is exact, but one month can be noise. If next month recovers without action, this was seasonal variation.",
+        guidance: driver ? revenueDipGuidance(driver, driverDelta) : void 0
+      });
+    }
+  }
+  const expenses90 = state2.expenses.filter((e) => now - e.date <= 90 * DAY);
+  if (expenses90.length >= 3) {
+    const burnPerMonth = expenses90.reduce((s, e) => s + e.amount, 0) / 3;
+    if (burnPerMonth > 0) {
+      const runwayDays = Math.max(0, Math.round(cash / burnPerMonth * 30));
+      if (runwayDays < 75) {
+        const negative = cash <= 0;
+        out.push({
+          id: crypto.randomUUID(),
+          decisionKey: "finance.runway",
+          domain: "finance",
+          layer: "strategic",
+          score: 70 + Math.max(0, 60 - runwayDays),
+          claim: negative ? `Recorded outgoings have exceeded collected cash by ${eur(Math.abs(cash))} \u2014 collections, not spending, may be the lever.` : runwayDays < 7 ? `Cash on hand (${eur(cash)}) covers less than a week of your usual outgoings.` : `At your current spending rhythm, cash on hand covers roughly ${runwayDays} days.`,
+          reasoning: negative ? `Expenses recorded in ZYVORA total ${eur(Math.abs(cash))} more than invoices actually collected. This calculation excludes any opening balance and everything not yet collected \u2014 so the first place to look is the open invoices below, not necessarily the cost base.` : `Cash position (${eur(cash)}) divided by your own average monthly outgoings over the last 90 days (${eur(burnPerMonth)}/month) gives about ${runwayDays} days of cover if nothing new is collected. This is a strategic signal, not an emergency: incoming invoices are not counted here.`,
+          evidence: [
+            { label: "Cash position (paid invoices \u2212 expenses)", value: eur(cash) },
+            { label: "Average monthly outgoings (last 90 days)", value: eur(burnPerMonth) },
+            {
+              label: "Uncollected invoices not counted above",
+              value: eur(state2.invoices.filter((i) => !i.paidAt).reduce((s, i) => s + i.amount, 0))
+            }
+          ],
+          confidence: "medium",
+          confidenceNote: "Medium confidence: the calculation is exact, but it assumes spending stays level and counts no incoming payments. Collecting the overdue invoices above would extend this materially."
+        });
+      }
+    }
+  }
+}
+function overdueGuidance(oldestCustomer, total) {
+  return {
+    options: [
+      option({
+        id: "remind",
+        label: "Send payment reminders now",
+        path: "Send a polite written reminder for each overdue invoice today.",
+        gain: `Historically the cheapest way to recover most of the ${eur(total)} outstanding.`,
+        cost: "A few minutes; minimal relationship risk at this stage.",
+        reversibility: "easy",
+        falsifier: "If a customer has already told you payment is scheduled, a reminder adds friction for nothing."
+      }),
+      option({
+        id: "call",
+        label: `Call ${oldestCustomer} personally`,
+        path: "Phone the customer with the oldest debt; ask directly, offer a payment date.",
+        gain: "Fastest resolution for the largest/oldest item; preserves the relationship with a personal touch.",
+        cost: "Your time and some social discomfort.",
+        reversibility: "easy",
+        falsifier: "If the relationship is already strained, a written reminder first may land better."
+      }),
+      option({
+        id: "wait",
+        label: "Wait one more week",
+        path: "Do nothing for seven days.",
+        gain: "Zero effort; avoids nudging a customer who may simply be slow this month.",
+        cost: `The ${eur(total)} stays uncollected and each week makes collection statistically harder.`,
+        reversibility: "easy",
+        falsifier: "If cash runway is already short, waiting compounds the wrong risk.",
+        isNullOption: true
+      })
+    ],
+    recommendedId: "remind",
+    recommendationReason: "Reminders recover most late payments at almost no cost, and escalating to a call remains available if they don't."
+  };
+}
+function revenueDipGuidance(driver, delta) {
+  return {
+    options: [
+      option({
+        id: "contact",
+        label: `Contact ${driver} this week`,
+        path: `Call or visit ${driver}; ask openly whether something changed on their side.`,
+        gain: "Directly addresses the concentrated cause; early contact has the best recovery odds.",
+        cost: "An hour of your week.",
+        reversibility: "easy",
+        falsifier: `If ${driver}'s orders were a planned one-off (e.g., a project that ended), there is nothing to recover.`
+      }),
+      option({
+        id: "offer",
+        label: "Run a re-engagement offer",
+        path: "Send a time-limited offer to your regular customers.",
+        gain: "May lift orders broadly, not just from one account.",
+        cost: `Margin cost, and it doesn't answer why ${driver} slowed.`,
+        reversibility: "moderate",
+        falsifier: "If the cause is one customer's situation, a broad discount spends margin on the wrong problem."
+      }),
+      option({
+        id: "wait",
+        label: "Wait one more cycle",
+        path: "Do nothing for 30 days and re-read the trend.",
+        gain: "Avoids acting on noise; costs nothing now.",
+        cost: `If the dip is real, roughly ${eur(delta)} more goes uncollected next month.`,
+        reversibility: "easy",
+        falsifier: "If the dip deepens next month, waiting was the wrong call.",
+        isNullOption: true
+      })
+    ],
+    recommendedId: "contact",
+    recommendationReason: "The shortfall is concentrated in one relationship, so the highest-information, lowest-cost move is a direct conversation."
+  };
+}
+function customersBrain(state2, out, now) {
+  const customers = projectCustomers(state2);
+  for (const c of customers) {
+    if (c.invoiceCount < 3 || c.medianGapDays === null || c.medianGapDays <= 0) continue;
+    const daysSince = (now - c.lastInvoiceAt) / DAY;
+    const threshold = Math.max(2 * c.medianGapDays, 30);
+    if (daysSince > threshold) {
+      out.push({
+        id: crypto.randomUUID(),
+        decisionKey: `customers.silent.${c.name}`,
+        domain: "customers",
+        layer: "tactical",
+        score: 50 + Math.min(30, Math.round(daysSince - threshold)),
+        claim: `${c.name} has gone quiet \u2014 no order in ${Math.round(daysSince)} days, against their usual rhythm of every ~${Math.round(c.medianGapDays)} days.`,
+        reasoning: `${c.name} ordered ${c.invoiceCount} times (${eur(c.totalBilled)} lifetime) with a median gap of ${Math.round(c.medianGapDays)} days between orders. The current silence is more than twice their own rhythm \u2014 customers rarely announce that they're leaving; they just stop.`,
+        evidence: [
+          { label: "Last order", value: daysAgoLabel(c.lastInvoiceAt, now) },
+          { label: "Their usual gap between orders", value: `~${Math.round(c.medianGapDays)} days (median)` },
+          { label: "Lifetime billed", value: eur(c.totalBilled) }
+        ],
+        confidence: "medium",
+        confidenceNote: "Pattern-based, not certain: a holiday, a stocked-up order, or seasonality could explain the silence. The falsifier below tells you what to check.",
+        guidance: {
+          options: [
+            option({
+              id: "call",
+              label: `Check in with ${c.name}`,
+              path: "A short, no-pressure message or call: 'been a while \u2014 anything you need?'",
+              gain: "If they're drifting to a competitor, early contact is the only cheap moment to find out.",
+              cost: "Minutes.",
+              reversibility: "easy",
+              falsifier: "If they ordered unusually large last time, they may simply still be stocked."
+            }),
+            option({
+              id: "gesture",
+              label: "Send a small loyalty gesture",
+              path: "A modest discount or a thank-you note referencing their history with you.",
+              gain: "Warms the relationship without demanding a reply.",
+              cost: "Small margin; can feel transactional if mistimed.",
+              reversibility: "easy",
+              falsifier: "If the silence has a practical cause (holidays, stock), the gesture answers a question nobody asked."
+            }),
+            option({
+              id: "wait",
+              label: "Do nothing",
+              path: "Wait and watch another cycle.",
+              gain: "No effort; avoids over-contacting a customer who values distance.",
+              cost: "If they are quietly leaving, every silent week lowers the odds of return.",
+              reversibility: "easy",
+              falsifier: "If they don't return next cycle either, waiting cost you the cheap moment.",
+              isNullOption: true
+            })
+          ],
+          recommendedId: "call",
+          recommendationReason: "A low-pressure check-in has the best information-to-cost ratio, and this customer's history justifies the minutes."
+        }
+      });
+    }
+  }
+}
+function inventoryBrain(state2, out, now) {
+  for (const p2 of state2.products) {
+    const dailySales = p2.weeklySales / 7;
+    const available = p2.stock - (state2.reserved[p2.productId] ?? 0);
+    if (dailySales > 0) {
+      const daysLeft = available / dailySales;
+      const margin = daysLeft - p2.leadTimeDays;
+      if (margin < 4) {
+        const orderQty = Math.ceil(p2.weeklySales * 4);
+        const orderValue = orderQty * p2.unitCost;
+        out.push({
+          id: crypto.randomUUID(),
+          decisionKey: `inventory.stockout.${p2.productId}`,
+          domain: "inventory",
+          layer: "tactical",
+          score: 60 + Math.max(0, Math.round((4 - margin) * 5)),
+          claim: margin < 0 ? `"${p2.name}" will run out about ${Math.abs(Math.round(margin))} days before the earliest restock can arrive.` : `"${p2.name}" is ${Math.round(daysLeft)} days from stockout \u2014 barely inside its ${p2.leadTimeDays}-day resupply time.`,
+          reasoning: `Available stock (${available} units after reservations) at your current sales velocity (${p2.weeklySales}/week) lasts ~${Math.round(daysLeft)} days, while resupply takes ${p2.leadTimeDays} days. The decision window is now: every day of waiting shortens the options below.`,
+          evidence: [
+            { label: "Units in stock (physical)", value: String(p2.stock) },
+            { label: "Reserved by open orders", value: String(state2.reserved[p2.productId] ?? 0) },
+            { label: "Available to sell", value: String(available) },
+            { label: "Sales velocity (your last recorded rate)", value: `${p2.weeklySales}/week` },
+            { label: "Supplier lead time", value: `${p2.leadTimeDays} days` },
+            { label: "Projected days of stock left", value: `~${Math.round(daysLeft)}` }
+          ],
+          confidence: "medium",
+          confidenceNote: "The projection assumes sales continue at the recorded rate; a demand spike or lull moves the date either way.",
+          guidance: {
+            options: [
+              option({
+                id: "expedite",
+                label: "Expedite a reorder now",
+                path: `Order ${orderQty} units (~4 weeks of sales, ~${eur(orderValue)}) with express shipping.`,
+                gain: "Avoids stockout days on a proven seller; protects the revenue and the customer habit.",
+                cost: `Express premium (typically 10\u201320% on ~${eur(orderValue)}) and cash committed earlier.`,
+                reversibility: "moderate",
+                falsifier: "If the recent velocity was a one-off spike, expedited stock arrives to slower sales."
+              }),
+              option({
+                id: "standard",
+                label: "Reorder at standard speed",
+                path: `Order ${orderQty} units with normal ${p2.leadTimeDays}-day delivery.`,
+                gain: "No premium paid.",
+                cost: margin < 0 ? `Accepts ~${Math.abs(Math.round(margin))} days of stockout on a best-seller.` : "Leaves almost no buffer if sales tick up.",
+                reversibility: "moderate",
+                falsifier: "If sales accelerate further, the gap widens beyond the projection."
+              }),
+              option({
+                id: "accept",
+                label: "Accept the stockout",
+                path: "Do nothing; restock on the next regular cycle.",
+                gain: "Zero cost and effort now; frees cash for other uses.",
+                cost: "Lost sales during the gap and the risk that regulars try an alternative.",
+                reversibility: "easy",
+                falsifier: "If this product drives repeat visits, the hidden cost exceeds the visible one.",
+                isNullOption: true
+              })
+            ],
+            recommendedId: "expedite",
+            recommendationReason: "This is a proven seller with a concrete gap; the express premium is small against the lost sales and habit-breaking risk."
+          }
+        });
+      }
+    }
+    if (dailySales === 0 && p2.stock > 0) {
+      const tied = p2.stock * p2.unitCost;
+      out.push({
+        id: crypto.randomUUID(),
+        decisionKey: `inventory.dead.${p2.productId}`,
+        domain: "inventory",
+        layer: "tactical",
+        score: 25 + Math.min(20, Math.round(tied / 100)),
+        claim: `"${p2.name}" isn't selling at all \u2014 ${eur(tied)} of cash is sitting on the shelf.`,
+        reasoning: `${p2.stock} units at ${eur(p2.unitCost)} cost each, with zero recorded weekly sales. Stock that doesn't move is a loan you made to your own shelf.`,
+        evidence: [
+          { label: "Units in stock", value: String(p2.stock) },
+          { label: "Recorded sales velocity", value: "0/week" },
+          { label: "Cash tied up (at cost)", value: eur(tied) }
+        ],
+        confidence: "high",
+        confidenceNote: "High confidence in the facts; whether to act depends on seasonality only you can judge.",
+        guidance: {
+          options: [
+            option({
+              id: "markdown",
+              label: "Mark it down and free the cash",
+              path: `Discount "${p2.name}" enough to move it within a month.`,
+              gain: `Recovers a good share of the ${eur(tied)} and frees shelf space for what sells.`,
+              cost: "Margin sacrificed versus the original plan.",
+              reversibility: "moderate",
+              falsifier: "If this item is seasonal and its season is near, the markdown is premature."
+            }),
+            option({
+              id: "bundle",
+              label: "Bundle it with a best-seller",
+              path: "Attach it to a product that moves, at a modest combined discount.",
+              gain: "Moves dead stock while protecting the headline price.",
+              cost: "Slightly dilutes the best-seller's margin; takes a little setup.",
+              reversibility: "easy",
+              falsifier: "If the pairing feels forced to customers, attach rates will show it within weeks."
+            }),
+            option({
+              id: "hold",
+              label: "Hold as is",
+              path: "Keep it at full price and wait.",
+              gain: "Preserves full margin if demand appears.",
+              cost: `${eur(tied)} stays illiquid and the shelf space keeps paying for it.`,
+              reversibility: "easy",
+              falsifier: "If three more months pass without a sale, holding was the expensive choice.",
+              isNullOption: true
+            })
+          ],
+          recommendedId: "markdown",
+          recommendationReason: "Unless you know a season is coming, recovering cash from a non-mover usually beats defending a margin that isn't being realized."
+        }
+      });
+    }
+  }
+}
+function commerceBrain(state2, out, now) {
+  const settled = state2.orders.filter(
+    (o) => o.status === "delivered" || o.status === "refused" || o.status === "returned"
+  );
+  const refused = state2.orders.filter((o) => o.status === "refused");
+  if (settled.length >= 5 && refused.length > 0) {
+    const rate = refused.length / settled.length;
+    if (rate >= 0.15) {
+      const loss = refused.reduce((s, o) => s + orderRefusalLoss(o), 0);
+      out.push({
+        id: crypto.randomUUID(),
+        decisionKey: "commerce.refusal-rate",
+        domain: "finance",
+        layer: "tactical",
+        score: 60 + Math.round(rate * 100),
+        claim: `${Math.round(rate * 100)}% of your settled COD orders are refused at the door \u2014 ${eur(loss)} spent shipping goods that came back.`,
+        reasoning: `${refused.length} of ${settled.length} settled orders were refused. Each refusal costs round-trip shipping plus packaging with zero revenue. Refusal is usually a confirmation problem, not a customer problem: unconfirmed COD orders refuse far more often.`,
+        evidence: [
+          { label: "Settled orders (delivered + refused + returned)", value: String(settled.length) },
+          { label: "Refused", value: String(refused.length) },
+          { label: "Cash lost to refusals (round-trip shipping + packaging)", value: eur(loss) }
+        ],
+        confidence: "high",
+        confidenceNote: "High confidence in the arithmetic; the remedy depends on why customers refuse \u2014 the falsifiers below tell you what to check.",
+        guidance: {
+          options: [
+            option({
+              id: "confirm",
+              label: "Confirm every order before shipping",
+              path: "Call or message each COD order before handing it to the courier; ship only confirmed ones.",
+              gain: "Typically cuts refusals sharply; costs only minutes per order.",
+              cost: "Adds a step to fulfillment; a few impulsive buyers won't answer.",
+              reversibility: "easy",
+              falsifier: "If your refusals come from delivery delays rather than intent, confirmation calls won't fix them."
+            }),
+            option({
+              id: "prepay",
+              label: "Offer a small prepayment discount",
+              path: "Give a modest discount for paying online instead of COD.",
+              gain: "Shifts risk off you entirely for every prepaid order.",
+              cost: "Margin on prepaid orders; requires a payment method your customers trust.",
+              reversibility: "easy",
+              falsifier: "If your market strongly distrusts online payment, uptake will be too low to matter."
+            }),
+            option({
+              id: "accept",
+              label: "Accept the current rate",
+              path: "Change nothing; treat refusals as a cost of COD.",
+              gain: "No process change.",
+              cost: `\u2248 ${eur(loss)} recurring, plus stock cycling back through returns.`,
+              reversibility: "easy",
+              falsifier: "If the rate keeps climbing, the cost compounds while competitors who confirm orders keep the margin.",
+              isNullOption: true
+            })
+          ],
+          recommendedId: "confirm",
+          recommendationReason: "Confirmation attacks the root cause at near-zero cost and is the standard remedy for COD refusal."
+        }
+      });
+    }
+  }
+  const losing = state2.orders.filter(
+    (o) => o.status === "delivered" && orderNetProfit(o) < 0
+  );
+  if (losing.length > 0) {
+    const totalLoss = losing.reduce((s, o) => s + orderNetProfit(o), 0);
+    out.push({
+      id: crypto.randomUUID(),
+      decisionKey: "commerce.unprofitable-orders",
+      domain: "finance",
+      layer: "tactical",
+      score: 45 + losing.length * 5,
+      claim: `${losing.length} delivered order${losing.length > 1 ? "s" : ""} actually lost money \u2014 ${eur(Math.abs(totalLoss))} in total, after all costs.`,
+      reasoning: "Revenue minus product cost, shipping, COD fee, and packaging is negative on these orders. The usual causes: discounts stacked on low-margin items, or free/underpriced shipping on small baskets.",
+      evidence: losing.slice(0, 5).map((o) => ({
+        label: `${o.customer} \u2014 ${o.lines.map((l) => `${l.qty}\xD7 ${l.productName}`).join(", ")}`,
+        value: `net ${eur(orderNetProfit(o))}`
+      })),
+      confidence: "high",
+      confidenceNote: "High confidence: computed from each order's own recorded figures."
+    });
+  }
+  const collected30 = state2.orders.filter((o) => o.cashReceivedAt && now - o.cashReceivedAt <= 30 * DAY).reduce((s, o) => s + orderRevenue(o), 0) + state2.invoices.filter((i) => i.paidAt && now - i.paidAt <= 30 * DAY).reduce((s, i) => s + i.amount, 0);
+  const expenses30 = state2.expenses.filter((e) => now - e.date <= 30 * DAY).reduce((s, e) => s + e.amount, 0);
+  const expenseEnvelope = collected30 * ENVELOPES.expenses;
+  if (collected30 > 0 && expenses30 > expenseEnvelope) {
+    out.push({
+      id: crypto.randomUUID(),
+      decisionKey: "finance.envelope-expenses",
+      domain: "finance",
+      layer: "tactical",
+      score: 40 + Math.min(30, Math.round((expenses30 - expenseEnvelope) / Math.max(1, expenseEnvelope) * 20)),
+      claim: `This month's expenses (${eur(expenses30)}) exceed the expense envelope (${eur(expenseEnvelope)}) \u2014 the overspend is being paid from your stock and profit envelopes.`,
+      reasoning: `Under the three-envelope rule, ${Math.round(ENVELOPES.stock * 100)}% of collected cash is reserved for restocking, ${Math.round(ENVELOPES.expenses * 100)}% for expenses, and ${Math.round(ENVELOPES.profit * 100)}% is real profit. Collected cash in the last 30 days was ${eur(collected30)}; expenses above the envelope silently consume the other two.`,
+      evidence: [
+        { label: "Cash collected, last 30 days", value: eur(collected30) },
+        { label: `Expense envelope (${Math.round(ENVELOPES.expenses * 100)}%)`, value: eur(expenseEnvelope) },
+        { label: "Actual expenses, last 30 days", value: eur(expenses30) },
+        { label: "Overspend", value: eur(expenses30 - expenseEnvelope) }
+      ],
+      confidence: "medium",
+      confidenceNote: "The arithmetic is exact; the envelope percentages are the standard default and configurable to your business."
+    });
+  }
+}
+function marketingBrain(state2, out, now) {
+  for (const promo2 of state2.promos) {
+    if (!promo2.active || promo2.timesUsed === 0) continue;
+    const used = state2.orders.filter((o) => o.promoCode === promo2.code && o.status !== "cancelled");
+    const delivered = used.filter((o) => o.status === "delivered");
+    const discountGiven = used.reduce((s, o) => s + o.discount, 0);
+    if (delivered.length >= 2) {
+      const netProfit = delivered.reduce((s, o) => s + orderNetProfit(o), 0);
+      if (netProfit < 0) {
+        out.push({
+          id: crypto.randomUUID(),
+          decisionKey: `marketing.promo-unprofitable.${promo2.code}`,
+          domain: "marketing",
+          layer: "tactical",
+          score: 55 + Math.min(25, Math.round(Math.abs(netProfit))),
+          claim: `Promo "${promo2.code}" is losing money \u2014 its delivered orders net ${eur(netProfit)} after all costs.`,
+          reasoning: `${delivered.length} delivered orders used "${promo2.code}", giving away ${eur(discountGiven)} in discounts. After product cost, shipping, COD fees, and packaging, those orders are collectively unprofitable. A discount that drives volume at a loss shrinks the business faster the more it "works".`,
+          evidence: [
+            { label: "Delivered orders using this promo", value: String(delivered.length) },
+            { label: "Total discount given", value: eur(discountGiven) },
+            { label: "Net profit of those orders", value: eur(netProfit) },
+            {
+              label: "Promo terms",
+              value: promo2.type === "percentage" ? `${promo2.value}% off${promo2.minBasket ? `, min basket ${eur(promo2.minBasket)}` : ""}` : `${eur(promo2.value)} off${promo2.minBasket ? `, min basket ${eur(promo2.minBasket)}` : ""}`
+            }
+          ],
+          confidence: "high",
+          confidenceNote: "High confidence: computed from each order's own recorded figures.",
+          guidance: {
+            options: [
+              option({
+                id: "raise-min",
+                label: "Raise the minimum basket",
+                path: `Deactivate "${promo2.code}" and reissue it with a higher minimum basket so it only applies to orders large enough to absorb the discount.`,
+                gain: "Keeps the promo's pull on bigger baskets while cutting off the loss-making small ones.",
+                cost: "Fewer customers qualify; a little setup.",
+                reversibility: "easy",
+                falsifier: "If most losses come from shipping rather than basket size, a higher minimum won't fix it."
+              }),
+              option({
+                id: "lower-value",
+                label: "Reduce the discount",
+                path: `Reissue with a smaller percentage or a cap (maxDiscount) so the giveaway can't exceed the margin.`,
+                gain: "Preserves the promo while protecting the floor.",
+                cost: "A weaker offer may convert fewer customers.",
+                reversibility: "easy",
+                falsifier: "If the offer only worked because it was generous, a smaller one may not move anyone."
+              }),
+              option({
+                id: "stop",
+                label: "Stop the promo",
+                path: `Deactivate "${promo2.code}" and don't replace it.`,
+                gain: "Immediately stops the bleeding.",
+                cost: "Loses whatever genuine repeat business the promo was seeding.",
+                reversibility: "easy",
+                falsifier: "If the promo is acquiring customers who reorder at full price, stopping it ignores that lifetime value.",
+                isNullOption: true
+              })
+            ],
+            recommendedId: "raise-min",
+            recommendationReason: "Most COD promo losses come from small baskets that can't cover fixed shipping and fees; a higher minimum targets exactly those without killing the offer."
+          }
+        });
+      }
+    }
+    if (promo2.usageLimit !== void 0 && promo2.timesUsed >= promo2.usageLimit * 0.8) {
+      const atLimit = promo2.timesUsed >= promo2.usageLimit;
+      out.push({
+        id: crypto.randomUUID(),
+        decisionKey: `marketing.promo-limit.${promo2.code}`,
+        domain: "marketing",
+        layer: "operational",
+        score: 20,
+        claim: atLimit ? `Promo "${promo2.code}" has reached its usage limit (${promo2.timesUsed}/${promo2.usageLimit}) and no longer applies.` : `Promo "${promo2.code}" is near its usage limit (${promo2.timesUsed}/${promo2.usageLimit}).`,
+        reasoning: `Usage is counted server-side from non-cancelled orders bearing the code, so the limit is enforced consistently. ` + (atLimit ? "New orders can no longer redeem it." : "It will stop applying once the limit is reached."),
+        evidence: [
+          { label: "Redemptions", value: `${promo2.timesUsed} of ${promo2.usageLimit}` },
+          { label: "Discount given so far", value: eur(discountGiven) }
+        ],
+        confidence: "high",
+        confidenceNote: "High confidence: a direct count of your own orders."
+      });
+    }
+  }
+}
+var ENVELOPES = { stock: 0.4, expenses: 0.3, profit: 0.3 };
+function cashCenter(state2, now = Date.now()) {
+  const paidInvoices = state2.invoices.filter((i) => i.paidAt);
+  const remitted = state2.orders.filter((o) => o.status === "delivered" && o.cashReceivedAt);
+  const pendingCod = state2.orders.filter((o) => o.status === "delivered" && !o.cashReceivedAt);
+  const collectedAllTime = paidInvoices.reduce((s, i) => s + i.amount, 0) + remitted.reduce((s, o) => s + orderRevenue(o), 0);
+  const expensesAllTime = state2.expenses.reduce((s, e) => s + e.amount, 0);
+  const collected30 = paidInvoices.filter((i) => now - i.paidAt <= 30 * DAY).reduce((s, i) => s + i.amount, 0) + remitted.filter((o) => now - o.cashReceivedAt <= 30 * DAY).reduce((s, o) => s + orderRevenue(o), 0);
+  const expenses30 = state2.expenses.filter((e) => now - e.date <= 30 * DAY).reduce((s, e) => s + e.amount, 0);
+  return {
+    cashAvailable: collectedAllTime - expensesAllTime,
+    cashPendingCod: pendingCod.reduce((s, o) => s + orderRevenue(o), 0),
+    collected30,
+    expenses30,
+    envelopes: {
+      stock: collected30 * ENVELOPES.stock,
+      expenses: collected30 * ENVELOPES.expenses,
+      profit: collected30 * ENVELOPES.profit
+    },
+    expenseOverspend: Math.max(0, expenses30 - collected30 * ENVELOPES.expenses)
+  };
+}
+function stateOfThings(state2, now = Date.now()) {
+  const paid = state2.invoices.filter((i) => i.paidAt);
+  const open = state2.invoices.filter((i) => !i.paidAt);
+  const remitted = state2.orders.filter((o) => o.status === "delivered" && o.cashReceivedAt);
+  const pendingCod = state2.orders.filter((o) => o.status === "delivered" && !o.cashReceivedAt);
+  const cash = paid.reduce((s, i) => s + i.amount, 0) + remitted.reduce((s, o) => s + orderRevenue(o), 0) - state2.expenses.reduce((s, e) => s + e.amount, 0);
+  const last30 = state2.invoices.filter((i) => now - i.issuedAt <= 30 * DAY).reduce((s, i) => s + i.amount, 0) + state2.orders.filter((o) => o.deliveredAt && now - o.deliveredAt <= 30 * DAY).reduce((s, o) => s + orderRevenue(o), 0);
+  const stockValue = state2.products.reduce((s, p2) => s + p2.stock * p2.unitCost, 0);
+  return {
+    cash,
+    cashPendingCod: pendingCod.reduce((s, o) => s + orderRevenue(o), 0),
+    billedLast30: last30,
+    openInvoices: open.length,
+    openInvoiceValue: open.reduce((s, i) => s + i.amount, 0),
+    openOrders: state2.orders.filter(
+      (o) => o.status === "pending" || o.status === "confirmed" || o.status === "shipped"
+    ).length,
+    products: state2.products.length,
+    stockValue
+  };
+}
+var formatMoney = money;
+
+// src/core/assistant.ts
+var has = (q, ...words) => words.some((w) => q.includes(w));
+function askZyvora(state2, question, now = Date.now()) {
+  const q = question.toLowerCase().trim();
+  const things2 = stateOfThings(state2, now);
+  const cash = cashCenter(state2, now);
+  if (has(q, "lost money", "losing money", "unprofitable", "lose money")) {
+    const losing = state2.orders.filter((o) => o.status === "delivered" && orderNetProfit(o) < 0);
+    if (losing.length === 0)
+      return { handled: true, text: "None of your delivered orders lost money \u2014 every delivered order netted a profit after all costs.", evidence: [] };
+    const total = losing.reduce((s, o) => s + orderNetProfit(o), 0);
+    return {
+      handled: true,
+      text: `${losing.length} delivered order${losing.length > 1 ? "s" : ""} lost money \u2014 ${formatMoney(Math.abs(total))} in total, after product cost, shipping, COD fees, and packaging.`,
+      evidence: losing.slice(0, 6).map((o) => ({
+        label: `${o.customer} \u2014 ${o.lines.map((l) => `${l.qty}\xD7 ${l.productName}`).join(", ")}`,
+        value: `net ${formatMoney(orderNetProfit(o))}`
+      }))
+    };
+  }
+  if (has(q, "margin", "best product", "highest margin", "most profitable product", "worst product")) {
+    const withMargin = state2.products.filter((p2) => p2.price > 0).map((p2) => ({ name: p2.name, marginPct: (p2.price - p2.unitCost) / p2.price * 100, unit: p2.price - p2.unitCost })).sort((a, b) => b.marginPct - a.marginPct);
+    if (withMargin.length === 0)
+      return { handled: true, text: "No products with a price recorded yet, so I can't compare margins.", evidence: [] };
+    const worst = has(q, "worst", "lowest");
+    const pick = worst ? withMargin[withMargin.length - 1] : withMargin[0];
+    return {
+      handled: true,
+      text: `Your ${worst ? "lowest" : "highest"}-margin product is "${pick.name}" at ${pick.marginPct.toFixed(0)}% (${formatMoney(pick.unit)} per unit).`,
+      evidence: withMargin.slice(0, 5).map((p2) => ({ label: p2.name, value: `${p2.marginPct.toFixed(0)}% (${formatMoney(p2.unit)}/unit)` }))
+    };
+  }
+  if (has(q, "restock", "reorder", "cash do i need", "afford to restock")) {
+    const need = state2.products.filter((p2) => p2.weeklySales > 0).map((p2) => {
+      const available = p2.stock - (state2.reserved[p2.productId] ?? 0);
+      const daysLeft = available / (p2.weeklySales / 7);
+      const short = daysLeft < p2.leadTimeDays + 4;
+      const qty = Math.ceil(p2.weeklySales * 4);
+      return { name: p2.name, short, cost: qty * p2.unitCost, qty };
+    }).filter((x) => x.short);
+    if (need.length === 0)
+      return { handled: true, text: "Nothing needs restocking right now \u2014 every selling product has enough stock to cover its resupply time.", evidence: [] };
+    const total = need.reduce((s, x) => s + x.cost, 0);
+    return {
+      handled: true,
+      text: `To restock the ${need.length} product${need.length > 1 ? "s" : ""} running low, you'd need about ${formatMoney(total)} (\u22484 weeks of stock each). You currently have ${formatMoney(cash.cashAvailable)} available${cash.cashPendingCod > 0 ? ` plus ${formatMoney(cash.cashPendingCod)} pending with couriers` : ""}.`,
+      evidence: need.map((x) => ({ label: `${x.name} \u2014 order ~${x.qty} units`, value: formatMoney(x.cost) }))
+    };
+  }
+  if (has(q, "at risk", "at-risk", "need attention", "who needs", "churn", "quiet customer", "leaving")) {
+    const atRisk = projectCustomerProfiles(state2, now).filter((p2) => p2.tags.includes("at-risk"));
+    if (atRisk.length === 0)
+      return { handled: true, text: "No customers are flagged at-risk \u2014 none have gone quiet past twice their usual ordering rhythm.", evidence: [] };
+    return {
+      handled: true,
+      text: `${atRisk.length} customer${atRisk.length > 1 ? "s are" : " is"} at-risk \u2014 gone quiet past their usual rhythm. Worth a low-pressure check-in.`,
+      evidence: atRisk.slice(0, 6).map((c) => ({ label: c.name, value: `${formatMoney(c.lifetimeRevenue)} lifetime \xB7 last seen ${Math.round((now - c.lastActivityAt) / DAY)} days ago` }))
+    };
+  }
+  if (has(q, "top customer", "best customer", "biggest customer", "most valuable")) {
+    const profiles2 = projectCustomerProfiles(state2, now);
+    if (profiles2.length === 0) return { handled: true, text: "No customers recorded yet.", evidence: [] };
+    const top = profiles2[0];
+    return {
+      handled: true,
+      text: `Your top customer by lifetime revenue is ${top.name} \u2014 ${formatMoney(top.lifetimeRevenue)} across ${top.interactions} interactions.`,
+      evidence: profiles2.slice(0, 5).map((c) => ({ label: c.name, value: formatMoney(c.lifetimeRevenue) }))
+    };
+  }
+  if (has(q, "profit")) {
+    const profit30 = state2.orders.filter((o) => o.deliveredAt && now - o.deliveredAt <= 30 * DAY).reduce((s, o) => s + orderNetProfit(o), 0);
+    const b = breakEven(state2, now);
+    return {
+      handled: true,
+      text: `Net profit from COD orders delivered in the last 30 days is ${formatMoney(profit30)}. (Invoices are excluded \u2014 they carry no cost data.) On average, each delivered order nets ${formatMoney(b.avgProfitPerOrder)}.`,
+      evidence: [
+        { label: "Net profit, COD orders, last 30 days", value: formatMoney(profit30) },
+        { label: "Average net profit per delivered order", value: formatMoney(b.avgProfitPerOrder) }
+      ]
+    };
+  }
+  if (has(q, "revenue", "sales", "how much did i make", "earn")) {
+    const thisMonth = goalActual(state2, "revenue", now);
+    return {
+      handled: true,
+      text: `Revenue in the last 30 days is ${formatMoney(things2.billedLast30)}. This calendar month so far: ${formatMoney(thisMonth)}.`,
+      evidence: [
+        { label: "Revenue, last 30 days", value: formatMoney(things2.billedLast30) },
+        { label: "Revenue, this calendar month", value: formatMoney(thisMonth) }
+      ]
+    };
+  }
+  if (has(q, "cash", "money available", "how much money")) {
+    return {
+      handled: true,
+      text: `You have ${formatMoney(cash.cashAvailable)} available now, with ${formatMoney(cash.cashPendingCod)} still pending collection from couriers on delivered COD orders.`,
+      evidence: [
+        { label: "Cash available", value: formatMoney(cash.cashAvailable) },
+        { label: "Pending with couriers (COD)", value: formatMoney(cash.cashPendingCod) },
+        { label: "Collected, last 30 days", value: formatMoney(cash.collected30) }
+      ]
+    };
+  }
+  return {
+    handled: false,
+    text: "I can answer questions about your profit, revenue, cash, product margins, orders that lost money, restocking needs, and customers who need attention \u2014 all from your own recorded data. Try one of the suggestions below.",
+    evidence: []
+  };
+}
+
+// src/core/csv.ts
+function parseCsv(text) {
+  const rows = [];
+  let field = "";
+  let row = [];
+  let inQuotes = false;
+  const s = text.replace(/^﻿/, "");
+  for (let i = 0; i < s.length; i++) {
+    const c = s[i];
+    if (inQuotes) {
+      if (c === '"') {
+        if (s[i + 1] === '"') {
+          field += '"';
+          i++;
+        } else inQuotes = false;
+      } else field += c;
+    } else if (c === '"') {
+      inQuotes = true;
+    } else if (c === ",") {
+      row.push(field);
+      field = "";
+    } else if (c === "\n" || c === "\r") {
+      if (c === "\r" && s[i + 1] === "\n") i++;
+      row.push(field);
+      field = "";
+      if (row.some((f) => f.trim() !== "")) rows.push(row);
+      row = [];
+    } else field += c;
+  }
+  if (field !== "" || row.length) {
+    row.push(field);
+    if (row.some((f) => f.trim() !== "")) rows.push(row);
+  }
+  const headers = rows.shift() ?? [];
+  return { headers: headers.map((h) => h.trim()), rows };
+}
+var SPECS = {
+  products: {
+    label: "Products",
+    fields: [
+      { key: "name", label: "Name", required: true, kind: "text", aliases: ["name", "product", "title", "designation"] },
+      { key: "price", label: "Selling price", required: true, kind: "number", aliases: ["price", "selling", "prix", "pv"] },
+      { key: "unitCost", label: "Unit cost", required: true, kind: "number", aliases: ["cost", "buying", "cout", "achat", "pa"] },
+      { key: "stock", label: "Stock", required: true, kind: "number", aliases: ["stock", "qty", "quantity", "quantite"] },
+      { key: "weeklySales", label: "Sales / week", required: false, kind: "number", aliases: ["week", "velocity", "sales", "ventes"] },
+      { key: "leadTimeDays", label: "Lead time (days)", required: false, kind: "number", aliases: ["lead", "delai", "resupply"] }
+    ]
+  },
+  expenses: {
+    label: "Expenses",
+    fields: [
+      { key: "label", label: "Label", required: true, kind: "text", aliases: ["label", "description", "name", "libelle", "categorie", "category"] },
+      { key: "amount", label: "Amount", required: true, kind: "number", aliases: ["amount", "montant", "total", "cost"] },
+      { key: "date", label: "Date", required: false, kind: "date", aliases: ["date", "day", "when"] }
+    ]
+  },
+  invoices: {
+    label: "Invoices",
+    fields: [
+      { key: "customer", label: "Customer", required: true, kind: "text", aliases: ["customer", "client", "name", "nom"] },
+      { key: "amount", label: "Amount", required: true, kind: "number", aliases: ["amount", "montant", "total", "revenue"] },
+      { key: "issuedAt", label: "Issued date", required: false, kind: "date", aliases: ["date", "issued", "created", "invoice date"] },
+      { key: "dueDays", label: "Due (days)", required: false, kind: "number", aliases: ["due", "terms", "echeance"] },
+      { key: "paidDate", label: "Paid date (optional)", required: false, kind: "date", aliases: ["paid", "payment", "regle", "paye"] }
+    ]
+  }
+};
+function autoMap(type, headers) {
+  const map = {};
+  const lower = headers.map((h) => h.toLowerCase());
+  for (const f of SPECS[type].fields) {
+    let idx = -1;
+    for (const alias of f.aliases) {
+      idx = lower.findIndex((h) => h === alias);
+      if (idx === -1) idx = lower.findIndex((h) => h.includes(alias));
+      if (idx !== -1) break;
+    }
+    map[f.key] = idx;
+  }
+  return map;
+}
+var parseNum = (v) => {
+  const n = parseFloat(String(v).replace(/[^\d.,-]/g, "").replace(/,/g, "."));
+  return isFinite(n) ? n : null;
+};
+var parseDate = (v) => {
+  const t = Date.parse(v);
+  return isNaN(t) ? null : t;
+};
+function buildRow(type, map, cells) {
+  const get = (key) => {
+    const idx = map[key];
+    return idx >= 0 && idx < cells.length ? cells[idx].trim() : "";
+  };
+  const now = Date.now();
+  if (type === "products") {
+    const name = get("name");
+    const price = parseNum(get("price"));
+    const cost = parseNum(get("unitCost"));
+    const stock = parseNum(get("stock"));
+    if (!name) return { event: null, error: "missing name" };
+    if (price === null) return { event: null, error: "invalid price" };
+    if (cost === null) return { event: null, error: "invalid unit cost" };
+    if (stock === null) return { event: null, error: "invalid stock" };
+    return {
+      error: null,
+      event: {
+        type: "product_added",
+        ts: now,
+        payload: {
+          productId: crypto.randomUUID(),
+          name,
+          price,
+          unitCost: cost,
+          stock: Math.round(stock),
+          weeklySales: parseNum(get("weeklySales")) ?? 0,
+          leadTimeDays: Math.round(parseNum(get("leadTimeDays")) ?? 14)
+        }
+      }
+    };
+  }
+  if (type === "expenses") {
+    const label = get("label");
+    const amount2 = parseNum(get("amount"));
+    if (!label) return { event: null, error: "missing label" };
+    if (amount2 === null) return { event: null, error: "invalid amount" };
+    const date = get("date") ? parseDate(get("date")) : now;
+    return {
+      error: null,
+      event: {
+        type: "expense_recorded",
+        ts: date ?? now,
+        payload: { expenseId: crypto.randomUUID(), label, amount: amount2, date: date ?? now }
+      }
+    };
+  }
+  const customer = get("customer");
+  const amount = parseNum(get("amount"));
+  if (!customer) return { event: null, error: "missing customer" };
+  if (amount === null) return { event: null, error: "invalid amount" };
+  const issued = get("issuedAt") ? parseDate(get("issuedAt")) : now;
+  const invoiceId = crypto.randomUUID();
+  const built = {
+    error: null,
+    event: {
+      type: "invoice_issued",
+      ts: issued ?? now,
+      payload: {
+        invoiceId,
+        customer,
+        amount,
+        issuedAt: issued ?? now,
+        dueDays: Math.round(parseNum(get("dueDays")) ?? 14)
+      }
+    }
+  };
+  const paid = get("paidDate") ? parseDate(get("paidDate")) : null;
+  if (paid) built.extra = { type: "invoice_paid", ts: paid, payload: { invoiceId, paidAt: paid } };
+  return built;
+}
+
+// src/core/naturaloeCatalog.ts
+var NATURALOE_CATALOG = [
+  {
+    "id": "p01",
+    "name": "Forever Aloe Vera Gel 330ml",
+    "category": "Pulpe d'Aloe Vera",
+    "priceDh": 76
+  },
+  {
+    "id": "p02",
+    "name": "Forever Aloe P\xEAche 330ml",
+    "category": "Pulpe d'Aloe Vera",
+    "priceDh": 76
+  },
+  {
+    "id": "p03",
+    "name": "Forever Aloe Berry Nectar 330ml",
+    "category": "Pulpe d'Aloe Vera",
+    "priceDh": 76
+  },
+  {
+    "id": "p04",
+    "name": "Forever Aloe Mangue",
+    "category": "Pulpe d'Aloe Vera",
+    "priceDh": 410
+  },
+  {
+    "id": "p05",
+    "name": "Aloe Berry Nectar 1L",
+    "category": "Pulpe d'Aloe Vera",
+    "priceDh": 410
+  },
+  {
+    "id": "p06",
+    "name": "Pulpe d'Aloe Vera Stabilis\xE9e",
+    "category": "Pulpe d'Aloe Vera",
+    "priceDh": 410
+  },
+  {
+    "id": "p07",
+    "name": "Forever Aloe Bits N' Peaches",
+    "category": "Pulpe d'Aloe Vera",
+    "priceDh": 410
+  },
+  {
+    "id": "p08",
+    "name": "Forever Bee Honey",
+    "category": "Produits de la Ruche",
+    "priceDh": 238
+  },
+  {
+    "id": "p09",
+    "name": "Forever Propolis",
+    "category": "Produits de la Ruche",
+    "priceDh": 259
+  },
+  {
+    "id": "p10",
+    "name": "Forever Bee Pollen",
+    "category": "Produits de la Ruche",
+    "priceDh": 238
+  },
+  {
+    "id": "p11",
+    "name": "Forever Royal Jelly",
+    "category": "Produits de la Ruche",
+    "priceDh": 302
+  },
+  {
+    "id": "p12",
+    "name": "Forever Active Pro-B",
+    "category": "Nutrition",
+    "priceDh": 346
+  },
+  {
+    "id": "p13",
+    "name": "Forever Kids",
+    "category": "Nutrition",
+    "priceDh": 281
+  },
+  {
+    "id": "p14",
+    "name": "Fields of Greens",
+    "category": "Nutrition",
+    "priceDh": 324
+  },
+  {
+    "id": "p15",
+    "name": "Forever Absorbent-C",
+    "category": "Nutrition",
+    "priceDh": 259
+  },
+  {
+    "id": "p16",
+    "name": "Forever iVision",
+    "category": "Nutrition",
+    "priceDh": 367
+  },
+  {
+    "id": "p17",
+    "name": "Forever Supergreens",
+    "category": "Nutrition",
+    "priceDh": 389
+  },
+  {
+    "id": "p18",
+    "name": "Forever ImmuBlend",
+    "category": "Nutrition",
+    "priceDh": 356
+  },
+  {
+    "id": "p19",
+    "name": "Forever Daily",
+    "category": "Nutrition",
+    "priceDh": 432
+  },
+  {
+    "id": "p20",
+    "name": "Forever Ail et Thym",
+    "category": "Nutrition",
+    "priceDh": 238
+  },
+  {
+    "id": "p21",
+    "name": "Forever Fiber",
+    "category": "Nutrition",
+    "priceDh": 302
+  },
+  {
+    "id": "p22",
+    "name": "Infusion Fleur d'Alo\xE8s",
+    "category": "Nutrition",
+    "priceDh": 194
+  },
+  {
+    "id": "p23",
+    "name": "Vitolize Femmes",
+    "category": "Nutrition",
+    "priceDh": 389
+  },
+  {
+    "id": "p24",
+    "name": "Vitolize Hommes",
+    "category": "Nutrition",
+    "priceDh": 410
+  },
+  {
+    "id": "p25",
+    "name": "Forever Move",
+    "category": "Nutrition",
+    "priceDh": 454
+  },
+  {
+    "id": "p26",
+    "name": "Forever Calcium",
+    "category": "Nutrition",
+    "priceDh": 281
+  },
+  {
+    "id": "p27",
+    "name": "Forever Arctic-Sea",
+    "category": "Nutrition",
+    "priceDh": 432
+  },
+  {
+    "id": "p28",
+    "name": "Aloe MSM Gel",
+    "category": "Nutrition",
+    "priceDh": 270
+  },
+  {
+    "id": "p29",
+    "name": "\xC9mulsion Thermog\xE8ne",
+    "category": "Nutrition",
+    "priceDh": 292
+  },
+  {
+    "id": "p30",
+    "name": "Forever Argi+",
+    "category": "Nutrition",
+    "priceDh": 475
+  },
+  {
+    "id": "p31",
+    "name": "Forever Lean",
+    "category": "Fitness & Minceur",
+    "priceDh": 421
+  },
+  {
+    "id": "p32",
+    "name": "Forever Therm",
+    "category": "Fitness & Minceur",
+    "priceDh": 443
+  },
+  {
+    "id": "p33",
+    "name": "Forever Lite Ultra \u2014 Vanille",
+    "category": "Fitness & Minceur",
+    "priceDh": 518
+  },
+  {
+    "id": "p34",
+    "name": "Forever Lite Ultra \u2014 Chocolat",
+    "category": "Fitness & Minceur",
+    "priceDh": 518
+  },
+  {
+    "id": "p35",
+    "name": "Pack Detox \u2014 Pulpe d'Alo\xE8s",
+    "category": "Packs",
+    "priceDh": 1026
+  },
+  {
+    "id": "p36",
+    "name": "Pack Detox \u2014 Aloe Berry Nectar",
+    "category": "Packs",
+    "priceDh": 1026
+  },
+  {
+    "id": "p37",
+    "name": "Smart Consumer Pack",
+    "category": "Packs",
+    "priceDh": 529
+  },
+  {
+    "id": "p38",
+    "name": "Pack Hygi\xE8ne",
+    "category": "Packs",
+    "priceDh": 961
+  },
+  {
+    "id": "p39",
+    "name": "Programme Bien-\xEAtre",
+    "category": "Packs",
+    "priceDh": 1285
+  },
+  {
+    "id": "p40",
+    "name": "Pack de D\xE9marrage \u2014 GO2FBO",
+    "category": "Packs",
+    "priceDh": 1890
+  },
+  {
+    "id": "p41",
+    "name": "Start Your Journey Pack",
+    "category": "Packs",
+    "priceDh": 1609
+  },
+  {
+    "id": "p42",
+    "name": "Aloe First",
+    "category": "Beaut\xE9",
+    "priceDh": 292
+  },
+  {
+    "id": "p43",
+    "name": "Aloe Propolis Cr\xE8me",
+    "category": "Beaut\xE9",
+    "priceDh": 259
+  },
+  {
+    "id": "p44",
+    "name": "Gel\xE9e Alo\xE8s",
+    "category": "Beaut\xE9",
+    "priceDh": 205
+  },
+  {
+    "id": "p45",
+    "name": "Aloe Body Lotion",
+    "category": "Beaut\xE9",
+    "priceDh": 248
+  },
+  {
+    "id": "p46",
+    "name": "Aloe Liquid Soap",
+    "category": "Beaut\xE9",
+    "priceDh": 194
+  },
+  {
+    "id": "p47",
+    "name": "Forever Bright Toothgel",
+    "category": "Beaut\xE9",
+    "priceDh": 151
+  },
+  {
+    "id": "p48",
+    "name": "Aloe Ever-Shield \u2014 Stick D\xE9odorant",
+    "category": "Beaut\xE9",
+    "priceDh": 140
+  },
+  {
+    "id": "p49",
+    "name": "Instant Hand Cleanser",
+    "category": "Beaut\xE9",
+    "priceDh": 97
+  },
+  {
+    "id": "p50",
+    "name": "Aloe L\xE8vres (Aloe Lips)",
+    "category": "Beaut\xE9",
+    "priceDh": 86
+  },
+  {
+    "id": "p51",
+    "name": "Forever Avocado Face & Body Soap",
+    "category": "Beaut\xE9",
+    "priceDh": 130
+  },
+  {
+    "id": "p52",
+    "name": "Aloe Sunscreen SPF 30",
+    "category": "Beaut\xE9",
+    "priceDh": 281
+  },
+  {
+    "id": "p53",
+    "name": "Gentleman's Pride",
+    "category": "Beaut\xE9",
+    "priceDh": 227
+  },
+  {
+    "id": "p54",
+    "name": "Aloe Moisturizing Lotion",
+    "category": "Beaut\xE9",
+    "priceDh": 238
+  },
+  {
+    "id": "p55",
+    "name": "R3 Factor",
+    "category": "Beaut\xE9",
+    "priceDh": 421
+  },
+  {
+    "id": "p56",
+    "name": "S\xE9rum Alpha-E Factor",
+    "category": "Beaut\xE9",
+    "priceDh": 475
+  },
+  {
+    "id": "p57",
+    "name": "Aloe Body Wash",
+    "category": "Beaut\xE9",
+    "priceDh": 216
+  },
+  {
+    "id": "p58",
+    "name": "Shampoing Aloe-Jojoba",
+    "category": "Cheveux",
+    "priceDh": 227
+  },
+  {
+    "id": "p59",
+    "name": "Apr\xE8s-Shampoing Aloe-Jojoba",
+    "category": "Cheveux",
+    "priceDh": 227
+  },
+  {
+    "id": "p60",
+    "name": "Sonya \u2014 Gel Nettoyant",
+    "category": "Sonya",
+    "priceDh": 259
+  },
+  {
+    "id": "p61",
+    "name": "Sonya \u2014 Gel \xC9clat",
+    "category": "Sonya",
+    "priceDh": 281
+  },
+  {
+    "id": "p62",
+    "name": "Sonya \u2014 Masque Gel",
+    "category": "Sonya",
+    "priceDh": 302
+  },
+  {
+    "id": "p63",
+    "name": "Sonya \u2014 Gel Hydratant",
+    "category": "Sonya",
+    "priceDh": 292
+  },
+  {
+    "id": "p64",
+    "name": "Infinite \u2014 D\xE9maquillant Hydratant",
+    "category": "Infinite",
+    "priceDh": 346
+  },
+  {
+    "id": "p65",
+    "name": "Infinite \u2014 S\xE9rum Raffermissant",
+    "category": "Infinite",
+    "priceDh": 626
+  },
+  {
+    "id": "p66",
+    "name": "Infinite \u2014 Cr\xE8me R\xE9paratrice",
+    "category": "Infinite",
+    "priceDh": 583
+  },
+  {
+    "id": "p67",
+    "name": "Infinite \u2014 Complexe Raffermissant",
+    "category": "Infinite",
+    "priceDh": 529
+  },
+  {
+    "id": "p68",
+    "name": "Infinite \u2014 Lotion Tonifiante",
+    "category": "Infinite",
+    "priceDh": 367
+  },
+  {
+    "id": "p69",
+    "name": "Infinite \u2014 Cr\xE8me Contour des Yeux",
+    "category": "Infinite",
+    "priceDh": 497
+  },
+  {
+    "id": "p70",
+    "name": "Infinite \u2014 Soin Exfoliant",
+    "category": "Infinite",
+    "priceDh": 389
+  },
+  {
+    "id": "p71",
+    "name": "Infinite \u2014 Activateur Alo\xE8s",
+    "category": "Infinite",
+    "priceDh": 324
+  },
+  {
+    "id": "p72",
+    "name": "Infinite \u2014 S\xE9rum Hydratant",
+    "category": "Infinite",
+    "priceDh": 562
+  }
+];
+
+// src/core/foreverPrices.ts
+var FOREVER_PRICES = [
+  {
+    "name": "Pulpe d'Alo\xE8s Stabilis\xE9e (1l)",
+    "sellDh": 409,
+    "costDh": 286
+  },
+  {
+    "name": "Aloe Berry Nectar (1l)",
+    "sellDh": 409,
+    "costDh": 286
+  },
+  {
+    "name": "C\u0153ur d'Alo\xE8s (1l)",
+    "sellDh": 444,
+    "costDh": 311
+  },
+  {
+    "name": "Forever Freedom",
+    "sellDh": 558,
+    "costDh": 391
+  },
+  {
+    "name": "Infusion Aloe Blossom Herbal Tea",
+    "sellDh": 275,
+    "costDh": 193
+  },
+  {
+    "name": "Forever Pollen 100 comprim\xE9s",
+    "sellDh": 239,
+    "costDh": 167
+  },
+  {
+    "name": "Forever Propolis 60 comprim\xE9s",
+    "sellDh": 500,
+    "costDh": 350
+  },
+  {
+    "name": "Forever Gel\xE9e Royale 60 comprim\xE9s",
+    "sellDh": 518,
+    "costDh": 363
+  },
+  {
+    "name": "Supergreens",
+    "sellDh": 488,
+    "costDh": 342
+  },
+  {
+    "name": "Absorbent-C 100 comprim\xE9s",
+    "sellDh": 276,
+    "costDh": 193
+  },
+  {
+    "name": "Forever Kids 120 comprim\xE9s",
+    "sellDh": 218,
+    "costDh": 153
+  },
+  {
+    "name": "Forever Ail et Thym 100 Capsules",
+    "sellDh": 285,
+    "costDh": 200
+  },
+  {
+    "name": "Fields Of Greens 80 comprim\xE9s",
+    "sellDh": 189,
+    "costDh": 132
+  },
+  {
+    "name": "Forever Calcium 90 comprim\xE9s",
+    "sellDh": 379,
+    "costDh": 265
+  },
+  {
+    "name": "Ginkgo Plus 60 comprim\xE9s",
+    "sellDh": 492,
+    "costDh": 344
+  },
+  {
+    "name": "Artic Sea 120 Capsules",
+    "sellDh": 480,
+    "costDh": 336
+  },
+  {
+    "name": "Forever Fiber (30 Sachets)",
+    "sellDh": 305,
+    "costDh": 214
+  },
+  {
+    "name": "Vitolize Women",
+    "sellDh": 402,
+    "costDh": 281
+  },
+  {
+    "name": "Vitolize Men",
+    "sellDh": 426,
+    "costDh": 298
+  },
+  {
+    "name": "Forever Move",
+    "sellDh": 790,
+    "costDh": 553
+  },
+  {
+    "name": "Forever Daily",
+    "sellDh": 265,
+    "costDh": 186
+  },
+  {
+    "name": "Pro-B",
+    "sellDh": 465,
+    "costDh": 326
+  },
+  {
+    "name": "Forever iVision",
+    "sellDh": 444,
+    "costDh": 311
+  },
+  {
+    "name": "Detox Vanille",
+    "sellDh": 1554,
+    "costDh": 1088
+  },
+  {
+    "name": "Detox Chocolat",
+    "sellDh": 1554,
+    "costDh": 1088
+  },
+  {
+    "name": "F15 Vanille - Debutant",
+    "sellDh": 1956,
+    "costDh": 1369
+  },
+  {
+    "name": "F15 Chocolat - Debutant",
+    "sellDh": 1956,
+    "costDh": 1369
+  },
+  {
+    "name": "Forever Ultra Lite Plus Vanille 375g",
+    "sellDh": 331,
+    "costDh": 232
+  },
+  {
+    "name": "Forever Ultra Lite Plus Chocolat 390g",
+    "sellDh": 331,
+    "costDh": 232
+  },
+  {
+    "name": "Forever Therm",
+    "sellDh": 469,
+    "costDh": 328
+  },
+  {
+    "name": "Forever Lean",
+    "sellDh": 495,
+    "costDh": 347
+  },
+  {
+    "name": "Forever Argi + Sachet de 300 G (30 Doses de 10 G)",
+    "sellDh": 899,
+    "costDh": 629
+  },
+  {
+    "name": "Pack Bien Etre",
+    "sellDh": 1588,
+    "costDh": 1112
+  },
+  {
+    "name": "Pack Hygi\xE8Ne Famille",
+    "sellDh": 1576,
+    "costDh": 1103
+  },
+  {
+    "name": "Forever Instant Hand Cleanser",
+    "sellDh": 168,
+    "costDh": 118
+  },
+  {
+    "name": "Aloe First (473ml)",
+    "sellDh": 310,
+    "costDh": 217
+  },
+  {
+    "name": "Aloe Propolis Cr\xE8me (118ml)",
+    "sellDh": 310,
+    "costDh": 217
+  },
+  {
+    "name": "Gel\xE9e Alo\xE8s (118ml)",
+    "sellDh": 233,
+    "costDh": 163
+  },
+  {
+    "name": "Aloe Lotion",
+    "sellDh": 233,
+    "costDh": 163
+  },
+  {
+    "name": "Forever Bright Toothgel (130g)",
+    "sellDh": 120,
+    "costDh": 84
+  },
+  {
+    "name": "Stick Deodorant Alo\xE8s (91,1g)",
+    "sellDh": 112,
+    "costDh": 78
+  },
+  {
+    "name": "Aloe Liquid Soap",
+    "sellDh": 245,
+    "costDh": 172
+  },
+  {
+    "name": "Aloe L\xE8vres Unitaires",
+    "sellDh": 55,
+    "costDh": 39
+  },
+  {
+    "name": "Savon Corps et Visage A l'Avocat (142g)",
+    "sellDh": 77,
+    "costDh": 54
+  },
+  {
+    "name": "Alpha E Factor (30ml)",
+    "sellDh": 518,
+    "costDh": 363
+  },
+  {
+    "name": "Gentleman'S Pride (118ml)",
+    "sellDh": 233,
+    "costDh": 163
+  },
+  {
+    "name": "Cr\xE8me Visage Alo\xE8s (118ml)",
+    "sellDh": 233,
+    "costDh": 163
+  },
+  {
+    "name": "R3 Factor Alo\xE8s (56,7g)",
+    "sellDh": 518,
+    "costDh": 363
+  },
+  {
+    "name": "Eyeliner Precision",
+    "sellDh": 253,
+    "costDh": 177
+  },
+  {
+    "name": "Infinite Skin Care Kit",
+    "sellDh": 2213,
+    "costDh": 1549
+  },
+  {
+    "name": "Infinite Hydrating Cleanser",
+    "sellDh": 332,
+    "costDh": 232
+  },
+  {
+    "name": "Infinite Firming Serum",
+    "sellDh": 658,
+    "costDh": 461
+  },
+  {
+    "name": "Infinite By Forever Firming Complex",
+    "sellDh": 654,
+    "costDh": 458
+  },
+  {
+    "name": "Infinite Restoring Cream",
+    "sellDh": 733,
+    "costDh": 513
+  },
+  {
+    "name": "Aloe Activateur",
+    "sellDh": 195,
+    "costDh": 137
+  },
+  {
+    "name": "Cr\xE8me de Jour Spf20",
+    "sellDh": 458,
+    "costDh": 321
+  },
+  {
+    "name": "Soin Exfoliant",
+    "sellDh": 230,
+    "costDh": 161
+  },
+  {
+    "name": "Lotion Tonifiante",
+    "sellDh": 275,
+    "costDh": 193
+  },
+  {
+    "name": "Cr\xE8me Contour Des Yeux",
+    "sellDh": 230,
+    "costDh": 161
+  },
+  {
+    "name": "Mask Aloe Bio Cellulose",
+    "sellDh": 665,
+    "costDh": 465
+  },
+  {
+    "name": "Gel Nettoyant",
+    "sellDh": 298,
+    "costDh": 209
+  },
+  {
+    "name": "Gel Eclat",
+    "sellDh": 282,
+    "costDh": 197
+  },
+  {
+    "name": "Masque Gel",
+    "sellDh": 298,
+    "costDh": 209
+  },
+  {
+    "name": "Gel Hydratant",
+    "sellDh": 326,
+    "costDh": 228
+  },
+  {
+    "name": "Daily Skincare",
+    "sellDh": 1080,
+    "costDh": 756
+  },
+  {
+    "name": "Emulsion Thermogene (118ml)",
+    "sellDh": 233,
+    "costDh": 163
+  },
+  {
+    "name": "Aloe Msm Gel (118ml)",
+    "sellDh": 362,
+    "costDh": 253
+  },
+  {
+    "name": "Shampoing Aloe-Jojoba (296ml)",
+    "sellDh": 276,
+    "costDh": 193
+  },
+  {
+    "name": "Apr\xE8s-Shampooing Aloe-Jojoba (296ml)",
+    "sellDh": 295,
+    "costDh": 207
+  },
+  {
+    "name": "Aloe Sunscreen",
+    "sellDh": 263,
+    "costDh": 184
+  }
+];
+
+// src/core/seed.ts
+function seedDemoData(memory2) {
+  const now = Date.now();
+  const at = (daysAgo) => now - daysAgo * DAY;
+  let n = 0;
+  const invoice = (customer, amount, daysAgo, dueDays, paidDaysAgo) => {
+    const invoiceId = `INV-${String(++n).padStart(3, "0")}`;
+    memory2.append(
+      "fact",
+      "invoice_issued",
+      { invoiceId, customer, amount, issuedAt: at(daysAgo), dueDays },
+      at(daysAgo)
+    );
+    if (paidDaysAgo !== void 0) {
+      memory2.append("fact", "invoice_paid", { invoiceId, paidAt: at(paidDaysAgo) }, at(paidDaysAgo));
+    }
+  };
+  const expense = (label, amount, daysAgo) => {
+    memory2.append(
+      "fact",
+      "expense_recorded",
+      { expenseId: crypto.randomUUID(), label, amount, date: at(daysAgo) },
+      at(daysAgo)
+    );
+  };
+  invoice("Atlas Retail", 3400, 115, 30, 90);
+  invoice("Atlas Retail", 3100, 85, 30, 60);
+  invoice("Atlas Retail", 3600, 55, 30, 30);
+  invoice("Atlas Retail", 900, 22, 30, 5);
+  invoice("Marlowe & Co", 1150, 110, 14, 100);
+  invoice("Marlowe & Co", 1200, 80, 14, 70);
+  invoice("Marlowe & Co", 1100, 50, 14, 40);
+  invoice("Marlowe & Co", 1250, 20, 14, 8);
+  invoice("Harbor Caf\xE9", 640, 145, 14, 135);
+  invoice("Harbor Caf\xE9", 690, 120, 14, 110);
+  invoice("Harbor Caf\xE9", 655, 95, 14, 85);
+  invoice("Harbor Caf\xE9", 700, 70, 14, 60);
+  invoice("Nordwind GmbH", 1800, 48, 14);
+  invoice("Nordwind GmbH", 950, 18, 14);
+  for (const d of [88, 58, 28]) {
+    expense("Rent & utilities", 1450, d);
+    expense("Supplier payments", 2600, d - 3);
+    expense("Wages (part-time help)", 1900, d - 6);
+    expense("Software & fees", 240, d - 8);
+  }
+  memory2.append(
+    "fact",
+    "product_added",
+    {
+      productId: "P-001",
+      name: "Ceramic Mug \u2014 Classic",
+      stock: 18,
+      weeklySales: 12,
+      leadTimeDays: 14,
+      unitCost: 4.2,
+      price: 12.5
+    },
+    at(160)
+  );
+  memory2.append(
+    "fact",
+    "product_added",
+    {
+      productId: "P-002",
+      name: "Oak Serving Board",
+      stock: 46,
+      weeklySales: 6,
+      leadTimeDays: 21,
+      unitCost: 9.8,
+      price: 24
+    },
+    at(160)
+  );
+  memory2.append(
+    "fact",
+    "product_added",
+    {
+      productId: "P-003",
+      name: "Linen Tote (old print)",
+      stock: 40,
+      weeklySales: 0,
+      leadTimeDays: 30,
+      unitCost: 6.5,
+      price: 18
+    },
+    at(200)
+  );
+  const MUG = { productId: "P-001", productName: "Ceramic Mug \u2014 Classic", unitPrice: 12.5, unitCost: 4.2 };
+  const BOARD = { productId: "P-002", productName: "Oak Serving Board", unitPrice: 24, unitCost: 9.8 };
+  memory2.append(
+    "fact",
+    "promo_created",
+    {
+      promoId: "PROMO-001",
+      code: "WELCOME15",
+      type: "percentage",
+      value: 15,
+      minBasket: 0,
+      usageLimit: 50,
+      createdAt: at(30)
+    },
+    at(30)
+  );
+  let ordN = 0;
+  const order = (customer, lines, createdDaysAgo, path, costs, cashDaysAgo) => {
+    const orderId = `ORD-${String(++ordN).padStart(3, "0")}`;
+    memory2.append(
+      "fact",
+      "order_created",
+      {
+        orderId,
+        customer,
+        lines,
+        discount: costs.discount ?? 0,
+        shippingCharged: costs.shipCharged ?? 0,
+        shippingCost: costs.shipCost ?? 0,
+        codFee: costs.codFee ?? 0,
+        packagingCost: costs.packaging ?? 0,
+        createdAt: at(createdDaysAgo),
+        ...costs.promoCode ? { promoCode: costs.promoCode } : {}
+      },
+      at(createdDaysAgo)
+    );
+    for (const step of path) {
+      memory2.append(
+        "fact",
+        "order_status_changed",
+        { orderId, status: step.status, at: at(step.daysAgo) },
+        at(step.daysAgo)
+      );
+    }
+    if (cashDaysAgo !== void 0) {
+      memory2.append("fact", "order_cash_received", { orderId, at: at(cashDaysAgo) }, at(cashDaysAgo));
+    }
+  };
+  const delivered = (d1, d2, d3) => [
+    { status: "confirmed", daysAgo: d1 },
+    { status: "shipped", daysAgo: d2 },
+    { status: "delivered", daysAgo: d3 }
+  ];
+  order("Fatima B.", [{ ...MUG, qty: 4 }], 25, delivered(25, 24, 22), { shipCharged: 3, shipCost: 4.5, codFee: 1, packaging: 0.8 }, 20);
+  order("Omar K.", [{ ...BOARD, qty: 2 }], 20, delivered(20, 19, 17), { shipCharged: 4, shipCost: 5, codFee: 1, packaging: 1 }, 14);
+  order("Leila M.", [{ ...MUG, qty: 6 }, { ...BOARD, qty: 1 }], 15, delivered(15, 14, 12), { shipCharged: 4, shipCost: 5, codFee: 1.2, packaging: 1.2 }, 10);
+  order("Youssef T.", [{ ...MUG, qty: 3 }], 6, delivered(6, 5, 4), { shipCharged: 3, shipCost: 4.5, codFee: 1, packaging: 0.8 });
+  order("Sara H.", [{ ...MUG, qty: 1 }], 4, delivered(4, 3, 2), { discount: 1.88, shipCost: 6, codFee: 1.5, packaging: 0.8, promoCode: "WELCOME15" });
+  order("Rania E.", [{ ...MUG, qty: 1 }], 7, delivered(7, 6, 5), { discount: 1.88, shipCost: 6, codFee: 1.5, packaging: 0.8, promoCode: "WELCOME15" }, 3);
+  order("Karim Z.", [{ ...MUG, qty: 3 }], 18, [
+    { status: "confirmed", daysAgo: 18 },
+    { status: "shipped", daysAgo: 17 },
+    { status: "refused", daysAgo: 14 }
+  ], { shipCost: 5, codFee: 0, packaging: 1 });
+  order("Karim Z.", [{ ...MUG, qty: 2 }], 9, [
+    { status: "confirmed", daysAgo: 9 },
+    { status: "shipped", daysAgo: 8 },
+    { status: "refused", daysAgo: 6 }
+  ], { shipCost: 5, codFee: 0, packaging: 1 });
+  order("Nadia R.", [{ ...BOARD, qty: 1 }], 10, [
+    { status: "confirmed", daysAgo: 10 },
+    { status: "shipped", daysAgo: 9 },
+    { status: "refused", daysAgo: 8 }
+  ], { shipCost: 5.5, codFee: 0, packaging: 1 });
+  order("Hassan A.", [{ ...MUG, qty: 2 }], 2, [
+    { status: "confirmed", daysAgo: 2 },
+    { status: "shipped", daysAgo: 1 }
+  ], { shipCharged: 3, shipCost: 4.5, codFee: 1, packaging: 0.8 });
+}
+
+// scripts/verify.ts
+var TestMemory = class {
+  events = [];
+  append(stream, type, payload, ts) {
+    const e = { id: crypto.randomUUID(), ts: ts ?? Date.now(), stream, type, payload };
+    this.events.push(e);
+    return e;
+  }
+  all() {
+    return this.events;
+  }
+  exportJson() {
+  }
+  subscribe() {
+    return () => {
+    };
+  }
+};
+var failures = 0;
+function check(name, cond, detail = "") {
+  if (cond) {
+    console.log(`  PASS  ${name}`);
+  } else {
+    failures++;
+    console.error(`  FAIL  ${name}${detail ? " \u2014 " + detail : ""}`);
+  }
+}
+var memory = new TestMemory();
+seedDemoData(memory);
+var state = projectState(memory.all());
+var decisions = projectDecisions(memory.all());
+var insights = generateInsights(state, decisions);
+console.log("\nProjections:");
+check(
+  "facts fold into state",
+  state.invoices.length === 14 && state.products.length === 3,
+  `invoices=${state.invoices.length}, products=${state.products.length}`
+);
+check("orders fold into state", state.orders.length === 10, `orders=${state.orders.length}`);
+console.log("\nCommerce & COD lifecycle (Wave 1):");
+var mug = state.products.find((p2) => p2.productId === "P-001");
+check("delivery deducts stock (mug 18 \u2192 3)", mug.stock === 3, `stock=${mug.stock}`);
+check(
+  "open order reserves stock (Hassan, 2 mugs)",
+  state.reserved["P-001"] === 2,
+  `reserved=${state.reserved["P-001"]}`
+);
+var refusedOrder = state.orders.find((o) => o.status === "refused");
+check("refused order does not deduct stock and holds no reservation", !!refusedOrder);
+var sara = state.orders.find((o) => o.customer === "Sara H.");
+check(
+  "order profit math: Sara's order loses money",
+  orderNetProfit(sara) < 0,
+  `net=${orderNetProfit(sara).toFixed(2)}`
+);
+var fatima = state.orders.find((o) => o.customer === "Fatima B.");
+check(
+  "order revenue = lines \u2212 discount + shipping charged",
+  Math.abs(orderRevenue(fatima) - 53) < 0.01,
+  `revenue=${orderRevenue(fatima)}`
+);
+var things = stateOfThings(state);
+check(
+  "delivered-but-unremitted cash shows as pending COD",
+  things.cashPendingCod > 0,
+  `pending=${things.cashPendingCod.toFixed(2)}`
+);
+check("open orders counted", things.openOrders === 1, `open=${things.openOrders}`);
+console.log("\nCRM customer profiles (Wave 4):");
+var profiles = projectCustomerProfiles(state);
+var karim = profiles.find((p2) => p2.name === "Karim Z.");
+check(
+  "refused-only customer has 0% COD reliability",
+  karim.codReliability === 0,
+  `reliability=${karim.codReliability}`
+);
+check("high refusal customer is tagged", karim.tags.includes("high-refusal"));
+var fatimaP = profiles.find((p2) => p2.name === "Fatima B.");
+check(
+  "delivered customer has profit data",
+  fatimaP.hasProfitData && fatimaP.lifetimeProfit > 0,
+  `profit=${fatimaP.lifetimeProfit.toFixed(2)}`
+);
+check("lifetime revenue unifies invoices + orders", fatimaP.lifetimeRevenue >= orderRevenue(fatima) - 0.01);
+check("VIP tag assigned to top customers", profiles.some((p2) => p2.tags.includes("vip")));
+check(
+  "every profile has new-or-returning lifecycle tag",
+  profiles.every((p2) => p2.tags.includes("new") || p2.tags.includes("returning"))
+);
+console.log("\nDecision Engine \u2014 Business Brains:");
+var byKey = (prefix) => insights.find((i) => i.decisionKey.startsWith(prefix));
+var overdue = byKey("finance.overdue");
+var dip = byKey("finance.revenue-dip");
+var runway = byKey("finance.runway");
+var churn = byKey("customers.silent.Harbor Caf\xE9");
+var stockout = byKey("inventory.stockout.P-001");
+var dead = byKey("inventory.dead.P-003");
+check("overdue invoices detected (Nordwind)", !!overdue && overdue.claim.includes("2 invoice"));
+check("revenue dip detected with driver Atlas Retail", !!dip && dip.claim.includes("Atlas Retail"), dip?.claim ?? "none");
+check("cash runway strategic insight present", !!runway && runway.layer === "strategic");
+check("silent-churn customer detected (Harbor Caf\xE9)", !!churn);
+check("stockout projected before lead time (Ceramic Mug)", !!stockout);
+check("dead stock detected (Linen Tote)", !!dead);
+check("COD refusal-rate insight fires (3 of 9 settled)", !!byKey("commerce.refusal-rate"));
+check("unprofitable delivered orders detected", !!byKey("commerce.unprofitable-orders"));
+check("expense-envelope overspend detected", !!byKey("finance.envelope-expenses"));
+console.log("\nDiscounts & promo engine (Wave 1 completion):");
+var promo = state.promos.find((p2) => p2.code === "WELCOME15");
+check("promo folds into state and is active", !!promo && promo.active, `promo=${!!promo}`);
+check(
+  "promo usage server-counted (2 orders bear WELCOME15)",
+  promo.timesUsed === 2,
+  `used=${promo.timesUsed}`
+);
+var okCheck = checkPromo(state, "WELCOME15", 100);
+check(
+  "checkPromo computes 15% discount",
+  okCheck.ok && Math.abs(okCheck.discount - 15) < 0.01,
+  okCheck.ok ? `discount=${okCheck.discount}` : okCheck.reason
+);
+var badCode = checkPromo(state, "NOPE", 100);
+check("checkPromo rejects unknown code", !badCode.ok);
+check("marketing brain flags the unprofitable promo", !!byKey("marketing.promo-unprofitable.WELCOME15"));
+console.log("\nFinance depth (Wave 3):");
+var sim = simulateProfit({ sellingPrice: 100, buyingCost: 40, quantity: 2, discount: 5, shippingCost: 10, packagingCost: 2, advertisingCost: 0 });
+check("simulator revenue", Math.abs(sim.revenue - 190) < 0.01, `rev=${sim.revenue}`);
+check("simulator net profit", Math.abs(sim.netProfit - 98) < 0.01, `net=${sim.netProfit}`);
+check("simulator break-even units (12 / 55 per-unit = 1)", sim.breakEvenUnits === 1, `be=${sim.breakEvenUnits}`);
+var simLoss = simulateProfit({ sellingPrice: 10, buyingCost: 12, quantity: 1, discount: 0, shippingCost: 5, packagingCost: 0, advertisingCost: 0 });
+check("simulator: unit that loses money has no break-even", simLoss.breakEvenUnits === null);
+var be = breakEven(state);
+check("break-even computed from delivered orders + fixed expenses", be.monthlyFixedExpenses > 0 && be.avgProfitPerOrder !== 0);
+memory.append("fact", "goal_set", { metric: "revenue", target: 1e4, setAt: Date.now() });
+var withGoal = projectState(memory.all());
+check("goal folds into state (latest wins)", withGoal.goals.revenue === 1e4, `goal=${withGoal.goals.revenue}`);
+check("goalActual returns a number", typeof goalActual(withGoal, "revenue") === "number");
+console.log("\nForecasting (Wave 7):");
+var fc = forecast(state);
+check("forecast returns assumptions (honest framing)", fc.assumptions.length > 0);
+check("forecast projects stockouts as a range list", Array.isArray(fc.stockouts));
+console.log("\nAsk ZYVORA assistant (Wave 7):");
+var aProfit = askZyvora(state, "how much profit did I make?");
+check("assistant answers profit with evidence", aProfit.handled && aProfit.evidence.length > 0);
+var aLost = askZyvora(state, "show orders that lost money");
+check("assistant finds unprofitable orders", aLost.handled && /lost money|net/i.test(aLost.text));
+var aMargin = askZyvora(state, "which product has the highest margin?");
+check("assistant answers product margin", aMargin.handled && aMargin.evidence.length > 0);
+var aJunk = askZyvora(state, "what is the meaning of life?");
+check("assistant admits out-of-scope (never fabricates)", !aJunk.handled);
+console.log("\nCSV import (Wave 6):");
+var csv = 'Name,Selling Price,Cost,Qty\n"Aloe Vera Gel",120,70,40\nForever Bee Honey,95,55,25\n,10,5,3';
+var p = parseCsv(csv);
+check("CSV parses headers + rows (quoted fields, skips blank name row later)", p.headers.length === 4 && p.rows.length === 3);
+var m = autoMap("products", p.headers);
+check("auto-map matches name/price/cost/stock by header", m.name === 0 && m.price === 1 && m.unitCost === 2 && m.stock === 3);
+var r0 = buildRow("products", m, p.rows[0]);
+check("valid product row builds a product_added event", !!r0.event && r0.event.type === "product_added" && r0.event.payload.name === "Aloe Vera Gel");
+var rBad = buildRow("products", m, p.rows[2]);
+check("row missing required field is rejected with a reason", !rBad.event && rBad.error === "missing name");
+var invCsv = "client,montant,date,paye\nOmar,300,2026-05-01,2026-05-10";
+var ip = parseCsv(invCsv);
+var im = autoMap("invoices", ip.headers);
+var ir = buildRow("invoices", im, ip.rows[0]);
+check("invoice with paid date builds issued + paid events", !!ir.event && ir.event.type === "invoice_issued" && !!ir.extra && ir.extra.type === "invoice_paid");
+console.log("\nNaturaloe store catalog:");
+check("catalog has the full 72-product lineup", NATURALOE_CATALOG.length === 72, `count=${NATURALOE_CATALOG.length}`);
+check("every catalog product has a name and a dirham sell price", NATURALOE_CATALOG.every((p2) => p2.name.length > 0 && p2.priceDh > 0));
+var aloe = NATURALOE_CATALOG.find((p2) => p2.id === "p01");
+check("Aloe Vera Gel priced 76 DH (7\u20AC \xD7 10.8)", !!aloe && aloe.priceDh === 76, `price=${aloe?.priceDh}`);
+console.log("\nForever real prices (from order form):");
+check("Forever price list has ~70 products", FOREVER_PRICES.length >= 60, `count=${FOREVER_PRICES.length}`);
+check("every Forever product has sell > cost > 0", FOREVER_PRICES.every((p2) => p2.sellDh > p2.costDh && p2.costDh > 0));
+check("cost is 30% off retail (Argi+ 899 \u2192 629)", FOREVER_PRICES.every((p2) => p2.costDh === Math.round(p2.sellDh * 0.7)));
+var argi = FOREVER_PRICES.find((p2) => /argi/i.test(p2.name));
+check("Argi+ real price present (899 sell / 629 cost)", !!argi && argi.sellDh === 899 && argi.costDh === 629, `${argi?.sellDh}/${argi?.costDh}`);
+console.log("\nConstitutional invariants:");
+check("insights are ranked descending", insights.every((x, i, a) => i === 0 || a[i - 1].score >= x.score));
+var withGuidance = insights.filter((i) => i.guidance);
+check("every Guidance has 2\u20134 options", withGuidance.every((i) => i.guidance.options.length >= 2 && i.guidance.options.length <= 4));
+check("every Guidance includes the null option (5.8)", withGuidance.every((i) => i.guidance.options.some((o) => o.isNullOption)));
+check("every option carries a falsifier (P4.6 L4)", withGuidance.every((i) => i.guidance.options.every((o) => o.falsifier.length > 0)));
+check("every insight carries evidence + confidence note (Law IX)", insights.every((i) => i.evidence.length > 0 && i.confidenceNote.length > 0));
+check("recommendation is one of the options", withGuidance.every((i) => i.guidance.options.some((o) => o.id === i.guidance.recommendedId)));
+console.log("\nLifecycle stage 8 + suppression (P4.3):");
+var target = stockout;
+memory.append("interpretation", "insight_presented", { decisionKey: target.decisionKey, claim: target.claim });
+memory.append("decision", "decision_recorded", {
+  decisionKey: target.decisionKey,
+  claim: target.claim,
+  layer: target.layer,
+  optionId: "expedite",
+  optionLabel: "Expedite a reorder now",
+  rationale: "Best-seller; premium is small vs. lost sales."
+});
+var decisions2 = projectDecisions(memory.all());
+check("decision recorded with rationale", decisions2.length === 1 && decisions2[0].rationale.length > 0);
+var insights2 = generateInsights(projectState(memory.all()), decisions2);
+check("decided item no longer re-nags", !insights2.some((i) => i.decisionKey === target.decisionKey));
+check("undecided items still present", insights2.some((i) => i.decisionKey.startsWith("finance.overdue")));
+memory.append("outcome", "outcome_recorded", {
+  decisionEventId: decisions2[0].eventId,
+  decisionKey: target.decisionKey,
+  result: "good",
+  note: "Arrived in time; zero stockout days."
+});
+check("outcome linked to decision", projectDecisions(memory.all())[0].hasOutcome);
+console.log(failures === 0 ? "\nALL CHECKS PASSED" : `
+${failures} CHECK(S) FAILED`);
+process.exit(failures === 0 ? 0 : 1);

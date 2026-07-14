@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://zyvora.local/schema/edge.schema.json",
+  "title": "ZYVORA Knowledge Edge",
+  "type": "object",
+  "required": ["id", "type", "from", "to", "status", "version", "governance"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {"type": "string", "pattern": "^EDGE-[0-9]{6}$"},
+    "type": {"type": "string", "minLength": 2},
+    "from": {"type": "string"},
+    "to": {"type": "string"},
+    "status": {"type": "string"},
+    "version": {"type": "string"},
+    "description": {"type": "string"},
+    "attributes": {"type": "object"},
+    "governance": {
+      "type": "object",
+      "required": ["owner", "last_reviewed"],
+      "additionalProperties": false,
+      "properties": {
+        "owner": {"type": "string", "pattern": "^TEAM-[0-9]{6}$"},
+        "last_reviewed": {"type": "string", "format": "date"}
+      }
+    }
+  }
+}

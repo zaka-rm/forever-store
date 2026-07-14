@@ -1,0 +1,59 @@
+{
+  "version": "1.0.0",
+  "authority": "AKG-CON-000001",
+  "node_types": [
+    "constitution", "constitutional_clause", "team", "module", "capability", "feature", "decision",
+    "business_rule", "workflow", "entity", "api", "event", "permission", "automation", "notification",
+    "metric", "dashboard", "report", "integration", "ai_capability", "artifact", "build_pack", "qa_pack",
+    "release", "runtime_component", "repository_path", "test_case", "risk", "user_journey", "screen", "component",
+    "ui_flow", "prompt", "change_request", "evidence", "exception", "impact_assessment", "traceability_assessment", "implementation_evidence", "orchestration_assessment", "work_order", "agent_run"
+  ],
+  "edge_types": [
+    "belongs_to", "governed_by", "owns", "supports", "depends_on", "implemented_by", "specified_by",
+    "documented_by", "verified_by", "released_in", "produces", "consumes", "governs", "exposes", "uses",
+    "measured_by", "notifies", "automates", "persists", "deployed_as", "located_at", "supersedes",
+    "approves", "reviews", "evidenced_by", "mitigates", "tests", "traces_to", "renders", "uses_prompt",
+    "proposes_change_to", "provides_evidence_for", "exception_to", "assesses", "required_approval_from", "invalidates"
+  ],
+  "lifecycle_states": [
+    "Concept", "Planned", "In Design", "Specified", "Blueprint Ready", "Implementation Ready",
+    "In Development", "In QA", "Release Approved", "Released", "Deprecated", "Archived"
+  ],
+  "allowed_transitions": {
+    "Concept": ["Planned", "Archived"],
+    "Planned": ["In Design", "Archived"],
+    "In Design": ["Specified", "Planned", "Archived"],
+    "Specified": ["Blueprint Ready", "In Design", "Archived"],
+    "Blueprint Ready": ["Implementation Ready", "Specified", "Archived"],
+    "Implementation Ready": ["In Development", "Blueprint Ready", "Archived"],
+    "In Development": ["In QA", "Implementation Ready", "Archived"],
+    "In QA": ["Release Approved", "In Development", "Archived"],
+    "Release Approved": ["Released", "In QA"],
+    "Released": ["Deprecated"],
+    "Deprecated": ["Archived", "Released"],
+    "Archived": []
+  },
+  "state_gates": {
+    "Planned": ["owner", "supported_decision", "business_objective"],
+    "In Design": ["scope", "personas", "workflows", "design_owner"],
+    "Specified": ["approved_prd", "business_rules", "data_owner", "permissions", "acceptance_criteria"],
+    "Blueprint Ready": ["technical_specification", "api_event_contracts", "security_review", "ui_states"],
+    "Implementation Ready": ["approved_blueprint", "build_pack", "qa_pack", "deployment_and_rollback"],
+    "In Development": ["branch_or_worktree", "engineering_owner"],
+    "In QA": ["build_artifact", "test_environment", "traceability_complete"],
+    "Release Approved": ["qa_passed", "no_open_p0_p1", "operations_ready", "approvals"],
+    "Released": ["deployment_evidence", "runtime_telemetry", "release_record"],
+    "Deprecated": ["replacement_or_reason", "migration_plan", "deprecation_date"],
+    "Archived": ["data_and_contract_disposition", "final_evidence"]
+  },
+  "id_prefixes": {
+    "constitution": "CON", "constitutional_clause": "CLAUSE", "team": "TEAM", "module": "MOD",
+    "capability": "CAP", "feature": "FEAT", "decision": "DEC", "business_rule": "BR",
+    "workflow": "WF", "entity": "ENT", "api": "API", "event": "EVT", "permission": "PERM",
+    "automation": "AUTO", "notification": "NOT", "metric": "MET", "dashboard": "DASH",
+    "report": "RPT", "integration": "INT", "ai_capability": "AICAP", "artifact": "ART",
+    "build_pack": "BUILD", "qa_pack": "QA", "release": "REL", "runtime_component": "RUN",
+    "repository_path": "PATH", "test_case": "TEST", "risk": "RISK", "user_journey": "UJ", "screen": "SCR", "component": "CMP",
+    "ui_flow": "UF", "prompt": "PROMPT", "change_request": "CR", "evidence": "EVD", "exception": "EXC", "impact_assessment": "IMPACT", "traceability_assessment": "TRACE", "implementation_evidence": "IMPL", "orchestration_assessment": "ORCH", "work_order": "WORK", "agent_run": "ARUN"
+  }
+}

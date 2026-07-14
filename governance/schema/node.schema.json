@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://zyvora.local/schema/node.schema.json",
+  "title": "ZYVORA Knowledge Node",
+  "type": "object",
+  "required": ["id", "type", "name", "status", "owner", "version", "governance"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {"type": "string", "pattern": "^[A-Z][A-Z0-9-]*-[0-9]{6}$"},
+    "type": {"type": "string", "minLength": 2},
+    "name": {"type": "string", "minLength": 2},
+    "description": {"type": "string"},
+    "status": {"type": "string"},
+    "owner": {"type": "string", "pattern": "^TEAM-[0-9]{6}$"},
+    "version": {"type": "string", "pattern": "^[0-9]+\.[0-9]+(\.[0-9]+)?$"},
+    "aliases": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "tags": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "attributes": {"type": "object"},
+    "governance": {
+      "type": "object",
+      "required": ["responsible_team", "approver", "review_cycle", "last_reviewed", "next_review", "classification"],
+      "additionalProperties": false,
+      "properties": {
+        "responsible_team": {"type": "string", "pattern": "^TEAM-[0-9]{6}$"},
+        "approver": {"type": "string", "pattern": "^TEAM-[0-9]{6}$"},
+        "review_cycle": {"type": "string"},
+        "last_reviewed": {"type": "string", "format": "date"},
+        "next_review": {"type": "string", "format": "date"},
+        "classification": {"type": "string"},
+        "supersedes": {"type": "array", "items": {"type": "string"}},
+        "effective_from": {"type": "string", "format": "date"}
+      }
+    }
+  }
+}

@@ -1,0 +1,331 @@
+{
+  "registry": "dashboards",
+  "version": "1.0.0",
+  "generated_at": "2026-07-12T03:39:37Z",
+  "records": [
+    {
+      "id": "DASH-000001",
+      "type": "dashboard",
+      "name": "Decision Center Decision Dashboard",
+      "description": "Decision-centered dashboard for Decision Center.",
+      "status": "In Design",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-DASH-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "decision_question_required": true,
+        "drill_down_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "DASH-000002",
+      "type": "dashboard",
+      "name": "Business Memory Decision Dashboard",
+      "description": "Decision-centered dashboard for Business Memory.",
+      "status": "In Design",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-DASH-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "decision_question_required": true,
+        "drill_down_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "DASH-000003",
+      "type": "dashboard",
+      "name": "AI Engine Decision Dashboard",
+      "description": "Decision-centered dashboard for AI Engine.",
+      "status": "In Design",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-DASH-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "decision_question_required": true,
+        "drill_down_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "DASH-000004",
+      "type": "dashboard",
+      "name": "Identity, Workspace, Permissions & Audit Decision Dashboard",
+      "description": "Decision-centered dashboard for Identity, Workspace, Permissions & Audit.",
+      "status": "In Design",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-DASH-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "decision_question_required": true,
+        "drill_down_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "DASH-000005",
+      "type": "dashboard",
+      "name": "Finance Decision Dashboard",
+      "description": "Decision-centered dashboard for Finance.",
+      "status": "In Design",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-DASH-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "decision_question_required": true,
+        "drill_down_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "DASH-000006",
+      "type": "dashboard",
+      "name": "Inventory Decision Dashboard",
+      "description": "Decision-centered dashboard for Inventory.",
+      "status": "In Design",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-DASH-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "decision_question_required": true,
+        "drill_down_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "DASH-000007",
+      "type": "dashboard",
+      "name": "CRM Decision Dashboard",
+      "description": "Decision-centered dashboard for CRM.",
+      "status": "In Design",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-DASH-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "decision_question_required": true,
+        "drill_down_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "DASH-000008",
+      "type": "dashboard",
+      "name": "Analytics Decision Dashboard",
+      "description": "Decision-centered dashboard for Analytics.",
+      "status": "In Design",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-DASH-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "decision_question_required": true,
+        "drill_down_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "DASH-000009",
+      "type": "dashboard",
+      "name": "Documents Decision Dashboard",
+      "description": "Decision-centered dashboard for Documents.",
+      "status": "In Design",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-DASH-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "decision_question_required": true,
+        "drill_down_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "DASH-000010",
+      "type": "dashboard",
+      "name": "Notifications Decision Dashboard",
+      "description": "Decision-centered dashboard for Notifications.",
+      "status": "In Design",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-DASH-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "decision_question_required": true,
+        "drill_down_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "DASH-000011",
+      "type": "dashboard",
+      "name": "Human Resources Decision Dashboard",
+      "description": "Decision-centered dashboard for Human Resources.",
+      "status": "In Design",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-DASH-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "decision_question_required": true,
+        "drill_down_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "DASH-000012",
+      "type": "dashboard",
+      "name": "Manufacturing Decision Dashboard",
+      "description": "Decision-centered dashboard for Manufacturing.",
+      "status": "In Design",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-DASH-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "decision_question_required": true,
+        "drill_down_required": true
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    }
+  ]
+}

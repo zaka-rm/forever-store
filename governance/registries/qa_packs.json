@@ -1,0 +1,37 @@
+{
+  "registry": "qa_packs",
+  "version": "1.0.0",
+  "generated_at": "2026-07-12T03:39:37Z",
+  "records": [
+    {
+      "id": "QA-000001",
+      "type": "qa_pack",
+      "name": "ZYVORA QA-001 Workspace Identity & Audit Foundation v1.0",
+      "description": "Controlled human-readable view at outputs\\06_QA_Packs\\ZYVORA_QA_001_Workspace_Identity_Audit_Foundation_v1.0.docx.",
+      "status": "Implementation Ready",
+      "owner": "TEAM-000001",
+      "version": "1.0.0",
+      "aliases": [
+        "ZAO-QA-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "path": "outputs/06_QA_Packs/ZYVORA_QA_001_Workspace_Identity_Audit_Foundation_v1.0.docx",
+        "format": "docx",
+        "canonical_view": false,
+        "size_bytes": 42759,
+        "sha256": "763d0e234168a7393bafc25dd0ebac750e44982d53c10d30171ef95bbb0e1eb9"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000001",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    }
+  ]
+}

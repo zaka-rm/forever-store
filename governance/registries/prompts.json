@@ -1,0 +1,2059 @@
+{
+  "registry": "prompts",
+  "version": "1.0.0",
+  "generated_at": "2026-07-12T03:39:37Z",
+  "records": [
+    {
+      "id": "PROMPT-000001",
+      "type": "prompt",
+      "name": "Decision Center: Priority assistance Prompt",
+      "description": "Versioned prompt contract for Priority assistance; prompt body and evaluation thresholds require AI authority approval.",
+      "status": "In Design",
+      "owner": "TEAM-000006",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-PROMPT-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "prompt_template": null,
+        "template_status": "requires_ai_authority_approval",
+        "inputs": [],
+        "outputs": [],
+        "guardrails": [
+          "tenant isolation",
+          "source traceability",
+          "human review",
+          "provider abstraction"
+        ],
+        "evaluation_tests": [],
+        "model_policy": "provider-agnostic",
+        "deployment_status": "not_deployed"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000006",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PROMPT-000002",
+      "type": "prompt",
+      "name": "Decision Center: Alternative generation Prompt",
+      "description": "Versioned prompt contract for Alternative generation; prompt body and evaluation thresholds require AI authority approval.",
+      "status": "In Design",
+      "owner": "TEAM-000006",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-PROMPT-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "prompt_template": null,
+        "template_status": "requires_ai_authority_approval",
+        "inputs": [],
+        "outputs": [],
+        "guardrails": [
+          "tenant isolation",
+          "source traceability",
+          "human review",
+          "provider abstraction"
+        ],
+        "evaluation_tests": [],
+        "model_policy": "provider-agnostic",
+        "deployment_status": "not_deployed"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000006",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PROMPT-000003",
+      "type": "prompt",
+      "name": "Decision Center: Trade-off explanation Prompt",
+      "description": "Versioned prompt contract for Trade-off explanation; prompt body and evaluation thresholds require AI authority approval.",
+      "status": "In Design",
+      "owner": "TEAM-000006",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-PROMPT-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "prompt_template": null,
+        "template_status": "requires_ai_authority_approval",
+        "inputs": [],
+        "outputs": [],
+        "guardrails": [
+          "tenant isolation",
+          "source traceability",
+          "human review",
+          "provider abstraction"
+        ],
+        "evaluation_tests": [],
+        "model_policy": "provider-agnostic",
+        "deployment_status": "not_deployed"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000006",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PROMPT-000004",
+      "type": "prompt",
+      "name": "Decision Center: Outcome comparison Prompt",
+      "description": "Versioned prompt contract for Outcome comparison; prompt body and evaluation thresholds require AI authority approval.",
+      "status": "In Design",
+      "owner": "TEAM-000006",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-PROMPT-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "prompt_template": null,
+        "template_status": "requires_ai_authority_approval",
+        "inputs": [],
+        "outputs": [],
+        "guardrails": [
+          "tenant isolation",
+          "source traceability",
+          "human review",
+          "provider abstraction"
+        ],
+        "evaluation_tests": [],
+        "model_policy": "provider-agnostic",
+        "deployment_status": "not_deployed"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000006",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PROMPT-000005",
+      "type": "prompt",
+      "name": "Decision Center: Similar-decision retrieval Prompt",
+      "description": "Versioned prompt contract for Similar-decision retrieval; prompt body and evaluation thresholds require AI authority approval.",
+      "status": "In Design",
+      "owner": "TEAM-000006",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-PROMPT-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "prompt_template": null,
+        "template_status": "requires_ai_authority_approval",
+        "inputs": [],
+        "outputs": [],
+        "guardrails": [
+          "tenant isolation",
+          "source traceability",
+          "human review",
+          "provider abstraction"
+        ],
+        "evaluation_tests": [],
+        "model_policy": "provider-agnostic",
+        "deployment_status": "not_deployed"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000006",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PROMPT-000006",
+      "type": "prompt",
+      "name": "Business Memory: Semantic retrieval Prompt",
+      "description": "Versioned prompt contract for Semantic retrieval; prompt body and evaluation thresholds require AI authority approval.",
+      "status": "In Design",
+      "owner": "TEAM-000006",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-PROMPT-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "prompt_template": null,
+        "template_status": "requires_ai_authority_approval",
+        "inputs": [],
+        "outputs": [],
+        "guardrails": [
+          "tenant isolation",
+          "source traceability",
+          "human review",
+          "provider abstraction"
+        ],
+        "evaluation_tests": [],
+        "model_policy": "provider-agnostic",
+        "deployment_status": "not_deployed"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000006",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PROMPT-000007",
+      "type": "prompt",
+      "name": "Business Memory: Summarization with citations Prompt",
+      "description": "Versioned prompt contract for Summarization with citations; prompt body and evaluation thresholds require AI authority approval.",
+      "status": "In Design",
+      "owner": "TEAM-000006",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-PROMPT-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "prompt_template": null,
+        "template_status": "requires_ai_authority_approval",
+        "inputs": [],
+        "outputs": [],
+        "guardrails": [
+          "tenant isolation",
+          "source traceability",
+          "human review",
+          "provider abstraction"
+        ],
+        "evaluation_tests": [],
+        "model_policy": "provider-agnostic",
+        "deployment_status": "not_deployed"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000006",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PROMPT-000008",
+      "type": "prompt",
+      "name": "Business Memory: Similar-case discovery Prompt",
+      "description": "Versioned prompt contract for Similar-case discovery; prompt body and evaluation thresholds require AI authority approval.",
+      "status": "In Design",
+      "owner": "TEAM-000006",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-PROMPT-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "prompt_template": null,
+        "template_status": "requires_ai_authority_approval",
+        "inputs": [],
+        "outputs": [],
+        "guardrails": [
+          "tenant isolation",
+          "source traceability",
+          "human review",
+          "provider abstraction"
+        ],
+        "evaluation_tests": [],
+        "model_policy": "provider-agnostic",
+        "deployment_status": "not_deployed"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000006",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PROMPT-000009",
+      "type": "prompt",
+      "name": "Business Memory: Lesson extraction Prompt",
+      "description": "Versioned prompt contract for Lesson extraction; prompt body and evaluation thresholds require AI authority approval.",
+      "status": "In Design",
+      "owner": "TEAM-000006",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-PROMPT-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "prompt_template": null,
+        "template_status": "requires_ai_authority_approval",
+        "inputs": [],
+        "outputs": [],
+        "guardrails": [
+          "tenant isolation",
+          "source traceability",
+          "human review",
+          "provider abstraction"
+        ],
+        "evaluation_tests": [],
+        "model_policy": "provider-agnostic",
+        "deployment_status": "not_deployed"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000006",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PROMPT-000010",
+      "type": "prompt",
+      "name": "Business Memory: Memory quality classification Prompt",
+      "description": "Versioned prompt contract for Memory quality classification; prompt body and evaluation thresholds require AI authority approval.",
+      "status": "In Design",
+      "owner": "TEAM-000006",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-PROMPT-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "prompt_template": null,
+        "template_status": "requires_ai_authority_approval",
+        "inputs": [],
+        "outputs": [],
+        "guardrails": [
+          "tenant isolation",
+          "source traceability",
+          "human review",
+          "provider abstraction"
+        ],
+        "evaluation_tests": [],
+        "model_policy": "provider-agnostic",
+        "deployment_status": "not_deployed"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000006",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PROMPT-000011",
+      "type": "prompt",
+      "name": "AI Engine: All capabilities are AI capabilities; core business workflows remain usable without them Prompt",
+      "description": "Versioned prompt contract for All capabilities are AI capabilities; core business workflows remain usable without them; prompt body and evaluation thresholds require AI authority approval.",
+      "status": "In Design",
+      "owner": "TEAM-000006",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-PROMPT-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "prompt_template": null,
+        "template_status": "requires_ai_authority_approval",
+        "inputs": [],
+        "outputs": [],
+        "guardrails": [
+          "tenant isolation",
+          "source traceability",
+          "human review",
+          "provider abstraction"
+        ],
+        "evaluation_tests": [],
+        "model_policy": "provider-agnostic",
+        "deployment_status": "not_deployed"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000006",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PROMPT-000012",
+      "type": "prompt",
+      "name": "Identity, Workspace, Permissions & Audit: Risk signal explanation Prompt",
+      "description": "Versioned prompt contract for Risk signal explanation; prompt body and evaluation thresholds require AI authority approval.",
+      "status": "In Design",
+      "owner": "TEAM-000006",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-PROMPT-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "prompt_template": null,
+        "template_status": "requires_ai_authority_approval",
+        "inputs": [],
+        "outputs": [],
+        "guardrails": [
+          "tenant isolation",
+          "source traceability",
+          "human review",
+          "provider abstraction"
+        ],
+        "evaluation_tests": [],
+        "model_policy": "provider-agnostic",
+        "deployment_status": "not_deployed"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000006",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PROMPT-000013",
+      "type": "prompt",
+      "name": "Identity, Workspace, Permissions & Audit: Access review assistance Prompt",
+      "description": "Versioned prompt contract for Access review assistance; prompt body and evaluation thresholds require AI authority approval.",
+      "status": "In Design",
+      "owner": "TEAM-000006",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-PROMPT-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "prompt_template": null,
+        "template_status": "requires_ai_authority_approval",
+        "inputs": [],
+        "outputs": [],
+        "guardrails": [
+          "tenant isolation",
+          "source traceability",
+          "human review",
+          "provider abstraction"
+        ],
+        "evaluation_tests": [],
+        "model_policy": "provider-agnostic",
+        "deployment_status": "not_deployed"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000006",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PROMPT-000014",
+      "type": "prompt",
+      "name": "Identity, Workspace, Permissions & Audit: Anomalous sign-in triage Prompt",
+      "description": "Versioned prompt contract for Anomalous sign-in triage; prompt body and evaluation thresholds require AI authority approval.",
+      "status": "In Design",
+      "owner": "TEAM-000006",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-PROMPT-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "prompt_template": null,
+        "template_status": "requires_ai_authority_approval",
+        "inputs": [],
+        "outputs": [],
+        "guardrails": [
+          "tenant isolation",
+          "source traceability",
+          "human review",
+          "provider abstraction"
+        ],
+        "evaluation_tests": [],
+        "model_policy": "provider-agnostic",
+        "deployment_status": "not_deployed"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000006",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PROMPT-000015",
+      "type": "prompt",
+      "name": "Finance: Cash forecast Prompt",
+      "description": "Versioned prompt contract for Cash forecast; prompt body and evaluation thresholds require AI authority approval.",
+      "status": "In Design",
+      "owner": "TEAM-000006",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-PROMPT-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "prompt_template": null,
+        "template_status": "requires_ai_authority_approval",
+        "inputs": [],
+        "outputs": [],
+        "guardrails": [
+          "tenant isolation",
+          "source traceability",
+          "human review",
+          "provider abstraction"
+        ],
+        "evaluation_tests": [],
+        "model_policy": "provider-agnostic",
+        "deployment_status": "not_deployed"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000006",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PROMPT-000016",
+      "type": "prompt",
+      "name": "Finance: Anomaly detection Prompt",
+      "description": "Versioned prompt contract for Anomaly detection; prompt body and evaluation thresholds require AI authority approval.",
+      "status": "In Design",
+      "owner": "TEAM-000006",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-PROMPT-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "prompt_template": null,
+        "template_status": "requires_ai_authority_approval",
+        "inputs": [],
+        "outputs": [],
+        "guardrails": [
+          "tenant isolation",
+          "source traceability",
+          "human review",
+          "provider abstraction"
+        ],
+        "evaluation_tests": [],
+        "model_policy": "provider-agnostic",
+        "deployment_status": "not_deployed"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000006",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PROMPT-000017",
+      "type": "prompt",
+      "name": "Finance: Reconciliation suggestions Prompt",
+      "description": "Versioned prompt contract for Reconciliation suggestions; prompt body and evaluation thresholds require AI authority approval.",
+      "status": "In Design",
+      "owner": "TEAM-000006",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-PROMPT-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "prompt_template": null,
+        "template_status": "requires_ai_authority_approval",
+        "inputs": [],
+        "outputs": [],
+        "guardrails": [
+          "tenant isolation",
+          "source traceability",
+          "human review",
+          "provider abstraction"
+        ],
+        "evaluation_tests": [],
+        "model_policy": "provider-agnostic",
+        "deployment_status": "not_deployed"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000006",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PROMPT-000018",
+      "type": "prompt",
+      "name": "Finance: Collection priority Prompt",
+      "description": "Versioned prompt contract for Collection priority; prompt body and evaluation thresholds require AI authority approval.",
+      "status": "In Design",
+      "owner": "TEAM-000006",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-PROMPT-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "prompt_template": null,
+        "template_status": "requires_ai_authority_approval",
+        "inputs": [],
+        "outputs": [],
+        "guardrails": [
+          "tenant isolation",
+          "source traceability",
+          "human review",
+          "provider abstraction"
+        ],
+        "evaluation_tests": [],
+        "model_policy": "provider-agnostic",
+        "deployment_status": "not_deployed"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000006",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PROMPT-000019",
+      "type": "prompt",
+      "name": "Finance: Variance explanation Prompt",
+      "description": "Versioned prompt contract for Variance explanation; prompt body and evaluation thresholds require AI authority approval.",
+      "status": "In Design",
+      "owner": "TEAM-000006",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-PROMPT-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "prompt_template": null,
+        "template_status": "requires_ai_authority_approval",
+        "inputs": [],
+        "outputs": [],
+        "guardrails": [
+          "tenant isolation",
+          "source traceability",
+          "human review",
+          "provider abstraction"
+        ],
+        "evaluation_tests": [],
+        "model_policy": "provider-agnostic",
+        "deployment_status": "not_deployed"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000006",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PROMPT-000020",
+      "type": "prompt",
+      "name": "Inventory: Demand forecast Prompt",
+      "description": "Versioned prompt contract for Demand forecast; prompt body and evaluation thresholds require AI authority approval.",
+      "status": "In Design",
+      "owner": "TEAM-000006",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-PROMPT-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "prompt_template": null,
+        "template_status": "requires_ai_authority_approval",
+        "inputs": [],
+        "outputs": [],
+        "guardrails": [
+          "tenant isolation",
+          "source traceability",
+          "human review",
+          "provider abstraction"
+        ],
+        "evaluation_tests": [],
+        "model_policy": "provider-agnostic",
+        "deployment_status": "not_deployed"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000006",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PROMPT-000021",
+      "type": "prompt",
+      "name": "Inventory: Reorder quantity Prompt",
+      "description": "Versioned prompt contract for Reorder quantity; prompt body and evaluation thresholds require AI authority approval.",
+      "status": "In Design",
+      "owner": "TEAM-000006",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-PROMPT-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "prompt_template": null,
+        "template_status": "requires_ai_authority_approval",
+        "inputs": [],
+        "outputs": [],
+        "guardrails": [
+          "tenant isolation",
+          "source traceability",
+          "human review",
+          "provider abstraction"
+        ],
+        "evaluation_tests": [],
+        "model_policy": "provider-agnostic",
+        "deployment_status": "not_deployed"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000006",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PROMPT-000022",
+      "type": "prompt",
+      "name": "Inventory: Supplier comparison Prompt",
+      "description": "Versioned prompt contract for Supplier comparison; prompt body and evaluation thresholds require AI authority approval.",
+      "status": "In Design",
+      "owner": "TEAM-000006",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-PROMPT-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "prompt_template": null,
+        "template_status": "requires_ai_authority_approval",
+        "inputs": [],
+        "outputs": [],
+        "guardrails": [
+          "tenant isolation",
+          "source traceability",
+          "human review",
+          "provider abstraction"
+        ],
+        "evaluation_tests": [],
+        "model_policy": "provider-agnostic",
+        "deployment_status": "not_deployed"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000006",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PROMPT-000023",
+      "type": "prompt",
+      "name": "Inventory: Anomaly and shrinkage detection Prompt",
+      "description": "Versioned prompt contract for Anomaly and shrinkage detection; prompt body and evaluation thresholds require AI authority approval.",
+      "status": "In Design",
+      "owner": "TEAM-000006",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-PROMPT-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "prompt_template": null,
+        "template_status": "requires_ai_authority_approval",
+        "inputs": [],
+        "outputs": [],
+        "guardrails": [
+          "tenant isolation",
+          "source traceability",
+          "human review",
+          "provider abstraction"
+        ],
+        "evaluation_tests": [],
+        "model_policy": "provider-agnostic",
+        "deployment_status": "not_deployed"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000006",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PROMPT-000024",
+      "type": "prompt",
+      "name": "Inventory: Slow-moving stock explanation Prompt",
+      "description": "Versioned prompt contract for Slow-moving stock explanation; prompt body and evaluation thresholds require AI authority approval.",
+      "status": "In Design",
+      "owner": "TEAM-000006",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-PROMPT-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "prompt_template": null,
+        "template_status": "requires_ai_authority_approval",
+        "inputs": [],
+        "outputs": [],
+        "guardrails": [
+          "tenant isolation",
+          "source traceability",
+          "human review",
+          "provider abstraction"
+        ],
+        "evaluation_tests": [],
+        "model_policy": "provider-agnostic",
+        "deployment_status": "not_deployed"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000006",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PROMPT-000025",
+      "type": "prompt",
+      "name": "CRM: Lead scoring Prompt",
+      "description": "Versioned prompt contract for Lead scoring; prompt body and evaluation thresholds require AI authority approval.",
+      "status": "In Design",
+      "owner": "TEAM-000006",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-PROMPT-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "prompt_template": null,
+        "template_status": "requires_ai_authority_approval",
+        "inputs": [],
+        "outputs": [],
+        "guardrails": [
+          "tenant isolation",
+          "source traceability",
+          "human review",
+          "provider abstraction"
+        ],
+        "evaluation_tests": [],
+        "model_policy": "provider-agnostic",
+        "deployment_status": "not_deployed"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000006",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PROMPT-000026",
+      "type": "prompt",
+      "name": "CRM: Next best action Prompt",
+      "description": "Versioned prompt contract for Next best action; prompt body and evaluation thresholds require AI authority approval.",
+      "status": "In Design",
+      "owner": "TEAM-000006",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-PROMPT-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "prompt_template": null,
+        "template_status": "requires_ai_authority_approval",
+        "inputs": [],
+        "outputs": [],
+        "guardrails": [
+          "tenant isolation",
+          "source traceability",
+          "human review",
+          "provider abstraction"
+        ],
+        "evaluation_tests": [],
+        "model_policy": "provider-agnostic",
+        "deployment_status": "not_deployed"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000006",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PROMPT-000027",
+      "type": "prompt",
+      "name": "CRM: Churn risk Prompt",
+      "description": "Versioned prompt contract for Churn risk; prompt body and evaluation thresholds require AI authority approval.",
+      "status": "In Design",
+      "owner": "TEAM-000006",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-PROMPT-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "prompt_template": null,
+        "template_status": "requires_ai_authority_approval",
+        "inputs": [],
+        "outputs": [],
+        "guardrails": [
+          "tenant isolation",
+          "source traceability",
+          "human review",
+          "provider abstraction"
+        ],
+        "evaluation_tests": [],
+        "model_policy": "provider-agnostic",
+        "deployment_status": "not_deployed"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000006",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PROMPT-000028",
+      "type": "prompt",
+      "name": "CRM: Opportunity forecast Prompt",
+      "description": "Versioned prompt contract for Opportunity forecast; prompt body and evaluation thresholds require AI authority approval.",
+      "status": "In Design",
+      "owner": "TEAM-000006",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-PROMPT-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "prompt_template": null,
+        "template_status": "requires_ai_authority_approval",
+        "inputs": [],
+        "outputs": [],
+        "guardrails": [
+          "tenant isolation",
+          "source traceability",
+          "human review",
+          "provider abstraction"
+        ],
+        "evaluation_tests": [],
+        "model_policy": "provider-agnostic",
+        "deployment_status": "not_deployed"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000006",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PROMPT-000029",
+      "type": "prompt",
+      "name": "CRM: Interaction summary Prompt",
+      "description": "Versioned prompt contract for Interaction summary; prompt body and evaluation thresholds require AI authority approval.",
+      "status": "In Design",
+      "owner": "TEAM-000006",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-PROMPT-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "prompt_template": null,
+        "template_status": "requires_ai_authority_approval",
+        "inputs": [],
+        "outputs": [],
+        "guardrails": [
+          "tenant isolation",
+          "source traceability",
+          "human review",
+          "provider abstraction"
+        ],
+        "evaluation_tests": [],
+        "model_policy": "provider-agnostic",
+        "deployment_status": "not_deployed"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000006",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PROMPT-000030",
+      "type": "prompt",
+      "name": "CRM: Win/loss explanation Prompt",
+      "description": "Versioned prompt contract for Win/loss explanation; prompt body and evaluation thresholds require AI authority approval.",
+      "status": "In Design",
+      "owner": "TEAM-000006",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-PROMPT-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "prompt_template": null,
+        "template_status": "requires_ai_authority_approval",
+        "inputs": [],
+        "outputs": [],
+        "guardrails": [
+          "tenant isolation",
+          "source traceability",
+          "human review",
+          "provider abstraction"
+        ],
+        "evaluation_tests": [],
+        "model_policy": "provider-agnostic",
+        "deployment_status": "not_deployed"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000006",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PROMPT-000031",
+      "type": "prompt",
+      "name": "Analytics: Narrative explanation Prompt",
+      "description": "Versioned prompt contract for Narrative explanation; prompt body and evaluation thresholds require AI authority approval.",
+      "status": "In Design",
+      "owner": "TEAM-000006",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-PROMPT-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "prompt_template": null,
+        "template_status": "requires_ai_authority_approval",
+        "inputs": [],
+        "outputs": [],
+        "guardrails": [
+          "tenant isolation",
+          "source traceability",
+          "human review",
+          "provider abstraction"
+        ],
+        "evaluation_tests": [],
+        "model_policy": "provider-agnostic",
+        "deployment_status": "not_deployed"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000006",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PROMPT-000032",
+      "type": "prompt",
+      "name": "Analytics: Anomaly detection Prompt",
+      "description": "Versioned prompt contract for Anomaly detection; prompt body and evaluation thresholds require AI authority approval.",
+      "status": "In Design",
+      "owner": "TEAM-000006",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-PROMPT-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "prompt_template": null,
+        "template_status": "requires_ai_authority_approval",
+        "inputs": [],
+        "outputs": [],
+        "guardrails": [
+          "tenant isolation",
+          "source traceability",
+          "human review",
+          "provider abstraction"
+        ],
+        "evaluation_tests": [],
+        "model_policy": "provider-agnostic",
+        "deployment_status": "not_deployed"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000006",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PROMPT-000033",
+      "type": "prompt",
+      "name": "Analytics: Forecast overlay Prompt",
+      "description": "Versioned prompt contract for Forecast overlay; prompt body and evaluation thresholds require AI authority approval.",
+      "status": "In Design",
+      "owner": "TEAM-000006",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-PROMPT-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "prompt_template": null,
+        "template_status": "requires_ai_authority_approval",
+        "inputs": [],
+        "outputs": [],
+        "guardrails": [
+          "tenant isolation",
+          "source traceability",
+          "human review",
+          "provider abstraction"
+        ],
+        "evaluation_tests": [],
+        "model_policy": "provider-agnostic",
+        "deployment_status": "not_deployed"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000006",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PROMPT-000034",
+      "type": "prompt",
+      "name": "Analytics: Natural language query Prompt",
+      "description": "Versioned prompt contract for Natural language query; prompt body and evaluation thresholds require AI authority approval.",
+      "status": "In Design",
+      "owner": "TEAM-000006",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-PROMPT-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "prompt_template": null,
+        "template_status": "requires_ai_authority_approval",
+        "inputs": [],
+        "outputs": [],
+        "guardrails": [
+          "tenant isolation",
+          "source traceability",
+          "human review",
+          "provider abstraction"
+        ],
+        "evaluation_tests": [],
+        "model_policy": "provider-agnostic",
+        "deployment_status": "not_deployed"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000006",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PROMPT-000035",
+      "type": "prompt",
+      "name": "Analytics: Chart recommendation Prompt",
+      "description": "Versioned prompt contract for Chart recommendation; prompt body and evaluation thresholds require AI authority approval.",
+      "status": "In Design",
+      "owner": "TEAM-000006",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-PROMPT-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "prompt_template": null,
+        "template_status": "requires_ai_authority_approval",
+        "inputs": [],
+        "outputs": [],
+        "guardrails": [
+          "tenant isolation",
+          "source traceability",
+          "human review",
+          "provider abstraction"
+        ],
+        "evaluation_tests": [],
+        "model_policy": "provider-agnostic",
+        "deployment_status": "not_deployed"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000006",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PROMPT-000036",
+      "type": "prompt",
+      "name": "Documents: Classification Prompt",
+      "description": "Versioned prompt contract for Classification; prompt body and evaluation thresholds require AI authority approval.",
+      "status": "In Design",
+      "owner": "TEAM-000006",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-PROMPT-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "prompt_template": null,
+        "template_status": "requires_ai_authority_approval",
+        "inputs": [],
+        "outputs": [],
+        "guardrails": [
+          "tenant isolation",
+          "source traceability",
+          "human review",
+          "provider abstraction"
+        ],
+        "evaluation_tests": [],
+        "model_policy": "provider-agnostic",
+        "deployment_status": "not_deployed"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000006",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PROMPT-000037",
+      "type": "prompt",
+      "name": "Documents: Field extraction Prompt",
+      "description": "Versioned prompt contract for Field extraction; prompt body and evaluation thresholds require AI authority approval.",
+      "status": "In Design",
+      "owner": "TEAM-000006",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-PROMPT-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "prompt_template": null,
+        "template_status": "requires_ai_authority_approval",
+        "inputs": [],
+        "outputs": [],
+        "guardrails": [
+          "tenant isolation",
+          "source traceability",
+          "human review",
+          "provider abstraction"
+        ],
+        "evaluation_tests": [],
+        "model_policy": "provider-agnostic",
+        "deployment_status": "not_deployed"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000006",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PROMPT-000038",
+      "type": "prompt",
+      "name": "Documents: Document summary Prompt",
+      "description": "Versioned prompt contract for Document summary; prompt body and evaluation thresholds require AI authority approval.",
+      "status": "In Design",
+      "owner": "TEAM-000006",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-PROMPT-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "prompt_template": null,
+        "template_status": "requires_ai_authority_approval",
+        "inputs": [],
+        "outputs": [],
+        "guardrails": [
+          "tenant isolation",
+          "source traceability",
+          "human review",
+          "provider abstraction"
+        ],
+        "evaluation_tests": [],
+        "model_policy": "provider-agnostic",
+        "deployment_status": "not_deployed"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000006",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PROMPT-000039",
+      "type": "prompt",
+      "name": "Documents: Clause comparison Prompt",
+      "description": "Versioned prompt contract for Clause comparison; prompt body and evaluation thresholds require AI authority approval.",
+      "status": "In Design",
+      "owner": "TEAM-000006",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-PROMPT-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "prompt_template": null,
+        "template_status": "requires_ai_authority_approval",
+        "inputs": [],
+        "outputs": [],
+        "guardrails": [
+          "tenant isolation",
+          "source traceability",
+          "human review",
+          "provider abstraction"
+        ],
+        "evaluation_tests": [],
+        "model_policy": "provider-agnostic",
+        "deployment_status": "not_deployed"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000006",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PROMPT-000040",
+      "type": "prompt",
+      "name": "Documents: Template assistance Prompt",
+      "description": "Versioned prompt contract for Template assistance; prompt body and evaluation thresholds require AI authority approval.",
+      "status": "In Design",
+      "owner": "TEAM-000006",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-PROMPT-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "prompt_template": null,
+        "template_status": "requires_ai_authority_approval",
+        "inputs": [],
+        "outputs": [],
+        "guardrails": [
+          "tenant isolation",
+          "source traceability",
+          "human review",
+          "provider abstraction"
+        ],
+        "evaluation_tests": [],
+        "model_policy": "provider-agnostic",
+        "deployment_status": "not_deployed"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000006",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PROMPT-000041",
+      "type": "prompt",
+      "name": "Notifications: Priority suggestion Prompt",
+      "description": "Versioned prompt contract for Priority suggestion; prompt body and evaluation thresholds require AI authority approval.",
+      "status": "In Design",
+      "owner": "TEAM-000006",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-PROMPT-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "prompt_template": null,
+        "template_status": "requires_ai_authority_approval",
+        "inputs": [],
+        "outputs": [],
+        "guardrails": [
+          "tenant isolation",
+          "source traceability",
+          "human review",
+          "provider abstraction"
+        ],
+        "evaluation_tests": [],
+        "model_policy": "provider-agnostic",
+        "deployment_status": "not_deployed"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000006",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PROMPT-000042",
+      "type": "prompt",
+      "name": "Notifications: Digest summarization Prompt",
+      "description": "Versioned prompt contract for Digest summarization; prompt body and evaluation thresholds require AI authority approval.",
+      "status": "In Design",
+      "owner": "TEAM-000006",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-PROMPT-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "prompt_template": null,
+        "template_status": "requires_ai_authority_approval",
+        "inputs": [],
+        "outputs": [],
+        "guardrails": [
+          "tenant isolation",
+          "source traceability",
+          "human review",
+          "provider abstraction"
+        ],
+        "evaluation_tests": [],
+        "model_policy": "provider-agnostic",
+        "deployment_status": "not_deployed"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000006",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PROMPT-000043",
+      "type": "prompt",
+      "name": "Notifications: Send-time optimization Prompt",
+      "description": "Versioned prompt contract for Send-time optimization; prompt body and evaluation thresholds require AI authority approval.",
+      "status": "In Design",
+      "owner": "TEAM-000006",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-PROMPT-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "prompt_template": null,
+        "template_status": "requires_ai_authority_approval",
+        "inputs": [],
+        "outputs": [],
+        "guardrails": [
+          "tenant isolation",
+          "source traceability",
+          "human review",
+          "provider abstraction"
+        ],
+        "evaluation_tests": [],
+        "model_policy": "provider-agnostic",
+        "deployment_status": "not_deployed"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000006",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PROMPT-000044",
+      "type": "prompt",
+      "name": "Notifications: Noise detection Prompt",
+      "description": "Versioned prompt contract for Noise detection; prompt body and evaluation thresholds require AI authority approval.",
+      "status": "In Design",
+      "owner": "TEAM-000006",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-PROMPT-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "prompt_template": null,
+        "template_status": "requires_ai_authority_approval",
+        "inputs": [],
+        "outputs": [],
+        "guardrails": [
+          "tenant isolation",
+          "source traceability",
+          "human review",
+          "provider abstraction"
+        ],
+        "evaluation_tests": [],
+        "model_policy": "provider-agnostic",
+        "deployment_status": "not_deployed"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000006",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PROMPT-000045",
+      "type": "prompt",
+      "name": "Human Resources: Candidate matching Prompt",
+      "description": "Versioned prompt contract for Candidate matching; prompt body and evaluation thresholds require AI authority approval.",
+      "status": "In Design",
+      "owner": "TEAM-000006",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-PROMPT-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "prompt_template": null,
+        "template_status": "requires_ai_authority_approval",
+        "inputs": [],
+        "outputs": [],
+        "guardrails": [
+          "tenant isolation",
+          "source traceability",
+          "human review",
+          "provider abstraction"
+        ],
+        "evaluation_tests": [],
+        "model_policy": "provider-agnostic",
+        "deployment_status": "not_deployed"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000006",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PROMPT-000046",
+      "type": "prompt",
+      "name": "Human Resources: Capacity forecast Prompt",
+      "description": "Versioned prompt contract for Capacity forecast; prompt body and evaluation thresholds require AI authority approval.",
+      "status": "In Design",
+      "owner": "TEAM-000006",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-PROMPT-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "prompt_template": null,
+        "template_status": "requires_ai_authority_approval",
+        "inputs": [],
+        "outputs": [],
+        "guardrails": [
+          "tenant isolation",
+          "source traceability",
+          "human review",
+          "provider abstraction"
+        ],
+        "evaluation_tests": [],
+        "model_policy": "provider-agnostic",
+        "deployment_status": "not_deployed"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000006",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PROMPT-000047",
+      "type": "prompt",
+      "name": "Human Resources: Turnover risk Prompt",
+      "description": "Versioned prompt contract for Turnover risk; prompt body and evaluation thresholds require AI authority approval.",
+      "status": "In Design",
+      "owner": "TEAM-000006",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-PROMPT-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "prompt_template": null,
+        "template_status": "requires_ai_authority_approval",
+        "inputs": [],
+        "outputs": [],
+        "guardrails": [
+          "tenant isolation",
+          "source traceability",
+          "human review",
+          "provider abstraction"
+        ],
+        "evaluation_tests": [],
+        "model_policy": "provider-agnostic",
+        "deployment_status": "not_deployed"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000006",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PROMPT-000048",
+      "type": "prompt",
+      "name": "Human Resources: Review summarization Prompt",
+      "description": "Versioned prompt contract for Review summarization; prompt body and evaluation thresholds require AI authority approval.",
+      "status": "In Design",
+      "owner": "TEAM-000006",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-PROMPT-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "prompt_template": null,
+        "template_status": "requires_ai_authority_approval",
+        "inputs": [],
+        "outputs": [],
+        "guardrails": [
+          "tenant isolation",
+          "source traceability",
+          "human review",
+          "provider abstraction"
+        ],
+        "evaluation_tests": [],
+        "model_policy": "provider-agnostic",
+        "deployment_status": "not_deployed"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000006",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PROMPT-000049",
+      "type": "prompt",
+      "name": "Human Resources: Policy question answering Prompt",
+      "description": "Versioned prompt contract for Policy question answering; prompt body and evaluation thresholds require AI authority approval.",
+      "status": "In Design",
+      "owner": "TEAM-000006",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-PROMPT-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "prompt_template": null,
+        "template_status": "requires_ai_authority_approval",
+        "inputs": [],
+        "outputs": [],
+        "guardrails": [
+          "tenant isolation",
+          "source traceability",
+          "human review",
+          "provider abstraction"
+        ],
+        "evaluation_tests": [],
+        "model_policy": "provider-agnostic",
+        "deployment_status": "not_deployed"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000006",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PROMPT-000050",
+      "type": "prompt",
+      "name": "Manufacturing: Demand and capacity forecast Prompt",
+      "description": "Versioned prompt contract for Demand and capacity forecast; prompt body and evaluation thresholds require AI authority approval.",
+      "status": "In Design",
+      "owner": "TEAM-000006",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-PROMPT-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "prompt_template": null,
+        "template_status": "requires_ai_authority_approval",
+        "inputs": [],
+        "outputs": [],
+        "guardrails": [
+          "tenant isolation",
+          "source traceability",
+          "human review",
+          "provider abstraction"
+        ],
+        "evaluation_tests": [],
+        "model_policy": "provider-agnostic",
+        "deployment_status": "not_deployed"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000006",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PROMPT-000051",
+      "type": "prompt",
+      "name": "Manufacturing: Schedule optimization Prompt",
+      "description": "Versioned prompt contract for Schedule optimization; prompt body and evaluation thresholds require AI authority approval.",
+      "status": "In Design",
+      "owner": "TEAM-000006",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-PROMPT-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "prompt_template": null,
+        "template_status": "requires_ai_authority_approval",
+        "inputs": [],
+        "outputs": [],
+        "guardrails": [
+          "tenant isolation",
+          "source traceability",
+          "human review",
+          "provider abstraction"
+        ],
+        "evaluation_tests": [],
+        "model_policy": "provider-agnostic",
+        "deployment_status": "not_deployed"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000006",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PROMPT-000052",
+      "type": "prompt",
+      "name": "Manufacturing: Quality anomaly Prompt",
+      "description": "Versioned prompt contract for Quality anomaly; prompt body and evaluation thresholds require AI authority approval.",
+      "status": "In Design",
+      "owner": "TEAM-000006",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-PROMPT-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "prompt_template": null,
+        "template_status": "requires_ai_authority_approval",
+        "inputs": [],
+        "outputs": [],
+        "guardrails": [
+          "tenant isolation",
+          "source traceability",
+          "human review",
+          "provider abstraction"
+        ],
+        "evaluation_tests": [],
+        "model_policy": "provider-agnostic",
+        "deployment_status": "not_deployed"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000006",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PROMPT-000053",
+      "type": "prompt",
+      "name": "Manufacturing: Predictive maintenance signal Prompt",
+      "description": "Versioned prompt contract for Predictive maintenance signal; prompt body and evaluation thresholds require AI authority approval.",
+      "status": "In Design",
+      "owner": "TEAM-000006",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-PROMPT-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "prompt_template": null,
+        "template_status": "requires_ai_authority_approval",
+        "inputs": [],
+        "outputs": [],
+        "guardrails": [
+          "tenant isolation",
+          "source traceability",
+          "human review",
+          "provider abstraction"
+        ],
+        "evaluation_tests": [],
+        "model_policy": "provider-agnostic",
+        "deployment_status": "not_deployed"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000006",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "PROMPT-000054",
+      "type": "prompt",
+      "name": "Manufacturing: Cost variance explanation Prompt",
+      "description": "Versioned prompt contract for Cost variance explanation; prompt body and evaluation thresholds require AI authority approval.",
+      "status": "In Design",
+      "owner": "TEAM-000006",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-PROMPT-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "prompt_template": null,
+        "template_status": "requires_ai_authority_approval",
+        "inputs": [],
+        "outputs": [],
+        "guardrails": [
+          "tenant isolation",
+          "source traceability",
+          "human review",
+          "provider abstraction"
+        ],
+        "evaluation_tests": [],
+        "model_policy": "provider-agnostic",
+        "deployment_status": "not_deployed"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000006",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    }
+  ]
+}

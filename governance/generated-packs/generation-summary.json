@@ -1,0 +1,104 @@
+{
+  "version": "2.3.0",
+  "generated_at": "2026-07-12T03:39:43.146Z",
+  "generated": 12,
+  "authorized": 0,
+  "results": [
+    {
+      "capability": "CAP-000001",
+      "source_records": 133,
+      "blockers": 41,
+      "scenarios": 54,
+      "promotion_gate": "BLOCKED_SOURCE_INCOMPLETE",
+      "fingerprint": "f6aa891ed08ea2d08773c17b3269e160b1ad672352790e41bef040ff9475d088"
+    },
+    {
+      "capability": "CAP-000002",
+      "source_records": 130,
+      "blockers": 40,
+      "scenarios": 53,
+      "promotion_gate": "BLOCKED_SOURCE_INCOMPLETE",
+      "fingerprint": "2542d57ff44ce9fc86717c33cc068f45a79b2c035df42f7ac6082298b8aa3aca"
+    },
+    {
+      "capability": "CAP-000003",
+      "source_records": 129,
+      "blockers": 39,
+      "scenarios": 55,
+      "promotion_gate": "BLOCKED_SOURCE_INCOMPLETE",
+      "fingerprint": "0279637a821318b1370cf1eba53c5578ce7c0cff39ca3ce1dc21141458b3270c"
+    },
+    {
+      "capability": "CAP-000004",
+      "source_records": 135,
+      "blockers": 43,
+      "scenarios": 57,
+      "promotion_gate": "BLOCKED_SOURCE_INCOMPLETE",
+      "fingerprint": "90ec06c49ae9ef56654fc6bb7e5c1e19dba64f138f741a12225d3a8904c0ef23"
+    },
+    {
+      "capability": "CAP-000005",
+      "source_records": 145,
+      "blockers": 46,
+      "scenarios": 57,
+      "promotion_gate": "BLOCKED_SOURCE_INCOMPLETE",
+      "fingerprint": "aae63766febf9301ed43fec00570e3014c4f9ec57c0ce90c16abdbd403423460"
+    },
+    {
+      "capability": "CAP-000006",
+      "source_records": 147,
+      "blockers": 46,
+      "scenarios": 57,
+      "promotion_gate": "BLOCKED_SOURCE_INCOMPLETE",
+      "fingerprint": "f27c224fda8c13340a2b49ab5ca2d5b91a18bd6c623c0feabb40298352f1c560"
+    },
+    {
+      "capability": "CAP-000007",
+      "source_records": 150,
+      "blockers": 47,
+      "scenarios": 57,
+      "promotion_gate": "BLOCKED_SOURCE_INCOMPLETE",
+      "fingerprint": "f5030a90844f942ea3561164731a21187b3bc67a4446f4acd836f4a0ddc69c9c"
+    },
+    {
+      "capability": "CAP-000008",
+      "source_records": 136,
+      "blockers": 42,
+      "scenarios": 55,
+      "promotion_gate": "BLOCKED_SOURCE_INCOMPLETE",
+      "fingerprint": "b805e977a300194ebdf58e6dee48a851b87c2b4fd6272d49d95f9d4879aea063"
+    },
+    {
+      "capability": "CAP-000009",
+      "source_records": 140,
+      "blockers": 44,
+      "scenarios": 56,
+      "promotion_gate": "BLOCKED_SOURCE_INCOMPLETE",
+      "fingerprint": "2884de495224b51e5594cf846cf985c4cb463124f53d0b52fc4c4112fee855da"
+    },
+    {
+      "capability": "CAP-000010",
+      "source_records": 125,
+      "blockers": 43,
+      "scenarios": 56,
+      "promotion_gate": "BLOCKED_SOURCE_INCOMPLETE",
+      "fingerprint": "bc318cba3ed3296e2402fbb5cd2f94e5dc5326989cd26e542eeff9f41df8636e"
+    },
+    {
+      "capability": "CAP-000011",
+      "source_records": 142,
+      "blockers": 45,
+      "scenarios": 56,
+      "promotion_gate": "BLOCKED_SOURCE_INCOMPLETE",
+      "fingerprint": "fdcbccb95edeec10cd54174be1aea3b43aebc674f97ad86b3aed13889db32eca"
+    },
+    {
+      "capability": "CAP-000012",
+      "source_records": 145,
+      "blockers": 46,
+      "scenarios": 57,
+      "promotion_gate": "BLOCKED_SOURCE_INCOMPLETE",
+      "fingerprint": "4148231f397f9650313cdb509be26ea1f8858713095b949904de26d7f91cc908"
+    }
+  ]
+}

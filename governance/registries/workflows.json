@@ -1,0 +1,3391 @@
+{
+  "registry": "workflows",
+  "version": "1.0.0",
+  "generated_at": "2026-07-12T03:39:37Z",
+  "records": [
+    {
+      "id": "WF-000001",
+      "type": "workflow",
+      "name": "Signal-to-decision creation",
+      "description": "Measurable Decision Center workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-WF-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "WF-000002",
+      "type": "workflow",
+      "name": "Decision triage",
+      "description": "Measurable Decision Center workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-WF-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "WF-000003",
+      "type": "workflow",
+      "name": "Evidence review",
+      "description": "Measurable Decision Center workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-WF-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "WF-000004",
+      "type": "workflow",
+      "name": "Approval path",
+      "description": "Measurable Decision Center workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-WF-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "WF-000005",
+      "type": "workflow",
+      "name": "Action recording",
+      "description": "Measurable Decision Center workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-WF-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "WF-000006",
+      "type": "workflow",
+      "name": "Outcome review",
+      "description": "Measurable Decision Center workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-WF-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "WF-000007",
+      "type": "workflow",
+      "name": "Reopen and recovery",
+      "description": "Measurable Decision Center workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-WF-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "WF-000008",
+      "type": "workflow",
+      "name": "Capture memory",
+      "description": "Measurable Business Memory workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-WF-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "WF-000009",
+      "type": "workflow",
+      "name": "Enrich and index",
+      "description": "Measurable Business Memory workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-WF-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "WF-000010",
+      "type": "workflow",
+      "name": "Search and retrieve",
+      "description": "Measurable Business Memory workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-WF-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "WF-000011",
+      "type": "workflow",
+      "name": "Inspect source lineage",
+      "description": "Measurable Business Memory workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-WF-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "WF-000012",
+      "type": "workflow",
+      "name": "Correct by supersession",
+      "description": "Measurable Business Memory workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-WF-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "WF-000013",
+      "type": "workflow",
+      "name": "Apply retention",
+      "description": "Measurable Business Memory workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-WF-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "WF-000014",
+      "type": "workflow",
+      "name": "Export authorized memory",
+      "description": "Measurable Business Memory workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-WF-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "WF-000015",
+      "type": "workflow",
+      "name": "Govern prompt version",
+      "description": "Measurable AI Engine workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-WF-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "WF-000016",
+      "type": "workflow",
+      "name": "Route model request",
+      "description": "Measurable AI Engine workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-WF-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "WF-000017",
+      "type": "workflow",
+      "name": "Retrieve governed context",
+      "description": "Measurable AI Engine workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-WF-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "WF-000018",
+      "type": "workflow",
+      "name": "Validate structured output",
+      "description": "Measurable AI Engine workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-WF-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "WF-000019",
+      "type": "workflow",
+      "name": "Human review",
+      "description": "Measurable AI Engine workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-WF-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "WF-000020",
+      "type": "workflow",
+      "name": "Evaluate release",
+      "description": "Measurable AI Engine workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-WF-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "WF-000021",
+      "type": "workflow",
+      "name": "Fallback and recovery",
+      "description": "Measurable AI Engine workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-WF-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "WF-000022",
+      "type": "workflow",
+      "name": "Measure outcome",
+      "description": "Measurable AI Engine workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-WF-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "WF-000023",
+      "type": "workflow",
+      "name": "Create workspace",
+      "description": "Measurable Identity, Workspace, Permissions & Audit workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-WF-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "WF-000024",
+      "type": "workflow",
+      "name": "Invite and onboard member",
+      "description": "Measurable Identity, Workspace, Permissions & Audit workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-WF-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "WF-000025",
+      "type": "workflow",
+      "name": "Change role",
+      "description": "Measurable Identity, Workspace, Permissions & Audit workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-WF-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "WF-000026",
+      "type": "workflow",
+      "name": "Suspend or revoke access",
+      "description": "Measurable Identity, Workspace, Permissions & Audit workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-WF-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "WF-000027",
+      "type": "workflow",
+      "name": "Authenticate and refresh",
+      "description": "Measurable Identity, Workspace, Permissions & Audit workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-WF-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "WF-000028",
+      "type": "workflow",
+      "name": "Revoke session",
+      "description": "Measurable Identity, Workspace, Permissions & Audit workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-WF-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "WF-000029",
+      "type": "workflow",
+      "name": "Evaluate permission",
+      "description": "Measurable Identity, Workspace, Permissions & Audit workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-WF-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "WF-000030",
+      "type": "workflow",
+      "name": "Investigate audit trail",
+      "description": "Measurable Identity, Workspace, Permissions & Audit workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-WF-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "WF-000031",
+      "type": "workflow",
+      "name": "Post journal",
+      "description": "Measurable Finance workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-WF-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "WF-000032",
+      "type": "workflow",
+      "name": "Issue and collect invoice",
+      "description": "Measurable Finance workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-WF-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "WF-000033",
+      "type": "workflow",
+      "name": "Record and pay bill",
+      "description": "Measurable Finance workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-WF-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "WF-000034",
+      "type": "workflow",
+      "name": "Import and reconcile bank activity",
+      "description": "Measurable Finance workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-WF-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "WF-000035",
+      "type": "workflow",
+      "name": "Close fiscal period",
+      "description": "Measurable Finance workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-WF-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "WF-000036",
+      "type": "workflow",
+      "name": "Approve budget",
+      "description": "Measurable Finance workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-WF-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "WF-000037",
+      "type": "workflow",
+      "name": "Forecast cash",
+      "description": "Measurable Finance workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-WF-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "WF-000038",
+      "type": "workflow",
+      "name": "Reverse incorrect posting",
+      "description": "Measurable Finance workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-WF-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "WF-000039",
+      "type": "workflow",
+      "name": "Create product",
+      "description": "Measurable Inventory workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-WF-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "WF-000040",
+      "type": "workflow",
+      "name": "Receive stock",
+      "description": "Measurable Inventory workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-WF-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "WF-000041",
+      "type": "workflow",
+      "name": "Reserve and release",
+      "description": "Measurable Inventory workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-WF-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "WF-000042",
+      "type": "workflow",
+      "name": "Transfer stock",
+      "description": "Measurable Inventory workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-WF-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "WF-000043",
+      "type": "workflow",
+      "name": "Adjust with reason",
+      "description": "Measurable Inventory workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-WF-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "WF-000044",
+      "type": "workflow",
+      "name": "Cycle count",
+      "description": "Measurable Inventory workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-WF-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "WF-000045",
+      "type": "workflow",
+      "name": "Purchase and receive",
+      "description": "Measurable Inventory workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-WF-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "WF-000046",
+      "type": "workflow",
+      "name": "Reorder decision",
+      "description": "Measurable Inventory workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-WF-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "WF-000047",
+      "type": "workflow",
+      "name": "Capture and deduplicate lead",
+      "description": "Measurable CRM workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-WF-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "WF-000048",
+      "type": "workflow",
+      "name": "Qualify lead",
+      "description": "Measurable CRM workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-WF-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "WF-000049",
+      "type": "workflow",
+      "name": "Progress opportunity",
+      "description": "Measurable CRM workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-WF-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "WF-000050",
+      "type": "workflow",
+      "name": "Record activity",
+      "description": "Measurable CRM workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-WF-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "WF-000051",
+      "type": "workflow",
+      "name": "Assign next action",
+      "description": "Measurable CRM workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-WF-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "WF-000052",
+      "type": "workflow",
+      "name": "Build segment",
+      "description": "Measurable CRM workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-WF-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "WF-000053",
+      "type": "workflow",
+      "name": "Detect churn risk",
+      "description": "Measurable CRM workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-WF-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "WF-000054",
+      "type": "workflow",
+      "name": "Win/loss review",
+      "description": "Measurable CRM workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-WF-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "WF-000055",
+      "type": "workflow",
+      "name": "Define and approve metric",
+      "description": "Measurable Analytics workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-WF-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "WF-000056",
+      "type": "workflow",
+      "name": "Compute metric",
+      "description": "Measurable Analytics workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-WF-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "WF-000057",
+      "type": "workflow",
+      "name": "Compose dashboard",
+      "description": "Measurable Analytics workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-WF-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "WF-000058",
+      "type": "workflow",
+      "name": "Filter and drill down",
+      "description": "Measurable Analytics workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-WF-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "WF-000059",
+      "type": "workflow",
+      "name": "Annotate change",
+      "description": "Measurable Analytics workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-WF-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "WF-000060",
+      "type": "workflow",
+      "name": "Schedule report",
+      "description": "Measurable Analytics workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-WF-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "WF-000061",
+      "type": "workflow",
+      "name": "Export data",
+      "description": "Measurable Analytics workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-WF-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "WF-000062",
+      "type": "workflow",
+      "name": "Handle data-quality failure",
+      "description": "Measurable Analytics workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-WF-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "WF-000063",
+      "type": "workflow",
+      "name": "Upload and classify",
+      "description": "Measurable Documents workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-WF-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "WF-000064",
+      "type": "workflow",
+      "name": "Generate from template",
+      "description": "Measurable Documents workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-WF-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "WF-000065",
+      "type": "workflow",
+      "name": "Create new version",
+      "description": "Measurable Documents workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-WF-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "WF-000066",
+      "type": "workflow",
+      "name": "Review and approve",
+      "description": "Measurable Documents workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-WF-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "WF-000067",
+      "type": "workflow",
+      "name": "Send for signature",
+      "description": "Measurable Documents workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-WF-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "WF-000068",
+      "type": "workflow",
+      "name": "Extract and index",
+      "description": "Measurable Documents workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-WF-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "WF-000069",
+      "type": "workflow",
+      "name": "Place legal hold",
+      "description": "Measurable Documents workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-WF-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "WF-000070",
+      "type": "workflow",
+      "name": "Archive or dispose",
+      "description": "Measurable Documents workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-WF-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "WF-000071",
+      "type": "workflow",
+      "name": "Create notification",
+      "description": "Measurable Notifications workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-WF-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "WF-000072",
+      "type": "workflow",
+      "name": "Evaluate policy",
+      "description": "Measurable Notifications workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-WF-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "WF-000073",
+      "type": "workflow",
+      "name": "Render template",
+      "description": "Measurable Notifications workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-WF-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "WF-000074",
+      "type": "workflow",
+      "name": "Route channel",
+      "description": "Measurable Notifications workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-WF-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "WF-000075",
+      "type": "workflow",
+      "name": "Deliver and retry",
+      "description": "Measurable Notifications workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-WF-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "WF-000076",
+      "type": "workflow",
+      "name": "Group digest",
+      "description": "Measurable Notifications workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-WF-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "WF-000077",
+      "type": "workflow",
+      "name": "Escalate failure",
+      "description": "Measurable Notifications workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-WF-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "WF-000078",
+      "type": "workflow",
+      "name": "Read/dismiss/act",
+      "description": "Measurable Notifications workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-WF-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "WF-000079",
+      "type": "workflow",
+      "name": "Recruit and hire",
+      "description": "Measurable Human Resources workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-WF-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "WF-000080",
+      "type": "workflow",
+      "name": "Onboard employee",
+      "description": "Measurable Human Resources workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-WF-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "WF-000081",
+      "type": "workflow",
+      "name": "Request and approve leave",
+      "description": "Measurable Human Resources workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-WF-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "WF-000082",
+      "type": "workflow",
+      "name": "Record attendance exception",
+      "description": "Measurable Human Resources workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-WF-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "WF-000083",
+      "type": "workflow",
+      "name": "Set and review goals",
+      "description": "Measurable Human Resources workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-WF-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "WF-000084",
+      "type": "workflow",
+      "name": "Change position/compensation",
+      "description": "Measurable Human Resources workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-WF-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "WF-000085",
+      "type": "workflow",
+      "name": "Offboard and revoke access",
+      "description": "Measurable Human Resources workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-WF-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "WF-000086",
+      "type": "workflow",
+      "name": "Plan capacity",
+      "description": "Measurable Human Resources workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-WF-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "WF-000087",
+      "type": "workflow",
+      "name": "Release production order",
+      "description": "Measurable Manufacturing workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-WF-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "WF-000088",
+      "type": "workflow",
+      "name": "Plan material",
+      "description": "Measurable Manufacturing workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-WF-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "WF-000089",
+      "type": "workflow",
+      "name": "Schedule operation",
+      "description": "Measurable Manufacturing workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-WF-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "WF-000090",
+      "type": "workflow",
+      "name": "Issue material",
+      "description": "Measurable Manufacturing workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-WF-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "WF-000091",
+      "type": "workflow",
+      "name": "Record production",
+      "description": "Measurable Manufacturing workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-WF-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "WF-000092",
+      "type": "workflow",
+      "name": "Inspect quality",
+      "description": "Measurable Manufacturing workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-WF-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "WF-000093",
+      "type": "workflow",
+      "name": "Handle nonconformance",
+      "description": "Measurable Manufacturing workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-WF-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "WF-000094",
+      "type": "workflow",
+      "name": "Close and cost order",
+      "description": "Measurable Manufacturing workflow; exact ordered domain steps require owner approval.",
+      "status": "In Design",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-WF-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "measurable": true,
+        "has_happy_failure_recovery_paths": true,
+        "steps": [],
+        "step_definition_status": "requires_domain_owner_approval",
+        "actors": [
+          "Authorized workspace member"
+        ],
+        "inputs": [],
+        "outputs": [],
+        "exceptions": [],
+        "timing_and_sla": "requires_domain_owner_approval"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    }
+  ]
+}

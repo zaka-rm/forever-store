@@ -1,0 +1,2912 @@
+{
+  "version": "2.2.0",
+  "generated_at": "2026-07-12T03:39:42.487Z",
+  "capabilities": 12,
+  "average_coverage_percent": 57,
+  "blocked": 0,
+  "stale": 0,
+  "assessments": [
+    {
+      "capability": {
+        "id": "CAP-000001",
+        "name": "Decision Center Core Capability",
+        "status": "Specified",
+        "owner": "TEAM-000007"
+      },
+      "generated_at": "2026-07-12T03:39:42.485Z",
+      "stages": [
+        {
+          "stage": "authority",
+          "status": "COVERED",
+          "records": [
+            {
+              "id": "CON-000001",
+              "type": "constitution",
+              "name": "Product Constitution",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "CON-000002",
+              "type": "constitution",
+              "name": "Architecture Constitution",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "CON-000003",
+              "type": "constitution",
+              "name": "Design Constitution",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "CON-000004",
+              "type": "constitution",
+              "name": "Security Constitution",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "CON-000005",
+              "type": "constitution",
+              "name": "Data Constitution",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "CON-000006",
+              "type": "constitution",
+              "name": "AI Constitution",
+              "status": "Released",
+              "freshness": "Current"
+            }
+          ]
+        },
+        {
+          "stage": "decision",
+          "status": "COVERED",
+          "records": [
+            {
+              "id": "DEC-000001",
+              "type": "decision",
+              "name": "What requires attention now?",
+              "status": "Specified",
+              "freshness": "Current"
+            },
+            {
+              "id": "DEC-000002",
+              "type": "decision",
+              "name": "Which action should be taken?",
+              "status": "Specified",
+              "freshness": "Current"
+            },
+            {
+              "id": "DEC-000003",
+              "type": "decision",
+              "name": "Who must decide or approve?",
+              "status": "Specified",
+              "freshness": "Current"
+            },
+            {
+              "id": "DEC-000004",
+              "type": "decision",
+              "name": "Did the decision produce the expected outcome?",
+              "status": "Specified",
+              "freshness": "Current"
+            }
+          ]
+        },
+        {
+          "stage": "prd",
+          "status": "COVERED",
+          "records": [
+            {
+              "id": "ART-000008",
+              "type": "artifact",
+              "name": "ZYVORA Decision Center PRD v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            }
+          ]
+        },
+        {
+          "stage": "technical_specification",
+          "status": "COVERED",
+          "records": [
+            {
+              "id": "ART-000021",
+              "type": "artifact",
+              "name": "ZYVORA Decision Center Technical Specification v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            }
+          ]
+        },
+        {
+          "stage": "blueprint",
+          "status": "COVERED",
+          "records": [
+            {
+              "id": "ART-000029",
+              "type": "artifact",
+              "name": "ZYVORA BP-000 Platform Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "ART-000030",
+              "type": "artifact",
+              "name": "ZYVORA BP-001 UI Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "ART-000031",
+              "type": "artifact",
+              "name": "ZYVORA BP-002 Backend Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "ART-000032",
+              "type": "artifact",
+              "name": "ZYVORA BP-003 Database Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "ART-000033",
+              "type": "artifact",
+              "name": "ZYVORA BP-004 API Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "ART-000034",
+              "type": "artifact",
+              "name": "ZYVORA BP-005 AI Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "ART-000035",
+              "type": "artifact",
+              "name": "ZYVORA BP-006 Security Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "ART-000036",
+              "type": "artifact",
+              "name": "ZYVORA BP-007 Infrastructure Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            }
+          ]
+        },
+        {
+          "stage": "build_pack",
+          "status": "MISSING",
+          "records": []
+        },
+        {
+          "stage": "qa_pack",
+          "status": "MISSING",
+          "records": []
+        },
+        {
+          "stage": "repository",
+          "status": "MISSING",
+          "records": []
+        },
+        {
+          "stage": "tests",
+          "status": "MISSING",
+          "records": []
+        },
+        {
+          "stage": "release",
+          "status": "COVERED",
+          "records": [
+            {
+              "id": "REL-000001",
+              "type": "release",
+              "name": "Architecture Knowledge System 1.0",
+              "status": "Released",
+              "freshness": "Current"
+            }
+          ]
+        },
+        {
+          "stage": "production",
+          "status": "MISSING",
+          "records": []
+        }
+      ],
+      "coverage": {
+        "covered": 6,
+        "total": 11,
+        "percent": 55
+      },
+      "freshness": "CURRENT",
+      "required_for_current_maturity": [
+        "authority",
+        "decision",
+        "prd",
+        "technical_specification",
+        "blueprint"
+      ],
+      "missing_required": [],
+      "gate": "PASS_CURRENT_MATURITY"
+    },
+    {
+      "capability": {
+        "id": "CAP-000002",
+        "name": "Business Memory Core Capability",
+        "status": "Specified",
+        "owner": "TEAM-000008"
+      },
+      "generated_at": "2026-07-12T03:39:42.485Z",
+      "stages": [
+        {
+          "stage": "authority",
+          "status": "COVERED",
+          "records": [
+            {
+              "id": "CON-000001",
+              "type": "constitution",
+              "name": "Product Constitution",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "CON-000002",
+              "type": "constitution",
+              "name": "Architecture Constitution",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "CON-000003",
+              "type": "constitution",
+              "name": "Design Constitution",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "CON-000004",
+              "type": "constitution",
+              "name": "Security Constitution",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "CON-000005",
+              "type": "constitution",
+              "name": "Data Constitution",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "CON-000006",
+              "type": "constitution",
+              "name": "AI Constitution",
+              "status": "Released",
+              "freshness": "Current"
+            }
+          ]
+        },
+        {
+          "stage": "decision",
+          "status": "COVERED",
+          "records": [
+            {
+              "id": "DEC-000005",
+              "type": "decision",
+              "name": "What happened before?",
+              "status": "Specified",
+              "freshness": "Current"
+            },
+            {
+              "id": "DEC-000006",
+              "type": "decision",
+              "name": "Why was a decision made?",
+              "status": "Specified",
+              "freshness": "Current"
+            },
+            {
+              "id": "DEC-000007",
+              "type": "decision",
+              "name": "What did we learn?",
+              "status": "Specified",
+              "freshness": "Current"
+            },
+            {
+              "id": "DEC-000008",
+              "type": "decision",
+              "name": "Which past situation is comparable?",
+              "status": "Specified",
+              "freshness": "Current"
+            }
+          ]
+        },
+        {
+          "stage": "prd",
+          "status": "COVERED",
+          "records": [
+            {
+              "id": "ART-000006",
+              "type": "artifact",
+              "name": "ZYVORA Business Memory PRD v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            }
+          ]
+        },
+        {
+          "stage": "technical_specification",
+          "status": "COVERED",
+          "records": [
+            {
+              "id": "ART-000019",
+              "type": "artifact",
+              "name": "ZYVORA Business Memory Technical Specification v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            }
+          ]
+        },
+        {
+          "stage": "blueprint",
+          "status": "COVERED",
+          "records": [
+            {
+              "id": "ART-000029",
+              "type": "artifact",
+              "name": "ZYVORA BP-000 Platform Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "ART-000030",
+              "type": "artifact",
+              "name": "ZYVORA BP-001 UI Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "ART-000031",
+              "type": "artifact",
+              "name": "ZYVORA BP-002 Backend Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "ART-000032",
+              "type": "artifact",
+              "name": "ZYVORA BP-003 Database Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "ART-000033",
+              "type": "artifact",
+              "name": "ZYVORA BP-004 API Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "ART-000034",
+              "type": "artifact",
+              "name": "ZYVORA BP-005 AI Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "ART-000035",
+              "type": "artifact",
+              "name": "ZYVORA BP-006 Security Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "ART-000036",
+              "type": "artifact",
+              "name": "ZYVORA BP-007 Infrastructure Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            }
+          ]
+        },
+        {
+          "stage": "build_pack",
+          "status": "MISSING",
+          "records": []
+        },
+        {
+          "stage": "qa_pack",
+          "status": "MISSING",
+          "records": []
+        },
+        {
+          "stage": "repository",
+          "status": "MISSING",
+          "records": []
+        },
+        {
+          "stage": "tests",
+          "status": "MISSING",
+          "records": []
+        },
+        {
+          "stage": "release",
+          "status": "COVERED",
+          "records": [
+            {
+              "id": "REL-000001",
+              "type": "release",
+              "name": "Architecture Knowledge System 1.0",
+              "status": "Released",
+              "freshness": "Current"
+            }
+          ]
+        },
+        {
+          "stage": "production",
+          "status": "MISSING",
+          "records": []
+        }
+      ],
+      "coverage": {
+        "covered": 6,
+        "total": 11,
+        "percent": 55
+      },
+      "freshness": "CURRENT",
+      "required_for_current_maturity": [
+        "authority",
+        "decision",
+        "prd",
+        "technical_specification",
+        "blueprint"
+      ],
+      "missing_required": [],
+      "gate": "PASS_CURRENT_MATURITY"
+    },
+    {
+      "capability": {
+        "id": "CAP-000003",
+        "name": "AI Engine Core Capability",
+        "status": "Specified",
+        "owner": "TEAM-000009"
+      },
+      "generated_at": "2026-07-12T03:39:42.485Z",
+      "stages": [
+        {
+          "stage": "authority",
+          "status": "COVERED",
+          "records": [
+            {
+              "id": "CON-000001",
+              "type": "constitution",
+              "name": "Product Constitution",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "CON-000002",
+              "type": "constitution",
+              "name": "Architecture Constitution",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "CON-000003",
+              "type": "constitution",
+              "name": "Design Constitution",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "CON-000004",
+              "type": "constitution",
+              "name": "Security Constitution",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "CON-000005",
+              "type": "constitution",
+              "name": "Data Constitution",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "CON-000006",
+              "type": "constitution",
+              "name": "AI Constitution",
+              "status": "Released",
+              "freshness": "Current"
+            }
+          ]
+        },
+        {
+          "stage": "decision",
+          "status": "COVERED",
+          "records": [
+            {
+              "id": "DEC-000009",
+              "type": "decision",
+              "name": "Which recommendation is supported?",
+              "status": "Specified",
+              "freshness": "Current"
+            },
+            {
+              "id": "DEC-000010",
+              "type": "decision",
+              "name": "What is likely to happen?",
+              "status": "Specified",
+              "freshness": "Current"
+            },
+            {
+              "id": "DEC-000011",
+              "type": "decision",
+              "name": "What is anomalous?",
+              "status": "Specified",
+              "freshness": "Current"
+            },
+            {
+              "id": "DEC-000012",
+              "type": "decision",
+              "name": "How confident should the Builder be?",
+              "status": "Specified",
+              "freshness": "Current"
+            }
+          ]
+        },
+        {
+          "stage": "prd",
+          "status": "COVERED",
+          "records": [
+            {
+              "id": "ART-000004",
+              "type": "artifact",
+              "name": "ZYVORA AI Engine PRD v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            }
+          ]
+        },
+        {
+          "stage": "technical_specification",
+          "status": "COVERED",
+          "records": [
+            {
+              "id": "ART-000017",
+              "type": "artifact",
+              "name": "ZYVORA AI Engine Technical Specification v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            }
+          ]
+        },
+        {
+          "stage": "blueprint",
+          "status": "COVERED",
+          "records": [
+            {
+              "id": "ART-000029",
+              "type": "artifact",
+              "name": "ZYVORA BP-000 Platform Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "ART-000030",
+              "type": "artifact",
+              "name": "ZYVORA BP-001 UI Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "ART-000031",
+              "type": "artifact",
+              "name": "ZYVORA BP-002 Backend Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "ART-000032",
+              "type": "artifact",
+              "name": "ZYVORA BP-003 Database Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "ART-000033",
+              "type": "artifact",
+              "name": "ZYVORA BP-004 API Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "ART-000034",
+              "type": "artifact",
+              "name": "ZYVORA BP-005 AI Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "ART-000035",
+              "type": "artifact",
+              "name": "ZYVORA BP-006 Security Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "ART-000036",
+              "type": "artifact",
+              "name": "ZYVORA BP-007 Infrastructure Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            }
+          ]
+        },
+        {
+          "stage": "build_pack",
+          "status": "MISSING",
+          "records": []
+        },
+        {
+          "stage": "qa_pack",
+          "status": "MISSING",
+          "records": []
+        },
+        {
+          "stage": "repository",
+          "status": "MISSING",
+          "records": []
+        },
+        {
+          "stage": "tests",
+          "status": "MISSING",
+          "records": []
+        },
+        {
+          "stage": "release",
+          "status": "COVERED",
+          "records": [
+            {
+              "id": "REL-000001",
+              "type": "release",
+              "name": "Architecture Knowledge System 1.0",
+              "status": "Released",
+              "freshness": "Current"
+            }
+          ]
+        },
+        {
+          "stage": "production",
+          "status": "MISSING",
+          "records": []
+        }
+      ],
+      "coverage": {
+        "covered": 6,
+        "total": 11,
+        "percent": 55
+      },
+      "freshness": "CURRENT",
+      "required_for_current_maturity": [
+        "authority",
+        "decision",
+        "prd",
+        "technical_specification",
+        "blueprint"
+      ],
+      "missing_required": [],
+      "gate": "PASS_CURRENT_MATURITY"
+    },
+    {
+      "capability": {
+        "id": "CAP-000004",
+        "name": "Identity, Workspace, Permissions & Audit Core Capability",
+        "status": "Specified",
+        "owner": "TEAM-000010"
+      },
+      "generated_at": "2026-07-12T03:39:42.486Z",
+      "stages": [
+        {
+          "stage": "authority",
+          "status": "COVERED",
+          "records": [
+            {
+              "id": "CON-000001",
+              "type": "constitution",
+              "name": "Product Constitution",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "CON-000002",
+              "type": "constitution",
+              "name": "Architecture Constitution",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "CON-000003",
+              "type": "constitution",
+              "name": "Design Constitution",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "CON-000004",
+              "type": "constitution",
+              "name": "Security Constitution",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "CON-000005",
+              "type": "constitution",
+              "name": "Data Constitution",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "CON-000006",
+              "type": "constitution",
+              "name": "AI Constitution",
+              "status": "Released",
+              "freshness": "Current"
+            }
+          ]
+        },
+        {
+          "stage": "decision",
+          "status": "COVERED",
+          "records": [
+            {
+              "id": "DEC-000013",
+              "type": "decision",
+              "name": "Who may access this workspace?",
+              "status": "Specified",
+              "freshness": "Current"
+            },
+            {
+              "id": "DEC-000014",
+              "type": "decision",
+              "name": "What may this actor do?",
+              "status": "Specified",
+              "freshness": "Current"
+            },
+            {
+              "id": "DEC-000015",
+              "type": "decision",
+              "name": "Who changed what and why?",
+              "status": "Specified",
+              "freshness": "Current"
+            },
+            {
+              "id": "DEC-000016",
+              "type": "decision",
+              "name": "How is compromised access revoked?",
+              "status": "Specified",
+              "freshness": "Current"
+            }
+          ]
+        },
+        {
+          "stage": "prd",
+          "status": "COVERED",
+          "records": [
+            {
+              "id": "ART-000012",
+              "type": "artifact",
+              "name": "ZYVORA Identity, Workspace, Permissions & Audit PRD v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            }
+          ]
+        },
+        {
+          "stage": "technical_specification",
+          "status": "COVERED",
+          "records": [
+            {
+              "id": "ART-000025",
+              "type": "artifact",
+              "name": "ZYVORA Identity, Workspace, Permissions & Audit Technical Specification v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            }
+          ]
+        },
+        {
+          "stage": "blueprint",
+          "status": "COVERED",
+          "records": [
+            {
+              "id": "ART-000029",
+              "type": "artifact",
+              "name": "ZYVORA BP-000 Platform Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "ART-000030",
+              "type": "artifact",
+              "name": "ZYVORA BP-001 UI Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "ART-000031",
+              "type": "artifact",
+              "name": "ZYVORA BP-002 Backend Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "ART-000032",
+              "type": "artifact",
+              "name": "ZYVORA BP-003 Database Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "ART-000033",
+              "type": "artifact",
+              "name": "ZYVORA BP-004 API Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "ART-000034",
+              "type": "artifact",
+              "name": "ZYVORA BP-005 AI Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "ART-000035",
+              "type": "artifact",
+              "name": "ZYVORA BP-006 Security Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "ART-000036",
+              "type": "artifact",
+              "name": "ZYVORA BP-007 Infrastructure Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            }
+          ]
+        },
+        {
+          "stage": "build_pack",
+          "status": "COVERED",
+          "records": [
+            {
+              "id": "BUILD-000001",
+              "type": "build_pack",
+              "name": "ZYVORA BUILD-001 Workspace Identity & Audit Foundation v1.0",
+              "status": "Implementation Ready",
+              "freshness": "Current"
+            }
+          ]
+        },
+        {
+          "stage": "qa_pack",
+          "status": "COVERED",
+          "records": [
+            {
+              "id": "QA-000001",
+              "type": "qa_pack",
+              "name": "ZYVORA QA-001 Workspace Identity & Audit Foundation v1.0",
+              "status": "Implementation Ready",
+              "freshness": "Current"
+            }
+          ]
+        },
+        {
+          "stage": "repository",
+          "status": "MISSING",
+          "records": []
+        },
+        {
+          "stage": "tests",
+          "status": "COVERED",
+          "records": [
+            {
+              "id": "TEST-000001",
+              "type": "test_case",
+              "name": "Create workspace",
+              "status": "Specified",
+              "freshness": "Current"
+            },
+            {
+              "id": "TEST-000009",
+              "type": "test_case",
+              "name": "Audit query/export",
+              "status": "Specified",
+              "freshness": "Current"
+            },
+            {
+              "id": "TEST-000002",
+              "type": "test_case",
+              "name": "Invite and accept",
+              "status": "Specified",
+              "freshness": "Current"
+            },
+            {
+              "id": "TEST-000010",
+              "type": "test_case",
+              "name": "Idempotent invitation",
+              "status": "Specified",
+              "freshness": "Current"
+            },
+            {
+              "id": "TEST-000003",
+              "type": "test_case",
+              "name": "Expired/revoked invitation",
+              "status": "Specified",
+              "freshness": "Current"
+            },
+            {
+              "id": "TEST-000004",
+              "type": "test_case",
+              "name": "Change role",
+              "status": "Specified",
+              "freshness": "Current"
+            },
+            {
+              "id": "TEST-000005",
+              "type": "test_case",
+              "name": "Self escalation",
+              "status": "Specified",
+              "freshness": "Current"
+            },
+            {
+              "id": "TEST-000006",
+              "type": "test_case",
+              "name": "Last owner protection",
+              "status": "Specified",
+              "freshness": "Current"
+            },
+            {
+              "id": "TEST-000007",
+              "type": "test_case",
+              "name": "Concurrent membership update",
+              "status": "Specified",
+              "freshness": "Current"
+            },
+            {
+              "id": "TEST-000008",
+              "type": "test_case",
+              "name": "Session revoke",
+              "status": "Specified",
+              "freshness": "Current"
+            }
+          ]
+        },
+        {
+          "stage": "release",
+          "status": "COVERED",
+          "records": [
+            {
+              "id": "REL-000001",
+              "type": "release",
+              "name": "Architecture Knowledge System 1.0",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "REL-000002",
+              "type": "release",
+              "name": "Platform Foundation 1.0",
+              "status": "Planned",
+              "freshness": "Current"
+            }
+          ]
+        },
+        {
+          "stage": "production",
+          "status": "MISSING",
+          "records": []
+        }
+      ],
+      "coverage": {
+        "covered": 9,
+        "total": 11,
+        "percent": 82
+      },
+      "freshness": "CURRENT",
+      "required_for_current_maturity": [
+        "authority",
+        "decision",
+        "prd",
+        "technical_specification",
+        "blueprint"
+      ],
+      "missing_required": [],
+      "gate": "PASS_CURRENT_MATURITY"
+    },
+    {
+      "capability": {
+        "id": "CAP-000005",
+        "name": "Finance Core Capability",
+        "status": "Specified",
+        "owner": "TEAM-000011"
+      },
+      "generated_at": "2026-07-12T03:39:42.486Z",
+      "stages": [
+        {
+          "stage": "authority",
+          "status": "COVERED",
+          "records": [
+            {
+              "id": "CON-000001",
+              "type": "constitution",
+              "name": "Product Constitution",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "CON-000002",
+              "type": "constitution",
+              "name": "Architecture Constitution",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "CON-000003",
+              "type": "constitution",
+              "name": "Design Constitution",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "CON-000004",
+              "type": "constitution",
+              "name": "Security Constitution",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "CON-000005",
+              "type": "constitution",
+              "name": "Data Constitution",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "CON-000006",
+              "type": "constitution",
+              "name": "AI Constitution",
+              "status": "Released",
+              "freshness": "Current"
+            }
+          ]
+        },
+        {
+          "stage": "decision",
+          "status": "COVERED",
+          "records": [
+            {
+              "id": "DEC-000017",
+              "type": "decision",
+              "name": "Can the business afford this action?",
+              "status": "Specified",
+              "freshness": "Current"
+            },
+            {
+              "id": "DEC-000018",
+              "type": "decision",
+              "name": "What is driving profit and cash?",
+              "status": "Specified",
+              "freshness": "Current"
+            },
+            {
+              "id": "DEC-000019",
+              "type": "decision",
+              "name": "Which receivable or payable needs action?",
+              "status": "Specified",
+              "freshness": "Current"
+            },
+            {
+              "id": "DEC-000020",
+              "type": "decision",
+              "name": "Are the books complete and controlled?",
+              "status": "Specified",
+              "freshness": "Current"
+            }
+          ]
+        },
+        {
+          "stage": "prd",
+          "status": "COVERED",
+          "records": [
+            {
+              "id": "ART-000010",
+              "type": "artifact",
+              "name": "ZYVORA Finance PRD v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            }
+          ]
+        },
+        {
+          "stage": "technical_specification",
+          "status": "COVERED",
+          "records": [
+            {
+              "id": "ART-000023",
+              "type": "artifact",
+              "name": "ZYVORA Finance Technical Specification v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            }
+          ]
+        },
+        {
+          "stage": "blueprint",
+          "status": "COVERED",
+          "records": [
+            {
+              "id": "ART-000029",
+              "type": "artifact",
+              "name": "ZYVORA BP-000 Platform Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "ART-000030",
+              "type": "artifact",
+              "name": "ZYVORA BP-001 UI Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "ART-000031",
+              "type": "artifact",
+              "name": "ZYVORA BP-002 Backend Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "ART-000032",
+              "type": "artifact",
+              "name": "ZYVORA BP-003 Database Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "ART-000033",
+              "type": "artifact",
+              "name": "ZYVORA BP-004 API Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "ART-000034",
+              "type": "artifact",
+              "name": "ZYVORA BP-005 AI Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "ART-000035",
+              "type": "artifact",
+              "name": "ZYVORA BP-006 Security Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "ART-000036",
+              "type": "artifact",
+              "name": "ZYVORA BP-007 Infrastructure Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            }
+          ]
+        },
+        {
+          "stage": "build_pack",
+          "status": "MISSING",
+          "records": []
+        },
+        {
+          "stage": "qa_pack",
+          "status": "MISSING",
+          "records": []
+        },
+        {
+          "stage": "repository",
+          "status": "MISSING",
+          "records": []
+        },
+        {
+          "stage": "tests",
+          "status": "MISSING",
+          "records": []
+        },
+        {
+          "stage": "release",
+          "status": "COVERED",
+          "records": [
+            {
+              "id": "REL-000001",
+              "type": "release",
+              "name": "Architecture Knowledge System 1.0",
+              "status": "Released",
+              "freshness": "Current"
+            }
+          ]
+        },
+        {
+          "stage": "production",
+          "status": "MISSING",
+          "records": []
+        }
+      ],
+      "coverage": {
+        "covered": 6,
+        "total": 11,
+        "percent": 55
+      },
+      "freshness": "CURRENT",
+      "required_for_current_maturity": [
+        "authority",
+        "decision",
+        "prd",
+        "technical_specification",
+        "blueprint"
+      ],
+      "missing_required": [],
+      "gate": "PASS_CURRENT_MATURITY"
+    },
+    {
+      "capability": {
+        "id": "CAP-000006",
+        "name": "Inventory Core Capability",
+        "status": "Specified",
+        "owner": "TEAM-000012"
+      },
+      "generated_at": "2026-07-12T03:39:42.486Z",
+      "stages": [
+        {
+          "stage": "authority",
+          "status": "COVERED",
+          "records": [
+            {
+              "id": "CON-000001",
+              "type": "constitution",
+              "name": "Product Constitution",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "CON-000002",
+              "type": "constitution",
+              "name": "Architecture Constitution",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "CON-000003",
+              "type": "constitution",
+              "name": "Design Constitution",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "CON-000004",
+              "type": "constitution",
+              "name": "Security Constitution",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "CON-000005",
+              "type": "constitution",
+              "name": "Data Constitution",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "CON-000006",
+              "type": "constitution",
+              "name": "AI Constitution",
+              "status": "Released",
+              "freshness": "Current"
+            }
+          ]
+        },
+        {
+          "stage": "decision",
+          "status": "COVERED",
+          "records": [
+            {
+              "id": "DEC-000021",
+              "type": "decision",
+              "name": "What should be reordered, when, and how much?",
+              "status": "Specified",
+              "freshness": "Current"
+            },
+            {
+              "id": "DEC-000022",
+              "type": "decision",
+              "name": "Where is stock available?",
+              "status": "Specified",
+              "freshness": "Current"
+            },
+            {
+              "id": "DEC-000023",
+              "type": "decision",
+              "name": "Which movement or variance requires investigation?",
+              "status": "Specified",
+              "freshness": "Current"
+            },
+            {
+              "id": "DEC-000024",
+              "type": "decision",
+              "name": "Which supplier and purchase action is best?",
+              "status": "Specified",
+              "freshness": "Current"
+            }
+          ]
+        },
+        {
+          "stage": "prd",
+          "status": "COVERED",
+          "records": [
+            {
+              "id": "ART-000013",
+              "type": "artifact",
+              "name": "ZYVORA Inventory PRD v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            }
+          ]
+        },
+        {
+          "stage": "technical_specification",
+          "status": "COVERED",
+          "records": [
+            {
+              "id": "ART-000026",
+              "type": "artifact",
+              "name": "ZYVORA Inventory Technical Specification v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            }
+          ]
+        },
+        {
+          "stage": "blueprint",
+          "status": "COVERED",
+          "records": [
+            {
+              "id": "ART-000029",
+              "type": "artifact",
+              "name": "ZYVORA BP-000 Platform Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "ART-000030",
+              "type": "artifact",
+              "name": "ZYVORA BP-001 UI Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "ART-000031",
+              "type": "artifact",
+              "name": "ZYVORA BP-002 Backend Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "ART-000032",
+              "type": "artifact",
+              "name": "ZYVORA BP-003 Database Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "ART-000033",
+              "type": "artifact",
+              "name": "ZYVORA BP-004 API Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "ART-000034",
+              "type": "artifact",
+              "name": "ZYVORA BP-005 AI Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "ART-000035",
+              "type": "artifact",
+              "name": "ZYVORA BP-006 Security Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "ART-000036",
+              "type": "artifact",
+              "name": "ZYVORA BP-007 Infrastructure Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            }
+          ]
+        },
+        {
+          "stage": "build_pack",
+          "status": "MISSING",
+          "records": []
+        },
+        {
+          "stage": "qa_pack",
+          "status": "MISSING",
+          "records": []
+        },
+        {
+          "stage": "repository",
+          "status": "MISSING",
+          "records": []
+        },
+        {
+          "stage": "tests",
+          "status": "MISSING",
+          "records": []
+        },
+        {
+          "stage": "release",
+          "status": "COVERED",
+          "records": [
+            {
+              "id": "REL-000001",
+              "type": "release",
+              "name": "Architecture Knowledge System 1.0",
+              "status": "Released",
+              "freshness": "Current"
+            }
+          ]
+        },
+        {
+          "stage": "production",
+          "status": "MISSING",
+          "records": []
+        }
+      ],
+      "coverage": {
+        "covered": 6,
+        "total": 11,
+        "percent": 55
+      },
+      "freshness": "CURRENT",
+      "required_for_current_maturity": [
+        "authority",
+        "decision",
+        "prd",
+        "technical_specification",
+        "blueprint"
+      ],
+      "missing_required": [],
+      "gate": "PASS_CURRENT_MATURITY"
+    },
+    {
+      "capability": {
+        "id": "CAP-000007",
+        "name": "CRM Core Capability",
+        "status": "Specified",
+        "owner": "TEAM-000013"
+      },
+      "generated_at": "2026-07-12T03:39:42.486Z",
+      "stages": [
+        {
+          "stage": "authority",
+          "status": "COVERED",
+          "records": [
+            {
+              "id": "CON-000001",
+              "type": "constitution",
+              "name": "Product Constitution",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "CON-000002",
+              "type": "constitution",
+              "name": "Architecture Constitution",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "CON-000003",
+              "type": "constitution",
+              "name": "Design Constitution",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "CON-000004",
+              "type": "constitution",
+              "name": "Security Constitution",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "CON-000005",
+              "type": "constitution",
+              "name": "Data Constitution",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "CON-000006",
+              "type": "constitution",
+              "name": "AI Constitution",
+              "status": "Released",
+              "freshness": "Current"
+            }
+          ]
+        },
+        {
+          "stage": "decision",
+          "status": "COVERED",
+          "records": [
+            {
+              "id": "DEC-000025",
+              "type": "decision",
+              "name": "Which lead or opportunity deserves attention?",
+              "status": "Specified",
+              "freshness": "Current"
+            },
+            {
+              "id": "DEC-000026",
+              "type": "decision",
+              "name": "Which customer is at risk?",
+              "status": "Specified",
+              "freshness": "Current"
+            },
+            {
+              "id": "DEC-000027",
+              "type": "decision",
+              "name": "What is the next best action?",
+              "status": "Specified",
+              "freshness": "Current"
+            },
+            {
+              "id": "DEC-000028",
+              "type": "decision",
+              "name": "Which segment or campaign should be prioritized?",
+              "status": "Specified",
+              "freshness": "Current"
+            }
+          ]
+        },
+        {
+          "stage": "prd",
+          "status": "COVERED",
+          "records": [
+            {
+              "id": "ART-000007",
+              "type": "artifact",
+              "name": "ZYVORA CRM PRD v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            }
+          ]
+        },
+        {
+          "stage": "technical_specification",
+          "status": "COVERED",
+          "records": [
+            {
+              "id": "ART-000020",
+              "type": "artifact",
+              "name": "ZYVORA CRM Technical Specification v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            }
+          ]
+        },
+        {
+          "stage": "blueprint",
+          "status": "COVERED",
+          "records": [
+            {
+              "id": "ART-000029",
+              "type": "artifact",
+              "name": "ZYVORA BP-000 Platform Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "ART-000030",
+              "type": "artifact",
+              "name": "ZYVORA BP-001 UI Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "ART-000031",
+              "type": "artifact",
+              "name": "ZYVORA BP-002 Backend Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "ART-000032",
+              "type": "artifact",
+              "name": "ZYVORA BP-003 Database Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "ART-000033",
+              "type": "artifact",
+              "name": "ZYVORA BP-004 API Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "ART-000034",
+              "type": "artifact",
+              "name": "ZYVORA BP-005 AI Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "ART-000035",
+              "type": "artifact",
+              "name": "ZYVORA BP-006 Security Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "ART-000036",
+              "type": "artifact",
+              "name": "ZYVORA BP-007 Infrastructure Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            }
+          ]
+        },
+        {
+          "stage": "build_pack",
+          "status": "MISSING",
+          "records": []
+        },
+        {
+          "stage": "qa_pack",
+          "status": "MISSING",
+          "records": []
+        },
+        {
+          "stage": "repository",
+          "status": "MISSING",
+          "records": []
+        },
+        {
+          "stage": "tests",
+          "status": "MISSING",
+          "records": []
+        },
+        {
+          "stage": "release",
+          "status": "COVERED",
+          "records": [
+            {
+              "id": "REL-000001",
+              "type": "release",
+              "name": "Architecture Knowledge System 1.0",
+              "status": "Released",
+              "freshness": "Current"
+            }
+          ]
+        },
+        {
+          "stage": "production",
+          "status": "MISSING",
+          "records": []
+        }
+      ],
+      "coverage": {
+        "covered": 6,
+        "total": 11,
+        "percent": 55
+      },
+      "freshness": "CURRENT",
+      "required_for_current_maturity": [
+        "authority",
+        "decision",
+        "prd",
+        "technical_specification",
+        "blueprint"
+      ],
+      "missing_required": [],
+      "gate": "PASS_CURRENT_MATURITY"
+    },
+    {
+      "capability": {
+        "id": "CAP-000008",
+        "name": "Analytics Core Capability",
+        "status": "Specified",
+        "owner": "TEAM-000014"
+      },
+      "generated_at": "2026-07-12T03:39:42.487Z",
+      "stages": [
+        {
+          "stage": "authority",
+          "status": "COVERED",
+          "records": [
+            {
+              "id": "CON-000001",
+              "type": "constitution",
+              "name": "Product Constitution",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "CON-000002",
+              "type": "constitution",
+              "name": "Architecture Constitution",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "CON-000003",
+              "type": "constitution",
+              "name": "Design Constitution",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "CON-000004",
+              "type": "constitution",
+              "name": "Security Constitution",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "CON-000005",
+              "type": "constitution",
+              "name": "Data Constitution",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "CON-000006",
+              "type": "constitution",
+              "name": "AI Constitution",
+              "status": "Released",
+              "freshness": "Current"
+            }
+          ]
+        },
+        {
+          "stage": "decision",
+          "status": "COVERED",
+          "records": [
+            {
+              "id": "DEC-000029",
+              "type": "decision",
+              "name": "What changed?",
+              "status": "Specified",
+              "freshness": "Current"
+            },
+            {
+              "id": "DEC-000030",
+              "type": "decision",
+              "name": "Why did it change?",
+              "status": "Specified",
+              "freshness": "Current"
+            },
+            {
+              "id": "DEC-000031",
+              "type": "decision",
+              "name": "Does it require attention?",
+              "status": "Specified",
+              "freshness": "Current"
+            },
+            {
+              "id": "DEC-000032",
+              "type": "decision",
+              "name": "Which underlying records explain the metric?",
+              "status": "Specified",
+              "freshness": "Current"
+            }
+          ]
+        },
+        {
+          "stage": "prd",
+          "status": "COVERED",
+          "records": [
+            {
+              "id": "ART-000005",
+              "type": "artifact",
+              "name": "ZYVORA Analytics PRD v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            }
+          ]
+        },
+        {
+          "stage": "technical_specification",
+          "status": "COVERED",
+          "records": [
+            {
+              "id": "ART-000018",
+              "type": "artifact",
+              "name": "ZYVORA Analytics Technical Specification v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            }
+          ]
+        },
+        {
+          "stage": "blueprint",
+          "status": "COVERED",
+          "records": [
+            {
+              "id": "ART-000029",
+              "type": "artifact",
+              "name": "ZYVORA BP-000 Platform Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "ART-000030",
+              "type": "artifact",
+              "name": "ZYVORA BP-001 UI Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "ART-000031",
+              "type": "artifact",
+              "name": "ZYVORA BP-002 Backend Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "ART-000032",
+              "type": "artifact",
+              "name": "ZYVORA BP-003 Database Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "ART-000033",
+              "type": "artifact",
+              "name": "ZYVORA BP-004 API Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "ART-000034",
+              "type": "artifact",
+              "name": "ZYVORA BP-005 AI Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "ART-000035",
+              "type": "artifact",
+              "name": "ZYVORA BP-006 Security Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "ART-000036",
+              "type": "artifact",
+              "name": "ZYVORA BP-007 Infrastructure Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            }
+          ]
+        },
+        {
+          "stage": "build_pack",
+          "status": "MISSING",
+          "records": []
+        },
+        {
+          "stage": "qa_pack",
+          "status": "MISSING",
+          "records": []
+        },
+        {
+          "stage": "repository",
+          "status": "MISSING",
+          "records": []
+        },
+        {
+          "stage": "tests",
+          "status": "MISSING",
+          "records": []
+        },
+        {
+          "stage": "release",
+          "status": "COVERED",
+          "records": [
+            {
+              "id": "REL-000001",
+              "type": "release",
+              "name": "Architecture Knowledge System 1.0",
+              "status": "Released",
+              "freshness": "Current"
+            }
+          ]
+        },
+        {
+          "stage": "production",
+          "status": "MISSING",
+          "records": []
+        }
+      ],
+      "coverage": {
+        "covered": 6,
+        "total": 11,
+        "percent": 55
+      },
+      "freshness": "CURRENT",
+      "required_for_current_maturity": [
+        "authority",
+        "decision",
+        "prd",
+        "technical_specification",
+        "blueprint"
+      ],
+      "missing_required": [],
+      "gate": "PASS_CURRENT_MATURITY"
+    },
+    {
+      "capability": {
+        "id": "CAP-000009",
+        "name": "Documents Core Capability",
+        "status": "Specified",
+        "owner": "TEAM-000015"
+      },
+      "generated_at": "2026-07-12T03:39:42.487Z",
+      "stages": [
+        {
+          "stage": "authority",
+          "status": "COVERED",
+          "records": [
+            {
+              "id": "CON-000001",
+              "type": "constitution",
+              "name": "Product Constitution",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "CON-000002",
+              "type": "constitution",
+              "name": "Architecture Constitution",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "CON-000003",
+              "type": "constitution",
+              "name": "Design Constitution",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "CON-000004",
+              "type": "constitution",
+              "name": "Security Constitution",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "CON-000005",
+              "type": "constitution",
+              "name": "Data Constitution",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "CON-000006",
+              "type": "constitution",
+              "name": "AI Constitution",
+              "status": "Released",
+              "freshness": "Current"
+            }
+          ]
+        },
+        {
+          "stage": "decision",
+          "status": "COVERED",
+          "records": [
+            {
+              "id": "DEC-000033",
+              "type": "decision",
+              "name": "Which document is authoritative?",
+              "status": "Specified",
+              "freshness": "Current"
+            },
+            {
+              "id": "DEC-000034",
+              "type": "decision",
+              "name": "Who must review or sign it?",
+              "status": "Specified",
+              "freshness": "Current"
+            },
+            {
+              "id": "DEC-000035",
+              "type": "decision",
+              "name": "What changed between versions?",
+              "status": "Specified",
+              "freshness": "Current"
+            },
+            {
+              "id": "DEC-000036",
+              "type": "decision",
+              "name": "When may it be archived or deleted?",
+              "status": "Specified",
+              "freshness": "Current"
+            }
+          ]
+        },
+        {
+          "stage": "prd",
+          "status": "COVERED",
+          "records": [
+            {
+              "id": "ART-000009",
+              "type": "artifact",
+              "name": "ZYVORA Documents PRD v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            }
+          ]
+        },
+        {
+          "stage": "technical_specification",
+          "status": "COVERED",
+          "records": [
+            {
+              "id": "ART-000022",
+              "type": "artifact",
+              "name": "ZYVORA Documents Technical Specification v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            }
+          ]
+        },
+        {
+          "stage": "blueprint",
+          "status": "COVERED",
+          "records": [
+            {
+              "id": "ART-000029",
+              "type": "artifact",
+              "name": "ZYVORA BP-000 Platform Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "ART-000030",
+              "type": "artifact",
+              "name": "ZYVORA BP-001 UI Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "ART-000031",
+              "type": "artifact",
+              "name": "ZYVORA BP-002 Backend Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "ART-000032",
+              "type": "artifact",
+              "name": "ZYVORA BP-003 Database Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "ART-000033",
+              "type": "artifact",
+              "name": "ZYVORA BP-004 API Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "ART-000034",
+              "type": "artifact",
+              "name": "ZYVORA BP-005 AI Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "ART-000035",
+              "type": "artifact",
+              "name": "ZYVORA BP-006 Security Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "ART-000036",
+              "type": "artifact",
+              "name": "ZYVORA BP-007 Infrastructure Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            }
+          ]
+        },
+        {
+          "stage": "build_pack",
+          "status": "MISSING",
+          "records": []
+        },
+        {
+          "stage": "qa_pack",
+          "status": "MISSING",
+          "records": []
+        },
+        {
+          "stage": "repository",
+          "status": "MISSING",
+          "records": []
+        },
+        {
+          "stage": "tests",
+          "status": "MISSING",
+          "records": []
+        },
+        {
+          "stage": "release",
+          "status": "COVERED",
+          "records": [
+            {
+              "id": "REL-000001",
+              "type": "release",
+              "name": "Architecture Knowledge System 1.0",
+              "status": "Released",
+              "freshness": "Current"
+            }
+          ]
+        },
+        {
+          "stage": "production",
+          "status": "MISSING",
+          "records": []
+        }
+      ],
+      "coverage": {
+        "covered": 6,
+        "total": 11,
+        "percent": 55
+      },
+      "freshness": "CURRENT",
+      "required_for_current_maturity": [
+        "authority",
+        "decision",
+        "prd",
+        "technical_specification",
+        "blueprint"
+      ],
+      "missing_required": [],
+      "gate": "PASS_CURRENT_MATURITY"
+    },
+    {
+      "capability": {
+        "id": "CAP-000010",
+        "name": "Notifications Core Capability",
+        "status": "Specified",
+        "owner": "TEAM-000016"
+      },
+      "generated_at": "2026-07-12T03:39:42.487Z",
+      "stages": [
+        {
+          "stage": "authority",
+          "status": "COVERED",
+          "records": [
+            {
+              "id": "CON-000001",
+              "type": "constitution",
+              "name": "Product Constitution",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "CON-000002",
+              "type": "constitution",
+              "name": "Architecture Constitution",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "CON-000003",
+              "type": "constitution",
+              "name": "Design Constitution",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "CON-000004",
+              "type": "constitution",
+              "name": "Security Constitution",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "CON-000005",
+              "type": "constitution",
+              "name": "Data Constitution",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "CON-000006",
+              "type": "constitution",
+              "name": "AI Constitution",
+              "status": "Released",
+              "freshness": "Current"
+            }
+          ]
+        },
+        {
+          "stage": "decision",
+          "status": "COVERED",
+          "records": [
+            {
+              "id": "DEC-000037",
+              "type": "decision",
+              "name": "Who needs to know or act?",
+              "status": "Specified",
+              "freshness": "Current"
+            },
+            {
+              "id": "DEC-000038",
+              "type": "decision",
+              "name": "Which channel and time are appropriate?",
+              "status": "Specified",
+              "freshness": "Current"
+            },
+            {
+              "id": "DEC-000039",
+              "type": "decision",
+              "name": "Did delivery succeed?",
+              "status": "Specified",
+              "freshness": "Current"
+            },
+            {
+              "id": "DEC-000040",
+              "type": "decision",
+              "name": "Should the alert escalate?",
+              "status": "Specified",
+              "freshness": "Current"
+            }
+          ]
+        },
+        {
+          "stage": "prd",
+          "status": "COVERED",
+          "records": [
+            {
+              "id": "ART-000015",
+              "type": "artifact",
+              "name": "ZYVORA Notifications PRD v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            }
+          ]
+        },
+        {
+          "stage": "technical_specification",
+          "status": "COVERED",
+          "records": [
+            {
+              "id": "ART-000028",
+              "type": "artifact",
+              "name": "ZYVORA Notifications Technical Specification v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            }
+          ]
+        },
+        {
+          "stage": "blueprint",
+          "status": "COVERED",
+          "records": [
+            {
+              "id": "ART-000029",
+              "type": "artifact",
+              "name": "ZYVORA BP-000 Platform Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "ART-000030",
+              "type": "artifact",
+              "name": "ZYVORA BP-001 UI Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "ART-000031",
+              "type": "artifact",
+              "name": "ZYVORA BP-002 Backend Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "ART-000032",
+              "type": "artifact",
+              "name": "ZYVORA BP-003 Database Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "ART-000033",
+              "type": "artifact",
+              "name": "ZYVORA BP-004 API Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "ART-000034",
+              "type": "artifact",
+              "name": "ZYVORA BP-005 AI Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "ART-000035",
+              "type": "artifact",
+              "name": "ZYVORA BP-006 Security Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "ART-000036",
+              "type": "artifact",
+              "name": "ZYVORA BP-007 Infrastructure Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            }
+          ]
+        },
+        {
+          "stage": "build_pack",
+          "status": "MISSING",
+          "records": []
+        },
+        {
+          "stage": "qa_pack",
+          "status": "MISSING",
+          "records": []
+        },
+        {
+          "stage": "repository",
+          "status": "MISSING",
+          "records": []
+        },
+        {
+          "stage": "tests",
+          "status": "MISSING",
+          "records": []
+        },
+        {
+          "stage": "release",
+          "status": "COVERED",
+          "records": [
+            {
+              "id": "REL-000001",
+              "type": "release",
+              "name": "Architecture Knowledge System 1.0",
+              "status": "Released",
+              "freshness": "Current"
+            }
+          ]
+        },
+        {
+          "stage": "production",
+          "status": "MISSING",
+          "records": []
+        }
+      ],
+      "coverage": {
+        "covered": 6,
+        "total": 11,
+        "percent": 55
+      },
+      "freshness": "CURRENT",
+      "required_for_current_maturity": [
+        "authority",
+        "decision",
+        "prd",
+        "technical_specification",
+        "blueprint"
+      ],
+      "missing_required": [],
+      "gate": "PASS_CURRENT_MATURITY"
+    },
+    {
+      "capability": {
+        "id": "CAP-000011",
+        "name": "Human Resources Core Capability",
+        "status": "Specified",
+        "owner": "TEAM-000017"
+      },
+      "generated_at": "2026-07-12T03:39:42.487Z",
+      "stages": [
+        {
+          "stage": "authority",
+          "status": "COVERED",
+          "records": [
+            {
+              "id": "CON-000001",
+              "type": "constitution",
+              "name": "Product Constitution",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "CON-000002",
+              "type": "constitution",
+              "name": "Architecture Constitution",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "CON-000003",
+              "type": "constitution",
+              "name": "Design Constitution",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "CON-000004",
+              "type": "constitution",
+              "name": "Security Constitution",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "CON-000005",
+              "type": "constitution",
+              "name": "Data Constitution",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "CON-000006",
+              "type": "constitution",
+              "name": "AI Constitution",
+              "status": "Released",
+              "freshness": "Current"
+            }
+          ]
+        },
+        {
+          "stage": "decision",
+          "status": "COVERED",
+          "records": [
+            {
+              "id": "DEC-000041",
+              "type": "decision",
+              "name": "Whom should we hire and when?",
+              "status": "Specified",
+              "freshness": "Current"
+            },
+            {
+              "id": "DEC-000042",
+              "type": "decision",
+              "name": "Is the team adequately staffed?",
+              "status": "Specified",
+              "freshness": "Current"
+            },
+            {
+              "id": "DEC-000043",
+              "type": "decision",
+              "name": "Which employee action requires attention?",
+              "status": "Specified",
+              "freshness": "Current"
+            },
+            {
+              "id": "DEC-000044",
+              "type": "decision",
+              "name": "What is the workforce cost and risk?",
+              "status": "Specified",
+              "freshness": "Current"
+            }
+          ]
+        },
+        {
+          "stage": "prd",
+          "status": "COVERED",
+          "records": [
+            {
+              "id": "ART-000011",
+              "type": "artifact",
+              "name": "ZYVORA Human Resources PRD v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            }
+          ]
+        },
+        {
+          "stage": "technical_specification",
+          "status": "COVERED",
+          "records": [
+            {
+              "id": "ART-000024",
+              "type": "artifact",
+              "name": "ZYVORA Human Resources Technical Specification v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            }
+          ]
+        },
+        {
+          "stage": "blueprint",
+          "status": "COVERED",
+          "records": [
+            {
+              "id": "ART-000029",
+              "type": "artifact",
+              "name": "ZYVORA BP-000 Platform Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "ART-000030",
+              "type": "artifact",
+              "name": "ZYVORA BP-001 UI Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "ART-000031",
+              "type": "artifact",
+              "name": "ZYVORA BP-002 Backend Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "ART-000032",
+              "type": "artifact",
+              "name": "ZYVORA BP-003 Database Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "ART-000033",
+              "type": "artifact",
+              "name": "ZYVORA BP-004 API Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "ART-000034",
+              "type": "artifact",
+              "name": "ZYVORA BP-005 AI Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "ART-000035",
+              "type": "artifact",
+              "name": "ZYVORA BP-006 Security Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "ART-000036",
+              "type": "artifact",
+              "name": "ZYVORA BP-007 Infrastructure Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            }
+          ]
+        },
+        {
+          "stage": "build_pack",
+          "status": "MISSING",
+          "records": []
+        },
+        {
+          "stage": "qa_pack",
+          "status": "MISSING",
+          "records": []
+        },
+        {
+          "stage": "repository",
+          "status": "MISSING",
+          "records": []
+        },
+        {
+          "stage": "tests",
+          "status": "MISSING",
+          "records": []
+        },
+        {
+          "stage": "release",
+          "status": "COVERED",
+          "records": [
+            {
+              "id": "REL-000001",
+              "type": "release",
+              "name": "Architecture Knowledge System 1.0",
+              "status": "Released",
+              "freshness": "Current"
+            }
+          ]
+        },
+        {
+          "stage": "production",
+          "status": "MISSING",
+          "records": []
+        }
+      ],
+      "coverage": {
+        "covered": 6,
+        "total": 11,
+        "percent": 55
+      },
+      "freshness": "CURRENT",
+      "required_for_current_maturity": [
+        "authority",
+        "decision",
+        "prd",
+        "technical_specification",
+        "blueprint"
+      ],
+      "missing_required": [],
+      "gate": "PASS_CURRENT_MATURITY"
+    },
+    {
+      "capability": {
+        "id": "CAP-000012",
+        "name": "Manufacturing Core Capability",
+        "status": "Specified",
+        "owner": "TEAM-000018"
+      },
+      "generated_at": "2026-07-12T03:39:42.487Z",
+      "stages": [
+        {
+          "stage": "authority",
+          "status": "COVERED",
+          "records": [
+            {
+              "id": "CON-000001",
+              "type": "constitution",
+              "name": "Product Constitution",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "CON-000002",
+              "type": "constitution",
+              "name": "Architecture Constitution",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "CON-000003",
+              "type": "constitution",
+              "name": "Design Constitution",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "CON-000004",
+              "type": "constitution",
+              "name": "Security Constitution",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "CON-000005",
+              "type": "constitution",
+              "name": "Data Constitution",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "CON-000006",
+              "type": "constitution",
+              "name": "AI Constitution",
+              "status": "Released",
+              "freshness": "Current"
+            }
+          ]
+        },
+        {
+          "stage": "decision",
+          "status": "COVERED",
+          "records": [
+            {
+              "id": "DEC-000045",
+              "type": "decision",
+              "name": "What should be produced and when?",
+              "status": "Specified",
+              "freshness": "Current"
+            },
+            {
+              "id": "DEC-000046",
+              "type": "decision",
+              "name": "Are materials and capacity sufficient?",
+              "status": "Specified",
+              "freshness": "Current"
+            },
+            {
+              "id": "DEC-000047",
+              "type": "decision",
+              "name": "Which quality or schedule exception needs action?",
+              "status": "Specified",
+              "freshness": "Current"
+            },
+            {
+              "id": "DEC-000048",
+              "type": "decision",
+              "name": "What is the actual production cost and yield?",
+              "status": "Specified",
+              "freshness": "Current"
+            }
+          ]
+        },
+        {
+          "stage": "prd",
+          "status": "COVERED",
+          "records": [
+            {
+              "id": "ART-000014",
+              "type": "artifact",
+              "name": "ZYVORA Manufacturing PRD v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            }
+          ]
+        },
+        {
+          "stage": "technical_specification",
+          "status": "COVERED",
+          "records": [
+            {
+              "id": "ART-000027",
+              "type": "artifact",
+              "name": "ZYVORA Manufacturing Technical Specification v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            }
+          ]
+        },
+        {
+          "stage": "blueprint",
+          "status": "COVERED",
+          "records": [
+            {
+              "id": "ART-000029",
+              "type": "artifact",
+              "name": "ZYVORA BP-000 Platform Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "ART-000030",
+              "type": "artifact",
+              "name": "ZYVORA BP-001 UI Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "ART-000031",
+              "type": "artifact",
+              "name": "ZYVORA BP-002 Backend Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "ART-000032",
+              "type": "artifact",
+              "name": "ZYVORA BP-003 Database Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "ART-000033",
+              "type": "artifact",
+              "name": "ZYVORA BP-004 API Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "ART-000034",
+              "type": "artifact",
+              "name": "ZYVORA BP-005 AI Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "ART-000035",
+              "type": "artifact",
+              "name": "ZYVORA BP-006 Security Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            },
+            {
+              "id": "ART-000036",
+              "type": "artifact",
+              "name": "ZYVORA BP-007 Infrastructure Blueprint v1.0",
+              "status": "Released",
+              "freshness": "Current"
+            }
+          ]
+        },
+        {
+          "stage": "build_pack",
+          "status": "MISSING",
+          "records": []
+        },
+        {
+          "stage": "qa_pack",
+          "status": "MISSING",
+          "records": []
+        },
+        {
+          "stage": "repository",
+          "status": "MISSING",
+          "records": []
+        },
+        {
+          "stage": "tests",
+          "status": "MISSING",
+          "records": []
+        },
+        {
+          "stage": "release",
+          "status": "COVERED",
+          "records": [
+            {
+              "id": "REL-000001",
+              "type": "release",
+              "name": "Architecture Knowledge System 1.0",
+              "status": "Released",
+              "freshness": "Current"
+            }
+          ]
+        },
+        {
+          "stage": "production",
+          "status": "MISSING",
+          "records": []
+        }
+      ],
+      "coverage": {
+        "covered": 6,
+        "total": 11,
+        "percent": 55
+      },
+      "freshness": "CURRENT",
+      "required_for_current_maturity": [
+        "authority",
+        "decision",
+        "prd",
+        "technical_specification",
+        "blueprint"
+      ],
+      "missing_required": [],
+      "gate": "PASS_CURRENT_MATURITY"
+    }
+  ]
+}

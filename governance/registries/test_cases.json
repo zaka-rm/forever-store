@@ -1,0 +1,277 @@
+{
+  "registry": "test_cases",
+  "version": "1.0.0",
+  "generated_at": "2026-07-12T03:39:37Z",
+  "records": [
+    {
+      "id": "TEST-000001",
+      "type": "test_case",
+      "name": "Create workspace",
+      "description": "QA-001 case: Create workspace.",
+      "status": "Specified",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "QA-001-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "automated": true,
+        "environment": "production-like"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "TEST-000002",
+      "type": "test_case",
+      "name": "Invite and accept",
+      "description": "QA-001 case: Invite and accept.",
+      "status": "Specified",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "QA-001-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "automated": true,
+        "environment": "production-like"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "TEST-000003",
+      "type": "test_case",
+      "name": "Expired/revoked invitation",
+      "description": "QA-001 case: Expired/revoked invitation.",
+      "status": "Specified",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "QA-001-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "automated": true,
+        "environment": "production-like"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "TEST-000004",
+      "type": "test_case",
+      "name": "Change role",
+      "description": "QA-001 case: Change role.",
+      "status": "Specified",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "QA-001-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "automated": true,
+        "environment": "production-like"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "TEST-000005",
+      "type": "test_case",
+      "name": "Self escalation",
+      "description": "QA-001 case: Self escalation.",
+      "status": "Specified",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "QA-001-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "automated": true,
+        "environment": "production-like"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "TEST-000006",
+      "type": "test_case",
+      "name": "Last owner protection",
+      "description": "QA-001 case: Last owner protection.",
+      "status": "Specified",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "QA-001-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "automated": true,
+        "environment": "production-like"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "TEST-000007",
+      "type": "test_case",
+      "name": "Concurrent membership update",
+      "description": "QA-001 case: Concurrent membership update.",
+      "status": "Specified",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "QA-001-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "automated": true,
+        "environment": "production-like"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "TEST-000008",
+      "type": "test_case",
+      "name": "Session revoke",
+      "description": "QA-001 case: Session revoke.",
+      "status": "Specified",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "QA-001-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "automated": true,
+        "environment": "production-like"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "TEST-000009",
+      "type": "test_case",
+      "name": "Audit query/export",
+      "description": "QA-001 case: Audit query/export.",
+      "status": "Specified",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "QA-001-009"
+      ],
+      "tags": [],
+      "attributes": {
+        "automated": true,
+        "environment": "production-like"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "TEST-000010",
+      "type": "test_case",
+      "name": "Idempotent invitation",
+      "description": "QA-001 case: Idempotent invitation.",
+      "status": "Specified",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "QA-001-010"
+      ],
+      "tags": [],
+      "attributes": {
+        "automated": true,
+        "environment": "production-like"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    }
+  ]
+}

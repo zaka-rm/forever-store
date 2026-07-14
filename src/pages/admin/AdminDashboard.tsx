@@ -33,6 +33,7 @@ function playNewOrderChime() {
 import { DashboardPanel } from '@/pages/admin/DashboardPanel'
 import { ProductsPanel } from '@/pages/admin/ProductsPanel'
 import { PacksPanel } from '@/pages/admin/PacksPanel'
+import { FinancePanel } from '@/pages/admin/FinancePanel'
 import { OrdersPanel } from '@/pages/admin/OrdersPanel'
 import { MessagesPanel } from '@/pages/admin/MessagesPanel'
 import { ReviewsPanel } from '@/pages/admin/ReviewsPanel'
@@ -42,10 +43,11 @@ import { CustomersPanel } from '@/pages/admin/CustomersPanel'
 import { BlogPanel } from '@/pages/admin/BlogPanel'
 import { SettingsPanel } from '@/pages/admin/SettingsPanel'
 
-type Tab = 'dashboard' | 'products' | 'packs' | 'orders' | 'customers' | 'messages' | 'reviews' | 'discounts' | 'growth' | 'blog' | 'settings'
+type Tab = 'dashboard' | 'finance' | 'products' | 'packs' | 'orders' | 'customers' | 'messages' | 'reviews' | 'discounts' | 'growth' | 'blog' | 'settings'
 
 const TABS: { key: Tab; label: string }[] = [
   { key: 'dashboard', label: 'Tableau de bord' },
+  { key: 'finance', label: 'Finances' },
   { key: 'products', label: 'Produits' },
   { key: 'packs', label: 'Packs' },
   { key: 'orders', label: 'Commandes' },
@@ -177,6 +179,7 @@ export default function AdminDashboard() {
         {tab === 'dashboard' && <DashboardPanel onGoto={goToTab} />}
         {tab === 'products' && <ProductsPanel />}
         {tab === 'packs' && <PacksPanel />}
+        {tab === 'finance' && <FinancePanel />}
         {tab === 'orders' && <OrdersPanel />}
         {tab === 'customers' && <CustomersPanel />}
         {tab === 'discounts' && <DiscountsPanel />}

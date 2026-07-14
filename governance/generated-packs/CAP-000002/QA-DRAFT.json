@@ -1,0 +1,1631 @@
+{
+  "generator_version": "2.3.0",
+  "generated_at": "2026-07-12T03:39:43.089Z",
+  "source_capability": {
+    "id": "CAP-000002",
+    "type": "capability",
+    "name": "Business Memory Core Capability",
+    "status": "Specified",
+    "version": "1.0.0",
+    "owner": "TEAM-000008"
+  },
+  "source_fingerprint": "2542d57ff44ce9fc86717c33cc068f45a79b2c035df42f7ac6082298b8aa3aca",
+  "authority": "DRAFT_NOT_AUTHORIZED",
+  "promotion_gate": "BLOCKED_SOURCE_INCOMPLETE",
+  "blockers": [
+    "MET-000007: metric formula is not approved",
+    "MET-000008: metric formula is not approved",
+    "MET-000009: metric formula is not approved",
+    "MET-000010: metric formula is not approved",
+    "MET-000011: metric formula is not approved",
+    "MET-000012: metric formula is not approved",
+    "PROMPT-000006: prompt template and evaluation are not approved",
+    "PROMPT-000007: prompt template and evaluation are not approved",
+    "PROMPT-000008: prompt template and evaluation are not approved",
+    "PROMPT-000009: prompt template and evaluation are not approved",
+    "PROMPT-000010: prompt template and evaluation are not approved",
+    "WF-000008: ordered workflow steps are not approved",
+    "WF-000009: ordered workflow steps are not approved",
+    "WF-000010: ordered workflow steps are not approved",
+    "WF-000011: ordered workflow steps are not approved",
+    "WF-000012: ordered workflow steps are not approved",
+    "WF-000013: ordered workflow steps are not approved",
+    "WF-000014: ordered workflow steps are not approved",
+    "UF-000010: UI transitions and recovery states are not approved",
+    "UF-000011: UI transitions and recovery states are not approved",
+    "UF-000012: UI transitions and recovery states are not approved",
+    "UF-000013: UI transitions and recovery states are not approved",
+    "UF-000014: UI transitions and recovery states are not approved",
+    "UF-000015: UI transitions and recovery states are not approved",
+    "UF-000016: UI transitions and recovery states are not approved",
+    "UF-000017: UI transitions and recovery states are not approved",
+    "UF-000018: UI transitions and recovery states are not approved",
+    "EVT-000007: event domain payload is not approved",
+    "EVT-000008: event domain payload is not approved",
+    "EVT-000009: event domain payload is not approved",
+    "EVT-000010: event domain payload is not approved",
+    "EVT-000011: event domain payload is not approved",
+    "API-000009: API request and response schema is not approved",
+    "API-000010: API request and response schema is not approved",
+    "API-000011: API request and response schema is not approved",
+    "API-000012: API request and response schema is not approved",
+    "API-000013: API request and response schema is not approved",
+    "API-000014: API request and response schema is not approved",
+    "API-000015: API request and response schema is not approved",
+    "API-000016: API request and response schema is not approved"
+  ],
+  "completeness": {
+    "source_records": 130,
+    "blocker_count": 40,
+    "traceability_gate": "PASS_CURRENT_MATURITY",
+    "traceability_coverage_percent": 55
+  },
+  "provenance": [
+    {
+      "id": "CAP-000002",
+      "type": "capability",
+      "name": "Business Memory Core Capability",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "MOD-000002",
+      "type": "module",
+      "name": "Business Memory",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "DEC-000005",
+      "type": "decision",
+      "name": "What happened before?",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "DEC-000006",
+      "type": "decision",
+      "name": "Why was a decision made?",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "DEC-000007",
+      "type": "decision",
+      "name": "What did we learn?",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "DEC-000008",
+      "type": "decision",
+      "name": "Which past situation is comparable?",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "FEAT-000009",
+      "type": "feature",
+      "name": "Decision timeline",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "FEAT-000010",
+      "type": "feature",
+      "name": "Immutable context snapshots",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "FEAT-000011",
+      "type": "feature",
+      "name": "Outcome and lesson capture",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "FEAT-000012",
+      "type": "feature",
+      "name": "Structured and semantic search",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "FEAT-000013",
+      "type": "feature",
+      "name": "Source and freshness lineage",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "FEAT-000014",
+      "type": "feature",
+      "name": "Memory collections and tags",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "FEAT-000015",
+      "type": "feature",
+      "name": "Retention and privacy control",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "FEAT-000016",
+      "type": "feature",
+      "name": "Citation-ready retrieval",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "BR-000009",
+      "type": "business_rule",
+      "name": "Business Memory Rule 1",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "BR-000010",
+      "type": "business_rule",
+      "name": "Business Memory Rule 2",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "BR-000011",
+      "type": "business_rule",
+      "name": "Business Memory Rule 3",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "BR-000012",
+      "type": "business_rule",
+      "name": "Business Memory Rule 4",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "BR-000013",
+      "type": "business_rule",
+      "name": "Business Memory Rule 5",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "BR-000014",
+      "type": "business_rule",
+      "name": "Business Memory Rule 6",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "BR-000015",
+      "type": "business_rule",
+      "name": "Business Memory Rule 7",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "BR-000016",
+      "type": "business_rule",
+      "name": "Business Memory Rule 8",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "WF-000008",
+      "type": "workflow",
+      "name": "Capture memory",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "WF-000009",
+      "type": "workflow",
+      "name": "Enrich and index",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "WF-000010",
+      "type": "workflow",
+      "name": "Search and retrieve",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "WF-000011",
+      "type": "workflow",
+      "name": "Inspect source lineage",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "WF-000012",
+      "type": "workflow",
+      "name": "Correct by supersession",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "WF-000013",
+      "type": "workflow",
+      "name": "Apply retention",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "WF-000014",
+      "type": "workflow",
+      "name": "Export authorized memory",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "ENT-000009",
+      "type": "entity",
+      "name": "MemoryRecord",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "ENT-000010",
+      "type": "entity",
+      "name": "ContextSnapshot",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "ENT-000011",
+      "type": "entity",
+      "name": "MemorySource",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "ENT-000012",
+      "type": "entity",
+      "name": "OutcomeLesson",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "ENT-000013",
+      "type": "entity",
+      "name": "MemoryTag",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "ENT-000014",
+      "type": "entity",
+      "name": "EmbeddingReference",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "ENT-000015",
+      "type": "entity",
+      "name": "RetentionDisposition",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "ENT-000016",
+      "type": "entity",
+      "name": "MemoryAccessEvent",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "API-000009",
+      "type": "api",
+      "name": "Business Memory Decision timeline API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "API-000010",
+      "type": "api",
+      "name": "Business Memory Immutable context snapshots API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "API-000011",
+      "type": "api",
+      "name": "Business Memory Outcome and lesson capture API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "API-000012",
+      "type": "api",
+      "name": "Business Memory Structured and semantic search API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "API-000013",
+      "type": "api",
+      "name": "Business Memory Source and freshness lineage API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "API-000014",
+      "type": "api",
+      "name": "Business Memory Memory collections and tags API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "API-000015",
+      "type": "api",
+      "name": "Business Memory Retention and privacy control API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "API-000016",
+      "type": "api",
+      "name": "Business Memory Citation-ready retrieval API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "EVT-000007",
+      "type": "event",
+      "name": "MemoryCaptured",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "EVT-000008",
+      "type": "event",
+      "name": "MemoryIndexed",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "EVT-000009",
+      "type": "event",
+      "name": "LessonRecorded",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "EVT-000010",
+      "type": "event",
+      "name": "MemorySuperseded",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "EVT-000011",
+      "type": "event",
+      "name": "MemoryDispositioned",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "PERM-000017",
+      "type": "permission",
+      "name": "Read Decision timeline",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "PERM-000018",
+      "type": "permission",
+      "name": "Manage Decision timeline",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "PERM-000019",
+      "type": "permission",
+      "name": "Read Immutable context snapshots",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "PERM-000020",
+      "type": "permission",
+      "name": "Manage Immutable context snapshots",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "PERM-000021",
+      "type": "permission",
+      "name": "Read Outcome and lesson capture",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "PERM-000022",
+      "type": "permission",
+      "name": "Manage Outcome and lesson capture",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "PERM-000023",
+      "type": "permission",
+      "name": "Read Structured and semantic search",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "PERM-000024",
+      "type": "permission",
+      "name": "Manage Structured and semantic search",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "PERM-000025",
+      "type": "permission",
+      "name": "Read Source and freshness lineage",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "PERM-000026",
+      "type": "permission",
+      "name": "Manage Source and freshness lineage",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "PERM-000027",
+      "type": "permission",
+      "name": "Read Memory collections and tags",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "PERM-000028",
+      "type": "permission",
+      "name": "Manage Memory collections and tags",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "PERM-000029",
+      "type": "permission",
+      "name": "Read Retention and privacy control",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "PERM-000030",
+      "type": "permission",
+      "name": "Manage Retention and privacy control",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "PERM-000031",
+      "type": "permission",
+      "name": "Read Citation-ready retrieval",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "PERM-000032",
+      "type": "permission",
+      "name": "Manage Citation-ready retrieval",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "SCR-000010",
+      "type": "screen",
+      "name": "Business Memory Decision Dashboard",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "SCR-000011",
+      "type": "screen",
+      "name": "Decision timeline Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "SCR-000012",
+      "type": "screen",
+      "name": "Immutable context snapshots Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "SCR-000013",
+      "type": "screen",
+      "name": "Outcome and lesson capture Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "SCR-000014",
+      "type": "screen",
+      "name": "Structured and semantic search Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "SCR-000015",
+      "type": "screen",
+      "name": "Source and freshness lineage Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "SCR-000016",
+      "type": "screen",
+      "name": "Memory collections and tags Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "SCR-000017",
+      "type": "screen",
+      "name": "Retention and privacy control Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "SCR-000018",
+      "type": "screen",
+      "name": "Citation-ready retrieval Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "UF-000010",
+      "type": "ui_flow",
+      "name": "Business Memory UI Flow 1",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "UF-000011",
+      "type": "ui_flow",
+      "name": "Business Memory UI Flow 2",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "UF-000012",
+      "type": "ui_flow",
+      "name": "Business Memory UI Flow 3",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "UF-000013",
+      "type": "ui_flow",
+      "name": "Business Memory UI Flow 4",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "UF-000014",
+      "type": "ui_flow",
+      "name": "Business Memory UI Flow 5",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "UF-000015",
+      "type": "ui_flow",
+      "name": "Business Memory UI Flow 6",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "UF-000016",
+      "type": "ui_flow",
+      "name": "Business Memory UI Flow 7",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "UF-000017",
+      "type": "ui_flow",
+      "name": "Business Memory UI Flow 8",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "UF-000018",
+      "type": "ui_flow",
+      "name": "Business Memory UI Flow 9",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "MET-000007",
+      "type": "metric",
+      "name": "Outcome-linked memory rate",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "MET-000008",
+      "type": "metric",
+      "name": "Useful search result rate",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "MET-000009",
+      "type": "metric",
+      "name": "Source citation rate",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "MET-000010",
+      "type": "metric",
+      "name": "Stale index rate",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "MET-000011",
+      "type": "metric",
+      "name": "Unauthorized retrieval incidents",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "MET-000012",
+      "type": "metric",
+      "name": "Lesson reuse rate",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "AICAP-000006",
+      "type": "ai_capability",
+      "name": "Business Memory: Semantic retrieval",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "AICAP-000007",
+      "type": "ai_capability",
+      "name": "Business Memory: Summarization with citations",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "AICAP-000008",
+      "type": "ai_capability",
+      "name": "Business Memory: Similar-case discovery",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "AICAP-000009",
+      "type": "ai_capability",
+      "name": "Business Memory: Lesson extraction",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "AICAP-000010",
+      "type": "ai_capability",
+      "name": "Business Memory: Memory quality classification",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "PROMPT-000006",
+      "type": "prompt",
+      "name": "Business Memory: Semantic retrieval Prompt",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000006"
+    },
+    {
+      "id": "PROMPT-000007",
+      "type": "prompt",
+      "name": "Business Memory: Summarization with citations Prompt",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000006"
+    },
+    {
+      "id": "PROMPT-000008",
+      "type": "prompt",
+      "name": "Business Memory: Similar-case discovery Prompt",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000006"
+    },
+    {
+      "id": "PROMPT-000009",
+      "type": "prompt",
+      "name": "Business Memory: Lesson extraction Prompt",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000006"
+    },
+    {
+      "id": "PROMPT-000010",
+      "type": "prompt",
+      "name": "Business Memory: Memory quality classification Prompt",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000006"
+    },
+    {
+      "id": "AUTO-000007",
+      "type": "automation",
+      "name": "Outcome review due Automation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "AUTO-000008",
+      "type": "automation",
+      "name": "Memory index failed Automation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "AUTO-000009",
+      "type": "automation",
+      "name": "Retention action pending Automation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "AUTO-000010",
+      "type": "automation",
+      "name": "Legal hold changed Automation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "AUTO-000011",
+      "type": "automation",
+      "name": "Source access revoked Automation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "NOT-000007",
+      "type": "notification",
+      "name": "Outcome review due",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "NOT-000008",
+      "type": "notification",
+      "name": "Memory index failed",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "NOT-000009",
+      "type": "notification",
+      "name": "Retention action pending",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "NOT-000010",
+      "type": "notification",
+      "name": "Legal hold changed",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "NOT-000011",
+      "type": "notification",
+      "name": "Source access revoked",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "RPT-000006",
+      "type": "report",
+      "name": "Memory growth and use",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "RPT-000007",
+      "type": "report",
+      "name": "Outcome learning",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "RPT-000008",
+      "type": "report",
+      "name": "Retrieval quality",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "RPT-000009",
+      "type": "report",
+      "name": "Retention compliance",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "RPT-000010",
+      "type": "report",
+      "name": "Source coverage",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "INT-000006",
+      "type": "integration",
+      "name": "Decision Center",
+      "status": "Planned",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "INT-000002",
+      "type": "integration",
+      "name": "AI Engine",
+      "status": "Planned",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "INT-000007",
+      "type": "integration",
+      "name": "Documents",
+      "status": "Planned",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "INT-000004",
+      "type": "integration",
+      "name": "Analytics",
+      "status": "Planned",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "INT-000008",
+      "type": "integration",
+      "name": "Privacy and retention services",
+      "status": "Planned",
+      "version": "1.0.0",
+      "owner": "TEAM-000008"
+    },
+    {
+      "id": "ART-000006",
+      "type": "artifact",
+      "name": "ZYVORA Business Memory PRD v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000019",
+      "type": "artifact",
+      "name": "ZYVORA Business Memory Technical Specification v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000029",
+      "type": "artifact",
+      "name": "ZYVORA BP-000 Platform Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000030",
+      "type": "artifact",
+      "name": "ZYVORA BP-001 UI Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000031",
+      "type": "artifact",
+      "name": "ZYVORA BP-002 Backend Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000032",
+      "type": "artifact",
+      "name": "ZYVORA BP-003 Database Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000033",
+      "type": "artifact",
+      "name": "ZYVORA BP-004 API Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000034",
+      "type": "artifact",
+      "name": "ZYVORA BP-005 AI Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000035",
+      "type": "artifact",
+      "name": "ZYVORA BP-006 Security Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000036",
+      "type": "artifact",
+      "name": "ZYVORA BP-007 Infrastructure Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    }
+  ],
+  "kind": "draft_qa_pack",
+  "paired_build_fingerprint": "2542d57ff44ce9fc86717c33cc068f45a79b2c035df42f7ac6082298b8aa3aca",
+  "test_scenarios": [
+    {
+      "id": "RULE-BR-000009",
+      "type": "unit_and_domain",
+      "source": "BR-000009",
+      "scenario": "Verify business rule: Memory never becomes the transactional source of truth for operational entities.",
+      "expected": "Exact approved rule holds for valid, invalid, boundary, and concurrent cases."
+    },
+    {
+      "id": "RULE-BR-000010",
+      "type": "unit_and_domain",
+      "source": "BR-000010",
+      "scenario": "Verify business rule: Captured context remains reconstructable after source records change.",
+      "expected": "Exact approved rule holds for valid, invalid, boundary, and concurrent cases."
+    },
+    {
+      "id": "RULE-BR-000011",
+      "type": "unit_and_domain",
+      "source": "BR-000011",
+      "scenario": "Verify business rule: Permission filters execute before semantic retrieval.",
+      "expected": "Exact approved rule holds for valid, invalid, boundary, and concurrent cases."
+    },
+    {
+      "id": "RULE-BR-000012",
+      "type": "unit_and_domain",
+      "source": "BR-000012",
+      "scenario": "Verify business rule: Corrections create linked superseding versions.",
+      "expected": "Exact approved rule holds for valid, invalid, boundary, and concurrent cases."
+    },
+    {
+      "id": "RULE-BR-000013",
+      "type": "unit_and_domain",
+      "source": "BR-000013",
+      "scenario": "Verify business rule: Sources, capture time, actor, and policy are mandatory.",
+      "expected": "Exact approved rule holds for valid, invalid, boundary, and concurrent cases."
+    },
+    {
+      "id": "RULE-BR-000014",
+      "type": "unit_and_domain",
+      "source": "BR-000014",
+      "scenario": "Verify business rule: Tenant data never enters a general training corpus without explicit authorization.",
+      "expected": "Exact approved rule holds for valid, invalid, boundary, and concurrent cases."
+    },
+    {
+      "id": "RULE-BR-000015",
+      "type": "unit_and_domain",
+      "source": "BR-000015",
+      "scenario": "Verify business rule: Legal holds override scheduled deletion.",
+      "expected": "Exact approved rule holds for valid, invalid, boundary, and concurrent cases."
+    },
+    {
+      "id": "RULE-BR-000016",
+      "type": "unit_and_domain",
+      "source": "BR-000016",
+      "scenario": "Verify business rule: A lesson must link to an outcome or be labeled as an observation.",
+      "expected": "Exact approved rule holds for valid, invalid, boundary, and concurrent cases."
+    },
+    {
+      "id": "WF-WF-000008",
+      "type": "end_to_end",
+      "source": "WF-000008",
+      "scenario": "Verify happy, alternative, failure, and recovery paths for Capture memory",
+      "expected": "Approved workflow outcome, evidence, timing, and recovery requirements are satisfied."
+    },
+    {
+      "id": "WF-WF-000009",
+      "type": "end_to_end",
+      "source": "WF-000009",
+      "scenario": "Verify happy, alternative, failure, and recovery paths for Enrich and index",
+      "expected": "Approved workflow outcome, evidence, timing, and recovery requirements are satisfied."
+    },
+    {
+      "id": "WF-WF-000010",
+      "type": "end_to_end",
+      "source": "WF-000010",
+      "scenario": "Verify happy, alternative, failure, and recovery paths for Search and retrieve",
+      "expected": "Approved workflow outcome, evidence, timing, and recovery requirements are satisfied."
+    },
+    {
+      "id": "WF-WF-000011",
+      "type": "end_to_end",
+      "source": "WF-000011",
+      "scenario": "Verify happy, alternative, failure, and recovery paths for Inspect source lineage",
+      "expected": "Approved workflow outcome, evidence, timing, and recovery requirements are satisfied."
+    },
+    {
+      "id": "WF-WF-000012",
+      "type": "end_to_end",
+      "source": "WF-000012",
+      "scenario": "Verify happy, alternative, failure, and recovery paths for Correct by supersession",
+      "expected": "Approved workflow outcome, evidence, timing, and recovery requirements are satisfied."
+    },
+    {
+      "id": "WF-WF-000013",
+      "type": "end_to_end",
+      "source": "WF-000013",
+      "scenario": "Verify happy, alternative, failure, and recovery paths for Apply retention",
+      "expected": "Approved workflow outcome, evidence, timing, and recovery requirements are satisfied."
+    },
+    {
+      "id": "WF-WF-000014",
+      "type": "end_to_end",
+      "source": "WF-000014",
+      "scenario": "Verify happy, alternative, failure, and recovery paths for Export authorized memory",
+      "expected": "Approved workflow outcome, evidence, timing, and recovery requirements are satisfied."
+    },
+    {
+      "id": "API-API-000009",
+      "type": "contract_and_security",
+      "source": "API-000009",
+      "scenario": "Verify request, response, authorization, idempotency, pagination, validation, and errors for Business Memory Decision timeline API",
+      "expected": "Approved API contract and security policy are preserved."
+    },
+    {
+      "id": "API-API-000010",
+      "type": "contract_and_security",
+      "source": "API-000010",
+      "scenario": "Verify request, response, authorization, idempotency, pagination, validation, and errors for Business Memory Immutable context snapshots API",
+      "expected": "Approved API contract and security policy are preserved."
+    },
+    {
+      "id": "API-API-000011",
+      "type": "contract_and_security",
+      "source": "API-000011",
+      "scenario": "Verify request, response, authorization, idempotency, pagination, validation, and errors for Business Memory Outcome and lesson capture API",
+      "expected": "Approved API contract and security policy are preserved."
+    },
+    {
+      "id": "API-API-000012",
+      "type": "contract_and_security",
+      "source": "API-000012",
+      "scenario": "Verify request, response, authorization, idempotency, pagination, validation, and errors for Business Memory Structured and semantic search API",
+      "expected": "Approved API contract and security policy are preserved."
+    },
+    {
+      "id": "API-API-000013",
+      "type": "contract_and_security",
+      "source": "API-000013",
+      "scenario": "Verify request, response, authorization, idempotency, pagination, validation, and errors for Business Memory Source and freshness lineage API",
+      "expected": "Approved API contract and security policy are preserved."
+    },
+    {
+      "id": "API-API-000014",
+      "type": "contract_and_security",
+      "source": "API-000014",
+      "scenario": "Verify request, response, authorization, idempotency, pagination, validation, and errors for Business Memory Memory collections and tags API",
+      "expected": "Approved API contract and security policy are preserved."
+    },
+    {
+      "id": "API-API-000015",
+      "type": "contract_and_security",
+      "source": "API-000015",
+      "scenario": "Verify request, response, authorization, idempotency, pagination, validation, and errors for Business Memory Retention and privacy control API",
+      "expected": "Approved API contract and security policy are preserved."
+    },
+    {
+      "id": "API-API-000016",
+      "type": "contract_and_security",
+      "source": "API-000016",
+      "scenario": "Verify request, response, authorization, idempotency, pagination, validation, and errors for Business Memory Citation-ready retrieval API",
+      "expected": "Approved API contract and security policy are preserved."
+    },
+    {
+      "id": "EVT-EVT-000007",
+      "type": "integration",
+      "source": "EVT-000007",
+      "scenario": "Verify production, schema compatibility, ordering, duplication, retry, and idempotent consumption for MemoryCaptured",
+      "expected": "Versioned event meaning and compatibility contract are preserved."
+    },
+    {
+      "id": "EVT-EVT-000008",
+      "type": "integration",
+      "source": "EVT-000008",
+      "scenario": "Verify production, schema compatibility, ordering, duplication, retry, and idempotent consumption for MemoryIndexed",
+      "expected": "Versioned event meaning and compatibility contract are preserved."
+    },
+    {
+      "id": "EVT-EVT-000009",
+      "type": "integration",
+      "source": "EVT-000009",
+      "scenario": "Verify production, schema compatibility, ordering, duplication, retry, and idempotent consumption for LessonRecorded",
+      "expected": "Versioned event meaning and compatibility contract are preserved."
+    },
+    {
+      "id": "EVT-EVT-000010",
+      "type": "integration",
+      "source": "EVT-000010",
+      "scenario": "Verify production, schema compatibility, ordering, duplication, retry, and idempotent consumption for MemorySuperseded",
+      "expected": "Versioned event meaning and compatibility contract are preserved."
+    },
+    {
+      "id": "EVT-EVT-000011",
+      "type": "integration",
+      "source": "EVT-000011",
+      "scenario": "Verify production, schema compatibility, ordering, duplication, retry, and idempotent consumption for MemoryDispositioned",
+      "expected": "Versioned event meaning and compatibility contract are preserved."
+    },
+    {
+      "id": "PERM-PERM-000017",
+      "type": "security",
+      "source": "PERM-000017",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Read Decision timeline",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000018",
+      "type": "security",
+      "source": "PERM-000018",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Manage Decision timeline",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000019",
+      "type": "security",
+      "source": "PERM-000019",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Read Immutable context snapshots",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000020",
+      "type": "security",
+      "source": "PERM-000020",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Manage Immutable context snapshots",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000021",
+      "type": "security",
+      "source": "PERM-000021",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Read Outcome and lesson capture",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000022",
+      "type": "security",
+      "source": "PERM-000022",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Manage Outcome and lesson capture",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000023",
+      "type": "security",
+      "source": "PERM-000023",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Read Structured and semantic search",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000024",
+      "type": "security",
+      "source": "PERM-000024",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Manage Structured and semantic search",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000025",
+      "type": "security",
+      "source": "PERM-000025",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Read Source and freshness lineage",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000026",
+      "type": "security",
+      "source": "PERM-000026",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Manage Source and freshness lineage",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000027",
+      "type": "security",
+      "source": "PERM-000027",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Read Memory collections and tags",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000028",
+      "type": "security",
+      "source": "PERM-000028",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Manage Memory collections and tags",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000029",
+      "type": "security",
+      "source": "PERM-000029",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Read Retention and privacy control",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000030",
+      "type": "security",
+      "source": "PERM-000030",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Manage Retention and privacy control",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000031",
+      "type": "security",
+      "source": "PERM-000031",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Read Citation-ready retrieval",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "PERM-PERM-000032",
+      "type": "security",
+      "source": "PERM-000032",
+      "scenario": "Verify allow, deny, tenant isolation, escalation prevention, and audit evidence for Manage Citation-ready retrieval",
+      "expected": "Least privilege and resource scope are enforced."
+    },
+    {
+      "id": "SCR-SCR-000010",
+      "type": "ui_accessibility",
+      "source": "SCR-000010",
+      "scenario": "Verify responsive, keyboard, screen-reader, loading, empty, error, stale, and permission states for Business Memory Decision Dashboard",
+      "expected": "Decision purpose remains clear and WCAG 2.1 AA obligations pass."
+    },
+    {
+      "id": "SCR-SCR-000011",
+      "type": "ui_accessibility",
+      "source": "SCR-000011",
+      "scenario": "Verify responsive, keyboard, screen-reader, loading, empty, error, stale, and permission states for Decision timeline Workspace",
+      "expected": "Decision purpose remains clear and WCAG 2.1 AA obligations pass."
+    },
+    {
+      "id": "SCR-SCR-000012",
+      "type": "ui_accessibility",
+      "source": "SCR-000012",
+      "scenario": "Verify responsive, keyboard, screen-reader, loading, empty, error, stale, and permission states for Immutable context snapshots Workspace",
+      "expected": "Decision purpose remains clear and WCAG 2.1 AA obligations pass."
+    },
+    {
+      "id": "SCR-SCR-000013",
+      "type": "ui_accessibility",
+      "source": "SCR-000013",
+      "scenario": "Verify responsive, keyboard, screen-reader, loading, empty, error, stale, and permission states for Outcome and lesson capture Workspace",
+      "expected": "Decision purpose remains clear and WCAG 2.1 AA obligations pass."
+    },
+    {
+      "id": "SCR-SCR-000014",
+      "type": "ui_accessibility",
+      "source": "SCR-000014",
+      "scenario": "Verify responsive, keyboard, screen-reader, loading, empty, error, stale, and permission states for Structured and semantic search Workspace",
+      "expected": "Decision purpose remains clear and WCAG 2.1 AA obligations pass."
+    },
+    {
+      "id": "SCR-SCR-000015",
+      "type": "ui_accessibility",
+      "source": "SCR-000015",
+      "scenario": "Verify responsive, keyboard, screen-reader, loading, empty, error, stale, and permission states for Source and freshness lineage Workspace",
+      "expected": "Decision purpose remains clear and WCAG 2.1 AA obligations pass."
+    },
+    {
+      "id": "SCR-SCR-000016",
+      "type": "ui_accessibility",
+      "source": "SCR-000016",
+      "scenario": "Verify responsive, keyboard, screen-reader, loading, empty, error, stale, and permission states for Memory collections and tags Workspace",
+      "expected": "Decision purpose remains clear and WCAG 2.1 AA obligations pass."
+    },
+    {
+      "id": "SCR-SCR-000017",
+      "type": "ui_accessibility",
+      "source": "SCR-000017",
+      "scenario": "Verify responsive, keyboard, screen-reader, loading, empty, error, stale, and permission states for Retention and privacy control Workspace",
+      "expected": "Decision purpose remains clear and WCAG 2.1 AA obligations pass."
+    },
+    {
+      "id": "SCR-SCR-000018",
+      "type": "ui_accessibility",
+      "source": "SCR-000018",
+      "scenario": "Verify responsive, keyboard, screen-reader, loading, empty, error, stale, and permission states for Citation-ready retrieval Workspace",
+      "expected": "Decision purpose remains clear and WCAG 2.1 AA obligations pass."
+    }
+  ],
+  "regression_scope": [
+    "CAP-000002",
+    "MOD-000002",
+    "DEC-000005",
+    "DEC-000006",
+    "DEC-000007",
+    "DEC-000008",
+    "FEAT-000009",
+    "FEAT-000010",
+    "FEAT-000011",
+    "FEAT-000012",
+    "FEAT-000013",
+    "FEAT-000014",
+    "FEAT-000015",
+    "FEAT-000016",
+    "BR-000009",
+    "BR-000010",
+    "BR-000011",
+    "BR-000012",
+    "BR-000013",
+    "BR-000014",
+    "BR-000015",
+    "BR-000016",
+    "WF-000008",
+    "WF-000009",
+    "WF-000010",
+    "WF-000011",
+    "WF-000012",
+    "WF-000013",
+    "WF-000014",
+    "ENT-000009",
+    "ENT-000010",
+    "ENT-000011",
+    "ENT-000012",
+    "ENT-000013",
+    "ENT-000014",
+    "ENT-000015",
+    "ENT-000016",
+    "API-000009",
+    "API-000010",
+    "API-000011",
+    "API-000012",
+    "API-000013",
+    "API-000014",
+    "API-000015",
+    "API-000016",
+    "EVT-000007",
+    "EVT-000008",
+    "EVT-000009",
+    "EVT-000010",
+    "EVT-000011",
+    "PERM-000017",
+    "PERM-000018",
+    "PERM-000019",
+    "PERM-000020",
+    "PERM-000021",
+    "PERM-000022",
+    "PERM-000023",
+    "PERM-000024",
+    "PERM-000025",
+    "PERM-000026",
+    "PERM-000027",
+    "PERM-000028",
+    "PERM-000029",
+    "PERM-000030",
+    "PERM-000031",
+    "PERM-000032",
+    "SCR-000010",
+    "SCR-000011",
+    "SCR-000012",
+    "SCR-000013",
+    "SCR-000014",
+    "SCR-000015",
+    "SCR-000016",
+    "SCR-000017",
+    "SCR-000018",
+    "UF-000010",
+    "UF-000011",
+    "UF-000012",
+    "UF-000013",
+    "UF-000014",
+    "UF-000015",
+    "UF-000016",
+    "UF-000017",
+    "UF-000018",
+    "MET-000007",
+    "MET-000008",
+    "MET-000009",
+    "MET-000010",
+    "MET-000011",
+    "MET-000012",
+    "AICAP-000006",
+    "AICAP-000007",
+    "AICAP-000008",
+    "AICAP-000009",
+    "AICAP-000010",
+    "PROMPT-000006",
+    "PROMPT-000007",
+    "PROMPT-000008",
+    "PROMPT-000009",
+    "PROMPT-000010",
+    "AUTO-000007",
+    "AUTO-000008",
+    "AUTO-000009",
+    "AUTO-000010",
+    "AUTO-000011",
+    "NOT-000007",
+    "NOT-000008",
+    "NOT-000009",
+    "NOT-000010",
+    "NOT-000011",
+    "RPT-000006",
+    "RPT-000007",
+    "RPT-000008",
+    "RPT-000009",
+    "RPT-000010",
+    "INT-000006",
+    "INT-000002",
+    "INT-000007",
+    "INT-000004",
+    "INT-000008",
+    "ART-000006",
+    "ART-000019",
+    "ART-000029",
+    "ART-000030",
+    "ART-000031",
+    "ART-000032",
+    "ART-000033",
+    "ART-000034",
+    "ART-000035",
+    "ART-000036"
+  ],
+  "performance_requirements": [
+    "Validate published performance budgets from the approved Technical Specification.",
+    "Verify no unbounded query, queue, retry, export, or AI workload."
+  ],
+  "security_requirements": [
+    "Tenant isolation",
+    "Authorization deny paths",
+    "Sensitive-data handling",
+    "Audit completeness",
+    "Rate limiting and abuse controls"
+  ],
+  "evidence_required": [
+    "Automated test results",
+    "Accessibility results",
+    "Security results",
+    "Performance results",
+    "Manual exploratory record",
+    "Deployment and rollback rehearsal"
+  ]
+}

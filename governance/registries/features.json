@@ -1,0 +1,2599 @@
+{
+  "registry": "features",
+  "version": "1.0.0",
+  "generated_at": "2026-07-12T03:39:37Z",
+  "records": [
+    {
+      "id": "FEAT-000001",
+      "type": "feature",
+      "name": "Decision inbox and saved views",
+      "description": "Feature of Decision Center: Decision inbox and saved views.",
+      "status": "Specified",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-FEAT-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000002",
+      "type": "feature",
+      "name": "Priority and urgency explanation",
+      "description": "Feature of Decision Center: Priority and urgency explanation.",
+      "status": "Specified",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-FEAT-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000003",
+      "type": "feature",
+      "name": "Decision detail and evidence bundle",
+      "description": "Feature of Decision Center: Decision detail and evidence bundle.",
+      "status": "Specified",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-FEAT-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000004",
+      "type": "feature",
+      "name": "Alternative and trade-off comparison",
+      "description": "Feature of Decision Center: Alternative and trade-off comparison.",
+      "status": "Specified",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-FEAT-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000005",
+      "type": "feature",
+      "name": "Assignment and due-date control",
+      "description": "Feature of Decision Center: Assignment and due-date control.",
+      "status": "Specified",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-FEAT-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000006",
+      "type": "feature",
+      "name": "Approval and escalation",
+      "description": "Feature of Decision Center: Approval and escalation.",
+      "status": "Specified",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-FEAT-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000007",
+      "type": "feature",
+      "name": "Action and rationale recording",
+      "description": "Feature of Decision Center: Action and rationale recording.",
+      "status": "Specified",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-FEAT-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000008",
+      "type": "feature",
+      "name": "Outcome follow-up and learning",
+      "description": "Feature of Decision Center: Outcome follow-up and learning.",
+      "status": "Specified",
+      "owner": "TEAM-000007",
+      "version": "1.0.0",
+      "aliases": [
+        "DC-FEAT-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000007",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000009",
+      "type": "feature",
+      "name": "Decision timeline",
+      "description": "Feature of Business Memory: Decision timeline.",
+      "status": "Specified",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-FEAT-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000010",
+      "type": "feature",
+      "name": "Immutable context snapshots",
+      "description": "Feature of Business Memory: Immutable context snapshots.",
+      "status": "Specified",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-FEAT-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000011",
+      "type": "feature",
+      "name": "Outcome and lesson capture",
+      "description": "Feature of Business Memory: Outcome and lesson capture.",
+      "status": "Specified",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-FEAT-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000012",
+      "type": "feature",
+      "name": "Structured and semantic search",
+      "description": "Feature of Business Memory: Structured and semantic search.",
+      "status": "Specified",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-FEAT-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000013",
+      "type": "feature",
+      "name": "Source and freshness lineage",
+      "description": "Feature of Business Memory: Source and freshness lineage.",
+      "status": "Specified",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-FEAT-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000014",
+      "type": "feature",
+      "name": "Memory collections and tags",
+      "description": "Feature of Business Memory: Memory collections and tags.",
+      "status": "Specified",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-FEAT-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000015",
+      "type": "feature",
+      "name": "Retention and privacy control",
+      "description": "Feature of Business Memory: Retention and privacy control.",
+      "status": "Specified",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-FEAT-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000016",
+      "type": "feature",
+      "name": "Citation-ready retrieval",
+      "description": "Feature of Business Memory: Citation-ready retrieval.",
+      "status": "Specified",
+      "owner": "TEAM-000008",
+      "version": "1.0.0",
+      "aliases": [
+        "BM-FEAT-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000008",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000017",
+      "type": "feature",
+      "name": "Model Gateway",
+      "description": "Feature of AI Engine: Model Gateway.",
+      "status": "Specified",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-FEAT-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000018",
+      "type": "feature",
+      "name": "Prompt Registry",
+      "description": "Feature of AI Engine: Prompt Registry.",
+      "status": "Specified",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-FEAT-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000019",
+      "type": "feature",
+      "name": "Retrieval service",
+      "description": "Feature of AI Engine: Retrieval service.",
+      "status": "Specified",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-FEAT-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000020",
+      "type": "feature",
+      "name": "Recommendation service",
+      "description": "Feature of AI Engine: Recommendation service.",
+      "status": "Specified",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-FEAT-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000021",
+      "type": "feature",
+      "name": "Forecasting service",
+      "description": "Feature of AI Engine: Forecasting service.",
+      "status": "Specified",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-FEAT-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000022",
+      "type": "feature",
+      "name": "Explainability service",
+      "description": "Feature of AI Engine: Explainability service.",
+      "status": "Specified",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-FEAT-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000023",
+      "type": "feature",
+      "name": "Evaluation and release gates",
+      "description": "Feature of AI Engine: Evaluation and release gates.",
+      "status": "Specified",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-FEAT-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000024",
+      "type": "feature",
+      "name": "Cost, latency, safety, and drift monitoring",
+      "description": "Feature of AI Engine: Cost, latency, safety, and drift monitoring.",
+      "status": "Specified",
+      "owner": "TEAM-000009",
+      "version": "1.0.0",
+      "aliases": [
+        "AI-FEAT-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000009",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000025",
+      "type": "feature",
+      "name": "Authentication adapter",
+      "description": "Feature of Identity, Workspace, Permissions & Audit: Authentication adapter.",
+      "status": "Specified",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-FEAT-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000026",
+      "type": "feature",
+      "name": "Workspace lifecycle",
+      "description": "Feature of Identity, Workspace, Permissions & Audit: Workspace lifecycle.",
+      "status": "Specified",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-FEAT-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000027",
+      "type": "feature",
+      "name": "Invitation and membership",
+      "description": "Feature of Identity, Workspace, Permissions & Audit: Invitation and membership.",
+      "status": "Specified",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-FEAT-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000028",
+      "type": "feature",
+      "name": "Roles and permission grants",
+      "description": "Feature of Identity, Workspace, Permissions & Audit: Roles and permission grants.",
+      "status": "Specified",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-FEAT-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000029",
+      "type": "feature",
+      "name": "Policy evaluation",
+      "description": "Feature of Identity, Workspace, Permissions & Audit: Policy evaluation.",
+      "status": "Specified",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-FEAT-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000030",
+      "type": "feature",
+      "name": "MFA and session management",
+      "description": "Feature of Identity, Workspace, Permissions & Audit: MFA and session management.",
+      "status": "Specified",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-FEAT-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000031",
+      "type": "feature",
+      "name": "API keys and service identities",
+      "description": "Feature of Identity, Workspace, Permissions & Audit: API keys and service identities.",
+      "status": "Specified",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-FEAT-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000032",
+      "type": "feature",
+      "name": "Audit explorer and evidence export",
+      "description": "Feature of Identity, Workspace, Permissions & Audit: Audit explorer and evidence export.",
+      "status": "Specified",
+      "owner": "TEAM-000010",
+      "version": "1.0.0",
+      "aliases": [
+        "IAM-FEAT-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000010",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000033",
+      "type": "feature",
+      "name": "Chart of accounts",
+      "description": "Feature of Finance: Chart of accounts.",
+      "status": "Specified",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-FEAT-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000034",
+      "type": "feature",
+      "name": "Double-entry journals",
+      "description": "Feature of Finance: Double-entry journals.",
+      "status": "Specified",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-FEAT-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000035",
+      "type": "feature",
+      "name": "Accounts receivable and invoicing",
+      "description": "Feature of Finance: Accounts receivable and invoicing.",
+      "status": "Specified",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-FEAT-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000036",
+      "type": "feature",
+      "name": "Accounts payable and bills",
+      "description": "Feature of Finance: Accounts payable and bills.",
+      "status": "Specified",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-FEAT-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000037",
+      "type": "feature",
+      "name": "Payments and reconciliation",
+      "description": "Feature of Finance: Payments and reconciliation.",
+      "status": "Specified",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-FEAT-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000038",
+      "type": "feature",
+      "name": "Budgets and variance",
+      "description": "Feature of Finance: Budgets and variance.",
+      "status": "Specified",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-FEAT-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000039",
+      "type": "feature",
+      "name": "Cash-flow forecasting",
+      "description": "Feature of Finance: Cash-flow forecasting.",
+      "status": "Specified",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-FEAT-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000040",
+      "type": "feature",
+      "name": "Financial statements and close",
+      "description": "Feature of Finance: Financial statements and close.",
+      "status": "Specified",
+      "owner": "TEAM-000011",
+      "version": "1.0.0",
+      "aliases": [
+        "FIN-FEAT-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000011",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000041",
+      "type": "feature",
+      "name": "Product and SKU catalog",
+      "description": "Feature of Inventory: Product and SKU catalog.",
+      "status": "Specified",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-FEAT-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000042",
+      "type": "feature",
+      "name": "Warehouse and location model",
+      "description": "Feature of Inventory: Warehouse and location model.",
+      "status": "Specified",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-FEAT-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000043",
+      "type": "feature",
+      "name": "Stock ledger and availability",
+      "description": "Feature of Inventory: Stock ledger and availability.",
+      "status": "Specified",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-FEAT-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000044",
+      "type": "feature",
+      "name": "Reservations and allocations",
+      "description": "Feature of Inventory: Reservations and allocations.",
+      "status": "Specified",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-FEAT-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000045",
+      "type": "feature",
+      "name": "Purchase orders and receipts",
+      "description": "Feature of Inventory: Purchase orders and receipts.",
+      "status": "Specified",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-FEAT-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000046",
+      "type": "feature",
+      "name": "Transfers and adjustments",
+      "description": "Feature of Inventory: Transfers and adjustments.",
+      "status": "Specified",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-FEAT-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000047",
+      "type": "feature",
+      "name": "Lot/serial/batch traceability",
+      "description": "Feature of Inventory: Lot/serial/batch traceability.",
+      "status": "Specified",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-FEAT-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000048",
+      "type": "feature",
+      "name": "Reorder and demand planning",
+      "description": "Feature of Inventory: Reorder and demand planning.",
+      "status": "Specified",
+      "owner": "TEAM-000012",
+      "version": "1.0.0",
+      "aliases": [
+        "INV-FEAT-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000012",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000049",
+      "type": "feature",
+      "name": "Contacts and organizations",
+      "description": "Feature of CRM: Contacts and organizations.",
+      "status": "Specified",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-FEAT-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000050",
+      "type": "feature",
+      "name": "Lead capture and qualification",
+      "description": "Feature of CRM: Lead capture and qualification.",
+      "status": "Specified",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-FEAT-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000051",
+      "type": "feature",
+      "name": "Opportunity pipelines",
+      "description": "Feature of CRM: Opportunity pipelines.",
+      "status": "Specified",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-FEAT-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000052",
+      "type": "feature",
+      "name": "Activities and tasks",
+      "description": "Feature of CRM: Activities and tasks.",
+      "status": "Specified",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-FEAT-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000053",
+      "type": "feature",
+      "name": "Segmentation",
+      "description": "Feature of CRM: Segmentation.",
+      "status": "Specified",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-FEAT-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000054",
+      "type": "feature",
+      "name": "Customer value and health",
+      "description": "Feature of CRM: Customer value and health.",
+      "status": "Specified",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-FEAT-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000055",
+      "type": "feature",
+      "name": "Campaign attribution",
+      "description": "Feature of CRM: Campaign attribution.",
+      "status": "Specified",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-FEAT-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000056",
+      "type": "feature",
+      "name": "Consent and communication history",
+      "description": "Feature of CRM: Consent and communication history.",
+      "status": "Specified",
+      "owner": "TEAM-000013",
+      "version": "1.0.0",
+      "aliases": [
+        "CRM-FEAT-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000013",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000057",
+      "type": "feature",
+      "name": "Metric registry",
+      "description": "Feature of Analytics: Metric registry.",
+      "status": "Specified",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-FEAT-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000058",
+      "type": "feature",
+      "name": "Semantic definitions",
+      "description": "Feature of Analytics: Semantic definitions.",
+      "status": "Specified",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-FEAT-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000059",
+      "type": "feature",
+      "name": "Dashboard composition",
+      "description": "Feature of Analytics: Dashboard composition.",
+      "status": "Specified",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-FEAT-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000060",
+      "type": "feature",
+      "name": "Filters and saved views",
+      "description": "Feature of Analytics: Filters and saved views.",
+      "status": "Specified",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-FEAT-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000061",
+      "type": "feature",
+      "name": "Drill-down and lineage",
+      "description": "Feature of Analytics: Drill-down and lineage.",
+      "status": "Specified",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-FEAT-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000062",
+      "type": "feature",
+      "name": "Scheduled reports",
+      "description": "Feature of Analytics: Scheduled reports.",
+      "status": "Specified",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-FEAT-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000063",
+      "type": "feature",
+      "name": "Exports",
+      "description": "Feature of Analytics: Exports.",
+      "status": "Specified",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-FEAT-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000064",
+      "type": "feature",
+      "name": "Annotations and forecast overlays",
+      "description": "Feature of Analytics: Annotations and forecast overlays.",
+      "status": "Specified",
+      "owner": "TEAM-000014",
+      "version": "1.0.0",
+      "aliases": [
+        "ANA-FEAT-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000014",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000065",
+      "type": "feature",
+      "name": "Document metadata and storage",
+      "description": "Feature of Documents: Document metadata and storage.",
+      "status": "Specified",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-FEAT-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000066",
+      "type": "feature",
+      "name": "Templates",
+      "description": "Feature of Documents: Templates.",
+      "status": "Specified",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-FEAT-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000067",
+      "type": "feature",
+      "name": "Generation",
+      "description": "Feature of Documents: Generation.",
+      "status": "Specified",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-FEAT-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000068",
+      "type": "feature",
+      "name": "Versioning",
+      "description": "Feature of Documents: Versioning.",
+      "status": "Specified",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-FEAT-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000069",
+      "type": "feature",
+      "name": "Review and approval",
+      "description": "Feature of Documents: Review and approval.",
+      "status": "Specified",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-FEAT-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000070",
+      "type": "feature",
+      "name": "Electronic signature adapters",
+      "description": "Feature of Documents: Electronic signature adapters.",
+      "status": "Specified",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-FEAT-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000071",
+      "type": "feature",
+      "name": "OCR/import",
+      "description": "Feature of Documents: OCR/import.",
+      "status": "Specified",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-FEAT-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000072",
+      "type": "feature",
+      "name": "Retention and legal hold",
+      "description": "Feature of Documents: Retention and legal hold.",
+      "status": "Specified",
+      "owner": "TEAM-000015",
+      "version": "1.0.0",
+      "aliases": [
+        "DOC-FEAT-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000015",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000073",
+      "type": "feature",
+      "name": "Unified notification events",
+      "description": "Feature of Notifications: Unified notification events.",
+      "status": "Specified",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-FEAT-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000074",
+      "type": "feature",
+      "name": "Templates and versions",
+      "description": "Feature of Notifications: Templates and versions.",
+      "status": "Specified",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-FEAT-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000075",
+      "type": "feature",
+      "name": "Category and priority",
+      "description": "Feature of Notifications: Category and priority.",
+      "status": "Specified",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-FEAT-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000076",
+      "type": "feature",
+      "name": "User preferences and quiet hours",
+      "description": "Feature of Notifications: User preferences and quiet hours.",
+      "status": "Specified",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-FEAT-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000077",
+      "type": "feature",
+      "name": "Channel routing",
+      "description": "Feature of Notifications: Channel routing.",
+      "status": "Specified",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-FEAT-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000078",
+      "type": "feature",
+      "name": "Delivery retries",
+      "description": "Feature of Notifications: Delivery retries.",
+      "status": "Specified",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-FEAT-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000079",
+      "type": "feature",
+      "name": "Digest and grouping",
+      "description": "Feature of Notifications: Digest and grouping.",
+      "status": "Specified",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-FEAT-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000080",
+      "type": "feature",
+      "name": "Escalation and audit",
+      "description": "Feature of Notifications: Escalation and audit.",
+      "status": "Specified",
+      "owner": "TEAM-000016",
+      "version": "1.0.0",
+      "aliases": [
+        "NOT-FEAT-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000016",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000081",
+      "type": "feature",
+      "name": "Employee records",
+      "description": "Feature of Human Resources: Employee records.",
+      "status": "Specified",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-FEAT-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000082",
+      "type": "feature",
+      "name": "Organization and positions",
+      "description": "Feature of Human Resources: Organization and positions.",
+      "status": "Specified",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-FEAT-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000083",
+      "type": "feature",
+      "name": "Recruitment",
+      "description": "Feature of Human Resources: Recruitment.",
+      "status": "Specified",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-FEAT-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000084",
+      "type": "feature",
+      "name": "Onboarding/offboarding",
+      "description": "Feature of Human Resources: Onboarding/offboarding.",
+      "status": "Specified",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-FEAT-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000085",
+      "type": "feature",
+      "name": "Leave and attendance",
+      "description": "Feature of Human Resources: Leave and attendance.",
+      "status": "Specified",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-FEAT-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000086",
+      "type": "feature",
+      "name": "Performance and goals",
+      "description": "Feature of Human Resources: Performance and goals.",
+      "status": "Specified",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-FEAT-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000087",
+      "type": "feature",
+      "name": "Compensation records",
+      "description": "Feature of Human Resources: Compensation records.",
+      "status": "Specified",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-FEAT-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000088",
+      "type": "feature",
+      "name": "Workforce planning and compliance",
+      "description": "Feature of Human Resources: Workforce planning and compliance.",
+      "status": "Specified",
+      "owner": "TEAM-000017",
+      "version": "1.0.0",
+      "aliases": [
+        "HR-FEAT-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000017",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000089",
+      "type": "feature",
+      "name": "Bills of materials",
+      "description": "Feature of Manufacturing: Bills of materials.",
+      "status": "Specified",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-FEAT-001"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000090",
+      "type": "feature",
+      "name": "Routings and work centers",
+      "description": "Feature of Manufacturing: Routings and work centers.",
+      "status": "Specified",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-FEAT-002"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000091",
+      "type": "feature",
+      "name": "Production orders",
+      "description": "Feature of Manufacturing: Production orders.",
+      "status": "Specified",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-FEAT-003"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000092",
+      "type": "feature",
+      "name": "Material requirements",
+      "description": "Feature of Manufacturing: Material requirements.",
+      "status": "Specified",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-FEAT-004"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000093",
+      "type": "feature",
+      "name": "Scheduling and capacity",
+      "description": "Feature of Manufacturing: Scheduling and capacity.",
+      "status": "Specified",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-FEAT-005"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000094",
+      "type": "feature",
+      "name": "Issue/consume/produce",
+      "description": "Feature of Manufacturing: Issue/consume/produce.",
+      "status": "Specified",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-FEAT-006"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000095",
+      "type": "feature",
+      "name": "Quality control",
+      "description": "Feature of Manufacturing: Quality control.",
+      "status": "Specified",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-FEAT-007"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "FEAT-000096",
+      "type": "feature",
+      "name": "Yield, scrap, downtime, and cost",
+      "description": "Feature of Manufacturing: Yield, scrap, downtime, and cost.",
+      "status": "Specified",
+      "owner": "TEAM-000018",
+      "version": "1.0.0",
+      "aliases": [
+        "MFG-FEAT-008"
+      ],
+      "tags": [],
+      "attributes": {
+        "priority": "Must",
+        "scope": "Included"
+      },
+      "governance": {
+        "responsible_team": "TEAM-000018",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    }
+  ]
+}

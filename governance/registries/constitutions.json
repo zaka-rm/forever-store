@@ -1,0 +1,151 @@
+{
+  "registry": "constitutions",
+  "version": "1.0.0",
+  "generated_at": "2026-07-12T03:39:37Z",
+  "records": [
+    {
+      "id": "CON-000001",
+      "type": "constitution",
+      "name": "Product Constitution",
+      "description": "The product exists to improve Builder decisions with less cognitive effort.",
+      "status": "Released",
+      "owner": "TEAM-000001",
+      "version": "1.0.0",
+      "aliases": [],
+      "tags": [
+        "constitutional-authority"
+      ],
+      "attributes": {},
+      "governance": {
+        "responsible_team": "TEAM-000001",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "CON-000002",
+      "type": "constitution",
+      "name": "Architecture Constitution",
+      "description": "System laws for boundaries, ownership, contracts, evolvability, and operations.",
+      "status": "Released",
+      "owner": "TEAM-000001",
+      "version": "1.0.0",
+      "aliases": [],
+      "tags": [
+        "constitutional-authority"
+      ],
+      "attributes": {},
+      "governance": {
+        "responsible_team": "TEAM-000001",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "CON-000003",
+      "type": "constitution",
+      "name": "Design Constitution",
+      "description": "Experience laws for calm, clarity, accessibility, trust, and decision-first interaction.",
+      "status": "Released",
+      "owner": "TEAM-000003",
+      "version": "1.0.0",
+      "aliases": [],
+      "tags": [
+        "constitutional-authority"
+      ],
+      "attributes": {},
+      "governance": {
+        "responsible_team": "TEAM-000003",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "CON-000004",
+      "type": "constitution",
+      "name": "Security Constitution",
+      "description": "Non-negotiable laws for identity, authority, tenant isolation, privacy, and evidence.",
+      "status": "Released",
+      "owner": "TEAM-000004",
+      "version": "1.0.0",
+      "aliases": [],
+      "tags": [
+        "constitutional-authority"
+      ],
+      "attributes": {},
+      "governance": {
+        "responsible_team": "TEAM-000004",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "CON-000005",
+      "type": "constitution",
+      "name": "Data Constitution",
+      "description": "Laws for data ownership, correctness, lineage, lifecycle, and metric governance.",
+      "status": "Released",
+      "owner": "TEAM-000005",
+      "version": "1.0.0",
+      "aliases": [],
+      "tags": [
+        "constitutional-authority"
+      ],
+      "attributes": {},
+      "governance": {
+        "responsible_team": "TEAM-000005",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    },
+    {
+      "id": "CON-000006",
+      "type": "constitution",
+      "name": "AI Constitution",
+      "description": "Laws for explainable, evaluated, provider-agnostic, human-governed intelligence.",
+      "status": "Released",
+      "owner": "TEAM-000006",
+      "version": "1.0.0",
+      "aliases": [],
+      "tags": [
+        "constitutional-authority"
+      ],
+      "attributes": {},
+      "governance": {
+        "responsible_team": "TEAM-000006",
+        "approver": "TEAM-000001",
+        "review_cycle": "Quarterly",
+        "last_reviewed": "2026-07-11",
+        "next_review": "2026-10-11",
+        "classification": "Internal - Product Architecture and Engineering",
+        "supersedes": [],
+        "effective_from": "2026-07-11"
+      }
+    }
+  ]
+}

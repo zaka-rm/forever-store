@@ -1,0 +1,2292 @@
+{
+  "generator_version": "2.3.0",
+  "generated_at": "2026-07-12T03:39:43.127Z",
+  "source_capability": {
+    "id": "CAP-000009",
+    "type": "capability",
+    "name": "Documents Core Capability",
+    "status": "Specified",
+    "version": "1.0.0",
+    "owner": "TEAM-000015"
+  },
+  "source_fingerprint": "2884de495224b51e5594cf846cf985c4cb463124f53d0b52fc4c4112fee855da",
+  "authority": "DRAFT_NOT_AUTHORIZED",
+  "promotion_gate": "BLOCKED_SOURCE_INCOMPLETE",
+  "blockers": [
+    "MET-000057: metric formula is not approved",
+    "MET-000058: metric formula is not approved",
+    "MET-000059: metric formula is not approved",
+    "MET-000060: metric formula is not approved",
+    "MET-000061: metric formula is not approved",
+    "MET-000062: metric formula is not approved",
+    "MET-000063: metric formula is not approved",
+    "PROMPT-000036: prompt template and evaluation are not approved",
+    "PROMPT-000037: prompt template and evaluation are not approved",
+    "PROMPT-000038: prompt template and evaluation are not approved",
+    "PROMPT-000039: prompt template and evaluation are not approved",
+    "PROMPT-000040: prompt template and evaluation are not approved",
+    "WF-000063: ordered workflow steps are not approved",
+    "WF-000064: ordered workflow steps are not approved",
+    "WF-000065: ordered workflow steps are not approved",
+    "WF-000066: ordered workflow steps are not approved",
+    "WF-000067: ordered workflow steps are not approved",
+    "WF-000068: ordered workflow steps are not approved",
+    "WF-000069: ordered workflow steps are not approved",
+    "WF-000070: ordered workflow steps are not approved",
+    "UF-000073: UI transitions and recovery states are not approved",
+    "UF-000074: UI transitions and recovery states are not approved",
+    "UF-000075: UI transitions and recovery states are not approved",
+    "UF-000076: UI transitions and recovery states are not approved",
+    "UF-000077: UI transitions and recovery states are not approved",
+    "UF-000078: UI transitions and recovery states are not approved",
+    "UF-000079: UI transitions and recovery states are not approved",
+    "UF-000080: UI transitions and recovery states are not approved",
+    "UF-000081: UI transitions and recovery states are not approved",
+    "EVT-000056: event domain payload is not approved",
+    "EVT-000057: event domain payload is not approved",
+    "EVT-000058: event domain payload is not approved",
+    "EVT-000059: event domain payload is not approved",
+    "EVT-000060: event domain payload is not approved",
+    "EVT-000061: event domain payload is not approved",
+    "EVT-000062: event domain payload is not approved",
+    "API-000065: API request and response schema is not approved",
+    "API-000066: API request and response schema is not approved",
+    "API-000067: API request and response schema is not approved",
+    "API-000068: API request and response schema is not approved",
+    "API-000069: API request and response schema is not approved",
+    "API-000070: API request and response schema is not approved",
+    "API-000071: API request and response schema is not approved",
+    "API-000072: API request and response schema is not approved"
+  ],
+  "completeness": {
+    "source_records": 140,
+    "blocker_count": 44,
+    "traceability_gate": "PASS_CURRENT_MATURITY",
+    "traceability_coverage_percent": 55
+  },
+  "provenance": [
+    {
+      "id": "CAP-000009",
+      "type": "capability",
+      "name": "Documents Core Capability",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "MOD-000009",
+      "type": "module",
+      "name": "Documents",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "DEC-000033",
+      "type": "decision",
+      "name": "Which document is authoritative?",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "DEC-000034",
+      "type": "decision",
+      "name": "Who must review or sign it?",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "DEC-000035",
+      "type": "decision",
+      "name": "What changed between versions?",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "DEC-000036",
+      "type": "decision",
+      "name": "When may it be archived or deleted?",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "FEAT-000065",
+      "type": "feature",
+      "name": "Document metadata and storage",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "FEAT-000066",
+      "type": "feature",
+      "name": "Templates",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "FEAT-000067",
+      "type": "feature",
+      "name": "Generation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "FEAT-000068",
+      "type": "feature",
+      "name": "Versioning",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "FEAT-000069",
+      "type": "feature",
+      "name": "Review and approval",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "FEAT-000070",
+      "type": "feature",
+      "name": "Electronic signature adapters",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "FEAT-000071",
+      "type": "feature",
+      "name": "OCR/import",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "FEAT-000072",
+      "type": "feature",
+      "name": "Retention and legal hold",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "BR-000065",
+      "type": "business_rule",
+      "name": "Documents Rule 1",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "BR-000066",
+      "type": "business_rule",
+      "name": "Documents Rule 2",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "BR-000067",
+      "type": "business_rule",
+      "name": "Documents Rule 3",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "BR-000068",
+      "type": "business_rule",
+      "name": "Documents Rule 4",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "BR-000069",
+      "type": "business_rule",
+      "name": "Documents Rule 5",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "BR-000070",
+      "type": "business_rule",
+      "name": "Documents Rule 6",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "BR-000071",
+      "type": "business_rule",
+      "name": "Documents Rule 7",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "BR-000072",
+      "type": "business_rule",
+      "name": "Documents Rule 8",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "WF-000063",
+      "type": "workflow",
+      "name": "Upload and classify",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "WF-000064",
+      "type": "workflow",
+      "name": "Generate from template",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "WF-000065",
+      "type": "workflow",
+      "name": "Create new version",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "WF-000066",
+      "type": "workflow",
+      "name": "Review and approve",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "WF-000067",
+      "type": "workflow",
+      "name": "Send for signature",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "WF-000068",
+      "type": "workflow",
+      "name": "Extract and index",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "WF-000069",
+      "type": "workflow",
+      "name": "Place legal hold",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "WF-000070",
+      "type": "workflow",
+      "name": "Archive or dispose",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "ENT-000082",
+      "type": "entity",
+      "name": "Document",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "ENT-000083",
+      "type": "entity",
+      "name": "DocumentVersion",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "ENT-000084",
+      "type": "entity",
+      "name": "DocumentTemplate",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "ENT-000085",
+      "type": "entity",
+      "name": "TemplateVersion",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "ENT-000086",
+      "type": "entity",
+      "name": "DocumentLink",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "ENT-000087",
+      "type": "entity",
+      "name": "ReviewRequest",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "ENT-000088",
+      "type": "entity",
+      "name": "SignatureRequest",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "ENT-000089",
+      "type": "entity",
+      "name": "RetentionPolicy",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "ENT-000090",
+      "type": "entity",
+      "name": "LegalHold",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "ENT-000091",
+      "type": "entity",
+      "name": "ExtractionResult",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "API-000065",
+      "type": "api",
+      "name": "Documents Document metadata and storage API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "API-000066",
+      "type": "api",
+      "name": "Documents Templates API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "API-000067",
+      "type": "api",
+      "name": "Documents Generation API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "API-000068",
+      "type": "api",
+      "name": "Documents Versioning API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "API-000069",
+      "type": "api",
+      "name": "Documents Review and approval API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "API-000070",
+      "type": "api",
+      "name": "Documents Electronic signature adapters API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "API-000071",
+      "type": "api",
+      "name": "Documents OCR/import API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "API-000072",
+      "type": "api",
+      "name": "Documents Retention and legal hold API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "EVT-000056",
+      "type": "event",
+      "name": "DocumentUploaded",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "EVT-000057",
+      "type": "event",
+      "name": "DocumentGenerated",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "EVT-000058",
+      "type": "event",
+      "name": "DocumentVersionCreated",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "EVT-000059",
+      "type": "event",
+      "name": "DocumentApproved",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "EVT-000060",
+      "type": "event",
+      "name": "SignatureCompleted",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "EVT-000061",
+      "type": "event",
+      "name": "DocumentArchived",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "EVT-000062",
+      "type": "event",
+      "name": "RetentionDispositioned",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "PERM-000129",
+      "type": "permission",
+      "name": "Read Document metadata and storage",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "PERM-000130",
+      "type": "permission",
+      "name": "Manage Document metadata and storage",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "PERM-000131",
+      "type": "permission",
+      "name": "Read Templates",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "PERM-000132",
+      "type": "permission",
+      "name": "Manage Templates",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "PERM-000133",
+      "type": "permission",
+      "name": "Read Generation",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "PERM-000134",
+      "type": "permission",
+      "name": "Manage Generation",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "PERM-000135",
+      "type": "permission",
+      "name": "Read Versioning",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "PERM-000136",
+      "type": "permission",
+      "name": "Manage Versioning",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "PERM-000137",
+      "type": "permission",
+      "name": "Read Review and approval",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "PERM-000138",
+      "type": "permission",
+      "name": "Manage Review and approval",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "PERM-000139",
+      "type": "permission",
+      "name": "Read Electronic signature adapters",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "PERM-000140",
+      "type": "permission",
+      "name": "Manage Electronic signature adapters",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "PERM-000141",
+      "type": "permission",
+      "name": "Read OCR/import",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "PERM-000142",
+      "type": "permission",
+      "name": "Manage OCR/import",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "PERM-000143",
+      "type": "permission",
+      "name": "Read Retention and legal hold",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "PERM-000144",
+      "type": "permission",
+      "name": "Manage Retention and legal hold",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "SCR-000073",
+      "type": "screen",
+      "name": "Documents Decision Dashboard",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "SCR-000074",
+      "type": "screen",
+      "name": "Document metadata and storage Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "SCR-000075",
+      "type": "screen",
+      "name": "Templates Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "SCR-000076",
+      "type": "screen",
+      "name": "Generation Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "SCR-000077",
+      "type": "screen",
+      "name": "Versioning Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "SCR-000078",
+      "type": "screen",
+      "name": "Review and approval Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "SCR-000079",
+      "type": "screen",
+      "name": "Electronic signature adapters Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "SCR-000080",
+      "type": "screen",
+      "name": "OCR/import Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "SCR-000081",
+      "type": "screen",
+      "name": "Retention and legal hold Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "UF-000073",
+      "type": "ui_flow",
+      "name": "Documents UI Flow 1",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "UF-000074",
+      "type": "ui_flow",
+      "name": "Documents UI Flow 2",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "UF-000075",
+      "type": "ui_flow",
+      "name": "Documents UI Flow 3",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "UF-000076",
+      "type": "ui_flow",
+      "name": "Documents UI Flow 4",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "UF-000077",
+      "type": "ui_flow",
+      "name": "Documents UI Flow 5",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "UF-000078",
+      "type": "ui_flow",
+      "name": "Documents UI Flow 6",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "UF-000079",
+      "type": "ui_flow",
+      "name": "Documents UI Flow 7",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "UF-000080",
+      "type": "ui_flow",
+      "name": "Documents UI Flow 8",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "UF-000081",
+      "type": "ui_flow",
+      "name": "Documents UI Flow 9",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "MET-000057",
+      "type": "metric",
+      "name": "Retrieval success",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "MET-000058",
+      "type": "metric",
+      "name": "Approval time",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "MET-000059",
+      "type": "metric",
+      "name": "Signature completion",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "MET-000060",
+      "type": "metric",
+      "name": "Version conflict rate",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "MET-000061",
+      "type": "metric",
+      "name": "OCR accuracy",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "MET-000062",
+      "type": "metric",
+      "name": "Retention compliance",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "MET-000063",
+      "type": "metric",
+      "name": "Storage cost per document",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "AICAP-000036",
+      "type": "ai_capability",
+      "name": "Documents: Classification",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "AICAP-000037",
+      "type": "ai_capability",
+      "name": "Documents: Field extraction",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "AICAP-000038",
+      "type": "ai_capability",
+      "name": "Documents: Document summary",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "AICAP-000039",
+      "type": "ai_capability",
+      "name": "Documents: Clause comparison",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "AICAP-000040",
+      "type": "ai_capability",
+      "name": "Documents: Template assistance",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "PROMPT-000036",
+      "type": "prompt",
+      "name": "Documents: Classification Prompt",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000006"
+    },
+    {
+      "id": "PROMPT-000037",
+      "type": "prompt",
+      "name": "Documents: Field extraction Prompt",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000006"
+    },
+    {
+      "id": "PROMPT-000038",
+      "type": "prompt",
+      "name": "Documents: Document summary Prompt",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000006"
+    },
+    {
+      "id": "PROMPT-000039",
+      "type": "prompt",
+      "name": "Documents: Clause comparison Prompt",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000006"
+    },
+    {
+      "id": "PROMPT-000040",
+      "type": "prompt",
+      "name": "Documents: Template assistance Prompt",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000006"
+    },
+    {
+      "id": "AUTO-000050",
+      "type": "automation",
+      "name": "Review requested Automation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "AUTO-000051",
+      "type": "automation",
+      "name": "Approval due Automation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "AUTO-000052",
+      "type": "automation",
+      "name": "Signature due Automation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "AUTO-000053",
+      "type": "automation",
+      "name": "Document expiring Automation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "AUTO-000054",
+      "type": "automation",
+      "name": "Retention action Automation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "AUTO-000055",
+      "type": "automation",
+      "name": "Extraction failed Automation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "NOT-000050",
+      "type": "notification",
+      "name": "Review requested",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "NOT-000051",
+      "type": "notification",
+      "name": "Approval due",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "NOT-000052",
+      "type": "notification",
+      "name": "Signature due",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "NOT-000053",
+      "type": "notification",
+      "name": "Document expiring",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "NOT-000054",
+      "type": "notification",
+      "name": "Retention action",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "NOT-000055",
+      "type": "notification",
+      "name": "Extraction failed",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "RPT-000047",
+      "type": "report",
+      "name": "Document inventory",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "RPT-000048",
+      "type": "report",
+      "name": "Approval and signature",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "RPT-000049",
+      "type": "report",
+      "name": "Retention",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "RPT-000050",
+      "type": "report",
+      "name": "Storage",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "RPT-000051",
+      "type": "report",
+      "name": "Template usage",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "RPT-000052",
+      "type": "report",
+      "name": "Access audit",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "INT-000040",
+      "type": "integration",
+      "name": "Supabase/S3-compatible storage",
+      "status": "Planned",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "INT-000041",
+      "type": "integration",
+      "name": "PDF generation",
+      "status": "Planned",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "INT-000042",
+      "type": "integration",
+      "name": "Office formats",
+      "status": "Planned",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "INT-000043",
+      "type": "integration",
+      "name": "Signature providers",
+      "status": "Planned",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "INT-000044",
+      "type": "integration",
+      "name": "OCR providers",
+      "status": "Planned",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "INT-000001",
+      "type": "integration",
+      "name": "Business Memory",
+      "status": "Planned",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    },
+    {
+      "id": "ART-000009",
+      "type": "artifact",
+      "name": "ZYVORA Documents PRD v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000022",
+      "type": "artifact",
+      "name": "ZYVORA Documents Technical Specification v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000029",
+      "type": "artifact",
+      "name": "ZYVORA BP-000 Platform Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000030",
+      "type": "artifact",
+      "name": "ZYVORA BP-001 UI Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000031",
+      "type": "artifact",
+      "name": "ZYVORA BP-002 Backend Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000032",
+      "type": "artifact",
+      "name": "ZYVORA BP-003 Database Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000033",
+      "type": "artifact",
+      "name": "ZYVORA BP-004 API Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000034",
+      "type": "artifact",
+      "name": "ZYVORA BP-005 AI Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000035",
+      "type": "artifact",
+      "name": "ZYVORA BP-006 Security Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000036",
+      "type": "artifact",
+      "name": "ZYVORA BP-007 Infrastructure Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    }
+  ],
+  "kind": "draft_build_pack",
+  "objective": "Create, govern, store, retrieve, approve, sign, and retain business documents as trusted operational evidence.",
+  "module": {
+    "id": "MOD-000009",
+    "type": "module",
+    "name": "Documents",
+    "status": "Specified",
+    "version": "1.0.0",
+    "owner": "TEAM-000015"
+  },
+  "supported_decisions": [
+    {
+      "id": "DEC-000033",
+      "type": "decision",
+      "name": "Which document is authoritative?",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "DEC-000034",
+      "type": "decision",
+      "name": "Who must review or sign it?",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "DEC-000035",
+      "type": "decision",
+      "name": "What changed between versions?",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "DEC-000036",
+      "type": "decision",
+      "name": "When may it be archived or deleted?",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    }
+  ],
+  "scope": [
+    {
+      "id": "FEAT-000065",
+      "type": "feature",
+      "name": "Document metadata and storage",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "FEAT-000066",
+      "type": "feature",
+      "name": "Templates",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "FEAT-000067",
+      "type": "feature",
+      "name": "Generation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "FEAT-000068",
+      "type": "feature",
+      "name": "Versioning",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "FEAT-000069",
+      "type": "feature",
+      "name": "Review and approval",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "FEAT-000070",
+      "type": "feature",
+      "name": "Electronic signature adapters",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "FEAT-000071",
+      "type": "feature",
+      "name": "OCR/import",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "FEAT-000072",
+      "type": "feature",
+      "name": "Retention and legal hold",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    }
+  ],
+  "business_rules": [
+    {
+      "id": "BR-000065",
+      "type": "business_rule",
+      "name": "Documents Rule 1",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "BR-000066",
+      "type": "business_rule",
+      "name": "Documents Rule 2",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "BR-000067",
+      "type": "business_rule",
+      "name": "Documents Rule 3",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "BR-000068",
+      "type": "business_rule",
+      "name": "Documents Rule 4",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "BR-000069",
+      "type": "business_rule",
+      "name": "Documents Rule 5",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "BR-000070",
+      "type": "business_rule",
+      "name": "Documents Rule 6",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "BR-000071",
+      "type": "business_rule",
+      "name": "Documents Rule 7",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "BR-000072",
+      "type": "business_rule",
+      "name": "Documents Rule 8",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    }
+  ],
+  "workflows": [
+    {
+      "id": "WF-000063",
+      "type": "workflow",
+      "name": "Upload and classify",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "WF-000064",
+      "type": "workflow",
+      "name": "Generate from template",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "WF-000065",
+      "type": "workflow",
+      "name": "Create new version",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "WF-000066",
+      "type": "workflow",
+      "name": "Review and approve",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "WF-000067",
+      "type": "workflow",
+      "name": "Send for signature",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "WF-000068",
+      "type": "workflow",
+      "name": "Extract and index",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "WF-000069",
+      "type": "workflow",
+      "name": "Place legal hold",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "WF-000070",
+      "type": "workflow",
+      "name": "Archive or dispose",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    }
+  ],
+  "data_entities": [
+    {
+      "id": "ENT-000082",
+      "type": "entity",
+      "name": "Document",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "ENT-000083",
+      "type": "entity",
+      "name": "DocumentVersion",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "ENT-000084",
+      "type": "entity",
+      "name": "DocumentTemplate",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "ENT-000085",
+      "type": "entity",
+      "name": "TemplateVersion",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "ENT-000086",
+      "type": "entity",
+      "name": "DocumentLink",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "ENT-000087",
+      "type": "entity",
+      "name": "ReviewRequest",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "ENT-000088",
+      "type": "entity",
+      "name": "SignatureRequest",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "ENT-000089",
+      "type": "entity",
+      "name": "RetentionPolicy",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "ENT-000090",
+      "type": "entity",
+      "name": "LegalHold",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "ENT-000091",
+      "type": "entity",
+      "name": "ExtractionResult",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    }
+  ],
+  "api_contracts": [
+    {
+      "id": "API-000065",
+      "type": "api",
+      "name": "Documents Document metadata and storage API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "API-000066",
+      "type": "api",
+      "name": "Documents Templates API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "API-000067",
+      "type": "api",
+      "name": "Documents Generation API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "API-000068",
+      "type": "api",
+      "name": "Documents Versioning API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "API-000069",
+      "type": "api",
+      "name": "Documents Review and approval API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "API-000070",
+      "type": "api",
+      "name": "Documents Electronic signature adapters API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "API-000071",
+      "type": "api",
+      "name": "Documents OCR/import API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "API-000072",
+      "type": "api",
+      "name": "Documents Retention and legal hold API",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    }
+  ],
+  "event_contracts": [
+    {
+      "id": "EVT-000056",
+      "type": "event",
+      "name": "DocumentUploaded",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "EVT-000057",
+      "type": "event",
+      "name": "DocumentGenerated",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "EVT-000058",
+      "type": "event",
+      "name": "DocumentVersionCreated",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "EVT-000059",
+      "type": "event",
+      "name": "DocumentApproved",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "EVT-000060",
+      "type": "event",
+      "name": "SignatureCompleted",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "EVT-000061",
+      "type": "event",
+      "name": "DocumentArchived",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "EVT-000062",
+      "type": "event",
+      "name": "RetentionDispositioned",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    }
+  ],
+  "permissions": [
+    {
+      "id": "PERM-000129",
+      "type": "permission",
+      "name": "Read Document metadata and storage",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "PERM-000130",
+      "type": "permission",
+      "name": "Manage Document metadata and storage",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "PERM-000131",
+      "type": "permission",
+      "name": "Read Templates",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "PERM-000132",
+      "type": "permission",
+      "name": "Manage Templates",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "PERM-000133",
+      "type": "permission",
+      "name": "Read Generation",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "PERM-000134",
+      "type": "permission",
+      "name": "Manage Generation",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "PERM-000135",
+      "type": "permission",
+      "name": "Read Versioning",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "PERM-000136",
+      "type": "permission",
+      "name": "Manage Versioning",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "PERM-000137",
+      "type": "permission",
+      "name": "Read Review and approval",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "PERM-000138",
+      "type": "permission",
+      "name": "Manage Review and approval",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "PERM-000139",
+      "type": "permission",
+      "name": "Read Electronic signature adapters",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "PERM-000140",
+      "type": "permission",
+      "name": "Manage Electronic signature adapters",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "PERM-000141",
+      "type": "permission",
+      "name": "Read OCR/import",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "PERM-000142",
+      "type": "permission",
+      "name": "Manage OCR/import",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "PERM-000143",
+      "type": "permission",
+      "name": "Read Retention and legal hold",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "PERM-000144",
+      "type": "permission",
+      "name": "Manage Retention and legal hold",
+      "status": "Blueprint Ready",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    }
+  ],
+  "screens": [
+    {
+      "id": "SCR-000073",
+      "type": "screen",
+      "name": "Documents Decision Dashboard",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "SCR-000074",
+      "type": "screen",
+      "name": "Document metadata and storage Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "SCR-000075",
+      "type": "screen",
+      "name": "Templates Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "SCR-000076",
+      "type": "screen",
+      "name": "Generation Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "SCR-000077",
+      "type": "screen",
+      "name": "Versioning Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "SCR-000078",
+      "type": "screen",
+      "name": "Review and approval Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "SCR-000079",
+      "type": "screen",
+      "name": "Electronic signature adapters Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "SCR-000080",
+      "type": "screen",
+      "name": "OCR/import Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "SCR-000081",
+      "type": "screen",
+      "name": "Retention and legal hold Workspace",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    }
+  ],
+  "ui_flows": [
+    {
+      "id": "UF-000073",
+      "type": "ui_flow",
+      "name": "Documents UI Flow 1",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "UF-000074",
+      "type": "ui_flow",
+      "name": "Documents UI Flow 2",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "UF-000075",
+      "type": "ui_flow",
+      "name": "Documents UI Flow 3",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "UF-000076",
+      "type": "ui_flow",
+      "name": "Documents UI Flow 4",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "UF-000077",
+      "type": "ui_flow",
+      "name": "Documents UI Flow 5",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "UF-000078",
+      "type": "ui_flow",
+      "name": "Documents UI Flow 6",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "UF-000079",
+      "type": "ui_flow",
+      "name": "Documents UI Flow 7",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "UF-000080",
+      "type": "ui_flow",
+      "name": "Documents UI Flow 8",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "UF-000081",
+      "type": "ui_flow",
+      "name": "Documents UI Flow 9",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    }
+  ],
+  "ai_and_prompts": [
+    {
+      "id": "AICAP-000036",
+      "type": "ai_capability",
+      "name": "Documents: Classification",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "AICAP-000037",
+      "type": "ai_capability",
+      "name": "Documents: Field extraction",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "AICAP-000038",
+      "type": "ai_capability",
+      "name": "Documents: Document summary",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "AICAP-000039",
+      "type": "ai_capability",
+      "name": "Documents: Clause comparison",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "AICAP-000040",
+      "type": "ai_capability",
+      "name": "Documents: Template assistance",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "PROMPT-000036",
+      "type": "prompt",
+      "name": "Documents: Classification Prompt",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000006"
+    },
+    {
+      "id": "PROMPT-000037",
+      "type": "prompt",
+      "name": "Documents: Field extraction Prompt",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000006"
+    },
+    {
+      "id": "PROMPT-000038",
+      "type": "prompt",
+      "name": "Documents: Document summary Prompt",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000006"
+    },
+    {
+      "id": "PROMPT-000039",
+      "type": "prompt",
+      "name": "Documents: Clause comparison Prompt",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000006"
+    },
+    {
+      "id": "PROMPT-000040",
+      "type": "prompt",
+      "name": "Documents: Template assistance Prompt",
+      "status": "In Design",
+      "version": "1.0.0",
+      "owner": "TEAM-000006"
+    }
+  ],
+  "automations": [
+    {
+      "id": "AUTO-000050",
+      "type": "automation",
+      "name": "Review requested Automation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "AUTO-000051",
+      "type": "automation",
+      "name": "Approval due Automation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "AUTO-000052",
+      "type": "automation",
+      "name": "Signature due Automation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "AUTO-000053",
+      "type": "automation",
+      "name": "Document expiring Automation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "AUTO-000054",
+      "type": "automation",
+      "name": "Retention action Automation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "AUTO-000055",
+      "type": "automation",
+      "name": "Extraction failed Automation",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    }
+  ],
+  "notifications": [
+    {
+      "id": "NOT-000050",
+      "type": "notification",
+      "name": "Review requested",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "NOT-000051",
+      "type": "notification",
+      "name": "Approval due",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "NOT-000052",
+      "type": "notification",
+      "name": "Signature due",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "NOT-000053",
+      "type": "notification",
+      "name": "Document expiring",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "NOT-000054",
+      "type": "notification",
+      "name": "Retention action",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "NOT-000055",
+      "type": "notification",
+      "name": "Extraction failed",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    }
+  ],
+  "reports": [
+    {
+      "id": "RPT-000047",
+      "type": "report",
+      "name": "Document inventory",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "RPT-000048",
+      "type": "report",
+      "name": "Approval and signature",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "RPT-000049",
+      "type": "report",
+      "name": "Retention",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "RPT-000050",
+      "type": "report",
+      "name": "Storage",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "RPT-000051",
+      "type": "report",
+      "name": "Template usage",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "RPT-000052",
+      "type": "report",
+      "name": "Access audit",
+      "status": "Specified",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    }
+  ],
+  "integrations": [
+    {
+      "id": "INT-000040",
+      "type": "integration",
+      "name": "Supabase/S3-compatible storage",
+      "status": "Planned",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "INT-000041",
+      "type": "integration",
+      "name": "PDF generation",
+      "status": "Planned",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "INT-000042",
+      "type": "integration",
+      "name": "Office formats",
+      "status": "Planned",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "INT-000043",
+      "type": "integration",
+      "name": "Signature providers",
+      "status": "Planned",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "INT-000044",
+      "type": "integration",
+      "name": "OCR providers",
+      "status": "Planned",
+      "version": "1.0.0",
+      "owner": "TEAM-000015"
+    },
+    {
+      "id": "INT-000001",
+      "type": "integration",
+      "name": "Business Memory",
+      "status": "Planned",
+      "version": "1.0.0",
+      "owner": "TEAM-000007"
+    }
+  ],
+  "source_artifacts": [
+    {
+      "id": "ART-000009",
+      "type": "artifact",
+      "name": "ZYVORA Documents PRD v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000022",
+      "type": "artifact",
+      "name": "ZYVORA Documents Technical Specification v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000029",
+      "type": "artifact",
+      "name": "ZYVORA BP-000 Platform Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000030",
+      "type": "artifact",
+      "name": "ZYVORA BP-001 UI Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000031",
+      "type": "artifact",
+      "name": "ZYVORA BP-002 Backend Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000032",
+      "type": "artifact",
+      "name": "ZYVORA BP-003 Database Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000033",
+      "type": "artifact",
+      "name": "ZYVORA BP-004 API Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000034",
+      "type": "artifact",
+      "name": "ZYVORA BP-005 AI Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000035",
+      "type": "artifact",
+      "name": "ZYVORA BP-006 Security Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    },
+    {
+      "id": "ART-000036",
+      "type": "artifact",
+      "name": "ZYVORA BP-007 Infrastructure Blueprint v1.0",
+      "status": "Released",
+      "version": "1.0.0",
+      "owner": "TEAM-000001"
+    }
+  ],
+  "implementation_constraints": [
+    "Preserve permanent IDs in code, commits, tests, and telemetry.",
+    "Do not implement blocked or unapproved semantics.",
+    "Provider-specific services remain behind interfaces.",
+    "Implementation must attach repository, test, deployment, and runtime evidence."
+  ],
+  "acceptance_gate": [
+    "All blockers resolved by accountable owners.",
+    "Impact assessment approved.",
+    "Build Pack and paired QA Pack approved.",
+    "Deployment and rollback approved.",
+    "No open Critical or High governance exception."
+  ]
+}

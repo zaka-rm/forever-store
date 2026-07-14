@@ -1,0 +1,29 @@
+{
+  "name": "@zyvora/architecture-knowledge-graph",
+  "private": true,
+  "version": "3.0.0",
+  "type": "module",
+  "scripts": {
+    "validate": "node tools/validate.mjs",
+    "validate:deep": "node tools/deep-validate.mjs",
+    "ledger": "node tools/rebuild-id-ledger.mjs",
+    "dependencies": "node tools/generate-dependency-registry.mjs",
+    "drift": "node tools/drift-detect.mjs",
+    "sync:center": "node tools/sync-governance-center.mjs",
+    "change:propose": "node tools/propose-change.mjs",
+    "change:decide": "node tools/decide-change.mjs",
+    "release:gate": "node tools/release-gate.mjs",
+    "views": "node tools/generate-views.mjs",
+    "trace": "node tools/trace.mjs",
+    "traceability": "node tools/traceability-report.mjs --all",
+    "packs:draft": "node tools/generate-draft-packs.mjs --all",
+    "sync:implementation": "node tools/sync-implementation.mjs",
+    "orchestrate": "node tools/create-work-order.mjs",
+    "impact": "node tools/impact.mjs",
+    "readiness": "node tools/release-readiness.mjs",
+    "check": "node tools/validate.mjs && node tools/deep-validate.mjs && node tools/generate-dependency-registry.mjs && node tools/traceability-report.mjs --all && node tools/generate-draft-packs.mjs --all && node tools/sync-implementation.mjs && node tools/drift-detect.mjs && node tools/generate-views.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

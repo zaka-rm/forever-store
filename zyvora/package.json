@@ -1,0 +1,26 @@
+{
+  "name": "zyvora",
+  "private": true,
+  "version": "0.1.0",
+  "description": "ZYVORA — Decision Operating System. Vertical slice v0.1 implementing CODEX 00 D.1 layers, D.11 Decision Lifecycle, and CODEX 10 Guidance standards.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "typecheck": "tsc --noEmit",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.110.2",
+    "framer-motion": "^12.42.2",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "typescript": "^5.5.3",
+    "vite": "^5.4.0"
+  }
+}
