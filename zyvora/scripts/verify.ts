@@ -20,6 +20,8 @@ import { askZyvora } from "../src/core/assistant";
 import { autoMap, buildRow, parseCsv } from "../src/core/csv";
 import { NATURALOE_CATALOG } from "../src/core/naturaloeCatalog";
 import { FOREVER_PRICES } from "../src/core/foreverPrices";
+import { can, canManageMember } from "../src/core/permissions";
+import { dailyBriefing, generateNotifications } from "../src/core/notifications";
 import { seedDemoData } from "../src/core/seed";
 import type { MemoryEvent, Order, Stream } from "../src/core/types";
 
@@ -191,6 +193,25 @@ check("every Forever product has sell > cost > 0", FOREVER_PRICES.every((p) => p
 check("cost is 30% off retail (Argi+ 899 → 629)", FOREVER_PRICES.every((p) => p.costDh === Math.round(p.sellDh * 0.7)));
 const argi = FOREVER_PRICES.find((p) => /argi/i.test(p.name));
 check("Argi+ real price present (899 sell / 629 cost)", !!argi && argi.sellDh === 899 && argi.costDh === 629, `${argi?.sellDh}/${argi?.costDh}`);
+
+console.log("\nMulti-user permissions (CAP-000004):");
+check("owner can do everything", can("owner", "delete_workspace") && can("owner", "invite_member") && can("owner", "create_order"));
+check("viewer can only view", can("viewer", "view") && !can("viewer", "create_order") && !can("viewer", "export_memory"));
+check("staff runs operations but not the team", can("staff", "create_order") && can("staff", "manage_inventory") && !can("staff", "invite_member"));
+check("manager manages team but can't delete workspace", can("manager", "invite_member") && !can("manager", "delete_workspace"));
+check("escalation guard: owner cannot be demoted/removed", !canManageMember("manager", "owner"));
+check("escalation guard: staff cannot change roles", !canManageMember("staff", "viewer"));
+check("escalation guard: cannot promote above your own rank", !canManageMember("manager", "staff", "owner") && canManageMember("manager", "staff", "manager"));
+
+console.log("\nNotifications & briefing (CAP-000010):");
+const notifs = generateNotifications(state, insights);
+check("notifications generated from insights + triggers", notifs.length > 0, `count=${notifs.length}`);
+check("notifications sorted high-priority first", notifs.every((n, i, a) => i === 0 || rankP(a[i - 1].priority) <= rankP(n.priority)));
+check("every notification has a stable key + action view", notifs.every((n) => n.key.length > 0 && !!n.actionView));
+check("high-priority items include guidance decisions", notifs.some((n) => n.priority === "high"));
+const brief = dailyBriefing(state, notifs);
+check("daily briefing summarizes yesterday + attention count", typeof brief.revenueYesterday === "number" && brief.headline.length > 0);
+function rankP(p: string) { return p === "high" ? 0 : p === "medium" ? 1 : 2; }
 
 console.log("\nConstitutional invariants:");
 check("insights are ranked descending", insights.every((x, i, a) => i === 0 || a[i - 1].score >= x.score));

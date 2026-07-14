@@ -10,6 +10,7 @@
  */
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import type { MemoryStore, WorkspaceMeta } from "./memory";
+import type { Role } from "./permissions";
 import type { MemoryEvent, Stream } from "./types";
 
 const url = import.meta.env.VITE_SUPABASE_URL as string | undefined;
@@ -28,23 +29,26 @@ interface WorkspaceRow {
   name: string;
   currency: string;
   created_at: string;
+  owner: string;
 }
+
+const toMeta = (row: WorkspaceRow): WorkspaceMeta => ({
+  id: row.id,
+  name: row.name,
+  currency: row.currency,
+  createdAt: new Date(row.created_at).getTime(),
+  ownerId: row.owner,
+});
 
 export async function fetchMyWorkspace(client: SupabaseClient): Promise<WorkspaceMeta | null> {
   const { data, error } = await client
     .from("zyvora_workspaces")
-    .select("id,name,currency,created_at")
+    .select("id,name,currency,created_at,owner")
     .order("created_at", { ascending: true })
     .limit(1);
   if (error) throw new Error(`Could not load your Workspace: ${error.message}`);
   const row = (data as WorkspaceRow[] | null)?.[0];
-  if (!row) return null;
-  return {
-    id: row.id,
-    name: row.name,
-    currency: row.currency,
-    createdAt: new Date(row.created_at).getTime(),
-  };
+  return row ? toMeta(row) : null;
 }
 
 export async function createCloudWorkspace(
@@ -56,16 +60,10 @@ export async function createCloudWorkspace(
   const { data, error } = await client
     .from("zyvora_workspaces")
     .insert({ owner: ownerId, name: name.trim(), currency: currency.trim().toUpperCase() || "USD" })
-    .select("id,name,currency,created_at")
+    .select("id,name,currency,created_at,owner")
     .single();
   if (error) throw new Error(`Could not create the Workspace: ${error.message}`);
-  const row = data as WorkspaceRow;
-  return {
-    id: row.id,
-    name: row.name,
-    currency: row.currency,
-    createdAt: new Date(row.created_at).getTime(),
-  };
+  return toMeta(data as WorkspaceRow);
 }
 
 export async function fetchEvents(
@@ -80,6 +78,112 @@ export async function fetchEvents(
     .limit(50000);
   if (error) throw new Error(`Could not load Business Memory: ${error.message}`);
   return (data ?? []) as MemoryEvent[];
+}
+
+// ---------------------------------------------------- Teams & memberships
+// Canonical (governance/): CAP-000004 — FEAT-000027 invitation & membership,
+// FEAT-000028 roles. Server RLS (supabase/41_zyvora_teams.sql) is the real gate;
+// these helpers drive the Team UI.
+
+export interface Member {
+  userId: string;
+  email: string;
+  role: Role;
+}
+
+/** The current user's role in a workspace (owner if they own it). */
+export async function fetchMyRole(
+  client: SupabaseClient,
+  workspaceId: string,
+  userId: string,
+  ownerId?: string
+): Promise<Role> {
+  if (ownerId && ownerId === userId) return "owner";
+  const { data } = await client
+    .from("zyvora_memberships")
+    .select("role")
+    .eq("workspace_id", workspaceId)
+    .eq("user_id", userId)
+    .maybeSingle();
+  return ((data?.role as Role) ?? "owner"); // pre-teams workspaces: sole user is owner
+}
+
+/** Accept any pending invitations addressed to this user's email → creates memberships. */
+export async function acceptPendingInvitations(client: SupabaseClient, email: string): Promise<number> {
+  const { data: invites } = await client
+    .from("zyvora_invitations")
+    .select("id,workspace_id,role")
+    .eq("status", "pending");
+  if (!invites || invites.length === 0) return 0;
+  const { data: user } = await client.auth.getUser();
+  const uid = user.user?.id;
+  if (!uid) return 0;
+  let n = 0;
+  for (const inv of invites as { id: string; workspace_id: string; role: Role }[]) {
+    const { error } = await client
+      .from("zyvora_memberships")
+      .upsert(
+        { workspace_id: inv.workspace_id, user_id: uid, role: inv.role },
+        { onConflict: "workspace_id,user_id", ignoreDuplicates: true }
+      );
+    if (!error) {
+      await client.from("zyvora_invitations").update({ status: "accepted" }).eq("id", inv.id);
+      n++;
+    }
+  }
+  return n;
+}
+
+export async function fetchMembers(client: SupabaseClient, workspaceId: string): Promise<Member[]> {
+  const { data, error } = await client
+    .from("zyvora_memberships")
+    .select("user_id,role")
+    .eq("workspace_id", workspaceId);
+  if (error) throw new Error(error.message);
+  return (data ?? []).map((r) => ({ userId: r.user_id as string, email: r.user_id as string, role: r.role as Role }));
+}
+
+export async function inviteMember(
+  client: SupabaseClient,
+  workspaceId: string,
+  email: string,
+  role: Role,
+  invitedBy: string
+): Promise<void> {
+  const { error } = await client.from("zyvora_invitations").insert({
+    workspace_id: workspaceId,
+    email: email.trim().toLowerCase(),
+    role,
+    invited_by: invitedBy,
+  });
+  if (error) throw new Error(error.message);
+}
+
+export async function pendingInvites(client: SupabaseClient, workspaceId: string) {
+  const { data } = await client
+    .from("zyvora_invitations")
+    .select("id,email,role,status")
+    .eq("workspace_id", workspaceId)
+    .eq("status", "pending");
+  return (data ?? []) as { id: string; email: string; role: Role; status: string }[];
+}
+
+export async function setMemberRole(client: SupabaseClient, workspaceId: string, userId: string, role: Role) {
+  const { error } = await client
+    .from("zyvora_memberships")
+    .update({ role })
+    .eq("workspace_id", workspaceId)
+    .eq("user_id", userId);
+  if (error) throw new Error(error.message);
+}
+
+export async function removeMember(client: SupabaseClient, workspaceId: string, userId: string) {
+  const { error } = await client
+    .from("zyvora_memberships")
+    .delete()
+    .eq("workspace_id", workspaceId)
+    .eq("user_id", userId);
+  if (error) throw new Error(error.message);
 }
 
 // ------------------------------------------------------------- CloudMemory

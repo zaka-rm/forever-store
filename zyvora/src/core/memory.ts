@@ -15,6 +15,8 @@ export interface WorkspaceMeta {
   /** ISO 4217 — chosen at onboarding; global-first, never hardcoded (ZPL-040 amendment). */
   currency: string;
   createdAt: number;
+  /** auth user id of the owner (cloud mode only). */
+  ownerId?: string;
 }
 
 /**

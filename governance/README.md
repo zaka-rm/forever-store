@@ -1,5 +1,15 @@
 # ZYVORA Canonical Product Model
 
+> **In-repo integration note (2026-07-12).** This model was imported from the Governance Center
+> v3.0 package into `WEBSITE/governance/` and wired to this repository. Paths below say
+> `knowledge/tools/…`; in this repo they are `governance/tools/…` (run from the `governance/` folder,
+> e.g. `node tools/validate.mjs`). Repo-specific additions: `coverage/implementation-coverage.json`
+> (assessment of the `zyvora/` app vs. this model) and `tools/coverage-report.mjs` →
+> `reports/implementation-coverage.md`. `evidence/sources.json` points at the real repo paths
+> (`zyvora/src`, `docs/zyvora`, `supabase/40_zyvora.sql`, `zyvora/scripts/verify.ts`), and the app's
+> core files carry `Canonical (governance/): CAP-…, FEAT-…` header lines so `sync-implementation.mjs`
+> verifies the spec→code links automatically. Current app coverage: **~31% of 96 features** (weighted).
+
 This directory is the machine-readable source of truth for the governed ZYVORA product model. The physical name `knowledge/` remains temporarily for v1.1 compatibility; its authoritative product name is **Canonical Product Model**. Word documents and other human-readable artifacts are controlled views.
 
 ## Authority model

@@ -2037,6 +2037,35 @@ var FOREVER_PRICES = [
   }
 ];
 
+// src/core/permissions.ts
+var OPERATIONS = [
+  "create_order",
+  "advance_order",
+  "edit_finance",
+  "manage_inventory",
+  "manage_promos",
+  "record_decision",
+  "import_data"
+];
+var TEAM = ["invite_member", "change_role", "remove_member"];
+var GRANTS = {
+  owner: /* @__PURE__ */ new Set(["view", ...OPERATIONS, ...TEAM, "export_memory", "delete_workspace"]),
+  manager: /* @__PURE__ */ new Set(["view", ...OPERATIONS, ...TEAM, "export_memory"]),
+  staff: /* @__PURE__ */ new Set(["view", ...OPERATIONS]),
+  viewer: /* @__PURE__ */ new Set(["view"])
+};
+function can(role, action) {
+  return GRANTS[role]?.has(action) ?? false;
+}
+var RANK = { owner: 3, manager: 2, staff: 1, viewer: 0 };
+function canManageMember(actor, target2, newRole) {
+  if (!can(actor, "change_role")) return false;
+  if (target2 === "owner") return false;
+  if (RANK[actor] < RANK[target2]) return false;
+  if (newRole && RANK[newRole] > RANK[actor]) return false;
+  return true;
+}
+
 // src/core/seed.ts
 function seedDemoData(memory2) {
   const now = Date.now();
@@ -2379,6 +2408,14 @@ check("every Forever product has sell > cost > 0", FOREVER_PRICES.every((p2) => 
 check("cost is 30% off retail (Argi+ 899 \u2192 629)", FOREVER_PRICES.every((p2) => p2.costDh === Math.round(p2.sellDh * 0.7)));
 var argi = FOREVER_PRICES.find((p2) => /argi/i.test(p2.name));
 check("Argi+ real price present (899 sell / 629 cost)", !!argi && argi.sellDh === 899 && argi.costDh === 629, `${argi?.sellDh}/${argi?.costDh}`);
+console.log("\nMulti-user permissions (CAP-000004):");
+check("owner can do everything", can("owner", "delete_workspace") && can("owner", "invite_member") && can("owner", "create_order"));
+check("viewer can only view", can("viewer", "view") && !can("viewer", "create_order") && !can("viewer", "export_memory"));
+check("staff runs operations but not the team", can("staff", "create_order") && can("staff", "manage_inventory") && !can("staff", "invite_member"));
+check("manager manages team but can't delete workspace", can("manager", "invite_member") && !can("manager", "delete_workspace"));
+check("escalation guard: owner cannot be demoted/removed", !canManageMember("manager", "owner"));
+check("escalation guard: staff cannot change roles", !canManageMember("staff", "viewer"));
+check("escalation guard: cannot promote above your own rank", !canManageMember("manager", "staff", "owner") && canManageMember("manager", "staff", "manager"));
 console.log("\nConstitutional invariants:");
 check("insights are ranked descending", insights.every((x, i, a) => i === 0 || a[i - 1].score >= x.score));
 var withGuidance = insights.filter((i) => i.guidance);

@@ -10,12 +10,18 @@
 import { useEffect, useMemo, useState, useSyncExternalStore } from "react";
 import {
   CloudMemory,
+  acceptPendingInvitations,
   cloudConfigured,
   createCloudWorkspace,
   fetchEvents,
+  fetchMyRole,
   fetchMyWorkspace,
   supabase,
 } from "./core/cloud";
+import { can, type Role } from "./core/permissions";
+import { generateNotifications, loadReadSet } from "./core/notifications";
+import { NotificationsView } from "./ui/Notifications";
+import { TeamView } from "./ui/Team";
 import { generateInsights } from "./core/engine";
 import { COMMON_CURRENCIES, setActiveCurrency } from "./core/format";
 import {
@@ -40,11 +46,12 @@ import { PromosView } from "./ui/Promos";
 import { Today } from "./ui/Today";
 
 type View =
-  | "today" | "orders" | "finance" | "customers"
-  | "inventory" | "promos" | "analytics" | "ask" | "import" | "memory";
+  | "today" | "notifications" | "orders" | "finance" | "customers"
+  | "inventory" | "promos" | "analytics" | "ask" | "import" | "team" | "memory";
 
 const NAV: { id: View; label: string }[] = [
   { id: "today", label: "Today" },
+  { id: "notifications", label: "Notifications" },
   { id: "orders", label: "Orders" },
   { id: "finance", label: "Finance" },
   { id: "customers", label: "Customers" },
@@ -53,6 +60,7 @@ const NAV: { id: View; label: string }[] = [
   { id: "analytics", label: "Analytics" },
   { id: "ask", label: "Ask ZYVORA" },
   { id: "import", label: "Import" },
+  { id: "team", label: "Team" },
   { id: "memory", label: "Business Memory" },
 ];
 
@@ -210,9 +218,12 @@ function CloudWorkspaceLoader({ userId }: { userId: string }) {
   const [error, setError] = useState("");
   const [workspace, setWorkspace] = useState<WorkspaceMeta | null>(null);
   const [memory, setMemory] = useState<CloudMemory | null>(null);
+  const [role, setRole] = useState<Role>("owner");
 
   const openWorkspace = async (meta: WorkspaceMeta) => {
     const events = await fetchEvents(client, meta.id);
+    const myRole = await fetchMyRole(client, meta.id, userId, meta.ownerId);
+    setRole(myRole);
     setWorkspace(meta);
     setMemory(new CloudMemory(client, meta.id, events));
     setPhase("ready");
@@ -221,6 +232,8 @@ function CloudWorkspaceLoader({ userId }: { userId: string }) {
   useEffect(() => {
     (async () => {
       try {
+        const { data } = await client.auth.getUser();
+        if (data.user?.email) await acceptPendingInvitations(client, data.user.email);
         const meta = await fetchMyWorkspace(client);
         if (meta) await openWorkspace(meta);
         else setPhase("onboarding");
@@ -258,6 +271,8 @@ function CloudWorkspaceLoader({ userId }: { userId: string }) {
     <Workspace
       workspace={workspace!}
       memory={memory!}
+      role={role}
+      userId={userId}
       onSignOut={() => void client.auth.signOut()}
     />
   );
@@ -346,10 +361,14 @@ function Workspace({
   workspace,
   memory,
   onSignOut,
+  role = "owner",
+  userId = "",
 }: {
   workspace: WorkspaceMeta;
   memory: MemoryStore;
   onSignOut?: () => void;
+  role?: Role;
+  userId?: string;
 }) {
   setActiveCurrency(workspace.currency);
   const [view, setView] = useState<View>("today");
@@ -365,6 +384,13 @@ function Workspace({
   const state = useMemo(() => projectState(events), [events, events.length]);
   const decisions = useMemo(() => projectDecisions(events), [events, events.length]);
   const insights = useMemo(() => generateInsights(state, decisions), [state, decisions]);
+  const notifications = useMemo(() => generateNotifications(state, insights), [state, insights]);
+  const unread = useMemo(() => {
+    const read = loadReadSet(workspace.id);
+    return notifications.filter((n) => !read.has(n.key) && n.priority !== "low").length;
+    // recompute when view changes (dismissing updates localStorage)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [notifications, view]);
 
   /** Lifecycle stages 8 & 11: the human decides; interpretation + decision enter Memory. */
   const onDecide = (
@@ -402,18 +428,26 @@ function Workspace({
           {workspace.name}
           {onSignOut && (
             <span style={{ display: "block", fontSize: 11 }}>
-              {pendingSync > 0 ? `syncing ${pendingSync} change(s)…` : "synced to your account"}
+              {pendingSync > 0 ? `syncing ${pendingSync} change(s)…` : `synced · ${role}`}
             </span>
           )}
         </div>
         {NAV.map((n) => (
           <button key={n.id} className={view === n.id ? "active" : ""} onClick={() => setView(n.id)}>
             {n.label}
+            {n.id === "notifications" && unread > 0 && (
+              <span style={{
+                marginLeft: 8, background: "var(--amber)", color: "#fff", borderRadius: 999,
+                fontSize: 11, fontWeight: 700, padding: "1px 7px",
+              }}>{unread}</span>
+            )}
           </button>
         ))}
         <div className="nav-footer">
-          {isEmpty && <button onClick={() => seedDemoData(memory)}>Load demo business</button>}
-          <button onClick={() => memory.exportJson(workspace.name)}>Export Business Memory</button>
+          {isEmpty && can(role, "import_data") && <button onClick={() => seedDemoData(memory)}>Load demo business</button>}
+          {can(role, "export_memory") && (
+            <button onClick={() => memory.exportJson(workspace.name)}>Export Business Memory</button>
+          )}
           {!onSignOut && (
             <button
               onClick={() => {
@@ -442,8 +476,22 @@ function Workspace({
           transition={{ duration: 0.22, ease: "easeOut" }}
         >
          <ErrorBoundary key={view}>
+          {role === "viewer" && (
+            <div className="quiet" style={{ marginBottom: 16, textAlign: "left" }}>
+              You have <strong>view-only</strong> access to {workspace.name}. You can see decisions and
+              reports; changes are reserved for staff and managers.
+            </div>
+          )}
           {view === "today" && (
             <Today workspaceName={workspace.name} state={state} insights={insights} onDecide={onDecide} />
+          )}
+          {view === "notifications" && (
+            <NotificationsView
+              state={state}
+              notifications={notifications}
+              workspaceId={workspace.id}
+              onOpenView={(v) => setView(v)}
+            />
           )}
           {view === "orders" && <OrdersView state={state} memory={memory} workspaceName={workspace.name} />}
           {view === "finance" && <FinanceView state={state} memory={memory} />}
@@ -453,6 +501,15 @@ function Workspace({
           {view === "analytics" && <AnalyticsView state={state} />}
           {view === "ask" && <AskView state={state} />}
           {view === "import" && <ImportView memory={memory} />}
+          {view === "team" && (
+            <TeamView
+              client={onSignOut ? supabase : null}
+              workspaceId={workspace.id}
+              myRole={role}
+              myUserId={userId}
+              ownerId={workspace.ownerId ?? ""}
+            />
+          )}
           {view === "memory" && <MemoryView memory={memory} />}
          </ErrorBoundary>
         </motion.div>

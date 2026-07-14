@@ -24,7 +24,9 @@
 | Supabase setup helper — `APPLY_ALL.sql` (all 33 migrations in one paste-once file) + `build-apply-all.ps1` + `SETUP.md` | **Done** — for recreating a lost/fresh Supabase project |
 | Naturaloe store connector — `storeConnect.ts` reads live `products` + `product_costs` from the store's Supabase; bundled fallback now uses `foreverPrices.ts` — **70 real Forever products parsed from the owner's official Morocco order form (bon de commande)**, real retail sell prices in DH + Forever costs at the standard **30% Wholesale-FBO discount** (cost = retail × 0.70, confirmed via Forever company policy). Cost factor is regenerable if the owner's discount differs | **Built & verified** (v0.11, 65-check suite; real catalog imported live, real 30% margins, MAD). Parser/generator scripts in scratchpad |
 | Polish — printable order receipts (`printReceipt` in Orders.tsx, opens a clean print window; ZPL-041 §21) + "Start fresh workspace" reset (nav footer, local mode) | **Built** (v0.12); build/verify pending tool-classifier recovery, code reviewed |
-| Waves 3–7 remainder — bank reconciliation, live connectors (store/payment/shipping APIs), mobile/POS/offline, multi-user teams & permissions | Not started — see `HANDOFF-GUIDE.md` |
+| Wave 0 completion — **Multi-user (CAP-000004 IAM)**: policy engine (`permissions.ts`: owner/manager/staff/viewer + `can()` + escalation guard), memberships/invitations/RLS (`supabase/41_zyvora_teams.sql`), Team view (invite/role/remove), role threading + UI gating + viewer banner | **Built & verified** (v0.13, 72-check suite; IAM 31%→69%, platform 31%→34%). Cloud team ops need `41_zyvora_teams.sql` applied + 2nd account to exercise end-to-end |
+| Governance integration — Canonical Product Model in `governance/`; app annotated with canonical IDs (**39 trace IDs**, was 0); `reports/implementation-coverage.md` + `implementation-synchronization.md` regenerable | **Done** — objective spec↔code traceability |
+| Waves 3–7 remainder — bank reconciliation, live connectors (store/payment/shipping APIs), mobile/POS/offline, Documents/Notifications/HR/Manufacturing modules | Not started — see governance build packs |
 
 ## Volume Status
 
