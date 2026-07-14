@@ -24,6 +24,7 @@ const NotFound = lazy(() => import('@/pages/NotFound'))
 const Blog = lazy(() => import('@/pages/Blog'))
 const BlogPost = lazy(() => import('@/pages/BlogPost'))
 const AdminLogin = lazy(() => import('@/pages/admin/AdminLogin'))
+const AdminResetPassword = lazy(() => import('@/pages/admin/AdminResetPassword'))
 const AdminDashboard = lazy(() => import('@/pages/admin/AdminDashboard'))
 
 function withTransition(node: React.ReactNode) {
@@ -58,6 +59,7 @@ export function AppRoutes() {
           <Route path="/blog" element={withTransition(<Blog />)} />
           <Route path="/blog/:slug" element={withTransition(<BlogPost />)} />
           <Route path="/admin/login" element={withTransition(<AdminLogin />)} />
+          <Route path="/admin/reset" element={withTransition(<AdminResetPassword />)} />
           <Route path="/admin" element={withTransition(<AdminDashboard />)} />
           <Route path="*" element={withTransition(<NotFound />)} />
         </Routes>
