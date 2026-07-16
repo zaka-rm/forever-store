@@ -4,7 +4,8 @@
  * or lost work. Business Memory is safe (append-only, already persisted), so
  * reloading always recovers.
  */
-import { Component, type ReactNode } from "react";
+import { Component, type ErrorInfo, type ReactNode } from "react";
+import { reportError } from "../core/telemetry";
 
 interface Props {
   children: ReactNode;
@@ -18,6 +19,10 @@ export class ErrorBoundary extends Component<Props, State> {
 
   static getDerivedStateFromError(error: Error): State {
     return { error };
+  }
+
+  componentDidCatch(error: Error, info: ErrorInfo) {
+    reportError(error, `boundary${info.componentStack ? ":" + info.componentStack.split("\n")[1]?.trim() : ""}`);
   }
 
   render() {

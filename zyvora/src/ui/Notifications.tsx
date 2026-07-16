@@ -27,19 +27,21 @@ export function NotificationsView({
   notifications,
   workspaceId,
   onOpenView,
+  onChange,
 }: {
   state: WorkspaceState;
   notifications: Notification[];
   workspaceId: string;
   onOpenView: (v: "orders" | "finance" | "inventory" | "customers" | "today") => void;
+  onChange?: () => void;
 }) {
   const [, force] = useState(0);
   const read = loadReadSet(workspaceId);
   const active = notifications.filter((n) => !read.has(n.key));
   const briefing = dailyBriefing(state, active);
 
-  const dismiss = (key: string) => { markRead(workspaceId, key); force((x) => x + 1); };
-  const dismissAll = () => { markAllRead(workspaceId, active.map((n) => n.key)); force((x) => x + 1); };
+  const dismiss = (key: string) => { markRead(workspaceId, key); force((x) => x + 1); onChange?.(); };
+  const dismissAll = () => { markAllRead(workspaceId, active.map((n) => n.key)); force((x) => x + 1); onChange?.(); };
 
   const groups: NotifPriority[] = ["high", "medium", "low"];
 

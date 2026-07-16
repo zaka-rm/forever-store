@@ -39,6 +39,20 @@ function describe(e: MemoryEvent): string {
       return "Promo deactivated";
     case "goal_set":
       return `Goal set — ${p.metric}: ${p.target}`;
+    case "period_closed":
+      return `Period closed — ${p.period} (books locked)`;
+    case "customer_contact_updated":
+      return `Contact updated — ${p.customer}`;
+    case "customer_activity_logged":
+      return `${p.dueAt ? "Follow-up scheduled" : "Activity logged"} — ${p.customer}: ${p.note}`;
+    case "customer_activity_completed":
+      return "Follow-up completed";
+    case "purchase_order_created": {
+      const lines = p.lines as { qty: number; productName: string }[];
+      return `Purchase order — ${p.supplier}: ${lines.map((l) => `${l.qty}× ${l.productName}`).join(", ")}`;
+    }
+    case "goods_received":
+      return "Goods received — stock raised";
     case "insight_presented":
       return `Insight — ${p.claim}`;
     case "decision_recorded":

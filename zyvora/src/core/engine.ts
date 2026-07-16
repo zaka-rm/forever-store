@@ -396,7 +396,11 @@ function inventoryBrain(state: WorkspaceState, out: Insight[], now: number): voi
     if (dailySales > 0) {
       const daysLeft = available / dailySales;
       const margin = daysLeft - p.leadTimeDays;
-      if (margin < 4) {
+      // Suppress the reorder alert if enough stock is already inbound on an open PO
+      // to cover the lead-time gap — don't nag about something you've already ordered.
+      const incoming = state.incoming[p.productId] ?? 0;
+      const needForLeadTime = Math.ceil(dailySales * p.leadTimeDays);
+      if (margin < 4 && incoming < needForLeadTime) {
         const orderQty = Math.ceil(p.weeklySales * 4);
         const orderValue = orderQty * p.unitCost;
         out.push({

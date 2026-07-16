@@ -1,7 +1,22 @@
 "use strict";
 
+// src/core/entitlement.ts
+var TRIAL_DAYS = 14;
+var DAY = 864e5;
+function entitlement(sub, workspaceCreatedAt, now = Date.now()) {
+  const trialEnd = workspaceCreatedAt + TRIAL_DAYS * DAY;
+  const trialDaysLeft = Math.max(0, Math.ceil((trialEnd - now) / DAY));
+  if (sub.status === "active" || sub.status === "trialing" || sub.status === "past_due") {
+    return { active: true, trialDaysLeft };
+  }
+  return { active: trialDaysLeft > 0, trialDaysLeft };
+}
+
 // src/core/format.ts
 var activeCurrency = "USD";
+function getActiveCurrency() {
+  return activeCurrency;
+}
 function money(amount) {
   try {
     return new Intl.NumberFormat(void 0, {
@@ -19,6 +34,7 @@ function projectState(events) {
   const invoices = /* @__PURE__ */ new Map();
   const products = /* @__PURE__ */ new Map();
   const orders = /* @__PURE__ */ new Map();
+  const purchaseOrders = /* @__PURE__ */ new Map();
   const promoDefs = /* @__PURE__ */ new Map();
   const promoActive = /* @__PURE__ */ new Map();
   const goals = {};
@@ -100,9 +116,31 @@ function projectState(events) {
         goals[p2.metric] = p2.target;
         break;
       }
+      case "purchase_order_created": {
+        const p2 = e.payload;
+        purchaseOrders.set(p2.poId, { ...p2 });
+        break;
+      }
+      case "goods_received": {
+        const p2 = e.payload;
+        const po = purchaseOrders.get(p2.poId);
+        if (po && !po.receivedAt) {
+          po.receivedAt = p2.at;
+          for (const line of po.lines) {
+            const prod = products.get(line.productId);
+            if (prod) prod.stock += line.qty;
+          }
+        }
+        break;
+      }
       default:
         break;
     }
+  }
+  const incoming = {};
+  for (const po of purchaseOrders.values()) {
+    if (po.receivedAt) continue;
+    for (const line of po.lines) incoming[line.productId] = (incoming[line.productId] ?? 0) + line.qty;
   }
   const usageByCode = /* @__PURE__ */ new Map();
   for (const o of orders.values()) {
@@ -129,14 +167,66 @@ function projectState(events) {
     products: [...products.values()],
     orders: [...orders.values()].sort((a, b) => b.createdAt - a.createdAt),
     promos: promos.sort((a, b) => b.createdAt - a.createdAt),
+    purchaseOrders: [...purchaseOrders.values()].sort((a, b) => b.createdAt - a.createdAt),
     goals,
-    reserved
+    reserved,
+    incoming
   };
 }
 var monthStart = (now) => {
   const d = new Date(now);
   return new Date(d.getFullYear(), d.getMonth(), 1).getTime();
 };
+function profitAndLoss(state2, start, end, periodLabel) {
+  const inPeriod = (ts) => ts !== void 0 && ts >= start && ts < end;
+  const delivered = state2.orders.filter((o) => inPeriod(o.deliveredAt) && o.status !== "returned");
+  const returned = state2.orders.filter((o) => o.status === "returned" && inPeriod(o.deliveredAt));
+  const productSales = delivered.reduce((s, o) => s + orderLinesTotal(o), 0);
+  const discounts = delivered.reduce((s, o) => s + o.discount, 0);
+  const shippingCharged = delivered.reduce((s, o) => s + o.shippingCharged, 0);
+  const invoicedSales = state2.invoices.filter((i) => inPeriod(i.paidAt)).reduce((s, i) => s + i.amount, 0);
+  const refunds = returned.reduce((s, o) => s + orderRevenue(o), 0);
+  const revenueLines = [
+    { label: "Product sales (delivered)", amount: productSales },
+    { label: "Shipping charged to customers", amount: shippingCharged },
+    ...invoicedSales ? [{ label: "Invoiced sales (paid)", amount: invoicedSales }] : [],
+    ...discounts ? [{ label: "Less: discounts", amount: -discounts }] : [],
+    ...refunds ? [{ label: "Less: refunds/returns", amount: -refunds }] : []
+  ];
+  const netRevenue = revenueLines.reduce((s, l) => s + l.amount, 0);
+  const cogs = delivered.reduce((s, o) => s + orderCogs(o), 0);
+  const grossProfit = netRevenue - cogs;
+  const shippingCost = delivered.reduce((s, o) => s + o.shippingCost, 0);
+  const codFees = delivered.reduce((s, o) => s + o.codFee, 0);
+  const packaging = delivered.reduce((s, o) => s + o.packagingCost, 0);
+  const byCategory = /* @__PURE__ */ new Map();
+  for (const e of state2.expenses) if (inPeriod(e.date)) byCategory.set(e.label, (byCategory.get(e.label) ?? 0) + e.amount);
+  const opexLines = [
+    ...shippingCost ? [{ label: "Delivery / shipping cost", amount: shippingCost }] : [],
+    ...codFees ? [{ label: "COD fees", amount: codFees }] : [],
+    ...packaging ? [{ label: "Packaging", amount: packaging }] : [],
+    ...[...byCategory.entries()].map(([label, amount]) => ({ label, amount }))
+  ];
+  const opexTotal = opexLines.reduce((s, l) => s + l.amount, 0);
+  const netProfit = grossProfit - opexTotal;
+  return {
+    periodLabel,
+    revenue: { lines: revenueLines, netRevenue },
+    cogs,
+    grossProfit,
+    grossMarginPct: netRevenue > 0 ? grossProfit / netRevenue * 100 : 0,
+    operatingExpenses: { lines: opexLines, total: opexTotal },
+    netProfit,
+    netMarginPct: netRevenue > 0 ? netProfit / netRevenue * 100 : 0,
+    ordersDelivered: delivered.length
+  };
+}
+function monthBounds(year, month) {
+  const start = new Date(year, month, 1).getTime();
+  const end = new Date(year, month + 1, 1).getTime();
+  const label = new Date(year, month, 1).toLocaleDateString(void 0, { month: "long", year: "numeric" });
+  return { start, end, label };
+}
 function goalActual(state2, metric, now = Date.now()) {
   const start = monthStart(now);
   const deliveredThisMonth = state2.orders.filter((o) => o.deliveredAt && o.deliveredAt >= start);
@@ -147,7 +237,7 @@ function goalActual(state2, metric, now = Date.now()) {
   return deliveredThisMonth.reduce((s, o) => s + orderNetProfit(o), 0);
 }
 function breakEven(state2, now = Date.now()) {
-  const DAYS90 = 90 * DAY;
+  const DAYS90 = 90 * DAY2;
   const fixed3mo = state2.expenses.filter((e) => now - e.date <= DAYS90).reduce((s, e) => s + e.amount, 0);
   const monthlyFixed = fixed3mo / 3;
   const delivered = state2.orders.filter((o) => o.status === "delivered");
@@ -180,7 +270,7 @@ function forecast(state2, now = Date.now()) {
   const collected = state2.invoices.filter((i) => i.paidAt).reduce((s, i) => s + i.amount, 0) + state2.orders.filter((o) => o.status === "delivered" && o.cashReceivedAt).reduce((s, o) => s + orderRevenue(o), 0);
   const cashAvailable = collected - state2.expenses.reduce((s, e) => s + e.amount, 0);
   const pendingCod = state2.orders.filter((o) => o.status === "delivered" && !o.cashReceivedAt).reduce((s, o) => s + orderRevenue(o), 0);
-  const exp90items = state2.expenses.filter((e) => now - e.date <= 90 * DAY);
+  const exp90items = state2.expenses.filter((e) => now - e.date <= 90 * DAY2);
   const exp90 = exp90items.reduce((s, e) => s + e.amount, 0);
   let cashNext30 = null;
   if (exp90items.length >= 3) {
@@ -268,7 +358,7 @@ function projectCustomers(state2) {
     const sorted = [...list].sort((a, b) => a.issuedAt - b.issuedAt);
     const gaps = [];
     for (let i = 1; i < sorted.length; i++) {
-      gaps.push((sorted[i].issuedAt - sorted[i - 1].issuedAt) / DAY);
+      gaps.push((sorted[i].issuedAt - sorted[i - 1].issuedAt) / DAY2);
     }
     gaps.sort((a, b) => a - b);
     const median = gaps.length === 0 ? null : gaps.length % 2 ? gaps[(gaps.length - 1) / 2] : (gaps[gaps.length / 2 - 1] + gaps[gaps.length / 2]) / 2;
@@ -299,7 +389,7 @@ function projectCustomerProfiles(state2, now = Date.now()) {
       ...orders.map((o) => o.createdAt)
     ].sort((a, b) => a - b);
     const gaps = [];
-    for (let k = 1; k < activity.length; k++) gaps.push((activity[k] - activity[k - 1]) / DAY);
+    for (let k = 1; k < activity.length; k++) gaps.push((activity[k] - activity[k - 1]) / DAY2);
     gaps.sort((a, b) => a - b);
     const median = gaps.length === 0 ? null : gaps.length % 2 ? gaps[(gaps.length - 1) / 2] : (gaps[gaps.length / 2 - 1] + gaps[gaps.length / 2]) / 2;
     const interactions = invoices.length + orders.length;
@@ -328,7 +418,7 @@ function projectCustomerProfiles(state2, now = Date.now()) {
     if (p2.interactions <= 1) tags.push("new");
     else tags.push("returning");
     if (vipNames.has(p2.name) && p2.lifetimeRevenue > 0) tags.push("vip");
-    if (p2.medianGapDays !== null && p2.medianGapDays > 0 && (now - p2.lastActivityAt) / DAY > Math.max(2 * p2.medianGapDays, 30)) {
+    if (p2.medianGapDays !== null && p2.medianGapDays > 0 && (now - p2.lastActivityAt) / DAY2 > Math.max(2 * p2.medianGapDays, 30)) {
       tags.push("at-risk");
     }
     if (p2.codReliability !== null && p2.ordersDelivered + p2.ordersRefused >= 2 && p2.codReliability < 0.6) {
@@ -338,13 +428,54 @@ function projectCustomerProfiles(state2, now = Date.now()) {
   }
   return profiles2.sort((a, b) => b.lifetimeRevenue - a.lifetimeRevenue);
 }
-var DAY = 24 * 60 * 60 * 1e3;
+function projectContacts(events) {
+  const m2 = /* @__PURE__ */ new Map();
+  for (const e of events) {
+    if (e.stream === "fact" && e.type === "customer_contact_updated") {
+      const p2 = e.payload;
+      const cur = m2.get(String(p2.customer)) ?? {};
+      m2.set(String(p2.customer), {
+        phone: p2.phone || cur.phone,
+        city: p2.city || cur.city,
+        notes: p2.notes !== void 0 ? p2.notes : cur.notes
+      });
+    }
+  }
+  return m2;
+}
+function projectActivities(events) {
+  const acts2 = /* @__PURE__ */ new Map();
+  const done = /* @__PURE__ */ new Set();
+  for (const e of events) {
+    if (e.stream !== "fact") continue;
+    if (e.type === "customer_activity_logged") {
+      const p2 = e.payload;
+      acts2.set(String(p2.activityId), {
+        activityId: String(p2.activityId),
+        customer: String(p2.customer),
+        kind: String(p2.kind),
+        note: String(p2.note),
+        dueAt: p2.dueAt,
+        at: e.ts,
+        done: false
+      });
+    } else if (e.type === "customer_activity_completed") {
+      done.add(String(e.payload.activityId));
+    }
+  }
+  for (const id of done) {
+    const a = acts2.get(id);
+    if (a) a.done = true;
+  }
+  return [...acts2.values()].sort((a, b) => (b.dueAt ?? b.at) - (a.dueAt ?? a.at));
+}
+var DAY2 = 24 * 60 * 60 * 1e3;
 
 // src/core/engine.ts
 var SUPPRESSION_WINDOW_DAYS = 30;
 var eur = money;
 function daysAgoLabel(ts, now) {
-  const d = Math.round((now - ts) / DAY);
+  const d = Math.round((now - ts) / DAY2);
   return d <= 0 ? "today" : d === 1 ? "yesterday" : `${d} days ago`;
 }
 function option(o) {
@@ -353,7 +484,7 @@ function option(o) {
 function generateInsights(state2, decisions3, now = Date.now()) {
   const insights3 = [];
   const decided = new Set(
-    decisions3.filter((d) => now - d.ts < SUPPRESSION_WINDOW_DAYS * DAY).map((d) => d.decisionKey)
+    decisions3.filter((d) => now - d.ts < SUPPRESSION_WINDOW_DAYS * DAY2).map((d) => d.decisionKey)
   );
   financeBrain(state2, insights3, now);
   customersBrain(state2, insights3, now);
@@ -368,13 +499,13 @@ function financeBrain(state2, out, now) {
   const remitted = state2.orders.filter((o) => o.status === "delivered" && o.cashReceivedAt);
   const cash = paid.reduce((s, i) => s + i.amount, 0) + remitted.reduce((s, o) => s + orderRevenue(o), 0) - state2.expenses.reduce((s, e) => s + e.amount, 0);
   const overdue2 = state2.invoices.filter(
-    (i) => !i.paidAt && now > i.issuedAt + i.dueDays * DAY
+    (i) => !i.paidAt && now > i.issuedAt + i.dueDays * DAY2
   );
   if (overdue2.length > 0) {
     const total = overdue2.reduce((s, i) => s + i.amount, 0);
     const oldest = overdue2.reduce((a, b) => a.issuedAt < b.issuedAt ? a : b);
     const oldestDaysOver = Math.round(
-      (now - (oldest.issuedAt + oldest.dueDays * DAY)) / DAY
+      (now - (oldest.issuedAt + oldest.dueDays * DAY2)) / DAY2
     );
     out.push({
       id: crypto.randomUUID(),
@@ -393,9 +524,9 @@ function financeBrain(state2, out, now) {
       guidance: overdueGuidance(oldest.customer, total)
     });
   }
-  const last30 = state2.invoices.filter((i) => now - i.issuedAt <= 30 * DAY);
+  const last30 = state2.invoices.filter((i) => now - i.issuedAt <= 30 * DAY2);
   const baselineInvoices = state2.invoices.filter(
-    (i) => now - i.issuedAt > 30 * DAY && now - i.issuedAt <= 120 * DAY
+    (i) => now - i.issuedAt > 30 * DAY2 && now - i.issuedAt <= 120 * DAY2
   );
   if (baselineInvoices.length < 4) {
     if (state2.invoices.length > 0) {
@@ -459,7 +590,7 @@ function financeBrain(state2, out, now) {
       });
     }
   }
-  const expenses90 = state2.expenses.filter((e) => now - e.date <= 90 * DAY);
+  const expenses90 = state2.expenses.filter((e) => now - e.date <= 90 * DAY2);
   if (expenses90.length >= 3) {
     const burnPerMonth = expenses90.reduce((s, e) => s + e.amount, 0) / 3;
     if (burnPerMonth > 0) {
@@ -565,7 +696,7 @@ function customersBrain(state2, out, now) {
   const customers = projectCustomers(state2);
   for (const c of customers) {
     if (c.invoiceCount < 3 || c.medianGapDays === null || c.medianGapDays <= 0) continue;
-    const daysSince = (now - c.lastInvoiceAt) / DAY;
+    const daysSince = (now - c.lastInvoiceAt) / DAY2;
     const threshold = Math.max(2 * c.medianGapDays, 30);
     if (daysSince > threshold) {
       out.push({
@@ -628,7 +759,9 @@ function inventoryBrain(state2, out, now) {
     if (dailySales > 0) {
       const daysLeft = available / dailySales;
       const margin = daysLeft - p2.leadTimeDays;
-      if (margin < 4) {
+      const incoming = state2.incoming[p2.productId] ?? 0;
+      const needForLeadTime = Math.ceil(dailySales * p2.leadTimeDays);
+      if (margin < 4 && incoming < needForLeadTime) {
         const orderQty = Math.ceil(p2.weeklySales * 4);
         const orderValue = orderQty * p2.unitCost;
         out.push({
@@ -823,8 +956,8 @@ function commerceBrain(state2, out, now) {
       confidenceNote: "High confidence: computed from each order's own recorded figures."
     });
   }
-  const collected30 = state2.orders.filter((o) => o.cashReceivedAt && now - o.cashReceivedAt <= 30 * DAY).reduce((s, o) => s + orderRevenue(o), 0) + state2.invoices.filter((i) => i.paidAt && now - i.paidAt <= 30 * DAY).reduce((s, i) => s + i.amount, 0);
-  const expenses30 = state2.expenses.filter((e) => now - e.date <= 30 * DAY).reduce((s, e) => s + e.amount, 0);
+  const collected30 = state2.orders.filter((o) => o.cashReceivedAt && now - o.cashReceivedAt <= 30 * DAY2).reduce((s, o) => s + orderRevenue(o), 0) + state2.invoices.filter((i) => i.paidAt && now - i.paidAt <= 30 * DAY2).reduce((s, i) => s + i.amount, 0);
+  const expenses30 = state2.expenses.filter((e) => now - e.date <= 30 * DAY2).reduce((s, e) => s + e.amount, 0);
   const expenseEnvelope = collected30 * ENVELOPES.expenses;
   if (collected30 > 0 && expenses30 > expenseEnvelope) {
     out.push({
@@ -938,8 +1071,8 @@ function cashCenter(state2, now = Date.now()) {
   const pendingCod = state2.orders.filter((o) => o.status === "delivered" && !o.cashReceivedAt);
   const collectedAllTime = paidInvoices.reduce((s, i) => s + i.amount, 0) + remitted.reduce((s, o) => s + orderRevenue(o), 0);
   const expensesAllTime = state2.expenses.reduce((s, e) => s + e.amount, 0);
-  const collected30 = paidInvoices.filter((i) => now - i.paidAt <= 30 * DAY).reduce((s, i) => s + i.amount, 0) + remitted.filter((o) => now - o.cashReceivedAt <= 30 * DAY).reduce((s, o) => s + orderRevenue(o), 0);
-  const expenses30 = state2.expenses.filter((e) => now - e.date <= 30 * DAY).reduce((s, e) => s + e.amount, 0);
+  const collected30 = paidInvoices.filter((i) => now - i.paidAt <= 30 * DAY2).reduce((s, i) => s + i.amount, 0) + remitted.filter((o) => now - o.cashReceivedAt <= 30 * DAY2).reduce((s, o) => s + orderRevenue(o), 0);
+  const expenses30 = state2.expenses.filter((e) => now - e.date <= 30 * DAY2).reduce((s, e) => s + e.amount, 0);
   return {
     cashAvailable: collectedAllTime - expensesAllTime,
     cashPendingCod: pendingCod.reduce((s, o) => s + orderRevenue(o), 0),
@@ -959,7 +1092,7 @@ function stateOfThings(state2, now = Date.now()) {
   const remitted = state2.orders.filter((o) => o.status === "delivered" && o.cashReceivedAt);
   const pendingCod = state2.orders.filter((o) => o.status === "delivered" && !o.cashReceivedAt);
   const cash = paid.reduce((s, i) => s + i.amount, 0) + remitted.reduce((s, o) => s + orderRevenue(o), 0) - state2.expenses.reduce((s, e) => s + e.amount, 0);
-  const last30 = state2.invoices.filter((i) => now - i.issuedAt <= 30 * DAY).reduce((s, i) => s + i.amount, 0) + state2.orders.filter((o) => o.deliveredAt && now - o.deliveredAt <= 30 * DAY).reduce((s, o) => s + orderRevenue(o), 0);
+  const last30 = state2.invoices.filter((i) => now - i.issuedAt <= 30 * DAY2).reduce((s, i) => s + i.amount, 0) + state2.orders.filter((o) => o.deliveredAt && now - o.deliveredAt <= 30 * DAY2).reduce((s, o) => s + orderRevenue(o), 0);
   const stockValue = state2.products.reduce((s, p2) => s + p2.stock * p2.unitCost, 0);
   return {
     cash,
@@ -977,6 +1110,33 @@ function stateOfThings(state2, now = Date.now()) {
 var formatMoney = money;
 
 // src/core/assistant.ts
+function businessContext(state2, now = Date.now()) {
+  const cash = cashCenter(state2, now);
+  const b = breakEven(state2, now);
+  const mb = monthBounds(new Date(now).getFullYear(), new Date(now).getMonth());
+  const pnl = profitAndLoss(state2, mb.start, mb.end, mb.label);
+  const profiles2 = projectCustomerProfiles(state2, now);
+  const things2 = stateOfThings(state2, now);
+  const margins = state2.products.filter((p2) => p2.price > 0).map((p2) => ({ n: p2.name, m: (p2.price - p2.unitCost) / p2.price * 100 })).sort((a, b2) => b2.m - a.m);
+  const lowStock = state2.products.filter((p2) => {
+    const avail = p2.stock - (state2.reserved[p2.productId] ?? 0);
+    return p2.weeklySales > 0 && avail / (p2.weeklySales / 7) < p2.leadTimeDays + 4 && (state2.incoming[p2.productId] ?? 0) === 0;
+  });
+  const atRisk = profiles2.filter((p2) => p2.tags.includes("at-risk"));
+  const overdue2 = state2.invoices.filter((i) => !i.paidAt && now > i.issuedAt + i.dueDays * DAY2);
+  const losing = state2.orders.filter((o) => o.status === "delivered" && orderNetProfit(o) < 0);
+  const L = [];
+  L.push(`Business currency: ${getActiveCurrency()}. Today: ${new Date(now).toDateString()}.`);
+  L.push(`CASH: available ${formatMoney(cash.cashAvailable)}, pending with couriers ${formatMoney(cash.cashPendingCod)}, collected last 30 days ${formatMoney(cash.collected30)}, expenses last 30 days ${formatMoney(cash.expenses30)}.`);
+  L.push(`THIS MONTH P&L (${pnl.periodLabel}): net revenue ${formatMoney(pnl.revenue.netRevenue)}, gross profit ${formatMoney(pnl.grossProfit)} (${pnl.grossMarginPct.toFixed(0)}%), net profit ${formatMoney(pnl.netProfit)} (${pnl.netMarginPct.toFixed(0)}%), ${pnl.ordersDelivered} orders delivered.`);
+  L.push(`Revenue last 30 days: ${formatMoney(things2.billedLast30)}. Average net profit per delivered order: ${formatMoney(b.avgProfitPerOrder)}. Break-even: ${b.breakEvenOrders === null ? "unreachable at current per-order profit" : `${b.breakEvenOrders} orders/month`}.`);
+  L.push(`PRODUCTS (${state2.products.length}). Highest margins: ${margins.slice(0, 5).map((x) => `${x.n} ${x.m.toFixed(0)}%`).join("; ") || "none"}.`);
+  L.push(`Low stock needing reorder: ${lowStock.map((p2) => p2.name).join(", ") || "none"}.`);
+  L.push(`CUSTOMERS (${profiles2.length}). Top by lifetime revenue: ${profiles2.slice(0, 5).map((c) => `${c.name} ${formatMoney(c.lifetimeRevenue)}`).join("; ") || "none"}. At-risk (gone quiet): ${atRisk.map((c) => c.name).join(", ") || "none"}.`);
+  L.push(`ORDERS: ${things2.openOrders} open. Delivered orders that lost money: ${losing.length}.`);
+  L.push(`Overdue invoices: ${overdue2.length}${overdue2.length ? ` totalling ${formatMoney(overdue2.reduce((s, i) => s + i.amount, 0))}` : ""}.`);
+  return L.join("\n");
+}
 var has = (q, ...words) => words.some((w) => q.includes(w));
 function askZyvora(state2, question, now = Date.now()) {
   const q = question.toLowerCase().trim();
@@ -1032,7 +1192,7 @@ function askZyvora(state2, question, now = Date.now()) {
     return {
       handled: true,
       text: `${atRisk.length} customer${atRisk.length > 1 ? "s are" : " is"} at-risk \u2014 gone quiet past their usual rhythm. Worth a low-pressure check-in.`,
-      evidence: atRisk.slice(0, 6).map((c) => ({ label: c.name, value: `${formatMoney(c.lifetimeRevenue)} lifetime \xB7 last seen ${Math.round((now - c.lastActivityAt) / DAY)} days ago` }))
+      evidence: atRisk.slice(0, 6).map((c) => ({ label: c.name, value: `${formatMoney(c.lifetimeRevenue)} lifetime \xB7 last seen ${Math.round((now - c.lastActivityAt) / DAY2)} days ago` }))
     };
   }
   if (has(q, "top customer", "best customer", "biggest customer", "most valuable")) {
@@ -1046,7 +1206,7 @@ function askZyvora(state2, question, now = Date.now()) {
     };
   }
   if (has(q, "profit")) {
-    const profit30 = state2.orders.filter((o) => o.deliveredAt && now - o.deliveredAt <= 30 * DAY).reduce((s, o) => s + orderNetProfit(o), 0);
+    const profit30 = state2.orders.filter((o) => o.deliveredAt && now - o.deliveredAt <= 30 * DAY2).reduce((s, o) => s + orderNetProfit(o), 0);
     const b = breakEven(state2, now);
     return {
       handled: true,
@@ -2066,10 +2226,93 @@ function canManageMember(actor, target2, newRole) {
   return true;
 }
 
+// src/core/notifications.ts
+var PRIORITY_RANK = { high: 0, medium: 1, low: 2 };
+var CONFIRM_HOURS = 12;
+var COLLECT_DAYS = 3;
+function insightToNotification(i, now) {
+  const priority = i.guidance ? i.layer === "strategic" || i.layer === "tactical" ? "high" : "medium" : "low";
+  const view = i.domain === "finance" || i.domain === "marketing" ? "finance" : i.domain === "inventory" ? "inventory" : i.domain === "customers" ? "customers" : "today";
+  return {
+    key: "insight:" + i.decisionKey,
+    priority,
+    category: i.domain === "marketing" ? "finance" : i.domain,
+    title: i.claim,
+    body: i.reasoning,
+    at: now,
+    actionView: view
+  };
+}
+function generateNotifications(state2, insights3, activities = [], now = Date.now()) {
+  const out = insights3.map((i) => insightToNotification(i, now));
+  for (const a of activities) {
+    if (!a.done && a.dueAt && a.dueAt <= now) {
+      const daysOver = Math.round((now - a.dueAt) / DAY2);
+      out.push({
+        key: "followup:" + a.activityId,
+        priority: "high",
+        category: "customers",
+        title: `Follow up with ${a.customer}${daysOver > 0 ? ` \u2014 ${daysOver}d overdue` : " \u2014 due today"}`,
+        body: a.note,
+        at: a.dueAt,
+        actionView: "customers"
+      });
+    }
+  }
+  for (const o of state2.orders) {
+    if (o.status === "pending" && now - o.createdAt > CONFIRM_HOURS * 36e5) {
+      const hours = Math.round((now - o.createdAt) / 36e5);
+      out.push({
+        key: "confirm:" + o.orderId,
+        priority: "high",
+        category: "orders",
+        title: `Confirm ${o.customer}'s order \u2014 pending ${hours}h`,
+        body: "Unconfirmed COD orders refuse far more often. A quick confirmation call protects the sale before you ship.",
+        at: o.createdAt,
+        actionView: "orders"
+      });
+    }
+    if (o.status === "delivered" && !o.cashReceivedAt && o.deliveredAt && now - o.deliveredAt > COLLECT_DAYS * DAY2) {
+      const days = Math.round((now - o.deliveredAt) / DAY2);
+      out.push({
+        key: "collect:" + o.orderId,
+        priority: "medium",
+        category: "finance",
+        title: `Cash not collected from courier \u2014 ${o.customer}, ${formatMoney(orderRevenue(o))}`,
+        body: `Delivered ${days} days ago but the courier hasn't remitted the cash. Chase the remittance so it isn't lost.`,
+        at: o.deliveredAt,
+        actionView: "orders"
+      });
+    }
+  }
+  return out.sort((a, b) => PRIORITY_RANK[a.priority] - PRIORITY_RANK[b.priority] || a.at - b.at);
+}
+function dailyBriefing(state2, notifications, now = Date.now()) {
+  const startToday = new Date(now);
+  startToday.setHours(0, 0, 0, 0);
+  const startYesterday = startToday.getTime() - DAY2;
+  const inYesterday = (ts) => ts !== void 0 && ts >= startYesterday && ts < startToday.getTime();
+  const deliveredY = state2.orders.filter((o) => inYesterday(o.deliveredAt));
+  const revenueY = deliveredY.reduce((s, o) => s + orderRevenue(o), 0);
+  const cashY = state2.orders.filter((o) => inYesterday(o.cashReceivedAt)).reduce((s, o) => s + orderRevenue(o), 0);
+  const high = notifications.filter((n) => n.priority === "high").length;
+  const hour = new Date(now).getHours();
+  const greeting = hour < 12 ? "Good morning" : hour < 18 ? "Good afternoon" : "Good evening";
+  const headline = high === 0 ? "Nothing urgent needs you right now." : `${high} thing${high > 1 ? "s" : ""} need${high > 1 ? "" : "s"} your attention today.`;
+  return {
+    greeting,
+    revenueYesterday: revenueY,
+    ordersDeliveredYesterday: deliveredY.length,
+    cashCollectedYesterday: cashY,
+    needsAttention: high,
+    headline
+  };
+}
+
 // src/core/seed.ts
 function seedDemoData(memory2) {
   const now = Date.now();
-  const at = (daysAgo) => now - daysAgo * DAY;
+  const at = (daysAgo) => now - daysAgo * DAY2;
   let n = 0;
   const invoice = (customer, amount, daysAgo, dueDays, paidDaysAgo) => {
     const invoiceId = `INV-${String(++n).padStart(3, "0")}`;
@@ -2382,6 +2625,9 @@ var aMargin = askZyvora(state, "which product has the highest margin?");
 check("assistant answers product margin", aMargin.handled && aMargin.evidence.length > 0);
 var aJunk = askZyvora(state, "what is the meaning of life?");
 check("assistant admits out-of-scope (never fabricates)", !aJunk.handled);
+var ctx = businessContext(state);
+check("business context brief includes real cash + P&L facts", /CASH:/.test(ctx) && /P&L/.test(ctx) && ctx.length > 200);
+check("business context lists products and customers", /PRODUCTS/.test(ctx) && /CUSTOMERS/.test(ctx));
 console.log("\nCSV import (Wave 6):");
 var csv = 'Name,Selling Price,Cost,Qty\n"Aloe Vera Gel",120,70,40\nForever Bee Honey,95,55,25\n,10,5,3';
 var p = parseCsv(csv);
@@ -2416,6 +2662,50 @@ check("manager manages team but can't delete workspace", can("manager", "invite_
 check("escalation guard: owner cannot be demoted/removed", !canManageMember("manager", "owner"));
 check("escalation guard: staff cannot change roles", !canManageMember("staff", "viewer"));
 check("escalation guard: cannot promote above your own rank", !canManageMember("manager", "staff", "owner") && canManageMember("manager", "staff", "manager"));
+console.log("\nNotifications & briefing (CAP-000010):");
+var notifs = generateNotifications(state, insights);
+check("notifications generated from insights + triggers", notifs.length > 0, `count=${notifs.length}`);
+check("notifications sorted high-priority first", notifs.every((n, i, a) => i === 0 || rankP(a[i - 1].priority) <= rankP(n.priority)));
+check("every notification has a stable key + action view", notifs.every((n) => n.key.length > 0 && !!n.actionView));
+check("high-priority items include guidance decisions", notifs.some((n) => n.priority === "high"));
+var brief = dailyBriefing(state, notifs);
+check("daily briefing summarizes yesterday + attention count", typeof brief.revenueYesterday === "number" && brief.headline.length > 0);
+function rankP(p2) {
+  return p2 === "high" ? 0 : p2 === "medium" ? 1 : 2;
+}
+console.log("\nProfit & Loss statement (CAP-000005 FEAT-000040):");
+var wide = monthBounds((/* @__PURE__ */ new Date()).getFullYear(), (/* @__PURE__ */ new Date()).getMonth());
+var pnlAll = profitAndLoss(state, 0, Date.now() + 864e5, "all time");
+check("P&L builds revenue \u2192 gross profit \u2192 net profit", pnlAll.revenue.netRevenue !== 0 && typeof pnlAll.netProfit === "number");
+check("gross profit = net revenue \u2212 COGS", Math.abs(pnlAll.grossProfit - (pnlAll.revenue.netRevenue - pnlAll.cogs)) < 0.01);
+check("net profit = gross profit \u2212 operating expenses", Math.abs(pnlAll.netProfit - (pnlAll.grossProfit - pnlAll.operatingExpenses.total)) < 0.01);
+check("P&L counts only delivered orders", pnlAll.ordersDelivered > 0 && pnlAll.ordersDelivered <= state.orders.length);
+check("current-month P&L bounds are one calendar month", wide.end - wide.start >= 27 * 24 * 3600 * 1e3);
+console.log("\nCRM depth \u2014 contacts & activities (CAP-000007):");
+var crmMem = new TestMemory();
+crmMem.append("fact", "customer_contact_updated", { customer: "Atlas Retail", phone: "0600", city: "Casablanca", notes: "big account", at: Date.now() });
+crmMem.append("fact", "customer_contact_updated", { customer: "Atlas Retail", phone: "0611", at: Date.now() });
+var aid = crypto.randomUUID();
+crmMem.append("fact", "customer_activity_logged", { activityId: aid, customer: "Atlas Retail", kind: "followup", note: "call re reorder", dueAt: Date.now() - 864e5, at: Date.now() });
+var contacts = projectContacts(crmMem.all());
+check("contact folds latest-wins per field", contacts.get("Atlas Retail")?.phone === "0611" && contacts.get("Atlas Retail")?.city === "Casablanca");
+var acts = projectActivities(crmMem.all());
+check("activity logged and open", acts.length === 1 && !acts[0].done);
+crmMem.append("fact", "customer_activity_completed", { activityId: aid, at: Date.now() });
+acts = projectActivities(crmMem.all());
+check("activity marked done via completion event", acts[0].done === true);
+console.log("\nPurchase orders & receipts (CAP-000006 FEAT-000045):");
+var invMem = new TestMemory();
+invMem.append("fact", "product_added", { productId: "PX", name: "Widget", stock: 5, weeklySales: 7, leadTimeDays: 14, unitCost: 10, price: 25 });
+var poId = crypto.randomUUID();
+invMem.append("fact", "purchase_order_created", { poId, supplier: "Forever", lines: [{ productId: "PX", productName: "Widget", qty: 40, unitCost: 9 }], createdAt: Date.now() });
+var invState = projectState(invMem.all());
+check("open PO shows as incoming, stock unchanged", invState.incoming["PX"] === 40 && invState.products[0].stock === 5);
+var insWithPo = generateInsights(invState, []);
+check("stockout alert suppressed when enough is already inbound", !insWithPo.some((i) => i.decisionKey === "inventory.stockout.PX"));
+invMem.append("fact", "goods_received", { poId, at: Date.now() });
+invState = projectState(invMem.all());
+check("receiving raises stock and clears incoming", invState.products[0].stock === 45 && !invState.incoming["PX"]);
 console.log("\nConstitutional invariants:");
 check("insights are ranked descending", insights.every((x, i, a) => i === 0 || a[i - 1].score >= x.score));
 var withGuidance = insights.filter((i) => i.guidance);
@@ -2447,6 +2737,18 @@ memory.append("outcome", "outcome_recorded", {
   note: "Arrived in time; zero stockout days."
 });
 check("outcome linked to decision", projectDecisions(memory.all())[0].hasOutcome);
+console.log("\nBilling entitlement (vendor productization):");
+{
+  const now = Date.now();
+  const day = 864e5;
+  const fresh = entitlement({ status: "none", currentPeriodEnd: null }, now - 3 * day, now);
+  check("new workspace is in trial with days counting down", fresh.active && fresh.trialDaysLeft === 11);
+  const expired = entitlement({ status: "none", currentPeriodEnd: null }, now - 20 * day, now);
+  check("expired trial without subscription is gated", !expired.active && expired.trialDaysLeft === 0);
+  check("active subscription is entitled past trial", entitlement({ status: "active", currentPeriodEnd: now + 30 * day }, now - 400 * day, now).active);
+  check("past_due keeps access (grace, never cut off over a bank hiccup)", entitlement({ status: "past_due", currentPeriodEnd: now }, now - 400 * day, now).active);
+  check("canceled falls back to trial rule (expired \u2192 gated)", !entitlement({ status: "canceled", currentPeriodEnd: null }, now - 400 * day, now).active);
+}
 console.log(failures === 0 ? "\nALL CHECKS PASSED" : `
 ${failures} CHECK(S) FAILED`);
 process.exit(failures === 0 ? 0 : 1);

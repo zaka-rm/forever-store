@@ -99,6 +99,54 @@ export interface OrderCashReceived {
   at: number;
 }
 
+// ---------- Procurement (CAP-000006 — FEAT-000045 purchase orders & receipts) ----------
+
+export interface PoLine {
+  productId: string;
+  productName: string;
+  qty: number;
+  unitCost: number; // what you pay the supplier (Forever) per unit
+}
+
+export interface PurchaseOrderCreated {
+  poId: string;
+  supplier: string;
+  lines: PoLine[];
+  createdAt: number;
+}
+
+/** Receiving a PO increases stock and closes the incoming quantity (append-only). */
+export interface GoodsReceived {
+  poId: string;
+  at: number;
+}
+
+// ---------- CRM depth (CAP-000007 — FEAT-000049 contacts, FEAT-000052 activities) ----------
+
+export interface CustomerContactUpdated {
+  customer: string; // matches the name used on orders/invoices
+  phone?: string;
+  city?: string;
+  notes?: string;
+  at: number;
+}
+
+export type ActivityKind = "call" | "message" | "visit" | "note" | "followup";
+
+export interface CustomerActivityLogged {
+  activityId: string;
+  customer: string;
+  kind: ActivityKind;
+  note: string;
+  dueAt?: number; // set for a follow-up task
+  at: number;
+}
+
+export interface CustomerActivityCompleted {
+  activityId: string;
+  at: number;
+}
+
 // ---------- Discounts & promos (Wave 1 completion — ZPL-040 §8, ZPL-041 §4) ----------
 
 export type PromoType = "percentage" | "fixed";
@@ -146,6 +194,10 @@ export interface Order extends OrderCreated {
   cashReceivedAt?: number;
 }
 
+export interface PurchaseOrder extends PurchaseOrderCreated {
+  receivedAt?: number;
+}
+
 export interface Promo extends PromoCreated {
   active: boolean;
   timesUsed: number; // server-counted from non-cancelled orders referencing this code
@@ -157,10 +209,13 @@ export interface WorkspaceState {
   products: Product[];
   orders: Order[];
   promos: Promo[];
+  purchaseOrders: PurchaseOrder[];
   /** Latest target per goal metric (empty if none set). */
   goals: Partial<Record<GoalMetric, number>>;
   /** Units reserved by open orders (pending/confirmed/shipped), per productId. */
   reserved: Record<string, number>;
+  /** Units on open (not-yet-received) purchase orders, per productId. */
+  incoming: Record<string, number>;
 }
 
 // ---------- Insight & Decision layers (D.1 levels 4–5; CODEX 10 P4.6) ----------

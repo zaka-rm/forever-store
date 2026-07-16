@@ -25,8 +25,8 @@ Production evidence verified: No
 
 - Status: OBSERVED
 - Authority: observational
-- Files: 29
-- Trace IDs: 39
+- Files: 31
+- Trace IDs: 52
 - Finding: Evidence observed; authority remains as declared and does not overwrite canonical meaning.
 
 ## SRC-ARCH-LIBRARY — repository
@@ -34,7 +34,7 @@ Production evidence verified: No
 - Status: OBSERVED
 - Authority: observational
 - Files: 7
-- Trace IDs: 0
+- Trace IDs: 6
 - Finding: Evidence observed; authority remains as declared and does not overwrite canonical meaning.
 
 ## SRC-SUPABASE — database_schema
@@ -58,7 +58,7 @@ Production evidence verified: No
 - Status: OBSERVED
 - Authority: evidence
 - Files: 1
-- Trace IDs: 1
+- Trace IDs: 7
 - Finding: Evidence observed; authority remains as declared and does not overwrite canonical meaning.
 
 ## SRC-DEPLOYMENT — deployment

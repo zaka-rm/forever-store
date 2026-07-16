@@ -6,11 +6,19 @@
  * Canonical (governance/): CAP-000005 Finance — FEAT-000038 budgets & variance,
  * FEAT-000039 cash-flow forecasting.
  */
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { formatMoney } from "../core/engine";
 import { getActiveCurrency } from "../core/format";
 import type { MemoryStore } from "../core/memory";
-import { breakEven, goalActual, simulateProfit } from "../core/projections";
+import {
+  breakEven,
+  closedPeriods,
+  goalActual,
+  monthBounds,
+  profitAndLoss,
+  simulateProfit,
+  type ProfitAndLoss,
+} from "../core/projections";
 import type { GoalMetric, WorkspaceState } from "../core/types";
 
 const GOALS: { metric: GoalMetric; label: string; money: boolean }[] = [
@@ -22,9 +30,86 @@ const GOALS: { metric: GoalMetric; label: string; money: boolean }[] = [
 export function FinanceTools({ state, memory }: { state: WorkspaceState; memory: MemoryStore }) {
   return (
     <>
+      <ProfitLossStatement state={state} memory={memory} />
       <Goals state={state} memory={memory} />
       <BreakEven state={state} />
       <Simulator />
+    </>
+  );
+}
+
+/** Profit & Loss statement with period selection + permanent period close (FEAT-000040). */
+function ProfitLossStatement({ state, memory }: { state: WorkspaceState; memory: MemoryStore }) {
+  const now = Date.now();
+  // Offer the current month + the previous 5 months.
+  const months = useMemo(() => {
+    const out: { key: string; year: number; month: number; label: string }[] = [];
+    const d = new Date(now);
+    for (let i = 0; i < 6; i++) {
+      const m = new Date(d.getFullYear(), d.getMonth() - i, 1);
+      const b = monthBounds(m.getFullYear(), m.getMonth());
+      out.push({ key: `${m.getFullYear()}-${m.getMonth()}`, year: m.getFullYear(), month: m.getMonth(), label: b.label });
+    }
+    return out;
+  }, [now]);
+  const [selected, setSelected] = useState(months[0].key);
+  const closed = useMemo(() => closedPeriods(memory.all()), [memory.all().length]);
+
+  const sel = months.find((m) => m.key === selected)!;
+  const bounds = monthBounds(sel.year, sel.month);
+  const isCurrentMonth = selected === months[0].key;
+  const lockedPnl = closed.get(selected);
+  const pnl: ProfitAndLoss = lockedPnl ?? profitAndLoss(state, bounds.start, bounds.end, bounds.label);
+
+  const closePeriod = () => {
+    if (isCurrentMonth) return;
+    if (!confirm(`Close ${bounds.label}? This permanently locks its Profit & Loss — the figures won't change afterward, even if past records are corrected. This is your book close.`)) return;
+    memory.append("decision", "period_closed", { period: selected, pnl, closedAt: Date.now() });
+  };
+
+  const row = (l: { label: string; amount: number }, strong = false) => (
+    <tr key={l.label} className={strong ? "grand" : ""}>
+      <td style={strong ? { fontWeight: 700 } : undefined}>{l.label}</td>
+      <td style={{ textAlign: "right", fontWeight: strong ? 700 : 400 }}>{formatMoney(l.amount)}</td>
+    </tr>
+  );
+
+  return (
+    <>
+      <h2>Profit &amp; Loss</h2>
+      <div className="form-row">
+        <select value={selected} onChange={(e) => setSelected(e.target.value)}>
+          {months.map((m) => (
+            <option key={m.key} value={m.key}>{m.label}{closed.has(m.key) ? " (closed)" : ""}</option>
+          ))}
+        </select>
+        {!isCurrentMonth && !lockedPnl && (
+          <button className="btn subtle" onClick={closePeriod}>Close this period</button>
+        )}
+        {lockedPnl && <span className="confidence-note" style={{ alignSelf: "center" }}>Closed — figures are locked.</span>}
+      </div>
+      <div className="card">
+        <table className="records" style={{ border: "none" }}>
+          <tbody>
+            <tr><td colSpan={2} style={{ fontWeight: 600, color: "var(--ink-soft)" }}>Revenue</td></tr>
+            {pnl.revenue.lines.map((l) => row(l))}
+            {row({ label: "Net revenue", amount: pnl.revenue.netRevenue }, true)}
+            <tr><td colSpan={2} style={{ height: 8 }}></td></tr>
+            {row({ label: "Cost of goods sold", amount: -pnl.cogs })}
+            {row({ label: `Gross profit (${pnl.grossMarginPct.toFixed(0)}% margin)`, amount: pnl.grossProfit }, true)}
+            <tr><td colSpan={2} style={{ height: 8 }}></td></tr>
+            <tr><td colSpan={2} style={{ fontWeight: 600, color: "var(--ink-soft)" }}>Operating expenses</td></tr>
+            {pnl.operatingExpenses.lines.map((l) => row({ label: l.label, amount: -l.amount }))}
+            {row({ label: "Total operating expenses", amount: -pnl.operatingExpenses.total }, true)}
+            <tr><td colSpan={2} style={{ height: 8 }}></td></tr>
+            {row({ label: `Net profit (${pnl.netMarginPct.toFixed(0)}% margin)`, amount: pnl.netProfit }, true)}
+          </tbody>
+        </table>
+        <p className="confidence-note">
+          {pnl.ordersDelivered} orders delivered in {pnl.periodLabel}. Revenue is recognized on
+          delivery; COD orders carry their real Forever cost. {lockedPnl ? "This period is closed and locked." : isCurrentMonth ? "The current month is still open and updates live." : "Close the period to lock these figures permanently."}
+        </p>
+      </div>
     </>
   );
 }

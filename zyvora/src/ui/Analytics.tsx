@@ -6,8 +6,10 @@
  * thin rounded marks, recessive axes, direct labels only where they earn it,
  * native per-mark tooltips, no dual axes.
  * Canonical (governance/): CAP-000008 Analytics — FEAT-000059 dashboard
- * composition, FEAT-000063 exports, FEAT-000064 forecast overlays.
+ * composition, FEAT-000060 filters, FEAT-000061 drill-down, FEAT-000063
+ * exports, FEAT-000064 forecast overlays.
  */
+import { useState } from "react";
 import { formatMoney } from "../core/engine";
 import {
   DAY,
@@ -15,7 +17,7 @@ import {
   orderNetProfit,
   orderRevenue,
 } from "../core/projections";
-import type { WorkspaceState } from "../core/types";
+import type { Order, WorkspaceState } from "../core/types";
 
 const MARK = "#0f8a5f"; // validated: lightness band, chroma floor, contrast vs surface
 
@@ -23,6 +25,37 @@ interface MonthPoint {
   key: string;
   label: string;
   value: number;
+}
+
+interface DrillRow { key: string; label: string; detail: string; amount: number }
+
+/**
+ * Underlying records for one month bucket — the drill-down target (FEAT-000061).
+ * `source: "revenue"` matches exactly what the revenue chart bucketed (orders +
+ * invoices), so drill-down never disagrees with the bar it explains (Law II —
+ * One Source of Truth felt as: no two numbers that should agree ever disagree).
+ */
+function drillDown(state: WorkspaceState, start: number, end: number, source: "revenue" | "profit"): DrillRow[] {
+  const rows: DrillRow[] = [];
+  const orders = state.orders.filter(
+    (o) => o.deliveredAt && o.deliveredAt >= start && o.deliveredAt < end && o.status !== "returned"
+  );
+  for (const o of orders) {
+    rows.push({
+      key: o.orderId,
+      label: `${o.customer} — ${o.lines.map((l) => `${l.qty}× ${l.productName}`).join(", ")}`,
+      detail: source === "revenue" ? "order" : `net ${formatMoney(orderNetProfit(o))}`,
+      amount: source === "revenue" ? orderRevenue(o) : orderNetProfit(o),
+    });
+  }
+  if (source === "revenue") {
+    for (const i of state.invoices) {
+      if (i.issuedAt >= start && i.issuedAt < end) {
+        rows.push({ key: i.invoiceId, label: `${i.customer} — invoice`, detail: "invoice", amount: i.amount });
+      }
+    }
+  }
+  return rows.sort((a, b) => b.amount - a.amount);
 }
 
 function lastMonths(n: number, now: number): { key: string; label: string; start: number; end: number }[] {
@@ -57,7 +90,7 @@ function bucket(
 }
 
 /** Single-series bar chart: thin marks, rounded data-ends, 0-baseline, negatives supported. */
-function BarChart({ data }: { data: MonthPoint[] }) {
+function BarChart({ data, onSelect, selectedKey }: { data: MonthPoint[]; onSelect?: (key: string) => void; selectedKey?: string | null }) {
   const W = 620;
   const H = 170;
   const PAD_L = 8;
@@ -82,11 +115,22 @@ function BarChart({ data }: { data: MonthPoint[] }) {
         const top = d.value >= 0 ? y(d.value) : zero;
         const h = Math.max(1.5, Math.abs(y(d.value) - zero));
         const showLabel = i === peakIdx || i === lastIdx; // selective direct labels
+        const isSelected = selectedKey === d.key;
         return (
-          <g key={d.key}>
-            <rect x={x} y={top} width={bw} height={h} rx={4} fill={MARK}>
-              <title>{`${d.label}: ${formatMoney(d.value)}`}</title>
+          <g
+            key={d.key}
+            onClick={() => onSelect?.(d.key)}
+            style={{ cursor: onSelect ? "pointer" : undefined }}
+          >
+            <rect
+              x={x} y={top} width={bw} height={h} rx={4} fill={MARK}
+              opacity={!selectedKey || isSelected ? 1 : 0.35}
+            >
+              <title>{`${d.label}: ${formatMoney(d.value)}${onSelect ? " — click to see orders" : ""}`}</title>
             </rect>
+            {isSelected && (
+              <rect x={x - 2} y={top - 2} width={bw + 4} height={h + 4} rx={5} fill="none" stroke={MARK} strokeWidth={1.5} />
+            )}
             {showLabel && (
               <text
                 x={x + bw / 2}
@@ -112,18 +156,50 @@ function ChartCard({
   title,
   note,
   data,
+  drillable,
+  state,
+  months,
 }: {
   title: string;
   note?: string;
   data: MonthPoint[];
+  drillable?: "revenue" | "profit";
+  state?: WorkspaceState;
+  months?: ReturnType<typeof lastMonths>;
 }) {
+  const [selected, setSelected] = useState<string | null>(null);
   const total = data.reduce((s, d) => s + d.value, 0);
   if (total === 0 && data.every((d) => d.value === 0)) return null;
+
+  const bucket = drillable && selected ? months?.find((m) => m.key === selected) : undefined;
+  const drilled = bucket && state ? drillDown(state, bucket.start, bucket.end, drillable!) : [];
+
   return (
     <div className="card">
       <p className="claim" style={{ fontSize: 15 }}>{title}</p>
       {note && <p className="confidence-note" style={{ marginTop: 0 }}>{note}</p>}
-      <BarChart data={data} />
+      <BarChart data={data} onSelect={drillable ? (k) => setSelected(k === selected ? null : k) : undefined} selectedKey={selected} />
+      {bucket && (
+        <div style={{ marginTop: 10, paddingTop: 10, borderTop: "1px solid var(--line)" }}>
+          <p className="confidence-note" style={{ marginTop: 0, marginBottom: 6 }}>
+            {drilled.length} record{drilled.length === 1 ? "" : "s"} behind {bucket.label} — this always matches the bar above.
+          </p>
+          {drilled.length === 0 ? (
+            <p className="confidence-note">Nothing recorded in this month.</p>
+          ) : (
+            <table className="evidence-table">
+              <tbody>
+                {drilled.slice(0, 12).map((r) => (
+                  <tr key={r.key}>
+                    <td>{r.label}</td>
+                    <td>{formatMoney(r.amount)}{drillable === "profit" ? "" : ` (${r.detail})`}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          )}
+        </div>
+      )}
       <details className="layers">
         <summary>Table view</summary>
         <table className="evidence-table">
@@ -205,7 +281,8 @@ function Forecast({ state }: { state: WorkspaceState }) {
 
 export function AnalyticsView({ state }: { state: WorkspaceState }) {
   const now = Date.now();
-  const months = lastMonths(6, now);
+  const [rangeMonths, setRangeMonths] = useState(6);
+  const months = lastMonths(rangeMonths, now);
 
   const revenue = bucket(months, [
     ...state.invoices.map((i) => ({ ts: i.issuedAt, amount: i.amount })),
@@ -247,15 +324,34 @@ export function AnalyticsView({ state }: { state: WorkspaceState }) {
         <div className="quiet">Charts appear as your invoices, orders, and expenses accumulate.</div>
       ) : (
         <>
+          <div className="form-row" style={{ marginBottom: 4 }}>
+            <span className="confidence-note" style={{ marginTop: 0 }}>Range:</span>
+            {[3, 6, 12].map((n) => (
+              <button
+                key={n}
+                className={`btn ${rangeMonths === n ? "" : "subtle"}`}
+                onClick={() => setRangeMonths(n)}
+              >
+                {n} months
+              </button>
+            ))}
+          </div>
+
           <ChartCard
             title="Revenue by month"
-            note="Invoices issued plus COD orders on their delivery date — the month the revenue was actually earned."
+            note="Invoices issued plus COD orders on their delivery date — the month the revenue was actually earned. Click a bar to see exactly what's behind it."
             data={revenue}
+            drillable="revenue"
+            state={state}
+            months={months}
           />
           <ChartCard
             title="Net profit from COD orders by month"
-            note="After product cost, shipping, COD fees, and packaging. Invoices are excluded — they don't carry cost data."
+            note="After product cost, shipping, COD fees, and packaging. Invoices are excluded — they don't carry cost data. Click a bar to drill down."
             data={profit}
+            drillable="profit"
+            state={state}
+            months={months}
           />
           <ChartCard title="Expenses by month" data={expenses} />
 

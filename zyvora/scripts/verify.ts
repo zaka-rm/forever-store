@@ -3,6 +3,7 @@
  * Runs the same core the UI uses, against the demo seed, and asserts the
  * constitutional behaviors. Exit code 0 = all checks pass.
  */
+import { entitlement } from "../src/core/entitlement";
 import { generateInsights, stateOfThings } from "../src/core/engine";
 import {
   breakEven,
@@ -16,12 +17,13 @@ import {
   projectState,
   simulateProfit,
 } from "../src/core/projections";
-import { askZyvora } from "../src/core/assistant";
+import { askZyvora, businessContext } from "../src/core/assistant";
 import { autoMap, buildRow, parseCsv } from "../src/core/csv";
 import { NATURALOE_CATALOG } from "../src/core/naturaloeCatalog";
 import { FOREVER_PRICES } from "../src/core/foreverPrices";
 import { can, canManageMember } from "../src/core/permissions";
 import { dailyBriefing, generateNotifications } from "../src/core/notifications";
+import { monthBounds, profitAndLoss, projectActivities, projectContacts } from "../src/core/projections";
 import { seedDemoData } from "../src/core/seed";
 import type { MemoryEvent, Order, Stream } from "../src/core/types";
 
@@ -164,6 +166,9 @@ const aMargin = askZyvora(state, "which product has the highest margin?");
 check("assistant answers product margin", aMargin.handled && aMargin.evidence.length > 0);
 const aJunk = askZyvora(state, "what is the meaning of life?");
 check("assistant admits out-of-scope (never fabricates)", !aJunk.handled);
+const ctx = businessContext(state);
+check("business context brief includes real cash + P&L facts", /CASH:/.test(ctx) && /P&L/.test(ctx) && ctx.length > 200);
+check("business context lists products and customers", /PRODUCTS/.test(ctx) && /CUSTOMERS/.test(ctx));
 
 console.log("\nCSV import (Wave 6):");
 const csv = 'Name,Selling Price,Cost,Qty\n"Aloe Vera Gel",120,70,40\nForever Bee Honey,95,55,25\n,10,5,3';
@@ -213,6 +218,43 @@ const brief = dailyBriefing(state, notifs);
 check("daily briefing summarizes yesterday + attention count", typeof brief.revenueYesterday === "number" && brief.headline.length > 0);
 function rankP(p: string) { return p === "high" ? 0 : p === "medium" ? 1 : 2; }
 
+console.log("\nProfit & Loss statement (CAP-000005 FEAT-000040):");
+// A wide window covering the whole seeded history.
+const wide = monthBounds(new Date().getFullYear(), new Date().getMonth());
+const pnlAll = profitAndLoss(state, 0, Date.now() + 86400000, "all time");
+check("P&L builds revenue → gross profit → net profit", pnlAll.revenue.netRevenue !== 0 && typeof pnlAll.netProfit === "number");
+check("gross profit = net revenue − COGS", Math.abs(pnlAll.grossProfit - (pnlAll.revenue.netRevenue - pnlAll.cogs)) < 0.01);
+check("net profit = gross profit − operating expenses", Math.abs(pnlAll.netProfit - (pnlAll.grossProfit - pnlAll.operatingExpenses.total)) < 0.01);
+check("P&L counts only delivered orders", pnlAll.ordersDelivered > 0 && pnlAll.ordersDelivered <= state.orders.length);
+check("current-month P&L bounds are one calendar month", wide.end - wide.start >= 27 * 24 * 3600 * 1000);
+
+console.log("\nCRM depth — contacts & activities (CAP-000007):");
+const crmMem = new TestMemory();
+crmMem.append("fact", "customer_contact_updated", { customer: "Atlas Retail", phone: "0600", city: "Casablanca", notes: "big account", at: Date.now() });
+crmMem.append("fact", "customer_contact_updated", { customer: "Atlas Retail", phone: "0611", at: Date.now() }); // latest wins on phone, keeps city
+const aid = crypto.randomUUID();
+crmMem.append("fact", "customer_activity_logged", { activityId: aid, customer: "Atlas Retail", kind: "followup", note: "call re reorder", dueAt: Date.now() - 86400000, at: Date.now() });
+const contacts = projectContacts(crmMem.all());
+check("contact folds latest-wins per field", contacts.get("Atlas Retail")?.phone === "0611" && contacts.get("Atlas Retail")?.city === "Casablanca");
+let acts = projectActivities(crmMem.all());
+check("activity logged and open", acts.length === 1 && !acts[0].done);
+crmMem.append("fact", "customer_activity_completed", { activityId: aid, at: Date.now() });
+acts = projectActivities(crmMem.all());
+check("activity marked done via completion event", acts[0].done === true);
+
+console.log("\nPurchase orders & receipts (CAP-000006 FEAT-000045):");
+const invMem = new TestMemory();
+invMem.append("fact", "product_added", { productId: "PX", name: "Widget", stock: 5, weeklySales: 7, leadTimeDays: 14, unitCost: 10, price: 25 });
+const poId = crypto.randomUUID();
+invMem.append("fact", "purchase_order_created", { poId, supplier: "Forever", lines: [{ productId: "PX", productName: "Widget", qty: 40, unitCost: 9 }], createdAt: Date.now() });
+let invState = projectState(invMem.all());
+check("open PO shows as incoming, stock unchanged", invState.incoming["PX"] === 40 && invState.products[0].stock === 5);
+const insWithPo = generateInsights(invState, []);
+check("stockout alert suppressed when enough is already inbound", !insWithPo.some((i) => i.decisionKey === "inventory.stockout.PX"));
+invMem.append("fact", "goods_received", { poId, at: Date.now() });
+invState = projectState(invMem.all());
+check("receiving raises stock and clears incoming", invState.products[0].stock === 45 && !invState.incoming["PX"]);
+
 console.log("\nConstitutional invariants:");
 check("insights are ranked descending", insights.every((x, i, a) => i === 0 || a[i - 1].score >= x.score));
 const withGuidance = insights.filter((i) => i.guidance);
@@ -243,6 +285,19 @@ memory.append("outcome", "outcome_recorded", {
   decisionEventId: decisions2[0].eventId, decisionKey: target.decisionKey, result: "good", note: "Arrived in time; zero stockout days.",
 });
 check("outcome linked to decision", projectDecisions(memory.all())[0].hasOutcome);
+
+console.log("\nBilling entitlement (vendor productization):");
+{
+  const now = Date.now();
+  const day = 86400000;
+  const fresh = entitlement({ status: "none", currentPeriodEnd: null }, now - 3 * day, now);
+  check("new workspace is in trial with days counting down", fresh.active && fresh.trialDaysLeft === 11);
+  const expired = entitlement({ status: "none", currentPeriodEnd: null }, now - 20 * day, now);
+  check("expired trial without subscription is gated", !expired.active && expired.trialDaysLeft === 0);
+  check("active subscription is entitled past trial", entitlement({ status: "active", currentPeriodEnd: now + 30 * day }, now - 400 * day, now).active);
+  check("past_due keeps access (grace, never cut off over a bank hiccup)", entitlement({ status: "past_due", currentPeriodEnd: now }, now - 400 * day, now).active);
+  check("canceled falls back to trial rule (expired → gated)", !entitlement({ status: "canceled", currentPeriodEnd: null }, now - 400 * day, now).active);
+}
 
 console.log(failures === 0 ? "\nALL CHECKS PASSED" : `\n${failures} CHECK(S) FAILED`);
 process.exit(failures === 0 ? 0 : 1);

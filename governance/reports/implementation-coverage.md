@@ -10,17 +10,17 @@ Assessed 2026-07-12. App under review: `zyvora/` MVP. Model: Canonical Product M
 |---|---|---|
 | Decision Center | **69%** (5.5/8) | 5 / 1 / 2 |
 | Business Memory | **56%** (4.5/8) | 3 / 3 / 2 |
-| AI Engine | **50%** (4/8) | 3 / 2 / 3 |
+| AI Engine | **69%** (5.5/8) | 5 / 1 / 2 |
 | Identity, Workspace, Permissions & Audit | **69%** (5.5/8) | 4 / 3 / 1 |
-| Finance | **38%** (3/8) | 1 / 4 / 3 |
-| Inventory | **56%** (4.5/8) | 4 / 1 / 3 |
-| CRM | **31%** (2.5/8) | 1 / 3 / 4 |
-| Analytics | **31%** (2.5/8) | 1 / 3 / 4 |
+| Finance | **56%** (4.5/8) | 2 / 5 / 1 |
+| Inventory | **69%** (5.5/8) | 5 / 1 / 2 |
+| CRM | **50%** (4/8) | 3 / 2 / 3 |
+| Analytics | **56%** (4.5/8) | 3 / 3 / 2 |
 | Documents | **6%** (0.5/8) | 0 / 1 / 7 |
-| Notifications | **6%** (0.5/8) | 0 / 1 / 7 |
+| Notifications | **38%** (3/8) | 3 / 0 / 5 |
 | Human Resources | **0%** (0/8) | 0 / 0 / 8 |
 | Manufacturing | **0%** (0/8) | 0 / 0 / 8 |
-| **PLATFORM TOTAL** | **34%** (33/96) | — |
+| **PLATFORM TOTAL** | **45%** (43/96) | — |
 
 ## Decision Center — 69%
 
@@ -48,13 +48,13 @@ Assessed 2026-07-12. App under review: `zyvora/` MVP. Model: Canonical Product M
 | FEAT-000015 Retention and privacy control | 🟡 partial | `zyvora/src/core/memory.ts` — Permanence + export; no retention/privacy controls |
 | FEAT-000016 Citation-ready retrieval | 🟡 partial | `zyvora/src/core/assistant.ts` — Assistant cites evidence figures |
 
-## AI Engine — 50%
+## AI Engine — 69%
 
 | Feature | Status | Evidence / note |
 |---|---|---|
-| FEAT-000017 Model Gateway | ⬜ not started | Rules-based Engine; no model gateway |
+| FEAT-000017 Model Gateway | ✅ implemented | `zyvora/src/core/llm.ts` — Groq model gateway (OpenAI-compatible), swappable via env; grounded on business context, honest fallback when no key |
 | FEAT-000018 Prompt Registry | ⬜ not started | No prompt registry |
-| FEAT-000019 Retrieval service | 🟡 partial | `zyvora/src/core/assistant.ts` — Deterministic retrieval over projections |
+| FEAT-000019 Retrieval service | ✅ implemented | `zyvora/src/core/assistant.ts` — businessContext() builds a factual brief from projections; grounds the LLM and the deterministic assistant |
 | FEAT-000020 Recommendation service | ✅ implemented | `zyvora/src/core/engine.ts` — Recommendation = Guidance with reasons |
 | FEAT-000021 Forecasting service | ✅ implemented | `zyvora/src/core/projections.ts` — forecast(): revenue/cash/stockout with ranges + assumptions |
 | FEAT-000022 Explainability service | ✅ implemented | `zyvora/src/ui/InsightCard.tsx` — Four transparency layers + falsifier |
@@ -74,20 +74,20 @@ Assessed 2026-07-12. App under review: `zyvora/` MVP. Model: Canonical Product M
 | FEAT-000031 API keys and service identities | ⬜ not started | No API keys/service identities |
 | FEAT-000032 Audit explorer and evidence export | 🟡 partial | `zyvora/src/core/memory.ts` — Append-only event trail + export; no audit explorer |
 
-## Finance — 38%
+## Finance — 56%
 
 | Feature | Status | Evidence / note |
 |---|---|---|
-| FEAT-000033 Chart of accounts | ⬜ not started | No chart of accounts |
+| FEAT-000033 Chart of accounts | 🟡 partial | `zyvora/src/core/projections.ts` — P&L rolls revenue/COGS/opex into account groups; no editable chart of accounts |
 | FEAT-000034 Double-entry journals | ⬜ not started | No double-entry journals |
 | FEAT-000035 Accounts receivable and invoicing | 🟡 partial | `zyvora/src/ui/Domains.tsx` — Invoices + mark-paid; not full AR |
 | FEAT-000036 Accounts payable and bills | 🟡 partial | `zyvora/src/ui/Domains.tsx` — Expenses; not formal AP/bills |
 | FEAT-000037 Payments and reconciliation | 🟡 partial | `zyvora/src/core/projections.ts` — COD cash collection; no bank reconciliation |
 | FEAT-000038 Budgets and variance | 🟡 partial | `zyvora/src/ui/FinanceTools.tsx` — Goals + 3 envelopes; not formal budgets/variance |
 | FEAT-000039 Cash-flow forecasting | ✅ implemented | `zyvora/src/core/projections.ts` — Cash forecast with assumptions |
-| FEAT-000040 Financial statements and close | ⬜ not started | No financial statements/period close |
+| FEAT-000040 Financial statements and close | ✅ implemented | `zyvora/src/ui/FinanceTools.tsx` — Profit & Loss statement (revenue→gross→net) per month + permanent period close (period_closed event locks figures) |
 
-## Inventory — 56%
+## Inventory — 69%
 
 | Feature | Status | Evidence / note |
 |---|---|---|
@@ -95,33 +95,33 @@ Assessed 2026-07-12. App under review: `zyvora/` MVP. Model: Canonical Product M
 | FEAT-000042 Warehouse and location model | ⬜ not started | Single location; no warehouse model |
 | FEAT-000043 Stock ledger and availability | ✅ implemented | `zyvora/src/core/projections.ts` — Stock + available = stock - reserved |
 | FEAT-000044 Reservations and allocations | ✅ implemented | `zyvora/src/core/projections.ts` — Order reservations |
-| FEAT-000045 Purchase orders and receipts | ⬜ not started | No purchase orders/receipts |
-| FEAT-000046 Transfers and adjustments | 🟡 partial | `zyvora/src/ui/Domains.tsx` — Manual stock adjustments; no transfers |
+| FEAT-000045 Purchase orders and receipts | ✅ implemented | `zyvora/src/ui/Domains.tsx` — Create purchase order (reorder from supplier), incoming stock tracked, receive to raise stock at real cost; stockout alert suppressed once enough is inbound |
+| FEAT-000046 Transfers and adjustments | 🟡 partial | `zyvora/src/ui/Domains.tsx` — Manual stock adjustments + goods receipts; no inter-warehouse transfers |
 | FEAT-000047 Lot/serial/batch traceability | ⬜ not started | No lot/serial/batch |
 | FEAT-000048 Reorder and demand planning | ✅ implemented | `zyvora/src/core/engine.ts` — Stockout brain + reorder recommendation |
 
-## CRM — 31%
+## CRM — 50%
 
 | Feature | Status | Evidence / note |
 |---|---|---|
-| FEAT-000049 Contacts and organizations | 🟡 partial | `zyvora/src/core/projections.ts` — Customers derived from orders/invoices; no contact records |
+| FEAT-000049 Contacts and organizations | ✅ implemented | `zyvora/src/ui/Domains.tsx` — Editable contact records (phone/city/notes) + unified profile over orders/invoices |
 | FEAT-000050 Lead capture and qualification | ⬜ not started | No lead capture |
 | FEAT-000051 Opportunity pipelines | ⬜ not started | No opportunity pipelines |
-| FEAT-000052 Activities and tasks | ⬜ not started | No activities/tasks |
+| FEAT-000052 Activities and tasks | ✅ implemented | `zyvora/src/ui/Domains.tsx` — Log calls/notes, schedule follow-ups, mark done; overdue follow-ups alert via Notifications |
 | FEAT-000053 Segmentation | 🟡 partial | `zyvora/src/core/projections.ts` — Auto-tags (VIP/at-risk/new) |
 | FEAT-000054 Customer value and health | ✅ implemented | `zyvora/src/core/projections.ts` — Lifetime value, CLV, COD reliability, health |
 | FEAT-000055 Campaign attribution | 🟡 partial | `zyvora/src/core/engine.ts` — Promo profitability; not full campaign attribution |
 | FEAT-000056 Consent and communication history | ⬜ not started | No consent/communication history |
 
-## Analytics — 31%
+## Analytics — 56%
 
 | Feature | Status | Evidence / note |
 |---|---|---|
 | FEAT-000057 Metric registry | ⬜ not started | Metrics computed inline; no governed registry |
 | FEAT-000058 Semantic definitions | 🟡 partial | `zyvora/src/core/engine.ts` — Single calculation owners; not a semantic layer |
 | FEAT-000059 Dashboard composition | 🟡 partial | `zyvora/src/ui/Analytics.tsx` — Fixed dashboards; no composition |
-| FEAT-000060 Filters and saved views | ⬜ not started | No filters/saved views |
-| FEAT-000061 Drill-down and lineage | ⬜ not started | No drill-down/lineage |
+| FEAT-000060 Filters and saved views | ✅ implemented | `zyvora/src/ui/Analytics.tsx` — 3/6/12-month range filter on every chart |
+| FEAT-000061 Drill-down and lineage | ✅ implemented | `zyvora/src/ui/Analytics.tsx` — Click a bar to drill into its exact underlying orders/invoices — guaranteed to sum to the bar (no two numbers ever disagree) |
 | FEAT-000062 Scheduled reports | ⬜ not started | No scheduled reports |
 | FEAT-000063 Exports | ✅ implemented | `zyvora/src/ui/Analytics.tsx` — CSV exports |
 | FEAT-000064 Annotations and forecast overlays | 🟡 partial | `zyvora/src/ui/Analytics.tsx` — Forecast section; no annotations |
@@ -139,18 +139,18 @@ Assessed 2026-07-12. App under review: `zyvora/` MVP. Model: Canonical Product M
 | FEAT-000071 OCR/import | ⬜ not started |  |
 | FEAT-000072 Retention and legal hold | ⬜ not started |  |
 
-## Notifications — 6%
+## Notifications — 38%
 
 | Feature | Status | Evidence / note |
 |---|---|---|
-| FEAT-000073 Unified notification events | 🟡 partial | `zyvora/src/core/engine.ts` — Insights are decision events; no delivery channels |
+| FEAT-000073 Unified notification events | ✅ implemented | `zyvora/src/core/notifications.ts` — Unified notifications from insights + operational triggers (confirm order, collect cash) |
 | FEAT-000074 Templates and versions | ⬜ not started |  |
-| FEAT-000075 Category and priority | ⬜ not started |  |
-| FEAT-000076 User preferences and quiet hours | ⬜ not started |  |
-| FEAT-000077 Channel routing | ⬜ not started |  |
+| FEAT-000075 Category and priority | ✅ implemented | `zyvora/src/core/notifications.ts` — Category (orders/finance/inventory/customers/decision) + priority (high/medium/low) |
+| FEAT-000076 User preferences and quiet hours | ⬜ not started | No per-user preferences / quiet hours yet |
+| FEAT-000077 Channel routing | ⬜ not started | Channel routing is a documented adapter seam (email/SMS/WhatsApp need providers) |
 | FEAT-000078 Delivery retries | ⬜ not started |  |
-| FEAT-000079 Digest and grouping | ⬜ not started |  |
-| FEAT-000080 Escalation and audit | ⬜ not started |  |
+| FEAT-000079 Digest and grouping | ✅ implemented | `zyvora/src/ui/Notifications.tsx` — Daily briefing digest + priority grouping |
+| FEAT-000080 Escalation and audit | ⬜ not started | No escalation policy yet |
 
 ## Human Resources — 0%
 

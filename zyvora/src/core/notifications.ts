@@ -13,7 +13,7 @@
  * `deliver(notification, channel)` — not yet wired to a provider.
  */
 import { formatMoney } from "./engine";
-import { DAY, orderRevenue } from "./projections";
+import { DAY, orderRevenue, type Activity } from "./projections";
 import type { Insight, WorkspaceState } from "./types";
 
 export type NotifPriority = "high" | "medium" | "low";
@@ -58,9 +58,26 @@ function insightToNotification(i: Insight, now: number): Notification {
 export function generateNotifications(
   state: WorkspaceState,
   insights: Insight[],
+  activities: Activity[] = [],
   now: number = Date.now()
 ): Notification[] {
   const out: Notification[] = insights.map((i) => insightToNotification(i, now));
+
+  // Due/overdue customer follow-ups (CAP-000007) — forgotten follow-ups lose customers.
+  for (const a of activities) {
+    if (!a.done && a.dueAt && a.dueAt <= now) {
+      const daysOver = Math.round((now - a.dueAt) / DAY);
+      out.push({
+        key: "followup:" + a.activityId,
+        priority: "high",
+        category: "customers",
+        title: `Follow up with ${a.customer}${daysOver > 0 ? ` — ${daysOver}d overdue` : " — due today"}`,
+        body: a.note,
+        at: a.dueAt,
+        actionView: "customers",
+      });
+    }
+  }
 
   // Operational triggers not already surfaced as insights ---------------------
 

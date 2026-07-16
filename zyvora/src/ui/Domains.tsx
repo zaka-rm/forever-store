@@ -9,7 +9,16 @@ import { Fragment, useState } from "react";
 import { ENVELOPES, cashCenter, formatMoney } from "../core/engine";
 import { getActiveCurrency } from "../core/format";
 import type { MemoryStore } from "../core/memory";
-import { DAY, projectCustomerProfiles, type CustomerTag } from "../core/projections";
+import {
+  DAY,
+  projectActivities,
+  projectContacts,
+  projectCustomerProfiles,
+  type Activity,
+  type Contact,
+  type CustomerTag,
+} from "../core/projections";
+import { messagingConfigured, sendMessage } from "../core/messaging";
 import type { WorkspaceState } from "../core/types";
 import { FinanceTools } from "./FinanceTools";
 
@@ -231,9 +240,12 @@ const TAG_STYLE: Record<CustomerTag, { label: string; cls: string }> = {
   "high-refusal": { label: "High refusal", cls: "strategic" },
 };
 
-export function CustomersView({ state }: { state: WorkspaceState }) {
+export function CustomersView({ state, memory }: { state: WorkspaceState; memory: MemoryStore }) {
   const now = Date.now();
   const customers = projectCustomerProfiles(state, now);
+  const contacts = projectContacts(memory.all());
+  const activities = projectActivities(memory.all());
+  const openFollowups = activities.filter((a) => !a.done && a.dueAt).length;
   const [open, setOpen] = useState<string | null>(null);
 
   return (
@@ -242,6 +254,7 @@ export function CustomersView({ state }: { state: WorkspaceState }) {
       <p className="subtitle">
         The question this Domain answers: “Who matters most, and who needs attention?”
         Each profile unifies every invoice and order — one source of truth, nothing to double-enter.
+        {openFollowups > 0 && ` ${openFollowups} follow-up${openFollowups > 1 ? "s" : ""} scheduled.`}
       </p>
       {customers.length === 0 ? (
         <div className="quiet">Customers will appear as you issue invoices or create orders.</div>
@@ -313,6 +326,12 @@ export function CustomersView({ state }: { state: WorkspaceState }) {
                         Lifetime profit counts only delivered orders (which carry cost data); paid invoices
                         contribute to revenue but not to the profit figure.
                       </p>
+                      <CustomerCrm
+                        customer={c.name}
+                        contact={contacts.get(c.name) ?? {}}
+                        activities={activities.filter((a) => a.customer === c.name)}
+                        memory={memory}
+                      />
                     </td>
                   </tr>
                 )}
@@ -320,6 +339,93 @@ export function CustomersView({ state }: { state: WorkspaceState }) {
             ))}
           </tbody>
         </table>
+      )}
+    </div>
+  );
+}
+
+/** Contact record + follow-up activities for one customer (CAP-000007). */
+function CustomerCrm({
+  customer, contact, activities, memory,
+}: { customer: string; contact: Contact; activities: Activity[]; memory: MemoryStore }) {
+  const [phone, setPhone] = useState(contact.phone ?? "");
+  const [city, setCity] = useState(contact.city ?? "");
+  const [notes, setNotes] = useState(contact.notes ?? "");
+  const [actNote, setActNote] = useState("");
+  const [dueDays, setDueDays] = useState("");
+  const [msg, setMsg] = useState("");
+  const [sending, setSending] = useState(false);
+  const [sendResult, setSendResult] = useState<string | null>(null);
+
+  const send = async (channel: "whatsapp" | "sms") => {
+    if (!phone.trim() || !msg.trim()) return;
+    setSending(true); setSendResult(null);
+    const r = await sendMessage(phone.trim(), msg.trim(), channel);
+    setSending(false);
+    if (r.ok) { setSendResult(`Sent via ${channel === "whatsapp" ? "WhatsApp" : "SMS"}.`); setMsg(""); memory.append("fact", "customer_activity_logged", { activityId: crypto.randomUUID(), customer, kind: "message", note: `${channel === "whatsapp" ? "WhatsApp" : "SMS"}: ${msg.trim()}`, at: Date.now() }); }
+    else setSendResult(`Couldn't send: ${r.error}`);
+  };
+
+  const saveContact = () => {
+    memory.append("fact", "customer_contact_updated", { customer, phone: phone.trim(), city: city.trim(), notes: notes.trim(), at: Date.now() });
+  };
+  const logActivity = () => {
+    if (!actNote.trim()) return;
+    const days = parseInt(dueDays, 10);
+    memory.append("fact", "customer_activity_logged", {
+      activityId: crypto.randomUUID(), customer, kind: days > 0 ? "followup" : "note", note: actNote.trim(),
+      ...(days > 0 ? { dueAt: Date.now() + days * DAY } : {}), at: Date.now(),
+    });
+    setActNote(""); setDueDays("");
+  };
+  const complete = (id: string) => memory.append("fact", "customer_activity_completed", { activityId: id, at: Date.now() });
+
+  return (
+    <div style={{ marginTop: 12 }}>
+      <div className="form-row">
+        <div><label>Phone</label><input value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="Phone" style={{ width: 140 }} /></div>
+        <div><label>City</label><input value={city} onChange={(e) => setCity(e.target.value)} placeholder="City" style={{ width: 120 }} /></div>
+        <div style={{ flex: 1 }}><label>Notes</label><input value={notes} onChange={(e) => setNotes(e.target.value)} placeholder="Anything worth remembering" style={{ width: "100%" }} /></div>
+        <button className="btn subtle" onClick={saveContact}>Save contact</button>
+      </div>
+
+      <div className="form-row">
+        <div style={{ flex: 1 }}><label>Log a call/note or schedule a follow-up</label>
+          <input value={actNote} onChange={(e) => setActNote(e.target.value)} placeholder="e.g. Called about reorder — will decide next week" style={{ width: "100%" }} /></div>
+        <div><label>Follow up in (days)</label><input value={dueDays} onChange={(e) => setDueDays(e.target.value)} inputMode="numeric" placeholder="none" style={{ width: 90 }} /></div>
+        <button className="btn ghost" onClick={logActivity} disabled={!actNote.trim()}>Log</button>
+      </div>
+
+      {messagingConfigured && (
+        <div className="form-row">
+          <div style={{ flex: 1 }}>
+            <label>Message this customer{!phone.trim() && " (add a phone above first)"}</label>
+            <input value={msg} onChange={(e) => setMsg(e.target.value)} placeholder="Type a WhatsApp or SMS message…" style={{ width: "100%" }} disabled={!phone.trim()} />
+          </div>
+          <button className="btn" onClick={() => void send("whatsapp")} disabled={sending || !phone.trim() || !msg.trim()}>{sending ? "Sending…" : "WhatsApp"}</button>
+          <button className="btn subtle" onClick={() => void send("sms")} disabled={sending || !phone.trim() || !msg.trim()}>SMS</button>
+        </div>
+      )}
+      {sendResult && <p className="confidence-note" style={{ marginTop: 0 }}>{sendResult}</p>}
+
+      {activities.length > 0 && (
+        <ul className="timeline" style={{ marginTop: 8 }}>
+          {activities.slice(0, 8).map((a) => (
+            <li key={a.activityId}>
+              <div className="when">
+                {a.dueAt && !a.done ? `Due ${dateLabel(a.dueAt)}` : dateLabel(a.at)}
+                {a.done && " · done"}
+              </div>
+              <div className="what">
+                {!a.done && <span className="stream-tag">{a.kind}</span>}
+                {a.note}
+                {!a.done && (
+                  <button className="link-btn" style={{ marginLeft: 10 }} onClick={() => complete(a.activityId)}>Mark done</button>
+                )}
+              </div>
+            </li>
+          ))}
+        </ul>
       )}
     </div>
   );
@@ -378,15 +484,17 @@ export function InventoryView({ state, memory }: { state: WorkspaceState; memory
       ) : (
         <table className="records">
           <thead>
-            <tr><th>Product</th><th>Stock</th><th>Sales / week</th><th>Days of stock</th><th></th></tr>
+            <tr><th>Product</th><th>Stock</th><th>Incoming</th><th>Sales / week</th><th>Days of stock</th><th></th></tr>
           </thead>
           <tbody>
             {state.products.map((p) => {
               const daysLeft = p.weeklySales > 0 ? Math.round(p.stock / (p.weeklySales / 7)) : null;
+              const inc = state.incoming[p.productId] ?? 0;
               return (
                 <tr key={p.productId}>
                   <td>{p.name}</td>
                   <td>{p.stock}</td>
+                  <td className="muted">{inc > 0 ? `+${inc}` : "—"}</td>
                   <td className="muted">{p.weeklySales}</td>
                   <td className="muted">{daysLeft === null ? "not selling" : `~${daysLeft} days`}</td>
                   <td>
@@ -413,7 +521,87 @@ export function InventoryView({ state, memory }: { state: WorkspaceState; memory
           </tbody>
         </table>
       )}
+
+      <PurchaseOrders state={state} memory={memory} />
     </div>
+  );
+}
+
+/** Purchase orders & goods receipts (CAP-000006 FEAT-000045) — reorder from a supplier, receive to raise stock. */
+function PurchaseOrders({ state, memory }: { state: WorkspaceState; memory: MemoryStore }) {
+  const ccy = getActiveCurrency();
+  const [supplier, setSupplier] = useState("Forever Living");
+  const [productId, setProductId] = useState("");
+  const [qty, setQty] = useState("");
+  const [unitCost, setUnitCost] = useState("");
+
+  const selected = state.products.find((p) => p.productId === productId);
+  // Default the unit cost to the product's known cost when a product is picked.
+  const effectiveCost = unitCost !== "" ? unitCost : selected ? String(selected.unitCost) : "";
+
+  const createPo = () => {
+    const q = parseInt(qty, 10);
+    const c = parseFloat(effectiveCost);
+    if (!selected || !isFinite(q) || q <= 0) return;
+    memory.append("fact", "purchase_order_created", {
+      poId: crypto.randomUUID(),
+      supplier: supplier.trim() || "Supplier",
+      lines: [{ productId: selected.productId, productName: selected.name, qty: q, unitCost: isFinite(c) && c >= 0 ? c : selected.unitCost }],
+      createdAt: Date.now(),
+    });
+    setProductId(""); setQty(""); setUnitCost("");
+  };
+
+  const receive = (poId: string) => {
+    memory.append("fact", "goods_received", { poId, at: Date.now() });
+  };
+
+  const poValue = (lines: { qty: number; unitCost: number }[]) => lines.reduce((s, l) => s + l.qty * l.unitCost, 0);
+
+  return (
+    <>
+      <h2>Purchase orders</h2>
+      <p className="confidence-note" style={{ marginTop: 0 }}>
+        Reorder from your supplier. Creating a PO shows the units as “incoming”; receiving it raises stock
+        at the cost you actually paid — feeding real margins and the reorder alerts.
+      </p>
+      <div className="form-row">
+        <div><label>Supplier</label><input value={supplier} onChange={(e) => setSupplier(e.target.value)} style={{ width: 140 }} /></div>
+        <div>
+          <label>Product</label>
+          <select value={productId} onChange={(e) => setProductId(e.target.value)}>
+            <option value="">Select…</option>
+            {state.products.map((p) => (
+              <option key={p.productId} value={p.productId}>{p.name}</option>
+            ))}
+          </select>
+        </div>
+        <div><label>Qty</label><input value={qty} onChange={(e) => setQty(e.target.value)} inputMode="numeric" style={{ width: 70 }} /></div>
+        <div><label>Unit cost ({ccy})</label><input value={effectiveCost} onChange={(e) => setUnitCost(e.target.value)} inputMode="decimal" style={{ width: 96 }} /></div>
+        <button className="btn" onClick={createPo} disabled={!selected || !(parseInt(qty, 10) > 0)}>Create PO</button>
+      </div>
+
+      {state.purchaseOrders.length === 0 ? (
+        <div className="quiet">No purchase orders yet.</div>
+      ) : (
+        <table className="records">
+          <thead>
+            <tr><th>Supplier</th><th>Items</th><th>Cost</th><th>Status</th><th></th></tr>
+          </thead>
+          <tbody>
+            {state.purchaseOrders.map((po) => (
+              <tr key={po.poId}>
+                <td>{po.supplier}</td>
+                <td className="muted">{po.lines.map((l) => `${l.qty}× ${l.productName}`).join(", ")}</td>
+                <td>{formatMoney(poValue(po.lines))}</td>
+                <td>{po.receivedAt ? <span className="muted">Received {dateLabel(po.receivedAt)}</span> : "Open"}</td>
+                <td>{!po.receivedAt && <button className="link-btn" onClick={() => receive(po.poId)}>Receive</button>}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
+    </>
   );
 }
 

@@ -22,6 +22,8 @@ import { can, type Role } from "./core/permissions";
 import { generateNotifications, loadReadSet } from "./core/notifications";
 import { NotificationsView } from "./ui/Notifications";
 import { TeamView } from "./ui/Team";
+import { BillingView, TrialBanner } from "./ui/Billing";
+import { entitlement, fetchSubscription, type Subscription } from "./core/billing";
 import { generateInsights } from "./core/engine";
 import { COMMON_CURRENCIES, setActiveCurrency } from "./core/format";
 import {
@@ -31,7 +33,7 @@ import {
   type MemoryStore,
   type WorkspaceMeta,
 } from "./core/memory";
-import { projectDecisions, projectState } from "./core/projections";
+import { projectActivities, projectDecisions, projectState } from "./core/projections";
 import { seedDemoData } from "./core/seed";
 import type { Insight } from "./core/types";
 import { motion, useReducedMotion } from "framer-motion";
@@ -47,7 +49,7 @@ import { Today } from "./ui/Today";
 
 type View =
   | "today" | "notifications" | "orders" | "finance" | "customers"
-  | "inventory" | "promos" | "analytics" | "ask" | "import" | "team" | "memory";
+  | "inventory" | "promos" | "analytics" | "ask" | "import" | "team" | "billing" | "memory";
 
 const NAV: { id: View; label: string }[] = [
   { id: "today", label: "Today" },
@@ -61,6 +63,7 @@ const NAV: { id: View; label: string }[] = [
   { id: "ask", label: "Ask ZYVORA" },
   { id: "import", label: "Import" },
   { id: "team", label: "Team" },
+  { id: "billing", label: "Billing" },
   { id: "memory", label: "Business Memory" },
 ];
 
@@ -374,6 +377,15 @@ function Workspace({
   const [view, setView] = useState<View>("today");
   const reduceMotion = useReducedMotion();
 
+  // Billing entitlement (cloud mode only; local mode is free forever).
+  const [subscription, setSubscription] = useState<Subscription | null>(null);
+  useEffect(() => {
+    if (onSignOut) void fetchSubscription().then(setSubscription);
+  }, [onSignOut]);
+  const ent = onSignOut && subscription
+    ? entitlement(subscription, workspace.createdAt)
+    : null;
+
   // Re-render whenever Business Memory grows (append-only, so version = length + sync state).
   useSyncExternalStore(
     (cb) => memory.subscribe(cb),
@@ -384,13 +396,17 @@ function Workspace({
   const state = useMemo(() => projectState(events), [events, events.length]);
   const decisions = useMemo(() => projectDecisions(events), [events, events.length]);
   const insights = useMemo(() => generateInsights(state, decisions), [state, decisions]);
-  const notifications = useMemo(() => generateNotifications(state, insights), [state, insights]);
+  const notifications = useMemo(
+    () => generateNotifications(state, insights, projectActivities(events)),
+    [state, insights, events]
+  );
+  const [notifVersion, setNotifVersion] = useState(0);
   const unread = useMemo(() => {
     const read = loadReadSet(workspace.id);
     return notifications.filter((n) => !read.has(n.key) && n.priority !== "low").length;
-    // recompute when view changes (dismissing updates localStorage)
+    // notifVersion bumps when the user dismisses, so the badge updates live.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [notifications, view]);
+  }, [notifications, view, notifVersion]);
 
   /** Lifecycle stages 8 & 11: the human decides; interpretation + decision enter Memory. */
   const onDecide = (
@@ -432,7 +448,7 @@ function Workspace({
             </span>
           )}
         </div>
-        {NAV.map((n) => (
+        {NAV.filter((n) => n.id !== "billing" || Boolean(onSignOut)).map((n) => (
           <button key={n.id} className={view === n.id ? "active" : ""} onClick={() => setView(n.id)}>
             {n.label}
             {n.id === "notifications" && unread > 0 && (
@@ -476,6 +492,9 @@ function Workspace({
           transition={{ duration: 0.22, ease: "easeOut" }}
         >
          <ErrorBoundary key={view}>
+          {ent && (
+            <TrialBanner daysLeft={ent.trialDaysLeft} expired={!ent.active} onOpenBilling={() => setView("billing")} />
+          )}
           {role === "viewer" && (
             <div className="quiet" style={{ marginBottom: 16, textAlign: "left" }}>
               You have <strong>view-only</strong> access to {workspace.name}. You can see decisions and
@@ -491,11 +510,12 @@ function Workspace({
               notifications={notifications}
               workspaceId={workspace.id}
               onOpenView={(v) => setView(v)}
+              onChange={() => setNotifVersion((v) => v + 1)}
             />
           )}
           {view === "orders" && <OrdersView state={state} memory={memory} workspaceName={workspace.name} />}
           {view === "finance" && <FinanceView state={state} memory={memory} />}
-          {view === "customers" && <CustomersView state={state} />}
+          {view === "customers" && <CustomersView state={state} memory={memory} />}
           {view === "inventory" && <InventoryView state={state} memory={memory} />}
           {view === "promos" && <PromosView state={state} memory={memory} />}
           {view === "analytics" && <AnalyticsView state={state} />}
@@ -509,6 +529,9 @@ function Workspace({
               myUserId={userId}
               ownerId={workspace.ownerId ?? ""}
             />
+          )}
+          {view === "billing" && (
+            <BillingView workspaceCreatedAt={workspace.createdAt} isOwner={role === "owner"} />
           )}
           {view === "memory" && <MemoryView memory={memory} />}
          </ErrorBoundary>

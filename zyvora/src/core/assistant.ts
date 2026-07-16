@@ -9,14 +9,55 @@
  * FEAT-000022 explainability service.
  */
 import { cashCenter, formatMoney, stateOfThings } from "./engine";
+import { getActiveCurrency } from "./format";
 import {
   DAY,
   breakEven,
   goalActual,
+  monthBounds,
   orderNetProfit,
+  orderRevenue,
+  profitAndLoss,
   projectCustomerProfiles,
 } from "./projections";
 import type { WorkspaceState } from "./types";
+
+/**
+ * Factual business brief for the LLM (CAP-000003 retrieval). Only real,
+ * projection-derived numbers — the model answers from this, never invents.
+ */
+export function businessContext(state: WorkspaceState, now: number = Date.now()): string {
+  const cash = cashCenter(state, now);
+  const b = breakEven(state, now);
+  const mb = monthBounds(new Date(now).getFullYear(), new Date(now).getMonth());
+  const pnl = profitAndLoss(state, mb.start, mb.end, mb.label);
+  const profiles = projectCustomerProfiles(state, now);
+  const things = stateOfThings(state, now);
+
+  const margins = state.products
+    .filter((p) => p.price > 0)
+    .map((p) => ({ n: p.name, m: ((p.price - p.unitCost) / p.price) * 100 }))
+    .sort((a, b) => b.m - a.m);
+  const lowStock = state.products.filter((p) => {
+    const avail = p.stock - (state.reserved[p.productId] ?? 0);
+    return p.weeklySales > 0 && avail / (p.weeklySales / 7) < p.leadTimeDays + 4 && (state.incoming[p.productId] ?? 0) === 0;
+  });
+  const atRisk = profiles.filter((p) => p.tags.includes("at-risk"));
+  const overdue = state.invoices.filter((i) => !i.paidAt && now > i.issuedAt + i.dueDays * DAY);
+  const losing = state.orders.filter((o) => o.status === "delivered" && orderNetProfit(o) < 0);
+
+  const L: string[] = [];
+  L.push(`Business currency: ${getActiveCurrency()}. Today: ${new Date(now).toDateString()}.`);
+  L.push(`CASH: available ${formatMoney(cash.cashAvailable)}, pending with couriers ${formatMoney(cash.cashPendingCod)}, collected last 30 days ${formatMoney(cash.collected30)}, expenses last 30 days ${formatMoney(cash.expenses30)}.`);
+  L.push(`THIS MONTH P&L (${pnl.periodLabel}): net revenue ${formatMoney(pnl.revenue.netRevenue)}, gross profit ${formatMoney(pnl.grossProfit)} (${pnl.grossMarginPct.toFixed(0)}%), net profit ${formatMoney(pnl.netProfit)} (${pnl.netMarginPct.toFixed(0)}%), ${pnl.ordersDelivered} orders delivered.`);
+  L.push(`Revenue last 30 days: ${formatMoney(things.billedLast30)}. Average net profit per delivered order: ${formatMoney(b.avgProfitPerOrder)}. Break-even: ${b.breakEvenOrders === null ? "unreachable at current per-order profit" : `${b.breakEvenOrders} orders/month`}.`);
+  L.push(`PRODUCTS (${state.products.length}). Highest margins: ${margins.slice(0, 5).map((x) => `${x.n} ${x.m.toFixed(0)}%`).join("; ") || "none"}.`);
+  L.push(`Low stock needing reorder: ${lowStock.map((p) => p.name).join(", ") || "none"}.`);
+  L.push(`CUSTOMERS (${profiles.length}). Top by lifetime revenue: ${profiles.slice(0, 5).map((c) => `${c.name} ${formatMoney(c.lifetimeRevenue)}`).join("; ") || "none"}. At-risk (gone quiet): ${atRisk.map((c) => c.name).join(", ") || "none"}.`);
+  L.push(`ORDERS: ${things.openOrders} open. Delivered orders that lost money: ${losing.length}.`);
+  L.push(`Overdue invoices: ${overdue.length}${overdue.length ? ` totalling ${formatMoney(overdue.reduce((s, i) => s + i.amount, 0))}` : ""}.`);
+  return L.join("\n");
+}
 
 export interface Answer {
   text: string;
