@@ -272,7 +272,7 @@ function CloudWorkspaceLoader({ userId }: { userId: string }) {
   if (phase === "error")
     return (
       <CenteredNote
-        text={`${error} — if this is a fresh setup, apply supabase/40_zyvora.sql to the project first.`}
+        text={`${error} — if this is a fresh setup, paste supabase/APPLY_ZYVORA.sql into the project's SQL editor and Run first.`}
       />
     );
   if (phase === "onboarding")
