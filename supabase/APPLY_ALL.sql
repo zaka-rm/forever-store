@@ -1,13 +1,9 @@
 -- ============================================================
--- ZYVORA + Naturaloe store — COMBINED SCHEMA (auto-generated)
+-- ZYVORA + Naturaloe store - COMBINED SCHEMA (auto-generated)
 -- Paste this ONE file into a fresh Supabase project's SQL editor and Run.
--- Order = filename order. Regenerate with build-apply-all.ps1.
 -- ============================================================
 
-
--- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
--- FILE: 01_schema.sql
--- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+-- >>> FILE: 01_schema.sql >>>
 -- Run this once in the Supabase dashboard: SQL Editor -> New query -> paste -> Run.
 -- Creates the three tables the store needs plus row-level security policies
 -- so the public site can only insert data (never read orders/contact messages,
@@ -67,20 +63,20 @@ alter table reviews enable row level security;
 -- via the service role key. No public policies needed.
 
 -- Reviews: public can submit (unapproved) and read only approved reviews.
+drop policy if exists "Public can insert reviews" on reviews;
 create policy "Public can insert reviews"
   on reviews for insert
   to anon
   with check (approved = false);
 
+drop policy if exists "Public can read approved reviews" on reviews;
 create policy "Public can read approved reviews"
   on reviews for select
   to anon
   using (approved = true);
 
 
--- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
--- FILE: 02_products-and-admin.sql
--- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+-- >>> FILE: 02_products-and-admin.sql >>>
 -- Run this in Supabase → SQL Editor AFTER schema.sql.
 -- Creates the products table (so you can edit products from the admin panel
 -- instead of code), plus a public storage bucket for product images.
@@ -116,16 +112,20 @@ create table if not exists products (
 alter table products enable row level security;
 
 -- Everyone can read products (that's the public shop).
+drop policy if exists "Public can read products" on products;
 create policy "Public can read products"
   on products for select
   to anon, authenticated
   using (true);
 
 -- Only a logged-in admin can change them.
+drop policy if exists "Admin can insert products" on products;
 create policy "Admin can insert products"
   on products for insert to authenticated with check (true);
+drop policy if exists "Admin can update products" on products;
 create policy "Admin can update products"
   on products for update to authenticated using (true);
+drop policy if exists "Admin can delete products" on products;
 create policy "Admin can delete products"
   on products for delete to authenticated using (true);
 
@@ -136,21 +136,25 @@ insert into storage.buckets (id, name, public)
 values ('product-images', 'product-images', true)
 on conflict (id) do nothing;
 
+drop policy if exists "Public can view product images" on storage.objects;
 create policy "Public can view product images"
   on storage.objects for select
   to anon, authenticated
   using (bucket_id = 'product-images');
 
+drop policy if exists "Admin can upload product images" on storage.objects;
 create policy "Admin can upload product images"
   on storage.objects for insert
   to authenticated
   with check (bucket_id = 'product-images');
 
+drop policy if exists "Admin can update product images" on storage.objects;
 create policy "Admin can update product images"
   on storage.objects for update
   to authenticated
   using (bucket_id = 'product-images');
 
+drop policy if exists "Admin can delete product images" on storage.objects;
 create policy "Admin can delete product images"
   on storage.objects for delete
   to authenticated
@@ -161,25 +165,29 @@ create policy "Admin can delete product images"
 -- so they can be viewed/managed from the /admin panel instead of the Supabase
 -- Table Editor. The public still cannot read orders or messages.
 -- ---------------------------------------------------------------------------
+drop policy if exists "Admin can read orders" on orders;
 create policy "Admin can read orders"
   on orders for select to authenticated using (true);
 
+drop policy if exists "Admin can read contact messages" on contact_messages;
 create policy "Admin can read contact messages"
   on contact_messages for select to authenticated using (true);
+drop policy if exists "Admin can update contact messages" on contact_messages;
 create policy "Admin can update contact messages"
   on contact_messages for update to authenticated using (true);
 
+drop policy if exists "Admin can read all reviews" on reviews;
 create policy "Admin can read all reviews"
   on reviews for select to authenticated using (true);
+drop policy if exists "Admin can update reviews" on reviews;
 create policy "Admin can update reviews"
   on reviews for update to authenticated using (true);
+drop policy if exists "Admin can delete reviews" on reviews;
 create policy "Admin can delete reviews"
   on reviews for delete to authenticated using (true);
 
 
--- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
--- FILE: 03_products-seed.sql
--- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+-- >>> FILE: 03_products-seed.sql >>>
 -- Auto-generated by scripts/gen-products-seed.cjs — do not edit by hand.
 -- Run in Supabase → SQL Editor after products-and-admin.sql.
 
@@ -259,9 +267,7 @@ insert into products (id, slug, name, name_ar, category, price, rating, review_c
 on conflict (id) do nothing;
 
 
--- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
--- FILE: 04_enable-public-forms.sql
--- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+-- >>> FILE: 04_enable-public-forms.sql >>>
 -- Run in Supabase → SQL Editor → New query → Run.
 -- Lets the public submit contact messages and place cash-on-delivery orders
 -- directly (no backend function needed) — the same way product reviews already
@@ -271,21 +277,21 @@ on conflict (id) do nothing;
 alter table orders add column if not exists payment_method text;
 
 -- Public can submit contact messages (they land in the admin "Messages" tab).
+drop policy if exists "Public can insert contact messages" on contact_messages;
 create policy "Public can insert contact messages"
   on contact_messages for insert
   to anon
   with check (true);
 
 -- Public can place pending (cash-on-delivery) orders (admin "Commandes" tab).
+drop policy if exists "Public can insert pending orders" on orders;
 create policy "Public can insert pending orders"
   on orders for insert
   to anon
   with check (payment_status = 'pending');
 
 
--- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
--- FILE: 05_order-tracking.sql
--- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+-- >>> FILE: 05_order-tracking.sql >>>
 -- Run in Supabase → SQL Editor → New query → Run.
 -- Adds the order fulfilment workflow (confirm / ship / deliver / cancel) and a
 -- secure way for customers to track their own order without any email service.
@@ -295,6 +301,7 @@ alter table orders add column if not exists status text not null default 'pendin
 alter table orders add column if not exists order_ref text;
 
 -- 2. Let the logged-in admin change an order (confirm, ship, cancel, etc.).
+drop policy if exists "Admin can update orders" on orders;
 create policy "Admin can update orders"
   on orders for update
   to authenticated
@@ -320,9 +327,7 @@ $$;
 grant execute on function track_order(text, text) to anon;
 
 
--- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
--- FILE: 06_order-confirmation.sql
--- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+-- >>> FILE: 06_order-confirmation.sql >>>
 -- Run in Supabase → SQL Editor → New query → Run.
 -- Email confirmation flow: the customer confirms or cancels their order from the
 -- email buttons, and any order left unconfirmed for 24h is auto-cancelled.
@@ -390,16 +395,16 @@ select cron.schedule(
 );
 
 
--- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
--- FILE: 07_admin-delete-and-cleanup.sql
--- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+-- >>> FILE: 07_admin-delete-and-cleanup.sql >>>
 -- Run in Supabase → SQL Editor → New query → Run.
 -- Lets the logged-in admin delete orders and contact messages from the panel.
 -- (Reviews already had a delete policy.)
 
+drop policy if exists "Admin can delete orders" on orders;
 create policy "Admin can delete orders"
   on orders for delete to authenticated using (true);
 
+drop policy if exists "Admin can delete contact messages" on contact_messages;
 create policy "Admin can delete contact messages"
   on contact_messages for delete to authenticated using (true);
 
@@ -412,9 +417,7 @@ create policy "Admin can delete contact messages"
 -- delete from reviews where approved = false and author ilike 'test%';
 
 
--- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
--- FILE: 08_new-features.sql
--- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+-- >>> FILE: 08_new-features.sql >>>
 -- Run in Supabase → SQL Editor → New query → Run.
 -- Adds product stock control and promo/discount codes.
 
@@ -434,6 +437,7 @@ create table if not exists discount_codes (
 );
 alter table discount_codes enable row level security;
 
+drop policy if exists "Admin manage discount codes" on discount_codes;
 create policy "Admin manage discount codes"
   on discount_codes for all
   to authenticated
@@ -462,9 +466,7 @@ alter table orders add column if not exists discount_code text;
 alter table orders add column if not exists discount_amount numeric not null default 0;
 
 
--- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
--- FILE: 09_stock-decrement.sql
--- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+-- >>> FILE: 09_stock-decrement.sql >>>
 -- Run in Supabase → SQL Editor → New query → Run.
 -- Lets a cash-on-delivery order reduce product stock automatically.
 -- Customers can't UPDATE products directly (RLS), so this runs as a trusted
@@ -493,9 +495,7 @@ $$;
 grant execute on function decrement_stock(jsonb) to anon;
 
 
--- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
--- FILE: 10_growth-features.sql
--- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+-- >>> FILE: 10_growth-features.sql >>>
 -- Run in Supabase → SQL Editor → New query → Run.
 -- Adds newsletter subscribers, distributor recruitment leads, delivery zones
 -- by city, and a lightweight referral program.
@@ -510,16 +510,19 @@ create table if not exists subscribers (
 );
 alter table subscribers enable row level security;
 
+drop policy if exists "Public can subscribe" on subscribers;
 create policy "Public can subscribe"
   on subscribers for insert
   to anon
   with check (true);
 
+drop policy if exists "Admin can read subscribers" on subscribers;
 create policy "Admin can read subscribers"
   on subscribers for select
   to authenticated
   using (true);
 
+drop policy if exists "Admin can delete subscribers" on subscribers;
 create policy "Admin can delete subscribers"
   on subscribers for delete
   to authenticated
@@ -540,21 +543,25 @@ create table if not exists distributor_leads (
 );
 alter table distributor_leads enable row level security;
 
+drop policy if exists "Public can submit distributor lead" on distributor_leads;
 create policy "Public can submit distributor lead"
   on distributor_leads for insert
   to anon
   with check (true);
 
+drop policy if exists "Admin can read distributor leads" on distributor_leads;
 create policy "Admin can read distributor leads"
   on distributor_leads for select
   to authenticated
   using (true);
 
+drop policy if exists "Admin can update distributor leads" on distributor_leads;
 create policy "Admin can update distributor leads"
   on distributor_leads for update
   to authenticated
   using (true);
 
+drop policy if exists "Admin can delete distributor leads" on distributor_leads;
 create policy "Admin can delete distributor leads"
   on distributor_leads for delete
   to authenticated
@@ -572,11 +579,13 @@ create table if not exists delivery_zones (
 );
 alter table delivery_zones enable row level security;
 
+drop policy if exists "Public can read active delivery zones" on delivery_zones;
 create policy "Public can read active delivery zones"
   on delivery_zones for select
   to anon
   using (active = true);
 
+drop policy if exists "Admin manage delivery zones" on delivery_zones;
 create policy "Admin manage delivery zones"
   on delivery_zones for all
   to authenticated
@@ -594,11 +603,13 @@ create table if not exists referrals (
 );
 alter table referrals enable row level security;
 
+drop policy if exists "Admin can read referrals" on referrals;
 create policy "Admin can read referrals"
   on referrals for select
   to authenticated
   using (true);
 
+drop policy if exists "Admin can update referrals" on referrals;
 create policy "Admin can update referrals"
   on referrals for update
   to authenticated
@@ -633,18 +644,14 @@ $$;
 grant execute on function submit_referral(text, text) to anon;
 
 
--- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
--- FILE: 11_product-visibility.sql
--- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+-- >>> FILE: 11_product-visibility.sql >>>
 -- Run in Supabase → SQL Editor → New query → Run.
 -- Adds a "hidden" flag so the admin can hide/show a product on the public site
 -- without deleting it. NULL/false = visible; true = hidden (admin only).
 alter table products add column if not exists hidden boolean not null default false;
 
 
--- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
--- FILE: 12_loyalty-program.sql
--- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+-- >>> FILE: 12_loyalty-program.sql >>>
 -- Run in Supabase → SQL Editor → New query → Run.
 -- Email-based loyalty points: customers earn 1 point per € automatically when
 -- you mark their order "Livrée" (delivered). No customer login required.
@@ -656,6 +663,7 @@ create table if not exists loyalty_points (
 );
 alter table loyalty_points enable row level security;
 
+drop policy if exists "Admin can read loyalty points" on loyalty_points;
 create policy "Admin can read loyalty points"
   on loyalty_points for select
   to authenticated
@@ -706,18 +714,14 @@ $$;
 grant execute on function get_loyalty(text) to anon;
 
 
--- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
--- FILE: 13_order-notes.sql
--- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+-- >>> FILE: 13_order-notes.sql >>>
 -- Run in Supabase → SQL Editor → New query → Run.
 -- Adds a free-text "notes" field to orders for the customer's delivery
 -- instructions (e.g. "call before arriving", nearest landmark, floor).
 alter table orders add column if not exists notes text;
 
 
--- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
--- FILE: 14_site-settings.sql
--- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+-- >>> FILE: 14_site-settings.sql >>>
 -- Run in Supabase → SQL Editor → New query → Run.
 -- A single-row settings table for site-wide options the admin can edit — starting
 -- with the promo announcement bar shown at the top of every page.
@@ -738,10 +742,12 @@ insert into site_settings (id, announcement_fr, announcement_ar, announcement_ac
 alter table site_settings enable row level security;
 
 -- Everyone can read the banner; only the logged-in admin can change it.
+drop policy if exists "Public can read site settings" on site_settings;
 create policy "Public can read site settings"
   on site_settings for select
   using (true);
 
+drop policy if exists "Admin can update site settings" on site_settings;
 create policy "Admin can update site settings"
   on site_settings for update
   to authenticated
@@ -749,18 +755,14 @@ create policy "Admin can update site settings"
   with check (true);
 
 
--- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
--- FILE: 15_product-gallery.sql
--- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+-- >>> FILE: 15_product-gallery.sql >>>
 -- Run in Supabase → SQL Editor → New query → Run.
 -- Adds extra product photos (a gallery) shown on the product page, in addition
 -- to the main image. Stored as a list of image URLs.
 alter table products add column if not exists gallery text[];
 
 
--- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
--- FILE: 15_social-proof.sql
--- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+-- >>> FILE: 15_social-proof.sql >>>
 -- Run in Supabase → SQL Editor → New query → Run.
 -- Powers the "social proof" popups on the storefront ("Fatima à Casablanca vient
 -- de commander…"). Exposes ONLY a first name + city + product — never phone,
@@ -791,9 +793,7 @@ $$;
 grant execute on function recent_orders_public(int) to anon;
 
 
--- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
--- FILE: 16_subscriptions.sql
--- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+-- >>> FILE: 16_subscriptions.sql >>>
 -- Run in Supabase → SQL Editor → New query → Run.
 -- "Recevoir chaque mois" — customers subscribe to a monthly re-delivery of a
 -- consumable product. Cash-on-delivery friendly: no auto-charge — the admin sees
@@ -816,23 +816,25 @@ create table if not exists subscriptions (
 alter table subscriptions enable row level security;
 
 -- Public can create a subscription (like the other storefront forms).
+drop policy if exists "Public can create subscription" on subscriptions;
 create policy "Public can create subscription"
   on subscriptions for insert
   to anon
   with check (active = true);
 
 -- Only the admin manages them.
+drop policy if exists "Admin can read subscriptions" on subscriptions;
 create policy "Admin can read subscriptions"
   on subscriptions for select to authenticated using (true);
+drop policy if exists "Admin can update subscriptions" on subscriptions;
 create policy "Admin can update subscriptions"
   on subscriptions for update to authenticated using (true) with check (true);
+drop policy if exists "Admin can delete subscriptions" on subscriptions;
 create policy "Admin can delete subscriptions"
   on subscriptions for delete to authenticated using (true);
 
 
--- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
--- FILE: 17_blog.sql
--- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+-- >>> FILE: 17_blog.sql >>>
 -- Run in Supabase → SQL Editor → New query → Run.
 -- Makes the blog editable from the admin (add / edit / remove articles), in
 -- French AND Arabic. The public site shows only published articles; the admin
@@ -860,21 +862,24 @@ create table if not exists blog_posts (
 alter table blog_posts enable row level security;
 
 -- Public reads published articles; the logged-in admin reads/edits everything.
+drop policy if exists "Public can read published posts" on blog_posts;
 create policy "Public can read published posts"
   on blog_posts for select using (published = true);
+drop policy if exists "Admin can read all posts" on blog_posts;
 create policy "Admin can read all posts"
   on blog_posts for select to authenticated using (true);
+drop policy if exists "Admin can insert posts" on blog_posts;
 create policy "Admin can insert posts"
   on blog_posts for insert to authenticated with check (true);
+drop policy if exists "Admin can update posts" on blog_posts;
 create policy "Admin can update posts"
   on blog_posts for update to authenticated using (true) with check (true);
+drop policy if exists "Admin can delete posts" on blog_posts;
 create policy "Admin can delete posts"
   on blog_posts for delete to authenticated using (true);
 
 
--- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
--- FILE: 18_fix-orders-security.sql
--- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+-- >>> FILE: 18_fix-orders-security.sql >>>
 -- Run in Supabase → SQL Editor → New query → Run.
 -- 🔴 IMPORTANT : ré-active la protection (RLS) de la table orders, désactivée
 -- pendant le débogage. Sans elle, n'importe qui peut lire les données clients.
@@ -889,15 +894,14 @@ alter table orders enable row level security;
 
 drop policy if exists "Public can insert pending orders" on orders;
 
+drop policy if exists "Public can insert pending orders" on orders;
 create policy "Public can insert pending orders"
   on orders for insert
   to anon, authenticated
   with check (status = 'pending' and payment_status = 'pending');
 
 
--- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
--- FILE: 19_delivery-zones-maroc.sql
--- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+-- >>> FILE: 19_delivery-zones-maroc.sql >>>
 -- Run in Supabase → SQL Editor → New query → Run.
 -- Tarifs de livraison par ville (estimations Amana fournies par le vendeur).
 -- Grille : Kelaa 20 DH · grandes villes 35 DH · sud/éloigné 50-60 DH.
@@ -950,9 +954,7 @@ on conflict (city) do update
       active = true;
 
 
--- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
--- FILE: 20_track-by-phone.sql
--- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+-- >>> FILE: 20_track-by-phone.sql >>>
 -- Run in Supabase → SQL Editor → New query → Run.
 -- Suivi de commande par TÉLÉPHONE ou email. Indispensable depuis que l'email
 -- est facultatif au checkout : le client entre son n° de commande + le contact
@@ -985,9 +987,7 @@ $$;
 grant execute on function track_order_v2(text, text) to anon;
 
 
--- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
--- FILE: 21_stock-alerts.sql
--- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+-- >>> FILE: 21_stock-alerts.sql >>>
 -- Run in Supabase → SQL Editor → New query → Run.
 -- « Prévenez-moi quand c'est disponible » : capture la demande sur les produits
 -- en rupture de stock, pour savoir quoi réapprovisionner et qui recontacter.
@@ -1003,19 +1003,21 @@ create table if not exists stock_alerts (
 
 alter table stock_alerts enable row level security;
 
+drop policy if exists "Public can create stock alert" on stock_alerts;
 create policy "Public can create stock alert"
   on stock_alerts for insert to anon, authenticated with check (true);
+drop policy if exists "Admin can read stock alerts" on stock_alerts;
 create policy "Admin can read stock alerts"
   on stock_alerts for select to authenticated using (true);
+drop policy if exists "Admin can update stock alerts" on stock_alerts;
 create policy "Admin can update stock alerts"
   on stock_alerts for update to authenticated using (true) with check (true);
+drop policy if exists "Admin can delete stock alerts" on stock_alerts;
 create policy "Admin can delete stock alerts"
   on stock_alerts for delete to authenticated using (true);
 
 
--- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
--- FILE: 22_arabic-descriptions.sql
--- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+-- >>> FILE: 22_arabic-descriptions.sql >>>
 -- Run in Supabase → SQL Editor → New query → Run.
 -- Descriptions arabes pour LES 72 produits. Après exécution, chaque fiche
 -- produit s'affiche en arabe quand le client passe le site en arabe.
@@ -1095,9 +1097,7 @@ update products set description_ar = 'اكتشف منشّط الألوة، عن�
 update products set description_ar = 'يملأ سيروم الترطيب بشرتك ويرطبها بشكل مثالي مع تقليل ظهور الخطوط الدقيقة والتجاعيد بفضل مزيج من 4 أحماض هيالورونيك.' where slug = 'infinite-serum-hydratant';
 
 
--- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
--- FILE: 23_abandoned-carts.sql
--- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+-- >>> FILE: 23_abandoned-carts.sql >>>
 -- Run in Supabase → SQL Editor → New query → Run.
 -- « Paniers abandonnés » : dès que le client saisit nom + téléphone au checkout,
 -- on enregistre son panier — même s'il ne confirme pas. Vous le relancez ensuite
@@ -1120,19 +1120,21 @@ alter table abandoned_carts enable row level security;
 
 -- The visitor can create/refresh their own row (keyed by a random session id
 -- stored in their browser). Low-risk data; admin manages it.
+drop policy if exists "Public can upsert abandoned cart" on abandoned_carts;
 create policy "Public can upsert abandoned cart"
   on abandoned_carts for insert to anon, authenticated with check (true);
+drop policy if exists "Public can update own abandoned cart" on abandoned_carts;
 create policy "Public can update own abandoned cart"
   on abandoned_carts for update to anon, authenticated using (true) with check (true);
+drop policy if exists "Admin can read abandoned carts" on abandoned_carts;
 create policy "Admin can read abandoned carts"
   on abandoned_carts for select to authenticated using (true);
+drop policy if exists "Admin can delete abandoned carts" on abandoned_carts;
 create policy "Admin can delete abandoned carts"
   on abandoned_carts for delete to authenticated using (true);
 
 
--- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
--- FILE: 24_review-photos.sql
--- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+-- >>> FILE: 24_review-photos.sql >>>
 -- Run in Supabase → SQL Editor → New query → Run.
 -- Permet aux clients de joindre une photo à leur avis (une vraie photo vaut
 -- mieux que tout argumentaire). La photo est facultative.
@@ -1145,28 +1147,26 @@ on conflict (id) do nothing;
 
 -- N'importe quel visiteur peut envoyer une photo…
 drop policy if exists "review photos public upload" on storage.objects;
+drop policy if exists "review photos public upload" on storage.objects;
 create policy "review photos public upload"
   on storage.objects for insert
   with check (bucket_id = 'review-photos');
 
 -- …et tout le monde peut les voir (bucket public).
 drop policy if exists "review photos public read" on storage.objects;
+drop policy if exists "review photos public read" on storage.objects;
 create policy "review photos public read"
   on storage.objects for select
   using (bucket_id = 'review-photos');
 
 
--- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
--- FILE: 25_youcanpay.sql
--- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+-- >>> FILE: 25_youcanpay.sql >>>
 -- Run in Supabase → SQL Editor → New query → Run.
 -- Colonne pour relier une commande à son paiement YouCan Pay (carte bancaire).
 alter table orders add column if not exists youcanpay_token text;
 
 
--- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
--- FILE: 26_feature-flags.sql
--- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+-- >>> FILE: 26_feature-flags.sql >>>
 -- Run in Supabase → SQL Editor → New query → Run.
 -- Gestionnaire de fonctions : chaque fonctionnalité du site peut être activée
 -- ou désactivée individuellement depuis Admin → Réglages, sans redéploiement.
@@ -1180,11 +1180,13 @@ alter table feature_flags enable row level security;
 
 -- Tout le monde peut lire l'état des fonctions (le site en a besoin)…
 drop policy if exists "feature flags public read" on feature_flags;
+drop policy if exists "feature flags public read" on feature_flags;
 create policy "feature flags public read"
   on feature_flags for select
   using (true);
 
 -- …mais seul l'admin connecté peut les modifier.
+drop policy if exists "feature flags admin write" on feature_flags;
 drop policy if exists "feature flags admin write" on feature_flags;
 create policy "feature flags admin write"
   on feature_flags for all
@@ -1214,9 +1216,7 @@ on conflict (key) do nothing;
 -- Script réexécutable sans risque : les lignes existantes ne sont pas modifiées.
 
 
--- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
--- FILE: 27_packs.sql
--- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+-- >>> FILE: 27_packs.sql >>>
 -- Run in Supabase → SQL Editor → New query → Run.
 -- Packs gérés depuis l'admin : chaque pack contient des produits précis (avec
 -- quantités), un nom FR/AR et un objectif FR/AR. Affichés sur la page Routines.
@@ -1244,11 +1244,13 @@ alter table packs enable row level security;
 
 -- Le site lit les packs (les inactifs sont filtrés côté site)…
 drop policy if exists "packs public read" on packs;
+drop policy if exists "packs public read" on packs;
 create policy "packs public read"
   on packs for select
   using (true);
 
 -- …seul l'admin connecté peut créer / modifier / supprimer.
+drop policy if exists "packs admin write" on packs;
 drop policy if exists "packs admin write" on packs;
 create policy "packs admin write"
   on packs for all
@@ -1257,9 +1259,7 @@ create policy "packs admin write"
   with check (true);
 
 
--- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
--- FILE: 28_story-testimonials.sql
--- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+-- >>> FILE: 28_story-testimonials.sql >>>
 -- Run in Supabase → SQL Editor → New query → Run.
 
 -- 1) Votre histoire (« Qui suis-je ») — texte FR/AR modifiable dans l'admin,
@@ -1283,10 +1283,12 @@ create table if not exists testimonials (
 alter table testimonials enable row level security;
 
 drop policy if exists "testimonials public read" on testimonials;
+drop policy if exists "testimonials public read" on testimonials;
 create policy "testimonials public read"
   on testimonials for select
   using (true);
 
+drop policy if exists "testimonials admin write" on testimonials;
 drop policy if exists "testimonials admin write" on testimonials;
 create policy "testimonials admin write"
   on testimonials for all
@@ -1295,9 +1297,7 @@ create policy "testimonials admin write"
   with check (true);
 
 
--- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
--- FILE: 29_promo-usage-limits.sql
--- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+-- >>> FILE: 29_promo-usage-limits.sql >>>
 -- Run in Supabase → SQL Editor → New query → Run.
 -- Limite d'utilisation des codes promo : chaque code peut avoir un nombre
 -- maximum d'utilisations (ex : un code fidélité utilisable 2 fois, un code
@@ -1351,9 +1351,7 @@ create trigger orders_count_discount_use
   execute function count_discount_use();
 
 
--- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
--- FILE: 30_finance.sql
--- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+-- >>> FILE: 30_finance.sql >>>
 -- Run in Supabase → SQL Editor → New query → Run.
 -- Panneau Finances : prix d'achat Forever par produit (table réservée à
 -- l'admin — jamais lisible publiquement, vos coûts restent secrets) + coût
@@ -1369,6 +1367,7 @@ alter table product_costs enable row level security;
 
 -- Admin uniquement (lecture ET écriture) — aucun accès public.
 drop policy if exists "product costs admin all" on product_costs;
+drop policy if exists "product costs admin all" on product_costs;
 create policy "product costs admin all"
   on product_costs for all
   to authenticated
@@ -1380,9 +1379,61 @@ create policy "product costs admin all"
 alter table site_settings add column if not exists courier_cost numeric not null default 35;
 
 
--- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
--- FILE: 40_zyvora.sql
--- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+-- >>> FILE: 31_repair-public-access.sql >>>
+-- Run in Supabase → SQL Editor → New query → Run.
+-- RÉPARATION — restaure l'accès public du site après une remédiation de
+-- sécurité trop agressive. N'affecte PAS la sécurité admin (private.is_admin).
+-- Idempotent : ré-exécutable sans risque.
+
+-- ===========================================================================
+-- 1) Formulaires publics : l'anon doit pouvoir INSÉRER (contact + distributeur)
+-- ===========================================================================
+drop policy if exists "Public can insert contact messages" on public.contact_messages;
+drop policy if exists "Public can insert contact messages" on public.contact_messages;
+create policy "Public can insert contact messages"
+  on public.contact_messages for insert to anon, authenticated with check (true);
+
+drop policy if exists "Public can submit distributor lead" on public.distributor_leads;
+drop policy if exists "Public can submit distributor lead" on public.distributor_leads;
+create policy "Public can submit distributor lead"
+  on public.distributor_leads for insert to anon, authenticated with check (true);
+
+-- Privilège table (l'RLS ne sert à rien si le GRANT de base manque)
+grant insert on public.contact_messages to anon, authenticated;
+grant insert on public.distributor_leads to anon, authenticated;
+
+-- Autres écritures publiques légitimes du site
+grant insert on public.reviews to anon, authenticated;          -- avis clients
+grant insert on public.subscribers to anon, authenticated;      -- newsletter
+grant insert on public.stock_alerts to anon, authenticated;     -- « prévenez-moi »
+grant insert, update on public.abandoned_carts to anon, authenticated; -- paniers abandonnés
+grant insert on public.orders to anon, authenticated;           -- commandes (COD)
+
+-- ===========================================================================
+-- 2) Fonctions indispensables au site — l'anon DOIT pouvoir les appeler.
+--    (Oui, ceci fera réapparaître certains « warnings » du linter : c'est
+--     NORMAL et voulu pour une boutique publique. Ne les supprimez pas.)
+-- ===========================================================================
+grant execute on function public.validate_discount(text) to anon, authenticated;
+grant execute on function public.track_order(text, text) to anon, authenticated;
+grant execute on function public.track_order_v2(text, text) to anon, authenticated;
+grant execute on function public.submit_referral(text, text) to anon, authenticated;
+grant execute on function public.decrement_stock(jsonb) to anon, authenticated;
+grant execute on function public.get_loyalty(text) to anon, authenticated;
+grant execute on function public.recent_orders_public(integer) to anon, authenticated;
+grant execute on function public.respond_order(text, uuid, text) to anon, authenticated;
+
+-- ===========================================================================
+-- 3) Vérification — liste les policies publiques restaurées.
+-- ===========================================================================
+select tablename, policyname, cmd
+from pg_policies
+where schemaname = 'public'
+  and tablename in ('contact_messages', 'distributor_leads')
+order by tablename, policyname;
+
+
+-- >>> FILE: 40_zyvora.sql >>>
 -- ZYVORA Wave 0 — platform foundation (accounts + server-side Business Memory)
 -- Apply in the Supabase SQL editor (same workflow as 30_finance.sql).
 --
@@ -1450,9 +1501,169 @@ create policy "zyvora_ev_insert_own" on public.zyvora_events
 -- Business Memory is permanent and append-only (ADR-0002).
 
 
--- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
--- FILE: 99_convert-to-dirham.sql
--- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+-- >>> FILE: 41_zyvora_teams.sql >>>
+-- ZYVORA Wave 0 completion — multi-user: memberships, invitations, roles, RLS.
+-- Canonical (governance/): CAP-000004 Identity, Workspace, Permissions & Audit —
+--   FEAT-000027 invitation & membership, FEAT-000028 roles & permission grants,
+--   FEAT-000029 policy evaluation (enforced here at the data layer via RLS).
+-- Apply AFTER 40_zyvora.sql (same SQL-editor workflow).
+--
+-- Model: one Workspace has many Memberships (user + role). Access to a Workspace
+-- and its Business Memory is granted by membership, not just ownership. The owner
+-- always has an implicit 'owner' membership. Roles: owner > manager > staff > viewer.
+
+-- 1. Memberships -----------------------------------------------------------
+create table if not exists public.zyvora_memberships (
+  id uuid primary key default gen_random_uuid(),
+  workspace_id uuid not null references public.zyvora_workspaces(id) on delete cascade,
+  user_id uuid not null references auth.users(id) on delete cascade,
+  role text not null default 'staff' check (role in ('owner','manager','staff','viewer')),
+  created_at timestamptz not null default now(),
+  unique (workspace_id, user_id)
+);
+create index if not exists zyvora_memberships_user on public.zyvora_memberships (user_id);
+
+-- Helper: is the current user a member of a workspace (optionally with a role floor)?
+create or replace function public.zyvora_is_member(ws uuid)
+returns boolean language sql stable security definer set search_path = public as $$
+  select exists (
+    select 1 from public.zyvora_memberships m
+    where m.workspace_id = ws and m.user_id = auth.uid()
+  ) or exists (
+    select 1 from public.zyvora_workspaces w
+    where w.id = ws and w.owner = auth.uid()
+  );
+$$;
+
+create or replace function public.zyvora_role(ws uuid)
+returns text language sql stable security definer set search_path = public as $$
+  select coalesce(
+    (select role from public.zyvora_memberships m where m.workspace_id = ws and m.user_id = auth.uid()),
+    (select 'owner' from public.zyvora_workspaces w where w.id = ws and w.owner = auth.uid())
+  );
+$$;
+
+alter table public.zyvora_memberships enable row level security;
+
+-- Members can see the roster of their own workspaces.
+drop policy if exists "zyvora_mem_select" on public.zyvora_memberships;
+create policy "zyvora_mem_select" on public.zyvora_memberships
+  for select using (public.zyvora_is_member(workspace_id));
+
+-- Only owner/manager may add or change memberships.
+drop policy if exists "zyvora_mem_write" on public.zyvora_memberships;
+create policy "zyvora_mem_write" on public.zyvora_memberships
+  for all using (public.zyvora_role(workspace_id) in ('owner','manager'))
+  with check (public.zyvora_role(workspace_id) in ('owner','manager'));
+
+-- 2. Invitations (email-based; accepted when that user signs in) ------------
+create table if not exists public.zyvora_invitations (
+  id uuid primary key default gen_random_uuid(),
+  workspace_id uuid not null references public.zyvora_workspaces(id) on delete cascade,
+  email text not null,
+  role text not null default 'staff' check (role in ('manager','staff','viewer')),
+  invited_by uuid not null references auth.users(id),
+  status text not null default 'pending' check (status in ('pending','accepted','revoked')),
+  created_at timestamptz not null default now()
+);
+create index if not exists zyvora_inv_email on public.zyvora_invitations (lower(email));
+
+alter table public.zyvora_invitations enable row level security;
+
+-- Owner/manager manage invitations for their workspace.
+drop policy if exists "zyvora_inv_manage" on public.zyvora_invitations;
+create policy "zyvora_inv_manage" on public.zyvora_invitations
+  for all using (public.zyvora_role(workspace_id) in ('owner','manager'))
+  with check (public.zyvora_role(workspace_id) in ('owner','manager'));
+
+-- An invited user may see invitations addressed to their own email (to accept).
+drop policy if exists "zyvora_inv_see_mine" on public.zyvora_invitations;
+create policy "zyvora_inv_see_mine" on public.zyvora_invitations
+  for select using (lower(email) = lower(coalesce(auth.jwt() ->> 'email', '')));
+
+-- 3. Widen workspace + event access from owner-only to any member -----------
+drop policy if exists "zyvora_ws_select_own" on public.zyvora_workspaces;
+create policy "zyvora_ws_select_member" on public.zyvora_workspaces
+  for select using (public.zyvora_is_member(id));
+
+drop policy if exists "zyvora_ev_select_own" on public.zyvora_events;
+create policy "zyvora_ev_select_member" on public.zyvora_events
+  for select using (public.zyvora_is_member(workspace_id));
+
+-- Members with an operational role may append events; viewers cannot.
+drop policy if exists "zyvora_ev_insert_own" on public.zyvora_events;
+create policy "zyvora_ev_insert_member" on public.zyvora_events
+  for insert with check (public.zyvora_role(workspace_id) in ('owner','manager','staff'));
+
+-- Still NO update/delete on zyvora_events — append-only (ADR-0002).
+
+
+-- >>> FILE: 42_zyvora_telemetry.sql >>>
+-- ZYVORA productization Stone 2 — error telemetry.
+-- Canonical (governance/): CAP-000004 Identity, Workspace, Permissions & Audit —
+--   FEAT-000032 audit & observability (client-error channel).
+-- Apply AFTER 41_zyvora_teams.sql (same SQL-editor workflow).
+--
+-- Purpose: when the app breaks on a customer's machine, the vendor (you) can see
+-- it. Clients may INSERT their own error reports; nobody can update or delete
+-- them from the client (append-only, like Business Memory); reading is for the
+-- service role only (Supabase dashboard / future admin console).
+
+create table if not exists public.zyvora_client_errors (
+  id uuid primary key default gen_random_uuid(),
+  user_id uuid references auth.users(id) on delete set null,
+  workspace_id uuid,
+  message text not null,
+  stack text,
+  place text,               -- where in the app it happened (view / boundary / promise)
+  app_version text,
+  user_agent text,
+  created_at timestamptz not null default now()
+);
+create index if not exists zyvora_client_errors_time on public.zyvora_client_errors (created_at desc);
+
+alter table public.zyvora_client_errors enable row level security;
+
+-- Signed-in users may report their own errors. No select/update/delete policies:
+-- reports are write-only from the client.
+drop policy if exists zyvora_client_errors_insert on public.zyvora_client_errors;
+create policy zyvora_client_errors_insert on public.zyvora_client_errors
+  for insert to authenticated
+  with check (user_id = auth.uid());
+
+
+-- >>> FILE: 43_zyvora_billing.sql >>>
+-- ZYVORA productization Stone 4 — billing (Stripe subscriptions).
+-- Vendor productization (monetization of ZYVORA itself; no canonical CAP/FEAT id).
+-- Apply AFTER 42_zyvora_telemetry.sql (same SQL-editor workflow).
+--
+-- Model: one subscription per OWNER (auth user). The Stripe webhook Edge
+-- Function (service role) is the only writer; clients may only read their own
+-- row. Truth about payment lives in Stripe; this table is the mirror the app
+-- reads.
+
+create table if not exists public.zyvora_subscriptions (
+  user_id uuid primary key references auth.users(id) on delete cascade,
+  stripe_customer_id text,
+  stripe_subscription_id text,
+  status text not null default 'none'
+    check (status in ('none','trialing','active','past_due','canceled','unpaid')),
+  plan text,
+  current_period_end timestamptz,
+  updated_at timestamptz not null default now()
+);
+
+alter table public.zyvora_subscriptions enable row level security;
+
+-- Clients: read your own subscription. No insert/update/delete policies —
+-- only the webhook (service role, bypasses RLS) writes here.
+drop policy if exists zyvora_subscriptions_select on public.zyvora_subscriptions;
+create policy zyvora_subscriptions_select on public.zyvora_subscriptions
+  for select to authenticated
+  using (user_id = auth.uid());
+
+
+-- >>> FILE: 99_convert-to-dirham.sql >>>
 -- ⚠️ RUN THIS ONCE ONLY. Running it twice will double-convert your prices.
 --
 -- Converts prices that were entered in Euros into Moroccan Dirham using an
