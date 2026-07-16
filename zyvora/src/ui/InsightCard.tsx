@@ -24,13 +24,19 @@ export function InsightCard({ insight, onDecide }: Props) {
   const [rationale, setRationale] = useState("");
   const g = insight.guidance;
 
+  const conf = insight.confidence === "high" ? 3 : insight.confidence === "medium" ? 2 : 1;
+
   return (
-    <div className="card">
-      <div>
+    <div className={`card insight ${insight.layer === "strategic" ? "strategic" : ""}`}>
+      <div className="badge-row">
         <span className={`badge ${insight.layer === "strategic" ? "strategic" : ""}`}>
           {insight.layer}
         </span>
         <span className="badge domain">{insight.domain}</span>
+        <span className="confidence-dots" title={`Confidence: ${insight.confidence}`}>
+          {[1, 2, 3].map((n) => <i key={n} className={n <= conf ? "on" : ""} />)}
+          <span>{insight.confidence}</span>
+        </span>
       </div>
       <p className="claim">{insight.claim}</p>
       <p className="reasoning">{insight.reasoning}</p>

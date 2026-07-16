@@ -153,7 +153,7 @@ function Goals({ state, memory }: { state: WorkspaceState; memory: MemoryStore }
             ) : target ? (
               <div style={{ marginTop: 8 }}>
                 <div style={{ height: 12, borderRadius: 6, background: "var(--line)", overflow: "hidden" }}>
-                  <div style={{ height: "100%", width: `${pct}%`, background: pct >= 100 ? "#0f8a5f" : "var(--accent)", transition: "width .3s" }} />
+                  <div style={{ height: "100%", width: `${pct}%`, background: pct >= 100 ? "var(--chart-mark)" : "var(--accent)", transition: "width .3s" }} />
                 </div>
                 <p className="confidence-note" style={{ marginTop: 6 }}>
                   {fmt(actual)} of {fmt(target)} — <strong>{pct}%</strong>

@@ -24,6 +24,8 @@ import { NotificationsView } from "./ui/Notifications";
 import { TeamView } from "./ui/Team";
 import { BillingView, TrialBanner } from "./ui/Billing";
 import { Landing } from "./ui/Landing";
+import { cycleTheme, themePref, type ThemePref } from "./core/theme";
+import { Icons, type IconName } from "./ui/icons";
 import { entitlement, fetchSubscription, type Subscription } from "./core/billing";
 import { generateInsights } from "./core/engine";
 import { COMMON_CURRENCIES, setActiveCurrency } from "./core/format";
@@ -52,20 +54,20 @@ type View =
   | "today" | "notifications" | "orders" | "finance" | "customers"
   | "inventory" | "promos" | "analytics" | "ask" | "import" | "team" | "billing" | "memory";
 
-const NAV: { id: View; label: string }[] = [
-  { id: "today", label: "Today" },
-  { id: "notifications", label: "Notifications" },
-  { id: "orders", label: "Orders" },
-  { id: "finance", label: "Finance" },
-  { id: "customers", label: "Customers" },
-  { id: "inventory", label: "Inventory" },
-  { id: "promos", label: "Promos" },
-  { id: "analytics", label: "Analytics" },
-  { id: "ask", label: "Ask ZYVORA" },
-  { id: "import", label: "Import" },
-  { id: "team", label: "Team" },
-  { id: "billing", label: "Billing" },
-  { id: "memory", label: "Business Memory" },
+const NAV: { id: View; label: string; icon: IconName }[] = [
+  { id: "today", label: "Today", icon: "today" },
+  { id: "notifications", label: "Notifications", icon: "bell" },
+  { id: "orders", label: "Orders", icon: "orders" },
+  { id: "finance", label: "Finance", icon: "finance" },
+  { id: "customers", label: "Customers", icon: "customers" },
+  { id: "inventory", label: "Inventory", icon: "inventory" },
+  { id: "promos", label: "Promos", icon: "promos" },
+  { id: "analytics", label: "Analytics", icon: "analytics" },
+  { id: "ask", label: "Ask ZYVORA", icon: "ask" },
+  { id: "import", label: "Import", icon: "import" },
+  { id: "team", label: "Team", icon: "team" },
+  { id: "billing", label: "Billing", icon: "billing" },
+  { id: "memory", label: "Business Memory", icon: "memory" },
 ];
 
 const MODE_KEY = "zyvora.mode";
@@ -378,6 +380,13 @@ function Onboarding({
   );
 }
 
+/** Theme cycle button — auto follows the OS; one click walks auto → light → dark. */
+function ThemeButton() {
+  const [pref, setPref] = useState<ThemePref>(() => themePref());
+  const label = pref === "auto" ? "Theme: Auto" : pref === "light" ? "Theme: Light" : "Theme: Dark";
+  return <button onClick={() => setPref(cycleTheme())}>{label}</button>;
+}
+
 // -------------------------------------------------------------- Workspace ---
 
 function Workspace({
@@ -470,6 +479,7 @@ function Workspace({
         </div>
         {NAV.filter((n) => n.id !== "billing" || Boolean(onSignOut)).map((n) => (
           <button key={n.id} className={view === n.id ? "active" : ""} onClick={() => setView(n.id)}>
+            {Icons[n.icon]()}
             {n.label}
             {n.id === "notifications" && unread > 0 && (
               <span style={{
@@ -480,6 +490,7 @@ function Workspace({
           </button>
         ))}
         <div className="nav-footer">
+          <ThemeButton />
           {isEmpty && can(role, "import_data") && <button onClick={() => seedDemoData(memory)}>Load demo business</button>}
           {can(role, "export_memory") && (
             <button onClick={() => memory.exportJson(workspace.name)}>Export Business Memory</button>

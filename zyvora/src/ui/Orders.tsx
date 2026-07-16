@@ -75,6 +75,18 @@ const STATUS_LABEL: Record<OrderStatus, string> = {
   returned: "Returned",
 };
 
+/* Status tone chips (commerce-admin pattern): success = money landed,
+   attention = needs a human, info = in motion, critical = value lost. */
+const STATUS_TONE: Record<OrderStatus, "success" | "attention" | "info" | "critical"> = {
+  pending: "attention",
+  confirmed: "info",
+  shipped: "info",
+  delivered: "success",
+  refused: "critical",
+  cancelled: "critical",
+  returned: "critical",
+};
+
 /** Allowed transitions (ZPL-041 §3). */
 const NEXT: Record<OrderStatus, { to: OrderStatus; label: string }[]> = {
   pending: [
@@ -316,7 +328,7 @@ export function OrdersView({ state, memory, workspaceName }: { state: WorkspaceS
                     <span className="muted"> · {dateLabel(o.createdAt)}</span>
                   </td>
                   <td>{formatMoney(orderRevenue(o))}</td>
-                  <td>{STATUS_LABEL[o.status]}</td>
+                  <td><span className={`tone ${STATUS_TONE[o.status]}`}>{STATUS_LABEL[o.status]}</span></td>
                   <td className="muted">
                     {o.status === "delivered"
                       ? o.cashReceivedAt

@@ -70,6 +70,35 @@ export function projectState(events: readonly MemoryEvent[]): WorkspaceState {
         if (prod) prod.stock += p.delta;
         break;
       }
+      case "product_updated": {
+        const p = e.payload as unknown as ProductUpdated;
+        const prod = products.get(p.productId);
+        if (prod) {
+          // Latest non-undefined field wins (append-only correction).
+          if (p.name !== undefined) prod.name = p.name;
+          if (p.weeklySales !== undefined) prod.weeklySales = p.weeklySales;
+          if (p.leadTimeDays !== undefined) prod.leadTimeDays = p.leadTimeDays;
+          if (p.unitCost !== undefined) prod.unitCost = p.unitCost;
+          if (p.price !== undefined) prod.price = p.price;
+        }
+        break;
+      }
+      case "product_discontinued": {
+        const p = e.payload as unknown as ProductDiscontinued;
+        const prod = products.get(p.productId);
+        if (prod) prod.discontinued = true;
+        break;
+      }
+      case "customer_archived": {
+        const p = e.payload as unknown as CustomerArchived;
+        archived.add(p.customer);
+        break;
+      }
+      case "customer_restored": {
+        const p = e.payload as unknown as CustomerRestored;
+        archived.delete(p.customer);
+        break;
+      }
       case "order_created": {
         const p = e.payload as unknown as OrderCreated;
         orders.set(p.orderId, { ...p, status: "pending" });

@@ -19,7 +19,9 @@ import {
 } from "../core/projections";
 import type { Order, WorkspaceState } from "../core/types";
 
-const MARK = "#0f8a5f"; // validated: lightness band, chroma floor, contrast vs surface
+// Validated hue (#0f8a5f), theme-aware: styles.css brightens it one step on dark
+// surfaces so the contrast floor holds in both themes.
+const MARK = "var(--chart-mark)";
 
 interface MonthPoint {
   key: string;
@@ -324,17 +326,19 @@ export function AnalyticsView({ state }: { state: WorkspaceState }) {
         <div className="quiet">Charts appear as your invoices, orders, and expenses accumulate.</div>
       ) : (
         <>
-          <div className="form-row" style={{ marginBottom: 4 }}>
-            <span className="confidence-note" style={{ marginTop: 0 }}>Range:</span>
-            {[3, 6, 12].map((n) => (
-              <button
-                key={n}
-                className={`btn ${rangeMonths === n ? "" : "subtle"}`}
-                onClick={() => setRangeMonths(n)}
-              >
-                {n} months
-              </button>
-            ))}
+          <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 18 }}>
+            <span className="confidence-note" style={{ marginTop: 0 }}>Range</span>
+            <div className="segmented">
+              {[3, 6, 12].map((n) => (
+                <button
+                  key={n}
+                  className={rangeMonths === n ? "active" : ""}
+                  onClick={() => setRangeMonths(n)}
+                >
+                  {n} months
+                </button>
+              ))}
+            </div>
           </div>
 
           <ChartCard

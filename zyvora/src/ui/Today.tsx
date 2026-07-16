@@ -20,6 +20,19 @@ interface Props {
 
 const MAX_SURFACED = 3; // few and ranked (Law X)
 
+/** A greeting that knows the hour — the feel of opening a well-kept ledger. */
+function greeting(now = new Date()): string {
+  const h = now.getHours();
+  if (h < 5) return "Working late";
+  if (h < 12) return "Good morning";
+  if (h < 18) return "Good afternoon";
+  return "Good evening";
+}
+
+const DATE_FMT = new Intl.DateTimeFormat(undefined, {
+  weekday: "long", day: "numeric", month: "long",
+});
+
 export function Today({ workspaceName, state, insights, onDecide }: Props) {
   const needsJudgment = insights.filter((i) => i.guidance);
   const worthKnowing = insights.filter((i) => !i.guidance);
@@ -34,12 +47,21 @@ export function Today({ workspaceName, state, insights, onDecide }: Props) {
 
   return (
     <div>
-      <h1>Today</h1>
-      <p className="subtitle">
-        {surfaced.length === 0
-          ? `Nothing needs your judgment right now, ${workspaceName}. That is the system working, not failing.`
-          : `${surfaced.length} decision${surfaced.length > 1 ? "s" : ""} worth your judgment. Everything else can wait.`}
-      </p>
+      <div className="hero">
+        <p className="eyebrow">{DATE_FMT.format(new Date())} · {workspaceName}</p>
+        <h1>{greeting()}.</h1>
+        <p className="headline">
+          {surfaced.length === 0
+            ? "Nothing needs your judgment right now. That is the system working, not failing."
+            : <>
+                <strong>{surfaced.length}</strong> decision{surfaced.length > 1 ? "s" : ""} worth
+                your judgment today. Everything else can wait.
+              </>}
+        </p>
+        <span className={`seal${surfaced.length > 0 ? " attention" : ""}`}>
+          {surfaced.length === 0 ? "All clear" : "Judgment requested"}
+        </span>
+      </div>
 
       {empty && (
         <div className="quiet">

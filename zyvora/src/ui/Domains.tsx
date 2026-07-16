@@ -107,10 +107,10 @@ export function FinanceView({ state, memory }: { state: WorkspaceState; memory: 
                   <td className="muted">{dateLabel(inv.issuedAt)}</td>
                   <td>
                     {inv.paidAt
-                      ? <span className="muted">Paid {dateLabel(inv.paidAt)}</span>
+                      ? <span className="tone success">Paid {dateLabel(inv.paidAt)}</span>
                       : overdue
-                        ? <strong>Overdue {Math.round((now - (inv.issuedAt + inv.dueDays * DAY)) / DAY)}d</strong>
-                        : "Open"}
+                        ? <span className="tone attention">Overdue {Math.round((now - (inv.issuedAt + inv.dueDays * DAY)) / DAY)}d</span>
+                        : <span className="tone info">Open</span>}
                   </td>
                   <td>
                     {!inv.paidAt && (

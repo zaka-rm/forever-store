@@ -54,6 +54,23 @@ export interface StockAdjusted {
   reason: string;
 }
 
+/** Editing a product appends a correction; latest non-null field wins (append-only, ADR-0002). */
+export interface ProductUpdated {
+  productId: string;
+  name?: string;
+  weeklySales?: number;
+  leadTimeDays?: number;
+  unitCost?: number;
+  price?: number;
+  at: number;
+}
+
+/** "Deleting" a product = discontinuing it (append-only): its history stays, it leaves the active list. */
+export interface ProductDiscontinued {
+  productId: string;
+  at: number;
+}
+
 // ---------- Commerce & COD (Wave 1 — ZPL-040 §4, ZPL-041 §3) ----------
 
 export interface OrderLine {
@@ -147,6 +164,18 @@ export interface CustomerActivityCompleted {
   at: number;
 }
 
+/** "Deleting" a customer = archiving them (append-only): their transactions stay, they leave the list. */
+export interface CustomerArchived {
+  customer: string;
+  at: number;
+}
+
+/** Un-archive a customer (append-only correction; latest state wins). */
+export interface CustomerRestored {
+  customer: string;
+  at: number;
+}
+
 // ---------- Discounts & promos (Wave 1 completion — ZPL-040 §8, ZPL-041 §4) ----------
 
 export type PromoType = "percentage" | "fixed";
@@ -186,7 +215,9 @@ export interface Invoice extends InvoiceIssued {
   paidAt?: number;
 }
 
-export interface Product extends ProductAdded {}
+export interface Product extends ProductAdded {
+  discontinued?: boolean;
+}
 
 export interface Order extends OrderCreated {
   status: OrderStatus;
@@ -216,6 +247,8 @@ export interface WorkspaceState {
   reserved: Record<string, number>;
   /** Units on open (not-yet-received) purchase orders, per productId. */
   incoming: Record<string, number>;
+  /** Customer names the user has archived (hidden from the CRM list). */
+  archivedCustomers: string[];
 }
 
 // ---------- Insight & Decision layers (D.1 levels 4–5; CODEX 10 P4.6) ----------
