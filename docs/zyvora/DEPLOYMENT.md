@@ -46,8 +46,18 @@ Supabase ── Postgres + RLS (business memory, teams, error telemetry)
 
 ### Landing page
 
-Static, dependency-free: `zyvora/public/landing.html`, served at `/landing.html` and `/welcome`
-(rewrite in `vercel.json`). Point the marketing domain there; "Start free" links to the app root.
+Signed-out visitors to the app root now see the in-app landing (`zyvora/src/ui/Landing.tsx`);
+"Start free" / "Sign in" reveal the auth screen, "← Back to overview" returns. Signed-in users go
+straight to their workspace. A static twin (`zyvora/public/landing.html`, also at `/welcome`) remains
+for linking a marketing domain outside the app. `terms.html` / `privacy.html` are static, linked from
+both footers.
+
+### Auth setup (IMPORTANT — the "login doesn't work" fix)
+
+Supabase requires email confirmation by default, so new accounts can't sign in until they click a
+confirmation email (which Supabase's built-in mailer often never delivers). While getting started:
+Supabase Dashboard → Authentication → Sign In / Providers → Email → turn OFF "Confirm email".
+For production, turn it back on and connect a real SMTP provider (e.g. Resend).
 3. **Deploy the app** — from `zyvora/`:
    ```powershell
    npm run build          # verify it passes and ends with the CLEAN key scan habit

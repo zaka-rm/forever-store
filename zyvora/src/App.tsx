@@ -23,6 +23,7 @@ import { generateNotifications, loadReadSet } from "./core/notifications";
 import { NotificationsView } from "./ui/Notifications";
 import { TeamView } from "./ui/Team";
 import { BillingView, TrialBanner } from "./ui/Billing";
+import { Landing } from "./ui/Landing";
 import { entitlement, fetchSubscription, type Subscription } from "./core/billing";
 import { generateInsights } from "./core/engine";
 import { COMMON_CURRENCIES, setActiveCurrency } from "./core/format";
@@ -146,11 +147,18 @@ function CloudApp({ onUseLocal }: { onUseLocal: () => void }) {
   }, [client]);
 
   if (!ready) return <CenteredNote text="Opening ZYVORA…" />;
-  if (!userId) return <AuthScreen onUseLocal={onUseLocal} />;
+  if (!userId) return <SignedOut onUseLocal={onUseLocal} />;
   return <CloudWorkspaceLoader userId={userId} />;
 }
 
-function AuthScreen({ onUseLocal }: { onUseLocal: () => void }) {
+/** Signed-out entry: marketing landing first, then the auth screen on "Get started". */
+function SignedOut({ onUseLocal }: { onUseLocal: () => void }) {
+  const [showAuth, setShowAuth] = useState(false);
+  if (showAuth) return <AuthScreen onUseLocal={onUseLocal} onBack={() => setShowAuth(false)} />;
+  return <Landing onGetStarted={() => setShowAuth(true)} onUseLocal={onUseLocal} />;
+}
+
+function AuthScreen({ onUseLocal, onBack }: { onUseLocal: () => void; onBack?: () => void }) {
   const client = supabase!;
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -161,7 +169,14 @@ function AuthScreen({ onUseLocal }: { onUseLocal: () => void }) {
     setBusy(true);
     setMessage(null);
     const { error } = await client.auth.signInWithPassword({ email, password });
-    if (error) setMessage(error.message);
+    if (error) {
+      const m = error.message.toLowerCase();
+      if (m.includes("email not confirmed"))
+        setMessage("This email hasn't been confirmed yet. Click the link in the confirmation email — or ask the owner to turn off email confirmation in Supabase (Authentication → Email) while getting started.");
+      else if (m.includes("invalid login"))
+        setMessage("Email or password is wrong — or this account was never confirmed. If you just created it, use “Create account” once and check for a confirmation email.");
+      else setMessage(error.message);
+    }
     setBusy(false);
   };
 
@@ -209,6 +224,11 @@ function AuthScreen({ onUseLocal }: { onUseLocal: () => void }) {
           <button className="btn subtle" onClick={onUseLocal}>
             Continue in local device mode
           </button>
+          {onBack && (
+            <button className="btn subtle" onClick={onBack}>
+              ← Back to overview
+            </button>
+          )}
         </div>
       </div>
     </div>
