@@ -286,6 +286,44 @@ memory.append("outcome", "outcome_recorded", {
 });
 check("outcome linked to decision", projectDecisions(memory.all())[0].hasOutcome);
 
+console.log("\nCorrections & archival (append-only edit/delete, ADR-0002):");
+{
+  const before = projectState(memory.all());
+  const prod = before.products[0];
+  memory.append("fact", "product_updated", { productId: prod.productId, price: prod.price + 5, at: Date.now() });
+  const afterEdit = projectState(memory.all()).products.find((p) => p.productId === prod.productId)!;
+  check("product edit appends a correction (price updated)", afterEdit.price === prod.price + 5);
+  check("product edit leaves untouched fields intact", afterEdit.name === prod.name && afterEdit.unitCost === prod.unitCost);
+
+  memory.append("fact", "product_discontinued", { productId: prod.productId, at: Date.now() });
+  const afterDisc = projectState(memory.all());
+  check("discontinued product stays in state, flagged (history kept)", afterDisc.products.find((p) => p.productId === prod.productId)!.discontinued === true);
+  const insDisc = generateInsights(afterDisc, projectDecisions(memory.all()));
+  check(
+    "no advice generated for a discontinued product",
+    !insDisc.some((i) => i.decisionKey === `inventory.stockout.${prod.productId}` || i.decisionKey === `inventory.dead.${prod.productId}`)
+  );
+  memory.append("fact", "product_restored", { productId: prod.productId, at: Date.now() });
+  check("restore clears the discontinued flag", projectState(memory.all()).products.find((p) => p.productId === prod.productId)!.discontinued === false);
+
+  const silentBefore = generateInsights(projectState(memory.all()), projectDecisions(memory.all()))
+    .filter((i) => i.decisionKey.startsWith("customers.silent."));
+  if (silentBefore.length > 0) {
+    const name = silentBefore[0].decisionKey.slice("customers.silent.".length);
+    memory.append("fact", "customer_archived", { customer: name, at: Date.now() });
+    const st = projectState(memory.all());
+    check("archived customer listed in state.archivedCustomers", st.archivedCustomers.includes(name));
+    check(
+      "archived customer generates no attention advice",
+      !generateInsights(st, projectDecisions(memory.all())).some((i) => i.decisionKey === `customers.silent.${name}`)
+    );
+    memory.append("fact", "customer_restored", { customer: name, at: Date.now() });
+    check("restored customer leaves the archive", !projectState(memory.all()).archivedCustomers.includes(name));
+  } else {
+    check("silent-customer insight available to exercise archive (demo data)", false);
+  }
+}
+
 console.log("\nBilling entitlement (vendor productization):");
 {
   const now = Date.now();

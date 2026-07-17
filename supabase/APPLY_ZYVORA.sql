@@ -153,16 +153,20 @@ create policy "zyvora_inv_see_mine" on public.zyvora_invitations
   for select using (lower(email) = lower(coalesce(auth.jwt() ->> 'email', '')));
 
 -- 3. Widen workspace + event access from owner-only to any member -----------
+-- (drop BOTH the old owner-only name and the new member name, so re-runs are safe)
 drop policy if exists "zyvora_ws_select_own" on public.zyvora_workspaces;
+drop policy if exists "zyvora_ws_select_member" on public.zyvora_workspaces;
 create policy "zyvora_ws_select_member" on public.zyvora_workspaces
   for select using (public.zyvora_is_member(id));
 
 drop policy if exists "zyvora_ev_select_own" on public.zyvora_events;
+drop policy if exists "zyvora_ev_select_member" on public.zyvora_events;
 create policy "zyvora_ev_select_member" on public.zyvora_events
   for select using (public.zyvora_is_member(workspace_id));
 
 -- Members with an operational role may append events; viewers cannot.
 drop policy if exists "zyvora_ev_insert_own" on public.zyvora_events;
+drop policy if exists "zyvora_ev_insert_member" on public.zyvora_events;
 create policy "zyvora_ev_insert_member" on public.zyvora_events
   for insert with check (public.zyvora_role(workspace_id) in ('owner','manager','staff'));
 

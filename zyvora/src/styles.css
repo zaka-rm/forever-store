@@ -392,6 +392,19 @@ details.layers[open] summary::before { transform: rotate(90deg); }
 .link-btn { background: none; border: none; color: var(--accent); font-weight: 600; padding: 0; font-size: 13.5px; }
 .link-btn:hover { text-decoration: underline; text-underline-offset: 2px; }
 
+/* Row actions (commerce-admin pattern): real small buttons, not bare links. */
+.row-actions { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+.btn.mini {
+  padding: 4px 11px; font-size: 12.5px; font-weight: 600;
+  border-radius: 7px; box-shadow: none;
+}
+.btn.mini.danger { color: var(--red); border-color: transparent; background: transparent; }
+.btn.mini.danger:hover:not(:disabled) { background: var(--red-soft); border-color: transparent; color: var(--red); }
+
+/* Tag clusters (customer tags etc.): breathing room, never touching. */
+.tag-row { display: flex; gap: 5px 6px; flex-wrap: wrap; align-items: center; }
+.tag-row .badge { margin: 0; }
+
 /* ----------------------------------------------------------- Memory timeline */
 .timeline { list-style: none; margin: 0; padding: 0; }
 .timeline li {

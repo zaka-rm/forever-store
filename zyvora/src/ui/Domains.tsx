@@ -19,7 +19,7 @@ import {
   type CustomerTag,
 } from "../core/projections";
 import { messagingConfigured, sendMessage } from "../core/messaging";
-import type { WorkspaceState } from "../core/types";
+import type { Product, WorkspaceState } from "../core/types";
 import { FinanceTools } from "./FinanceTools";
 
 const dateLabel = (ts: number) =>
@@ -115,7 +115,7 @@ export function FinanceView({ state, memory }: { state: WorkspaceState; memory: 
                   <td>
                     {!inv.paidAt && (
                       <button
-                        className="link-btn"
+                        className="btn mini"
                         onClick={() =>
                           memory.append("fact", "invoice_paid", { invoiceId: inv.invoiceId, paidAt: Date.now() })
                         }
@@ -242,11 +242,23 @@ const TAG_STYLE: Record<CustomerTag, { label: string; cls: string }> = {
 
 export function CustomersView({ state, memory }: { state: WorkspaceState; memory: MemoryStore }) {
   const now = Date.now();
-  const customers = projectCustomerProfiles(state, now);
+  const allCustomers = projectCustomerProfiles(state, now);
+  const archivedSet = new Set(state.archivedCustomers);
+  const customers = allCustomers.filter((c) => !archivedSet.has(c.name));
+  const archivedCustomers = allCustomers.filter((c) => archivedSet.has(c.name));
   const contacts = projectContacts(memory.all());
   const activities = projectActivities(memory.all());
   const openFollowups = activities.filter((a) => !a.done && a.dueAt).length;
   const [open, setOpen] = useState<string | null>(null);
+
+  const archive = (name: string) => {
+    if (confirm(`Archive ${name}? Their invoices and orders stay in your figures — they just leave this list. You can restore them anytime.`)) {
+      memory.append("fact", "customer_archived", { customer: name, at: Date.now() });
+      if (open === name) setOpen(null);
+    }
+  };
+  const restore = (name: string) =>
+    memory.append("fact", "customer_restored", { customer: name, at: Date.now() });
 
   return (
     <div>
@@ -278,17 +290,22 @@ export function CustomersView({ state, memory }: { state: WorkspaceState; memory
                   <td>{formatMoney(c.lifetimeRevenue)}</td>
                   <td>{c.hasProfitData ? formatMoney(c.lifetimeProfit) : <span className="muted">—</span>}</td>
                   <td>
-                    {c.tags.map((t) => (
-                      <span key={t} className={`badge ${TAG_STYLE[t].cls}`}>{TAG_STYLE[t].label}</span>
-                    ))}
+                    <div className="tag-row">
+                      {c.tags.map((t) => (
+                        <span key={t} className={`badge ${TAG_STYLE[t].cls}`}>{TAG_STYLE[t].label}</span>
+                      ))}
+                    </div>
                   </td>
                   <td className="muted">
                     {c.lastActivityAt ? `${Math.round((now - c.lastActivityAt) / DAY)} days ago` : "—"}
                   </td>
                   <td>
-                    <button className="link-btn" onClick={() => setOpen(open === c.name ? null : c.name)}>
-                      {open === c.name ? "Hide" : "Profile"}
-                    </button>
+                    <div className="row-actions">
+                      <button className="btn subtle mini" onClick={() => setOpen(open === c.name ? null : c.name)}>
+                        {open === c.name ? "Hide" : "Profile"}
+                      </button>
+                      <button className="btn mini danger" onClick={() => archive(c.name)}>Archive</button>
+                    </div>
                   </td>
                 </tr>
                 {open === c.name && (
@@ -339,6 +356,23 @@ export function CustomersView({ state, memory }: { state: WorkspaceState; memory
             ))}
           </tbody>
         </table>
+      )}
+
+      {archivedCustomers.length > 0 && (
+        <details className="layers" style={{ marginTop: 16 }}>
+          <summary>{archivedCustomers.length} archived customer{archivedCustomers.length > 1 ? "s" : ""} — hidden from the list, still in your figures</summary>
+          <table className="records" style={{ marginTop: 10 }}>
+            <tbody>
+              {archivedCustomers.map((c) => (
+                <tr key={c.name}>
+                  <td>{c.name}</td>
+                  <td className="muted">{formatMoney(c.lifetimeRevenue)} lifetime</td>
+                  <td><button className="btn subtle mini" onClick={() => restore(c.name)}>Restore</button></td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </details>
       )}
     </div>
   );
@@ -420,7 +454,7 @@ function CustomerCrm({
                 {!a.done && <span className="stream-tag">{a.kind}</span>}
                 {a.note}
                 {!a.done && (
-                  <button className="link-btn" style={{ marginLeft: 10 }} onClick={() => complete(a.activityId)}>Mark done</button>
+                  <button className="btn subtle mini" style={{ marginLeft: 10 }} onClick={() => complete(a.activityId)}>Mark done</button>
                 )}
               </div>
             </li>
@@ -440,7 +474,10 @@ export function InventoryView({ state, memory }: { state: WorkspaceState; memory
   const [lead, setLead] = useState("14");
   const [cost, setCost] = useState("");
   const [price, setPrice] = useState("");
+  const [editing, setEditing] = useState<string | null>(null);
   const ccy = getActiveCurrency();
+  const activeProducts = state.products.filter((p) => !p.discontinued);
+  const discontinued = state.products.filter((p) => p.discontinued);
 
   const addProduct = () => {
     const s = parseInt(stock, 10);
@@ -479,50 +516,135 @@ export function InventoryView({ state, memory }: { state: WorkspaceState; memory
       </div>
 
       <h2>Products</h2>
-      {state.products.length === 0 ? (
+      {activeProducts.length === 0 && discontinued.length === 0 ? (
         <div className="quiet">No products yet.</div>
       ) : (
         <table className="records">
           <thead>
-            <tr><th>Product</th><th>Stock</th><th>Incoming</th><th>Sales / week</th><th>Days of stock</th><th></th></tr>
+            <tr><th>Product</th><th>Stock</th><th>Incoming</th><th>Sales / week</th><th>Days of stock</th><th>Actions</th></tr>
           </thead>
           <tbody>
-            {state.products.map((p) => {
+            {activeProducts.map((p) => {
               const daysLeft = p.weeklySales > 0 ? Math.round(p.stock / (p.weeklySales / 7)) : null;
               const inc = state.incoming[p.productId] ?? 0;
               return (
-                <tr key={p.productId}>
-                  <td>{p.name}</td>
-                  <td>{p.stock}</td>
-                  <td className="muted">{inc > 0 ? `+${inc}` : "—"}</td>
-                  <td className="muted">{p.weeklySales}</td>
-                  <td className="muted">{daysLeft === null ? "not selling" : `~${daysLeft} days`}</td>
-                  <td>
-                    <button
-                      className="link-btn"
-                      onClick={() => {
-                        const raw = prompt(`Adjust stock for "${p.name}" (e.g. +50 received, -3 damaged):`, "+0");
-                        if (raw === null) return;
-                        const delta = parseInt(raw, 10);
-                        if (!isFinite(delta) || delta === 0) return;
-                        memory.append("fact", "stock_adjusted", {
-                          productId: p.productId,
-                          delta,
-                          reason: "manual adjustment",
-                        });
-                      }}
-                    >
-                      Adjust stock
-                    </button>
-                  </td>
-                </tr>
+                <Fragment key={p.productId}>
+                  <tr>
+                    <td>{p.name}</td>
+                    <td>{p.stock}</td>
+                    <td className="muted">{inc > 0 ? `+${inc}` : "—"}</td>
+                    <td className="muted">{p.weeklySales}</td>
+                    <td className="muted">{daysLeft === null ? "not selling" : `~${daysLeft} days`}</td>
+                    <td>
+                      <div className="row-actions">
+                        <button className="btn subtle mini" onClick={() => setEditing(editing === p.productId ? null : p.productId)}>
+                          {editing === p.productId ? "Close" : "Edit"}
+                        </button>
+                        <button
+                          className="btn subtle mini"
+                          onClick={() => {
+                            const raw = prompt(`Adjust stock for "${p.name}" (e.g. +50 received, -3 damaged):`, "+0");
+                            if (raw === null) return;
+                            const delta = parseInt(raw, 10);
+                            if (!isFinite(delta) || delta === 0) return;
+                            memory.append("fact", "stock_adjusted", {
+                              productId: p.productId,
+                              delta,
+                              reason: "manual adjustment",
+                            });
+                          }}
+                        >
+                          Stock ±
+                        </button>
+                        <button
+                          className="btn mini danger"
+                          onClick={() => {
+                            if (confirm(`Discontinue "${p.name}"? Its sales history stays in your figures — it just leaves this list and stops generating advice. You can restore it anytime.`)) {
+                              memory.append("fact", "product_discontinued", { productId: p.productId, at: Date.now() });
+                              if (editing === p.productId) setEditing(null);
+                            }
+                          }}
+                        >
+                          Discontinue
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  {editing === p.productId && (
+                    <tr>
+                      <td colSpan={6}>
+                        <ProductEditor product={p} memory={memory} onDone={() => setEditing(null)} />
+                      </td>
+                    </tr>
+                  )}
+                </Fragment>
               );
             })}
           </tbody>
         </table>
       )}
 
+      {discontinued.length > 0 && (
+        <details className="layers" style={{ marginTop: 16 }}>
+          <summary>{discontinued.length} discontinued product{discontinued.length > 1 ? "s" : ""} — hidden from lists and advice, history kept</summary>
+          <table className="records" style={{ marginTop: 10 }}>
+            <tbody>
+              {discontinued.map((p) => (
+                <tr key={p.productId}>
+                  <td>{p.name}</td>
+                  <td className="muted">{p.stock} in stock</td>
+                  <td><button className="btn subtle mini" onClick={() => memory.append("fact", "product_restored", { productId: p.productId, at: Date.now() })}>Restore</button></td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </details>
+      )}
+
       <PurchaseOrders state={state} memory={memory} />
+    </div>
+  );
+}
+
+/** Edit a product — appends a `product_updated` correction event (append-only; history intact). */
+function ProductEditor({ product, memory, onDone }: { product: Product; memory: MemoryStore; onDone: () => void }) {
+  const ccy = getActiveCurrency();
+  const [name, setName] = useState(product.name);
+  const [weekly, setWeekly] = useState(String(product.weeklySales));
+  const [lead, setLead] = useState(String(product.leadTimeDays));
+  const [cost, setCost] = useState(String(product.unitCost));
+  const [price, setPrice] = useState(String(product.price));
+
+  const save = () => {
+    const w = parseFloat(weekly);
+    const l = parseInt(lead, 10);
+    const c = parseFloat(cost);
+    const p = parseFloat(price);
+    const patch: Record<string, unknown> = { productId: product.productId, at: Date.now() };
+    if (name.trim() && name.trim() !== product.name) patch.name = name.trim();
+    if (isFinite(w) && w >= 0 && w !== product.weeklySales) patch.weeklySales = w;
+    if (isFinite(l) && l > 0 && l !== product.leadTimeDays) patch.leadTimeDays = l;
+    if (isFinite(c) && c >= 0 && c !== product.unitCost) patch.unitCost = c;
+    if (isFinite(p) && p >= 0 && p !== product.price) patch.price = p;
+    if (Object.keys(patch).length > 2) memory.append("fact", "product_updated", patch);
+    onDone();
+  };
+
+  return (
+    <div>
+      <div className="form-row" style={{ marginBottom: 8 }}>
+        <div style={{ flex: 1, minWidth: 160 }}><label>Name</label><input value={name} onChange={(e) => setName(e.target.value)} style={{ width: "100%" }} /></div>
+        <div><label>Sales / week</label><input value={weekly} onChange={(e) => setWeekly(e.target.value)} inputMode="decimal" style={{ width: 90 }} /></div>
+        <div><label>Lead time (d)</label><input value={lead} onChange={(e) => setLead(e.target.value)} inputMode="numeric" style={{ width: 90 }} /></div>
+        <div><label>Unit cost ({ccy})</label><input value={cost} onChange={(e) => setCost(e.target.value)} inputMode="decimal" style={{ width: 96 }} /></div>
+        <div><label>Price ({ccy})</label><input value={price} onChange={(e) => setPrice(e.target.value)} inputMode="decimal" style={{ width: 88 }} /></div>
+        <button className="btn mini" onClick={save}>Save changes</button>
+        <button className="btn subtle mini" onClick={onDone}>Cancel</button>
+      </div>
+      <p className="confidence-note" style={{ margin: 0 }}>
+        Stock is adjusted with “Stock ±” (a traceable movement), not edited here — so the ledger stays honest.
+        Every save is a correction event in Business Memory; nothing is overwritten.
+      </p>
     </div>
   );
 }
@@ -571,7 +693,7 @@ function PurchaseOrders({ state, memory }: { state: WorkspaceState; memory: Memo
           <label>Product</label>
           <select value={productId} onChange={(e) => setProductId(e.target.value)}>
             <option value="">Select…</option>
-            {state.products.map((p) => (
+            {state.products.filter((p) => !p.discontinued).map((p) => (
               <option key={p.productId} value={p.productId}>{p.name}</option>
             ))}
           </select>
@@ -595,7 +717,7 @@ function PurchaseOrders({ state, memory }: { state: WorkspaceState; memory: Memo
                 <td className="muted">{po.lines.map((l) => `${l.qty}× ${l.productName}`).join(", ")}</td>
                 <td>{formatMoney(poValue(po.lines))}</td>
                 <td>{po.receivedAt ? <span className="muted">Received {dateLabel(po.receivedAt)}</span> : "Open"}</td>
-                <td>{!po.receivedAt && <button className="link-btn" onClick={() => receive(po.poId)}>Receive</button>}</td>
+                <td>{!po.receivedAt && <button className="btn mini" onClick={() => receive(po.poId)}>Receive</button>}</td>
               </tr>
             ))}
           </tbody>

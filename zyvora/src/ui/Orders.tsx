@@ -237,7 +237,7 @@ export function OrdersView({ state, memory, workspaceName }: { state: WorkspaceS
           <label>Product</label>
           <select value={productId} onChange={(e) => setProductId(e.target.value)}>
             <option value="">Select…</option>
-            {state.products.map((p) => (
+            {state.products.filter((p) => !p.discontinued).map((p) => (
               <option key={p.productId} value={p.productId}>
                 {p.name} ({available(p.productId)} available)
               </option>
@@ -337,28 +337,33 @@ export function OrdersView({ state, memory, workspaceName }: { state: WorkspaceS
                       : "—"}
                   </td>
                   <td>
-                    {NEXT[o.status].map((n) => (
-                      <button key={n.to} className="link-btn" style={{ marginRight: 8 }} onClick={() => transition(o, n.to)}>
-                        {n.label}
+                    <div className="row-actions">
+                      {NEXT[o.status].map((n) => (
+                        <button
+                          key={n.to}
+                          className={`btn mini ${n.to === "refused" || n.to === "cancelled" || n.to === "returned" ? "danger" : n.to === "delivered" || n.to === "confirmed" ? "" : "subtle"}`}
+                          onClick={() => transition(o, n.to)}
+                        >
+                          {n.label}
+                        </button>
+                      ))}
+                      {o.status === "delivered" && !o.cashReceivedAt && (
+                        <button
+                          className="btn mini"
+                          onClick={() =>
+                            memory.append("fact", "order_cash_received", { orderId: o.orderId, at: Date.now() })
+                          }
+                        >
+                          Cash received
+                        </button>
+                      )}
+                      <button className="btn subtle mini" onClick={() => setExpanded(expanded === o.orderId ? null : o.orderId)}>
+                        {expanded === o.orderId ? "Hide" : "Profit"}
                       </button>
-                    ))}
-                    {o.status === "delivered" && !o.cashReceivedAt && (
-                      <button
-                        className="link-btn"
-                        style={{ marginRight: 8 }}
-                        onClick={() =>
-                          memory.append("fact", "order_cash_received", { orderId: o.orderId, at: Date.now() })
-                        }
-                      >
-                        Cash received
+                      <button className="btn subtle mini" onClick={() => printReceipt(o, workspaceName)}>
+                        Receipt
                       </button>
-                    )}
-                    <button className="link-btn" style={{ marginRight: 8 }} onClick={() => setExpanded(expanded === o.orderId ? null : o.orderId)}>
-                      {expanded === o.orderId ? "Hide" : "Profit"}
-                    </button>
-                    <button className="link-btn" onClick={() => printReceipt(o, workspaceName)}>
-                      Receipt
-                    </button>
+                    </div>
                   </td>
                 </tr>
                 {expanded === o.orderId && (

@@ -320,7 +320,9 @@ function revenueDipGuidance(driver: string, delta: number): Guidance {
 
 function customersBrain(state: WorkspaceState, out: Insight[], now: number): void {
   const customers = projectCustomers(state);
+  const archived = new Set(state.archivedCustomers);
   for (const c of customers) {
+    if (archived.has(c.name)) continue; // no advice about customers you've archived
     if (c.invoiceCount < 3 || c.medianGapDays === null || c.medianGapDays <= 0) continue;
     const daysSince = (now - c.lastInvoiceAt) / DAY;
     const threshold = Math.max(2 * c.medianGapDays, 30);
@@ -388,6 +390,7 @@ function customersBrain(state: WorkspaceState, out: Insight[], now: number): voi
 
 function inventoryBrain(state: WorkspaceState, out: Insight[], now: number): void {
   for (const p of state.products) {
+    if (p.discontinued) continue; // no advice about products you've retired
     const dailySales = p.weeklySales / 7;
     // Available = physical − reserved by open orders (ZPL-041 §17: never oversell).
     const available = p.stock - (state.reserved[p.productId] ?? 0);

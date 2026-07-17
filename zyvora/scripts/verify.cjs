@@ -39,6 +39,7 @@ function projectState(events) {
   const promoActive = /* @__PURE__ */ new Map();
   const goals = {};
   const expenses = [];
+  const archived = /* @__PURE__ */ new Set();
   for (const e of events) {
     if (e.stream !== "fact") continue;
     switch (e.type) {
@@ -66,6 +67,40 @@ function projectState(events) {
         const p2 = e.payload;
         const prod = products.get(p2.productId);
         if (prod) prod.stock += p2.delta;
+        break;
+      }
+      case "product_updated": {
+        const p2 = e.payload;
+        const prod = products.get(p2.productId);
+        if (prod) {
+          if (p2.name !== void 0) prod.name = p2.name;
+          if (p2.weeklySales !== void 0) prod.weeklySales = p2.weeklySales;
+          if (p2.leadTimeDays !== void 0) prod.leadTimeDays = p2.leadTimeDays;
+          if (p2.unitCost !== void 0) prod.unitCost = p2.unitCost;
+          if (p2.price !== void 0) prod.price = p2.price;
+        }
+        break;
+      }
+      case "product_discontinued": {
+        const p2 = e.payload;
+        const prod = products.get(p2.productId);
+        if (prod) prod.discontinued = true;
+        break;
+      }
+      case "product_restored": {
+        const p2 = e.payload;
+        const prod = products.get(p2.productId);
+        if (prod) prod.discontinued = false;
+        break;
+      }
+      case "customer_archived": {
+        const p2 = e.payload;
+        archived.add(p2.customer);
+        break;
+      }
+      case "customer_restored": {
+        const p2 = e.payload;
+        archived.delete(p2.customer);
         break;
       }
       case "order_created": {
@@ -170,7 +205,8 @@ function projectState(events) {
     purchaseOrders: [...purchaseOrders.values()].sort((a, b) => b.createdAt - a.createdAt),
     goals,
     reserved,
-    incoming
+    incoming,
+    archivedCustomers: [...archived]
   };
 }
 var monthStart = (now) => {
@@ -694,7 +730,9 @@ function revenueDipGuidance(driver, delta) {
 }
 function customersBrain(state2, out, now) {
   const customers = projectCustomers(state2);
+  const archived = new Set(state2.archivedCustomers);
   for (const c of customers) {
+    if (archived.has(c.name)) continue;
     if (c.invoiceCount < 3 || c.medianGapDays === null || c.medianGapDays <= 0) continue;
     const daysSince = (now - c.lastInvoiceAt) / DAY2;
     const threshold = Math.max(2 * c.medianGapDays, 30);
@@ -754,6 +792,7 @@ function customersBrain(state2, out, now) {
 }
 function inventoryBrain(state2, out, now) {
   for (const p2 of state2.products) {
+    if (p2.discontinued) continue;
     const dailySales = p2.weeklySales / 7;
     const available = p2.stock - (state2.reserved[p2.productId] ?? 0);
     if (dailySales > 0) {
@@ -2737,6 +2776,40 @@ memory.append("outcome", "outcome_recorded", {
   note: "Arrived in time; zero stockout days."
 });
 check("outcome linked to decision", projectDecisions(memory.all())[0].hasOutcome);
+console.log("\nCorrections & archival (append-only edit/delete, ADR-0002):");
+{
+  const before = projectState(memory.all());
+  const prod = before.products[0];
+  memory.append("fact", "product_updated", { productId: prod.productId, price: prod.price + 5, at: Date.now() });
+  const afterEdit = projectState(memory.all()).products.find((p2) => p2.productId === prod.productId);
+  check("product edit appends a correction (price updated)", afterEdit.price === prod.price + 5);
+  check("product edit leaves untouched fields intact", afterEdit.name === prod.name && afterEdit.unitCost === prod.unitCost);
+  memory.append("fact", "product_discontinued", { productId: prod.productId, at: Date.now() });
+  const afterDisc = projectState(memory.all());
+  check("discontinued product stays in state, flagged (history kept)", afterDisc.products.find((p2) => p2.productId === prod.productId).discontinued === true);
+  const insDisc = generateInsights(afterDisc, projectDecisions(memory.all()));
+  check(
+    "no advice generated for a discontinued product",
+    !insDisc.some((i) => i.decisionKey === `inventory.stockout.${prod.productId}` || i.decisionKey === `inventory.dead.${prod.productId}`)
+  );
+  memory.append("fact", "product_restored", { productId: prod.productId, at: Date.now() });
+  check("restore clears the discontinued flag", projectState(memory.all()).products.find((p2) => p2.productId === prod.productId).discontinued === false);
+  const silentBefore = generateInsights(projectState(memory.all()), projectDecisions(memory.all())).filter((i) => i.decisionKey.startsWith("customers.silent."));
+  if (silentBefore.length > 0) {
+    const name = silentBefore[0].decisionKey.slice("customers.silent.".length);
+    memory.append("fact", "customer_archived", { customer: name, at: Date.now() });
+    const st = projectState(memory.all());
+    check("archived customer listed in state.archivedCustomers", st.archivedCustomers.includes(name));
+    check(
+      "archived customer generates no attention advice",
+      !generateInsights(st, projectDecisions(memory.all())).some((i) => i.decisionKey === `customers.silent.${name}`)
+    );
+    memory.append("fact", "customer_restored", { customer: name, at: Date.now() });
+    check("restored customer leaves the archive", !projectState(memory.all()).archivedCustomers.includes(name));
+  } else {
+    check("silent-customer insight available to exercise archive (demo data)", false);
+  }
+}
 console.log("\nBilling entitlement (vendor productization):");
 {
   const now = Date.now();

@@ -20,6 +20,11 @@ import type {
   GoalSet,
   Product,
   ProductAdded,
+  ProductDiscontinued,
+  ProductRestored,
+  ProductUpdated,
+  CustomerArchived,
+  CustomerRestored,
   Promo,
   PromoCreated,
   PromoDeactivated,
@@ -40,6 +45,7 @@ export function projectState(events: readonly MemoryEvent[]): WorkspaceState {
   const promoActive = new Map<string, boolean>();
   const goals: Partial<Record<GoalMetric, number>> = {};
   const expenses: ExpenseRecorded[] = [];
+  const archived = new Set<string>();
 
   for (const e of events) {
     if (e.stream !== "fact") continue;
@@ -87,6 +93,12 @@ export function projectState(events: readonly MemoryEvent[]): WorkspaceState {
         const p = e.payload as unknown as ProductDiscontinued;
         const prod = products.get(p.productId);
         if (prod) prod.discontinued = true;
+        break;
+      }
+      case "product_restored": {
+        const p = e.payload as unknown as ProductRestored;
+        const prod = products.get(p.productId);
+        if (prod) prod.discontinued = false;
         break;
       }
       case "customer_archived": {
@@ -210,6 +222,7 @@ export function projectState(events: readonly MemoryEvent[]): WorkspaceState {
     goals,
     reserved,
     incoming,
+    archivedCustomers: [...archived],
   };
 }
 

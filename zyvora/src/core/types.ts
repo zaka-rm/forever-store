@@ -71,6 +71,12 @@ export interface ProductDiscontinued {
   at: number;
 }
 
+/** Un-discontinue a product (append-only correction; latest state wins). */
+export interface ProductRestored {
+  productId: string;
+  at: number;
+}
+
 // ---------- Commerce & COD (Wave 1 — ZPL-040 §4, ZPL-041 §3) ----------
 
 export interface OrderLine {
