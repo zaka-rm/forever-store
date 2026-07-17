@@ -10,6 +10,8 @@ import { formatMoney } from "../core/engine";
 import { getActiveCurrency } from "../core/format";
 import type { MemoryStore } from "../core/memory";
 import type { PromoType, WorkspaceState } from "../core/types";
+import { appConfirm } from "./dialog";
+import { toast } from "./toast";
 
 const DAY = 24 * 60 * 60 * 1000;
 
@@ -51,9 +53,16 @@ export function PromosView({ state, memory }: { state: WorkspaceState; memory: M
     setError(null);
   };
 
-  const deactivate = (promoId: string, promoCode: string) => {
-    if (!confirm(`Deactivate promo "${promoCode}"? It will stop applying to new orders. Past orders keep it.`)) return;
+  const deactivate = async (promoId: string, promoCode: string) => {
+    const ok = await appConfirm({
+      title: `Deactivate promo "${promoCode}"?`,
+      body: "It stops applying to new orders. Past orders keep it — nothing is rewritten.",
+      confirmLabel: "Deactivate",
+      danger: true,
+    });
+    if (!ok) return;
     memory.append("fact", "promo_deactivated", { promoId, at: Date.now() });
+    toast(`Promo "${promoCode}" deactivated`);
   };
 
   const now = Date.now();

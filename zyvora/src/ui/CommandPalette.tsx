@@ -7,6 +7,7 @@
  */
 import { useEffect, useMemo, useRef, useState } from "react";
 import { formatMoney } from "../core/engine";
+import { setDeepLink } from "../core/deepLink";
 import type { WorkspaceState } from "../core/types";
 import { Icons, type IconName } from "./icons";
 
@@ -89,21 +90,23 @@ export function CommandPalette({ open, onClose, state, navigate, actions }: Prop
       for (const name of [...seen].slice(0, 5)) {
         out.push({
           id: `cust.${name}`, group: "Customers", label: name, icon: "customers",
-          hint: "open Customers", run: () => navigate("customers"),
+          hint: "open profile",
+          run: () => { setDeepLink("customer", name); navigate("customers"); },
         });
       }
       for (const p of state.products.filter((p) => !p.discontinued && match(p.name)).slice(0, 5)) {
         out.push({
           id: `prod.${p.productId}`, group: "Products", label: p.name,
           hint: `${p.stock} in stock · ${formatMoney(p.price)}`, icon: "inventory",
-          run: () => navigate("inventory"),
+          run: () => { setDeepLink("product", p.productId); navigate("inventory"); },
         });
       }
       for (const o of state.orders.filter((o) => match(o.customer)).slice(0, 4)) {
         out.push({
           id: `ord.${o.orderId}`, group: "Orders",
           label: `${o.customer} — ${o.lines.map((l) => `${l.qty}× ${l.productName}`).join(", ")}`,
-          hint: o.status, icon: "orders", run: () => navigate("orders"),
+          hint: o.status, icon: "orders",
+          run: () => { setDeepLink("order", o.orderId); navigate("orders"); },
         });
       }
     }

@@ -5,7 +5,8 @@
  * Navigation mirrors the Builder's mental model, not the database (E.4).
  * Currency-neutral: amounts format in the Workspace's own currency (ZPL-040).
  */
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
+import { consumeDeepLink } from "../core/deepLink";
 import { ENVELOPES, cashCenter, formatMoney } from "../core/engine";
 import { getActiveCurrency } from "../core/format";
 import type { MemoryStore } from "../core/memory";
@@ -20,6 +21,7 @@ import {
 } from "../core/projections";
 import { messagingConfigured, sendMessage } from "../core/messaging";
 import { toast } from "./toast";
+import { appPrompt } from "./dialog";
 import type { Product, WorkspaceState } from "../core/types";
 import { FinanceTools } from "./FinanceTools";
 
@@ -256,6 +258,12 @@ export function CustomersView({ state, memory }: { state: WorkspaceState; memory
   const [open, setOpen] = useState<string | null>(null);
   const [custQ, setCustQ] = useState("");
   const [tagFilter, setTagFilter] = useState<CustomerTag | "all">("all");
+
+  // Command-palette deep link: open the exact profile that was searched for.
+  useEffect(() => {
+    const k = consumeDeepLink("customer");
+    if (k) setOpen(k);
+  }, []);
 
   const custNeedle = custQ.trim().toLowerCase();
   const visibleCustomers = customers.filter(
@@ -532,6 +540,12 @@ export function InventoryView({ state, memory }: { state: WorkspaceState; memory
   const activeProducts = state.products.filter((p) => !p.discontinued);
   const discontinued = state.products.filter((p) => p.discontinued);
 
+  // Command-palette deep link: open the exact product's editor.
+  useEffect(() => {
+    const k = consumeDeepLink("product");
+    if (k) setEditing(k);
+  }, []);
+
   const addProduct = () => {
     const s = parseInt(stock, 10);
     const w = parseFloat(weekly);
@@ -596,8 +610,14 @@ export function InventoryView({ state, memory }: { state: WorkspaceState; memory
                         </button>
                         <button
                           className="btn subtle mini"
-                          onClick={() => {
-                            const raw = prompt(`Adjust stock for "${p.name}" (e.g. +50 received, -3 damaged):`, "+0");
+                          onClick={async () => {
+                            const raw = await appPrompt({
+                              title: `Adjust stock — ${p.name}`,
+                              body: "Positive to add (received, found), negative to remove (damaged, lost). Recorded as a traceable stock movement.",
+                              label: "Adjustment",
+                              placeholder: "+50 or -3",
+                              confirmLabel: "Record movement",
+                            });
                             if (raw === null) return;
                             const delta = parseInt(raw, 10);
                             if (!isFinite(delta) || delta === 0) return;
@@ -606,6 +626,7 @@ export function InventoryView({ state, memory }: { state: WorkspaceState; memory
                               delta,
                               reason: "manual adjustment",
                             });
+                            toast(`"${p.name}" stock ${delta > 0 ? "+" : ""}${delta}`);
                           }}
                         >
                           Stock ±

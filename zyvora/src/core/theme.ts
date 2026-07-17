@@ -11,7 +11,9 @@ const media = window.matchMedia?.("(prefers-color-scheme: dark)");
 
 export function themePref(): ThemePref {
   const v = localStorage.getItem(KEY);
-  return v === "light" || v === "dark" ? v : "auto";
+  // Light is the default polished experience (commerce-admin convention);
+  // dark and auto (follow OS) remain one click away.
+  return v === "light" || v === "dark" || v === "auto" ? (v as ThemePref) : "light";
 }
 
 function resolved(pref: ThemePref): "light" | "dark" {
@@ -24,14 +26,13 @@ function apply(pref: ThemePref) {
 }
 
 export function setThemePref(pref: ThemePref) {
-  if (pref === "auto") localStorage.removeItem(KEY);
-  else localStorage.setItem(KEY, pref);
+  localStorage.setItem(KEY, pref); // "auto" is stored explicitly — light is the unset default
   apply(pref);
 }
 
-/** Cycle auto → light → dark → auto (for a single toggle button). */
+/** Cycle light → dark → auto (for a single toggle button). */
 export function cycleTheme(): ThemePref {
-  const order: ThemePref[] = ["auto", "light", "dark"];
+  const order: ThemePref[] = ["light", "dark", "auto"];
   const next = order[(order.indexOf(themePref()) + 1) % order.length];
   setThemePref(next);
   return next;

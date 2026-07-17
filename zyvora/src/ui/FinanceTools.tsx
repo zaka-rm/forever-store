@@ -20,6 +20,8 @@ import {
   type ProfitAndLoss,
 } from "../core/projections";
 import type { GoalMetric, WorkspaceState } from "../core/types";
+import { appConfirm } from "./dialog";
+import { toast } from "./toast";
 
 const GOALS: { metric: GoalMetric; label: string; money: boolean }[] = [
   { metric: "revenue", label: "Revenue this month", money: true },
@@ -61,10 +63,19 @@ function ProfitLossStatement({ state, memory }: { state: WorkspaceState; memory:
   const lockedPnl = closed.get(selected);
   const pnl: ProfitAndLoss = lockedPnl ?? profitAndLoss(state, bounds.start, bounds.end, bounds.label);
 
-  const closePeriod = () => {
+  const closePeriod = async () => {
     if (isCurrentMonth) return;
-    if (!confirm(`Close ${bounds.label}? This permanently locks its Profit & Loss — the figures won't change afterward, even if past records are corrected. This is your book close.`)) return;
+    const ok = await appConfirm({
+      title: `Close ${bounds.label}?`,
+      body:
+        "This permanently locks its Profit & Loss — the figures won't change afterward, " +
+        "even if past records are corrected. This is your book close.",
+      confirmLabel: "Close the period",
+      danger: true,
+    });
+    if (!ok) return;
     memory.append("decision", "period_closed", { period: selected, pnl, closedAt: Date.now() });
+    toast(`${bounds.label} closed — its P&L is now locked`);
   };
 
   const row = (l: { label: string; amount: number }, strong = false) => (

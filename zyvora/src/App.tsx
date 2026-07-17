@@ -28,6 +28,7 @@ import { cycleTheme, themePref, type ThemePref } from "./core/theme";
 import { Icons, type IconName } from "./ui/icons";
 import { CommandPalette } from "./ui/CommandPalette";
 import { Toasts } from "./ui/toast";
+import { DialogHost, appConfirm } from "./ui/dialog";
 import { entitlement, fetchSubscription, type Subscription } from "./core/billing";
 import { generateInsights } from "./core/engine";
 import { COMMON_CURRENCIES, setActiveCurrency } from "./core/format";
@@ -150,7 +151,7 @@ function CloudApp({ onUseLocal }: { onUseLocal: () => void }) {
     return () => sub.subscription.unsubscribe();
   }, [client]);
 
-  if (!ready) return <CenteredNote text="Opening ZYVORA…" />;
+  if (!ready) return <LoadingShell />;
   if (!userId) return <SignedOut onUseLocal={onUseLocal} />;
   return <CloudWorkspaceLoader userId={userId} />;
 }
@@ -272,7 +273,7 @@ function CloudWorkspaceLoader({ userId }: { userId: string }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userId]);
 
-  if (phase === "loading") return <CenteredNote text="Loading your Workspace…" />;
+  if (phase === "loading") return <LoadingShell />;
   if (phase === "error")
     return (
       <CenteredNote
@@ -302,6 +303,21 @@ function CloudWorkspaceLoader({ userId }: { userId: string }) {
       userId={userId}
       onSignOut={() => void client.auth.signOut()}
     />
+  );
+}
+
+/** Skeleton shell — perceived-performance placeholder while cloud data loads. */
+function LoadingShell() {
+  return (
+    <div className="app" aria-busy="true" aria-label="Loading ZYVORA">
+      <div className="main skeleton-page">
+        <div className="skeleton" style={{ height: 34, width: 220 }} />
+        <div className="skeleton" style={{ height: 16, width: 340 }} />
+        <div className="skeleton" style={{ height: 130 }} />
+        <div className="skeleton" style={{ height: 190 }} />
+        <div className="skeleton" style={{ height: 190 }} />
+      </div>
+    </div>
   );
 }
 
@@ -407,6 +423,7 @@ function Workspace({
   setActiveCurrency(workspace.currency);
   const [view, setView] = useState<View>("today");
   const [cmdOpen, setCmdOpen] = useState(false);
+  const [navOpen, setNavOpen] = useState(false);
   const reduceMotion = useReducedMotion();
 
   // Global search / command palette on Ctrl(⌘)+K.
@@ -480,10 +497,21 @@ function Workspace({
   const isEmpty = events.length === 0;
   const pendingSync = memory instanceof CloudMemory ? memory.pendingSync : 0;
 
+  const go = (v: View) => {
+    setView(v);
+    setNavOpen(false);
+  };
+
   return (
     <div className="app">
       <a className="skip-link" href="#main">Skip to content</a>
-      <nav className="nav" aria-label="Primary">
+      <div className="mobile-bar">
+        <button aria-label="Open navigation" onClick={() => setNavOpen(true)}>{Icons.menu()}</button>
+        <span className="wordmark">ZYVORA</span>
+        <button aria-label="Search" onClick={() => setCmdOpen(true)}>{Icons.search()}</button>
+      </div>
+      {navOpen && <button className="nav-overlay" aria-label="Close navigation" onClick={() => setNavOpen(false)} />}
+      <nav className={`nav${navOpen ? " open" : ""}`} aria-label="Primary">
         <div className="wordmark">ZYVORA</div>
         <div className="workspace-name">
           {workspace.name}
@@ -503,7 +531,7 @@ function Workspace({
             key={n.id}
             className={view === n.id ? "active" : ""}
             aria-current={view === n.id ? "page" : undefined}
-            onClick={() => setView(n.id)}
+            onClick={() => go(n.id)}
           >
             {Icons[n.icon]()}
             {n.label}
@@ -527,15 +555,18 @@ function Workspace({
           {!onSignOut && (
             <button
               onClick={() => {
-                if (
-                  confirm(
-                    "Start a fresh workspace? This clears the current business data on this device. Export it first if you want a copy — this can't be undone."
-                  )
-                ) {
-                  localStorage.removeItem("zyvora.workspace");
-                  localStorage.removeItem("zyvora.memory." + workspace.id);
-                  location.reload();
-                }
+                void appConfirm({
+                  title: "Start a fresh workspace?",
+                  body: "This clears the current business data on this device. Export it first if you want a copy — this can't be undone.",
+                  confirmLabel: "Clear and start fresh",
+                  danger: true,
+                }).then((ok) => {
+                  if (ok) {
+                    localStorage.removeItem("zyvora.workspace");
+                    localStorage.removeItem("zyvora.memory." + workspace.id);
+                    location.reload();
+                  }
+                });
               }}
             >
               Start fresh workspace
@@ -548,7 +579,7 @@ function Workspace({
         open={cmdOpen}
         onClose={() => setCmdOpen(false)}
         state={state}
-        navigate={(v) => setView(v as View)}
+        navigate={(v) => go(v as View)}
         actions={[
           { label: "New order", icon: "orders", run: () => setView("orders") },
           { label: "Ask ZYVORA a question", icon: "ask", run: () => setView("ask") },
@@ -559,6 +590,7 @@ function Workspace({
         ]}
       />
       <Toasts />
+      <DialogHost />
       <main className="main" id="main">
         <motion.div
           key={view}

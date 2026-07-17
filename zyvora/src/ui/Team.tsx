@@ -15,6 +15,8 @@ import {
   type Member,
 } from "../core/cloud";
 import { ROLES, can, canManageMember, roleLabel, type Role } from "../core/permissions";
+import { appConfirm } from "./dialog";
+import { toast } from "./toast";
 
 interface Props {
   client: SupabaseClient | null;
@@ -136,8 +138,14 @@ export function TeamView({ client, workspaceId, myRole, myUserId, ownerId }: Pro
                   </td>
                   <td>
                     {editable && (
-                      <button className="link-btn" onClick={async () => {
-                        if (confirm(`Remove this member's access?`)) { await removeMember(client, workspaceId, m.userId); void refresh(); }
+                      <button className="btn mini danger" onClick={async () => {
+                        const ok = await appConfirm({
+                          title: "Remove this member's access?",
+                          body: "They lose access to this Workspace immediately. Their past events stay in Business Memory (append-only).",
+                          confirmLabel: "Remove access",
+                          danger: true,
+                        });
+                        if (ok) { await removeMember(client, workspaceId, m.userId); void refresh(); toast("Member removed"); }
                       }}>Remove</button>
                     )}
                   </td>

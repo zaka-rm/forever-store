@@ -828,17 +828,82 @@ details.layers[open] summary::before { transform: rotate(90deg); }
 }
 .skip-link:focus { left: 12px; }
 
+/* ---------------------------------------------------------------- Dialogs */
+.dialog-overlay {
+  position: fixed; inset: 0; z-index: var(--z-overlay);
+  background: rgba(20, 26, 22, 0.42);
+  display: flex; align-items: center; justify-content: center; padding: 20px;
+  animation: fade var(--dur-fast) var(--ease);
+}
+.dialog {
+  width: 100%; max-width: 440px;
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: var(--radius-lg); box-shadow: var(--shadow-lg);
+  padding: 22px 24px 18px;
+  animation: rise var(--dur-base) var(--ease);
+}
+.dialog h3 { margin: 0 0 8px; font-size: 17px; font-weight: 700; letter-spacing: -0.01em; }
+.dialog p { margin: 0; font-size: 14.5px; color: var(--ink-soft); }
+.dialog-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 18px; }
+.btn.danger-solid { background: var(--red); border-color: var(--red); color: #fff; }
+.btn.danger-solid:hover:not(:disabled) { background: #93332e; }
+
+/* --------------------------------------------------------- Page header */
+.page-head {
+  display: flex; align-items: flex-start; justify-content: space-between;
+  gap: 16px; flex-wrap: wrap; margin-bottom: 22px;
+}
+.page-head .titling { min-width: 0; }
+.page-head h1 { margin-bottom: 4px; }
+.page-head .subtitle { margin-bottom: 0; }
+.page-head .head-actions { display: flex; gap: 10px; flex-shrink: 0; padding-top: 4px; }
+
+/* -------------------------------------------------------------- Skeletons */
+.skeleton { position: relative; overflow: hidden; background: var(--surface-inset); border-radius: var(--radius-sm); }
+.skeleton::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+  animation: shimmer 1.4s infinite;
+}
+:root[data-theme="dark"] .skeleton::after {
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.06), transparent);
+}
+@keyframes shimmer { from { transform: translateX(-100%); } to { transform: translateX(100%); } }
+.skeleton-page { max-width: var(--measure); }
+.skeleton-page .skeleton { margin-bottom: 14px; }
+
+/* -------------------------------------------------------- Mobile shell */
+.mobile-bar { display: none; }
+.nav-overlay { display: none; }
+
 /* ------------------------------------------------------------- Responsive */
 @media (max-width: 720px) {
+  .mobile-bar {
+    display: flex; align-items: center; justify-content: space-between; gap: 10px;
+    position: sticky; top: 0; z-index: var(--z-nav);
+    background: var(--surface); border-bottom: 1px solid var(--line);
+    padding: 10px 14px;
+  }
+  .mobile-bar .wordmark { font-weight: 800; letter-spacing: 0.22em; font-size: 14px; }
+  .mobile-bar button {
+    background: none; border: none; padding: 8px; border-radius: var(--radius-sm);
+    color: var(--ink-soft); display: flex; align-items: center;
+  }
+  .mobile-bar button:hover { background: var(--surface-inset); color: var(--ink); }
+  .mobile-bar button svg { width: 20px; height: 20px; stroke: currentColor; fill: none; }
+
   .app { flex-direction: column; }
   .nav {
-    width: 100%; height: auto; position: static; flex-direction: row; flex-wrap: wrap;
-    gap: 4px; padding: 12px; align-items: center;
+    position: fixed; top: 0; bottom: 0; left: 0; width: min(300px, 86vw); height: 100vh;
+    transform: translateX(-105%); transition: transform var(--dur-base) var(--ease);
+    z-index: calc(var(--z-overlay) + 1); box-shadow: none;
   }
-  .nav .wordmark { width: 100%; }
-  .nav .workspace-name { display: none; }
-  .nav button { width: auto; }
-  .nav button.active::before { display: none; }
-  .nav .nav-footer { display: none; }
-  .main { padding: 24px 20px 64px; }
+  .nav.open { transform: none; box-shadow: var(--shadow-lg); }
+  .nav-overlay {
+    display: block; position: fixed; inset: 0; z-index: var(--z-overlay);
+    background: rgba(20, 26, 22, 0.42); border: none; padding: 0;
+    animation: fade var(--dur-fast) var(--ease);
+  }
+  .main { padding: 20px 16px 64px; }
+  .page-head .head-actions { width: 100%; padding-top: 0; }
 }

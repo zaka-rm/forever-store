@@ -6,7 +6,8 @@
  * Canonical (governance/): CAP-000006 Inventory FEAT-000044 reservations;
  * CAP-000005 Finance FEAT-000035 invoicing; CAP-000009 Documents FEAT-000067 generation.
  */
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
+import { consumeDeepLink } from "../core/deepLink";
 import { formatMoney } from "../core/engine";
 import { getActiveCurrency } from "../core/format";
 import type { MemoryStore } from "../core/memory";
@@ -19,6 +20,7 @@ import {
 } from "../core/projections";
 import type { Order, OrderLine, OrderStatus, WorkspaceState } from "../core/types";
 import { toast } from "./toast";
+import { appAlert, appConfirm } from "./dialog";
 
 /** Open a clean, printable receipt for an order in a new window (ZPL-041 §21). */
 function printReceipt(o: Order, business: string) {
@@ -145,6 +147,12 @@ export function OrdersView({ state, memory, workspaceName }: { state: WorkspaceS
   const [tab, setTab] = useState<OrderTab>("all");
   const [q, setQ] = useState("");
 
+  // Command-palette deep link: expand the exact order that was searched for.
+  useEffect(() => {
+    const k = consumeDeepLink("order");
+    if (k) { setExpanded(k); setTab("all"); }
+  }, []);
+
   const needle = q.trim().toLowerCase();
   const activeTab = ORDER_TABS.find((t) => t.id === tab)!;
   const visibleOrders = state.orders.filter(
@@ -167,10 +175,12 @@ export function OrdersView({ state, memory, workspaceName }: { state: WorkspaceS
     const q = parseInt(qty, 10);
     if (!p || !isFinite(q) || q <= 0) return;
     if (q > available(p.productId)) {
-      alert(
-        `Only ${available(p.productId)} unit(s) of "${p.name}" are available (stock minus reservations). ` +
-          `ZYVORA never allows selling more than is available.`
-      );
+      void appAlert({
+        title: "Not enough stock",
+        body:
+          `Only ${available(p.productId)} unit(s) of "${p.name}" are available (stock minus reservations). ` +
+          `ZYVORA never allows selling more than is available.`,
+      });
       return;
     }
     setLines([
@@ -220,13 +230,17 @@ export function OrdersView({ state, memory, workspaceName }: { state: WorkspaceS
   };
   const draftProfit = lines.length ? orderNetProfit(draft) : 0;
 
-  const createOrder = () => {
+  const createOrder = async () => {
     if (!customer.trim() || lines.length === 0) return;
     if (draftProfit < 0) {
-      const ok = confirm(
-        `Warning: as priced, this order LOSES ${formatMoney(Math.abs(draftProfit))} after all costs. ` +
-          `Create it anyway? (The override will be visible in the order's record.)`
-      );
+      const ok = await appConfirm({
+        title: "This order loses money as priced",
+        body:
+          `After all costs it nets ${formatMoney(draftProfit)}. ` +
+          `Create it anyway? The override stays visible in the order's record.`,
+        confirmLabel: "Create anyway",
+        danger: true,
+      });
       if (!ok) return;
     }
     memory.append("fact", "order_created", {
