@@ -7,15 +7,61 @@
  *  4. records live in the Domain views, never ambient here.
  * The wall-of-widgets dashboard is constitutionally banned as a front door.
  */
+import { useState } from "react";
+import { coachFor, pendingOutcomeReviews, type DecisionMemory } from "../core/coach";
 import { formatMoney, stateOfThings } from "../core/engine";
+import type { MemoryStore } from "../core/memory";
 import type { Insight, WorkspaceState } from "../core/types";
 import { InsightCard } from "./InsightCard";
+import { toast } from "./toast";
 
 interface Props {
   workspaceName: string;
   state: WorkspaceState;
   insights: Insight[];
   onDecide: (insight: Insight, optionId: string, optionLabel: string, rationale: string) => void;
+  memory?: MemoryStore;
+}
+
+/** Close the loop: judge a past decision so future-you (and the coach) can learn. */
+function OutcomeReview({ d, memory }: { d: DecisionMemory; memory: MemoryStore }) {
+  const [note, setNote] = useState("");
+  const daysAgo = Math.round((Date.now() - d.ts) / 86_400_000);
+  const record = (result: "good" | "mixed" | "bad") => {
+    memory.append("outcome", "outcome_recorded", {
+      decisionEventId: d.eventId,
+      decisionKey: d.decisionKey,
+      result,
+      note: note.trim(),
+    });
+    toast("Outcome recorded — the coach just got wiser");
+  };
+  return (
+    <div className="card insight">
+      <div className="badge-row">
+        <span className="badge domain">close the loop</span>
+        <span className="confidence-dots"><span>{daysAgo} days ago</span></span>
+      </div>
+      <p className="claim" style={{ fontSize: 15 }}>
+        You decided “{d.optionLabel}” on: {d.claim}
+      </p>
+      <p className="reasoning">How did it turn out? Recording this teaches the coach what worked for YOUR business.</p>
+      <div className="form-row" style={{ marginBottom: 8 }}>
+        <input
+          value={note}
+          onChange={(e) => setNote(e.target.value)}
+          placeholder="Optional note — what happened…"
+          style={{ flex: 1, minWidth: 200 }}
+          aria-label="Outcome note"
+        />
+      </div>
+      <div className="row-actions">
+        <button className="btn mini" onClick={() => record("good")}>Went well</button>
+        <button className="btn subtle mini" onClick={() => record("mixed")}>Mixed</button>
+        <button className="btn mini danger" onClick={() => record("bad")}>Went badly</button>
+      </div>
+    </div>
+  );
 }
 
 const MAX_SURFACED = 3; // few and ranked (Law X)
@@ -33,12 +79,14 @@ const DATE_FMT = new Intl.DateTimeFormat(undefined, {
   weekday: "long", day: "numeric", month: "long",
 });
 
-export function Today({ workspaceName, state, insights, onDecide }: Props) {
+export function Today({ workspaceName, state, insights, onDecide, memory }: Props) {
   const needsJudgment = insights.filter((i) => i.guidance);
   const worthKnowing = insights.filter((i) => !i.guidance);
   const surfaced = needsJudgment.slice(0, MAX_SURFACED);
   const waiting = needsJudgment.slice(MAX_SURFACED);
   const s = stateOfThings(state);
+  const events = memory?.all() ?? [];
+  const reviews = memory ? pendingOutcomeReviews(events) : [];
   const empty =
     state.invoices.length === 0 &&
     state.products.length === 0 &&
@@ -77,7 +125,21 @@ export function Today({ workspaceName, state, insights, onDecide }: Props) {
         <>
           <h2>Needs your judgment</h2>
           {surfaced.map((i) => (
-            <InsightCard key={i.id} insight={i} onDecide={onDecide} />
+            <InsightCard
+              key={i.id}
+              insight={i}
+              onDecide={onDecide}
+              coach={memory ? coachFor(events, i.decisionKey) : null}
+            />
+          ))}
+        </>
+      )}
+
+      {reviews.length > 0 && (
+        <>
+          <h2>Close the loop</h2>
+          {reviews.map((d) => (
+            <OutcomeReview key={d.eventId} d={d} memory={memory!} />
           ))}
         </>
       )}

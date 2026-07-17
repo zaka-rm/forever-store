@@ -7,6 +7,7 @@
  * FEAT-000022 explainability service.
  */
 import { useState } from "react";
+import type { CoachNote } from "../core/coach";
 import type { Insight } from "../core/types";
 
 interface Props {
@@ -17,9 +18,14 @@ interface Props {
     optionLabel: string,
     rationale: string
   ) => void;
+  /** Decision-memory coach: what you did the previous times this came up. */
+  coach?: CoachNote | null;
 }
 
-export function InsightCard({ insight, onDecide }: Props) {
+const dateShort = (ts: number) =>
+  new Date(ts).toLocaleDateString(undefined, { day: "numeric", month: "short" });
+
+export function InsightCard({ insight, onDecide, coach }: Props) {
   const [selected, setSelected] = useState<string | null>(null);
   const [rationale, setRationale] = useState("");
   const g = insight.guidance;
@@ -59,6 +65,27 @@ export function InsightCard({ insight, onDecide }: Props) {
         </table>
         <p className="confidence-note">{insight.confidenceNote}</p>
       </details>
+
+      {coach && g && onDecide && (
+        <div
+          style={{
+            marginTop: 12, padding: "10px 14px", borderRadius: 9,
+            background: "var(--surface-inset)", border: "1px solid var(--line-soft)",
+            fontSize: 13.5, color: "var(--ink-soft)",
+          }}
+        >
+          <strong style={{ color: "var(--ink)" }}>You've been here before.</strong>{" "}
+          You faced this kind of decision {coach.timesFaced}× — last on {dateShort(coach.last.ts)} you chose{" "}
+          <strong>“{coach.last.optionLabel}”</strong>
+          {coach.last.rationale && <> (<em>“{coach.last.rationale}”</em>)</>}
+          {coach.last.outcome
+            ? <>, and recorded the outcome as <strong>{coach.last.outcome.result}</strong>{coach.last.outcome.note && <>: “{coach.last.outcome.note}”</>}.</>
+            : <> — its outcome was never recorded.</>}
+          {(coach.goodOutcomes > 0 || coach.badOutcomes > 0) && (
+            <> Across all: {coach.goodOutcomes} good, {coach.badOutcomes} bad outcome{coach.goodOutcomes + coach.badOutcomes > 1 ? "s" : ""} recorded.</>
+          )}
+        </div>
+      )}
 
       {g && onDecide && (
         <div className="options">

@@ -89,3 +89,65 @@ export async function askLlm(
 }
 
 export const llmModel = DEV_MODEL;
+
+// ------------------------------------------------- Vision: photo → order ---
+
+/** Vision runs on the direct Groq path (the ask-ai proxy is text-only for now). */
+export const visionConfigured = Boolean(DEV_KEY);
+const VISION_MODEL = "meta-llama/llama-4-scout-17b-16e-instruct";
+
+export interface ExtractedOrder {
+  customer?: string;
+  items: { product: string; qty: number }[];
+}
+
+/**
+ * Read a customer's order photo/screenshot (e.g. a WhatsApp message) and
+ * extract a DRAFT order. The model may only pick from the given product list;
+ * the human reviews the prefilled form before anything is created (ADR-0005).
+ */
+export async function extractOrderFromImage(
+  imageDataUrl: string,
+  productNames: string[]
+): Promise<ExtractedOrder> {
+  if (!DEV_KEY) throw new Error("Vision needs the local AI key.");
+  const prompt =
+    "You are reading a customer's order message (photo or screenshot). " +
+    "Extract the customer's name if visible, and the ordered items with quantities. " +
+    "Items MUST be matched to this exact product list (choose the closest; skip anything that matches none): " +
+    JSON.stringify(productNames) +
+    '. Reply with ONLY minified JSON, no prose: {"customer":"...","items":[{"product":"<exact name from list>","qty":1}]}';
+  const res = await fetch(ENDPOINT, {
+    method: "POST",
+    headers: { "Content-Type": "application/json", Authorization: `Bearer ${DEV_KEY}` },
+    body: JSON.stringify({
+      model: VISION_MODEL,
+      messages: [
+        {
+          role: "user",
+          content: [
+            { type: "text", text: prompt },
+            { type: "image_url", image_url: { url: imageDataUrl } },
+          ],
+        },
+      ],
+      temperature: 0,
+      max_tokens: 400,
+    }),
+  });
+  if (!res.ok) {
+    const text = await res.text().catch(() => "");
+    throw new Error(`Vision error ${res.status}: ${text.slice(0, 160)}`);
+  }
+  const data = await res.json();
+  const raw = String(data?.choices?.[0]?.message?.content ?? "");
+  const jsonText = raw.slice(raw.indexOf("{"), raw.lastIndexOf("}") + 1);
+  const parsed = JSON.parse(jsonText) as ExtractedOrder;
+  const allowed = new Set(productNames);
+  return {
+    customer: typeof parsed.customer === "string" ? parsed.customer.trim() : undefined,
+    items: (Array.isArray(parsed.items) ? parsed.items : [])
+      .filter((i) => allowed.has(i.product) && Number.isFinite(i.qty) && i.qty > 0)
+      .map((i) => ({ product: i.product, qty: Math.floor(i.qty) })),
+  };
+}

@@ -612,6 +612,196 @@ function money(amount) {
   }
 }
 
+// src/core/actions.ts
+var INTENT_WORDS = {
+  "payment-reminder": /remind|reminder|chase|collect|pay(?!.*cod)|overdue|relance|rappel|فلوس|خلص/i,
+  winback: /win.?back|re-?engag|come back|miss|gone quiet|silent|recup|récup|reconquérir/i,
+  "reorder-nudge": /reorder|nudge|restock them|order again|racheter|recommander/i,
+  "cod-confirmation": /confirm/i,
+  "thank-you": /thank|merci|شكر/i
+};
+var LANG_WORDS = [
+  ["fr", /french|français|francais|en fr/i],
+  ["ar", /arabic|darija|عرب|بالعربية|arabe/i]
+];
+function matchCustomer(question, names) {
+  const q = question.toLowerCase();
+  let best = null;
+  for (const n of names) {
+    if (q.includes(n.toLowerCase()) && (!best || n.length > best.length)) best = n;
+  }
+  return best;
+}
+function detectIntent(question) {
+  const wantsAction = /draft|write|send|message|sms|whatsapp|rédige|écris|envoie|صياغة|اكتب/i.test(question);
+  for (const [intent, re] of Object.entries(INTENT_WORDS)) {
+    if (re.test(question) && (wantsAction || intent === "payment-reminder" || intent === "winback")) return intent;
+  }
+  return null;
+}
+function detectLang(question) {
+  for (const [lang, re] of LANG_WORDS) if (re.test(question)) return lang;
+  return "en";
+}
+function paymentBody(lang, name, amount, days) {
+  if (lang === "fr")
+    return `Bonjour ${name}, un petit rappel amical : votre facture de ${amount} est en retard de ${days} jour${days > 1 ? "s" : ""}. Pouvez-vous nous indiquer quand pr\xE9voir le r\xE8glement ? Merci beaucoup !`;
+  if (lang === "ar")
+    return `\u0633\u0644\u0627\u0645 ${name}\u060C \u063A\u064A\u0631 \u062A\u0630\u0643\u064A\u0631 \u0628\u0633\u064A\u0637: \u0627\u0644\u0641\u0627\u062A\u0648\u0631\u0629 \u062F\u064A\u0627\u0644 ${amount} \u062A\u0639\u062F\u0651\u0649 \u0623\u062C\u0644\u0647\u0627 \u0628 ${days} \u064A\u0648\u0645. \u0648\u0627\u0634 \u0645\u0645\u0643\u0646 \u062A\u062E\u0628\u0631\u0646\u0627 \u0641\u0648\u0642\u0627\u0634 \u0646\u062A\u0648\u0642\u0639\u0648 \u0627\u0644\u062E\u0644\u0627\u0635\u061F \u0634\u0643\u0631\u0627\u064B \u0628\u0632\u0627\u0641!`;
+  return `Hello ${name}, a friendly reminder: your invoice of ${amount} is ${days} day${days > 1 ? "s" : ""} past due. Could you let us know when to expect payment? Thank you!`;
+}
+function winbackBody(lang, name, days) {
+  if (lang === "fr")
+    return `Bonjour ${name} ! \xC7a fait environ ${days} jours qu'on n'a pas eu de vos nouvelles \u2014 on esp\xE8re que tout va bien. Besoin de quelque chose cette semaine ? On peut vous pr\xE9parer votre commande habituelle. \u{1F33F}`;
+  if (lang === "ar")
+    return `\u0633\u0644\u0627\u0645 ${name}! \u0634\u062D\u0627\u0644 \u0647\u0627\u062F\u064A \u0645\u0627 \u062A\u0648\u0627\u0635\u0644\u0646\u0627\u0634\u060C \u062A\u0642\u0631\u064A\u0628\u0627\u064B ${days} \u064A\u0648\u0645 \u2014 \u0646\u062A\u0645\u0646\u0627\u0648 \u062A\u0643\u0648\u0646\u0648 \u0628\u062E\u064A\u0631. \u0648\u0627\u0634 \u0645\u062D\u062A\u0627\u062C\u064A\u0646 \u0634\u064A \u062D\u0627\u062C\u0629 \u0647\u0627\u062F \u0627\u0644\u0633\u064A\u0645\u0627\u0646\u0629\u061F \u0646\u0642\u062F\u0631\u0648 \u0646\u0648\u062C\u062F\u0648 \u0644\u064A\u0643\u0645 \u0627\u0644\u0637\u0644\u0628 \u0627\u0644\u0645\u0639\u062A\u0627\u062F. \u{1F33F}`;
+  return `Hello ${name}! It's been about ${days} days since we last heard from you \u2014 hope all is well. Anything you need this week? We can prepare your usual order. \u{1F33F}`;
+}
+function reorderBody(lang, name, days) {
+  if (lang === "fr")
+    return `Bonjour ${name} ! Votre dernier achat remonte \xE0 ~${days} jours \u2014 le moment id\xE9al pour renouveler. Dites-nous ce qu'il vous faut et on pr\xE9pare tout. \u{1F33F}`;
+  if (lang === "ar")
+    return `\u0633\u0644\u0627\u0645 ${name}! \u0622\u062E\u0631 \u0637\u0644\u0628 \u062F\u064A\u0627\u0644\u0643\u0645 \u0643\u0627\u0646 \u0642\u0628\u0644 ~${days} \u064A\u0648\u0645 \u2014 \u0627\u0644\u0648\u0642\u062A \u0645\u0646\u0627\u0633\u0628 \u0628\u0627\u0634 \u062A\u062C\u062F\u062F\u0648. \u0642\u0648\u0644\u0648 \u0644\u064A\u0646\u0627 \u0623\u0634\u0646\u0648 \u062E\u0627\u0635\u0643\u0645 \u0648 \u0646\u0648\u062C\u062F\u0648 \u0643\u0644\u0634\u064A. \u{1F33F}`;
+  return `Hello ${name}! Your last order was ~${days} days ago \u2014 a good moment to top up. Tell us what you need and we'll prepare everything. \u{1F33F}`;
+}
+function confirmBody(lang, name, items, total) {
+  if (lang === "fr")
+    return `Bonjour ${name}, ici votre boutique. Nous confirmons votre commande : ${items}. Total \xE0 payer \xE0 la livraison : ${total}. R\xE9pondez OUI pour confirmer l'envoi. Merci !`;
+  if (lang === "ar")
+    return `\u0633\u0644\u0627\u0645 ${name}\u060C \u0645\u0639\u0643\u0645 \u0627\u0644\u0645\u062A\u062C\u0631 \u062F\u064A\u0627\u0644\u0643\u0645. \u0643\u0646\u0623\u0643\u062F\u0648 \u0627\u0644\u0637\u0644\u0628 \u062F\u064A\u0627\u0644\u0643\u0645: ${items}. \u0627\u0644\u0645\u062C\u0645\u0648\u0639 \u0639\u0646\u062F \u0627\u0644\u062A\u0633\u0644\u064A\u0645: ${total}. \u062C\u0627\u0648\u0628\u0648 \u0628\u0646\u0639\u0645 \u0628\u0627\u0634 \u0646\u0635\u064A\u0641\u0637\u0648\u0647. \u0634\u0643\u0631\u0627\u064B!`;
+  return `Hello ${name}, this is your store. Confirming your order: ${items}. Total to pay on delivery: ${total}. Reply YES to confirm so we can ship it. Thank you!`;
+}
+function thankYouBody(lang, name) {
+  if (lang === "fr")
+    return `Merci ${name} pour votre confiance ! C'est un plaisir de vous servir. \xC0 tr\xE8s bient\xF4t. \u{1F33F}`;
+  if (lang === "ar")
+    return `\u0634\u0643\u0631\u0627\u064B ${name} \u0639\u0644\u0649 \u0627\u0644\u062B\u0642\u0629 \u062F\u064A\u0627\u0644\u0643\u0645! \u0645\u0631\u062D\u0628\u0627\u064B \u0628\u064A\u0643\u0645 \u062F\u064A\u0645\u0627\u064B. \u{1F33F}`;
+  return `Thank you ${name} for your trust! It's a pleasure serving you. See you soon. \u{1F33F}`;
+}
+function stageAction(state2, profiles2, contacts2, question, now = Date.now()) {
+  const intent = detectIntent(question);
+  if (!intent) return null;
+  const lang = detectLang(question);
+  const names = profiles2.map((p2) => p2.name);
+  let customer = matchCustomer(question, names);
+  if (!customer) {
+    if (intent === "payment-reminder") {
+      const overdue2 = state2.invoices.filter((i) => !i.paidAt && now > i.issuedAt + i.dueDays * DAY2).sort((a, b) => a.issuedAt - b.issuedAt);
+      customer = overdue2[0]?.customer ?? null;
+    } else if (intent === "winback" || intent === "reorder-nudge") {
+      const quiet = profiles2.filter((p2) => p2.medianGapDays && (now - p2.lastActivityAt) / DAY2 > p2.medianGapDays).sort((a, b) => b.lifetimeRevenue - a.lifetimeRevenue);
+      customer = quiet[0]?.name ?? null;
+    } else if (intent === "cod-confirmation") {
+      const pending = state2.orders.filter((o) => o.status === "pending").sort((a, b) => a.createdAt - b.createdAt);
+      customer = pending[0]?.customer ?? null;
+    }
+  }
+  if (!customer) return null;
+  const phone = contacts2.get(customer)?.phone?.trim() || void 0;
+  const profile = profiles2.find((p2) => p2.name === customer);
+  const daysSince = profile ? Math.round((now - profile.lastActivityAt) / DAY2) : 0;
+  switch (intent) {
+    case "payment-reminder": {
+      const inv = state2.invoices.filter((i) => !i.paidAt && i.customer === customer).sort((a, b) => a.issuedAt - b.issuedAt)[0];
+      if (!inv) return null;
+      const days = Math.max(1, Math.floor((now - (inv.issuedAt + inv.dueDays * DAY2)) / DAY2));
+      return {
+        intent,
+        customer,
+        phone,
+        lang,
+        body: paymentBody(lang, customer, money(inv.amount), days),
+        reason: `${customer} has an open invoice of ${money(inv.amount)}, ${days} day(s) past due.`
+      };
+    }
+    case "winback":
+      return {
+        intent,
+        customer,
+        phone,
+        lang,
+        body: winbackBody(lang, customer, daysSince),
+        reason: `${customer} last ordered ${daysSince} days ago${profile?.medianGapDays ? ` (their rhythm is ~${Math.round(profile.medianGapDays)} days)` : ""}; lifetime ${money(profile?.lifetimeRevenue ?? 0)}.`
+      };
+    case "reorder-nudge":
+      return {
+        intent,
+        customer,
+        phone,
+        lang,
+        body: reorderBody(lang, customer, daysSince),
+        reason: `${customer}'s last activity was ${daysSince} days ago.`
+      };
+    case "cod-confirmation": {
+      const o = state2.orders.filter((x) => x.status === "pending" && x.customer === customer).sort((a, b) => a.createdAt - b.createdAt)[0];
+      if (!o) return null;
+      const items = o.lines.map((l) => `${l.qty}\xD7 ${l.productName}`).join(", ");
+      const total = money(o.lines.reduce((s, l) => s + l.qty * l.unitPrice, 0) - o.discount + o.shippingCharged);
+      return {
+        intent,
+        customer,
+        phone,
+        lang,
+        body: confirmBody(lang, customer, items, total),
+        reason: `${customer} has a pending COD order (${items}).`
+      };
+    }
+    case "thank-you":
+      return {
+        intent,
+        customer,
+        phone,
+        lang,
+        body: thankYouBody(lang, customer),
+        reason: `A goodwill message for ${customer}.`
+      };
+  }
+}
+function restageInLang(staged, state2, profiles2, contacts2, lang, now = Date.now()) {
+  const q = `draft ${staged.intent} for ${staged.customer} in ${lang === "fr" ? "french" : lang === "ar" ? "arabic" : "english"}`;
+  return stageAction(state2, profiles2, contacts2, q, now) ?? { ...staged, lang };
+}
+
+// src/core/coach.ts
+function decisionFamily(key) {
+  return key.split(".").slice(0, 2).join(".");
+}
+function projectDecisionMemories(events) {
+  const outcomes = /* @__PURE__ */ new Map();
+  for (const e of events) {
+    if (e.stream === "outcome") {
+      outcomes.set(String(e.payload.decisionEventId), {
+        result: String(e.payload.result ?? ""),
+        note: String(e.payload.note ?? ""),
+        ts: e.ts
+      });
+    }
+  }
+  return events.filter((e) => e.stream === "decision" && e.type === "decision_recorded").map((e) => ({
+    eventId: e.id,
+    ts: e.ts,
+    decisionKey: String(e.payload.decisionKey),
+    claim: String(e.payload.claim),
+    optionLabel: String(e.payload.optionLabel),
+    rationale: String(e.payload.rationale ?? ""),
+    outcome: outcomes.get(e.id)
+  })).sort((a, b) => b.ts - a.ts);
+}
+function coachFor(events, decisionKey) {
+  const family = decisionFamily(decisionKey);
+  const past = projectDecisionMemories(events).filter((d) => decisionFamily(d.decisionKey) === family);
+  if (past.length === 0) return null;
+  return {
+    timesFaced: past.length,
+    last: past[0],
+    goodOutcomes: past.filter((d) => d.outcome && /good|well|positive/i.test(d.outcome.result)).length,
+    badOutcomes: past.filter((d) => d.outcome && /bad|poor|negative/i.test(d.outcome.result)).length
+  };
+}
+function pendingOutcomeReviews(events, now = Date.now(), minAgeDays = 7, max = 2) {
+  return projectDecisionMemories(events).filter((d) => !d.outcome && now - d.ts >= minAgeDays * DAY2).slice(0, max);
+}
+
 // src/core/engine.ts
 var SUPPRESSION_WINDOW_DAYS = 30;
 var eur = money;
@@ -729,6 +919,38 @@ function financeBrain(state2, out, now) {
         confidenceNote: "Medium confidence: the arithmetic is exact, but one month can be noise. If next month recovers without action, this was seasonal variation.",
         guidance: driver ? revenueDipGuidance(driver, driverDelta) : void 0
       });
+    }
+  }
+  {
+    const d = new Date(now);
+    const daysInMonth = new Date(d.getFullYear(), d.getMonth() + 1, 0).getDate();
+    const dayOfMonth = d.getDate();
+    const daysLeft = daysInMonth - dayOfMonth;
+    const target2 = state2.goals.revenue;
+    if (target2 && target2 > 0 && dayOfMonth >= 5 && daysLeft >= 2) {
+      const actual = goalActual(state2, "revenue", now);
+      const expectedByNow = target2 * dayOfMonth / daysInMonth;
+      if (actual < expectedByNow * 0.9) {
+        const neededPerDay = (target2 - actual) / daysLeft;
+        const pacePerDay = actual / dayOfMonth;
+        out.push({
+          id: crypto.randomUUID(),
+          decisionKey: "finance.goal-pace.revenue",
+          domain: "finance",
+          layer: "operational",
+          score: 30 + Math.min(25, Math.round((expectedByNow - actual) / Math.max(1, expectedByNow) * 50)),
+          claim: `To reach this month's revenue goal you now need ${eur(neededPerDay)}/day \u2014 your current pace is ${eur(pacePerDay)}/day.`,
+          reasoning: `Goal ${eur(target2)}; ${eur(actual)} earned by day ${dayOfMonth} of ${daysInMonth} (on-pace would be ${eur(expectedByNow)}). With ${daysLeft} days left, the gap works out to ${eur(neededPerDay)}/day. Said early, this is a lever; said at month-end it would only be a verdict.`,
+          evidence: [
+            { label: "Monthly revenue goal", value: eur(target2) },
+            { label: `Earned by day ${dayOfMonth}`, value: eur(actual) },
+            { label: "On-pace amount for today", value: eur(expectedByNow) },
+            { label: `Needed per day (${daysLeft} days left)`, value: eur(neededPerDay) }
+          ],
+          confidence: "high",
+          confidenceNote: "High confidence: pure arithmetic on your goal and your recorded month-to-date revenue."
+        });
+      }
     }
   }
   {
@@ -3008,6 +3230,58 @@ console.log("\nRetention & cash intelligence (RFM, reorder-due, cash calendar, u
       "upsell suggestion never proposes something already in the basket",
       !sug || !anyOrder.lines.some((l) => l.productId === sug.productId)
     );
+  }
+}
+console.log("\nAsk \u2192 Act (staged actions, ghostwriter):");
+{
+  const st = projectState(memory.all());
+  const profiles2 = projectCustomerProfiles(st, Date.now());
+  const contacts2 = projectContacts(memory.all());
+  const remind = stageAction(st, profiles2, contacts2, "Draft a payment reminder");
+  check("payment-reminder stages against the oldest overdue invoice", remind !== null && remind.intent === "payment-reminder");
+  check("reminder draft carries the real amount and overdue days", remind !== null && /\d/.test(remind.body) && remind.reason.includes("past due"));
+  const named = stageAction(st, profiles2, contacts2, "remind Nordwind GmbH to pay");
+  check("naming a customer targets that customer", named !== null && named.customer === "Nordwind GmbH");
+  const fr = stageAction(st, profiles2, contacts2, "Write a win-back message in French");
+  check("language request produces a French draft", fr !== null && fr.lang === "fr" && /Bonjour/.test(fr.body));
+  const ar = stageAction(st, profiles2, contacts2, "Draft a reorder nudge in Arabic");
+  check("Arabic draft is produced on request", ar !== null && ar.lang === "ar" && /سلام/.test(ar.body));
+  if (fr) {
+    const swapped = restageInLang(fr, st, profiles2, contacts2, "ar");
+    check("language toggle re-renders the same intent in the new language", swapped.lang === "ar" && swapped.customer === fr.customer && swapped.body !== fr.body);
+  }
+  const plain = stageAction(st, profiles2, contacts2, "How much profit did I make last month?");
+  check("plain questions are never turned into actions", plain === null);
+}
+console.log("\nDecision-memory coach & goal pacing (stage 4):");
+{
+  const note = coachFor(memory.all(), "inventory.stockout.P-999");
+  check("coach recalls past decisions in the same family", note !== null && note.timesFaced >= 1);
+  check("coach carries the chosen option and its recorded outcome", note !== null && note.last.optionLabel.length > 0 && note.last.outcome !== void 0 && note.goodOutcomes >= 1);
+  check("coach stays silent for families never faced", coachFor(memory.all(), "marketing.never-seen.x") === null);
+  const memories = projectDecisionMemories(memory.all());
+  check("decision memories join outcomes to their decisions", memories.some((m2) => m2.outcome && /zero stockout/i.test(m2.outcome.note)));
+  memory.append("decision", "decision_recorded", {
+    decisionKey: "finance.overdue.review-test",
+    claim: "Old test decision",
+    layer: "operational",
+    optionId: "x",
+    optionLabel: "Test option",
+    rationale: ""
+  }, Date.now() - 10 * 864e5);
+  const reviews = pendingOutcomeReviews(memory.all());
+  check("old outcome-less decisions surface for loop closure", reviews.some((r) => r.decisionKey === "finance.overdue.review-test"));
+  const st0 = projectState(memory.all());
+  const bigGoal = Math.max(1e4, goalActual(st0, "revenue") * 10 + 1e3);
+  memory.append("fact", "goal_set", { metric: "revenue", target: bigGoal, setAt: Date.now() });
+  const day = (/* @__PURE__ */ new Date()).getDate();
+  const daysInMonth = new Date((/* @__PURE__ */ new Date()).getFullYear(), (/* @__PURE__ */ new Date()).getMonth() + 1, 0).getDate();
+  if (day >= 5 && daysInMonth - day >= 2) {
+    const ins = generateInsights(projectState(memory.all()), projectDecisions(memory.all()));
+    const pace = ins.find((i) => i.decisionKey === "finance.goal-pace.revenue");
+    check("behind-pace goal produces a pacing insight with needed/day", pace !== void 0 && /\/day/.test(pace.claim));
+  } else {
+    check("goal pacing (skipped: too early/late in month to assert honestly)", true);
   }
 }
 console.log("\nBilling entitlement (vendor productization):");

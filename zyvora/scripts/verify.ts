@@ -5,6 +5,8 @@
  */
 import { entitlement } from "../src/core/entitlement";
 import { computeRfm, reorderDueList, upsellSuggestion } from "../src/core/retention";
+import { restageInLang, stageAction } from "../src/core/actions";
+import { coachFor, pendingOutcomeReviews, projectDecisionMemories } from "../src/core/coach";
 import { generateInsights, stateOfThings } from "../src/core/engine";
 import {
   breakEven,
@@ -360,6 +362,67 @@ console.log("\nRetention & cash intelligence (RFM, reorder-due, cash calendar, u
       "upsell suggestion never proposes something already in the basket",
       !sug || !anyOrder.lines.some((l) => l.productId === sug.productId)
     );
+  }
+}
+
+console.log("\nAsk → Act (staged actions, ghostwriter):");
+{
+  const st = projectState(memory.all());
+  const profiles = projectCustomerProfiles(st, Date.now());
+  const contacts = projectContacts(memory.all());
+
+  const remind = stageAction(st, profiles, contacts, "Draft a payment reminder");
+  check("payment-reminder stages against the oldest overdue invoice", remind !== null && remind.intent === "payment-reminder");
+  check("reminder draft carries the real amount and overdue days", remind !== null && /\d/.test(remind.body) && remind.reason.includes("past due"));
+
+  const named = stageAction(st, profiles, contacts, "remind Nordwind GmbH to pay");
+  check("naming a customer targets that customer", named !== null && named.customer === "Nordwind GmbH");
+
+  const fr = stageAction(st, profiles, contacts, "Write a win-back message in French");
+  check("language request produces a French draft", fr !== null && fr.lang === "fr" && /Bonjour/.test(fr.body));
+  const ar = stageAction(st, profiles, contacts, "Draft a reorder nudge in Arabic");
+  check("Arabic draft is produced on request", ar !== null && ar.lang === "ar" && /سلام/.test(ar.body));
+
+  if (fr) {
+    const swapped = restageInLang(fr, st, profiles, contacts, "ar");
+    check("language toggle re-renders the same intent in the new language", swapped.lang === "ar" && swapped.customer === fr.customer && swapped.body !== fr.body);
+  }
+
+  const plain = stageAction(st, profiles, contacts, "How much profit did I make last month?");
+  check("plain questions are never turned into actions", plain === null);
+}
+
+console.log("\nDecision-memory coach & goal pacing (stage 4):");
+{
+  // The stockout decision + outcome were recorded earlier in this suite.
+  const note = coachFor(memory.all(), "inventory.stockout.P-999");
+  check("coach recalls past decisions in the same family", note !== null && note.timesFaced >= 1);
+  check("coach carries the chosen option and its recorded outcome", note !== null && note.last.optionLabel.length > 0 && note.last.outcome !== undefined && note.goodOutcomes >= 1);
+  check("coach stays silent for families never faced", coachFor(memory.all(), "marketing.never-seen.x") === null);
+
+  const memories = projectDecisionMemories(memory.all());
+  check("decision memories join outcomes to their decisions", memories.some((m) => m.outcome && /zero stockout/i.test(m.outcome.note)));
+
+  // A fresh, outcome-less decision older than 7 days should appear for review.
+  memory.append("decision", "decision_recorded", {
+    decisionKey: "finance.overdue.review-test", claim: "Old test decision", layer: "operational",
+    optionId: "x", optionLabel: "Test option", rationale: "",
+  }, Date.now() - 10 * 86400000);
+  const reviews = pendingOutcomeReviews(memory.all());
+  check("old outcome-less decisions surface for loop closure", reviews.some((r) => r.decisionKey === "finance.overdue.review-test"));
+
+  // Goal pacing: set a goal far above the demo month's revenue → pacing insight fires.
+  const st0 = projectState(memory.all());
+  const bigGoal = Math.max(10000, goalActual(st0, "revenue") * 10 + 1000);
+  memory.append("fact", "goal_set", { metric: "revenue", target: bigGoal, setAt: Date.now() });
+  const day = new Date().getDate();
+  const daysInMonth = new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
+  if (day >= 5 && daysInMonth - day >= 2) {
+    const ins = generateInsights(projectState(memory.all()), projectDecisions(memory.all()));
+    const pace = ins.find((i) => i.decisionKey === "finance.goal-pace.revenue");
+    check("behind-pace goal produces a pacing insight with needed/day", pace !== undefined && /\/day/.test(pace.claim));
+  } else {
+    check("goal pacing (skipped: too early/late in month to assert honestly)", true);
   }
 }
 

@@ -23,6 +23,7 @@ import {
   orderNetProfit,
   orderRefusalLoss,
   orderRevenue,
+  goalActual,
   projectCustomers,
 } from "./projections";
 import type {
@@ -194,6 +195,44 @@ function financeBrain(state: WorkspaceState, out: Insight[], now: number): void 
           "If next month recovers without action, this was seasonal variation.",
         guidance: driver ? revenueDipGuidance(driver, driverDelta) : undefined,
       });
+    }
+  }
+
+  // 2a-bis. Goal pacing — the accountability partner: not "you missed it" at
+  // month end, but "here is today's required pace" while it's still winnable.
+  {
+    const d = new Date(now);
+    const daysInMonth = new Date(d.getFullYear(), d.getMonth() + 1, 0).getDate();
+    const dayOfMonth = d.getDate();
+    const daysLeft = daysInMonth - dayOfMonth;
+    const target = state.goals.revenue;
+    if (target && target > 0 && dayOfMonth >= 5 && daysLeft >= 2) {
+      const actual = goalActual(state, "revenue", now);
+      const expectedByNow = (target * dayOfMonth) / daysInMonth;
+      if (actual < expectedByNow * 0.9) {
+        const neededPerDay = (target - actual) / daysLeft;
+        const pacePerDay = actual / dayOfMonth;
+        out.push({
+          id: crypto.randomUUID(),
+          decisionKey: "finance.goal-pace.revenue",
+          domain: "finance",
+          layer: "operational",
+          score: 30 + Math.min(25, Math.round(((expectedByNow - actual) / Math.max(1, expectedByNow)) * 50)),
+          claim: `To reach this month's revenue goal you now need ${eur(neededPerDay)}/day — your current pace is ${eur(pacePerDay)}/day.`,
+          reasoning:
+            `Goal ${eur(target)}; ${eur(actual)} earned by day ${dayOfMonth} of ${daysInMonth} ` +
+            `(on-pace would be ${eur(expectedByNow)}). With ${daysLeft} days left, the gap works out to ` +
+            `${eur(neededPerDay)}/day. Said early, this is a lever; said at month-end it would only be a verdict.`,
+          evidence: [
+            { label: "Monthly revenue goal", value: eur(target) },
+            { label: `Earned by day ${dayOfMonth}`, value: eur(actual) },
+            { label: "On-pace amount for today", value: eur(expectedByNow) },
+            { label: `Needed per day (${daysLeft} days left)`, value: eur(neededPerDay) },
+          ],
+          confidence: "high",
+          confidenceNote: "High confidence: pure arithmetic on your goal and your recorded month-to-date revenue.",
+        });
+      }
     }
   }
 

@@ -781,7 +781,7 @@ function Workspace({
             </div>
           )}
           {view === "today" && (
-            <Today workspaceName={workspace.name} state={state} insights={insights} onDecide={onDecide} />
+            <Today workspaceName={workspace.name} state={state} insights={insights} onDecide={onDecide} memory={memory} />
           )}
           {view === "notifications" && (
             <NotificationsView
@@ -798,7 +798,7 @@ function Workspace({
           {view === "inventory" && <InventoryView state={state} memory={memory} />}
           {view === "promos" && <PromosView state={state} memory={memory} />}
           {view === "analytics" && <AnalyticsView state={state} />}
-          {view === "ask" && <AskView state={state} />}
+          {view === "ask" && <AskView state={state} memory={memory} />}
           {view === "import" && <ImportView memory={memory} state={state} />}
           {view === "team" && (
             <TeamView

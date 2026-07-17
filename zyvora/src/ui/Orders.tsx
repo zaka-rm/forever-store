@@ -20,6 +20,7 @@ import {
   projectContacts,
 } from "../core/projections";
 import { upsellSuggestion } from "../core/retention";
+import { extractOrderFromImage, visionConfigured } from "../core/llm";
 import { codConfirmationText, messagingConfigured, sendMessage } from "../core/messaging";
 import type { Order, OrderLine, OrderStatus, WorkspaceState } from "../core/types";
 import { toast } from "./toast";
@@ -149,6 +150,7 @@ export function OrdersView({ state, memory, workspaceName }: { state: WorkspaceS
   const [promoMsg, setPromoMsg] = useState<string | null>(null);
   const [expanded, setExpanded] = useState<string | null>(null);
   const [source, setSource] = useState("");
+  const [reading, setReading] = useState(false);
   const [tab, setTab] = useState<OrderTab>("all");
   const [q, setQ] = useState("");
   const [creating, setCreating] = useState(false);
@@ -328,6 +330,47 @@ export function OrdersView({ state, memory, workspaceName }: { state: WorkspaceS
       <section className="card form-card" aria-labelledby="new-order-title">
       <div className="section-heading">
         <div><h2 id="new-order-title">Create order</h2><p>Stock is reserved as soon as the order is created.</p></div>
+        {visionConfigured && (
+          <label className="btn subtle mini" style={{ cursor: "pointer" }}>
+            {reading ? "Reading photo…" : "From photo 📷"}
+            <input
+              type="file"
+              accept="image/*"
+              style={{ display: "none" }}
+              disabled={reading}
+              onChange={(e) => {
+                const f = e.target.files?.[0];
+                e.target.value = "";
+                if (!f) return;
+                const reader = new FileReader();
+                reader.onload = async () => {
+                  setReading(true);
+                  try {
+                    const names = state.products.filter((p) => !p.discontinued).map((p) => p.name);
+                    const ex = await extractOrderFromImage(String(reader.result), names);
+                    if (ex.customer && !customer.trim()) setCustomer(ex.customer);
+                    const newLines: OrderLine[] = [];
+                    for (const item of ex.items) {
+                      const p = state.products.find((x) => x.name === item.product && !x.discontinued);
+                      if (p) newLines.push({ productId: p.productId, productName: p.name, qty: item.qty, unitPrice: p.price, unitCost: p.unitCost });
+                    }
+                    if (newLines.length > 0) {
+                      setLines((prev) => [...prev, ...newLines]);
+                      toast(`Draft read from photo: ${newLines.map((l) => `${l.qty}× ${l.productName}`).join(", ")} — review before creating`);
+                    } else {
+                      toast("Couldn't match any products in the photo — add lines manually");
+                    }
+                  } catch (err) {
+                    toast(`Photo reading failed: ${err instanceof Error ? err.message : "error"}`);
+                  } finally {
+                    setReading(false);
+                  }
+                };
+                reader.readAsDataURL(f);
+              }}
+            />
+          </label>
+        )}
       </div>
       <div className="form-row">
         <div>
