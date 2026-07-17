@@ -244,8 +244,8 @@ function Simulator() {
   });
   const field = (k: keyof typeof f, label: string) => (
     <div>
-      <label>{label} ({ccy})</label>
-      <input value={f[k]} onChange={(e) => setF({ ...f, [k]: e.target.value })} inputMode="decimal" style={{ width: 90 }} />
+      <label htmlFor={`sim-${k}`}>{label} ({ccy})</label>
+      <input id={`sim-${k}`} value={f[k]} onChange={(e) => setF({ ...f, [k]: e.target.value })} inputMode="decimal" style={{ width: 90 }} />
     </div>
   );
 
@@ -259,8 +259,8 @@ function Simulator() {
         {field("sellingPrice", "Selling price")}
         {field("buyingCost", "Buying cost")}
         <div>
-          <label>Quantity</label>
-          <input value={f.quantity} onChange={(e) => setF({ ...f, quantity: e.target.value })} inputMode="numeric" style={{ width: 70 }} />
+          <label htmlFor="sim-quantity">Quantity</label>
+          <input id="sim-quantity" value={f.quantity} onChange={(e) => setF({ ...f, quantity: e.target.value })} inputMode="numeric" style={{ width: 70 }} />
         </div>
         {field("discount", "Discount / unit")}
         {field("shippingCost", "Shipping cost")}

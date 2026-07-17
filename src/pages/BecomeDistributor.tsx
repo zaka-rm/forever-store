@@ -4,6 +4,12 @@ import { SectionReveal, RevealItem } from '@/components/ui/SectionReveal'
 import { Button } from '@/components/ui/Button'
 import { useLanguage } from '@/lib/i18n/LanguageContext'
 import { supabase } from '@/lib/supabaseClient'
+import {
+  isPublicFormConfigurationError,
+  isValidEmail,
+  isValidPhone,
+  requirePublicFormStorage,
+} from '@/lib/publicForms'
 import { usePageMeta } from '@/lib/usePageMeta'
 
 export default function BecomeDistributor() {
@@ -18,28 +24,39 @@ export default function BecomeDistributor() {
   const [message, setMessage] = useState('')
   const [submitted, setSubmitted] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [sendError, setSendError] = useState(false)
+  const [sendError, setSendError] = useState('')
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
-    setIsSubmitting(true)
-    setSendError(false)
+    const cleanName = name.trim()
+    const cleanEmail = email.trim().toLowerCase()
+    const cleanPhone = phone.trim()
+    const cleanCity = city.trim()
+    const cleanMessage = message.trim()
 
-    const { error } = await supabase.from('distributor_leads').insert({
-      name,
-      email,
-      phone: phone || null,
-      city: city || null,
-      message: message || null,
-    })
-
-    setIsSubmitting(false)
-
-    if (error) {
-      setSendError(true)
+    if (!cleanName || !isValidEmail(cleanEmail) || (cleanPhone && !isValidPhone(cleanPhone))) {
+      setSendError(d.invalid)
       return
     }
-    setSubmitted(true)
+
+    setIsSubmitting(true)
+    setSendError('')
+    try {
+      requirePublicFormStorage()
+      const { error } = await supabase.from('distributor_leads').insert({
+        name: cleanName,
+        email: cleanEmail,
+        phone: cleanPhone || null,
+        city: cleanCity || null,
+        message: cleanMessage || null,
+      })
+      if (error) throw error
+      setSubmitted(true)
+    } catch (error) {
+      setSendError(isPublicFormConfigurationError(error) ? d.unavailable : d.sendError)
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -76,45 +93,54 @@ export default function BecomeDistributor() {
                 animate={{ opacity: 1, y: 0 }}
                 className="flex min-h-[280px] flex-col items-center justify-center text-center"
               >
-                <p className="font-display text-2xl font-bold text-sage-600">{d.successTitle}</p>
+                <p role="status" aria-live="polite" className="font-display text-2xl font-bold text-sage-600">{d.successTitle}</p>
                 <p className="mt-3 max-w-xs text-sm text-ink/60">{d.successBody}</p>
               </motion.div>
             ) : (
-              <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+              <form onSubmit={handleSubmit} aria-busy={isSubmitting} noValidate className="flex flex-col gap-5">
                 <div className="grid gap-5 sm:grid-cols-2">
                   <div>
-                    <label className="mb-1.5 block text-xs font-medium uppercase tracking-wider text-ink/40">{d.nameLabel}</label>
+                    <label htmlFor="distributor-name" className="mb-1.5 block text-xs font-medium uppercase tracking-wider text-ink/40">{d.nameLabel}</label>
                     <input
+                      id="distributor-name"
                       required
+                      autoComplete="name"
                       value={name}
-                      onChange={(e) => setName(e.target.value)}
+                      onChange={(e) => { setName(e.target.value); setSendError('') }}
                       className="w-full rounded-2xl border border-ink/15 bg-cream px-4 py-3 text-sm text-ink outline-none focus:border-ink/40"
                     />
                   </div>
                   <div>
-                    <label className="mb-1.5 block text-xs font-medium uppercase tracking-wider text-ink/40">{d.emailLabel}</label>
+                    <label htmlFor="distributor-email" className="mb-1.5 block text-xs font-medium uppercase tracking-wider text-ink/40">{d.emailLabel}</label>
                     <input
+                      id="distributor-email"
                       required
                       type="email"
+                      autoComplete="email"
                       value={email}
-                      onChange={(e) => setEmail(e.target.value)}
+                      onChange={(e) => { setEmail(e.target.value); setSendError('') }}
                       className="w-full rounded-2xl border border-ink/15 bg-cream px-4 py-3 text-sm text-ink outline-none focus:border-ink/40"
                     />
                   </div>
                 </div>
                 <div className="grid gap-5 sm:grid-cols-2">
                   <div>
-                    <label className="mb-1.5 block text-xs font-medium uppercase tracking-wider text-ink/40">{d.phoneLabel}</label>
+                    <label htmlFor="distributor-phone" className="mb-1.5 block text-xs font-medium uppercase tracking-wider text-ink/40">{d.phoneLabel}</label>
                     <input
+                      id="distributor-phone"
                       type="tel"
+                      autoComplete="tel"
+                      inputMode="tel"
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
                       className="w-full rounded-2xl border border-ink/15 bg-cream px-4 py-3 text-sm text-ink outline-none focus:border-ink/40"
                     />
                   </div>
                   <div>
-                    <label className="mb-1.5 block text-xs font-medium uppercase tracking-wider text-ink/40">{d.cityLabel}</label>
+                    <label htmlFor="distributor-city" className="mb-1.5 block text-xs font-medium uppercase tracking-wider text-ink/40">{d.cityLabel}</label>
                     <input
+                      id="distributor-city"
+                      autoComplete="address-level2"
                       value={city}
                       onChange={(e) => setCity(e.target.value)}
                       className="w-full rounded-2xl border border-ink/15 bg-cream px-4 py-3 text-sm text-ink outline-none focus:border-ink/40"
@@ -122,8 +148,9 @@ export default function BecomeDistributor() {
                   </div>
                 </div>
                 <div>
-                  <label className="mb-1.5 block text-xs font-medium uppercase tracking-wider text-ink/40">{d.messageLabel}</label>
+                  <label htmlFor="distributor-message" className="mb-1.5 block text-xs font-medium uppercase tracking-wider text-ink/40">{d.messageLabel}</label>
                   <textarea
+                    id="distributor-message"
                     rows={4}
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
@@ -133,7 +160,7 @@ export default function BecomeDistributor() {
                 <Button type="submit" variant="primary" magnetic={false} className="mt-2 w-full" disabled={isSubmitting}>
                   {isSubmitting ? d.sending : d.sendButton}
                 </Button>
-                {sendError && <p className="text-center text-xs font-medium text-clay-600">{d.sendError}</p>}
+                {sendError && <p role="alert" className="text-center text-xs font-medium text-clay-600">{sendError}</p>}
               </form>
             )}
           </div>

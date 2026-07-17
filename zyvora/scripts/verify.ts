@@ -4,9 +4,11 @@
  * constitutional behaviors. Exit code 0 = all checks pass.
  */
 import { entitlement } from "../src/core/entitlement";
+import { computeRfm, reorderDueList, upsellSuggestion } from "../src/core/retention";
 import { generateInsights, stateOfThings } from "../src/core/engine";
 import {
   breakEven,
+  cashCalendar,
   checkPromo,
   forecast,
   goalActual,
@@ -321,6 +323,43 @@ console.log("\nCorrections & archival (append-only edit/delete, ADR-0002):");
     check("restored customer leaves the archive", !projectState(memory.all()).archivedCustomers.includes(name));
   } else {
     check("silent-customer insight available to exercise archive (demo data)", false);
+  }
+}
+
+console.log("\nRetention & cash intelligence (RFM, reorder-due, cash calendar, upsell):");
+{
+  const st = projectState(memory.all());
+  const profiles = projectCustomerProfiles(st, Date.now());
+  const rfm = computeRfm(profiles);
+  check("every customer receives an RFM segment", profiles.every((p) => rfm.has(p.name)));
+  check(
+    "RFM scores stay in 1..5",
+    [...rfm.values()].every((s) => [s.r, s.f, s.m].every((v) => v >= 1 && v <= 5))
+  );
+  const quietBig = profiles.find((p) => p.name === "Harbor Café");
+  if (quietBig) {
+    const s = rfm.get("Harbor Café")!;
+    check("a high-spend quiet customer is flagged at-risk/can't-lose/hibernating", ["at-risk", "cant-lose", "hibernating"].includes(s.segment));
+  }
+  const due = reorderDueList(profiles, st.archivedCustomers);
+  check("reorder-due list only contains customers past their own rhythm", due.every((d) => d.daysOverdue > 0));
+  check("reorder-due sorts by value-weighted urgency", due.every((d, i) => i === 0 || due[i - 1].daysOverdue * due[i - 1].expectedValue >= d.daysOverdue * d.expectedValue));
+
+  const cal = cashCalendar(st);
+  const openTotal = st.invoices.filter((i) => !i.paidAt).reduce((s, i) => s + i.amount, 0);
+  check(
+    "cash calendar buckets cover every open invoice exactly once",
+    Math.abs(cal.entries.reduce((s, e) => s + e.amount, 0) - openTotal) < 0.01
+  );
+  check("cash calendar overdue bucket matches entries past due", Math.abs(cal.overdue.total - cal.entries.filter((e) => e.overdueDays > 0).reduce((s, e) => s + e.amount, 0)) < 0.01);
+
+  const anyOrder = st.orders.find((o) => o.status !== "cancelled" && o.lines.length > 0);
+  if (anyOrder) {
+    const sug = upsellSuggestion(st, anyOrder.lines.map((l) => l.productId));
+    check(
+      "upsell suggestion never proposes something already in the basket",
+      !sug || !anyOrder.lines.some((l) => l.productId === sug.productId)
+    );
   }
 }
 

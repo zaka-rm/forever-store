@@ -5,7 +5,7 @@
  * commerce-admin pattern (confirm quietly, undo cheaply).
  * Announced politely to screen readers via aria-live.
  */
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export interface ToastMsg {
   id: number;
@@ -31,10 +31,6 @@ export function Toasts() {
     const on = (e: Event) => {
       const t = (e as CustomEvent<ToastMsg>).detail;
       setItems((prev) => [...prev.slice(-2), t]); // at most 3 visible
-      window.setTimeout(
-        () => setItems((prev) => prev.filter((x) => x.id !== t.id)),
-        t.actionLabel ? LIFE_WITH_ACTION_MS : LIFE_MS
-      );
     };
     window.addEventListener(EVT, on);
     return () => window.removeEventListener(EVT, on);
@@ -44,20 +40,58 @@ export function Toasts() {
   return (
     <div className="toasts" role="status" aria-live="polite">
       {items.map((t) => (
-        <div key={t.id} className="toast">
-          <span>{t.text}</span>
-          {t.actionLabel && (
-            <button
-              onClick={() => {
-                t.onAction?.();
-                setItems((prev) => prev.filter((x) => x.id !== t.id));
-              }}
-            >
-              {t.actionLabel}
-            </button>
-          )}
-        </div>
+        <ToastItem key={t.id} toast={t} onDismiss={() => setItems((prev) => prev.filter((x) => x.id !== t.id))} />
       ))}
+    </div>
+  );
+}
+
+function ToastItem({ toast: item, onDismiss }: { toast: ToastMsg; onDismiss: () => void }) {
+  const timer = useRef<number | null>(null);
+  const remaining = useRef(item.actionLabel ? LIFE_WITH_ACTION_MS : LIFE_MS);
+  const started = useRef(Date.now());
+
+  const resume = () => {
+    if (timer.current !== null) return;
+    started.current = Date.now();
+    timer.current = window.setTimeout(onDismiss, remaining.current);
+  };
+  const pause = () => {
+    if (timer.current === null) return;
+    window.clearTimeout(timer.current);
+    timer.current = null;
+    remaining.current = Math.max(500, remaining.current - (Date.now() - started.current));
+  };
+
+  useEffect(() => {
+    resume();
+    return () => {
+      if (timer.current !== null) window.clearTimeout(timer.current);
+    };
+    // One lifetime per toast; callbacks intentionally do not restart it.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  return (
+    <div
+      className="toast"
+      onMouseEnter={pause}
+      onMouseLeave={resume}
+      onFocus={pause}
+      onBlur={(e) => { if (!e.currentTarget.contains(e.relatedTarget as Node | null)) resume(); }}
+    >
+      <span>{item.text}</span>
+      {item.actionLabel && (
+        <button
+          onClick={() => {
+            item.onAction?.();
+            onDismiss();
+          }}
+        >
+          {item.actionLabel}
+        </button>
+      )}
+      <button className="toast-dismiss" aria-label="Dismiss notification" onClick={onDismiss}>×</button>
     </div>
   );
 }

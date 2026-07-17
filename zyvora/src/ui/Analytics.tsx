@@ -18,6 +18,7 @@ import {
   orderRevenue,
 } from "../core/projections";
 import type { Order, WorkspaceState } from "../core/types";
+import { PageHeader } from "./PageHeader";
 
 // Validated hue (#0f8a5f), theme-aware: styles.css brightens it one step on dark
 // surfaces so the contrast floor holds in both themes.
@@ -92,7 +93,7 @@ function bucket(
 }
 
 /** Single-series bar chart: thin marks, rounded data-ends, 0-baseline, negatives supported. */
-function BarChart({ data, onSelect, selectedKey }: { data: MonthPoint[]; onSelect?: (key: string) => void; selectedKey?: string | null }) {
+function BarChart({ data, onSelect, selectedKey, label }: { data: MonthPoint[]; onSelect?: (key: string) => void; selectedKey?: string | null; label: string }) {
   const W = 620;
   const H = 170;
   const PAD_L = 8;
@@ -109,7 +110,9 @@ function BarChart({ data, onSelect, selectedKey }: { data: MonthPoint[]; onSelec
   const lastIdx = data.length - 1;
 
   return (
-    <svg viewBox={`0 0 ${W} ${H}`} role="img" style={{ width: "100%", height: "auto" }}>
+    <>
+    <svg viewBox={`0 0 ${W} ${H}`} role="img" aria-label={`${label} bar chart`} style={{ width: "100%", height: "auto" }}>
+      <title>{label}</title>
       {/* recessive baseline */}
       <line x1={PAD_L} x2={W - PAD_L} y1={zero} y2={zero} stroke="var(--line)" strokeWidth={1} />
       {data.map((d, i) => {
@@ -121,8 +124,6 @@ function BarChart({ data, onSelect, selectedKey }: { data: MonthPoint[]; onSelec
         return (
           <g
             key={d.key}
-            onClick={() => onSelect?.(d.key)}
-            style={{ cursor: onSelect ? "pointer" : undefined }}
           >
             <rect
               x={x} y={top} width={bw} height={h} rx={4} fill={MARK}
@@ -151,6 +152,21 @@ function BarChart({ data, onSelect, selectedKey }: { data: MonthPoint[]; onSelec
         );
       })}
     </svg>
+    {onSelect && (
+      <div className="chart-controls" role="group" aria-label={`Explore ${label} by month`}>
+        {data.map((d) => (
+          <button
+            key={d.key}
+            className={selectedKey === d.key ? "active" : ""}
+            aria-pressed={selectedKey === d.key}
+            onClick={() => onSelect(d.key)}
+          >
+            {d.label}<span>{formatMoney(d.value)}</span>
+          </button>
+        ))}
+      </div>
+    )}
+    </>
   );
 }
 
@@ -180,7 +196,7 @@ function ChartCard({
     <div className="card">
       <p className="claim" style={{ fontSize: 15 }}>{title}</p>
       {note && <p className="confidence-note" style={{ marginTop: 0 }}>{note}</p>}
-      <BarChart data={data} onSelect={drillable ? (k) => setSelected(k === selected ? null : k) : undefined} selectedKey={selected} />
+      <BarChart label={title} data={data} onSelect={drillable ? (k) => setSelected(k === selected ? null : k) : undefined} selectedKey={selected} />
       {bucket && (
         <div style={{ marginTop: 10, paddingTop: 10, borderTop: "1px solid var(--line)" }}>
           <p className="confidence-note" style={{ marginTop: 0, marginBottom: 6 }}>
@@ -314,13 +330,29 @@ export function AnalyticsView({ state }: { state: WorkspaceState }) {
   const empty =
     state.invoices.length === 0 && state.orders.length === 0 && state.expenses.length === 0;
 
+  const exportOrders = () =>
+    downloadCsv(
+      "zyvora-orders.csv",
+      ["order", "customer", "created", "status", "revenue", "cogs+costs", "net_profit", "cash"],
+      state.orders.map((o) => [
+        o.orderId,
+        o.customer,
+        iso(o.createdAt),
+        o.status,
+        orderRevenue(o).toFixed(2),
+        (orderRevenue(o) - orderNetProfit(o)).toFixed(2),
+        orderNetProfit(o).toFixed(2),
+        o.cashReceivedAt ? "collected" : o.deliveredAt ? "pending" : "",
+      ])
+    );
+
   return (
     <div>
-      <h1>Analytics</h1>
-      <p className="subtitle">
-        The question this view answers: “What changed, where is the money made and
-        lost, and what deserves a closer look?” All comparisons are against your own history.
-      </p>
+      <PageHeader
+        title="Analytics"
+        description="What changed, where is the money made and lost, and what deserves a closer look? All comparisons are against your own history."
+        actions={!empty ? <button className="btn ghost" onClick={exportOrders}>Export orders CSV</button> : undefined}
+      />
 
       {empty ? (
         <div className="quiet">Charts appear as your invoices, orders, and expenses accumulate.</div>
@@ -334,6 +366,7 @@ export function AnalyticsView({ state }: { state: WorkspaceState }) {
                   key={n}
                   className={rangeMonths === n ? "active" : ""}
                   onClick={() => setRangeMonths(n)}
+                  aria-pressed={rangeMonths === n}
                 >
                   {n} months
                 </button>
@@ -396,22 +429,7 @@ export function AnalyticsView({ state }: { state: WorkspaceState }) {
           <div className="form-row">
             <button
               className="btn ghost"
-              onClick={() =>
-                downloadCsv(
-                  "zyvora-orders.csv",
-                  ["order", "customer", "created", "status", "revenue", "cogs+costs", "net_profit", "cash"],
-                  state.orders.map((o) => [
-                    o.orderId,
-                    o.customer,
-                    iso(o.createdAt),
-                    o.status,
-                    orderRevenue(o).toFixed(2),
-                    (orderRevenue(o) - orderNetProfit(o)).toFixed(2),
-                    orderNetProfit(o).toFixed(2),
-                    o.cashReceivedAt ? "collected" : o.deliveredAt ? "pending" : "",
-                  ])
-                )
-              }
+              onClick={exportOrders}
             >
               Orders
             </button>

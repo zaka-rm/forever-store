@@ -45,7 +45,9 @@ export function DialogHost() {
   const [value, setValue] = useState("");
   const resolveRef = useRef<Resolver | null>(null);
   const restoreRef = useRef<HTMLElement | null>(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
   const confirmRef = useRef<HTMLButtonElement>(null);
+  const cancelRef = useRef<HTMLButtonElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -59,7 +61,12 @@ export function DialogHost() {
   }, []);
 
   useEffect(() => {
-    if (spec) requestAnimationFrame(() => (spec.kind === "prompt" ? inputRef.current : confirmRef.current)?.focus());
+    if (!spec) return;
+    requestAnimationFrame(() => {
+      if (spec.kind === "prompt") inputRef.current?.focus();
+      else if (spec.danger && spec.kind !== "alert") cancelRef.current?.focus();
+      else confirmRef.current?.focus();
+    });
   }, [spec]);
 
   if (!spec) return null;
@@ -79,12 +86,35 @@ export function DialogHost() {
       onMouseDown={(e) => { if (e.target === e.currentTarget) cancel(); }}
       onKeyDown={(e) => {
         if (e.key === "Escape") { e.preventDefault(); cancel(); }
-        if (e.key === "Enter" && spec.kind !== "alert") { e.preventDefault(); ok(); }
+        if (e.key === "Tab") {
+          const focusable = Array.from(
+            dialogRef.current?.querySelectorAll<HTMLElement>(
+              'button:not([disabled]), input:not([disabled]), textarea:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])'
+            ) ?? []
+          );
+          if (focusable.length === 0) return;
+          const first = focusable[0];
+          const last = focusable[focusable.length - 1];
+          if (e.shiftKey && document.activeElement === first) {
+            e.preventDefault();
+            last.focus();
+          } else if (!e.shiftKey && document.activeElement === last) {
+            e.preventDefault();
+            first.focus();
+          }
+        }
       }}
     >
-      <div className="dialog" role="alertdialog" aria-modal="true" aria-labelledby="dlg-title">
+      <div
+        ref={dialogRef}
+        className="dialog"
+        role={spec.danger ? "alertdialog" : "dialog"}
+        aria-modal="true"
+        aria-labelledby="dlg-title"
+        aria-describedby={spec.body ? "dlg-body" : undefined}
+      >
         <h3 id="dlg-title">{spec.title}</h3>
-        {spec.body && <p>{spec.body}</p>}
+        {spec.body && <p id="dlg-body">{spec.body}</p>}
         {spec.kind === "prompt" && (
           <div className="form-row" style={{ marginTop: 12 }}>
             <div style={{ flex: 1 }}>
@@ -94,6 +124,12 @@ export function DialogHost() {
                 ref={inputRef}
                 value={value}
                 onChange={(e) => setValue(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    e.preventDefault();
+                    ok();
+                  }
+                }}
                 placeholder={spec.placeholder}
                 style={{ width: "100%" }}
               />
@@ -102,10 +138,13 @@ export function DialogHost() {
         )}
         <div className="dialog-actions">
           {spec.kind !== "alert" && (
-            <button className="btn subtle" onClick={cancel}>{spec.cancelLabel ?? "Cancel"}</button>
+            <button ref={cancelRef} type="button" className="btn subtle" onClick={cancel}>
+              {spec.cancelLabel ?? "Cancel"}
+            </button>
           )}
           <button
             ref={confirmRef}
+            type="button"
             className={`btn${spec.danger ? " danger-solid" : ""}`}
             onClick={ok}
           >

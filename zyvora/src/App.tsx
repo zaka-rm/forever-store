@@ -7,7 +7,7 @@
  *    Workspace-isolated by RLS, offline outbox for integrity.
  *  - Local device mode: browser-only (BusinessMemory) — always available.
  */
-import { useEffect, useMemo, useState, useSyncExternalStore } from "react";
+import { useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
 import {
   CloudMemory,
   acceptPendingInvitations,
@@ -57,21 +57,70 @@ type View =
   | "today" | "notifications" | "orders" | "finance" | "customers"
   | "inventory" | "promos" | "analytics" | "ask" | "import" | "team" | "billing" | "memory";
 
-const NAV: { id: View; label: string; icon: IconName }[] = [
-  { id: "today", label: "Today", icon: "today" },
-  { id: "notifications", label: "Notifications", icon: "bell" },
-  { id: "orders", label: "Orders", icon: "orders" },
-  { id: "finance", label: "Finance", icon: "finance" },
-  { id: "customers", label: "Customers", icon: "customers" },
-  { id: "inventory", label: "Inventory", icon: "inventory" },
-  { id: "promos", label: "Promos", icon: "promos" },
-  { id: "analytics", label: "Analytics", icon: "analytics" },
-  { id: "ask", label: "Ask ZYVORA", icon: "ask" },
-  { id: "import", label: "Import", icon: "import" },
-  { id: "team", label: "Team", icon: "team" },
-  { id: "billing", label: "Billing", icon: "billing" },
-  { id: "memory", label: "Business Memory", icon: "memory" },
+type NavItem = { id: View; label: string; icon: IconName };
+
+/**
+ * Commerce-admin information architecture: a short home section, the resources
+ * people operate every day, then analysis and workspace administration. The
+ * groups are visual only; they do not change permissions or business logic.
+ */
+const NAV_GROUPS: { label: string; items: NavItem[] }[] = [
+  {
+    label: "Overview",
+    items: [
+      { id: "today", label: "Today", icon: "today" },
+      { id: "notifications", label: "Notifications", icon: "bell" },
+    ],
+  },
+  {
+    label: "Commerce",
+    items: [
+      { id: "orders", label: "Orders", icon: "orders" },
+      { id: "customers", label: "Customers", icon: "customers" },
+      { id: "inventory", label: "Inventory", icon: "inventory" },
+      { id: "promos", label: "Promos", icon: "promos" },
+    ],
+  },
+  {
+    label: "Insights",
+    items: [
+      { id: "finance", label: "Finance", icon: "finance" },
+      { id: "analytics", label: "Analytics", icon: "analytics" },
+      { id: "ask", label: "Ask ZYVORA", icon: "ask" },
+    ],
+  },
+  {
+    label: "Workspace",
+    items: [
+      { id: "import", label: "Import", icon: "import" },
+      { id: "team", label: "Team", icon: "team" },
+      { id: "billing", label: "Billing", icon: "billing" },
+      { id: "memory", label: "Business Memory", icon: "memory" },
+    ],
+  },
 ];
+
+const VIEW_META: Record<View, { title: string; section: string }> = {
+  today: { title: "Today", section: "Overview" },
+  notifications: { title: "Notifications", section: "Overview" },
+  orders: { title: "Orders", section: "Commerce" },
+  customers: { title: "Customers", section: "Commerce" },
+  inventory: { title: "Inventory", section: "Commerce" },
+  promos: { title: "Promos", section: "Commerce" },
+  finance: { title: "Finance", section: "Insights" },
+  analytics: { title: "Analytics", section: "Insights" },
+  ask: { title: "Ask ZYVORA", section: "Insights" },
+  import: { title: "Import", section: "Workspace" },
+  team: { title: "Team", section: "Workspace" },
+  billing: { title: "Billing", section: "Workspace" },
+  memory: { title: "Business Memory", section: "Workspace" },
+};
+
+const ALL_VIEWS = new Set<View>(Object.keys(VIEW_META) as View[]);
+const viewFromLocation = (): View | null => {
+  const candidate = window.location.hash.replace(/^#\/?/, "").split("/")[0] as View;
+  return ALL_VIEWS.has(candidate) ? candidate : null;
+};
 
 const MODE_KEY = "zyvora.mode";
 
@@ -204,21 +253,27 @@ function AuthScreen({ onUseLocal, onBack }: { onUseLocal: () => void; onBack?: (
           Sign in to keep your Business Memory on your account — permanent,
           synced, exportable, and never held hostage.
         </p>
+        <label className="auth-label" htmlFor="auth-email">Email</label>
         <input
+          id="auth-email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          placeholder="Email"
+          placeholder="you@example.com"
           type="email"
+          autoComplete="email"
           autoFocus
         />
+        <label className="auth-label" htmlFor="auth-password">Password</label>
         <input
+          id="auth-password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          placeholder="Password"
+          placeholder="Your password"
           type="password"
+          autoComplete="current-password"
           style={{ marginTop: 0 }}
         />
-        {message && <p style={{ fontSize: 14 }}>{message}</p>}
+        {message && <p role="status" style={{ fontSize: 14 }}>{message}</p>}
         <div className="actions">
           <button className="btn" disabled={busy || !email || !password} onClick={signIn}>
             Sign in
@@ -361,17 +416,22 @@ function Onboarding({
             </>
           )}
         </p>
+        <label className="auth-label" htmlFor="workspace-name">Business name</label>
         <input
+          id="workspace-name"
           value={name}
           onChange={(e) => setName(e.target.value)}
           placeholder="Your business name"
           onKeyDown={(e) => {
             if (e.key === "Enter" && name.trim()) onCreate(name, currency);
           }}
+          autoComplete="organization"
           autoFocus
         />
         <div className="actions">
+          <label className="sr-only" htmlFor="workspace-currency">Business currency</label>
           <select
+            id="workspace-currency"
             value={currency}
             onChange={(e) => setCurrency(e.target.value)}
             aria-label="Business currency"
@@ -421,10 +481,35 @@ function Workspace({
   userId?: string;
 }) {
   setActiveCurrency(workspace.currency);
-  const [view, setView] = useState<View>("today");
+  const [view, setView] = useState<View>(() => viewFromLocation() ?? "today");
   const [cmdOpen, setCmdOpen] = useState(false);
   const [navOpen, setNavOpen] = useState(false);
+  const navTriggerRef = useRef<HTMLButtonElement>(null);
+  const navRef = useRef<HTMLElement>(null);
+  const navCloseRef = useRef<HTMLButtonElement>(null);
+  const mainRef = useRef<HTMLElement>(null);
+  const didNavigateRef = useRef(false);
   const reduceMotion = useReducedMotion();
+
+  const closeNav = () => {
+    setNavOpen(false);
+    requestAnimationFrame(() => navTriggerRef.current?.focus());
+  };
+
+  // Each resource index has a stable URL. This keeps Back/Forward, refresh,
+  // bookmarks, and shared links aligned with what is visible on screen.
+  useEffect(() => {
+    if (!viewFromLocation()) window.history.replaceState({ view: "today" }, "", "#/today");
+    const onHistory = () => {
+      const next = viewFromLocation();
+      if (next) {
+        setView(next);
+        setNavOpen(false);
+      }
+    };
+    window.addEventListener("popstate", onHistory);
+    return () => window.removeEventListener("popstate", onHistory);
+  }, []);
 
   // Global search / command palette on Ctrl(⌘)+K.
   useEffect(() => {
@@ -437,6 +522,41 @@ function Workspace({
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, []);
+
+  // Make the mobile navigation behave like a real drawer: Escape closes it
+  // and the page behind it does not scroll while the drawer is open.
+  useEffect(() => {
+    if (!navOpen) return;
+    const previousOverflow = document.body.style.overflow;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        e.preventDefault();
+        closeNav();
+      }
+      if (e.key === "Tab") {
+        const focusable = Array.from(
+          navRef.current?.querySelectorAll<HTMLElement>('button:not([disabled]), a[href], [tabindex]:not([tabindex="-1"])') ?? []
+        );
+        if (focusable.length === 0) return;
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
+    };
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", onKey);
+    requestAnimationFrame(() => navCloseRef.current?.focus());
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [navOpen]);
 
   // Billing entitlement (cloud mode only; local mode is free forever).
   const [subscription, setSubscription] = useState<Subscription | null>(null);
@@ -496,23 +616,48 @@ function Workspace({
 
   const isEmpty = events.length === 0;
   const pendingSync = memory instanceof CloudMemory ? memory.pendingSync : 0;
+  const currentView = VIEW_META[view];
 
   const go = (v: View) => {
+    didNavigateRef.current = true;
     setView(v);
     setNavOpen(false);
+    const nextHash = `#/${v}`;
+    if (window.location.hash !== nextHash) window.history.pushState({ view: v }, "", nextHash);
   };
+
+  useEffect(() => {
+    document.title = `${VIEW_META[view].title} · ZYVORA`;
+    if (!didNavigateRef.current) return;
+    didNavigateRef.current = false;
+    window.scrollTo({ top: 0, behavior: "auto" });
+    requestAnimationFrame(() => mainRef.current?.focus({ preventScroll: true }));
+  }, [view]);
 
   return (
     <div className="app">
       <a className="skip-link" href="#main">Skip to content</a>
       <div className="mobile-bar">
-        <button aria-label="Open navigation" onClick={() => setNavOpen(true)}>{Icons.menu()}</button>
+        <button
+          ref={navTriggerRef}
+          aria-label="Open navigation"
+          aria-expanded={navOpen}
+          aria-controls="primary-navigation"
+          onClick={() => setNavOpen(true)}
+        >
+          {Icons.menu()}
+        </button>
         <span className="wordmark">ZYVORA</span>
         <button aria-label="Search" onClick={() => setCmdOpen(true)}>{Icons.search()}</button>
       </div>
-      {navOpen && <button className="nav-overlay" aria-label="Close navigation" onClick={() => setNavOpen(false)} />}
-      <nav className={`nav${navOpen ? " open" : ""}`} aria-label="Primary">
-        <div className="wordmark">ZYVORA</div>
+      {navOpen && <button className="nav-overlay" aria-hidden="true" tabIndex={-1} onClick={closeNav} />}
+      <nav ref={navRef} id="primary-navigation" className={`nav${navOpen ? " open" : ""}`} aria-label="Primary">
+        <div className="nav-brand-row">
+          <div className="wordmark">ZYVORA</div>
+          <button ref={navCloseRef} className="nav-close" aria-label="Close navigation" onClick={closeNav}>
+            {Icons.close()}
+          </button>
+        </div>
         <div className="workspace-name">
           {workspace.name}
           {onSignOut && (
@@ -526,26 +671,31 @@ function Workspace({
           Search…
           <kbd>Ctrl K</kbd>
         </button>
-        {NAV.filter((n) => n.id !== "billing" || Boolean(onSignOut)).map((n) => (
-          <button
-            key={n.id}
-            className={view === n.id ? "active" : ""}
-            aria-current={view === n.id ? "page" : undefined}
-            onClick={() => go(n.id)}
-          >
-            {Icons[n.icon]()}
-            {n.label}
-            {n.id === "notifications" && unread > 0 && (
-              <span
-                aria-label={`${unread} unread`}
-                style={{
-                  marginLeft: 8, background: "var(--amber)", color: "#fff", borderRadius: 999,
-                  fontSize: 11, fontWeight: 700, padding: "1px 7px",
-                }}
-              >{unread}</span>
-            )}
-          </button>
-        ))}
+        <div className="nav-groups">
+          {NAV_GROUPS.map((group) => {
+            const items = group.items.filter((n) => n.id !== "billing" || Boolean(onSignOut));
+            if (items.length === 0) return null;
+            return (
+              <section className="nav-group" key={group.label} aria-labelledby={`nav-${group.label.toLowerCase()}`}>
+                <div className="nav-group-label" id={`nav-${group.label.toLowerCase()}`}>{group.label}</div>
+                {items.map((n) => (
+                  <button
+                    key={n.id}
+                    className={view === n.id ? "active" : ""}
+                    aria-current={view === n.id ? "page" : undefined}
+                    onClick={() => go(n.id)}
+                  >
+                    {Icons[n.icon]()}
+                    <span>{n.label}</span>
+                    {n.id === "notifications" && unread > 0 && (
+                      <span className="nav-count" aria-label={`${unread} unread`}>{unread}</span>
+                    )}
+                  </button>
+                ))}
+              </section>
+            );
+          })}
+        </div>
         <div className="nav-footer">
           <ThemeButton />
           {isEmpty && can(role, "import_data") && <button onClick={() => seedDemoData(memory)}>Load demo business</button>}
@@ -575,14 +725,36 @@ function Workspace({
           {onSignOut && <button onClick={onSignOut}>Sign out</button>}
         </div>
       </nav>
+      <div className="workspace-frame" aria-hidden={navOpen || undefined}>
+        <header className="topbar">
+          <div className="topbar-context" aria-label="Current location">
+            <span>{currentView.section}</span>
+            <span className="topbar-separator" aria-hidden="true">/</span>
+            <strong>{currentView.title}</strong>
+          </div>
+          <button className="topbar-search" onClick={() => setCmdOpen(true)} aria-label="Search and open command menu">
+            {Icons.search()}
+            <span>Search ZYVORA</span>
+            <kbd>Ctrl K</kbd>
+          </button>
+          <div className="topbar-status">
+            <span className={`sync-state${pendingSync > 0 ? " pending" : ""}`}>
+              <i aria-hidden="true" />
+              {onSignOut ? (pendingSync > 0 ? "Syncing" : "Synced") : "On this device"}
+            </span>
+            <span className="workspace-avatar" aria-label={`${workspace.name} workspace`}>
+              {workspace.name.trim().slice(0, 2).toUpperCase() || "ZY"}
+            </span>
+          </div>
+        </header>
       <CommandPalette
         open={cmdOpen}
         onClose={() => setCmdOpen(false)}
         state={state}
         navigate={(v) => go(v as View)}
         actions={[
-          { label: "New order", icon: "orders", run: () => setView("orders") },
-          { label: "Ask ZYVORA a question", icon: "ask", run: () => setView("ask") },
+          { label: "New order", icon: "orders", run: () => go("orders") },
+          { label: "Ask ZYVORA a question", icon: "ask", run: () => go("ask") },
           { label: "Toggle theme", icon: "today", run: () => cycleTheme() },
           ...(can(role, "export_memory")
             ? [{ label: "Export Business Memory", icon: "memory" as IconName, run: () => memory.exportJson(workspace.name) }]
@@ -591,7 +763,7 @@ function Workspace({
       />
       <Toasts />
       <DialogHost />
-      <main className="main" id="main">
+      <main ref={mainRef} className="main" id="main" tabIndex={-1}>
         <motion.div
           key={view}
           initial={reduceMotion ? false : { opacity: 0, y: 6 }}
@@ -600,7 +772,7 @@ function Workspace({
         >
          <ErrorBoundary key={view}>
           {ent && (
-            <TrialBanner daysLeft={ent.trialDaysLeft} expired={!ent.active} onOpenBilling={() => setView("billing")} />
+            <TrialBanner daysLeft={ent.trialDaysLeft} expired={!ent.active} onOpenBilling={() => go("billing")} />
           )}
           {role === "viewer" && (
             <div className="quiet" style={{ marginBottom: 16, textAlign: "left" }}>
@@ -616,7 +788,7 @@ function Workspace({
               state={state}
               notifications={notifications}
               workspaceId={workspace.id}
-              onOpenView={(v) => setView(v)}
+              onOpenView={(v) => go(v)}
               onChange={() => setNotifVersion((v) => v + 1)}
             />
           )}
@@ -627,7 +799,7 @@ function Workspace({
           {view === "promos" && <PromosView state={state} memory={memory} />}
           {view === "analytics" && <AnalyticsView state={state} />}
           {view === "ask" && <AskView state={state} />}
-          {view === "import" && <ImportView memory={memory} />}
+          {view === "import" && <ImportView memory={memory} state={state} />}
           {view === "team" && (
             <TeamView
               client={onSignOut ? supabase : null}
@@ -644,6 +816,7 @@ function Workspace({
          </ErrorBoundary>
         </motion.div>
       </main>
+      </div>
     </div>
   );
 }

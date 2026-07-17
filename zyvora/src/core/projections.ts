@@ -398,6 +398,64 @@ export interface SimResult {
   breakEvenUnits: number | null; // units to cover per-order fixed (ship+pack+ad)
 }
 
+// ---------------- Cash calendar (expected money, dated and honest) ----------
+
+export interface CashCalendarEntry {
+  customer: string;
+  amount: number;
+  dueAt: number;
+  overdueDays: number; // > 0 means past due
+}
+
+export interface CashCalendar {
+  /** Invoices past their due date — collectable now. */
+  overdue: { count: number; total: number };
+  /** Invoices due within the next 7 days. */
+  next7: { count: number; total: number };
+  /** Invoices due in 8–30 days. */
+  next30: { count: number; total: number };
+  /** Delivered COD orders whose cash is still with couriers (no fixed date). */
+  codPending: { count: number; total: number };
+  /** Your average daily outgoings over the last 90 days — the honest counterweight. */
+  avgDailyExpense: number | null;
+  /** Every open invoice, soonest due first. */
+  entries: CashCalendarEntry[];
+}
+
+/**
+ * Cash calendar — "what money can I expect, and when" from recorded facts only:
+ * open invoices carry real due dates; COD cash awaiting remittance has no date
+ * and is shown as its own bucket, never assigned a fake one (Law IX).
+ */
+export function cashCalendar(state: WorkspaceState, now: number = Date.now()): CashCalendar {
+  const open = state.invoices.filter((i) => !i.paidAt);
+  const entries: CashCalendarEntry[] = open
+    .map((i) => {
+      const dueAt = i.issuedAt + i.dueDays * DAY;
+      return { customer: i.customer, amount: i.amount, dueAt, overdueDays: Math.floor((now - dueAt) / DAY) };
+    })
+    .sort((a, b) => a.dueAt - b.dueAt);
+
+  const bucket = (test: (e: CashCalendarEntry) => boolean) => {
+    const list = entries.filter(test);
+    return { count: list.length, total: list.reduce((s, e) => s + e.amount, 0) };
+  };
+  const codList = state.orders.filter((o) => o.status === "delivered" && !o.cashReceivedAt);
+
+  const expenses90 = state.expenses.filter((e) => now - e.date <= 90 * DAY);
+  const avgDailyExpense =
+    expenses90.length >= 3 ? expenses90.reduce((s, e) => s + e.amount, 0) / 90 : null;
+
+  return {
+    overdue: bucket((e) => e.overdueDays > 0),
+    next7: bucket((e) => e.overdueDays <= 0 && e.dueAt - now <= 7 * DAY),
+    next30: bucket((e) => e.dueAt - now > 7 * DAY && e.dueAt - now <= 30 * DAY),
+    codPending: { count: codList.length, total: codList.reduce((s, o) => s + orderRevenue(o), 0) },
+    avgDailyExpense,
+    entries,
+  };
+}
+
 export interface Forecast {
   revenueProjection: { low: number; mid: number; high: number } | null;
   daysElapsed: number;

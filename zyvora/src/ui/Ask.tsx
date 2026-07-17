@@ -9,6 +9,7 @@ import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { askZyvora, businessContext, SUGGESTED_QUESTIONS, type Answer } from "../core/assistant";
 import { askLlm, llmConfigured, llmModel, type ChatMessage } from "../core/llm";
 import type { WorkspaceState } from "../core/types";
+import { PageHeader } from "./PageHeader";
 
 interface Turn {
   id: string;
@@ -61,11 +62,10 @@ export function AskView({ state }: { state: WorkspaceState }) {
 
   return (
     <div>
-      <h1>Ask ZYVORA</h1>
-      <p className="subtitle">
-        Ask about your business in plain words. Answers come from your own recorded
-        data{llmConfigured ? ` — precise figures instantly, and open questions answered conversationally by AI (${llmModel.split("-").slice(0, 2).join(" ")}), grounded on your real numbers.` : ", with the figures shown — and if I can't answer, I'll say so."}
-      </p>
+      <PageHeader
+        title="Ask ZYVORA"
+        description={<>Ask about your business in plain words. Answers come from your own recorded data{llmConfigured ? ` — precise figures instantly, and open questions answered conversationally by AI (${llmModel.split("-").slice(0, 2).join(" ")}), grounded on your real numbers.` : ", with the figures shown — and if I can't answer, I'll say so."}</>}
+      />
 
       {turns.length === 0 && (
         <div className="quiet" style={{ textAlign: "left" }}>
@@ -121,7 +121,9 @@ export function AskView({ state }: { state: WorkspaceState }) {
       <div ref={endRef} />
 
       <div className="form-row" style={{ marginTop: 18 }}>
+        <label className="sr-only" htmlFor="ask-zyvora-question">Ask a question about your business</label>
         <input
+          id="ask-zyvora-question"
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={(e) => { if (e.key === "Enter") void ask(input); }}

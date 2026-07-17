@@ -13,6 +13,7 @@ import { getActiveCurrency } from "./format";
 import {
   DAY,
   breakEven,
+  cashCalendar,
   goalActual,
   monthBounds,
   orderNetProfit,
@@ -20,6 +21,7 @@ import {
   profitAndLoss,
   projectCustomerProfiles,
 } from "./projections";
+import { SEGMENT_LABEL, computeRfm, reorderDueList } from "./retention";
 import type { WorkspaceState } from "./types";
 
 /**
@@ -56,6 +58,27 @@ export function businessContext(state: WorkspaceState, now: number = Date.now())
   L.push(`CUSTOMERS (${profiles.length}). Top by lifetime revenue: ${profiles.slice(0, 5).map((c) => `${c.name} ${formatMoney(c.lifetimeRevenue)}`).join("; ") || "none"}. At-risk (gone quiet): ${atRisk.map((c) => c.name).join(", ") || "none"}.`);
   L.push(`ORDERS: ${things.openOrders} open. Delivered orders that lost money: ${losing.length}.`);
   L.push(`Overdue invoices: ${overdue.length}${overdue.length ? ` totalling ${formatMoney(overdue.reduce((s, i) => s + i.amount, 0))}` : ""}.`);
+
+  // Retention intelligence (RFM) + dated cash expectations — so the assistant
+  // can answer "who should I call today" and "what money is coming" honestly.
+  const rfm = computeRfm(profiles, now);
+  const segCounts = new Map<string, number>();
+  for (const s of rfm.values()) segCounts.set(s.segment, (segCounts.get(s.segment) ?? 0) + 1);
+  if (segCounts.size > 0) {
+    L.push(
+      `SEGMENTS (RFM): ${[...segCounts.entries()].map(([s, n]) => `${SEGMENT_LABEL[s as keyof typeof SEGMENT_LABEL]} ${n}`).join("; ")}.`
+    );
+  }
+  const due = reorderDueList(profiles, state.archivedCustomers, now);
+  if (due.length > 0) {
+    L.push(
+      `OVERDUE TO REORDER (past their own rhythm): ${due.slice(0, 5).map((d) => `${d.name} ${d.daysOverdue}d overdue, ≈${formatMoney(d.expectedValue)} expected`).join("; ")}.`
+    );
+  }
+  const cal = cashCalendar(state, now);
+  L.push(
+    `CASH CALENDAR: overdue ${formatMoney(cal.overdue.total)} (${cal.overdue.count}), due ≤7d ${formatMoney(cal.next7.total)}, due 8–30d ${formatMoney(cal.next30.total)}, with couriers ${formatMoney(cal.codPending.total)}.`
+  );
   return L.join("\n");
 }
 

@@ -12,23 +12,6 @@ function entitlement(sub, workspaceCreatedAt, now = Date.now()) {
   return { active: trialDaysLeft > 0, trialDaysLeft };
 }
 
-// src/core/format.ts
-var activeCurrency = "USD";
-function getActiveCurrency() {
-  return activeCurrency;
-}
-function money(amount) {
-  try {
-    return new Intl.NumberFormat(void 0, {
-      style: "currency",
-      currency: activeCurrency,
-      maximumFractionDigits: 0
-    }).format(amount);
-  } catch {
-    return `${Math.round(amount).toLocaleString()} ${activeCurrency}`;
-  }
-}
-
 // src/core/projections.ts
 function projectState(events) {
   const invoices = /* @__PURE__ */ new Map();
@@ -289,6 +272,28 @@ function breakEven(state2, now = Date.now()) {
     ordersThisMonth: state2.orders.filter((o) => o.deliveredAt && o.deliveredAt >= monthStart(now)).length
   };
 }
+function cashCalendar(state2, now = Date.now()) {
+  const open = state2.invoices.filter((i) => !i.paidAt);
+  const entries = open.map((i) => {
+    const dueAt = i.issuedAt + i.dueDays * DAY2;
+    return { customer: i.customer, amount: i.amount, dueAt, overdueDays: Math.floor((now - dueAt) / DAY2) };
+  }).sort((a, b) => a.dueAt - b.dueAt);
+  const bucket = (test) => {
+    const list = entries.filter(test);
+    return { count: list.length, total: list.reduce((s, e) => s + e.amount, 0) };
+  };
+  const codList = state2.orders.filter((o) => o.status === "delivered" && !o.cashReceivedAt);
+  const expenses90 = state2.expenses.filter((e) => now - e.date <= 90 * DAY2);
+  const avgDailyExpense = expenses90.length >= 3 ? expenses90.reduce((s, e) => s + e.amount, 0) / 90 : null;
+  return {
+    overdue: bucket((e) => e.overdueDays > 0),
+    next7: bucket((e) => e.overdueDays <= 0 && e.dueAt - now <= 7 * DAY2),
+    next30: bucket((e) => e.dueAt - now > 7 * DAY2 && e.dueAt - now <= 30 * DAY2),
+    codPending: { count: codList.length, total: codList.reduce((s, o) => s + orderRevenue(o), 0) },
+    avgDailyExpense,
+    entries
+  };
+}
 function forecast(state2, now = Date.now()) {
   const d = new Date(now);
   const daysElapsed = d.getDate();
@@ -507,6 +512,106 @@ function projectActivities(events) {
 }
 var DAY2 = 24 * 60 * 60 * 1e3;
 
+// src/core/retention.ts
+var SEGMENT_LABEL = {
+  champion: "Champion",
+  loyal: "Loyal",
+  new: "New",
+  promising: "Promising",
+  "at-risk": "At risk",
+  "cant-lose": "Can't lose",
+  hibernating: "Hibernating",
+  regular: "Regular"
+};
+function quintile(value, all) {
+  if (all.length <= 1) return 3;
+  const below = all.filter((v) => v < value).length;
+  return 1 + Math.min(4, Math.floor(below / all.length * 5));
+}
+function classify(r, f, m2) {
+  if (r >= 4 && f >= 4 && m2 >= 4) return "champion";
+  if (r <= 2 && m2 >= 4) return "cant-lose";
+  if (r <= 2 && f >= 3) return "at-risk";
+  if (r <= 2) return "hibernating";
+  if (f >= 4) return "loyal";
+  if (f <= 2 && r >= 4) return m2 >= 3 ? "promising" : "new";
+  return "regular";
+}
+function computeRfm(profiles2, now = Date.now()) {
+  const recencies = profiles2.map((p2) => -(now - p2.lastActivityAt));
+  const freqs = profiles2.map((p2) => p2.interactions);
+  const monies = profiles2.map((p2) => p2.lifetimeRevenue);
+  const out = /* @__PURE__ */ new Map();
+  for (const p2 of profiles2) {
+    const r = quintile(-(now - p2.lastActivityAt), recencies);
+    const f = quintile(p2.interactions, freqs);
+    const m2 = quintile(p2.lifetimeRevenue, monies);
+    out.set(p2.name, { r, f, m: m2, segment: classify(r, f, m2) });
+  }
+  return out;
+}
+function reorderDueList(profiles2, archived, now = Date.now()) {
+  const hidden = new Set(archived);
+  const out = [];
+  for (const p2 of profiles2) {
+    if (hidden.has(p2.name)) continue;
+    if (p2.medianGapDays === null || p2.medianGapDays <= 0 || p2.interactions < 3) continue;
+    const daysSince = (now - p2.lastActivityAt) / DAY2;
+    const overdue2 = daysSince - p2.medianGapDays;
+    if (overdue2 > 0) {
+      out.push({
+        name: p2.name,
+        daysSince: Math.round(daysSince),
+        usualGapDays: Math.round(p2.medianGapDays),
+        daysOverdue: Math.round(overdue2),
+        expectedValue: p2.avgOrderValue,
+        lifetimeRevenue: p2.lifetimeRevenue
+      });
+    }
+  }
+  return out.sort((a, b) => b.daysOverdue * b.expectedValue - a.daysOverdue * a.expectedValue);
+}
+function upsellSuggestion(state2, basketProductIds, minTimesTogether = 2) {
+  if (basketProductIds.length === 0) return null;
+  const inBasket = new Set(basketProductIds);
+  const counts = /* @__PURE__ */ new Map();
+  for (const o of state2.orders) {
+    if (o.status === "cancelled") continue;
+    const ids = new Set(o.lines.map((l) => l.productId));
+    if (![...inBasket].some((id) => ids.has(id))) continue;
+    for (const id of ids) {
+      if (!inBasket.has(id)) counts.set(id, (counts.get(id) ?? 0) + 1);
+    }
+  }
+  let best = null;
+  for (const [id, n] of counts) {
+    if (n < minTimesTogether) continue;
+    const p2 = state2.products.find((x) => x.productId === id && !x.discontinued);
+    if (!p2) continue;
+    if (!best || n > best.timesTogether) {
+      best = { productId: id, productName: p2.name, timesTogether: n, price: p2.price };
+    }
+  }
+  return best;
+}
+
+// src/core/format.ts
+var activeCurrency = "USD";
+function getActiveCurrency() {
+  return activeCurrency;
+}
+function money(amount) {
+  try {
+    return new Intl.NumberFormat(void 0, {
+      style: "currency",
+      currency: activeCurrency,
+      maximumFractionDigits: 0
+    }).format(amount);
+  } catch {
+    return `${Math.round(amount).toLocaleString()} ${activeCurrency}`;
+  }
+}
+
 // src/core/engine.ts
 var SUPPRESSION_WINDOW_DAYS = 30;
 var eur = money;
@@ -624,6 +729,49 @@ function financeBrain(state2, out, now) {
         confidenceNote: "Medium confidence: the arithmetic is exact, but one month can be noise. If next month recovers without action, this was seasonal variation.",
         guidance: driver ? revenueDipGuidance(driver, driverDelta) : void 0
       });
+    }
+  }
+  {
+    const last302 = state2.expenses.filter((e) => now - e.date <= 30 * DAY2);
+    const prior90 = state2.expenses.filter((e) => now - e.date > 30 * DAY2 && now - e.date <= 120 * DAY2);
+    const totalPrior = prior90.reduce((s, e) => s + e.amount, 0);
+    const byLabel = (list) => {
+      const m2 = /* @__PURE__ */ new Map();
+      for (const e of list) {
+        const k = e.label.trim().toLowerCase();
+        const v = m2.get(k) ?? { total: 0, count: 0 };
+        v.total += e.amount;
+        v.count += 1;
+        m2.set(k, v);
+      }
+      return m2;
+    };
+    const recent = byLabel(last302);
+    const baseline = byLabel(prior90);
+    for (const [label, r] of recent) {
+      const b = baseline.get(label);
+      if (!b || b.count < 2) continue;
+      const baselinePer30 = b.total / 3;
+      const jump = r.total - baselinePer30;
+      if (baselinePer30 > 0 && r.total > 1.4 * baselinePer30 && jump > 0.05 * Math.max(1, totalPrior)) {
+        const pct = Math.round((r.total / baselinePer30 - 1) * 100);
+        out.push({
+          id: crypto.randomUUID(),
+          decisionKey: `finance.expense-anomaly.${label}`,
+          domain: "finance",
+          layer: "tactical",
+          score: 35 + Math.min(30, Math.round(pct / 5)),
+          claim: `"${label}" spending is ${pct}% above its own baseline this month (${eur(r.total)} vs your usual ${eur(baselinePer30)}).`,
+          reasoning: `Over the prior 90 days you spent ${eur(b.total)} on "${label}" (\u2248${eur(baselinePer30)} per 30 days). The last 30 days recorded ${eur(r.total)}. A category running ahead of its own history is either a deliberate change or a silent leak \u2014 worth ten seconds to say which.`,
+          evidence: [
+            { label: `"${label}" \u2014 last 30 days`, value: eur(r.total) },
+            { label: "Its baseline (per 30 days, prior 90)", value: eur(baselinePer30) },
+            { label: "Above baseline", value: `${eur(jump)} (+${pct}%)` }
+          ],
+          confidence: "medium",
+          confidenceNote: "The arithmetic is exact; whether the jump is a problem depends on context only you know (a planned buy, a price rise, a one-off)."
+        });
+      }
     }
   }
   const expenses90 = state2.expenses.filter((e) => now - e.date <= 90 * DAY2);
@@ -1174,6 +1322,24 @@ function businessContext(state2, now = Date.now()) {
   L.push(`CUSTOMERS (${profiles2.length}). Top by lifetime revenue: ${profiles2.slice(0, 5).map((c) => `${c.name} ${formatMoney(c.lifetimeRevenue)}`).join("; ") || "none"}. At-risk (gone quiet): ${atRisk.map((c) => c.name).join(", ") || "none"}.`);
   L.push(`ORDERS: ${things2.openOrders} open. Delivered orders that lost money: ${losing.length}.`);
   L.push(`Overdue invoices: ${overdue2.length}${overdue2.length ? ` totalling ${formatMoney(overdue2.reduce((s, i) => s + i.amount, 0))}` : ""}.`);
+  const rfm = computeRfm(profiles2, now);
+  const segCounts = /* @__PURE__ */ new Map();
+  for (const s of rfm.values()) segCounts.set(s.segment, (segCounts.get(s.segment) ?? 0) + 1);
+  if (segCounts.size > 0) {
+    L.push(
+      `SEGMENTS (RFM): ${[...segCounts.entries()].map(([s, n]) => `${SEGMENT_LABEL[s]} ${n}`).join("; ")}.`
+    );
+  }
+  const due = reorderDueList(profiles2, state2.archivedCustomers, now);
+  if (due.length > 0) {
+    L.push(
+      `OVERDUE TO REORDER (past their own rhythm): ${due.slice(0, 5).map((d) => `${d.name} ${d.daysOverdue}d overdue, \u2248${formatMoney(d.expectedValue)} expected`).join("; ")}.`
+    );
+  }
+  const cal = cashCalendar(state2, now);
+  L.push(
+    `CASH CALENDAR: overdue ${formatMoney(cal.overdue.total)} (${cal.overdue.count}), due \u22647d ${formatMoney(cal.next7.total)}, due 8\u201330d ${formatMoney(cal.next30.total)}, with couriers ${formatMoney(cal.codPending.total)}.`
+  );
   return L.join("\n");
 }
 var has = (q, ...words) => words.some((w) => q.includes(w));
@@ -2808,6 +2974,40 @@ console.log("\nCorrections & archival (append-only edit/delete, ADR-0002):");
     check("restored customer leaves the archive", !projectState(memory.all()).archivedCustomers.includes(name));
   } else {
     check("silent-customer insight available to exercise archive (demo data)", false);
+  }
+}
+console.log("\nRetention & cash intelligence (RFM, reorder-due, cash calendar, upsell):");
+{
+  const st = projectState(memory.all());
+  const profiles2 = projectCustomerProfiles(st, Date.now());
+  const rfm = computeRfm(profiles2);
+  check("every customer receives an RFM segment", profiles2.every((p2) => rfm.has(p2.name)));
+  check(
+    "RFM scores stay in 1..5",
+    [...rfm.values()].every((s) => [s.r, s.f, s.m].every((v) => v >= 1 && v <= 5))
+  );
+  const quietBig = profiles2.find((p2) => p2.name === "Harbor Caf\xE9");
+  if (quietBig) {
+    const s = rfm.get("Harbor Caf\xE9");
+    check("a high-spend quiet customer is flagged at-risk/can't-lose/hibernating", ["at-risk", "cant-lose", "hibernating"].includes(s.segment));
+  }
+  const due = reorderDueList(profiles2, st.archivedCustomers);
+  check("reorder-due list only contains customers past their own rhythm", due.every((d) => d.daysOverdue > 0));
+  check("reorder-due sorts by value-weighted urgency", due.every((d, i) => i === 0 || due[i - 1].daysOverdue * due[i - 1].expectedValue >= d.daysOverdue * d.expectedValue));
+  const cal = cashCalendar(st);
+  const openTotal = st.invoices.filter((i) => !i.paidAt).reduce((s, i) => s + i.amount, 0);
+  check(
+    "cash calendar buckets cover every open invoice exactly once",
+    Math.abs(cal.entries.reduce((s, e) => s + e.amount, 0) - openTotal) < 0.01
+  );
+  check("cash calendar overdue bucket matches entries past due", Math.abs(cal.overdue.total - cal.entries.filter((e) => e.overdueDays > 0).reduce((s, e) => s + e.amount, 0)) < 0.01);
+  const anyOrder = st.orders.find((o) => o.status !== "cancelled" && o.lines.length > 0);
+  if (anyOrder) {
+    const sug = upsellSuggestion(st, anyOrder.lines.map((l) => l.productId));
+    check(
+      "upsell suggestion never proposes something already in the basket",
+      !sug || !anyOrder.lines.some((l) => l.productId === sug.productId)
+    );
   }
 }
 console.log("\nBilling entitlement (vendor productization):");

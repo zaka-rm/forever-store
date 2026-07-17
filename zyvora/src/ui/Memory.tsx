@@ -8,6 +8,7 @@ import { money } from "../core/format";
 import type { MemoryStore } from "../core/memory";
 import { projectDecisions } from "../core/projections";
 import type { MemoryEvent } from "../core/types";
+import { PageHeader } from "./PageHeader";
 
 const when = (ts: number) =>
   new Date(ts).toLocaleDateString(undefined, { day: "numeric", month: "short", year: "numeric" });
@@ -74,11 +75,10 @@ export function MemoryView({ memory }: { memory: MemoryStore }) {
 
   return (
     <div>
-      <h1>Business Memory</h1>
-      <p className="subtitle">
-        Permanent, append-only, and yours: facts, interpretations, decisions, and
-        outcomes. Export it any time — it is your asset, never held hostage.
-      </p>
+      <PageHeader
+        title="Business Memory"
+        description="Permanent, append-only, and yours: facts, interpretations, decisions, and outcomes. Export it any time — it is your asset, never held hostage."
+      />
 
       <h2>Decisions under review</h2>
       {decisions.length === 0 ? (
@@ -108,13 +108,16 @@ export function MemoryView({ memory }: { memory: MemoryStore }) {
                   result honestly; the reasoning above stays as it was.
                 </p>
                 <div className="form-row">
-                  <select value={result} onChange={(e) => setResult(e.target.value as typeof result)}>
+                  <label className="sr-only" htmlFor={`decision-result-${d.eventId}`}>Decision outcome</label>
+                  <select id={`decision-result-${d.eventId}`} value={result} onChange={(e) => setResult(e.target.value as typeof result)}>
                     <option value="good">Worked out well</option>
                     <option value="mixed">Mixed</option>
                     <option value="bad">Didn't work out</option>
                   </select>
                 </div>
+                <label className="sr-only" htmlFor={`decision-note-${d.eventId}`}>What happened</label>
                 <textarea
+                  id={`decision-note-${d.eventId}`}
                   value={note}
                   onChange={(e) => setNote(e.target.value)}
                   placeholder="What happened, in a sentence or two…"
@@ -166,4 +169,3 @@ export function MemoryView({ memory }: { memory: MemoryStore }) {
     </div>
   );
 }
-

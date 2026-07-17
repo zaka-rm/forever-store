@@ -13,6 +13,7 @@ import {
   startCheckout,
   type Subscription,
 } from "../core/billing";
+import { PageHeader } from "./PageHeader";
 
 const STATUS_LABEL: Record<Subscription["status"], string> = {
   none: "No subscription",
@@ -30,7 +31,15 @@ export function BillingView({ workspaceCreatedAt, isOwner }: { workspaceCreatedA
 
   useEffect(() => { void fetchSubscription().then(setSub); }, []);
 
-  if (!sub) return <div className="quiet">Loading subscription…</div>;
+  if (!sub) return (
+    <div>
+      <PageHeader
+        title="Billing"
+        description="ZYVORA Pro — one plan, everything included. Local device mode stays free forever, and your Business Memory remains exportable."
+      />
+      <div className="quiet">Loading subscription…</div>
+    </div>
+  );
   const ent = entitlement(sub, workspaceCreatedAt);
   const paying = sub.status === "active" || sub.status === "trialing" || sub.status === "past_due";
 
@@ -43,11 +52,10 @@ export function BillingView({ workspaceCreatedAt, isOwner }: { workspaceCreatedA
 
   return (
     <div>
-      <h1>Billing</h1>
-      <p className="quiet">
-        ZYVORA Pro — one plan, everything included. Local device mode stays free forever;
-        your Business Memory is exportable at any time, subscribed or not.
-      </p>
+      <PageHeader
+        title="Billing"
+        description="ZYVORA Pro — one plan, everything included. Local device mode stays free forever; your Business Memory is exportable at any time, subscribed or not."
+      />
 
       <div className="panel" style={{ maxWidth: 560 }}>
         <h2 style={{ marginTop: 0 }}>Status: {STATUS_LABEL[sub.status]}</h2>

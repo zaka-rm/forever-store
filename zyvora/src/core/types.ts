@@ -108,6 +108,9 @@ export interface OrderCreated {
   packagingCost: number;
   createdAt: number;
   promoCode?: string; // the promo applied, if any (stacking prevented: at most one)
+  /** Acquisition channel (instagram, tiktok, whatsapp, referral…) — captured now so
+   *  LTV-by-channel analytics are possible later; history can't be backfilled. */
+  source?: string;
 }
 
 export interface OrderStatusChanged {

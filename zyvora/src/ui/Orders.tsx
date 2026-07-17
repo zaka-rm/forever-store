@@ -17,10 +17,14 @@ import {
   orderLinesTotal,
   orderNetProfit,
   orderRevenue,
+  projectContacts,
 } from "../core/projections";
+import { upsellSuggestion } from "../core/retention";
+import { codConfirmationText, messagingConfigured, sendMessage } from "../core/messaging";
 import type { Order, OrderLine, OrderStatus, WorkspaceState } from "../core/types";
 import { toast } from "./toast";
 import { appAlert, appConfirm } from "./dialog";
+import { PageHeader } from "./PageHeader";
 
 /** Open a clean, printable receipt for an order in a new window (ZPL-041 §21). */
 function printReceipt(o: Order, business: string) {
@@ -144,8 +148,11 @@ export function OrdersView({ state, memory, workspaceName }: { state: WorkspaceS
   const [appliedPromo, setAppliedPromo] = useState<string | null>(null);
   const [promoMsg, setPromoMsg] = useState<string | null>(null);
   const [expanded, setExpanded] = useState<string | null>(null);
+  const [source, setSource] = useState("");
   const [tab, setTab] = useState<OrderTab>("all");
   const [q, setQ] = useState("");
+  const [creating, setCreating] = useState(false);
+  const [selected, setSelected] = useState<Set<string>>(() => new Set());
 
   // Command-palette deep link: expand the exact order that was searched for.
   useEffect(() => {
@@ -162,6 +169,44 @@ export function OrdersView({ state, memory, workspaceName }: { state: WorkspaceS
         o.customer.toLowerCase().includes(needle) ||
         o.lines.some((l) => l.productName.toLowerCase().includes(needle)))
   );
+
+  const toggleSelected = (id: string) => {
+    setSelected((current) => {
+      const next = new Set(current);
+      if (next.has(id)) next.delete(id); else next.add(id);
+      return next;
+    });
+  };
+  const allVisibleSelected = visibleOrders.length > 0 && visibleOrders.every((o) => selected.has(o.orderId));
+  const toggleAllVisible = () => {
+    setSelected((current) => {
+      const next = new Set(current);
+      if (allVisibleSelected) visibleOrders.forEach((o) => next.delete(o.orderId));
+      else visibleOrders.forEach((o) => next.add(o.orderId));
+      return next;
+    });
+  };
+  const exportSelected = () => {
+    const chosen = state.orders.filter((o) => selected.has(o.orderId));
+    const esc = (value: string | number) => `"${String(value).replace(/"/g, '""')}"`;
+    const rows = [
+      ["Customer", "Items", "Value", "Status", "Created"],
+      ...chosen.map((o) => [
+        o.customer,
+        o.lines.map((l) => `${l.qty}× ${l.productName}`).join(", "),
+        orderRevenue(o),
+        STATUS_LABEL[o.status],
+        new Date(o.createdAt).toISOString(),
+      ]),
+    ];
+    const blob = new Blob([rows.map((row) => row.map(esc).join(",")).join("\n")], { type: "text/csv;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "zyvora-orders.csv";
+    link.click();
+    URL.revokeObjectURL(url);
+  };
 
   const available = (pid: string) => {
     const p = state.products.find((x) => x.productId === pid);
@@ -254,11 +299,14 @@ export function OrdersView({ state, memory, workspaceName }: { state: WorkspaceS
       packagingCost: num(packaging),
       createdAt: Date.now(),
       ...(appliedPromo ? { promoCode: appliedPromo } : {}),
+      ...(source ? { source } : {}),
     });
     setCustomer("");
+    setSource("");
     setLines([]);
     setDiscount("0"); setShipCharged("0"); setShipCost("0"); setCodFee("0"); setPackaging("0");
     clearPromo();
+    setCreating(false);
   };
 
   const transition = (o: Order, to: OrderStatus) => {
@@ -268,21 +316,41 @@ export function OrdersView({ state, memory, workspaceName }: { state: WorkspaceS
 
   return (
     <div>
-      <h1>Orders</h1>
-      <p className="subtitle">
-        The question this Domain answers: “Which orders should I accept, confirm, and chase —
-        and is each one actually profitable?” Revenue counts only when an order is delivered.
-      </p>
+      <PageHeader
+        title="Orders"
+        description="Accept, confirm, and follow every order while keeping its real profit visible. Revenue counts only after delivery."
+        actions={<button className="btn" onClick={() => setCreating((v) => !v)}>{creating ? "Close" : "Create order"}</button>}
+      />
 
-      <h2>New order</h2>
+      <ConfirmationQueue state={state} memory={memory} workspaceName={workspaceName} />
+
+      {creating && (
+      <section className="card form-card" aria-labelledby="new-order-title">
+      <div className="section-heading">
+        <div><h2 id="new-order-title">Create order</h2><p>Stock is reserved as soon as the order is created.</p></div>
+      </div>
       <div className="form-row">
         <div>
-          <label>Customer</label>
-          <input value={customer} onChange={(e) => setCustomer(e.target.value)} placeholder="Customer name" />
+          <label htmlFor="order-customer">Customer</label>
+          <input id="order-customer" value={customer} onChange={(e) => setCustomer(e.target.value)} placeholder="Customer name" autoComplete="name" />
         </div>
         <div>
-          <label>Product</label>
-          <select value={productId} onChange={(e) => setProductId(e.target.value)}>
+          <label htmlFor="order-source">Source</label>
+          <select id="order-source" value={source} onChange={(e) => setSource(e.target.value)}>
+            <option value="">—</option>
+            <option value="instagram">Instagram</option>
+            <option value="facebook">Facebook</option>
+            <option value="tiktok">TikTok</option>
+            <option value="whatsapp">WhatsApp</option>
+            <option value="website">Website</option>
+            <option value="referral">Referral</option>
+            <option value="repeat">Repeat customer</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div>
+          <label htmlFor="order-product">Product</label>
+          <select id="order-product" value={productId} onChange={(e) => setProductId(e.target.value)}>
             <option value="">Select…</option>
             {state.products.filter((p) => !p.discontinued).map((p) => (
               <option key={p.productId} value={p.productId}>
@@ -292,8 +360,8 @@ export function OrdersView({ state, memory, workspaceName }: { state: WorkspaceS
           </select>
         </div>
         <div>
-          <label>Qty</label>
-          <input value={qty} onChange={(e) => setQty(e.target.value)} inputMode="numeric" style={{ width: 60 }} />
+          <label htmlFor="order-qty">Quantity</label>
+          <input id="order-qty" value={qty} onChange={(e) => setQty(e.target.value)} inputMode="numeric" style={{ width: 72 }} />
         </div>
         <button className="btn ghost" onClick={addLine}>Add line</button>
       </div>
@@ -320,8 +388,9 @@ export function OrdersView({ state, memory, workspaceName }: { state: WorkspaceS
           {state.promos.some((p) => p.active) && (
             <div className="form-row">
               <div>
-                <label>Promo code</label>
+                <label htmlFor="order-promo">Promo code</label>
                 <input
+                  id="order-promo"
                   value={promoInput}
                   onChange={(e) => setPromoInput(e.target.value.toUpperCase())}
                   placeholder="Code"
@@ -340,11 +409,11 @@ export function OrdersView({ state, memory, workspaceName }: { state: WorkspaceS
             </div>
           )}
           <div className="form-row">
-            <div><label>Discount ({ccy})</label><input value={discount} onChange={(e) => setDiscount(e.target.value)} inputMode="decimal" disabled={!!appliedPromo} style={{ width: 90 }} /></div>
-            <div><label>Shipping charged</label><input value={shipCharged} onChange={(e) => setShipCharged(e.target.value)} inputMode="decimal" style={{ width: 90 }} /></div>
-            <div><label>Shipping cost</label><input value={shipCost} onChange={(e) => setShipCost(e.target.value)} inputMode="decimal" style={{ width: 90 }} /></div>
-            <div><label>COD fee</label><input value={codFee} onChange={(e) => setCodFee(e.target.value)} inputMode="decimal" style={{ width: 80 }} /></div>
-            <div><label>Packaging</label><input value={packaging} onChange={(e) => setPackaging(e.target.value)} inputMode="decimal" style={{ width: 80 }} /></div>
+            <div><label htmlFor="order-discount">Discount ({ccy})</label><input id="order-discount" value={discount} onChange={(e) => setDiscount(e.target.value)} inputMode="decimal" disabled={!!appliedPromo} style={{ width: 100 }} /></div>
+            <div><label htmlFor="order-shipping-charged">Shipping charged</label><input id="order-shipping-charged" value={shipCharged} onChange={(e) => setShipCharged(e.target.value)} inputMode="decimal" style={{ width: 110 }} /></div>
+            <div><label htmlFor="order-shipping-cost">Shipping cost</label><input id="order-shipping-cost" value={shipCost} onChange={(e) => setShipCost(e.target.value)} inputMode="decimal" style={{ width: 100 }} /></div>
+            <div><label htmlFor="order-cod-fee">COD fee</label><input id="order-cod-fee" value={codFee} onChange={(e) => setCodFee(e.target.value)} inputMode="decimal" style={{ width: 90 }} /></div>
+            <div><label htmlFor="order-packaging">Packaging</label><input id="order-packaging" value={packaging} onChange={(e) => setPackaging(e.target.value)} inputMode="decimal" style={{ width: 90 }} /></div>
           </div>
           <p className="confidence-note" style={{ marginBottom: 10 }}>
             Projected: revenue {formatMoney(orderRevenue(draft))} · cost {formatMoney(orderCogs(draft) + draft.shippingCost + draft.codFee + draft.packagingCost)} ·{" "}
@@ -356,6 +425,8 @@ export function OrdersView({ state, memory, workspaceName }: { state: WorkspaceS
           </button>
         </>
       )}
+      </section>
+      )}
 
       <h2>Order book</h2>
       {state.orders.length === 0 ? (
@@ -363,14 +434,13 @@ export function OrdersView({ state, memory, workspaceName }: { state: WorkspaceS
       ) : (
         <>
           <div className="index-toolbar">
-            <div className="segmented" role="tablist" aria-label="Filter orders">
+            <div className="segmented" role="group" aria-label="Filter orders">
               {ORDER_TABS.map((t) => {
                 const n = state.orders.filter((o) => t.match(o)).length;
                 return (
                   <button
                     key={t.id}
-                    role="tab"
-                    aria-selected={tab === t.id}
+                    aria-pressed={tab === t.id}
                     className={tab === t.id ? "active" : ""}
                     onClick={() => setTab(t.id)}
                   >
@@ -390,15 +460,76 @@ export function OrdersView({ state, memory, workspaceName }: { state: WorkspaceS
           {visibleOrders.length === 0 ? (
             <div className="quiet">No orders match{q.trim() ? ` “${q.trim()}”` : ""} in this view.</div>
           ) : (
-        <div className="table-scroll">
-        <table className="records">
+        <>
+        <div className="record-cards" aria-label="Orders">
+          {visibleOrders.map((o) => (
+            <article className="record-card" key={`mobile-${o.orderId}`}>
+              <div className="rc-head">
+                <span className="rc-title rc-select-title">
+                  <input type="checkbox" checked={selected.has(o.orderId)} onChange={() => toggleSelected(o.orderId)} aria-label={`Select ${o.customer}'s order`} />
+                  {o.customer}
+                </span>
+                <span className="rc-value">{formatMoney(orderRevenue(o))}</span>
+              </div>
+              <p className="rc-sub">
+                {o.lines.map((l) => `${l.qty}× ${l.productName}`).join(", ")} · {dateLabel(o.createdAt)}
+              </p>
+              <div className="rc-status"><span className={`tone ${STATUS_TONE[o.status]}`}>{STATUS_LABEL[o.status]}</span></div>
+              <div className="row-actions">
+                {NEXT[o.status].map((n) => (
+                  <button
+                    key={n.to}
+                    className={`btn mini ${n.to === "refused" || n.to === "cancelled" || n.to === "returned" ? "danger" : n.to === "delivered" || n.to === "confirmed" ? "" : "subtle"}`}
+                    onClick={() => transition(o, n.to)}
+                  >
+                    {n.label}
+                  </button>
+                ))}
+                {o.status === "delivered" && !o.cashReceivedAt && (
+                  <button
+                    className="btn mini"
+                    onClick={() => {
+                      memory.append("fact", "order_cash_received", { orderId: o.orderId, at: Date.now() });
+                      toast(`Cash from ${o.customer} recorded — ${formatMoney(orderRevenue(o))}`);
+                    }}
+                  >
+                    Cash received
+                  </button>
+                )}
+                <button
+                  className="btn subtle mini"
+                  aria-expanded={expanded === o.orderId}
+                  aria-controls={`order-profit-mobile-${o.orderId}`}
+                  onClick={() => setExpanded(expanded === o.orderId ? null : o.orderId)}
+                >
+                  {expanded === o.orderId ? "Hide profit" : "View profit"}
+                </button>
+                <button className="btn subtle mini" onClick={() => printReceipt(o, workspaceName)}>Receipt</button>
+              </div>
+              {expanded === o.orderId && (
+                <dl className="record-breakdown" id={`order-profit-mobile-${o.orderId}`}>
+                  <div><dt>Revenue</dt><dd>{formatMoney(orderRevenue(o))}</dd></div>
+                  <div><dt>Product cost</dt><dd>−{formatMoney(orderCogs(o))}</dd></div>
+                  <div><dt>Delivery and handling</dt><dd>−{formatMoney(o.shippingCost + o.codFee + o.packagingCost)}</dd></div>
+                  <div><dt>Net profit</dt><dd><strong>{formatMoney(orderNetProfit(o))}</strong></dd></div>
+                </dl>
+              )}
+            </article>
+          ))}
+        </div>
+        <div className="table-scroll" role="region" aria-label="Orders table" tabIndex={0}>
+        <table className="records desktop-table">
           <thead>
-            <tr><th>Customer</th><th>Items</th><th>Value</th><th>Status</th><th>Cash</th><th>Actions</th></tr>
+            <tr>
+              <th className="checkcell"><input type="checkbox" checked={allVisibleSelected} onChange={toggleAllVisible} aria-label="Select all visible orders" /></th>
+              <th>Customer</th><th>Items</th><th>Value</th><th>Status</th><th>Cash</th><th>Actions</th>
+            </tr>
           </thead>
           <tbody>
             {visibleOrders.map((o) => (
               <Fragment key={o.orderId}>
                 <tr>
+                  <td className="checkcell"><input type="checkbox" checked={selected.has(o.orderId)} onChange={() => toggleSelected(o.orderId)} aria-label={`Select ${o.customer}'s order`} /></td>
                   <td>{o.customer}</td>
                   <td className="muted">
                     {o.lines.map((l) => `${l.qty}× ${l.productName}`).join(", ")}
@@ -435,7 +566,12 @@ export function OrdersView({ state, memory, workspaceName }: { state: WorkspaceS
                           Cash received
                         </button>
                       )}
-                      <button className="btn subtle mini" onClick={() => setExpanded(expanded === o.orderId ? null : o.orderId)}>
+                      <button
+                        className="btn subtle mini"
+                        aria-expanded={expanded === o.orderId}
+                        aria-controls={`order-profit-${o.orderId}`}
+                        onClick={() => setExpanded(expanded === o.orderId ? null : o.orderId)}
+                      >
                         {expanded === o.orderId ? "Hide" : "Profit"}
                       </button>
                       <button className="btn subtle mini" onClick={() => printReceipt(o, workspaceName)}>
@@ -445,8 +581,8 @@ export function OrdersView({ state, memory, workspaceName }: { state: WorkspaceS
                   </td>
                 </tr>
                 {expanded === o.orderId && (
-                  <tr>
-                    <td colSpan={6}>
+                  <tr id={`order-profit-${o.orderId}`}>
+                    <td colSpan={7}>
                       <table className="evidence-table">
                         <tbody>
                           <tr><td>Lines total</td><td>{formatMoney(o.lines.reduce((s, l) => s + l.qty * l.unitPrice, 0))}</td></tr>
@@ -468,6 +604,15 @@ export function OrdersView({ state, memory, workspaceName }: { state: WorkspaceS
           </tbody>
         </table>
         </div>
+        {selected.size > 0 && (
+          <div className="bulk-bar" role="region" aria-label="Selected order actions">
+            <span>{selected.size} selected</span>
+            <button onClick={exportSelected}>Export CSV</button>
+            <span className="spacer" />
+            <button onClick={() => setSelected(new Set())}>Clear selection</button>
+          </div>
+        )}
+        </>
           )}
         </>
       )}
@@ -475,3 +620,132 @@ export function OrdersView({ state, memory, workspaceName }: { state: WorkspaceS
   );
 }
 
+/**
+ * Confirmation queue — the COD anti-refusal workflow. Confirmed-by-phone orders
+ * refuse roughly half as often (Morocco market data), so this walks the oldest
+ * unconfirmed order to a decision in one screen: WhatsApp/confirm/no-answer/cancel,
+ * plus an upsell hint computed from your own co-purchase history.
+ */
+function ConfirmationQueue({
+  state, memory, workspaceName,
+}: { state: WorkspaceState; memory: MemoryStore; workspaceName: string }) {
+  const [sending, setSending] = useState(false);
+  const [skipped, setSkipped] = useState<Set<string>>(() => new Set());
+  const allPending = state.orders
+    .filter((o) => o.status === "pending")
+    .sort((a, b) => a.createdAt - b.createdAt);
+  const pending = allPending.filter((o) => !skipped.has(o.orderId));
+  if (allPending.length === 0) return null;
+  if (pending.length === 0) {
+    return (
+      <div className="quiet" style={{ marginBottom: 16 }}>
+        Confirmation queue done for now — {allPending.length} order{allPending.length > 1 ? "s" : ""} awaiting a retry (follow-ups scheduled).
+      </div>
+    );
+  }
+
+  const o = pending[0];
+  const contacts = projectContacts(memory.all());
+  const phone = contacts.get(o.customer)?.phone?.trim();
+  const itemsSummary = o.lines.map((l) => `${l.qty}× ${l.productName}`).join(", ");
+  const message = codConfirmationText(workspaceName, o.customer, itemsSummary, formatMoney(orderRevenue(o)));
+  const upsell = upsellSuggestion(state, o.lines.map((l) => l.productId));
+  const waitedDays = Math.floor((Date.now() - o.createdAt) / 86_400_000);
+
+  const logAttempt = (note: string, dueDays?: number) =>
+    memory.append("fact", "customer_activity_logged", {
+      activityId: crypto.randomUUID(),
+      customer: o.customer,
+      kind: "call",
+      note,
+      ...(dueDays ? { dueAt: Date.now() + dueDays * 86_400_000 } : {}),
+      at: Date.now(),
+    });
+
+  return (
+    <section className="card" style={{ borderLeft: "3px solid var(--amber)" }} aria-labelledby="confirm-queue-title">
+      <div className="badge-row">
+        <span className="badge strategic">Confirmation queue</span>
+        <span className="badge domain">{pending.length} waiting</span>
+      </div>
+      <p className="claim" id="confirm-queue-title">
+        {o.customer} — {itemsSummary} · {formatMoney(orderRevenue(o))}
+        {waitedDays > 0 && <span className="muted"> · waiting {waitedDays} day{waitedDays > 1 ? "s" : ""}</span>}
+      </p>
+      <p className="reasoning">
+        Confirmed orders refuse far less at the door. Reach {o.customer}
+        {phone ? ` (${phone})` : " (no phone saved — add one on their profile for one-tap WhatsApp)"} and record the outcome.
+        {upsell && (
+          <> <strong>Worth offering:</strong> {upsell.productName} ({formatMoney(upsell.price)}) — bought together {upsell.timesTogether}× before.</>
+        )}
+      </p>
+      <div className="row-actions">
+        {messagingConfigured && phone && (
+          <button
+            className="btn mini"
+            disabled={sending}
+            onClick={async () => {
+              setSending(true);
+              const r = await sendMessage(phone, message, "whatsapp");
+              setSending(false);
+              if (r.ok) {
+                logAttempt(`WhatsApp confirmation sent: ${message}`);
+                toast(`WhatsApp sent to ${o.customer}`);
+              } else {
+                toast(`Couldn't send: ${r.error}`);
+              }
+            }}
+          >
+            {sending ? "Sending…" : "Send WhatsApp"}
+          </button>
+        )}
+        <button
+          className="btn subtle mini"
+          onClick={async () => {
+            await navigator.clipboard?.writeText(message).catch(() => undefined);
+            toast("Confirmation message copied — paste it anywhere");
+          }}
+        >
+          Copy message
+        </button>
+        <button
+          className="btn mini"
+          onClick={() => {
+            memory.append("fact", "order_status_changed", { orderId: o.orderId, status: "confirmed", at: Date.now() });
+            logAttempt("Order confirmed by customer");
+            toast(`${o.customer}'s order confirmed`);
+          }}
+        >
+          Confirmed ✓
+        </button>
+        <button
+          className="btn subtle mini"
+          onClick={() => {
+            logAttempt("No answer on confirmation attempt — retry scheduled", 1);
+            setSkipped((prev) => new Set(prev).add(o.orderId));
+            toast(`No answer logged — follow-up tomorrow for ${o.customer}`);
+          }}
+        >
+          No answer
+        </button>
+        <button
+          className="btn mini danger"
+          onClick={async () => {
+            const ok = await appConfirm({
+              title: `Cancel ${o.customer}'s order?`,
+              body: "The reserved stock is released. The order stays in your history as cancelled.",
+              confirmLabel: "Cancel order",
+              danger: true,
+            });
+            if (ok) {
+              memory.append("fact", "order_status_changed", { orderId: o.orderId, status: "cancelled", at: Date.now() });
+              toast(`${o.customer}'s order cancelled`);
+            }
+          }}
+        >
+          Cancel
+        </button>
+      </div>
+    </section>
+  );
+}

@@ -5,13 +5,18 @@ import { Button } from '@/components/ui/Button'
 import { useLanguage } from '@/lib/i18n/LanguageContext'
 import { NOTIFICATION_EMAIL } from '@/lib/constants'
 import { supabase } from '@/lib/supabaseClient'
+import {
+  isPublicFormConfigurationError,
+  isValidEmail,
+  requirePublicFormStorage,
+} from '@/lib/publicForms'
 import { usePageMeta } from '@/lib/usePageMeta'
 
 export default function Contact() {
   usePageMeta('Contact', 'Contactez votre Distributeur Indépendant Forever Living Products pour toute question ou commande.')
   const [submitted, setSubmitted] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [sendError, setSendError] = useState(false)
+  const [sendError, setSendError] = useState('')
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [subject, setSubject] = useState('')
@@ -27,24 +32,33 @@ export default function Contact() {
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
-    setIsSubmitting(true)
-    setSendError(false)
+    const cleanName = name.trim()
+    const cleanEmail = email.trim().toLowerCase()
+    const cleanSubject = subject.trim()
+    const cleanMessage = message.trim()
 
-    const { error } = await supabase.from('contact_messages').insert({
-      name,
-      email,
-      subject: subject || null,
-      message,
-    })
-
-    setIsSubmitting(false)
-
-    if (error) {
-      setSendError(true)
+    if (!cleanName || !isValidEmail(cleanEmail) || !cleanMessage) {
+      setSendError(c.invalid)
       return
     }
 
-    setSubmitted(true)
+    setIsSubmitting(true)
+    setSendError('')
+    try {
+      requirePublicFormStorage()
+      const { error } = await supabase.from('contact_messages').insert({
+        name: cleanName,
+        email: cleanEmail,
+        subject: cleanSubject || null,
+        message: cleanMessage,
+      })
+      if (error) throw error
+      setSubmitted(true)
+    } catch (error) {
+      setSendError(isPublicFormConfigurationError(error) ? c.unavailable : c.sendError)
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -91,42 +105,47 @@ export default function Contact() {
                 animate={{ opacity: 1, y: 0 }}
                 className="flex h-full min-h-[320px] flex-col items-center justify-center text-center"
               >
-                <p className="font-display text-2xl font-bold text-sage-600">{c.successTitle}</p>
+                <p role="status" aria-live="polite" className="font-display text-2xl font-bold text-sage-600">{c.successTitle}</p>
                 <p className="mt-3 max-w-xs text-sm text-ink/60">{c.successBody}</p>
               </motion.div>
             ) : (
-              <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+              <form onSubmit={handleSubmit} aria-busy={isSubmitting} noValidate className="flex flex-col gap-5">
                 <div className="grid gap-5 sm:grid-cols-2">
                   <div>
-                    <label className="mb-1.5 block text-xs font-medium uppercase tracking-wider text-ink/40">
+                    <label htmlFor="contact-name" className="mb-1.5 block text-xs font-medium uppercase tracking-wider text-ink/40">
                       {c.nameLabel}
                     </label>
                     <input
+                      id="contact-name"
                       required
                       type="text"
+                      autoComplete="name"
                       value={name}
-                      onChange={(e) => setName(e.target.value)}
+                      onChange={(e) => { setName(e.target.value); setSendError('') }}
                       className="w-full rounded-2xl border border-ink/15 bg-cream px-4 py-3 text-sm text-ink outline-none focus:border-ink/40"
                     />
                   </div>
                   <div>
-                    <label className="mb-1.5 block text-xs font-medium uppercase tracking-wider text-ink/40">
+                    <label htmlFor="contact-email" className="mb-1.5 block text-xs font-medium uppercase tracking-wider text-ink/40">
                       {c.emailLabel}
                     </label>
                     <input
+                      id="contact-email"
                       required
                       type="email"
+                      autoComplete="email"
                       value={email}
-                      onChange={(e) => setEmail(e.target.value)}
+                      onChange={(e) => { setEmail(e.target.value); setSendError('') }}
                       className="w-full rounded-2xl border border-ink/15 bg-cream px-4 py-3 text-sm text-ink outline-none focus:border-ink/40"
                     />
                   </div>
                 </div>
                 <div>
-                  <label className="mb-1.5 block text-xs font-medium uppercase tracking-wider text-ink/40">
+                  <label htmlFor="contact-subject" className="mb-1.5 block text-xs font-medium uppercase tracking-wider text-ink/40">
                     {c.subjectLabel}
                   </label>
                   <input
+                    id="contact-subject"
                     type="text"
                     value={subject}
                     onChange={(e) => setSubject(e.target.value)}
@@ -134,21 +153,22 @@ export default function Contact() {
                   />
                 </div>
                 <div>
-                  <label className="mb-1.5 block text-xs font-medium uppercase tracking-wider text-ink/40">
+                  <label htmlFor="contact-message" className="mb-1.5 block text-xs font-medium uppercase tracking-wider text-ink/40">
                     {c.messageLabel}
                   </label>
                   <textarea
+                    id="contact-message"
                     required
                     rows={5}
                     value={message}
-                    onChange={(e) => setMessage(e.target.value)}
+                    onChange={(e) => { setMessage(e.target.value); setSendError('') }}
                     className="w-full resize-none rounded-2xl border border-ink/15 bg-cream px-4 py-3 text-sm text-ink outline-none focus:border-ink/40"
                   />
                 </div>
                 <Button type="submit" variant="primary" magnetic={false} className="mt-2 w-full" disabled={isSubmitting}>
                   {isSubmitting ? c.sending : c.sendButton}
                 </Button>
-                {sendError && <p className="text-center text-xs font-medium text-clay-600">{c.sendError}</p>}
+                {sendError && <p role="alert" className="text-center text-xs font-medium text-clay-600">{sendError}</p>}
                 <p className="text-center text-xs text-ink/40">{c.mailHint}</p>
               </form>
             )}

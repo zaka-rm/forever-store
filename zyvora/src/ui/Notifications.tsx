@@ -14,6 +14,7 @@ import {
   type NotifPriority,
 } from "../core/notifications";
 import type { WorkspaceState } from "../core/types";
+import { PageHeader } from "./PageHeader";
 
 const AGO = (ts: number) => {
   const h = Math.round((Date.now() - ts) / 3600_000);
@@ -47,11 +48,13 @@ export function NotificationsView({
 
   return (
     <div>
-      <h1>Notifications</h1>
-      <p className="subtitle">
-        The few things worth your attention — proactive, ranked, and quiet by default.
-        ZYVORA never interrupts you for something that doesn't change a decision.
-      </p>
+      <PageHeader
+        title="Notifications"
+        description="The few things worth your attention — proactive, ranked, and quiet by default. ZYVORA never interrupts you for something that doesn't change a decision."
+        actions={active.length > 0 ? (
+          <button className="btn ghost" onClick={dismissAll}>Mark all read</button>
+        ) : undefined}
+      />
 
       {/* Daily briefing */}
       <div className="card" style={{ borderColor: "var(--accent)" }}>
@@ -68,9 +71,6 @@ export function NotificationsView({
         <div className="quiet">You're all caught up — nothing needs you right now.</div>
       ) : (
         <>
-          <div style={{ textAlign: "right", margin: "6px 0" }}>
-            <button className="link-btn" onClick={dismissAll}>Mark all read</button>
-          </div>
           {groups.map((p) => {
             const items = active.filter((n) => n.priority === p);
             if (items.length === 0) return null;

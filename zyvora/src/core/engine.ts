@@ -197,6 +197,58 @@ function financeBrain(state: WorkspaceState, out: Insight[], now: number): void 
     }
   }
 
+  // 2b. Expense anomaly — a category running ahead of its own baseline.
+  //     (Zoho/NetSuite-style anomaly detection, done ZYVORA's way: your own
+  //     history is the baseline, and the arithmetic is shown.)
+  {
+    const last30 = state.expenses.filter((e) => now - e.date <= 30 * DAY);
+    const prior90 = state.expenses.filter((e) => now - e.date > 30 * DAY && now - e.date <= 120 * DAY);
+    const totalPrior = prior90.reduce((s, e) => s + e.amount, 0);
+    const byLabel = (list: typeof state.expenses) => {
+      const m = new Map<string, { total: number; count: number }>();
+      for (const e of list) {
+        const k = e.label.trim().toLowerCase();
+        const v = m.get(k) ?? { total: 0, count: 0 };
+        v.total += e.amount;
+        v.count += 1;
+        m.set(k, v);
+      }
+      return m;
+    };
+    const recent = byLabel(last30);
+    const baseline = byLabel(prior90);
+    for (const [label, r] of recent) {
+      const b = baseline.get(label);
+      if (!b || b.count < 2) continue; // no honest baseline for this category
+      const baselinePer30 = b.total / 3;
+      const jump = r.total - baselinePer30;
+      // Meaningful: >40% above its own baseline AND at least 5% of overall prior spend.
+      if (baselinePer30 > 0 && r.total > 1.4 * baselinePer30 && jump > 0.05 * Math.max(1, totalPrior)) {
+        const pct = Math.round((r.total / baselinePer30 - 1) * 100);
+        out.push({
+          id: crypto.randomUUID(),
+          decisionKey: `finance.expense-anomaly.${label}`,
+          domain: "finance",
+          layer: "tactical",
+          score: 35 + Math.min(30, Math.round(pct / 5)),
+          claim: `"${label}" spending is ${pct}% above its own baseline this month (${eur(r.total)} vs your usual ${eur(baselinePer30)}).`,
+          reasoning:
+            `Over the prior 90 days you spent ${eur(b.total)} on "${label}" (≈${eur(baselinePer30)} per 30 days). ` +
+            `The last 30 days recorded ${eur(r.total)}. A category running ahead of its own history is either a ` +
+            `deliberate change or a silent leak — worth ten seconds to say which.`,
+          evidence: [
+            { label: `"${label}" — last 30 days`, value: eur(r.total) },
+            { label: "Its baseline (per 30 days, prior 90)", value: eur(baselinePer30) },
+            { label: "Above baseline", value: `${eur(jump)} (+${pct}%)` },
+          ],
+          confidence: "medium",
+          confidenceNote:
+            "The arithmetic is exact; whether the jump is a problem depends on context only you know (a planned buy, a price rise, a one-off).",
+        });
+      }
+    }
+  }
+
   // 3. Cash runway → strategic awareness (never rushed — D.4).
   const expenses90 = state.expenses.filter((e) => now - e.date <= 90 * DAY);
   if (expenses90.length >= 3) {

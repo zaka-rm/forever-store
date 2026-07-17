@@ -16,6 +16,7 @@ import {
 } from "../core/cloud";
 import { ROLES, can, canManageMember, roleLabel, type Role } from "../core/permissions";
 import { appConfirm } from "./dialog";
+import { PageHeader } from "./PageHeader";
 import { toast } from "./toast";
 
 interface Props {
@@ -51,11 +52,10 @@ export function TeamView({ client, workspaceId, myRole, myUserId, ownerId }: Pro
   if (!client) {
     return (
       <div>
-        <h1>Team</h1>
-        <p className="subtitle">
-          Team members and roles are available in account mode. In local device
-          mode you are the sole owner of this Workspace.
-        </p>
+        <PageHeader
+          title="Team"
+          description="Team members and roles are available in account mode. In local device mode you are the sole owner of this Workspace."
+        />
         <div className="card">
           <p className="claim" style={{ fontSize: 15 }}>Roles at a glance</p>
           <table className="evidence-table"><tbody>
@@ -85,18 +85,19 @@ export function TeamView({ client, workspaceId, myRole, myUserId, ownerId }: Pro
 
   return (
     <div>
-      <h1>Team</h1>
-      <p className="subtitle">
-        Who may access this Workspace, and what they can do. Access is enforced by
-        the database, not just the screen — least privilege by default.
-      </p>
+      <PageHeader
+        title="Team"
+        description="Who may access this Workspace, and what they can do. Access is enforced by the database, not just the screen — least privilege by default."
+      />
 
       {canInvite && (
         <>
           <h2>Invite a member</h2>
           <div className="form-row">
-            <input value={email} onChange={(e) => setEmail(e.target.value)} placeholder="their@email.com" type="email" style={{ minWidth: 220 }} />
-            <select value={role} onChange={(e) => setRole(e.target.value as Role)}>
+            <label className="sr-only" htmlFor="team-invite-email">Email address</label>
+            <input id="team-invite-email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="their@email.com" type="email" style={{ minWidth: 220 }} />
+            <label className="sr-only" htmlFor="team-invite-role">Role</label>
+            <select id="team-invite-role" value={role} onChange={(e) => setRole(e.target.value as Role)}>
               {ROLES.filter((r) => r.role !== "owner").map((r) => (
                 <option key={r.role} value={r.role}>{r.label}</option>
               ))}
@@ -111,62 +112,67 @@ export function TeamView({ client, workspaceId, myRole, myUserId, ownerId }: Pro
       {loading ? (
         <div className="quiet">Loading…</div>
       ) : (
-        <table className="records">
-          <thead><tr><th>Member</th><th>Role</th><th></th></tr></thead>
-          <tbody>
-            <tr>
-              <td>You{ownerId === myUserId ? " (owner)" : ""}</td>
-              <td>{roleLabel(myRole)}</td>
-              <td></td>
-            </tr>
-            {members.filter((m) => m.userId !== myUserId).map((m) => {
-              const editable = canManageMember(myRole, m.role);
-              return (
-                <tr key={m.userId}>
-                  <td className="muted">{m.email.slice(0, 8)}…</td>
-                  <td>
-                    {editable ? (
-                      <select
-                        value={m.role}
-                        onChange={async (e) => { await setMemberRole(client, workspaceId, m.userId, e.target.value as Role); void refresh(); }}
-                      >
-                        {ROLES.filter((r) => r.role !== "owner" && canManageMember(myRole, m.role, r.role)).map((r) => (
-                          <option key={r.role} value={r.role}>{r.label}</option>
-                        ))}
-                      </select>
-                    ) : roleLabel(m.role)}
-                  </td>
-                  <td>
-                    {editable && (
-                      <button className="btn mini danger" onClick={async () => {
-                        const ok = await appConfirm({
-                          title: "Remove this member's access?",
-                          body: "They lose access to this Workspace immediately. Their past events stay in Business Memory (append-only).",
-                          confirmLabel: "Remove access",
-                          danger: true,
-                        });
-                        if (ok) { await removeMember(client, workspaceId, m.userId); void refresh(); toast("Member removed"); }
-                      }}>Remove</button>
-                    )}
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+        <div className="table-scroll" role="region" aria-label="Workspace members" tabIndex={0}>
+          <table className="records">
+            <thead><tr><th>Member</th><th>Role</th><th></th></tr></thead>
+            <tbody>
+              <tr>
+                <td>You{ownerId === myUserId ? " (owner)" : ""}</td>
+                <td>{roleLabel(myRole)}</td>
+                <td></td>
+              </tr>
+              {members.filter((m) => m.userId !== myUserId).map((m) => {
+                const editable = canManageMember(myRole, m.role);
+                return (
+                  <tr key={m.userId}>
+                    <td className="muted">{m.email.slice(0, 8)}…</td>
+                    <td>
+                      {editable ? (
+                        <select
+                          aria-label={`Role for ${m.email}`}
+                          value={m.role}
+                          onChange={async (e) => { await setMemberRole(client, workspaceId, m.userId, e.target.value as Role); void refresh(); }}
+                        >
+                          {ROLES.filter((r) => r.role !== "owner" && canManageMember(myRole, m.role, r.role)).map((r) => (
+                            <option key={r.role} value={r.role}>{r.label}</option>
+                          ))}
+                        </select>
+                      ) : roleLabel(m.role)}
+                    </td>
+                    <td>
+                      {editable && (
+                        <button className="btn mini danger" onClick={async () => {
+                          const ok = await appConfirm({
+                            title: "Remove this member's access?",
+                            body: "They lose access to this Workspace immediately. Their past events stay in Business Memory (append-only).",
+                            confirmLabel: "Remove access",
+                            danger: true,
+                          });
+                          if (ok) { await removeMember(client, workspaceId, m.userId); void refresh(); toast("Member removed"); }
+                        }}>Remove</button>
+                      )}
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
       )}
 
       {invites.length > 0 && (
         <>
           <h2>Pending invitations</h2>
-          <table className="records">
-            <thead><tr><th>Email</th><th>Role</th></tr></thead>
-            <tbody>
-              {invites.map((i) => (
-                <tr key={i.id}><td>{i.email}</td><td className="muted">{roleLabel(i.role)}</td></tr>
-              ))}
-            </tbody>
-          </table>
+          <div className="table-scroll" role="region" aria-label="Pending workspace invitations" tabIndex={0}>
+            <table className="records">
+              <thead><tr><th>Email</th><th>Role</th></tr></thead>
+              <tbody>
+                {invites.map((i) => (
+                  <tr key={i.id}><td>{i.email}</td><td className="muted">{roleLabel(i.role)}</td></tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </>
       )}
     </div>

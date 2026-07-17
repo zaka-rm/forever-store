@@ -47,6 +47,7 @@ export function CommandPalette({ open, onClose, state, navigate, actions }: Prop
   const [q, setQ] = useState("");
   const [idx, setIdx] = useState(0);
   const inputRef = useRef<HTMLInputElement>(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
   const restoreRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
@@ -130,12 +131,27 @@ export function CommandPalette({ open, onClose, state, navigate, actions }: Prop
     else if (e.key === "ArrowDown") { e.preventDefault(); setIdx((i) => Math.min(i + 1, results.length - 1)); }
     else if (e.key === "ArrowUp") { e.preventDefault(); setIdx((i) => Math.max(i - 1, 0)); }
     else if (e.key === "Enter") { e.preventDefault(); runIdx(idx); }
+    else if (e.key === "Tab") {
+      const focusable = Array.from(
+        dialogRef.current?.querySelectorAll<HTMLElement>('input:not([disabled]), button:not([disabled]), [tabindex]:not([tabindex="-1"])') ?? []
+      );
+      if (focusable.length === 0) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
   };
 
   let lastGroup = "";
   return (
     <div className="cmdk-overlay" onMouseDown={(e) => { if (e.target === e.currentTarget) onClose(); }}>
-      <div className="cmdk" role="dialog" aria-modal="true" aria-label="Command palette" onKeyDown={onKey}>
+      <div ref={dialogRef} className="cmdk" role="dialog" aria-modal="true" aria-label="Command palette" onKeyDown={onKey}>
         <input
           ref={inputRef}
           value={q}
@@ -144,16 +160,23 @@ export function CommandPalette({ open, onClose, state, navigate, actions }: Prop
           aria-label="Search"
           role="combobox"
           aria-expanded="true"
+          aria-controls="cmdk-results"
+          aria-activedescendant={results.length > 0 ? `cmdk-option-${idx}` : undefined}
+          aria-autocomplete="list"
         />
-        <div className="cmdk-list" role="listbox">
+        <span className="sr-only" aria-live="polite">
+          {results.length === 1 ? "1 result" : `${results.length} results`}
+        </span>
+        <div className="cmdk-list" id="cmdk-results" role="listbox" aria-label="Search results">
           {results.length === 0 && <div className="cmdk-empty">Nothing matches “{q}”.</div>}
           {results.map((r, i) => {
             const header = r.group !== lastGroup ? <div className="cmdk-group" key={`g.${r.group}`}>{r.group}</div> : null;
             lastGroup = r.group;
             return (
-              <div key={r.id}>
+              <div key={r.id} role="presentation">
                 {header}
                 <button
+                  id={`cmdk-option-${i}`}
                   className={`cmdk-item${i === idx ? " active" : ""}`}
                   role="option"
                   aria-selected={i === idx}
