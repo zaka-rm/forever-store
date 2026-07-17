@@ -26,6 +26,8 @@ import { BillingView, TrialBanner } from "./ui/Billing";
 import { Landing } from "./ui/Landing";
 import { cycleTheme, themePref, type ThemePref } from "./core/theme";
 import { Icons, type IconName } from "./ui/icons";
+import { CommandPalette } from "./ui/CommandPalette";
+import { Toasts } from "./ui/toast";
 import { entitlement, fetchSubscription, type Subscription } from "./core/billing";
 import { generateInsights } from "./core/engine";
 import { COMMON_CURRENCIES, setActiveCurrency } from "./core/format";
@@ -404,7 +406,20 @@ function Workspace({
 }) {
   setActiveCurrency(workspace.currency);
   const [view, setView] = useState<View>("today");
+  const [cmdOpen, setCmdOpen] = useState(false);
   const reduceMotion = useReducedMotion();
+
+  // Global search / command palette on Ctrl(⌘)+K.
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "k") {
+        e.preventDefault();
+        setCmdOpen((v) => !v);
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
 
   // Billing entitlement (cloud mode only; local mode is free forever).
   const [subscription, setSubscription] = useState<Subscription | null>(null);
@@ -467,7 +482,8 @@ function Workspace({
 
   return (
     <div className="app">
-      <nav className="nav">
+      <a className="skip-link" href="#main">Skip to content</a>
+      <nav className="nav" aria-label="Primary">
         <div className="wordmark">ZYVORA</div>
         <div className="workspace-name">
           {workspace.name}
@@ -477,15 +493,28 @@ function Workspace({
             </span>
           )}
         </div>
+        <button className="search-trigger" onClick={() => setCmdOpen(true)} aria-label="Search (Ctrl+K)">
+          {Icons.ask()}
+          Search…
+          <kbd>Ctrl K</kbd>
+        </button>
         {NAV.filter((n) => n.id !== "billing" || Boolean(onSignOut)).map((n) => (
-          <button key={n.id} className={view === n.id ? "active" : ""} onClick={() => setView(n.id)}>
+          <button
+            key={n.id}
+            className={view === n.id ? "active" : ""}
+            aria-current={view === n.id ? "page" : undefined}
+            onClick={() => setView(n.id)}
+          >
             {Icons[n.icon]()}
             {n.label}
             {n.id === "notifications" && unread > 0 && (
-              <span style={{
-                marginLeft: 8, background: "var(--amber)", color: "#fff", borderRadius: 999,
-                fontSize: 11, fontWeight: 700, padding: "1px 7px",
-              }}>{unread}</span>
+              <span
+                aria-label={`${unread} unread`}
+                style={{
+                  marginLeft: 8, background: "var(--amber)", color: "#fff", borderRadius: 999,
+                  fontSize: 11, fontWeight: 700, padding: "1px 7px",
+                }}
+              >{unread}</span>
             )}
           </button>
         ))}
@@ -515,7 +544,22 @@ function Workspace({
           {onSignOut && <button onClick={onSignOut}>Sign out</button>}
         </div>
       </nav>
-      <main className="main">
+      <CommandPalette
+        open={cmdOpen}
+        onClose={() => setCmdOpen(false)}
+        state={state}
+        navigate={(v) => setView(v as View)}
+        actions={[
+          { label: "New order", icon: "orders", run: () => setView("orders") },
+          { label: "Ask ZYVORA a question", icon: "ask", run: () => setView("ask") },
+          { label: "Toggle theme", icon: "today", run: () => cycleTheme() },
+          ...(can(role, "export_memory")
+            ? [{ label: "Export Business Memory", icon: "memory" as IconName, run: () => memory.exportJson(workspace.name) }]
+            : []),
+        ]}
+      />
+      <Toasts />
+      <main className="main" id="main">
         <motion.div
           key={view}
           initial={reduceMotion ? false : { opacity: 0, y: 6 }}

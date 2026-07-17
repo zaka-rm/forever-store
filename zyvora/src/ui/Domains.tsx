@@ -19,6 +19,7 @@ import {
   type CustomerTag,
 } from "../core/projections";
 import { messagingConfigured, sendMessage } from "../core/messaging";
+import { toast } from "./toast";
 import type { Product, WorkspaceState } from "../core/types";
 import { FinanceTools } from "./FinanceTools";
 
@@ -93,9 +94,10 @@ export function FinanceView({ state, memory }: { state: WorkspaceState; memory: 
       {state.invoices.length === 0 ? (
         <div className="quiet">No invoices yet.</div>
       ) : (
+        <div className="table-scroll">
         <table className="records">
           <thead>
-            <tr><th>Customer</th><th>Amount</th><th>Issued</th><th>Status</th><th></th></tr>
+            <tr><th>Customer</th><th>Amount</th><th>Issued</th><th>Status</th><th>Actions</th></tr>
           </thead>
           <tbody>
             {state.invoices.map((inv) => {
@@ -116,9 +118,10 @@ export function FinanceView({ state, memory }: { state: WorkspaceState; memory: 
                     {!inv.paidAt && (
                       <button
                         className="btn mini"
-                        onClick={() =>
-                          memory.append("fact", "invoice_paid", { invoiceId: inv.invoiceId, paidAt: Date.now() })
-                        }
+                        onClick={() => {
+                          memory.append("fact", "invoice_paid", { invoiceId: inv.invoiceId, paidAt: Date.now() });
+                          toast(`${inv.customer}'s invoice marked paid — ${formatMoney(inv.amount)}`);
+                        }}
                       >
                         Mark paid
                       </button>
@@ -129,6 +132,7 @@ export function FinanceView({ state, memory }: { state: WorkspaceState; memory: 
             })}
           </tbody>
         </table>
+        </div>
       )}
 
       <h2>New expense</h2>
@@ -250,15 +254,31 @@ export function CustomersView({ state, memory }: { state: WorkspaceState; memory
   const activities = projectActivities(memory.all());
   const openFollowups = activities.filter((a) => !a.done && a.dueAt).length;
   const [open, setOpen] = useState<string | null>(null);
+  const [custQ, setCustQ] = useState("");
+  const [tagFilter, setTagFilter] = useState<CustomerTag | "all">("all");
 
-  const archive = (name: string) => {
-    if (confirm(`Archive ${name}? Their invoices and orders stay in your figures — they just leave this list. You can restore them anytime.`)) {
-      memory.append("fact", "customer_archived", { customer: name, at: Date.now() });
-      if (open === name) setOpen(null);
-    }
-  };
+  const custNeedle = custQ.trim().toLowerCase();
+  const visibleCustomers = customers.filter(
+    (c) =>
+      (tagFilter === "all" || c.tags.includes(tagFilter)) &&
+      (!custNeedle || c.name.toLowerCase().includes(custNeedle))
+  );
+  const TAG_TABS: { id: CustomerTag | "all"; label: string }[] = [
+    { id: "all", label: "All" },
+    { id: "vip", label: "VIP" },
+    { id: "at-risk", label: "At risk" },
+    { id: "new", label: "New" },
+    { id: "high-refusal", label: "High refusal" },
+  ];
+
   const restore = (name: string) =>
     memory.append("fact", "customer_restored", { customer: name, at: Date.now() });
+  const archive = (name: string) => {
+    memory.append("fact", "customer_archived", { customer: name, at: Date.now() });
+    if (open === name) setOpen(null);
+    // Safe + reversible → no blocking confirm; a calm toast with Undo instead.
+    toast(`${name} archived — history stays in your figures`, "Undo", () => restore(name));
+  };
 
   return (
     <div>
@@ -271,6 +291,36 @@ export function CustomersView({ state, memory }: { state: WorkspaceState; memory
       {customers.length === 0 ? (
         <div className="quiet">Customers will appear as you issue invoices or create orders.</div>
       ) : (
+        <>
+        <div className="index-toolbar">
+          <div className="segmented" role="tablist" aria-label="Filter customers">
+            {TAG_TABS.map((t) => {
+              const n = t.id === "all" ? customers.length : customers.filter((c) => c.tags.includes(t.id as CustomerTag)).length;
+              return (
+                <button
+                  key={t.id}
+                  role="tab"
+                  aria-selected={tagFilter === t.id}
+                  className={tagFilter === t.id ? "active" : ""}
+                  onClick={() => setTagFilter(t.id)}
+                >
+                  {t.label}{n > 0 && ` ${n}`}
+                </button>
+              );
+            })}
+          </div>
+          <input
+            type="search"
+            value={custQ}
+            onChange={(e) => setCustQ(e.target.value)}
+            placeholder="Search customers…"
+            aria-label="Search customers"
+          />
+        </div>
+        {visibleCustomers.length === 0 ? (
+          <div className="quiet">No customers match{custQ.trim() ? ` “${custQ.trim()}”` : ""} in this view.</div>
+        ) : (
+        <div className="table-scroll">
         <table className="records">
           <thead>
             <tr>
@@ -279,11 +329,11 @@ export function CustomersView({ state, memory }: { state: WorkspaceState; memory
               <th>Lifetime profit</th>
               <th>Tags</th>
               <th>Last seen</th>
-              <th></th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
-            {customers.map((c) => (
+            {visibleCustomers.map((c) => (
               <Fragment key={c.name}>
                 <tr>
                   <td>{c.name}</td>
@@ -356,6 +406,9 @@ export function CustomersView({ state, memory }: { state: WorkspaceState; memory
             ))}
           </tbody>
         </table>
+        </div>
+        )}
+        </>
       )}
 
       {archivedCustomers.length > 0 && (
@@ -519,6 +572,7 @@ export function InventoryView({ state, memory }: { state: WorkspaceState; memory
       {activeProducts.length === 0 && discontinued.length === 0 ? (
         <div className="quiet">No products yet.</div>
       ) : (
+        <div className="table-scroll">
         <table className="records">
           <thead>
             <tr><th>Product</th><th>Stock</th><th>Incoming</th><th>Sales / week</th><th>Days of stock</th><th>Actions</th></tr>
@@ -559,10 +613,12 @@ export function InventoryView({ state, memory }: { state: WorkspaceState; memory
                         <button
                           className="btn mini danger"
                           onClick={() => {
-                            if (confirm(`Discontinue "${p.name}"? Its sales history stays in your figures — it just leaves this list and stops generating advice. You can restore it anytime.`)) {
-                              memory.append("fact", "product_discontinued", { productId: p.productId, at: Date.now() });
-                              if (editing === p.productId) setEditing(null);
-                            }
+                            memory.append("fact", "product_discontinued", { productId: p.productId, at: Date.now() });
+                            if (editing === p.productId) setEditing(null);
+                            // Reversible → toast with Undo instead of a blocking confirm.
+                            toast(`"${p.name}" discontinued — history kept`, "Undo", () =>
+                              memory.append("fact", "product_restored", { productId: p.productId, at: Date.now() })
+                            );
                           }}
                         >
                           Discontinue
@@ -582,6 +638,7 @@ export function InventoryView({ state, memory }: { state: WorkspaceState; memory
             })}
           </tbody>
         </table>
+        </div>
       )}
 
       {discontinued.length > 0 && (
@@ -626,7 +683,10 @@ function ProductEditor({ product, memory, onDone }: { product: Product; memory: 
     if (isFinite(l) && l > 0 && l !== product.leadTimeDays) patch.leadTimeDays = l;
     if (isFinite(c) && c >= 0 && c !== product.unitCost) patch.unitCost = c;
     if (isFinite(p) && p >= 0 && p !== product.price) patch.price = p;
-    if (Object.keys(patch).length > 2) memory.append("fact", "product_updated", patch);
+    if (Object.keys(patch).length > 2) {
+      memory.append("fact", "product_updated", patch);
+      toast(`"${(patch.name as string) ?? product.name}" updated`);
+    }
     onDone();
   };
 

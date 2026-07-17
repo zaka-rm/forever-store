@@ -48,6 +48,19 @@
   --radius-sm: 9px;
   --radius-lg: 16px;
 
+  /* Spacing — disciplined 4px scale */
+  --s1: 4px; --s2: 8px; --s3: 12px; --s4: 16px; --s5: 20px; --s6: 24px; --s8: 32px; --s10: 40px;
+
+  /* Motion */
+  --dur-fast: 120ms;
+  --dur-base: 180ms;
+  --ease: cubic-bezier(0.2, 0.7, 0.3, 1);
+
+  /* Z-layers */
+  --z-nav: 10;
+  --z-overlay: 100;
+  --z-toast: 200;
+
   --nav-w: 236px;
   --measure: 900px;
 
@@ -428,6 +441,7 @@ details.layers[open] summary::before { transform: rotate(90deg); }
 .segmented button {
   border: none; background: transparent; padding: 6px 16px; border-radius: 999px;
   font-size: 13.5px; font-weight: 600; color: var(--ink-soft); transition: all 0.14s ease;
+  white-space: nowrap;
 }
 .segmented button:hover { color: var(--ink); }
 .segmented button.active { background: var(--surface); color: var(--accent-deep); box-shadow: var(--shadow-sm); }
@@ -703,6 +717,116 @@ details.layers[open] summary::before { transform: rotate(90deg); }
   .landing .hero-grid { grid-template-columns: 1fr; gap: 36px; padding: 44px 0 52px; }
   .landing .land-links a:not(.btn) { display: none; }
 }
+
+/* ------------------------------------------------------- Command palette */
+.cmdk-overlay {
+  position: fixed; inset: 0; z-index: var(--z-overlay);
+  background: rgba(20, 26, 22, 0.4);
+  display: flex; align-items: flex-start; justify-content: center;
+  padding: 12vh 20px 20px;
+  animation: fade var(--dur-fast) var(--ease);
+}
+@keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+.cmdk {
+  width: 100%; max-width: 560px;
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: var(--radius-lg); box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  animation: rise var(--dur-base) var(--ease);
+}
+.cmdk input {
+  width: 100%; border: none; outline: none; background: transparent;
+  padding: 16px 18px; font-size: 16px; color: var(--ink);
+  border-bottom: 1px solid var(--line-soft);
+}
+.cmdk-list { max-height: 46vh; overflow-y: auto; padding: 6px; }
+.cmdk-group {
+  font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em;
+  color: var(--ink-faint); padding: 10px 12px 4px;
+}
+.cmdk-item {
+  display: flex; align-items: center; gap: 10px; width: 100%;
+  padding: 9px 12px; border: none; background: transparent; text-align: left;
+  border-radius: var(--radius-sm); font-size: 14.5px; color: var(--ink);
+  cursor: pointer;
+}
+.cmdk-item svg { width: 16px; height: 16px; stroke: currentColor; opacity: 0.7; flex-shrink: 0; fill: none; }
+.cmdk-item .hint { margin-left: auto; font-size: 11.5px; color: var(--ink-faint); }
+.cmdk-item.active { background: var(--accent-soft); color: var(--accent-deep); }
+.cmdk-empty { padding: 22px; text-align: center; color: var(--ink-soft); font-size: 14px; }
+.cmdk-foot {
+  display: flex; gap: 14px; padding: 8px 14px; border-top: 1px solid var(--line-soft);
+  font-size: 11.5px; color: var(--ink-faint); background: var(--surface-2);
+}
+.cmdk-foot kbd {
+  font-family: inherit; background: var(--surface-inset); border: 1px solid var(--line);
+  border-radius: 5px; padding: 0 5px; font-size: 10.5px;
+}
+
+/* Search trigger in the nav */
+.nav .search-trigger {
+  display: flex; align-items: center; gap: 8px;
+  margin: 0 0 12px; padding: 7px 12px;
+  border: 1px solid var(--line); border-radius: var(--radius-sm);
+  background: var(--surface-2); color: var(--ink-faint); font-size: 13px;
+}
+.nav .search-trigger:hover { border-color: var(--line-strong); color: var(--ink-soft); background: var(--surface-2); }
+.nav .search-trigger kbd {
+  margin-left: auto; font-family: inherit; font-size: 10.5px;
+  background: var(--surface-inset); border: 1px solid var(--line);
+  border-radius: 5px; padding: 0 5px;
+}
+
+/* ----------------------------------------------------------------- Toasts */
+.toasts {
+  position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+  z-index: var(--z-toast); display: flex; flex-direction: column; gap: 8px;
+  align-items: center; pointer-events: none;
+}
+.toast {
+  display: flex; align-items: center; gap: 12px;
+  background: var(--ink); color: var(--bg);
+  border-radius: 10px; padding: 10px 16px; font-size: 14px; font-weight: 500;
+  box-shadow: var(--shadow-lg); pointer-events: auto;
+  animation: rise var(--dur-base) var(--ease);
+  max-width: min(92vw, 480px);
+}
+:root[data-theme="dark"] .toast { background: #f0f3ef; color: #1b2723; }
+.toast button {
+  background: none; border: none; color: inherit; font-weight: 700;
+  font-size: 13.5px; text-decoration: underline; text-underline-offset: 2px;
+  padding: 0; opacity: 0.9;
+}
+.toast button:hover { opacity: 1; }
+
+/* ------------------------------------------- Resource-index toolbar */
+.index-toolbar {
+  display: flex; gap: 12px; flex-wrap: wrap; align-items: center;
+  justify-content: space-between; margin-bottom: 14px;
+}
+.index-toolbar input[type="search"] {
+  border: 1px solid var(--line); border-radius: var(--radius-sm);
+  padding: 8px 12px; background: var(--surface); min-width: 220px;
+  transition: border-color var(--dur-fast) var(--ease), box-shadow var(--dur-fast) var(--ease);
+}
+.index-toolbar input[type="search"]:focus {
+  outline: none; border-color: var(--accent-bright); box-shadow: 0 0 0 3px var(--accent-softer);
+}
+
+/* ------------------------------------------------- Responsive data tables */
+.table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.table-scroll .records { min-width: 720px; }
+.table-scroll .records td { white-space: nowrap; }
+.table-scroll .records td:nth-child(2) { white-space: normal; min-width: 200px; }
+.index-toolbar .segmented { overflow-x: auto; max-width: 100%; }
+
+/* Skip link (a11y) — visible only on keyboard focus */
+.skip-link {
+  position: absolute; left: -9999px; top: 12px; z-index: var(--z-toast);
+  background: var(--surface); color: var(--accent-deep); font-weight: 650;
+  padding: 10px 16px; border-radius: var(--radius-sm); box-shadow: var(--shadow-lg);
+}
+.skip-link:focus { left: 12px; }
 
 /* ------------------------------------------------------------- Responsive */
 @media (max-width: 720px) {

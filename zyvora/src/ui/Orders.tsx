@@ -18,6 +18,7 @@ import {
   orderRevenue,
 } from "../core/projections";
 import type { Order, OrderLine, OrderStatus, WorkspaceState } from "../core/types";
+import { toast } from "./toast";
 
 /** Open a clean, printable receipt for an order in a new window (ZPL-041 §21). */
 function printReceipt(o: Order, business: string) {
@@ -87,6 +88,25 @@ const STATUS_TONE: Record<OrderStatus, "success" | "attention" | "info" | "criti
   returned: "critical",
 };
 
+/* Index filter tabs (resource-index pattern). "Needs action" is the ZYVORA twist:
+   everything waiting on a human — unconfirmed orders and uncollected courier cash. */
+type OrderTab = "all" | "action" | "transit" | "delivered" | "closed";
+const ORDER_TABS: { id: OrderTab; label: string; match: (o: Order) => boolean }[] = [
+  { id: "all", label: "All", match: () => true },
+  {
+    id: "action",
+    label: "Needs action",
+    match: (o) => o.status === "pending" || (o.status === "delivered" && !o.cashReceivedAt),
+  },
+  { id: "transit", label: "In progress", match: (o) => o.status === "confirmed" || o.status === "shipped" },
+  { id: "delivered", label: "Delivered", match: (o) => o.status === "delivered" },
+  {
+    id: "closed",
+    label: "Refused/Closed",
+    match: (o) => o.status === "refused" || o.status === "cancelled" || o.status === "returned",
+  },
+];
+
 /** Allowed transitions (ZPL-041 §3). */
 const NEXT: Record<OrderStatus, { to: OrderStatus; label: string }[]> = {
   pending: [
@@ -122,6 +142,18 @@ export function OrdersView({ state, memory, workspaceName }: { state: WorkspaceS
   const [appliedPromo, setAppliedPromo] = useState<string | null>(null);
   const [promoMsg, setPromoMsg] = useState<string | null>(null);
   const [expanded, setExpanded] = useState<string | null>(null);
+  const [tab, setTab] = useState<OrderTab>("all");
+  const [q, setQ] = useState("");
+
+  const needle = q.trim().toLowerCase();
+  const activeTab = ORDER_TABS.find((t) => t.id === tab)!;
+  const visibleOrders = state.orders.filter(
+    (o) =>
+      activeTab.match(o) &&
+      (!needle ||
+        o.customer.toLowerCase().includes(needle) ||
+        o.lines.some((l) => l.productName.toLowerCase().includes(needle)))
+  );
 
   const available = (pid: string) => {
     const p = state.products.find((x) => x.productId === pid);
@@ -217,6 +249,7 @@ export function OrdersView({ state, memory, workspaceName }: { state: WorkspaceS
 
   const transition = (o: Order, to: OrderStatus) => {
     memory.append("fact", "order_status_changed", { orderId: o.orderId, status: to, at: Date.now() });
+    toast(`${o.customer}'s order → ${STATUS_LABEL[to]}`);
   };
 
   return (
@@ -314,12 +347,42 @@ export function OrdersView({ state, memory, workspaceName }: { state: WorkspaceS
       {state.orders.length === 0 ? (
         <div className="quiet">No orders yet. Orders reserve stock when created and count as revenue only when delivered.</div>
       ) : (
+        <>
+          <div className="index-toolbar">
+            <div className="segmented" role="tablist" aria-label="Filter orders">
+              {ORDER_TABS.map((t) => {
+                const n = state.orders.filter((o) => t.match(o)).length;
+                return (
+                  <button
+                    key={t.id}
+                    role="tab"
+                    aria-selected={tab === t.id}
+                    className={tab === t.id ? "active" : ""}
+                    onClick={() => setTab(t.id)}
+                  >
+                    {t.label}{n > 0 && ` ${n}`}
+                  </button>
+                );
+              })}
+            </div>
+            <input
+              type="search"
+              value={q}
+              onChange={(e) => setQ(e.target.value)}
+              placeholder="Search customer or product…"
+              aria-label="Search orders"
+            />
+          </div>
+          {visibleOrders.length === 0 ? (
+            <div className="quiet">No orders match{q.trim() ? ` “${q.trim()}”` : ""} in this view.</div>
+          ) : (
+        <div className="table-scroll">
         <table className="records">
           <thead>
             <tr><th>Customer</th><th>Items</th><th>Value</th><th>Status</th><th>Cash</th><th>Actions</th></tr>
           </thead>
           <tbody>
-            {state.orders.map((o) => (
+            {visibleOrders.map((o) => (
               <Fragment key={o.orderId}>
                 <tr>
                   <td>{o.customer}</td>
@@ -350,9 +413,10 @@ export function OrdersView({ state, memory, workspaceName }: { state: WorkspaceS
                       {o.status === "delivered" && !o.cashReceivedAt && (
                         <button
                           className="btn mini"
-                          onClick={() =>
-                            memory.append("fact", "order_cash_received", { orderId: o.orderId, at: Date.now() })
-                          }
+                          onClick={() => {
+                            memory.append("fact", "order_cash_received", { orderId: o.orderId, at: Date.now() });
+                            toast(`Cash from ${o.customer} recorded — ${formatMoney(orderRevenue(o))}`);
+                          }}
                         >
                           Cash received
                         </button>
@@ -389,6 +453,9 @@ export function OrdersView({ state, memory, workspaceName }: { state: WorkspaceS
             ))}
           </tbody>
         </table>
+        </div>
+          )}
+        </>
       )}
     </div>
   );
