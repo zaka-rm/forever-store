@@ -86,6 +86,7 @@ export function projectState(events: readonly MemoryEvent[]): WorkspaceState {
           if (p.leadTimeDays !== undefined) prod.leadTimeDays = p.leadTimeDays;
           if (p.unitCost !== undefined) prod.unitCost = p.unitCost;
           if (p.price !== undefined) prod.price = p.price;
+          if (p.daysOfUse !== undefined) prod.daysOfUse = p.daysOfUse;
         }
         break;
       }

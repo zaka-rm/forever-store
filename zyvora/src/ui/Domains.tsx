@@ -21,7 +21,8 @@ import {
   type CustomerTag,
 } from "../core/projections";
 import { messagingConfigured, sendMessage } from "../core/messaging";
-import { SEGMENT_LABEL, SEGMENT_TONE, computeRfm, reorderDueList } from "../core/retention";
+import { SEGMENT_LABEL, SEGMENT_TONE, computeRfm, refillDueList, reorderDueList } from "../core/retention";
+import { storyForCustomer } from "../core/story";
 import { toast } from "./toast";
 import { appPrompt } from "./dialog";
 import type { Product, WorkspaceState } from "../core/types";
@@ -454,6 +455,7 @@ export function CustomersView({ state, memory }: { state: WorkspaceState; memory
 
   const rfm = computeRfm(customers, now);
   const dueList = reorderDueList(allCustomers, state.archivedCustomers, now);
+  const refills = refillDueList(state, state.archivedCustomers, now);
 
   return (
     <div>
@@ -599,6 +601,74 @@ export function CustomersView({ state, memory }: { state: WorkspaceState; memory
         </>
       )}
 
+      {refills.length > 0 && (
+        <section className="card" style={{ marginTop: 18, borderLeft: "3px solid var(--accent)" }} aria-labelledby="refills-due-title">
+          <div className="badge-row">
+            <span className="badge">Refills due</span>
+            <span className="badge domain">{refills.length} predicted</span>
+          </div>
+          <p className="claim" id="refills-due-title" style={{ fontSize: 15.5 }}>
+            Their supply is running out about now — predicted from what they bought and how long it lasts.
+          </p>
+          <div className="table-scroll">
+            <table className="records">
+              <tbody>
+                {refills.slice(0, 8).map((r) => {
+                  const phone = contacts.get(r.customer)?.phone?.trim();
+                  const when =
+                    r.daysPastEmpty > 0
+                      ? `ran out ~${r.daysPastEmpty}d ago`
+                      : r.daysPastEmpty === 0
+                        ? "runs out about today"
+                        : `runs out in ~${-r.daysPastEmpty}d`;
+                  const nudge =
+                    `Hello ${r.customer}! Your ${r.productName} from ${dateLabel(r.deliveredAt)} should be running low — ` +
+                    `shall we prepare your refill? 🌿`;
+                  return (
+                    <tr key={`${r.customer}-${r.productId}`}>
+                      <td>{r.customer}</td>
+                      <td className="muted">{r.qty}× {r.productName}</td>
+                      <td><span className={`tone ${r.daysPastEmpty >= 0 ? "attention" : "info"}`}>{when}</span></td>
+                      <td>
+                        <div className="row-actions">
+                          {messagingConfigured && phone && (
+                            <button
+                              className="btn mini"
+                              onClick={async () => {
+                                const res = await sendMessage(phone, nudge, "whatsapp");
+                                if (res.ok) {
+                                  memory.append("fact", "customer_activity_logged", {
+                                    activityId: crypto.randomUUID(), customer: r.customer, kind: "message",
+                                    note: `WhatsApp refill nudge (${r.productName}): ${nudge}`, at: Date.now(),
+                                  });
+                                  toast(`Refill nudge sent to ${r.customer}`);
+                                } else toast(`Couldn't send: ${res.error}`);
+                              }}
+                            >
+                              WhatsApp
+                            </button>
+                          )}
+                          <button
+                            className="btn subtle mini"
+                            onClick={async () => {
+                              await navigator.clipboard?.writeText(nudge).catch(() => undefined);
+                              toast("Refill message copied");
+                            }}
+                          >
+                            Copy
+                          </button>
+                          <button className="btn subtle mini" onClick={() => setOpen(r.customer)}>Profile</button>
+                        </div>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        </section>
+      )}
+
       {dueList.length > 0 && (
         <section className="card" style={{ marginTop: 18, borderLeft: "3px solid var(--amber)" }} aria-labelledby="reorder-due-title">
           <div className="badge-row">
@@ -698,6 +768,16 @@ export function CustomersView({ state, memory }: { state: WorkspaceState; memory
             activities={activities.filter((a) => a.customer === selectedCustomer.name)}
             memory={memory}
           />
+
+          <h2 style={{ marginTop: 22 }}>Story</h2>
+          <ul className="timeline">
+            {storyForCustomer(memory.all(), selectedCustomer.name).map((s, i) => (
+              <li key={i}>
+                <div className="when">{dateLabel(s.ts)}</div>
+                <div className="what">{s.what}</div>
+              </li>
+            ))}
+          </ul>
         </section>
       )}
 
@@ -817,6 +897,7 @@ export function InventoryView({ state, memory }: { state: WorkspaceState; memory
   const [lead, setLead] = useState("14");
   const [cost, setCost] = useState("");
   const [price, setPrice] = useState("");
+  const [daysUse, setDaysUse] = useState("");
   const [editing, setEditing] = useState<string | null>(null);
   const [creating, setCreating] = useState(false);
   const [productQ, setProductQ] = useState("");
@@ -847,8 +928,9 @@ export function InventoryView({ state, memory }: { state: WorkspaceState; memory
       leadTimeDays: parseInt(lead, 10) || 14,
       unitCost: isFinite(c) && c >= 0 ? c : 0,
       price: isFinite(p) && p >= 0 ? p : 0,
+      ...(parseInt(daysUse, 10) > 0 ? { daysOfUse: parseInt(daysUse, 10) } : {}),
     });
-    setName(""); setStock(""); setWeekly(""); setCost(""); setPrice("");
+    setName(""); setStock(""); setWeekly(""); setCost(""); setPrice(""); setDaysUse("");
     setCreating(false);
   };
 
@@ -922,6 +1004,7 @@ export function InventoryView({ state, memory }: { state: WorkspaceState; memory
         <div><label htmlFor="product-lead">Lead time (d)</label><input id="product-lead" value={lead} onChange={(e) => setLead(e.target.value)} inputMode="numeric" style={{ width: 90 }} /></div>
         <div><label htmlFor="product-cost">Unit cost ({ccy})</label><input id="product-cost" value={cost} onChange={(e) => setCost(e.target.value)} inputMode="decimal" style={{ width: 96 }} /></div>
         <div><label htmlFor="product-price">Price ({ccy})</label><input id="product-price" value={price} onChange={(e) => setPrice(e.target.value)} inputMode="decimal" style={{ width: 88 }} /></div>
+        <div><label htmlFor="product-daysuse" title="How many days one unit lasts a customer — powers refill reminders">Days of use</label><input id="product-daysuse" value={daysUse} onChange={(e) => setDaysUse(e.target.value)} inputMode="numeric" placeholder="e.g. 30" style={{ width: 88 }} /></div>
         <button className="btn" onClick={addProduct}>Add product</button>
       </div>
       </section>
@@ -1070,18 +1153,21 @@ function ProductEditor({ product, memory, onDone, idPrefix }: { product: Product
   const [lead, setLead] = useState(String(product.leadTimeDays));
   const [cost, setCost] = useState(String(product.unitCost));
   const [price, setPrice] = useState(String(product.price));
+  const [daysUse, setDaysUse] = useState(product.daysOfUse ? String(product.daysOfUse) : "");
 
   const save = () => {
     const w = parseFloat(weekly);
     const l = parseInt(lead, 10);
     const c = parseFloat(cost);
     const p = parseFloat(price);
+    const du = parseInt(daysUse, 10);
     const patch: Record<string, unknown> = { productId: product.productId, at: Date.now() };
     if (name.trim() && name.trim() !== product.name) patch.name = name.trim();
     if (isFinite(w) && w >= 0 && w !== product.weeklySales) patch.weeklySales = w;
     if (isFinite(l) && l > 0 && l !== product.leadTimeDays) patch.leadTimeDays = l;
     if (isFinite(c) && c >= 0 && c !== product.unitCost) patch.unitCost = c;
     if (isFinite(p) && p >= 0 && p !== product.price) patch.price = p;
+    if (isFinite(du) && du > 0 && du !== product.daysOfUse) patch.daysOfUse = du;
     if (Object.keys(patch).length > 2) {
       memory.append("fact", "product_updated", patch);
       toast(`"${(patch.name as string) ?? product.name}" updated`);
@@ -1097,6 +1183,7 @@ function ProductEditor({ product, memory, onDone, idPrefix }: { product: Product
         <div><label htmlFor={`${idPrefix}-lead`}>Lead time (d)</label><input id={`${idPrefix}-lead`} value={lead} onChange={(e) => setLead(e.target.value)} inputMode="numeric" style={{ width: 90 }} /></div>
         <div><label htmlFor={`${idPrefix}-cost`}>Unit cost ({ccy})</label><input id={`${idPrefix}-cost`} value={cost} onChange={(e) => setCost(e.target.value)} inputMode="decimal" style={{ width: 96 }} /></div>
         <div><label htmlFor={`${idPrefix}-price`}>Price ({ccy})</label><input id={`${idPrefix}-price`} value={price} onChange={(e) => setPrice(e.target.value)} inputMode="decimal" style={{ width: 88 }} /></div>
+        <div><label htmlFor={`${idPrefix}-daysuse`} title="How many days one unit lasts a customer — powers refill reminders">Days of use</label><input id={`${idPrefix}-daysuse`} value={daysUse} onChange={(e) => setDaysUse(e.target.value)} inputMode="numeric" placeholder="—" style={{ width: 88 }} /></div>
         <button className="btn mini" onClick={save}>Save changes</button>
         <button className="btn subtle mini" onClick={onDone}>Cancel</button>
       </div>

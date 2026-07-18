@@ -61,6 +61,7 @@ function projectState(events) {
           if (p2.leadTimeDays !== void 0) prod.leadTimeDays = p2.leadTimeDays;
           if (p2.unitCost !== void 0) prod.unitCost = p2.unitCost;
           if (p2.price !== void 0) prod.price = p2.price;
+          if (p2.daysOfUse !== void 0) prod.daysOfUse = p2.daysOfUse;
         }
         break;
       }
@@ -571,6 +572,40 @@ function reorderDueList(profiles2, archived, now = Date.now()) {
   }
   return out.sort((a, b) => b.daysOverdue * b.expectedValue - a.daysOverdue * a.expectedValue);
 }
+function refillDueList(state2, archived, now = Date.now(), windowDays = 5) {
+  const hidden = new Set(archived);
+  const out = [];
+  const products = new Map(state2.products.map((p2) => [p2.productId, p2]));
+  const latest = /* @__PURE__ */ new Map();
+  for (const o of state2.orders) {
+    if (o.status !== "delivered" || !o.deliveredAt || hidden.has(o.customer)) continue;
+    for (const l of o.lines) {
+      const key = `${o.customer}\0${l.productId}`;
+      const prev = latest.get(key);
+      if (!prev || o.deliveredAt > prev.deliveredAt) {
+        latest.set(key, { customer: o.customer, productId: l.productId, qty: l.qty, deliveredAt: o.deliveredAt });
+      }
+    }
+  }
+  for (const e of latest.values()) {
+    const p2 = products.get(e.productId);
+    if (!p2 || p2.discontinued || !p2.daysOfUse || p2.daysOfUse <= 0) continue;
+    const refillAt = e.deliveredAt + e.qty * p2.daysOfUse * DAY2;
+    const daysPastEmpty = Math.round((now - refillAt) / DAY2);
+    if (daysPastEmpty >= -windowDays && daysPastEmpty <= 60) {
+      out.push({
+        customer: e.customer,
+        productId: e.productId,
+        productName: p2.name,
+        qty: e.qty,
+        deliveredAt: e.deliveredAt,
+        refillAt,
+        daysPastEmpty
+      });
+    }
+  }
+  return out.sort((a, b) => Math.abs(a.daysPastEmpty) - Math.abs(b.daysPastEmpty));
+}
 function upsellSuggestion(state2, basketProductIds, minTimesTogether = 2) {
   if (basketProductIds.length === 0) return null;
   const inBasket = new Set(basketProductIds);
@@ -595,6 +630,46 @@ function upsellSuggestion(state2, basketProductIds, minTimesTogether = 2) {
   return best;
 }
 
+// src/core/risk.ts
+var RISKY_SOURCES = /* @__PURE__ */ new Set(["tiktok", "facebook", "instagram"]);
+var WARM_SOURCES = /* @__PURE__ */ new Set(["repeat", "referral", "whatsapp"]);
+function refusalRisk(state2, order, contacts2) {
+  const factors = [];
+  const add = (label, points) => {
+    if (points !== 0) factors.push({ label, points });
+  };
+  const history = state2.orders.filter(
+    (o) => o.customer === order.customer && o.orderId !== order.orderId
+  );
+  const delivered = history.filter((o) => o.status === "delivered").length;
+  const refused = history.filter((o) => o.status === "refused").length;
+  if (delivered + refused === 0) {
+    add("First-time customer (no COD history)", 18);
+  } else {
+    if (refused > 0) add(`${refused} past refusal${refused > 1 ? "s" : ""}`, Math.min(45, refused * 22));
+    if (delivered > 0) add(`${delivered} past successful deliver${delivered > 1 ? "ies" : "y"}`, -Math.min(30, delivered * 10));
+  }
+  const phone = contacts2.get(order.customer)?.phone?.trim();
+  if (!phone) add("No phone saved \u2014 can't confirm before shipping", 16);
+  const src = order.source?.toLowerCase();
+  if (src && RISKY_SOURCES.has(src)) add(`Source: ${src} (impulse traffic refuses more)`, 10);
+  if (src && WARM_SOURCES.has(src)) add(`Source: ${src} (warm traffic)`, -8);
+  const deliveredOrders = state2.orders.filter((o) => o.status === "delivered");
+  if (deliveredOrders.length >= 3) {
+    const avg = deliveredOrders.reduce((s, o) => s + orderRevenue(o), 0) / deliveredOrders.length;
+    if (avg > 0 && orderRevenue(order) > 1.6 * avg) {
+      add("Basket well above your average delivered order", 10);
+    }
+  }
+  const raw = 22 + factors.reduce((s, f) => s + f.points, 0);
+  const score = Math.max(2, Math.min(96, raw));
+  return {
+    score,
+    level: score >= 55 ? "high" : score >= 32 ? "medium" : "low",
+    factors
+  };
+}
+
 // src/core/format.ts
 var activeCurrency = "USD";
 function getActiveCurrency() {
@@ -610,6 +685,51 @@ function money(amount) {
   } catch {
     return `${Math.round(amount).toLocaleString()} ${activeCurrency}`;
   }
+}
+
+// src/core/story.ts
+var cap = (s) => s.charAt(0).toUpperCase() + s.slice(1);
+function describe(e) {
+  const p2 = e.payload;
+  switch (e.type) {
+    case "order_created": {
+      const lines = p2.lines ?? [];
+      return `Order created \u2014 ${lines.map((l) => `${l.qty}\xD7 ${l.productName}`).join(", ")}${p2.source ? ` \xB7 via ${p2.source}` : ""}`;
+    }
+    case "order_status_changed":
+      return `Status \u2192 ${cap(String(p2.status))}`;
+    case "order_cash_received":
+      return "Courier remitted the cash";
+    case "invoice_issued":
+      return `Invoice issued \u2014 ${money(Number(p2.amount))}, due in ${p2.dueDays} days`;
+    case "invoice_paid":
+      return "Invoice paid";
+    case "customer_contact_updated":
+      return `Contact updated${p2.phone ? ` \u2014 phone ${p2.phone}` : ""}${p2.city ? ` \xB7 ${p2.city}` : ""}`;
+    case "customer_activity_logged":
+      return `${cap(String(p2.kind))}: ${String(p2.note).slice(0, 120)}`;
+    case "customer_activity_completed":
+      return "Follow-up marked done";
+    case "customer_archived":
+      return "Archived (hidden from lists; history kept)";
+    case "customer_restored":
+      return "Restored from archive";
+    default:
+      return null;
+  }
+}
+function storyForOrder(events, orderId) {
+  return events.filter((e) => e.stream === "fact" && e.payload.orderId === orderId).map((e) => ({ ts: e.ts, stream: e.stream, what: describe(e) ?? e.type })).sort((a, b) => a.ts - b.ts);
+}
+function storyForCustomer(events, customer, max = 12) {
+  const theirOrders = new Set(
+    events.filter((e) => e.type === "order_created" && e.payload.customer === customer).map((e) => String(e.payload.orderId))
+  );
+  return events.filter((e) => {
+    if (e.stream !== "fact") return false;
+    const p2 = e.payload;
+    return p2.customer === customer || p2.orderId !== void 0 && theirOrders.has(p2.orderId);
+  }).map((e) => ({ ts: e.ts, stream: e.stream, what: describe(e) ?? e.type })).sort((a, b) => b.ts - a.ts).slice(0, max);
 }
 
 // src/core/actions.ts
@@ -3283,6 +3403,78 @@ console.log("\nDecision-memory coach & goal pacing (stage 4):");
   } else {
     check("goal pacing (skipped: too early/late in month to assert honestly)", true);
   }
+}
+console.log("\nRefills, refusal risk & record stories (v0.29):");
+{
+  const pid = "P-refill-test";
+  memory.append("fact", "product_added", {
+    productId: pid,
+    name: "Aloe Test Gel",
+    stock: 10,
+    weeklySales: 1,
+    leadTimeDays: 7,
+    unitCost: 5,
+    price: 10,
+    daysOfUse: 30
+  });
+  const oid = "O-refill-test";
+  const t0 = Date.now() - 36 * 864e5;
+  memory.append("fact", "order_created", {
+    orderId: oid,
+    customer: "Refill Rita",
+    lines: [{ productId: pid, productName: "Aloe Test Gel", qty: 1, unitPrice: 10, unitCost: 5 }],
+    discount: 0,
+    shippingCharged: 0,
+    shippingCost: 0,
+    codFee: 0,
+    packagingCost: 0,
+    createdAt: t0
+  }, t0);
+  memory.append("fact", "order_status_changed", { orderId: oid, status: "delivered", at: t0 + 864e5 }, t0 + 864e5);
+  const stR = projectState(memory.all());
+  const refills = refillDueList(stR, stR.archivedCustomers);
+  const rita = refills.find((r) => r.customer === "Refill Rita");
+  check("consumable customer surfaces when supply runs out", rita !== void 0 && rita.productName === "Aloe Test Gel");
+  check("refill math: 1 unit \xD7 30 days from delivery date", rita !== void 0 && Math.abs(rita.daysPastEmpty - 5) <= 1);
+  memory.append("fact", "product_updated", { productId: pid, daysOfUse: 60, at: Date.now() });
+  check(
+    "editing days-of-use moves the prediction (append-only correction)",
+    !refillDueList(projectState(memory.all()), []).some((r) => r.customer === "Refill Rita" && r.daysPastEmpty >= 0)
+  );
+  const contactsR = projectContacts(memory.all());
+  const mkOrder = (id, customer, source) => ({
+    orderId: id,
+    customer,
+    lines: [{ productId: pid, productName: "Aloe Test Gel", qty: 1, unitPrice: 10, unitCost: 5 }],
+    discount: 0,
+    shippingCharged: 0,
+    shippingCost: 0,
+    codFee: 0,
+    packagingCost: 0,
+    createdAt: Date.now(),
+    status: "pending",
+    ...source ? { source } : {}
+  });
+  const refuser = stR.orders.find((o) => o.status === "refused");
+  if (refuser) {
+    const riskRefuser = refusalRisk(stR, mkOrder("t1", refuser.customer, "tiktok"), contactsR);
+    const proven = stR.orders.filter((o) => o.status === "delivered").map((o) => o.customer).find((c) => !stR.orders.some((o) => o.customer === c && o.status === "refused"));
+    const riskProven = proven ? refusalRisk(stR, mkOrder("t2", proven, "repeat"), contactsR) : null;
+    check(
+      "past refuser on impulse traffic scores higher than proven repeat customer",
+      riskProven !== null && riskRefuser.score > riskProven.score
+    );
+    check(
+      "every risk point is explained by a listed factor",
+      riskRefuser.factors.length > 0 && riskRefuser.factors.every((f) => f.label.length > 0)
+    );
+  } else {
+    check("refusal-risk comparison (skipped: no refused order in data)", false);
+  }
+  const story = storyForOrder(memory.all(), oid);
+  check("order story is chronological and complete", story.length === 2 && /Order created/.test(story[0].what) && /Delivered/.test(story[1].what));
+  const custStory = storyForCustomer(memory.all(), "Refill Rita");
+  check("customer story collects their events, newest first", custStory.length >= 2 && custStory[0].ts >= custStory[custStory.length - 1].ts);
 }
 console.log("\nBilling entitlement (vendor productization):");
 {

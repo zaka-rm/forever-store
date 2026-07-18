@@ -46,6 +46,9 @@ export interface ProductAdded {
   leadTimeDays: number;
   unitCost: number;
   price: number;
+  /** How many days ONE unit lasts a customer at normal use (consumables) —
+   *  powers the refill predictor. Optional; unset = not a consumable. */
+  daysOfUse?: number;
 }
 
 export interface StockAdjusted {
@@ -62,6 +65,7 @@ export interface ProductUpdated {
   leadTimeDays?: number;
   unitCost?: number;
   price?: number;
+  daysOfUse?: number;
   at: number;
 }
 

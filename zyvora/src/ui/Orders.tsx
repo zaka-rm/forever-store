@@ -20,6 +20,8 @@ import {
   projectContacts,
 } from "../core/projections";
 import { upsellSuggestion } from "../core/retention";
+import { RISK_TONE, refusalRisk } from "../core/risk";
+import { storyForOrder } from "../core/story";
 import { extractOrderFromImage, visionConfigured } from "../core/llm";
 import { codConfirmationText, messagingConfigured, sendMessage } from "../core/messaging";
 import type { Order, OrderLine, OrderStatus, WorkspaceState } from "../core/types";
@@ -639,6 +641,17 @@ export function OrdersView({ state, memory, workspaceName }: { state: WorkspaceS
                           <tr><td><strong>Net profit</strong></td><td><strong>{formatMoney(orderNetProfit(o))}</strong></td></tr>
                         </tbody>
                       </table>
+                      <details className="layers" style={{ marginTop: 8 }}>
+                        <summary>Story of this order — the full event trail</summary>
+                        <ul className="timeline" style={{ marginTop: 10 }}>
+                          {storyForOrder(memory.all(), o.orderId).map((s, i) => (
+                            <li key={i}>
+                              <div className="when">{new Date(s.ts).toLocaleString(undefined, { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" })}</div>
+                              <div className="what">{s.what}</div>
+                            </li>
+                          ))}
+                        </ul>
+                      </details>
                     </td>
                   </tr>
                 )}
@@ -694,6 +707,7 @@ function ConfirmationQueue({
   const message = codConfirmationText(workspaceName, o.customer, itemsSummary, formatMoney(orderRevenue(o)));
   const upsell = upsellSuggestion(state, o.lines.map((l) => l.productId));
   const waitedDays = Math.floor((Date.now() - o.createdAt) / 86_400_000);
+  const risk = refusalRisk(state, o, contacts);
 
   const logAttempt = (note: string, dueDays?: number) =>
     memory.append("fact", "customer_activity_logged", {
@@ -710,6 +724,9 @@ function ConfirmationQueue({
       <div className="badge-row">
         <span className="badge strategic">Confirmation queue</span>
         <span className="badge domain">{pending.length} waiting</span>
+        <span className={`tone ${RISK_TONE[risk.level]}`} style={{ marginLeft: "auto" }}>
+          Refusal risk: {risk.level} · {risk.score}
+        </span>
       </div>
       <p className="claim" id="confirm-queue-title">
         {o.customer} — {itemsSummary} · {formatMoney(orderRevenue(o))}
@@ -722,6 +739,25 @@ function ConfirmationQueue({
           <> <strong>Worth offering:</strong> {upsell.productName} ({formatMoney(upsell.price)}) — bought together {upsell.timesTogether}× before.</>
         )}
       </p>
+      {risk.factors.length > 0 && (
+        <details className="layers" style={{ marginBottom: 10 }}>
+          <summary>Why this risk score? — {risk.factors.length} factor{risk.factors.length > 1 ? "s" : ""}</summary>
+          <table className="evidence-table">
+            <tbody>
+              {risk.factors.map((f, i) => (
+                <tr key={i}>
+                  <td>{f.label}</td>
+                  <td>{f.points > 0 ? `+${f.points}` : f.points}</td>
+                </tr>
+              ))}
+              <tr><td>Market base rate (Morocco COD)</td><td>+22</td></tr>
+            </tbody>
+          </table>
+          {risk.level === "high" && (
+            <p className="confidence-note">High risk: consider double-confirming, or offering a small prepayment discount before shipping.</p>
+          )}
+        </details>
+      )}
       <div className="row-actions">
         {messagingConfigured && phone && (
           <button

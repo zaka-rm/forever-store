@@ -4,7 +4,9 @@
  * constitutional behaviors. Exit code 0 = all checks pass.
  */
 import { entitlement } from "../src/core/entitlement";
-import { computeRfm, reorderDueList, upsellSuggestion } from "../src/core/retention";
+import { computeRfm, refillDueList, reorderDueList, upsellSuggestion } from "../src/core/retention";
+import { refusalRisk } from "../src/core/risk";
+import { storyForCustomer, storyForOrder } from "../src/core/story";
 import { restageInLang, stageAction } from "../src/core/actions";
 import { coachFor, pendingOutcomeReviews, projectDecisionMemories } from "../src/core/coach";
 import { generateInsights, stateOfThings } from "../src/core/engine";
@@ -424,6 +426,57 @@ console.log("\nDecision-memory coach & goal pacing (stage 4):");
   } else {
     check("goal pacing (skipped: too early/late in month to assert honestly)", true);
   }
+}
+
+console.log("\nRefills, refusal risk & record stories (v0.29):");
+{
+  // Refill predictor: a consumable delivered ~35 days ago with 30-day use → due now.
+  const pid = "P-refill-test";
+  memory.append("fact", "product_added", {
+    productId: pid, name: "Aloe Test Gel", stock: 10, weeklySales: 1, leadTimeDays: 7, unitCost: 5, price: 10, daysOfUse: 30,
+  });
+  const oid = "O-refill-test";
+  const t0 = Date.now() - 36 * 86400000;
+  memory.append("fact", "order_created", {
+    orderId: oid, customer: "Refill Rita", lines: [{ productId: pid, productName: "Aloe Test Gel", qty: 1, unitPrice: 10, unitCost: 5 }],
+    discount: 0, shippingCharged: 0, shippingCost: 0, codFee: 0, packagingCost: 0, createdAt: t0,
+  }, t0);
+  memory.append("fact", "order_status_changed", { orderId: oid, status: "delivered", at: t0 + 86400000 }, t0 + 86400000);
+  const stR = projectState(memory.all());
+  const refills = refillDueList(stR, stR.archivedCustomers);
+  const rita = refills.find((r) => r.customer === "Refill Rita");
+  check("consumable customer surfaces when supply runs out", rita !== undefined && rita.productName === "Aloe Test Gel");
+  check("refill math: 1 unit × 30 days from delivery date", rita !== undefined && Math.abs(rita.daysPastEmpty - 5) <= 1);
+  memory.append("fact", "product_updated", { productId: pid, daysOfUse: 60, at: Date.now() });
+  check("editing days-of-use moves the prediction (append-only correction)",
+    !refillDueList(projectState(memory.all()), []).some((r) => r.customer === "Refill Rita" && r.daysPastEmpty >= 0));
+
+  // Refusal risk: a repeat refuser scores higher than a proven customer.
+  const contactsR = projectContacts(memory.all());
+  const mkOrder = (id: string, customer: string, source?: string) => ({
+    orderId: id, customer, lines: [{ productId: pid, productName: "Aloe Test Gel", qty: 1, unitPrice: 10, unitCost: 5 }],
+    discount: 0, shippingCharged: 0, shippingCost: 0, codFee: 0, packagingCost: 0, createdAt: Date.now(),
+    status: "pending" as const, ...(source ? { source } : {}),
+  });
+  const refuser = stR.orders.find((o) => o.status === "refused");
+  if (refuser) {
+    const riskRefuser = refusalRisk(stR, mkOrder("t1", refuser.customer, "tiktok"), contactsR);
+    const proven = stR.orders.filter((o) => o.status === "delivered").map((o) => o.customer)
+      .find((c) => !stR.orders.some((o) => o.customer === c && o.status === "refused"));
+    const riskProven = proven ? refusalRisk(stR, mkOrder("t2", proven, "repeat"), contactsR) : null;
+    check("past refuser on impulse traffic scores higher than proven repeat customer",
+      riskProven !== null && riskRefuser.score > riskProven.score);
+    check("every risk point is explained by a listed factor",
+      riskRefuser.factors.length > 0 && riskRefuser.factors.every((f) => f.label.length > 0));
+  } else {
+    check("refusal-risk comparison (skipped: no refused order in data)", false);
+  }
+
+  // Story: the refill order's trail reads created → delivered.
+  const story = storyForOrder(memory.all(), oid);
+  check("order story is chronological and complete", story.length === 2 && /Order created/.test(story[0].what) && /Delivered/.test(story[1].what));
+  const custStory = storyForCustomer(memory.all(), "Refill Rita");
+  check("customer story collects their events, newest first", custStory.length >= 2 && custStory[0].ts >= custStory[custStory.length - 1].ts);
 }
 
 console.log("\nBilling entitlement (vendor productization):");
