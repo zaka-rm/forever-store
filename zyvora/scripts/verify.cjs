@@ -1607,6 +1607,59 @@ function weeklyReview(events, now = Date.now()) {
   };
 }
 
+// src/core/inbox.ts
+var OUT_PREFIX = /^(WhatsApp|SMS)(\s*\([^)]*\))?:\s*/i;
+var STOP_WORDS = /^\s*(stop|unsubscribe|arret|arrêt|توقف|قف)\s*$/i;
+function isOptOut(body) {
+  return STOP_WORDS.test(body);
+}
+function projectConversations(events) {
+  const threads = /* @__PURE__ */ new Map();
+  const optedOut = /* @__PURE__ */ new Set();
+  const ensure = (key) => {
+    let t = threads.get(key);
+    if (!t) {
+      t = { key, messages: [], lastAt: 0, waiting: false, optedOut: false };
+      threads.set(key, t);
+    }
+    return t;
+  };
+  for (const e of events) {
+    if (e.stream === "fact" && e.type === "message_received") {
+      const p2 = e.payload;
+      const key = p2.customer || p2.phone;
+      const t = ensure(key);
+      if (p2.customer) t.customer = p2.customer;
+      if (p2.phone) t.phone = p2.phone;
+      t.messages.push({ at: p2.at ?? e.ts, direction: "in", body: p2.body, phone: p2.phone });
+      if (isOptOut(p2.body) && p2.customer) optedOut.add(p2.customer);
+    } else if (e.stream === "fact" && e.type === "customer_activity_logged") {
+      const p2 = e.payload;
+      if (p2.kind !== "message" || !p2.customer) continue;
+      const t = ensure(p2.customer);
+      t.customer = p2.customer;
+      t.messages.push({ at: p2.at ?? e.ts, direction: "out", body: (p2.note ?? "").replace(OUT_PREFIX, "") });
+    } else if (e.stream === "fact" && e.type === "customer_opted_out") {
+      optedOut.add(String(e.payload.customer));
+    } else if (e.stream === "fact" && e.type === "customer_opted_in") {
+      optedOut.delete(String(e.payload.customer));
+    }
+  }
+  const out = [];
+  for (const t of threads.values()) {
+    t.messages.sort((a, b) => a.at - b.at);
+    const last = t.messages[t.messages.length - 1];
+    t.lastAt = last?.at ?? 0;
+    t.waiting = last?.direction === "in";
+    if (t.customer) t.optedOut = optedOut.has(t.customer);
+    out.push(t);
+  }
+  return out.sort((a, b) => b.lastAt - a.lastAt);
+}
+function waitingCount(convs) {
+  return convs.filter((c) => c.waiting && !c.optedOut).length;
+}
+
 // src/core/story.ts
 var cap = (s) => s.charAt(0).toUpperCase() + s.slice(1);
 function describe(e) {
@@ -3225,6 +3278,17 @@ function seedDemoData(memory2) {
     { status: "confirmed", daysAgo: 2 },
     { status: "shipped", daysAgo: 1 }
   ], { shipCharged: 3, shipCost: 4.5, codFee: 1, packaging: 0.8 });
+  order("Amina T.", [{ ...MUG, qty: 2 }], 1, [], { shipCharged: 3, shipCost: 4.5, codFee: 1, packaging: 0.8 });
+  const contact = (customer, phone, city, daysAgo) => memory2.append("fact", "customer_contact_updated", { customer, phone, city, at: at(daysAgo) }, at(daysAgo));
+  contact("Amina T.", "+212600112233", "Casablanca", 1);
+  contact("Leila M.", "+212600445566", "Rabat", 3);
+  const inbound = (customer, phone, body, hoursAgo) => {
+    const t = now - hoursAgo * 36e5;
+    memory2.append("fact", "message_received", { messageId: `MSG-${++n}`, customer, phone, body, channel: "whatsapp", at: t }, t);
+  };
+  inbound("Leila M.", "+212600445566", "Merci beaucoup, tout est parfait!", 30);
+  memory2.append("fact", "customer_activity_logged", { activityId: `ACT-${++n}`, customer: "Leila M.", kind: "message", note: "WhatsApp: Avec plaisir Leila, \xE0 bient\xF4t! \u{1F33F}", at: now - 29 * 36e5 }, now - 29 * 36e5);
+  inbound("Amina T.", "+212600112233", "Bonjour, ma commande de tasses arrive quand? \u{1F60A}", 2);
 }
 
 // scripts/verify.ts
@@ -3265,13 +3329,13 @@ check(
   state.invoices.length === 14 && state.products.length === 3,
   `invoices=${state.invoices.length}, products=${state.products.length}`
 );
-check("orders fold into state", state.orders.length === 10, `orders=${state.orders.length}`);
+check("orders fold into state", state.orders.length === 11, `orders=${state.orders.length}`);
 console.log("\nCommerce & COD lifecycle (Wave 1):");
 var mug = state.products.find((p2) => p2.productId === "P-001");
 check("delivery deducts stock (mug 18 \u2192 3)", mug.stock === 3, `stock=${mug.stock}`);
 check(
-  "open order reserves stock (Hassan, 2 mugs)",
-  state.reserved["P-001"] === 2,
+  "open orders reserve stock (Hassan + Amina, 2 mugs each)",
+  state.reserved["P-001"] === 4,
   `reserved=${state.reserved["P-001"]}`
 );
 var refusedOrder = state.orders.find((o) => o.status === "refused");
@@ -3294,7 +3358,7 @@ check(
   things.cashPendingCod > 0,
   `pending=${things.cashPendingCod.toFixed(2)}`
 );
-check("open orders counted", things.openOrders === 1, `open=${things.openOrders}`);
+check("open orders counted", things.openOrders === 2, `open=${things.openOrders}`);
 console.log("\nCRM customer profiles (Wave 4):");
 var profiles = projectCustomerProfiles(state);
 var karim = profiles.find((p2) => p2.name === "Karim Z.");
@@ -3804,6 +3868,23 @@ console.log("\nThis week in review (week-over-week deltas, v0.32):");
   check("revenue delta reflects the extra delivered order", byKey2("revenue").delta === 100);
   check("refusals metric is flagged higher-is-worse", byKey2("refusals").higherIsBetter === false);
   check("hasPriorWeek true once last-week activity exists", wr.hasPriorWeek === true);
+}
+console.log("\nWhatsApp Operations Inbox (v0.33):");
+{
+  const im2 = new TestMemory();
+  const t = (h) => Date.now() - h * 36e5;
+  im2.append("fact", "message_received", { messageId: "m1", customer: "Inbox Ivy", phone: "+212611", body: "Bonjour, o\xF9 est ma commande?", channel: "whatsapp", at: t(5) }, t(5));
+  im2.append("fact", "customer_activity_logged", { activityId: "a1", customer: "Inbox Ivy", kind: "message", note: "WhatsApp: Elle arrive demain!", at: t(4) }, t(4));
+  im2.append("fact", "message_received", { messageId: "m2", customer: "Inbox Ivy", phone: "+212611", body: "Merci!", channel: "whatsapp", at: t(3) }, t(3));
+  im2.append("fact", "message_received", { messageId: "m3", customer: "Quiet Qasim", phone: "+212622", body: "STOP", channel: "whatsapp", at: t(2) }, t(2));
+  const convs = projectConversations(im2.all());
+  const ivy = convs.find((c) => c.customer === "Inbox Ivy");
+  check("conversation merges inbound + outbound in time order", ivy.messages.length === 3 && ivy.messages[0].direction === "in" && ivy.messages[1].direction === "out");
+  check("thread with last inbound message is 'waiting'", ivy.waiting === true);
+  const qasim = convs.find((c) => c.customer === "Quiet Qasim");
+  check("a customer texting STOP is flagged opted-out", qasim.optedOut === true);
+  check("opted-out customers are excluded from the waiting count", waitingCount(convs) === 1);
+  check("threads sort newest-activity first", convs[0].lastAt >= convs[convs.length - 1].lastAt);
 }
 console.log("\nBilling entitlement (vendor productization):");
 {

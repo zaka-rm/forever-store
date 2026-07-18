@@ -51,10 +51,12 @@ import { MemoryView } from "./ui/Memory";
 import { ErrorBoundary } from "./ui/ErrorBoundary";
 import { OrdersView } from "./ui/Orders";
 import { PromosView } from "./ui/Promos";
+import { InboxView } from "./ui/Inbox";
+import { projectConversations, waitingCount } from "./core/inbox";
 import { Today } from "./ui/Today";
 
 type View =
-  | "today" | "notifications" | "orders" | "finance" | "customers"
+  | "today" | "notifications" | "inbox" | "orders" | "finance" | "customers"
   | "inventory" | "promos" | "analytics" | "ask" | "import" | "team" | "billing" | "memory";
 
 type NavItem = { id: View; label: string; icon: IconName };
@@ -75,6 +77,7 @@ const NAV_GROUPS: { label: string; items: NavItem[] }[] = [
   {
     label: "Commerce",
     items: [
+      { id: "inbox", label: "Inbox", icon: "chat" },
       { id: "orders", label: "Orders", icon: "orders" },
       { id: "customers", label: "Customers", icon: "customers" },
       { id: "inventory", label: "Inventory", icon: "inventory" },
@@ -103,6 +106,7 @@ const NAV_GROUPS: { label: string; items: NavItem[] }[] = [
 const VIEW_META: Record<View, { title: string; section: string }> = {
   today: { title: "Today", section: "Overview" },
   notifications: { title: "Notifications", section: "Overview" },
+  inbox: { title: "Inbox", section: "Commerce" },
   orders: { title: "Orders", section: "Commerce" },
   customers: { title: "Customers", section: "Commerce" },
   inventory: { title: "Inventory", section: "Commerce" },
@@ -589,6 +593,8 @@ function Workspace({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [notifications, view, notifVersion]);
 
+  const waiting = useMemo(() => waitingCount(projectConversations(events)), [events]);
+
   /** Lifecycle stages 8 & 11: the human decides; interpretation + decision enter Memory. */
   const onDecide = (
     insight: Insight,
@@ -689,6 +695,9 @@ function Workspace({
                     <span>{n.label}</span>
                     {n.id === "notifications" && unread > 0 && (
                       <span className="nav-count" aria-label={`${unread} unread`}>{unread}</span>
+                    )}
+                    {n.id === "inbox" && waiting > 0 && (
+                      <span className="nav-count" aria-label={`${waiting} waiting for reply`}>{waiting}</span>
                     )}
                   </button>
                 ))}
@@ -792,6 +801,7 @@ function Workspace({
               onChange={() => setNotifVersion((v) => v + 1)}
             />
           )}
+          {view === "inbox" && <InboxView state={state} memory={memory} workspaceId={workspace.id} workspaceName={workspace.name} />}
           {view === "orders" && <OrdersView state={state} memory={memory} workspaceName={workspace.name} />}
           {view === "finance" && <FinanceView state={state} memory={memory} />}
           {view === "customers" && <CustomersView state={state} memory={memory} />}

@@ -26,6 +26,7 @@ Supabase ── Postgres + RLS (business memory, teams, error telemetry)
    supabase functions deploy send-message
    supabase functions deploy zyvora-billing
    supabase functions deploy zyvora-stripe-webhook --no-verify-jwt
+   supabase functions deploy whatsapp-inbound --no-verify-jwt
    supabase secrets set GROQ_API_KEY=<gsk_...>
    supabase secrets set TWILIO_ACCOUNT_SID=<AC...> TWILIO_AUTH_TOKEN=<...> TWILIO_WHATSAPP_FROM=whatsapp:+14155238886
    supabase secrets set STRIPE_SECRET_KEY=<sk_...> STRIPE_PRICE_ID=<price_...> APP_URL=<https://your-app-url>

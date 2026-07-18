@@ -165,6 +165,27 @@ export interface CustomerContactUpdated {
   at: number;
 }
 
+/** An inbound customer message (WhatsApp/SMS), appended by the inbound webhook. */
+export interface MessageReceived {
+  messageId: string;
+  customer?: string; // resolved by phone match when known
+  phone: string;
+  body: string;
+  channel: string;   // whatsapp | sms
+  at: number;
+}
+
+/** Consent trail — a customer texting STOP opts out of business-initiated messages. */
+export interface CustomerOptedOut {
+  customer: string;
+  phone?: string;
+  at: number;
+}
+export interface CustomerOptedIn {
+  customer: string;
+  at: number;
+}
+
 export type ActivityKind = "call" | "message" | "visit" | "note" | "followup";
 
 export interface CustomerActivityLogged {

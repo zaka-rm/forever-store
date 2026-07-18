@@ -210,5 +210,25 @@ export function seedDemoData(memory: MemoryStore): void {
     { status: "confirmed", daysAgo: 2 },
     { status: "shipped", daysAgo: 1 },
   ], { shipCharged: 3, shipCost: 4.5, codFee: 1, packaging: 0.8 });
+
+  // Pending — awaiting confirmation (feeds the confirmation queue + inbox action)
+  order("Amina T.", [{ ...MUG, qty: 2 }], 1, [], { shipCharged: 3, shipCost: 4.5, codFee: 1, packaging: 0.8 });
+
+  // Contact phones so messaging + inbox work in demo mode
+  const contact = (customer: string, phone: string, city: string, daysAgo: number) =>
+    memory.append("fact", "customer_contact_updated", { customer, phone, city, at: at(daysAgo) }, at(daysAgo));
+  contact("Amina T.", "+212600112233", "Casablanca", 1);
+  contact("Leila M.", "+212600445566", "Rabat", 3);
+
+  // Inbound customer messages — the Operations Inbox. Amina's thread is waiting.
+  const inbound = (customer: string, phone: string, body: string, hoursAgo: number) => {
+    const t = now - hoursAgo * 3_600_000;
+    memory.append("fact", "message_received", { messageId: `MSG-${++n}`, customer, phone, body, channel: "whatsapp", at: t }, t);
+  };
+  // A resolved-ish thread (we replied last)
+  inbound("Leila M.", "+212600445566", "Merci beaucoup, tout est parfait!", 30);
+  memory.append("fact", "customer_activity_logged", { activityId: `ACT-${++n}`, customer: "Leila M.", kind: "message", note: "WhatsApp: Avec plaisir Leila, à bientôt! 🌿", at: now - 29 * 3_600_000 }, now - 29 * 3_600_000);
+  // A thread waiting on us
+  inbound("Amina T.", "+212600112233", "Bonjour, ma commande de tasses arrive quand? 😊", 2);
 }
 

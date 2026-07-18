@@ -9,6 +9,7 @@ import { refusalRisk } from "../src/core/risk";
 import { businessHealth } from "../src/core/health";
 import { measureCampaign, projectCampaigns } from "../src/core/campaigns";
 import { weeklyReview } from "../src/core/weekly";
+import { projectConversations, waitingCount } from "../src/core/inbox";
 import { courierScorecard, referralLeaderboard } from "../src/core/retention";
 import { storyForCustomer, storyForOrder } from "../src/core/story";
 import { restageInLang, stageAction } from "../src/core/actions";
@@ -74,13 +75,14 @@ const insights = generateInsights(state, decisions);
 console.log("\nProjections:");
 check("facts fold into state", state.invoices.length === 14 && state.products.length === 3,
   `invoices=${state.invoices.length}, products=${state.products.length}`);
-check("orders fold into state", state.orders.length === 10, `orders=${state.orders.length}`);
+check("orders fold into state", state.orders.length === 11, `orders=${state.orders.length}`);
 
 console.log("\nCommerce & COD lifecycle (Wave 1):");
 const mug = state.products.find((p) => p.productId === "P-001")!;
 // Delivered mug quantities: 4 + 6 + 3 + 1 + 1 = 15 → physical stock 18 − 15 = 3
 check("delivery deducts stock (mug 18 → 3)", mug.stock === 3, `stock=${mug.stock}`);
-check("open order reserves stock (Hassan, 2 mugs)", state.reserved["P-001"] === 2,
+// Hassan (shipped, 2 mugs) + Amina (pending, 2 mugs) both hold reservations → 4.
+check("open orders reserve stock (Hassan + Amina, 2 mugs each)", state.reserved["P-001"] === 4,
   `reserved=${state.reserved["P-001"]}`);
 const refusedOrder = state.orders.find((o) => o.status === "refused");
 check("refused order does not deduct stock and holds no reservation", !!refusedOrder);
@@ -93,7 +95,7 @@ check("order revenue = lines − discount + shipping charged", Math.abs(orderRev
 const things = stateOfThings(state);
 check("delivered-but-unremitted cash shows as pending COD", things.cashPendingCod > 0,
   `pending=${things.cashPendingCod.toFixed(2)}`);
-check("open orders counted", things.openOrders === 1, `open=${things.openOrders}`);
+check("open orders counted", things.openOrders === 2, `open=${things.openOrders}`);
 
 console.log("\nCRM customer profiles (Wave 4):");
 const profiles = projectCustomerProfiles(state);
@@ -583,6 +585,26 @@ console.log("\nThis week in review (week-over-week deltas, v0.32):");
   check("revenue delta reflects the extra delivered order", byKey("revenue").delta === 100);
   check("refusals metric is flagged higher-is-worse", byKey("refusals").higherIsBetter === false);
   check("hasPriorWeek true once last-week activity exists", wr.hasPriorWeek === true);
+}
+
+console.log("\nWhatsApp Operations Inbox (v0.33):");
+{
+  const im = new TestMemory();
+  const t = (h: number) => Date.now() - h * 3_600_000;
+  im.append("fact", "message_received", { messageId: "m1", customer: "Inbox Ivy", phone: "+212611", body: "Bonjour, où est ma commande?", channel: "whatsapp", at: t(5) }, t(5));
+  im.append("fact", "customer_activity_logged", { activityId: "a1", customer: "Inbox Ivy", kind: "message", note: "WhatsApp: Elle arrive demain!", at: t(4) }, t(4));
+  im.append("fact", "message_received", { messageId: "m2", customer: "Inbox Ivy", phone: "+212611", body: "Merci!", channel: "whatsapp", at: t(3) }, t(3));
+  // A second customer whose last message is inbound → waiting.
+  im.append("fact", "message_received", { messageId: "m3", customer: "Quiet Qasim", phone: "+212622", body: "STOP", channel: "whatsapp", at: t(2) }, t(2));
+
+  const convs = projectConversations(im.all());
+  const ivy = convs.find((c) => c.customer === "Inbox Ivy")!;
+  check("conversation merges inbound + outbound in time order", ivy.messages.length === 3 && ivy.messages[0].direction === "in" && ivy.messages[1].direction === "out");
+  check("thread with last inbound message is 'waiting'", ivy.waiting === true);
+  const qasim = convs.find((c) => c.customer === "Quiet Qasim")!;
+  check("a customer texting STOP is flagged opted-out", qasim.optedOut === true);
+  check("opted-out customers are excluded from the waiting count", waitingCount(convs) === 1);
+  check("threads sort newest-activity first", convs[0].lastAt >= convs[convs.length - 1].lastAt);
 }
 
 console.log("\nBilling entitlement (vendor productization):");
