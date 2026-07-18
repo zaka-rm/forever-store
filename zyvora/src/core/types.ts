@@ -181,6 +181,16 @@ export interface CustomerActivityCompleted {
   at: number;
 }
 
+/** A broadcast sent to a customer segment — recorded so its lift can be measured later. */
+export interface CampaignSent {
+  campaignId: string;
+  segment: string;      // the RFM segment (or "all") targeted
+  customers: string[];  // exact recipients at send time
+  channel: string;      // whatsapp | sms
+  message: string;
+  at: number;
+}
+
 /** "Deleting" a customer = archiving them (append-only): their transactions stay, they leave the list. */
 export interface CustomerArchived {
   customer: string;

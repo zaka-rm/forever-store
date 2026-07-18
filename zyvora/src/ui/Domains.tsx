@@ -21,10 +21,11 @@ import {
   type CustomerTag,
 } from "../core/projections";
 import { messagingConfigured, sendMessage } from "../core/messaging";
-import { SEGMENT_LABEL, SEGMENT_TONE, computeRfm, refillDueList, referralLeaderboard, reorderDueList } from "../core/retention";
+import { SEGMENT_LABEL, SEGMENT_TONE, computeRfm, refillDueList, referralLeaderboard, reorderDueList, type RfmSegment } from "../core/retention";
+import { measureCampaign, projectCampaigns } from "../core/campaigns";
 import { storyForCustomer } from "../core/story";
 import { toast } from "./toast";
-import { appPrompt } from "./dialog";
+import { appConfirm, appPrompt } from "./dialog";
 import type { Product, WorkspaceState } from "../core/types";
 import { FinanceTools } from "./FinanceTools";
 import { PageHeader } from "./PageHeader";
@@ -602,6 +603,8 @@ export function CustomersView({ state, memory }: { state: WorkspaceState; memory
         </>
       )}
 
+      <CampaignPanel state={state} memory={memory} rfm={rfm} customers={customers} contacts={contacts} />
+
       {referrers.length > 0 && (
         <section className="card" style={{ marginTop: 18 }} aria-labelledby="referrers-title">
           <div className="badge-row">
@@ -823,6 +826,152 @@ export function CustomersView({ state, memory }: { state: WorkspaceState; memory
         </details>
       )}
     </div>
+  );
+}
+
+/**
+ * Segment broadcast + measured lift — send one message to an RFM segment, then
+ * measure the real order lift (before vs after) once the window elapses.
+ */
+function CampaignPanel({
+  state, memory, rfm, customers, contacts,
+}: {
+  state: WorkspaceState; memory: MemoryStore;
+  rfm: Map<string, { segment: RfmSegment }>;
+  customers: { name: string }[];
+  contacts: Map<string, Contact>;
+}) {
+  const [open, setOpen] = useState(false);
+  const [segment, setSegment] = useState<RfmSegment>("at-risk");
+  const [message, setMessage] = useState("");
+  const [sending, setSending] = useState(false);
+
+  // Live campaign results (measured lift), newest first.
+  const results = projectCampaigns(memory.all()).map((c) => measureCampaign(state, c));
+
+  const segCounts = new Map<RfmSegment, number>();
+  for (const c of customers) {
+    const seg = rfm.get(c.name)?.segment;
+    if (seg) segCounts.set(seg, (segCounts.get(seg) ?? 0) + 1);
+  }
+  const segments = [...segCounts.keys()];
+  const recipients = customers.filter((c) => rfm.get(c.name)?.segment === segment);
+  const reachable = recipients.filter((c) => contacts.get(c.name)?.phone?.trim());
+
+  const DEFAULTS: Partial<Record<RfmSegment, string>> = {
+    "at-risk": "Hi! We've missed you — here's 10% off your next order this week as a thank-you for being with us. 🌿",
+    "cant-lose": "You're one of our most valued customers — we'd love to prepare something special for you this week.",
+    champion: "Thank you for being a loyal customer! A little something extra is waiting on your next order. 🌿",
+    hibernating: "It's been a while! We'd love to welcome you back — reply and we'll sort out your favourites.",
+  };
+
+  const send = async () => {
+    const body = (message.trim() || DEFAULTS[segment] || "").trim();
+    if (!body || reachable.length === 0) return;
+    const ok = await appConfirm({
+      title: `Send to ${reachable.length} ${SEGMENT_LABEL[segment]} customer${reachable.length > 1 ? "s" : ""}?`,
+      body: `This sends the same WhatsApp message to everyone in the segment with a saved phone. ZYVORA will then measure the order lift over the next 14 days.`,
+      confirmLabel: `Send ${reachable.length} message${reachable.length > 1 ? "s" : ""}`,
+    });
+    if (!ok) return;
+    setSending(true);
+    let sent = 0;
+    for (const c of reachable) {
+      const phone = contacts.get(c.name)!.phone!.trim();
+      const r = await sendMessage(phone, body, "whatsapp");
+      if (r.ok) {
+        sent++;
+        memory.append("fact", "customer_activity_logged", {
+          activityId: crypto.randomUUID(), customer: c.name, kind: "message",
+          note: `Campaign (${SEGMENT_LABEL[segment]}): ${body}`, at: Date.now(),
+        });
+      }
+    }
+    memory.append("fact", "campaign_sent", {
+      campaignId: crypto.randomUUID(), segment, customers: reachable.map((c) => c.name),
+      channel: "whatsapp", message: body, at: Date.now(),
+    });
+    setSending(false);
+    setMessage("");
+    setOpen(false);
+    toast(sent > 0 ? `Campaign sent to ${sent} customer${sent > 1 ? "s" : ""} — lift will be measured` : "Campaign recorded (no messages delivered — check messaging setup)");
+  };
+
+  if (segments.length === 0 && results.length === 0) return null;
+
+  return (
+    <section className="card" style={{ marginTop: 18 }} aria-labelledby="campaign-title">
+      <div className="section-heading">
+        <div>
+          <h2 id="campaign-title" style={{ margin: 0 }}>Segment broadcasts</h2>
+          <p style={{ margin: "2px 0 0" }}>Message a whole segment, then see the real order lift — marketing with receipts.</p>
+        </div>
+        {segments.length > 0 && (
+          <button className="btn subtle mini" onClick={() => setOpen((v) => !v)}>{open ? "Close" : "New broadcast"}</button>
+        )}
+      </div>
+
+      {open && (
+        <div style={{ marginTop: 12 }}>
+          <div className="form-row">
+            <div>
+              <label htmlFor="camp-seg">Segment</label>
+              <select id="camp-seg" value={segment} onChange={(e) => setSegment(e.target.value as RfmSegment)}>
+                {segments.map((s) => (
+                  <option key={s} value={s}>{SEGMENT_LABEL[s]} ({segCounts.get(s)})</option>
+                ))}
+              </select>
+            </div>
+            <div style={{ alignSelf: "center", paddingTop: 18 }}>
+              <span className="confidence-note" style={{ margin: 0 }}>
+                {recipients.length} in segment · {reachable.length} reachable by WhatsApp
+              </span>
+            </div>
+          </div>
+          <textarea
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            placeholder={DEFAULTS[segment] || "Write your message…"}
+            aria-label="Broadcast message"
+            style={{ width: "100%", minHeight: 78, border: "1px solid var(--line)", borderRadius: 9, padding: 10, background: "var(--surface)", resize: "vertical" }}
+          />
+          <div className="row-actions" style={{ marginTop: 10 }}>
+            <button className="btn" disabled={sending || reachable.length === 0} onClick={() => void send()}>
+              {sending ? "Sending…" : `Send to ${reachable.length} customer${reachable.length === 1 ? "" : "s"}`}
+            </button>
+            {reachable.length === 0 && <span className="confidence-note" style={{ margin: 0 }}>No one in this segment has a saved phone.</span>}
+          </div>
+        </div>
+      )}
+
+      {results.length > 0 && (
+        <div className="table-scroll" style={{ marginTop: 14 }}>
+          <table className="records">
+            <thead>
+              <tr><th>Sent</th><th>Segment</th><th>Reach</th><th>Orders before → after</th><th>Revenue lift</th></tr>
+            </thead>
+            <tbody>
+              {results.map((r) => {
+                const lift = r.revenueAfter - r.revenueBefore;
+                return (
+                  <tr key={r.campaignId}>
+                    <td className="muted">{dateLabel(r.at)}</td>
+                    <td>{SEGMENT_LABEL[r.segment as RfmSegment] ?? r.segment}</td>
+                    <td className="muted">{r.recipients}</td>
+                    <td>{r.ordersBefore} → {r.ordersAfter}{!r.ready && <span className="muted"> (measuring…)</span>}</td>
+                    <td>
+                      <span className={`tone ${lift > 0 ? "success" : lift < 0 ? "critical" : "info"}`}>
+                        {lift >= 0 ? "+" : ""}{formatMoney(lift)}
+                      </span>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+      )}
+    </section>
   );
 }
 

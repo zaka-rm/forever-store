@@ -7,6 +7,7 @@ import { entitlement } from "../src/core/entitlement";
 import { computeRfm, refillDueList, reorderDueList, upsellSuggestion } from "../src/core/retention";
 import { refusalRisk } from "../src/core/risk";
 import { businessHealth } from "../src/core/health";
+import { measureCampaign, projectCampaigns } from "../src/core/campaigns";
 import { courierScorecard, referralLeaderboard } from "../src/core/retention";
 import { storyForCustomer, storyForOrder } from "../src/core/story";
 import { restageInLang, stageAction } from "../src/core/actions";
@@ -513,6 +514,36 @@ console.log("\nHealth score, courier scorecard & referrals (v0.30):");
   const sara = board.find((r) => r.name === "Sara H.");
   check("referral leaderboard groups referred customers by referrer", sara !== undefined && sara.referredCount === 2);
   check("referral leaderboard sums the revenue advocates bring", sara !== undefined && sara.referredRevenue >= 0);
+}
+
+console.log("\nSegment broadcasts with measured lift (v0.31):");
+{
+  const now = Date.now();
+  const campAt = now - 5 * 86400000; // sent 5 days ago
+  // One order BEFORE the send, two AFTER — from the same recipient.
+  const mkOrder = (id: string, whenOffsetDays: number) => {
+    const t = campAt + whenOffsetDays * 86400000;
+    memory.append("fact", "order_created", {
+      orderId: id, customer: "Campaign Cathy",
+      lines: [{ productId: "P-002", productName: "Oak Serving Board", qty: 1, unitPrice: 24, unitCost: 12 }],
+      discount: 0, shippingCharged: 0, shippingCost: 0, codFee: 0, packagingCost: 0, createdAt: t,
+    }, t);
+  };
+  mkOrder("camp-before", -3);
+  mkOrder("camp-after1", 1);
+  mkOrder("camp-after2", 3);
+  memory.append("fact", "campaign_sent", {
+    campaignId: "camp-1", segment: "at-risk", customers: ["Campaign Cathy"],
+    channel: "whatsapp", message: "come back!", at: campAt,
+  }, campAt);
+
+  const camps = projectCampaigns(memory.all());
+  check("campaign_sent projects with its recipients", camps.some((c) => c.campaignId === "camp-1" && c.customers.includes("Campaign Cathy")));
+
+  const res = measureCampaign(projectState(memory.all()), camps.find((c) => c.campaignId === "camp-1")!, now, 14);
+  check("lift counts recipient orders before vs after the send", res.ordersBefore === 1 && res.ordersAfter === 2);
+  check("lift measures revenue in the after window", res.revenueAfter > res.revenueBefore);
+  check("campaign not ready until the window fully elapses", res.ready === false);
 }
 
 console.log("\nBilling entitlement (vendor productization):");

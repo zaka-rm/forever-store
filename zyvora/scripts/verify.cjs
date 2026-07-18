@@ -1540,6 +1540,36 @@ function businessHealth(state2, now = Date.now()) {
   return { score, band, components, ready: true };
 }
 
+// src/core/campaigns.ts
+function projectCampaigns(events) {
+  return events.filter((e) => e.stream === "fact" && e.type === "campaign_sent").map((e) => e.payload).sort((a, b) => b.at - a.at);
+}
+function measureCampaign(state2, campaign, now = Date.now(), windowDays = 14) {
+  const recipients = new Set(campaign.customers);
+  const w = windowDays * DAY2;
+  const beforeStart = campaign.at - w;
+  const afterEnd = campaign.at + w;
+  const inWindow = (from, to) => state2.orders.filter(
+    (o) => recipients.has(o.customer) && o.status !== "cancelled" && o.createdAt >= from && o.createdAt < to
+  );
+  const before = inWindow(beforeStart, campaign.at);
+  const after = inWindow(campaign.at, Math.min(afterEnd, now));
+  return {
+    campaignId: campaign.campaignId,
+    segment: campaign.segment,
+    channel: campaign.channel,
+    message: campaign.message,
+    at: campaign.at,
+    recipients: campaign.customers.length,
+    windowDays,
+    ordersBefore: before.length,
+    ordersAfter: after.length,
+    revenueBefore: before.reduce((s, o) => s + orderRevenue(o), 0),
+    revenueAfter: after.reduce((s, o) => s + orderRevenue(o), 0),
+    ready: now >= afterEnd
+  };
+}
+
 // src/core/story.ts
 var cap = (s) => s.charAt(0).toUpperCase() + s.slice(1);
 function describe(e) {
@@ -3649,6 +3679,42 @@ console.log("\nHealth score, courier scorecard & referrals (v0.30):");
   const sara2 = board.find((r) => r.name === "Sara H.");
   check("referral leaderboard groups referred customers by referrer", sara2 !== void 0 && sara2.referredCount === 2);
   check("referral leaderboard sums the revenue advocates bring", sara2 !== void 0 && sara2.referredRevenue >= 0);
+}
+console.log("\nSegment broadcasts with measured lift (v0.31):");
+{
+  const now = Date.now();
+  const campAt = now - 5 * 864e5;
+  const mkOrder = (id, whenOffsetDays) => {
+    const t = campAt + whenOffsetDays * 864e5;
+    memory.append("fact", "order_created", {
+      orderId: id,
+      customer: "Campaign Cathy",
+      lines: [{ productId: "P-002", productName: "Oak Serving Board", qty: 1, unitPrice: 24, unitCost: 12 }],
+      discount: 0,
+      shippingCharged: 0,
+      shippingCost: 0,
+      codFee: 0,
+      packagingCost: 0,
+      createdAt: t
+    }, t);
+  };
+  mkOrder("camp-before", -3);
+  mkOrder("camp-after1", 1);
+  mkOrder("camp-after2", 3);
+  memory.append("fact", "campaign_sent", {
+    campaignId: "camp-1",
+    segment: "at-risk",
+    customers: ["Campaign Cathy"],
+    channel: "whatsapp",
+    message: "come back!",
+    at: campAt
+  }, campAt);
+  const camps = projectCampaigns(memory.all());
+  check("campaign_sent projects with its recipients", camps.some((c) => c.campaignId === "camp-1" && c.customers.includes("Campaign Cathy")));
+  const res = measureCampaign(projectState(memory.all()), camps.find((c) => c.campaignId === "camp-1"), now, 14);
+  check("lift counts recipient orders before vs after the send", res.ordersBefore === 1 && res.ordersAfter === 2);
+  check("lift measures revenue in the after window", res.revenueAfter > res.revenueBefore);
+  check("campaign not ready until the window fully elapses", res.ready === false);
 }
 console.log("\nBilling entitlement (vendor productization):");
 {
