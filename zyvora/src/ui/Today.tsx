@@ -9,6 +9,7 @@
  */
 import { useState } from "react";
 import { coachFor, pendingOutcomeReviews, type DecisionMemory } from "../core/coach";
+import { BAND_TONE, businessHealth, type HealthScore } from "../core/health";
 import { formatMoney, stateOfThings } from "../core/engine";
 import type { MemoryStore } from "../core/memory";
 import type { Insight, WorkspaceState } from "../core/types";
@@ -79,6 +80,45 @@ const DATE_FMT = new Intl.DateTimeFormat(undefined, {
   weekday: "long", day: "numeric", month: "long",
 });
 
+/** Business health — one explainable 0–100 heartbeat; each component clicks open to its reason. */
+function HealthStrip({ health }: { health: HealthScore }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className="card interactive" style={{ marginBottom: 20 }}>
+      <button
+        onClick={() => setOpen((v) => !v)}
+        aria-expanded={open}
+        style={{ display: "flex", alignItems: "center", gap: 16, width: "100%", background: "none", border: "none", textAlign: "left", padding: 0, cursor: "pointer" }}
+      >
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", minWidth: 62 }}>
+          <span style={{ fontSize: 30, fontWeight: 720, letterSpacing: "-0.02em", lineHeight: 1 }}>{health.score}</span>
+          <span className={`tone ${BAND_TONE[health.band]}`} style={{ marginTop: 4 }}>{health.band}</span>
+        </div>
+        <div style={{ flex: 1 }}>
+          <p className="claim" style={{ fontSize: 15, margin: 0 }}>Business health</p>
+          <p className="reasoning" style={{ margin: "2px 0 0" }}>
+            Weakest right now: <strong>{health.components[0].label}</strong> ({health.components[0].score}). {open ? "Hide the breakdown." : "See the full breakdown."}
+          </p>
+        </div>
+      </button>
+      {open && (
+        <table className="evidence-table" style={{ marginTop: 12 }}>
+          <tbody>
+            {health.components.map((c) => (
+              <tr key={c.key}>
+                <td style={{ width: "34%" }}>
+                  <span className={`tone ${c.score >= 70 ? "success" : c.score >= 45 ? "attention" : "critical"}`}>{c.label} · {c.score}</span>
+                </td>
+                <td>{c.detail}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
+    </div>
+  );
+}
+
 export function Today({ workspaceName, state, insights, onDecide, memory }: Props) {
   const needsJudgment = insights.filter((i) => i.guidance);
   const worthKnowing = insights.filter((i) => !i.guidance);
@@ -87,6 +127,7 @@ export function Today({ workspaceName, state, insights, onDecide, memory }: Prop
   const s = stateOfThings(state);
   const events = memory?.all() ?? [];
   const reviews = memory ? pendingOutcomeReviews(events) : [];
+  const health = businessHealth(state);
   const empty =
     state.invoices.length === 0 &&
     state.products.length === 0 &&
@@ -110,6 +151,8 @@ export function Today({ workspaceName, state, insights, onDecide, memory }: Prop
           {surfaced.length === 0 ? "All clear" : "Judgment requested"}
         </span>
       </div>
+
+      {!empty && health.ready && <HealthStrip health={health} />}
 
       {empty && (
         <div className="quiet">

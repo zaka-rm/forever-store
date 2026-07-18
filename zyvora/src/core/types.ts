@@ -115,6 +115,8 @@ export interface OrderCreated {
   /** Acquisition channel (instagram, tiktok, whatsapp, referral…) — captured now so
    *  LTV-by-channel analytics are possible later; history can't be backfilled. */
   source?: string;
+  /** Which courier carried this order — powers the courier scorecard. */
+  courier?: string;
 }
 
 export interface OrderStatusChanged {
@@ -158,6 +160,8 @@ export interface CustomerContactUpdated {
   phone?: string;
   city?: string;
   notes?: string;
+  /** Who introduced this customer — powers referral tracking (word-of-mouth is the funnel). */
+  referredBy?: string;
   at: number;
 }
 

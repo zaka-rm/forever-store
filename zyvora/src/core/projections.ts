@@ -765,7 +765,7 @@ export function projectCustomerProfiles(
 
 // ---------- CRM: contacts + activities (CAP-000007) — folded from events ----------
 
-export interface Contact { phone?: string; city?: string; notes?: string }
+export interface Contact { phone?: string; city?: string; notes?: string; referredBy?: string }
 export interface Activity {
   activityId: string;
   customer: string;
@@ -787,6 +787,7 @@ export function projectContacts(events: readonly MemoryEvent[]): Map<string, Con
         phone: (p.phone as string) || cur.phone,
         city: (p.city as string) || cur.city,
         notes: p.notes !== undefined ? (p.notes as string) : cur.notes,
+        referredBy: (p.referredBy as string) || cur.referredBy,
       });
     }
   }

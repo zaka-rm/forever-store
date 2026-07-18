@@ -152,6 +152,7 @@ export function OrdersView({ state, memory, workspaceName }: { state: WorkspaceS
   const [promoMsg, setPromoMsg] = useState<string | null>(null);
   const [expanded, setExpanded] = useState<string | null>(null);
   const [source, setSource] = useState("");
+  const [courier, setCourier] = useState("");
   const [reading, setReading] = useState(false);
   const [tab, setTab] = useState<OrderTab>("all");
   const [q, setQ] = useState("");
@@ -304,9 +305,11 @@ export function OrdersView({ state, memory, workspaceName }: { state: WorkspaceS
       createdAt: Date.now(),
       ...(appliedPromo ? { promoCode: appliedPromo } : {}),
       ...(source ? { source } : {}),
+      ...(courier.trim() ? { courier: courier.trim() } : {}),
     });
     setCustomer("");
     setSource("");
+    setCourier("");
     setLines([]);
     setDiscount("0"); setShipCharged("0"); setShipCost("0"); setCodFee("0"); setPackaging("0");
     clearPromo();
@@ -392,6 +395,13 @@ export function OrdersView({ state, memory, workspaceName }: { state: WorkspaceS
             <option value="repeat">Repeat customer</option>
             <option value="other">Other</option>
           </select>
+        </div>
+        <div>
+          <label htmlFor="order-courier">Courier</label>
+          <input id="order-courier" value={courier} onChange={(e) => setCourier(e.target.value)} placeholder="e.g. Sendit" list="courier-list" style={{ width: 130 }} />
+          <datalist id="courier-list">
+            {[...new Set(state.orders.map((o) => o.courier).filter(Boolean))].map((c) => <option key={c} value={c as string} />)}
+          </datalist>
         </div>
         <div>
           <label htmlFor="order-product">Product</label>

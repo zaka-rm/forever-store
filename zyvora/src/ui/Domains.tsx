@@ -21,7 +21,7 @@ import {
   type CustomerTag,
 } from "../core/projections";
 import { messagingConfigured, sendMessage } from "../core/messaging";
-import { SEGMENT_LABEL, SEGMENT_TONE, computeRfm, refillDueList, reorderDueList } from "../core/retention";
+import { SEGMENT_LABEL, SEGMENT_TONE, computeRfm, refillDueList, referralLeaderboard, reorderDueList } from "../core/retention";
 import { storyForCustomer } from "../core/story";
 import { toast } from "./toast";
 import { appPrompt } from "./dialog";
@@ -456,6 +456,7 @@ export function CustomersView({ state, memory }: { state: WorkspaceState; memory
   const rfm = computeRfm(customers, now);
   const dueList = reorderDueList(allCustomers, state.archivedCustomers, now);
   const refills = refillDueList(state, state.archivedCustomers, now);
+  const referrers = referralLeaderboard(contacts, allCustomers);
 
   return (
     <div>
@@ -599,6 +600,30 @@ export function CustomersView({ state, memory }: { state: WorkspaceState; memory
         </>
         )}
         </>
+      )}
+
+      {referrers.length > 0 && (
+        <section className="card" style={{ marginTop: 18 }} aria-labelledby="referrers-title">
+          <div className="badge-row">
+            <span className="badge">Referral leaderboard</span>
+            <span className="badge domain">word-of-mouth</span>
+          </div>
+          <p className="claim" id="referrers-title" style={{ fontSize: 15.5 }}>Who brings you business — your advocates worth thanking.</p>
+          <div className="table-scroll">
+            <table className="records">
+              <tbody>
+                {referrers.slice(0, 6).map((r) => (
+                  <tr key={r.name}>
+                    <td>{r.name}</td>
+                    <td><span className="tone success">{r.referredCount} referral{r.referredCount > 1 ? "s" : ""}</span></td>
+                    <td className="muted">{r.referredNames.slice(0, 3).join(", ")}{r.referredNames.length > 3 ? "…" : ""}</td>
+                    <td className="muted">{formatMoney(r.referredRevenue)} brought in</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
       )}
 
       {refills.length > 0 && (
@@ -808,6 +833,7 @@ function CustomerCrm({
   const [phone, setPhone] = useState(contact.phone ?? "");
   const [city, setCity] = useState(contact.city ?? "");
   const [notes, setNotes] = useState(contact.notes ?? "");
+  const [referredBy, setReferredBy] = useState(contact.referredBy ?? "");
   const [actNote, setActNote] = useState("");
   const [dueDays, setDueDays] = useState("");
   const [msg, setMsg] = useState("");
@@ -824,7 +850,7 @@ function CustomerCrm({
   };
 
   const saveContact = () => {
-    memory.append("fact", "customer_contact_updated", { customer, phone: phone.trim(), city: city.trim(), notes: notes.trim(), at: Date.now() });
+    memory.append("fact", "customer_contact_updated", { customer, phone: phone.trim(), city: city.trim(), notes: notes.trim(), referredBy: referredBy.trim(), at: Date.now() });
   };
   const logActivity = () => {
     if (!actNote.trim()) return;
@@ -842,6 +868,7 @@ function CustomerCrm({
       <div className="form-row">
         <div><label htmlFor="crm-phone">Phone</label><input id="crm-phone" value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="Phone" autoComplete="tel" style={{ width: 150 }} /></div>
         <div><label htmlFor="crm-city">City</label><input id="crm-city" value={city} onChange={(e) => setCity(e.target.value)} placeholder="City" autoComplete="address-level2" style={{ width: 130 }} /></div>
+        <div><label htmlFor="crm-referral">Referred by</label><input id="crm-referral" value={referredBy} onChange={(e) => setReferredBy(e.target.value)} placeholder="Who introduced them" style={{ width: 150 }} /></div>
         <div style={{ flex: 1 }}><label htmlFor="crm-notes">Notes</label><input id="crm-notes" value={notes} onChange={(e) => setNotes(e.target.value)} placeholder="Anything worth remembering" style={{ width: "100%" }} /></div>
         <button className="btn subtle" onClick={saveContact}>Save contact</button>
       </div>

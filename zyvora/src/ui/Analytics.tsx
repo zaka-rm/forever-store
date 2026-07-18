@@ -17,6 +17,7 @@ import {
   orderNetProfit,
   orderRevenue,
 } from "../core/projections";
+import { courierScorecard } from "../core/retention";
 import type { Order, WorkspaceState } from "../core/types";
 import { PageHeader } from "./PageHeader";
 
@@ -295,6 +296,43 @@ function Forecast({ state }: { state: WorkspaceState }) {
   );
 }
 
+/** Courier scorecard — delivery rate, cash-hold days, and cost per courier. */
+function CourierScorecard({ state }: { state: WorkspaceState }) {
+  const rows = courierScorecard(state);
+  if (rows.length === 0) return null;
+  return (
+    <div className="card">
+      <p className="claim" style={{ fontSize: 15 }}>Courier scorecard</p>
+      <p className="confidence-note" style={{ marginTop: 0 }}>
+        From orders you tagged with a courier. Delivery rate and how long each holds your COD cash — your negotiation ammunition.
+      </p>
+      <div className="table-scroll">
+        <table className="records">
+          <thead>
+            <tr><th>Courier</th><th>Delivery rate</th><th>Refused</th><th>Avg days to remit</th><th>Shipping cost</th></tr>
+          </thead>
+          <tbody>
+            {rows.map((r) => (
+              <tr key={r.courier}>
+                <td>{r.courier}</td>
+                <td>
+                  <span className={`tone ${r.deliveryRate >= 0.85 ? "success" : r.deliveryRate >= 0.7 ? "attention" : "critical"}`}>
+                    {Math.round(r.deliveryRate * 100)}%
+                  </span>{" "}
+                  <span className="muted">({r.delivered}/{r.settled})</span>
+                </td>
+                <td className="muted">{r.refused}</td>
+                <td className="muted">{r.avgRemitDays === null ? "—" : `~${Math.round(r.avgRemitDays)}d`}</td>
+                <td className="muted">{formatMoney(r.shippingCost)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+}
+
 // ---------------------------------------------------------------- The view ---
 
 export function AnalyticsView({ state }: { state: WorkspaceState }) {
@@ -422,6 +460,8 @@ export function AnalyticsView({ state }: { state: WorkspaceState }) {
               </p>
             </div>
           )}
+
+          <CourierScorecard state={state} />
 
           <Forecast state={state} />
 

@@ -479,7 +479,8 @@ function projectContacts(events) {
       m2.set(String(p2.customer), {
         phone: p2.phone || cur.phone,
         city: p2.city || cur.city,
-        notes: p2.notes !== void 0 ? p2.notes : cur.notes
+        notes: p2.notes !== void 0 ? p2.notes : cur.notes,
+        referredBy: p2.referredBy || cur.referredBy
       });
     }
   }
@@ -606,6 +607,53 @@ function refillDueList(state2, archived, now = Date.now(), windowDays = 5) {
   }
   return out.sort((a, b) => Math.abs(a.daysPastEmpty) - Math.abs(b.daysPastEmpty));
 }
+function courierScorecard(state2, now = Date.now()) {
+  const groups = /* @__PURE__ */ new Map();
+  for (const o of state2.orders) {
+    if (!o.courier) continue;
+    const arr = groups.get(o.courier) ?? [];
+    arr.push(o);
+    groups.set(o.courier, arr);
+  }
+  const out = [];
+  for (const [courier, orders] of groups) {
+    const settledOrders = orders.filter((o) => o.status === "delivered" || o.status === "refused" || o.status === "returned");
+    const delivered = orders.filter((o) => o.status === "delivered");
+    const refused = orders.filter((o) => o.status === "refused");
+    const remitGaps = delivered.filter((o) => o.deliveredAt && o.cashReceivedAt).map((o) => (o.cashReceivedAt - o.deliveredAt) / DAY2);
+    out.push({
+      courier,
+      settled: settledOrders.length,
+      delivered: delivered.length,
+      refused: refused.length,
+      deliveryRate: settledOrders.length ? delivered.length / settledOrders.length : 0,
+      avgRemitDays: remitGaps.length ? remitGaps.reduce((s, v) => s + v, 0) / remitGaps.length : null,
+      shippingCost: orders.reduce((s, o) => s + o.shippingCost, 0)
+    });
+  }
+  return out.sort((a, b) => b.deliveryRate - a.deliveryRate);
+}
+function referralLeaderboard(contacts2, profiles2) {
+  const revByName = new Map(profiles2.map((p2) => [p2.name, p2.lifetimeRevenue]));
+  const groups = /* @__PURE__ */ new Map();
+  for (const [customer, c] of contacts2) {
+    const ref = c.referredBy?.trim();
+    if (!ref) continue;
+    const arr = groups.get(ref) ?? [];
+    arr.push(customer);
+    groups.set(ref, arr);
+  }
+  const out = [];
+  for (const [name, referred] of groups) {
+    out.push({
+      name,
+      referredCount: referred.length,
+      referredNames: referred,
+      referredRevenue: referred.reduce((s, n) => s + (revByName.get(n) ?? 0), 0)
+    });
+  }
+  return out.sort((a, b) => b.referredCount - a.referredCount || b.referredRevenue - a.referredRevenue);
+}
 function upsellSuggestion(state2, basketProductIds, minTimesTogether = 2) {
   if (basketProductIds.length === 0) return null;
   const inBasket = new Set(basketProductIds);
@@ -685,241 +733,6 @@ function money(amount) {
   } catch {
     return `${Math.round(amount).toLocaleString()} ${activeCurrency}`;
   }
-}
-
-// src/core/story.ts
-var cap = (s) => s.charAt(0).toUpperCase() + s.slice(1);
-function describe(e) {
-  const p2 = e.payload;
-  switch (e.type) {
-    case "order_created": {
-      const lines = p2.lines ?? [];
-      return `Order created \u2014 ${lines.map((l) => `${l.qty}\xD7 ${l.productName}`).join(", ")}${p2.source ? ` \xB7 via ${p2.source}` : ""}`;
-    }
-    case "order_status_changed":
-      return `Status \u2192 ${cap(String(p2.status))}`;
-    case "order_cash_received":
-      return "Courier remitted the cash";
-    case "invoice_issued":
-      return `Invoice issued \u2014 ${money(Number(p2.amount))}, due in ${p2.dueDays} days`;
-    case "invoice_paid":
-      return "Invoice paid";
-    case "customer_contact_updated":
-      return `Contact updated${p2.phone ? ` \u2014 phone ${p2.phone}` : ""}${p2.city ? ` \xB7 ${p2.city}` : ""}`;
-    case "customer_activity_logged":
-      return `${cap(String(p2.kind))}: ${String(p2.note).slice(0, 120)}`;
-    case "customer_activity_completed":
-      return "Follow-up marked done";
-    case "customer_archived":
-      return "Archived (hidden from lists; history kept)";
-    case "customer_restored":
-      return "Restored from archive";
-    default:
-      return null;
-  }
-}
-function storyForOrder(events, orderId) {
-  return events.filter((e) => e.stream === "fact" && e.payload.orderId === orderId).map((e) => ({ ts: e.ts, stream: e.stream, what: describe(e) ?? e.type })).sort((a, b) => a.ts - b.ts);
-}
-function storyForCustomer(events, customer, max = 12) {
-  const theirOrders = new Set(
-    events.filter((e) => e.type === "order_created" && e.payload.customer === customer).map((e) => String(e.payload.orderId))
-  );
-  return events.filter((e) => {
-    if (e.stream !== "fact") return false;
-    const p2 = e.payload;
-    return p2.customer === customer || p2.orderId !== void 0 && theirOrders.has(p2.orderId);
-  }).map((e) => ({ ts: e.ts, stream: e.stream, what: describe(e) ?? e.type })).sort((a, b) => b.ts - a.ts).slice(0, max);
-}
-
-// src/core/actions.ts
-var INTENT_WORDS = {
-  "payment-reminder": /remind|reminder|chase|collect|pay(?!.*cod)|overdue|relance|rappel|فلوس|خلص/i,
-  winback: /win.?back|re-?engag|come back|miss|gone quiet|silent|recup|récup|reconquérir/i,
-  "reorder-nudge": /reorder|nudge|restock them|order again|racheter|recommander/i,
-  "cod-confirmation": /confirm/i,
-  "thank-you": /thank|merci|شكر/i
-};
-var LANG_WORDS = [
-  ["fr", /french|français|francais|en fr/i],
-  ["ar", /arabic|darija|عرب|بالعربية|arabe/i]
-];
-function matchCustomer(question, names) {
-  const q = question.toLowerCase();
-  let best = null;
-  for (const n of names) {
-    if (q.includes(n.toLowerCase()) && (!best || n.length > best.length)) best = n;
-  }
-  return best;
-}
-function detectIntent(question) {
-  const wantsAction = /draft|write|send|message|sms|whatsapp|rédige|écris|envoie|صياغة|اكتب/i.test(question);
-  for (const [intent, re] of Object.entries(INTENT_WORDS)) {
-    if (re.test(question) && (wantsAction || intent === "payment-reminder" || intent === "winback")) return intent;
-  }
-  return null;
-}
-function detectLang(question) {
-  for (const [lang, re] of LANG_WORDS) if (re.test(question)) return lang;
-  return "en";
-}
-function paymentBody(lang, name, amount, days) {
-  if (lang === "fr")
-    return `Bonjour ${name}, un petit rappel amical : votre facture de ${amount} est en retard de ${days} jour${days > 1 ? "s" : ""}. Pouvez-vous nous indiquer quand pr\xE9voir le r\xE8glement ? Merci beaucoup !`;
-  if (lang === "ar")
-    return `\u0633\u0644\u0627\u0645 ${name}\u060C \u063A\u064A\u0631 \u062A\u0630\u0643\u064A\u0631 \u0628\u0633\u064A\u0637: \u0627\u0644\u0641\u0627\u062A\u0648\u0631\u0629 \u062F\u064A\u0627\u0644 ${amount} \u062A\u0639\u062F\u0651\u0649 \u0623\u062C\u0644\u0647\u0627 \u0628 ${days} \u064A\u0648\u0645. \u0648\u0627\u0634 \u0645\u0645\u0643\u0646 \u062A\u062E\u0628\u0631\u0646\u0627 \u0641\u0648\u0642\u0627\u0634 \u0646\u062A\u0648\u0642\u0639\u0648 \u0627\u0644\u062E\u0644\u0627\u0635\u061F \u0634\u0643\u0631\u0627\u064B \u0628\u0632\u0627\u0641!`;
-  return `Hello ${name}, a friendly reminder: your invoice of ${amount} is ${days} day${days > 1 ? "s" : ""} past due. Could you let us know when to expect payment? Thank you!`;
-}
-function winbackBody(lang, name, days) {
-  if (lang === "fr")
-    return `Bonjour ${name} ! \xC7a fait environ ${days} jours qu'on n'a pas eu de vos nouvelles \u2014 on esp\xE8re que tout va bien. Besoin de quelque chose cette semaine ? On peut vous pr\xE9parer votre commande habituelle. \u{1F33F}`;
-  if (lang === "ar")
-    return `\u0633\u0644\u0627\u0645 ${name}! \u0634\u062D\u0627\u0644 \u0647\u0627\u062F\u064A \u0645\u0627 \u062A\u0648\u0627\u0635\u0644\u0646\u0627\u0634\u060C \u062A\u0642\u0631\u064A\u0628\u0627\u064B ${days} \u064A\u0648\u0645 \u2014 \u0646\u062A\u0645\u0646\u0627\u0648 \u062A\u0643\u0648\u0646\u0648 \u0628\u062E\u064A\u0631. \u0648\u0627\u0634 \u0645\u062D\u062A\u0627\u062C\u064A\u0646 \u0634\u064A \u062D\u0627\u062C\u0629 \u0647\u0627\u062F \u0627\u0644\u0633\u064A\u0645\u0627\u0646\u0629\u061F \u0646\u0642\u062F\u0631\u0648 \u0646\u0648\u062C\u062F\u0648 \u0644\u064A\u0643\u0645 \u0627\u0644\u0637\u0644\u0628 \u0627\u0644\u0645\u0639\u062A\u0627\u062F. \u{1F33F}`;
-  return `Hello ${name}! It's been about ${days} days since we last heard from you \u2014 hope all is well. Anything you need this week? We can prepare your usual order. \u{1F33F}`;
-}
-function reorderBody(lang, name, days) {
-  if (lang === "fr")
-    return `Bonjour ${name} ! Votre dernier achat remonte \xE0 ~${days} jours \u2014 le moment id\xE9al pour renouveler. Dites-nous ce qu'il vous faut et on pr\xE9pare tout. \u{1F33F}`;
-  if (lang === "ar")
-    return `\u0633\u0644\u0627\u0645 ${name}! \u0622\u062E\u0631 \u0637\u0644\u0628 \u062F\u064A\u0627\u0644\u0643\u0645 \u0643\u0627\u0646 \u0642\u0628\u0644 ~${days} \u064A\u0648\u0645 \u2014 \u0627\u0644\u0648\u0642\u062A \u0645\u0646\u0627\u0633\u0628 \u0628\u0627\u0634 \u062A\u062C\u062F\u062F\u0648. \u0642\u0648\u0644\u0648 \u0644\u064A\u0646\u0627 \u0623\u0634\u0646\u0648 \u062E\u0627\u0635\u0643\u0645 \u0648 \u0646\u0648\u062C\u062F\u0648 \u0643\u0644\u0634\u064A. \u{1F33F}`;
-  return `Hello ${name}! Your last order was ~${days} days ago \u2014 a good moment to top up. Tell us what you need and we'll prepare everything. \u{1F33F}`;
-}
-function confirmBody(lang, name, items, total) {
-  if (lang === "fr")
-    return `Bonjour ${name}, ici votre boutique. Nous confirmons votre commande : ${items}. Total \xE0 payer \xE0 la livraison : ${total}. R\xE9pondez OUI pour confirmer l'envoi. Merci !`;
-  if (lang === "ar")
-    return `\u0633\u0644\u0627\u0645 ${name}\u060C \u0645\u0639\u0643\u0645 \u0627\u0644\u0645\u062A\u062C\u0631 \u062F\u064A\u0627\u0644\u0643\u0645. \u0643\u0646\u0623\u0643\u062F\u0648 \u0627\u0644\u0637\u0644\u0628 \u062F\u064A\u0627\u0644\u0643\u0645: ${items}. \u0627\u0644\u0645\u062C\u0645\u0648\u0639 \u0639\u0646\u062F \u0627\u0644\u062A\u0633\u0644\u064A\u0645: ${total}. \u062C\u0627\u0648\u0628\u0648 \u0628\u0646\u0639\u0645 \u0628\u0627\u0634 \u0646\u0635\u064A\u0641\u0637\u0648\u0647. \u0634\u0643\u0631\u0627\u064B!`;
-  return `Hello ${name}, this is your store. Confirming your order: ${items}. Total to pay on delivery: ${total}. Reply YES to confirm so we can ship it. Thank you!`;
-}
-function thankYouBody(lang, name) {
-  if (lang === "fr")
-    return `Merci ${name} pour votre confiance ! C'est un plaisir de vous servir. \xC0 tr\xE8s bient\xF4t. \u{1F33F}`;
-  if (lang === "ar")
-    return `\u0634\u0643\u0631\u0627\u064B ${name} \u0639\u0644\u0649 \u0627\u0644\u062B\u0642\u0629 \u062F\u064A\u0627\u0644\u0643\u0645! \u0645\u0631\u062D\u0628\u0627\u064B \u0628\u064A\u0643\u0645 \u062F\u064A\u0645\u0627\u064B. \u{1F33F}`;
-  return `Thank you ${name} for your trust! It's a pleasure serving you. See you soon. \u{1F33F}`;
-}
-function stageAction(state2, profiles2, contacts2, question, now = Date.now()) {
-  const intent = detectIntent(question);
-  if (!intent) return null;
-  const lang = detectLang(question);
-  const names = profiles2.map((p2) => p2.name);
-  let customer = matchCustomer(question, names);
-  if (!customer) {
-    if (intent === "payment-reminder") {
-      const overdue2 = state2.invoices.filter((i) => !i.paidAt && now > i.issuedAt + i.dueDays * DAY2).sort((a, b) => a.issuedAt - b.issuedAt);
-      customer = overdue2[0]?.customer ?? null;
-    } else if (intent === "winback" || intent === "reorder-nudge") {
-      const quiet = profiles2.filter((p2) => p2.medianGapDays && (now - p2.lastActivityAt) / DAY2 > p2.medianGapDays).sort((a, b) => b.lifetimeRevenue - a.lifetimeRevenue);
-      customer = quiet[0]?.name ?? null;
-    } else if (intent === "cod-confirmation") {
-      const pending = state2.orders.filter((o) => o.status === "pending").sort((a, b) => a.createdAt - b.createdAt);
-      customer = pending[0]?.customer ?? null;
-    }
-  }
-  if (!customer) return null;
-  const phone = contacts2.get(customer)?.phone?.trim() || void 0;
-  const profile = profiles2.find((p2) => p2.name === customer);
-  const daysSince = profile ? Math.round((now - profile.lastActivityAt) / DAY2) : 0;
-  switch (intent) {
-    case "payment-reminder": {
-      const inv = state2.invoices.filter((i) => !i.paidAt && i.customer === customer).sort((a, b) => a.issuedAt - b.issuedAt)[0];
-      if (!inv) return null;
-      const days = Math.max(1, Math.floor((now - (inv.issuedAt + inv.dueDays * DAY2)) / DAY2));
-      return {
-        intent,
-        customer,
-        phone,
-        lang,
-        body: paymentBody(lang, customer, money(inv.amount), days),
-        reason: `${customer} has an open invoice of ${money(inv.amount)}, ${days} day(s) past due.`
-      };
-    }
-    case "winback":
-      return {
-        intent,
-        customer,
-        phone,
-        lang,
-        body: winbackBody(lang, customer, daysSince),
-        reason: `${customer} last ordered ${daysSince} days ago${profile?.medianGapDays ? ` (their rhythm is ~${Math.round(profile.medianGapDays)} days)` : ""}; lifetime ${money(profile?.lifetimeRevenue ?? 0)}.`
-      };
-    case "reorder-nudge":
-      return {
-        intent,
-        customer,
-        phone,
-        lang,
-        body: reorderBody(lang, customer, daysSince),
-        reason: `${customer}'s last activity was ${daysSince} days ago.`
-      };
-    case "cod-confirmation": {
-      const o = state2.orders.filter((x) => x.status === "pending" && x.customer === customer).sort((a, b) => a.createdAt - b.createdAt)[0];
-      if (!o) return null;
-      const items = o.lines.map((l) => `${l.qty}\xD7 ${l.productName}`).join(", ");
-      const total = money(o.lines.reduce((s, l) => s + l.qty * l.unitPrice, 0) - o.discount + o.shippingCharged);
-      return {
-        intent,
-        customer,
-        phone,
-        lang,
-        body: confirmBody(lang, customer, items, total),
-        reason: `${customer} has a pending COD order (${items}).`
-      };
-    }
-    case "thank-you":
-      return {
-        intent,
-        customer,
-        phone,
-        lang,
-        body: thankYouBody(lang, customer),
-        reason: `A goodwill message for ${customer}.`
-      };
-  }
-}
-function restageInLang(staged, state2, profiles2, contacts2, lang, now = Date.now()) {
-  const q = `draft ${staged.intent} for ${staged.customer} in ${lang === "fr" ? "french" : lang === "ar" ? "arabic" : "english"}`;
-  return stageAction(state2, profiles2, contacts2, q, now) ?? { ...staged, lang };
-}
-
-// src/core/coach.ts
-function decisionFamily(key) {
-  return key.split(".").slice(0, 2).join(".");
-}
-function projectDecisionMemories(events) {
-  const outcomes = /* @__PURE__ */ new Map();
-  for (const e of events) {
-    if (e.stream === "outcome") {
-      outcomes.set(String(e.payload.decisionEventId), {
-        result: String(e.payload.result ?? ""),
-        note: String(e.payload.note ?? ""),
-        ts: e.ts
-      });
-    }
-  }
-  return events.filter((e) => e.stream === "decision" && e.type === "decision_recorded").map((e) => ({
-    eventId: e.id,
-    ts: e.ts,
-    decisionKey: String(e.payload.decisionKey),
-    claim: String(e.payload.claim),
-    optionLabel: String(e.payload.optionLabel),
-    rationale: String(e.payload.rationale ?? ""),
-    outcome: outcomes.get(e.id)
-  })).sort((a, b) => b.ts - a.ts);
-}
-function coachFor(events, decisionKey) {
-  const family = decisionFamily(decisionKey);
-  const past = projectDecisionMemories(events).filter((d) => decisionFamily(d.decisionKey) === family);
-  if (past.length === 0) return null;
-  return {
-    timesFaced: past.length,
-    last: past[0],
-    goodOutcomes: past.filter((d) => d.outcome && /good|well|positive/i.test(d.outcome.result)).length,
-    badOutcomes: past.filter((d) => d.outcome && /bad|poor|negative/i.test(d.outcome.result)).length
-  };
-}
-function pendingOutcomeReviews(events, now = Date.now(), minAgeDays = 7, max = 2) {
-  return projectDecisionMemories(events).filter((d) => !d.outcome && now - d.ts >= minAgeDays * DAY2).slice(0, max);
 }
 
 // src/core/engine.ts
@@ -1637,6 +1450,330 @@ function stateOfThings(state2, now = Date.now()) {
   };
 }
 var formatMoney = money;
+
+// src/core/health.ts
+var clamp = (n) => Math.max(0, Math.min(100, Math.round(n)));
+function businessHealth(state2, now = Date.now()) {
+  const components = [];
+  const cash = cashCenter(state2, now);
+  const cal = cashCalendar(state2, now);
+  if (cal.avgDailyExpense && cal.avgDailyExpense > 0) {
+    const coverDays = cash.cashAvailable / cal.avgDailyExpense;
+    const score2 = clamp(coverDays / 60 * 100);
+    components.push({
+      key: "cash",
+      label: "Cash cover",
+      score: score2,
+      weight: 0.3,
+      detail: coverDays >= 0 ? `${money(cash.cashAvailable)} covers ~${Math.round(coverDays)} days of your usual outgoings.` : `Recorded outgoings exceed collected cash by ${money(-cash.cashAvailable)}.`
+    });
+  }
+  const settled = state2.orders.filter((o) => o.status === "delivered" || o.status === "refused" || o.status === "returned");
+  if (settled.length >= 5) {
+    const refused = state2.orders.filter((o) => o.status === "refused").length;
+    const rate = refused / settled.length;
+    const score2 = clamp(100 - rate / 0.3 * 100);
+    components.push({
+      key: "refusals",
+      label: "COD delivery",
+      score: score2,
+      weight: 0.25,
+      detail: `${Math.round(rate * 100)}% of settled orders refused at the door (${refused} of ${settled.length}).`
+    });
+  }
+  const byCustomer = /* @__PURE__ */ new Map();
+  const addRev = (name, v) => byCustomer.set(name, (byCustomer.get(name) ?? 0) + v);
+  for (const i of state2.invoices) if (i.paidAt) addRev(i.customer, i.amount);
+  for (const o of state2.orders) if (o.status === "delivered") addRev(o.customer, orderRevenue(o));
+  const total = [...byCustomer.values()].reduce((s, v) => s + v, 0);
+  if (byCustomer.size >= 3 && total > 0) {
+    const top = Math.max(...byCustomer.values());
+    const topShare = top / total;
+    const score2 = clamp(100 - (topShare - 0.2) / 0.4 * 100);
+    const topName = [...byCustomer.entries()].find(([, v]) => v === top)?.[0] ?? "one customer";
+    components.push({
+      key: "concentration",
+      label: "Customer spread",
+      score: score2,
+      weight: 0.15,
+      detail: `Your top customer (${topName}) is ${Math.round(topShare * 100)}% of lifetime revenue.`
+    });
+  }
+  const active = state2.products.filter((p2) => !p2.discontinued);
+  if (active.length > 0) {
+    const atRisk = active.filter((p2) => {
+      const avail = p2.stock - (state2.reserved[p2.productId] ?? 0);
+      const daysLeft = p2.weeklySales > 0 ? avail / (p2.weeklySales / 7) : Infinity;
+      return daysLeft < p2.leadTimeDays + 4 && (state2.incoming[p2.productId] ?? 0) === 0;
+    }).length;
+    const score2 = clamp(100 - atRisk / active.length * 100);
+    components.push({
+      key: "stock",
+      label: "Stock health",
+      score: score2,
+      weight: 0.15,
+      detail: atRisk === 0 ? "No active product is at stockout risk." : `${atRisk} of ${active.length} products risk stockout with nothing inbound.`
+    });
+  }
+  if (state2.goals.revenue && state2.goals.revenue > 0) {
+    const d = new Date(now);
+    const daysInMonth = new Date(d.getFullYear(), d.getMonth() + 1, 0).getDate();
+    const monthStart2 = new Date(d.getFullYear(), d.getMonth(), 1).getTime();
+    const earned = state2.orders.filter((o) => o.deliveredAt && o.deliveredAt >= monthStart2).reduce((s, o) => s + orderRevenue(o), 0) + state2.invoices.filter((i) => i.paidAt && i.paidAt >= monthStart2).reduce((s, i) => s + i.amount, 0);
+    const expected = state2.goals.revenue * d.getDate() / daysInMonth;
+    const score2 = clamp(expected > 0 ? earned / expected * 100 : 100);
+    components.push({
+      key: "pace",
+      label: "Goal pace",
+      score: score2,
+      weight: 0.15,
+      detail: `${money(earned)} earned vs ${money(expected)} on-pace by today (goal ${money(state2.goals.revenue)}).`
+    });
+  }
+  if (components.length === 0) {
+    return { score: 0, band: "watch", components, ready: false };
+  }
+  const wsum = components.reduce((s, c) => s + c.weight, 0);
+  const score = clamp(components.reduce((s, c) => s + c.score * c.weight, 0) / wsum);
+  const band = score >= 75 ? "strong" : score >= 55 ? "steady" : score >= 35 ? "watch" : "fragile";
+  components.sort((a, b) => a.score - b.score);
+  return { score, band, components, ready: true };
+}
+
+// src/core/story.ts
+var cap = (s) => s.charAt(0).toUpperCase() + s.slice(1);
+function describe(e) {
+  const p2 = e.payload;
+  switch (e.type) {
+    case "order_created": {
+      const lines = p2.lines ?? [];
+      return `Order created \u2014 ${lines.map((l) => `${l.qty}\xD7 ${l.productName}`).join(", ")}${p2.source ? ` \xB7 via ${p2.source}` : ""}`;
+    }
+    case "order_status_changed":
+      return `Status \u2192 ${cap(String(p2.status))}`;
+    case "order_cash_received":
+      return "Courier remitted the cash";
+    case "invoice_issued":
+      return `Invoice issued \u2014 ${money(Number(p2.amount))}, due in ${p2.dueDays} days`;
+    case "invoice_paid":
+      return "Invoice paid";
+    case "customer_contact_updated":
+      return `Contact updated${p2.phone ? ` \u2014 phone ${p2.phone}` : ""}${p2.city ? ` \xB7 ${p2.city}` : ""}`;
+    case "customer_activity_logged":
+      return `${cap(String(p2.kind))}: ${String(p2.note).slice(0, 120)}`;
+    case "customer_activity_completed":
+      return "Follow-up marked done";
+    case "customer_archived":
+      return "Archived (hidden from lists; history kept)";
+    case "customer_restored":
+      return "Restored from archive";
+    default:
+      return null;
+  }
+}
+function storyForOrder(events, orderId) {
+  return events.filter((e) => e.stream === "fact" && e.payload.orderId === orderId).map((e) => ({ ts: e.ts, stream: e.stream, what: describe(e) ?? e.type })).sort((a, b) => a.ts - b.ts);
+}
+function storyForCustomer(events, customer, max = 12) {
+  const theirOrders = new Set(
+    events.filter((e) => e.type === "order_created" && e.payload.customer === customer).map((e) => String(e.payload.orderId))
+  );
+  return events.filter((e) => {
+    if (e.stream !== "fact") return false;
+    const p2 = e.payload;
+    return p2.customer === customer || p2.orderId !== void 0 && theirOrders.has(p2.orderId);
+  }).map((e) => ({ ts: e.ts, stream: e.stream, what: describe(e) ?? e.type })).sort((a, b) => b.ts - a.ts).slice(0, max);
+}
+
+// src/core/actions.ts
+var INTENT_WORDS = {
+  "payment-reminder": /remind|reminder|chase|collect|pay(?!.*cod)|overdue|relance|rappel|فلوس|خلص/i,
+  winback: /win.?back|re-?engag|come back|miss|gone quiet|silent|recup|récup|reconquérir/i,
+  "reorder-nudge": /reorder|nudge|restock them|order again|racheter|recommander/i,
+  "cod-confirmation": /confirm/i,
+  "thank-you": /thank|merci|شكر/i
+};
+var LANG_WORDS = [
+  ["fr", /french|français|francais|en fr/i],
+  ["ar", /arabic|darija|عرب|بالعربية|arabe/i]
+];
+function matchCustomer(question, names) {
+  const q = question.toLowerCase();
+  let best = null;
+  for (const n of names) {
+    if (q.includes(n.toLowerCase()) && (!best || n.length > best.length)) best = n;
+  }
+  return best;
+}
+function detectIntent(question) {
+  const wantsAction = /draft|write|send|message|sms|whatsapp|rédige|écris|envoie|صياغة|اكتب/i.test(question);
+  for (const [intent, re] of Object.entries(INTENT_WORDS)) {
+    if (re.test(question) && (wantsAction || intent === "payment-reminder" || intent === "winback")) return intent;
+  }
+  return null;
+}
+function detectLang(question) {
+  for (const [lang, re] of LANG_WORDS) if (re.test(question)) return lang;
+  return "en";
+}
+function paymentBody(lang, name, amount, days) {
+  if (lang === "fr")
+    return `Bonjour ${name}, un petit rappel amical : votre facture de ${amount} est en retard de ${days} jour${days > 1 ? "s" : ""}. Pouvez-vous nous indiquer quand pr\xE9voir le r\xE8glement ? Merci beaucoup !`;
+  if (lang === "ar")
+    return `\u0633\u0644\u0627\u0645 ${name}\u060C \u063A\u064A\u0631 \u062A\u0630\u0643\u064A\u0631 \u0628\u0633\u064A\u0637: \u0627\u0644\u0641\u0627\u062A\u0648\u0631\u0629 \u062F\u064A\u0627\u0644 ${amount} \u062A\u0639\u062F\u0651\u0649 \u0623\u062C\u0644\u0647\u0627 \u0628 ${days} \u064A\u0648\u0645. \u0648\u0627\u0634 \u0645\u0645\u0643\u0646 \u062A\u062E\u0628\u0631\u0646\u0627 \u0641\u0648\u0642\u0627\u0634 \u0646\u062A\u0648\u0642\u0639\u0648 \u0627\u0644\u062E\u0644\u0627\u0635\u061F \u0634\u0643\u0631\u0627\u064B \u0628\u0632\u0627\u0641!`;
+  return `Hello ${name}, a friendly reminder: your invoice of ${amount} is ${days} day${days > 1 ? "s" : ""} past due. Could you let us know when to expect payment? Thank you!`;
+}
+function winbackBody(lang, name, days) {
+  if (lang === "fr")
+    return `Bonjour ${name} ! \xC7a fait environ ${days} jours qu'on n'a pas eu de vos nouvelles \u2014 on esp\xE8re que tout va bien. Besoin de quelque chose cette semaine ? On peut vous pr\xE9parer votre commande habituelle. \u{1F33F}`;
+  if (lang === "ar")
+    return `\u0633\u0644\u0627\u0645 ${name}! \u0634\u062D\u0627\u0644 \u0647\u0627\u062F\u064A \u0645\u0627 \u062A\u0648\u0627\u0635\u0644\u0646\u0627\u0634\u060C \u062A\u0642\u0631\u064A\u0628\u0627\u064B ${days} \u064A\u0648\u0645 \u2014 \u0646\u062A\u0645\u0646\u0627\u0648 \u062A\u0643\u0648\u0646\u0648 \u0628\u062E\u064A\u0631. \u0648\u0627\u0634 \u0645\u062D\u062A\u0627\u062C\u064A\u0646 \u0634\u064A \u062D\u0627\u062C\u0629 \u0647\u0627\u062F \u0627\u0644\u0633\u064A\u0645\u0627\u0646\u0629\u061F \u0646\u0642\u062F\u0631\u0648 \u0646\u0648\u062C\u062F\u0648 \u0644\u064A\u0643\u0645 \u0627\u0644\u0637\u0644\u0628 \u0627\u0644\u0645\u0639\u062A\u0627\u062F. \u{1F33F}`;
+  return `Hello ${name}! It's been about ${days} days since we last heard from you \u2014 hope all is well. Anything you need this week? We can prepare your usual order. \u{1F33F}`;
+}
+function reorderBody(lang, name, days) {
+  if (lang === "fr")
+    return `Bonjour ${name} ! Votre dernier achat remonte \xE0 ~${days} jours \u2014 le moment id\xE9al pour renouveler. Dites-nous ce qu'il vous faut et on pr\xE9pare tout. \u{1F33F}`;
+  if (lang === "ar")
+    return `\u0633\u0644\u0627\u0645 ${name}! \u0622\u062E\u0631 \u0637\u0644\u0628 \u062F\u064A\u0627\u0644\u0643\u0645 \u0643\u0627\u0646 \u0642\u0628\u0644 ~${days} \u064A\u0648\u0645 \u2014 \u0627\u0644\u0648\u0642\u062A \u0645\u0646\u0627\u0633\u0628 \u0628\u0627\u0634 \u062A\u062C\u062F\u062F\u0648. \u0642\u0648\u0644\u0648 \u0644\u064A\u0646\u0627 \u0623\u0634\u0646\u0648 \u062E\u0627\u0635\u0643\u0645 \u0648 \u0646\u0648\u062C\u062F\u0648 \u0643\u0644\u0634\u064A. \u{1F33F}`;
+  return `Hello ${name}! Your last order was ~${days} days ago \u2014 a good moment to top up. Tell us what you need and we'll prepare everything. \u{1F33F}`;
+}
+function confirmBody(lang, name, items, total) {
+  if (lang === "fr")
+    return `Bonjour ${name}, ici votre boutique. Nous confirmons votre commande : ${items}. Total \xE0 payer \xE0 la livraison : ${total}. R\xE9pondez OUI pour confirmer l'envoi. Merci !`;
+  if (lang === "ar")
+    return `\u0633\u0644\u0627\u0645 ${name}\u060C \u0645\u0639\u0643\u0645 \u0627\u0644\u0645\u062A\u062C\u0631 \u062F\u064A\u0627\u0644\u0643\u0645. \u0643\u0646\u0623\u0643\u062F\u0648 \u0627\u0644\u0637\u0644\u0628 \u062F\u064A\u0627\u0644\u0643\u0645: ${items}. \u0627\u0644\u0645\u062C\u0645\u0648\u0639 \u0639\u0646\u062F \u0627\u0644\u062A\u0633\u0644\u064A\u0645: ${total}. \u062C\u0627\u0648\u0628\u0648 \u0628\u0646\u0639\u0645 \u0628\u0627\u0634 \u0646\u0635\u064A\u0641\u0637\u0648\u0647. \u0634\u0643\u0631\u0627\u064B!`;
+  return `Hello ${name}, this is your store. Confirming your order: ${items}. Total to pay on delivery: ${total}. Reply YES to confirm so we can ship it. Thank you!`;
+}
+function thankYouBody(lang, name) {
+  if (lang === "fr")
+    return `Merci ${name} pour votre confiance ! C'est un plaisir de vous servir. \xC0 tr\xE8s bient\xF4t. \u{1F33F}`;
+  if (lang === "ar")
+    return `\u0634\u0643\u0631\u0627\u064B ${name} \u0639\u0644\u0649 \u0627\u0644\u062B\u0642\u0629 \u062F\u064A\u0627\u0644\u0643\u0645! \u0645\u0631\u062D\u0628\u0627\u064B \u0628\u064A\u0643\u0645 \u062F\u064A\u0645\u0627\u064B. \u{1F33F}`;
+  return `Thank you ${name} for your trust! It's a pleasure serving you. See you soon. \u{1F33F}`;
+}
+function stageAction(state2, profiles2, contacts2, question, now = Date.now()) {
+  const intent = detectIntent(question);
+  if (!intent) return null;
+  const lang = detectLang(question);
+  const names = profiles2.map((p2) => p2.name);
+  let customer = matchCustomer(question, names);
+  if (!customer) {
+    if (intent === "payment-reminder") {
+      const overdue2 = state2.invoices.filter((i) => !i.paidAt && now > i.issuedAt + i.dueDays * DAY2).sort((a, b) => a.issuedAt - b.issuedAt);
+      customer = overdue2[0]?.customer ?? null;
+    } else if (intent === "winback" || intent === "reorder-nudge") {
+      const quiet = profiles2.filter((p2) => p2.medianGapDays && (now - p2.lastActivityAt) / DAY2 > p2.medianGapDays).sort((a, b) => b.lifetimeRevenue - a.lifetimeRevenue);
+      customer = quiet[0]?.name ?? null;
+    } else if (intent === "cod-confirmation") {
+      const pending = state2.orders.filter((o) => o.status === "pending").sort((a, b) => a.createdAt - b.createdAt);
+      customer = pending[0]?.customer ?? null;
+    }
+  }
+  if (!customer) return null;
+  const phone = contacts2.get(customer)?.phone?.trim() || void 0;
+  const profile = profiles2.find((p2) => p2.name === customer);
+  const daysSince = profile ? Math.round((now - profile.lastActivityAt) / DAY2) : 0;
+  switch (intent) {
+    case "payment-reminder": {
+      const inv = state2.invoices.filter((i) => !i.paidAt && i.customer === customer).sort((a, b) => a.issuedAt - b.issuedAt)[0];
+      if (!inv) return null;
+      const days = Math.max(1, Math.floor((now - (inv.issuedAt + inv.dueDays * DAY2)) / DAY2));
+      return {
+        intent,
+        customer,
+        phone,
+        lang,
+        body: paymentBody(lang, customer, money(inv.amount), days),
+        reason: `${customer} has an open invoice of ${money(inv.amount)}, ${days} day(s) past due.`
+      };
+    }
+    case "winback":
+      return {
+        intent,
+        customer,
+        phone,
+        lang,
+        body: winbackBody(lang, customer, daysSince),
+        reason: `${customer} last ordered ${daysSince} days ago${profile?.medianGapDays ? ` (their rhythm is ~${Math.round(profile.medianGapDays)} days)` : ""}; lifetime ${money(profile?.lifetimeRevenue ?? 0)}.`
+      };
+    case "reorder-nudge":
+      return {
+        intent,
+        customer,
+        phone,
+        lang,
+        body: reorderBody(lang, customer, daysSince),
+        reason: `${customer}'s last activity was ${daysSince} days ago.`
+      };
+    case "cod-confirmation": {
+      const o = state2.orders.filter((x) => x.status === "pending" && x.customer === customer).sort((a, b) => a.createdAt - b.createdAt)[0];
+      if (!o) return null;
+      const items = o.lines.map((l) => `${l.qty}\xD7 ${l.productName}`).join(", ");
+      const total = money(o.lines.reduce((s, l) => s + l.qty * l.unitPrice, 0) - o.discount + o.shippingCharged);
+      return {
+        intent,
+        customer,
+        phone,
+        lang,
+        body: confirmBody(lang, customer, items, total),
+        reason: `${customer} has a pending COD order (${items}).`
+      };
+    }
+    case "thank-you":
+      return {
+        intent,
+        customer,
+        phone,
+        lang,
+        body: thankYouBody(lang, customer),
+        reason: `A goodwill message for ${customer}.`
+      };
+  }
+}
+function restageInLang(staged, state2, profiles2, contacts2, lang, now = Date.now()) {
+  const q = `draft ${staged.intent} for ${staged.customer} in ${lang === "fr" ? "french" : lang === "ar" ? "arabic" : "english"}`;
+  return stageAction(state2, profiles2, contacts2, q, now) ?? { ...staged, lang };
+}
+
+// src/core/coach.ts
+function decisionFamily(key) {
+  return key.split(".").slice(0, 2).join(".");
+}
+function projectDecisionMemories(events) {
+  const outcomes = /* @__PURE__ */ new Map();
+  for (const e of events) {
+    if (e.stream === "outcome") {
+      outcomes.set(String(e.payload.decisionEventId), {
+        result: String(e.payload.result ?? ""),
+        note: String(e.payload.note ?? ""),
+        ts: e.ts
+      });
+    }
+  }
+  return events.filter((e) => e.stream === "decision" && e.type === "decision_recorded").map((e) => ({
+    eventId: e.id,
+    ts: e.ts,
+    decisionKey: String(e.payload.decisionKey),
+    claim: String(e.payload.claim),
+    optionLabel: String(e.payload.optionLabel),
+    rationale: String(e.payload.rationale ?? ""),
+    outcome: outcomes.get(e.id)
+  })).sort((a, b) => b.ts - a.ts);
+}
+function coachFor(events, decisionKey) {
+  const family = decisionFamily(decisionKey);
+  const past = projectDecisionMemories(events).filter((d) => decisionFamily(d.decisionKey) === family);
+  if (past.length === 0) return null;
+  return {
+    timesFaced: past.length,
+    last: past[0],
+    goodOutcomes: past.filter((d) => d.outcome && /good|well|positive/i.test(d.outcome.result)).length,
+    badOutcomes: past.filter((d) => d.outcome && /bad|poor|negative/i.test(d.outcome.result)).length
+  };
+}
+function pendingOutcomeReviews(events, now = Date.now(), minAgeDays = 7, max = 2) {
+  return projectDecisionMemories(events).filter((d) => !d.outcome && now - d.ts >= minAgeDays * DAY2).slice(0, max);
+}
 
 // src/core/assistant.ts
 function businessContext(state2, now = Date.now()) {
@@ -3475,6 +3612,43 @@ console.log("\nRefills, refusal risk & record stories (v0.29):");
   check("order story is chronological and complete", story.length === 2 && /Order created/.test(story[0].what) && /Delivered/.test(story[1].what));
   const custStory = storyForCustomer(memory.all(), "Refill Rita");
   check("customer story collects their events, newest first", custStory.length >= 2 && custStory[0].ts >= custStory[custStory.length - 1].ts);
+}
+console.log("\nHealth score, courier scorecard & referrals (v0.30):");
+{
+  const st = projectState(memory.all());
+  const health = businessHealth(st);
+  check("health composite is 0..100 and banded", health.ready && health.score >= 0 && health.score <= 100 && ["strong", "steady", "watch", "fragile"].includes(health.band));
+  check("health lists explained components, weakest first", health.components.length > 0 && health.components.every((c) => c.detail.length > 0) && health.components.every((c, i) => i === 0 || health.components[i - 1].score <= c.score));
+  const mk = (id, courier, status) => {
+    const t = Date.now() - 5 * 864e5;
+    memory.append("fact", "order_created", {
+      orderId: id,
+      customer: "Courier Test",
+      lines: [{ productId: "P-002", productName: "Oak Serving Board", qty: 1, unitPrice: 24, unitCost: 12 }],
+      discount: 0,
+      shippingCharged: 0,
+      shippingCost: 30,
+      codFee: 0,
+      packagingCost: 0,
+      createdAt: t,
+      courier
+    }, t);
+    memory.append("fact", "order_status_changed", { orderId: id, status, at: t + 864e5 }, t + 864e5);
+  };
+  mk("cs1", "Speedy", "delivered");
+  mk("cs2", "Slowpoke", "refused");
+  const cards = courierScorecard(projectState(memory.all()));
+  const speedy = cards.find((c) => c.courier === "Speedy");
+  const slow = cards.find((c) => c.courier === "Slowpoke");
+  check("courier scorecard computes per-courier delivery rate", speedy?.deliveryRate === 1 && slow?.deliveryRate === 0);
+  check("courier scorecard sums shipping cost you paid", speedy !== void 0 && speedy.shippingCost === 30);
+  memory.append("fact", "customer_contact_updated", { customer: "Leila M.", referredBy: "Sara H.", at: Date.now() });
+  memory.append("fact", "customer_contact_updated", { customer: "Omar K.", referredBy: "Sara H.", at: Date.now() });
+  const st2 = projectState(memory.all());
+  const board = referralLeaderboard(projectContacts(memory.all()), projectCustomerProfiles(st2));
+  const sara2 = board.find((r) => r.name === "Sara H.");
+  check("referral leaderboard groups referred customers by referrer", sara2 !== void 0 && sara2.referredCount === 2);
+  check("referral leaderboard sums the revenue advocates bring", sara2 !== void 0 && sara2.referredRevenue >= 0);
 }
 console.log("\nBilling entitlement (vendor productization):");
 {

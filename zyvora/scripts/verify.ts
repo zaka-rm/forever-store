@@ -6,6 +6,8 @@
 import { entitlement } from "../src/core/entitlement";
 import { computeRfm, refillDueList, reorderDueList, upsellSuggestion } from "../src/core/retention";
 import { refusalRisk } from "../src/core/risk";
+import { businessHealth } from "../src/core/health";
+import { courierScorecard, referralLeaderboard } from "../src/core/retention";
 import { storyForCustomer, storyForOrder } from "../src/core/story";
 import { restageInLang, stageAction } from "../src/core/actions";
 import { coachFor, pendingOutcomeReviews, projectDecisionMemories } from "../src/core/coach";
@@ -477,6 +479,40 @@ console.log("\nRefills, refusal risk & record stories (v0.29):");
   check("order story is chronological and complete", story.length === 2 && /Order created/.test(story[0].what) && /Delivered/.test(story[1].what));
   const custStory = storyForCustomer(memory.all(), "Refill Rita");
   check("customer story collects their events, newest first", custStory.length >= 2 && custStory[0].ts >= custStory[custStory.length - 1].ts);
+}
+
+console.log("\nHealth score, courier scorecard & referrals (v0.30):");
+{
+  const st = projectState(memory.all());
+  const health = businessHealth(st);
+  check("health composite is 0..100 and banded", health.ready && health.score >= 0 && health.score <= 100 && ["strong", "steady", "watch", "fragile"].includes(health.band));
+  check("health lists explained components, weakest first", health.components.length > 0 && health.components.every((c) => c.detail.length > 0) && health.components.every((c, i) => i === 0 || health.components[i - 1].score <= c.score));
+
+  // Courier scorecard: two couriers, one all-delivered, one all-refused.
+  const mk = (id: string, courier: string, status: "delivered" | "refused") => {
+    const t = Date.now() - 5 * 86400000;
+    memory.append("fact", "order_created", {
+      orderId: id, customer: "Courier Test", lines: [{ productId: "P-002", productName: "Oak Serving Board", qty: 1, unitPrice: 24, unitCost: 12 }],
+      discount: 0, shippingCharged: 0, shippingCost: 30, codFee: 0, packagingCost: 0, createdAt: t, courier,
+    }, t);
+    memory.append("fact", "order_status_changed", { orderId: id, status, at: t + 86400000 }, t + 86400000);
+  };
+  mk("cs1", "Speedy", "delivered");
+  mk("cs2", "Slowpoke", "refused");
+  const cards = courierScorecard(projectState(memory.all()));
+  const speedy = cards.find((c) => c.courier === "Speedy");
+  const slow = cards.find((c) => c.courier === "Slowpoke");
+  check("courier scorecard computes per-courier delivery rate", speedy?.deliveryRate === 1 && slow?.deliveryRate === 0);
+  check("courier scorecard sums shipping cost you paid", speedy !== undefined && speedy.shippingCost === 30);
+
+  // Referrals: two customers point to the same referrer.
+  memory.append("fact", "customer_contact_updated", { customer: "Leila M.", referredBy: "Sara H.", at: Date.now() });
+  memory.append("fact", "customer_contact_updated", { customer: "Omar K.", referredBy: "Sara H.", at: Date.now() });
+  const st2 = projectState(memory.all());
+  const board = referralLeaderboard(projectContacts(memory.all()), projectCustomerProfiles(st2));
+  const sara = board.find((r) => r.name === "Sara H.");
+  check("referral leaderboard groups referred customers by referrer", sara !== undefined && sara.referredCount === 2);
+  check("referral leaderboard sums the revenue advocates bring", sara !== undefined && sara.referredRevenue >= 0);
 }
 
 console.log("\nBilling entitlement (vendor productization):");
