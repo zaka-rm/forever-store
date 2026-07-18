@@ -1570,6 +1570,43 @@ function measureCampaign(state2, campaign, now = Date.now(), windowDays = 14) {
   };
 }
 
+// src/core/weekly.ts
+function weeklyReview(events, now = Date.now()) {
+  const state2 = projectState(events);
+  const thisStart = now - 7 * DAY2;
+  const lastStart = now - 14 * DAY2;
+  const inThis = (t) => t >= thisStart && t < now;
+  const inLast = (t) => t >= lastStart && t < thisStart;
+  const revenue = (test) => state2.orders.filter((o) => o.deliveredAt && test(o.deliveredAt)).reduce((s, o) => s + orderRevenue(o), 0) + state2.invoices.filter((i) => i.paidAt && test(i.paidAt)).reduce((s, i) => s + i.amount, 0);
+  const ordersDelivered = (test) => state2.orders.filter((o) => o.deliveredAt && test(o.deliveredAt)).length;
+  const refusals = (test) => events.filter((e) => {
+    if (e.stream !== "fact" || e.type !== "order_status_changed") return false;
+    const p2 = e.payload;
+    return p2.status === "refused" && test(p2.at);
+  }).length;
+  const cashCollected = (test) => state2.orders.filter((o) => o.cashReceivedAt && test(o.cashReceivedAt)).reduce((s, o) => s + orderRevenue(o), 0) + state2.invoices.filter((i) => i.paidAt && test(i.paidAt)).reduce((s, i) => s + i.amount, 0);
+  const expenses = (test) => state2.expenses.filter((e) => test(e.date)).reduce((s, e) => s + e.amount, 0);
+  const decisions3 = (test) => events.filter((e) => e.stream === "decision" && e.type === "decision_recorded" && test(e.ts)).length;
+  const build = (key, label, fn, higherIsBetter, money2) => {
+    const thisWeek = fn(inThis);
+    const lastWeek = fn(inLast);
+    return { key, label, thisWeek, lastWeek, delta: thisWeek - lastWeek, higherIsBetter, money: money2 };
+  };
+  const metrics = [
+    build("revenue", "Revenue earned", revenue, true, true),
+    build("ordersDelivered", "Orders delivered", ordersDelivered, true, false),
+    build("cashCollected", "Cash collected", cashCollected, true, true),
+    build("refusals", "COD refusals", refusals, false, false),
+    build("expenses", "Expenses", expenses, false, true),
+    build("decisions", "Decisions recorded", decisions3, true, false)
+  ];
+  return {
+    metrics,
+    from: thisStart,
+    hasPriorWeek: metrics.some((m2) => m2.lastWeek !== 0)
+  };
+}
+
 // src/core/story.ts
 var cap = (s) => s.charAt(0).toUpperCase() + s.slice(1);
 function describe(e) {
@@ -3715,6 +3752,58 @@ console.log("\nSegment broadcasts with measured lift (v0.31):");
   check("lift counts recipient orders before vs after the send", res.ordersBefore === 1 && res.ordersAfter === 2);
   check("lift measures revenue in the after window", res.revenueAfter > res.revenueBefore);
   check("campaign not ready until the window fully elapses", res.ready === false);
+}
+console.log("\nThis week in review (week-over-week deltas, v0.32):");
+{
+  const now = Date.now();
+  const tw = new TestMemory();
+  const lwT = now - 10 * 864e5;
+  tw.append("fact", "order_created", {
+    orderId: "wr-last",
+    customer: "Weekly Wanda",
+    lines: [{ productId: "p", productName: "Thing", qty: 1, unitPrice: 100, unitCost: 40 }],
+    discount: 0,
+    shippingCharged: 0,
+    shippingCost: 0,
+    codFee: 0,
+    packagingCost: 0,
+    createdAt: lwT
+  }, lwT);
+  tw.append("fact", "order_status_changed", { orderId: "wr-last", status: "delivered", at: lwT }, lwT);
+  for (const id of ["wr-a", "wr-b"]) {
+    const t = now - 2 * 864e5;
+    tw.append("fact", "order_created", {
+      orderId: id,
+      customer: "Weekly Wanda",
+      lines: [{ productId: "p", productName: "Thing", qty: 1, unitPrice: 100, unitCost: 40 }],
+      discount: 0,
+      shippingCharged: 0,
+      shippingCost: 0,
+      codFee: 0,
+      packagingCost: 0,
+      createdAt: t
+    }, t);
+    tw.append("fact", "order_status_changed", { orderId: id, status: "delivered", at: t }, t);
+  }
+  tw.append("fact", "order_created", {
+    orderId: "wr-ref",
+    customer: "Weekly Wanda",
+    lines: [{ productId: "p", productName: "Thing", qty: 1, unitPrice: 100, unitCost: 40 }],
+    discount: 0,
+    shippingCharged: 0,
+    shippingCost: 0,
+    codFee: 0,
+    packagingCost: 0,
+    createdAt: now - 3 * 864e5
+  }, now - 3 * 864e5);
+  tw.append("fact", "order_status_changed", { orderId: "wr-ref", status: "refused", at: now - 1 * 864e5 }, now - 1 * 864e5);
+  const wr = weeklyReview(tw.all(), now);
+  const byKey2 = (k) => wr.metrics.find((m2) => m2.key === k);
+  check("orders-delivered delta is this week (2) minus last week (1)", byKey2("ordersDelivered").thisWeek === 2 && byKey2("ordersDelivered").lastWeek === 1 && byKey2("ordersDelivered").delta === 1);
+  check("refusals counted in this week's window by status-change date", byKey2("refusals").thisWeek === 1);
+  check("revenue delta reflects the extra delivered order", byKey2("revenue").delta === 100);
+  check("refusals metric is flagged higher-is-worse", byKey2("refusals").higherIsBetter === false);
+  check("hasPriorWeek true once last-week activity exists", wr.hasPriorWeek === true);
 }
 console.log("\nBilling entitlement (vendor productization):");
 {

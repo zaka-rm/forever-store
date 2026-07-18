@@ -11,6 +11,8 @@
  */
 import { useState } from "react";
 import { formatMoney } from "../core/engine";
+import type { MemoryStore } from "../core/memory";
+import { weeklyReview } from "../core/weekly";
 import {
   DAY,
   forecast,
@@ -335,7 +337,48 @@ function CourierScorecard({ state }: { state: WorkspaceState }) {
 
 // ---------------------------------------------------------------- The view ---
 
-export function AnalyticsView({ state }: { state: WorkspaceState }) {
+/** This week in review — week-over-week deltas, coloured by each metric's polarity. */
+function WeeklyReview({ memory }: { memory: MemoryStore }) {
+  const review = weeklyReview(memory.all());
+  const hasActivity = review.metrics.some((m) => m.thisWeek !== 0 || m.lastWeek !== 0);
+  if (!hasActivity) return null;
+
+  const fmt = (m: { money: boolean }, v: number) => (m.money ? formatMoney(v) : String(v));
+  const arrow = (m: { delta: number; higherIsBetter: boolean }) => {
+    if (m.delta === 0) return { sign: "→", tone: "info" as const };
+    const good = m.delta > 0 === m.higherIsBetter;
+    return { sign: m.delta > 0 ? "▲" : "▼", tone: good ? ("success" as const) : ("critical" as const) };
+  };
+
+  return (
+    <div className="card" style={{ borderLeft: "3px solid var(--accent)" }}>
+      <p className="claim" style={{ fontSize: 15 }}>This week in review</p>
+      <p className="confidence-note" style={{ marginTop: 0 }}>
+        The last 7 days versus the 7 before — your own comparison, nothing benchmarked outside.
+        {!review.hasPriorWeek && " (No prior-week activity yet, so changes read against zero.)"}
+      </p>
+      <div className="stats" style={{ marginTop: 4 }}>
+        {review.metrics.map((m) => {
+          const a = arrow(m);
+          return (
+            <div className="stat" key={m.key}>
+              <div className="k">{m.label}</div>
+              <div className="v">{fmt(m, m.thisWeek)}</div>
+              <div style={{ marginTop: 4 }}>
+                <span className={`tone ${a.tone}`} style={{ fontSize: 12 }}>
+                  {a.sign} {m.delta >= 0 ? "+" : ""}{fmt(m, m.delta)}
+                </span>
+                <span className="muted" style={{ fontSize: 12, marginLeft: 6 }}>vs last week</span>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+export function AnalyticsView({ state, memory }: { state: WorkspaceState; memory?: MemoryStore }) {
   const now = Date.now();
   const [rangeMonths, setRangeMonths] = useState(6);
   const months = lastMonths(rangeMonths, now);
@@ -391,6 +434,8 @@ export function AnalyticsView({ state }: { state: WorkspaceState }) {
         description="What changed, where is the money made and lost, and what deserves a closer look? All comparisons are against your own history."
         actions={!empty ? <button className="btn ghost" onClick={exportOrders}>Export orders CSV</button> : undefined}
       />
+
+      {!empty && memory && <WeeklyReview memory={memory} />}
 
       {empty ? (
         <div className="quiet">Charts appear as your invoices, orders, and expenses accumulate.</div>

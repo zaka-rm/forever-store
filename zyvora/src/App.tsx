@@ -797,7 +797,7 @@ function Workspace({
           {view === "customers" && <CustomersView state={state} memory={memory} />}
           {view === "inventory" && <InventoryView state={state} memory={memory} />}
           {view === "promos" && <PromosView state={state} memory={memory} />}
-          {view === "analytics" && <AnalyticsView state={state} />}
+          {view === "analytics" && <AnalyticsView state={state} memory={memory} />}
           {view === "ask" && <AskView state={state} memory={memory} />}
           {view === "import" && <ImportView memory={memory} state={state} />}
           {view === "team" && (

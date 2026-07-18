@@ -8,6 +8,7 @@ import { computeRfm, refillDueList, reorderDueList, upsellSuggestion } from "../
 import { refusalRisk } from "../src/core/risk";
 import { businessHealth } from "../src/core/health";
 import { measureCampaign, projectCampaigns } from "../src/core/campaigns";
+import { weeklyReview } from "../src/core/weekly";
 import { courierScorecard, referralLeaderboard } from "../src/core/retention";
 import { storyForCustomer, storyForOrder } from "../src/core/story";
 import { restageInLang, stageAction } from "../src/core/actions";
@@ -544,6 +545,44 @@ console.log("\nSegment broadcasts with measured lift (v0.31):");
   check("lift counts recipient orders before vs after the send", res.ordersBefore === 1 && res.ordersAfter === 2);
   check("lift measures revenue in the after window", res.revenueAfter > res.revenueBefore);
   check("campaign not ready until the window fully elapses", res.ready === false);
+}
+
+console.log("\nThis week in review (week-over-week deltas, v0.32):");
+{
+  const now = Date.now();
+  const tw = new TestMemory();
+  // Last week: 1 delivered order (revenue window by deliveredAt).
+  const lwT = now - 10 * 86400000;
+  tw.append("fact", "order_created", {
+    orderId: "wr-last", customer: "Weekly Wanda",
+    lines: [{ productId: "p", productName: "Thing", qty: 1, unitPrice: 100, unitCost: 40 }],
+    discount: 0, shippingCharged: 0, shippingCost: 0, codFee: 0, packagingCost: 0, createdAt: lwT,
+  }, lwT);
+  tw.append("fact", "order_status_changed", { orderId: "wr-last", status: "delivered", at: lwT }, lwT);
+  // This week: 2 delivered orders + 1 refusal.
+  for (const id of ["wr-a", "wr-b"]) {
+    const t = now - 2 * 86400000;
+    tw.append("fact", "order_created", {
+      orderId: id, customer: "Weekly Wanda",
+      lines: [{ productId: "p", productName: "Thing", qty: 1, unitPrice: 100, unitCost: 40 }],
+      discount: 0, shippingCharged: 0, shippingCost: 0, codFee: 0, packagingCost: 0, createdAt: t,
+    }, t);
+    tw.append("fact", "order_status_changed", { orderId: id, status: "delivered", at: t }, t);
+  }
+  tw.append("fact", "order_created", {
+    orderId: "wr-ref", customer: "Weekly Wanda",
+    lines: [{ productId: "p", productName: "Thing", qty: 1, unitPrice: 100, unitCost: 40 }],
+    discount: 0, shippingCharged: 0, shippingCost: 0, codFee: 0, packagingCost: 0, createdAt: now - 3 * 86400000,
+  }, now - 3 * 86400000);
+  tw.append("fact", "order_status_changed", { orderId: "wr-ref", status: "refused", at: now - 1 * 86400000 }, now - 1 * 86400000);
+
+  const wr = weeklyReview(tw.all(), now);
+  const byKey = (k: string) => wr.metrics.find((m) => m.key === k)!;
+  check("orders-delivered delta is this week (2) minus last week (1)", byKey("ordersDelivered").thisWeek === 2 && byKey("ordersDelivered").lastWeek === 1 && byKey("ordersDelivered").delta === 1);
+  check("refusals counted in this week's window by status-change date", byKey("refusals").thisWeek === 1);
+  check("revenue delta reflects the extra delivered order", byKey("revenue").delta === 100);
+  check("refusals metric is flagged higher-is-worse", byKey("refusals").higherIsBetter === false);
+  check("hasPriorWeek true once last-week activity exists", wr.hasPriorWeek === true);
 }
 
 console.log("\nBilling entitlement (vendor productization):");
