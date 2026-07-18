@@ -23,11 +23,12 @@ import { upsellSuggestion } from "../core/retention";
 import { RISK_TONE, refusalRisk } from "../core/risk";
 import { storyForOrder } from "../core/story";
 import { extractOrderFromImage, visionConfigured } from "../core/llm";
-import { codConfirmationText, messagingConfigured, sendMessage } from "../core/messaging";
+import { codConfirmationText, messagingConfigured, recordSentMessage, sendMessage } from "../core/messaging";
 import type { Order, OrderLine, OrderStatus, WorkspaceState } from "../core/types";
 import { toast } from "./toast";
 import { appAlert, appConfirm } from "./dialog";
 import { PageHeader } from "./PageHeader";
+import { CourierControlPanel } from "./CourierControl";
 
 /** Open a clean, printable receipt for an order in a new window (ZPL-041 §21). */
 function printReceipt(o: Order, business: string) {
@@ -136,7 +137,7 @@ const NEXT: Record<OrderStatus, { to: OrderStatus; label: string }[]> = {
   returned: [],
 };
 
-export function OrdersView({ state, memory, workspaceName }: { state: WorkspaceState; memory: MemoryStore; workspaceName: string }) {
+export function OrdersView({ state, memory, workspaceName, workspaceId }: { state: WorkspaceState; memory: MemoryStore; workspaceName: string; workspaceId: string }) {
   const ccy = getActiveCurrency();
   const [customer, setCustomer] = useState("");
   const [lines, setLines] = useState<OrderLine[]>([]);
@@ -329,7 +330,8 @@ export function OrdersView({ state, memory, workspaceName }: { state: WorkspaceS
         actions={<button className="btn" onClick={() => setCreating((v) => !v)}>{creating ? "Close" : "Create order"}</button>}
       />
 
-      <ConfirmationQueue state={state} memory={memory} workspaceName={workspaceName} />
+      <CourierControlPanel state={state} memory={memory} />
+      <ConfirmationQueue state={state} memory={memory} workspaceName={workspaceName} workspaceId={workspaceId} />
 
       {creating && (
       <section className="card form-card" aria-labelledby="new-order-title">
@@ -693,8 +695,8 @@ export function OrdersView({ state, memory, workspaceName }: { state: WorkspaceS
  * plus an upsell hint computed from your own co-purchase history.
  */
 function ConfirmationQueue({
-  state, memory, workspaceName,
-}: { state: WorkspaceState; memory: MemoryStore; workspaceName: string }) {
+  state, memory, workspaceName, workspaceId,
+}: { state: WorkspaceState; memory: MemoryStore; workspaceName: string; workspaceId: string }) {
   const [sending, setSending] = useState(false);
   const [skipped, setSkipped] = useState<Set<string>>(() => new Set());
   const allPending = state.orders
@@ -775,10 +777,10 @@ function ConfirmationQueue({
             disabled={sending}
             onClick={async () => {
               setSending(true);
-              const r = await sendMessage(phone, message, "whatsapp");
+              const r = await sendMessage(phone, message, "whatsapp", { workspaceId, customer: o.customer });
               setSending(false);
               if (r.ok) {
-                logAttempt(`WhatsApp confirmation sent: ${message}`);
+                recordSentMessage(memory, r, { customer: o.customer, phone, body: message, channel: "whatsapp" });
                 toast(`WhatsApp sent to ${o.customer}`);
               } else {
                 toast(`Couldn't send: ${r.error}`);

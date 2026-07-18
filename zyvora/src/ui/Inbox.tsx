@@ -6,24 +6,35 @@
  * confirm the customer's pending COD order without leaving the conversation.
  * Consent is respected: opted-out customers cannot be messaged.
  */
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import type { MemoryStore } from "../core/memory";
 import type { WorkspaceState } from "../core/types";
 import {
   markRead,
   projectConversations,
+  classifyInbound,
   unreadCount,
   type Conversation,
 } from "../core/inbox";
 import { projectContacts } from "../core/projections";
 import { businessContext } from "../core/assistant";
 import { askLlm, llmConfigured } from "../core/llm";
-import { messagingConfigured, sendMessage } from "../core/messaging";
+import { messagingConfigured, recordSentMessage, sendMessage } from "../core/messaging";
 import { PageHeader } from "./PageHeader";
 import { toast } from "./toast";
+import { fetchMembers, supabase, type Member } from "../core/cloud";
 
 const timeLabel = (ts: number) =>
   new Date(ts).toLocaleString(undefined, { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" });
+
+const deliveryLabel = (status?: string) => {
+  if (!status) return "";
+  if (status === "read") return "✓✓ Read";
+  if (status === "delivered") return "✓✓ Delivered";
+  if (["failed", "undelivered", "canceled"].includes(status)) return "Delivery failed";
+  if (["sent", "sending"].includes(status)) return "✓ Sent";
+  return "Queued";
+};
 
 const SAVED_REPLIES: { label: string; text: (name: string) => string }[] = [
   { label: "Confirm request", text: (n) => `Hello ${n}, we're preparing your order. Reply YES to confirm delivery. Thank you! 🌿` },
@@ -33,20 +44,43 @@ const SAVED_REPLIES: { label: string; text: (name: string) => string }[] = [
 ];
 
 export function InboxView({
-  state, memory, workspaceId, workspaceName,
-}: { state: WorkspaceState; memory: MemoryStore; workspaceId: string; workspaceName: string }) {
+  state, memory, workspaceId, workspaceName, userId = "", editable = true,
+}: { state: WorkspaceState; memory: MemoryStore; workspaceId: string; workspaceName: string; userId?: string; editable?: boolean }) {
   const events = memory.all();
-  const conversations = useMemo(() => projectConversations(events), [events]);
+  const conversations = useMemo(() => projectConversations(events), [events, events.length]);
   const [selectedKey, setSelectedKey] = useState<string | null>(conversations[0]?.key ?? null);
   const [reply, setReply] = useState("");
   const [busy, setBusy] = useState(false);
+  const [members, setMembers] = useState<Member[]>([]);
+  const [assignmentFilter, setAssignmentFilter] = useState<"mine" | "unassigned" | "all">("all");
   const contacts = projectContacts(events);
+  const effectiveUserId = userId || "local-owner";
+
+  useEffect(() => {
+    if (!supabase || !userId) return;
+    fetchMembers(supabase, workspaceId).then(setMembers).catch(() => setMembers([]));
+  }, [workspaceId, userId]);
+
+  const assignees = useMemo(() => {
+    const map = new Map<string, string>();
+    map.set(effectiveUserId, "Me");
+    for (const member of members) {
+      if (!map.has(member.userId)) map.set(member.userId, member.userId === userId ? "Me" : `Team member ${member.userId.slice(0, 8)}`);
+    }
+    return [...map.entries()].map(([id, label]) => ({ id, label }));
+  }, [members, effectiveUserId, userId]);
 
   const selected = conversations.find((c) => c.key === selectedKey) ?? null;
   const phone = selected?.phone || (selected?.customer ? contacts.get(selected.customer)?.phone?.trim() : undefined);
   const pendingOrder = selected?.customer
     ? state.orders.find((o) => o.customer === selected.customer && o.status === "pending")
     : undefined;
+  const lastInbound = selected ? [...selected.messages].reverse().find((m) => m.direction === "in") : undefined;
+  const inboundIntent = lastInbound ? classifyInbound(lastInbound.body) : "unknown";
+
+  useEffect(() => {
+    if (selected) markRead(selected, workspaceId);
+  }, [selected?.key, selected?.lastAt, workspaceId]);
 
   const open = (c: Conversation) => {
     setSelectedKey(c.key);
@@ -54,29 +88,19 @@ export function InboxView({
     setReply("");
   };
 
-  const logOutbound = (body: string) => {
-    if (!selected?.customer) return;
-    memory.append("fact", "customer_activity_logged", {
-      activityId: crypto.randomUUID(), customer: selected.customer, kind: "message",
-      note: `WhatsApp: ${body}`, at: Date.now(),
-    });
-  };
-
   const send = async () => {
     const body = reply.trim();
-    if (!body || !selected) return;
+    if (!body || !selected || !editable) return;
     if (selected.optedOut) { toast("This customer opted out — can't message them."); return; }
     setBusy(true);
     if (phone && messagingConfigured) {
-      const r = await sendMessage(phone, body, "whatsapp");
-      if (r.ok) { logOutbound(body); toast(`Sent to ${selected.customer ?? phone}`); setReply(""); }
+      const r = await sendMessage(phone, body, "whatsapp", { workspaceId, customer: selected.customer });
+      if (r.ok) {
+        recordSentMessage(memory, r, { customer: selected.customer, phone, body, channel: "whatsapp" });
+        toast(`Sent to ${selected.customer ?? phone}`); setReply("");
+      }
       else toast(`Couldn't send: ${r.error}`);
-    } else {
-      // No phone / messaging not set up — still record the reply so the thread is complete.
-      logOutbound(body);
-      toast(phone ? "Recorded (messaging not deployed yet)" : "Recorded — add a phone to actually send");
-      setReply("");
-    }
+    } else toast(phone ? "Messaging isn't deployed yet — nothing was recorded as sent." : "Add a phone before sending.");
     setBusy(false);
   };
 
@@ -104,12 +128,40 @@ export function InboxView({
   };
 
   const confirmPending = () => {
-    if (!pendingOrder) return;
+    if (!pendingOrder || !editable) return;
     memory.append("fact", "order_status_changed", { orderId: pendingOrder.orderId, status: "confirmed", at: Date.now() });
+    resolveSelected("Customer explicitly confirmed the pending order");
     toast(`${pendingOrder.customer}'s order confirmed`);
   };
 
+  const cancelPending = () => {
+    if (!pendingOrder || !editable) return;
+    memory.append("fact", "order_status_changed", { orderId: pendingOrder.orderId, status: "cancelled", at: Date.now() });
+    resolveSelected("Customer explicitly declined the pending order");
+    toast(`${pendingOrder.customer}'s order cancelled`);
+  };
+
+  const resolveSelected = (reason = "No outbound reply required") => {
+    if (!selected || !editable) return;
+    memory.append("fact", "conversation_resolved", {
+      customer: selected.customer, phone: selected.phone, at: Date.now(), reason,
+    });
+  };
+
+  const assignSelected = (assignedTo: string) => {
+    if (!selected || !editable) return;
+    const assignedLabel = assignees.find((a) => a.id === assignedTo)?.label;
+    memory.append("fact", "conversation_assigned", {
+      customer: selected.customer, phone: selected.phone,
+      assignedTo, assignedLabel, assignedBy: effectiveUserId, at: Date.now(),
+    });
+  };
+
   const totalWaiting = conversations.filter((c) => c.waiting && !c.optedOut).length;
+  const displayedConversations = conversations.filter((c) =>
+    assignmentFilter === "all" ||
+    (assignmentFilter === "mine" ? c.assignedTo === effectiveUserId : !c.assignedTo)
+  );
 
   return (
     <div>
@@ -126,7 +178,13 @@ export function InboxView({
       ) : (
         <div className={`inbox${selected ? " has-selection" : ""}`}>
           <aside className="inbox-list" aria-label="Conversations">
-            {conversations.map((c) => {
+            <div className="inbox-assignment-filter" role="group" aria-label="Conversation ownership">
+              <button className={assignmentFilter === "mine" ? "active" : ""} onClick={() => setAssignmentFilter("mine")}>Mine</button>
+              <button className={assignmentFilter === "unassigned" ? "active" : ""} onClick={() => setAssignmentFilter("unassigned")}>Unassigned</button>
+              <button className={assignmentFilter === "all" ? "active" : ""} onClick={() => setAssignmentFilter("all")}>All</button>
+            </div>
+            {displayedConversations.length === 0 && <div className="quiet" style={{ margin: 12 }}>No conversations in this queue.</div>}
+            {displayedConversations.map((c) => {
               const unread = unreadCount(c, workspaceId);
               const last = c.messages[c.messages.length - 1];
               return (
@@ -146,6 +204,7 @@ export function InboxView({
                     {unread > 0 && <span className="conv-unread">{unread}</span>}
                     {c.waiting && !c.optedOut && <span className="tone attention" style={{ fontSize: 11 }}>Waiting</span>}
                     {c.optedOut && <span className="tone critical" style={{ fontSize: 11 }}>Opted out</span>}
+                    {c.assignedLabel && <span className="tone info" style={{ fontSize: 11 }}>{c.assignedLabel}</span>}
                   </div>
                 </button>
               );
@@ -164,7 +223,21 @@ export function InboxView({
                     {selected.phone && selected.customer && <span className="muted"> · {selected.phone}</span>}
                   </div>
                   <div className="row-actions" style={{ marginLeft: "auto" }}>
-                    {pendingOrder && <button className="btn mini" onClick={confirmPending}>Confirm order ✓</button>}
+                    {editable && (
+                      <select aria-label="Assign conversation" value={selected.assignedTo ?? ""} onChange={(e) => assignSelected(e.target.value)}>
+                        <option value="">Unassigned</option>
+                        {assignees.map((a) => <option key={a.id} value={a.id}>{a.label}</option>)}
+                      </select>
+                    )}
+                    {editable && selected.waiting && (
+                      <button className="btn subtle mini" onClick={() => resolveSelected()}>Resolve</button>
+                    )}
+                    {editable && pendingOrder && inboundIntent === "confirm" && (
+                      <button className="btn mini" onClick={confirmPending}>Confirm order ✓</button>
+                    )}
+                    {editable && pendingOrder && inboundIntent === "cancel" && (
+                      <button className="btn danger mini" onClick={cancelPending}>Cancel order</button>
+                    )}
                   </div>
                 </div>
 
@@ -172,12 +245,16 @@ export function InboxView({
                   {selected.messages.map((m, i) => (
                     <div key={i} className={`bubble ${m.direction}`}>
                       <div>{m.body}</div>
-                      <div className="bubble-time">{timeLabel(m.at)}</div>
+                      <div className={`bubble-time${["failed", "undelivered", "canceled"].includes(m.status ?? "") ? " failed" : ""}`}>
+                        {timeLabel(m.at)}{m.direction === "out" && deliveryLabel(m.status) ? ` · ${deliveryLabel(m.status)}` : ""}
+                      </div>
                     </div>
                   ))}
                 </div>
 
-                {selected.optedOut ? (
+                {!editable ? (
+                  <div className="quiet" style={{ margin: 12 }}>View-only access — replies and order changes are disabled.</div>
+                ) : selected.optedOut ? (
                   <div className="quiet" style={{ margin: 12 }}>This customer texted STOP and is opted out. You can't send business messages to them.</div>
                 ) : (
                   <div className="thread-reply">

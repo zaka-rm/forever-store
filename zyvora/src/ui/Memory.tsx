@@ -48,6 +48,12 @@ function describe(e: MemoryEvent): string {
       return `${p.dueAt ? "Follow-up scheduled" : "Activity logged"} — ${p.customer}: ${p.note}`;
     case "customer_activity_completed":
       return "Follow-up completed";
+    case "message_sent":
+      return `${String(p.channel) === "sms" ? "SMS" : "WhatsApp"} accepted — ${p.customer || p.phone}`;
+    case "message_status_changed":
+      return `Message delivery — ${p.status}${p.errorCode ? ` (error ${p.errorCode})` : ""}`;
+    case "conversation_assigned":
+      return p.assignedTo ? `Conversation assigned — ${p.assignedLabel || p.assignedTo}` : "Conversation unassigned";
     case "purchase_order_created": {
       const lines = p.lines as { qty: number; productName: string }[];
       return `Purchase order — ${p.supplier}: ${lines.map((l) => `${l.qty}× ${l.productName}`).join(", ")}`;

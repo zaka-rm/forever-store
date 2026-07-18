@@ -119,6 +119,33 @@ function projectState(events) {
         if (o) o.cashReceivedAt = p2.at;
         break;
       }
+      case "shipment_created": {
+        const p2 = e.payload;
+        const o = orders.get(p2.orderId);
+        if (o) {
+          o.courier = p2.courier;
+          o.trackingNumber = p2.trackingNumber;
+          o.trackingUrl = p2.trackingUrl;
+          o.shipmentCreatedAt = p2.at;
+          o.shipmentUpdatedAt = p2.at;
+          o.expectedDeliveryAt = p2.expectedDeliveryAt;
+          o.expectedRemittanceAt = p2.expectedRemittanceAt;
+          o.shipmentStatus = "handed_to_courier";
+          o.deliveryAttempts = 0;
+        }
+        break;
+      }
+      case "shipment_status_changed": {
+        const p2 = e.payload;
+        const o = orders.get(p2.orderId);
+        if (o) {
+          o.shipmentStatus = p2.status;
+          o.shipmentUpdatedAt = p2.at;
+          if (p2.status === "out_for_delivery") o.deliveryAttempts = (o.deliveryAttempts ?? 0) + 1;
+          if (p2.status === "delivery_failed") o.lastDeliveryFailure = p2.reason || p2.note || "Reason not recorded";
+        }
+        break;
+      }
       case "promo_created": {
         const p2 = e.payload;
         promoDefs.set(p2.promoId, { ...p2 });
@@ -500,6 +527,17 @@ function projectActivities(events) {
         note: String(p2.note),
         dueAt: p2.dueAt,
         at: e.ts,
+        done: false
+      });
+    } else if (e.type === "message_sent") {
+      const p2 = e.payload;
+      if (!p2.customer || !p2.body) continue;
+      acts2.set(String(p2.messageId ?? e.id), {
+        activityId: String(p2.messageId ?? e.id),
+        customer: String(p2.customer),
+        kind: "message",
+        note: `${String(p2.channel) === "sms" ? "SMS" : "WhatsApp"}: ${String(p2.body)}`,
+        at: p2.at ?? e.ts,
         done: false
       });
     } else if (e.type === "customer_activity_completed") {
@@ -1607,15 +1645,171 @@ function weeklyReview(events, now = Date.now()) {
   };
 }
 
+// src/core/couriers.ts
+function courierControl(state2, now = Date.now()) {
+  const rows = [];
+  const age = (at) => at ? Math.max(0, Math.floor((now - at) / DAY2)) : 0;
+  for (const order of state2.orders) {
+    if (["cancelled", "refused", "returned"].includes(order.status)) continue;
+    const sinceUpdate = age(order.shipmentUpdatedAt ?? order.createdAt);
+    const value = orderRevenue(order);
+    let row = null;
+    if (order.status === "confirmed" && !order.shipmentStatus) {
+      row = {
+        order,
+        score: 70,
+        action: "handoff",
+        cashAtRisk: value,
+        daysSinceUpdate: sinceUpdate,
+        claim: `${order.customer}'s confirmed order is ready for courier handoff.`,
+        reason: "It is confirmed but no shipment or tracking record exists yet."
+      };
+    } else if (order.status === "shipped" && !order.shipmentStatus) {
+      row = {
+        order,
+        score: 80,
+        action: "add-tracking",
+        cashAtRisk: value,
+        daysSinceUpdate: sinceUpdate,
+        claim: `${order.customer}'s shipped order has no tracking record.`,
+        reason: "Without a tracking number or courier event, delivery progress cannot be verified."
+      };
+    } else if (order.shipmentStatus === "delivery_failed") {
+      row = {
+        order,
+        score: 100,
+        action: "contact-customer",
+        cashAtRisk: value,
+        daysSinceUpdate: sinceUpdate,
+        claim: `${order.customer}'s delivery failed.`,
+        reason: order.lastDeliveryFailure || "The failure reason was not recorded; contact the customer before another attempt."
+      };
+    } else if (order.expectedDeliveryAt && order.expectedDeliveryAt < now && order.shipmentStatus !== "delivered" && order.status !== "delivered") {
+      row = {
+        order,
+        score: 90,
+        action: "check-courier",
+        cashAtRisk: value,
+        daysSinceUpdate: sinceUpdate,
+        claim: `${order.customer}'s delivery is past its expected date.`,
+        reason: `The expected delivery date passed ${age(order.expectedDeliveryAt)} day(s) ago without a delivered event.`
+      };
+    } else if (order.status === "delivered" && !order.cashReceivedAt) {
+      const remitAge = age(order.deliveredAt);
+      const overdue2 = order.expectedRemittanceAt ? order.expectedRemittanceAt < now : remitAge >= 3;
+      row = {
+        order,
+        score: overdue2 ? 95 : 55,
+        action: overdue2 ? "chase-remittance" : "none",
+        cashAtRisk: value,
+        daysSinceUpdate: remitAge,
+        claim: `${order.customer}'s COD cash is still with the courier.`,
+        reason: overdue2 ? `Cash has been pending for ${remitAge} day(s), beyond the collection window.` : `Delivered ${remitAge} day(s) ago; the cash is pending but not overdue yet.`
+      };
+    } else if (order.shipmentStatus && ["handed_to_courier", "in_transit", "out_for_delivery", "returning"].includes(order.shipmentStatus)) {
+      const stale = sinceUpdate >= 3;
+      row = {
+        order,
+        score: stale ? 75 : 30,
+        action: stale ? "check-courier" : "none",
+        cashAtRisk: value,
+        daysSinceUpdate: sinceUpdate,
+        claim: stale ? `${order.customer}'s shipment has not changed for ${sinceUpdate} day(s).` : `${order.customer}'s shipment is moving normally.`,
+        reason: stale ? "A stale courier status can hide a failed attempt or return." : "The latest courier update is recent; no intervention is needed."
+      };
+    }
+    if (row) rows.push(row);
+  }
+  rows.sort((a, b) => b.score - a.score || b.cashAtRisk - a.cashAtRisk);
+  return {
+    rows,
+    needsAction: rows.filter((r) => r.action !== "none").length,
+    inMotion: rows.filter((r) => r.order.shipmentStatus && !["delivered", "returned"].includes(r.order.shipmentStatus)).length,
+    failed: rows.filter((r) => r.order.shipmentStatus === "delivery_failed").length,
+    cashPending: rows.filter((r) => r.order.status === "delivered" && !r.order.cashReceivedAt).reduce((sum, r) => sum + r.cashAtRisk, 0)
+  };
+}
+
+// src/core/automations.ts
+function workflowCandidates(state2, events, now = Date.now()) {
+  const completed = new Set(
+    events.filter((e) => e.type === "automation_run_recorded").map((e) => String(e.payload.candidateKey ?? ""))
+  );
+  const rows = [];
+  for (const order of state2.orders) {
+    if (order.status === "pending" && now - order.createdAt >= 2 * 60 * 60 * 1e3) {
+      const key = `cod-confirmation:${order.orderId}:${order.createdAt}`;
+      if (!completed.has(key)) rows.push({
+        key,
+        recipeId: "cod-confirmation",
+        orderId: order.orderId,
+        customer: order.customer,
+        title: `Confirm ${order.customer}'s COD order`,
+        reason: `The order has waited ${Math.max(2, Math.floor((now - order.createdAt) / 36e5))} hours without confirmation.`,
+        taskNote: `Follow up to confirm COD order ${order.orderId.slice(0, 8)} before courier handoff.`,
+        priority: 70 + Math.min(20, Math.floor((now - order.createdAt) / DAY2))
+      });
+    }
+    if (order.shipmentStatus === "delivery_failed" && order.shipmentUpdatedAt) {
+      const key = `failed-delivery:${order.orderId}:${order.shipmentUpdatedAt}`;
+      if (!completed.has(key)) rows.push({
+        key,
+        recipeId: "failed-delivery",
+        orderId: order.orderId,
+        customer: order.customer,
+        title: `Rescue ${order.customer}'s failed delivery`,
+        reason: order.lastDeliveryFailure || "The courier reported a failed delivery attempt.",
+        taskNote: `Contact ${order.customer} about failed delivery for order ${order.orderId.slice(0, 8)}. Confirm address and availability before retrying.`,
+        priority: 100
+      });
+    }
+    if (order.status === "delivered" && !order.cashReceivedAt && order.deliveredAt && now - order.deliveredAt >= 3 * DAY2) {
+      const key = `courier-remittance:${order.orderId}:${order.deliveredAt}`;
+      if (!completed.has(key)) rows.push({
+        key,
+        recipeId: "courier-remittance",
+        orderId: order.orderId,
+        customer: order.customer,
+        title: `Chase courier cash for ${order.customer}`,
+        reason: `COD cash has remained with the courier for ${Math.floor((now - order.deliveredAt) / DAY2)} days.`,
+        taskNote: `Follow up with ${order.courier || "the courier"} about COD remittance for order ${order.orderId.slice(0, 8)}.`,
+        priority: 80 + Math.min(20, Math.floor((now - order.deliveredAt) / DAY2))
+      });
+    }
+  }
+  return rows.sort((a, b) => b.priority - a.priority || a.customer.localeCompare(b.customer));
+}
+
 // src/core/inbox.ts
 var OUT_PREFIX = /^(WhatsApp|SMS)(\s*\([^)]*\))?:\s*/i;
 var STOP_WORDS = /^\s*(stop|unsubscribe|arret|arrêt|توقف|قف)\s*$/i;
+var START_WORDS = /^\s*(start|subscribe|commencer|ابدأ|بداية)\s*$/i;
+var CONFIRM_WORDS = /^\s*(yes|y|oui|confirm(?:ed)?|تأكيد|نعم|اه|ah|wakha)\s*[.!✅👍]*\s*$/i;
+var CANCEL_WORDS = /^\s*(no|n|non|cancel|annuler|إلغاء|لا|la)\s*[.!❌]*\s*$/i;
 function isOptOut(body) {
   return STOP_WORDS.test(body);
+}
+function classifyInbound(body) {
+  if (STOP_WORDS.test(body)) return "opt-out";
+  if (START_WORDS.test(body)) return "opt-in";
+  if (CONFIRM_WORDS.test(body)) return "confirm";
+  if (CANCEL_WORDS.test(body)) return "cancel";
+  return "unknown";
 }
 function projectConversations(events) {
   const threads = /* @__PURE__ */ new Map();
   const optedOut = /* @__PURE__ */ new Set();
+  const resolvedAt = /* @__PURE__ */ new Map();
+  const assignments = /* @__PURE__ */ new Map();
+  const statuses = /* @__PURE__ */ new Map();
+  for (const e of events) {
+    if (e.stream !== "fact" || e.type !== "message_status_changed") continue;
+    const p2 = e.payload;
+    if (!p2.messageId || !p2.status) continue;
+    const at = p2.at ?? e.ts;
+    const current = statuses.get(p2.messageId);
+    if (!current || at >= current.at) statuses.set(p2.messageId, { status: p2.status, errorCode: p2.errorCode, at });
+  }
   const ensure = (key) => {
     let t = threads.get(key);
     if (!t) {
@@ -1631,8 +1825,25 @@ function projectConversations(events) {
       const t = ensure(key);
       if (p2.customer) t.customer = p2.customer;
       if (p2.phone) t.phone = p2.phone;
-      t.messages.push({ at: p2.at ?? e.ts, direction: "in", body: p2.body, phone: p2.phone });
+      t.messages.push({ id: p2.messageId, at: p2.at ?? e.ts, direction: "in", body: p2.body, phone: p2.phone });
       if (isOptOut(p2.body) && p2.customer) optedOut.add(p2.customer);
+    } else if (e.stream === "fact" && e.type === "message_sent") {
+      const p2 = e.payload;
+      const key = p2.customer || p2.phone;
+      if (!key || !p2.body) continue;
+      const t = ensure(key);
+      if (p2.customer) t.customer = p2.customer;
+      if (p2.phone) t.phone = p2.phone;
+      const delivery = p2.messageId ? statuses.get(p2.messageId) : void 0;
+      t.messages.push({
+        id: p2.messageId,
+        at: p2.at ?? e.ts,
+        direction: "out",
+        body: p2.body,
+        phone: p2.phone,
+        status: delivery?.status ?? p2.status,
+        errorCode: delivery?.errorCode
+      });
     } else if (e.stream === "fact" && e.type === "customer_activity_logged") {
       const p2 = e.payload;
       if (p2.kind !== "message" || !p2.customer) continue;
@@ -1640,9 +1851,21 @@ function projectConversations(events) {
       t.customer = p2.customer;
       t.messages.push({ at: p2.at ?? e.ts, direction: "out", body: (p2.note ?? "").replace(OUT_PREFIX, "") });
     } else if (e.stream === "fact" && e.type === "customer_opted_out") {
-      optedOut.add(String(e.payload.customer));
+      const p2 = e.payload;
+      if (p2.customer) optedOut.add(p2.customer);
+      if (p2.phone) optedOut.add(p2.phone);
     } else if (e.stream === "fact" && e.type === "customer_opted_in") {
-      optedOut.delete(String(e.payload.customer));
+      const p2 = e.payload;
+      if (p2.customer) optedOut.delete(p2.customer);
+      if (p2.phone) optedOut.delete(p2.phone);
+    } else if (e.stream === "fact" && e.type === "conversation_resolved") {
+      const p2 = e.payload;
+      const key = p2.customer || p2.phone;
+      if (key) resolvedAt.set(key, p2.at ?? e.ts);
+    } else if (e.stream === "fact" && e.type === "conversation_assigned") {
+      const p2 = e.payload;
+      const key = p2.customer || p2.phone;
+      if (key) assignments.set(key, { assignedTo: p2.assignedTo || void 0, assignedLabel: p2.assignedLabel || void 0 });
     }
   }
   const out = [];
@@ -1650,8 +1873,14 @@ function projectConversations(events) {
     t.messages.sort((a, b) => a.at - b.at);
     const last = t.messages[t.messages.length - 1];
     t.lastAt = last?.at ?? 0;
-    t.waiting = last?.direction === "in";
-    if (t.customer) t.optedOut = optedOut.has(t.customer);
+    t.resolvedAt = resolvedAt.get(t.key);
+    const assignment = assignments.get(t.key);
+    t.assignedTo = assignment?.assignedTo;
+    t.assignedLabel = assignment?.assignedLabel;
+    t.waiting = Boolean(last && last.direction === "in" && (t.resolvedAt ?? 0) < last.at);
+    t.optedOut = Boolean(
+      t.customer && optedOut.has(t.customer) || t.phone && optedOut.has(t.phone)
+    );
     out.push(t);
   }
   return out.sort((a, b) => b.lastAt - a.lastAt);
@@ -1673,6 +1902,10 @@ function describe(e) {
       return `Status \u2192 ${cap(String(p2.status))}`;
     case "order_cash_received":
       return "Courier remitted the cash";
+    case "shipment_created":
+      return `Courier handoff \u2014 ${String(p2.courier)}${p2.trackingNumber ? ` \xB7 tracking ${p2.trackingNumber}` : ""}`;
+    case "shipment_status_changed":
+      return `Shipment \u2192 ${cap(String(p2.status).replace(/_/g, " "))}${p2.reason ? ` \xB7 ${p2.reason}` : ""}`;
     case "invoice_issued":
       return `Invoice issued \u2014 ${money(Number(p2.amount))}, due in ${p2.dueDays} days`;
     case "invoice_paid":
@@ -1683,6 +1916,20 @@ function describe(e) {
       return `${cap(String(p2.kind))}: ${String(p2.note).slice(0, 120)}`;
     case "customer_activity_completed":
       return "Follow-up marked done";
+    case "message_received":
+      return `Customer message: ${String(p2.body).slice(0, 120)}`;
+    case "message_sent":
+      return `${String(p2.channel) === "sms" ? "SMS" : "WhatsApp"} sent: ${String(p2.body).slice(0, 120)}`;
+    case "message_status_changed":
+      return `Message delivery \u2192 ${cap(String(p2.status))}${p2.errorCode ? ` \xB7 error ${p2.errorCode}` : ""}`;
+    case "customer_opted_out":
+      return "Customer opted out of business messages";
+    case "customer_opted_in":
+      return "Customer opted back into business messages";
+    case "conversation_resolved":
+      return `Conversation resolved${p2.reason ? ` \u2014 ${p2.reason}` : ""}`;
+    case "conversation_assigned":
+      return p2.assignedTo ? `Conversation assigned to ${p2.assignedLabel || p2.assignedTo}` : "Conversation returned to the unassigned queue";
     case "customer_archived":
       return "Archived (hidden from lists; history kept)";
     case "customer_restored":
@@ -3885,6 +4132,150 @@ console.log("\nWhatsApp Operations Inbox (v0.33):");
   check("a customer texting STOP is flagged opted-out", qasim.optedOut === true);
   check("opted-out customers are excluded from the waiting count", waitingCount(convs) === 1);
   check("threads sort newest-activity first", convs[0].lastAt >= convs[convs.length - 1].lastAt);
+  check(
+    "explicit YES/OUI/Darija replies classify as confirmation",
+    ["YES", "oui \u2705", "\u0646\u0639\u0645", "wakha"].every((x) => classifyInbound(x) === "confirm")
+  );
+  check(
+    "explicit NO replies classify as cancellation",
+    ["NO", "non", "\u0644\u0627"].every((x) => classifyInbound(x) === "cancel")
+  );
+  check("a sentence containing yes is not over-classified", classifyInbound("Yes, but change my address") === "unknown");
+  im2.append("fact", "conversation_resolved", {
+    customer: "Inbox Ivy",
+    phone: "+212611",
+    at: t(1),
+    reason: "No reply required"
+  }, t(1));
+  const resolved = projectConversations(im2.all()).find((c) => c.customer === "Inbox Ivy");
+  check("a resolved inbound thread leaves the waiting queue", resolved.waiting === false);
+  const phoneOnly = new TestMemory();
+  phoneOnly.append("fact", "message_received", { messageId: "m4", phone: "+212633", body: "STOP", channel: "whatsapp", at: t(1) }, t(1));
+  phoneOnly.append("fact", "customer_opted_out", { phone: "+212633", at: t(1) }, t(1));
+  check("unmatched phone opt-out is still enforced", projectConversations(phoneOnly.all())[0].optedOut === true);
+  const tracked = new TestMemory();
+  tracked.append("fact", "message_sent", {
+    messageId: "SM-TRACKED",
+    customer: "Tracked Taha",
+    phone: "+212644",
+    body: "Your order is ready",
+    channel: "whatsapp",
+    status: "queued",
+    at: t(3)
+  }, t(3));
+  tracked.append("fact", "message_status_changed", {
+    messageId: "SM-TRACKED",
+    status: "delivered",
+    at: t(2)
+  }, t(2));
+  tracked.append("fact", "conversation_assigned", {
+    customer: "Tracked Taha",
+    assignedTo: "staff-1",
+    assignedLabel: "Samira",
+    at: t(1)
+  }, t(1));
+  let trackedConv = projectConversations(tracked.all())[0];
+  check("outbound Twilio SID receives its latest delivery status", trackedConv.messages[0].status === "delivered");
+  check("conversation ownership projects from append-only assignment", trackedConv.assignedTo === "staff-1" && trackedConv.assignedLabel === "Samira");
+  check("sent messages remain visible in CRM activity history", projectActivities(tracked.all()).some((a) => a.customer === "Tracked Taha" && a.kind === "message"));
+  tracked.append("fact", "conversation_assigned", { customer: "Tracked Taha", assignedTo: "", at: Date.now() }, Date.now());
+  trackedConv = projectConversations(tracked.all())[0];
+  check("unassignment returns the thread to the shared queue", trackedConv.assignedTo === void 0);
+}
+console.log("\nCourier Control Tower (v0.34):");
+{
+  const cm = new TestMemory();
+  const now = Date.now();
+  const day = 864e5;
+  cm.append("fact", "product_added", {
+    productId: "cp",
+    name: "Courier Product",
+    price: 200,
+    unitCost: 80,
+    stock: 20,
+    weeklySales: 2,
+    leadTimeDays: 7
+  }, now - 8 * day);
+  cm.append("fact", "order_created", {
+    orderId: "co",
+    customer: "Courier Customer",
+    lines: [{ productId: "cp", productName: "Courier Product", qty: 1, unitPrice: 200, unitCost: 80 }],
+    discount: 0,
+    shippingCharged: 0,
+    shippingCost: 25,
+    codFee: 5,
+    packagingCost: 3,
+    createdAt: now - 6 * day
+  }, now - 6 * day);
+  cm.append("fact", "order_status_changed", { orderId: "co", status: "confirmed", at: now - 5 * day }, now - 5 * day);
+  let cc = courierControl(projectState(cm.all()), now);
+  check("confirmed order without shipment is ranked for handoff", cc.rows[0].action === "handoff");
+  cm.append("fact", "shipment_created", {
+    orderId: "co",
+    courier: "Atlas Courier",
+    trackingNumber: "TRK-1",
+    at: now - 4 * day
+  }, now - 4 * day);
+  cm.append("fact", "order_status_changed", { orderId: "co", status: "shipped", at: now - 4 * day }, now - 4 * day);
+  cm.append("fact", "shipment_status_changed", {
+    orderId: "co",
+    status: "delivery_failed",
+    reason: "Customer unavailable",
+    at: now - 2 * day
+  }, now - 2 * day);
+  cc = courierControl(projectState(cm.all()), now);
+  check(
+    "failed delivery becomes the highest-priority customer intervention",
+    cc.rows[0].action === "contact-customer" && cc.rows[0].reason.includes("Customer unavailable")
+  );
+  cm.append("fact", "shipment_status_changed", { orderId: "co", status: "delivered", at: now - 4 * day }, now - 4 * day);
+  cm.append("fact", "order_status_changed", { orderId: "co", status: "delivered", at: now - 4 * day }, now - 4 * day);
+  cc = courierControl(projectState(cm.all()), now);
+  check(
+    "delivered COD cash past three days is ranked for remittance chase",
+    cc.rows[0].action === "chase-remittance" && cc.cashPending === 200
+  );
+  cm.append("fact", "order_cash_received", { orderId: "co", at: now }, now);
+  cc = courierControl(projectState(cm.all()), now);
+  check("remitted courier cash leaves the control queue", cc.rows.length === 0 && cc.cashPending === 0);
+}
+console.log("\nGuardrailed workflows (v0.35):");
+{
+  const wm = new TestMemory();
+  const now = Date.now();
+  const day = 864e5;
+  wm.append("fact", "product_added", {
+    productId: "wp",
+    name: "Workflow Product",
+    price: 100,
+    unitCost: 40,
+    stock: 10,
+    weeklySales: 1,
+    leadTimeDays: 5
+  }, now - day);
+  wm.append("fact", "order_created", {
+    orderId: "wo",
+    customer: "Workflow Customer",
+    lines: [{ productId: "wp", productName: "Workflow Product", qty: 1, unitPrice: 100, unitCost: 40 }],
+    discount: 0,
+    shippingCharged: 0,
+    shippingCost: 10,
+    codFee: 4,
+    packagingCost: 2,
+    createdAt: now - 5 * 36e5
+  }, now - 5 * 36e5);
+  let candidates = workflowCandidates(projectState(wm.all()), wm.all(), now);
+  const confirmation = candidates.find((c) => c.recipeId === "cod-confirmation");
+  check("old unconfirmed COD order prepares a follow-up candidate", Boolean(confirmation) && confirmation.customer === "Workflow Customer");
+  check("workflow candidate explains the trigger and intended task", confirmation.reason.includes("hours") && confirmation.taskNote.includes("Follow up"));
+  wm.append("fact", "automation_run_recorded", {
+    candidateKey: confirmation.key,
+    recipeId: confirmation.recipeId,
+    outcome: "followup_task_created",
+    at: now
+  }, now);
+  candidates = workflowCandidates(projectState(wm.all()), wm.all(), now);
+  check("completed workflow candidate is idempotently suppressed", !candidates.some((c) => c.key === confirmation.key));
 }
 console.log("\nBilling entitlement (vendor productization):");
 {

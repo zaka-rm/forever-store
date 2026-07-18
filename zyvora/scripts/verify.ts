@@ -9,7 +9,9 @@ import { refusalRisk } from "../src/core/risk";
 import { businessHealth } from "../src/core/health";
 import { measureCampaign, projectCampaigns } from "../src/core/campaigns";
 import { weeklyReview } from "../src/core/weekly";
-import { projectConversations, waitingCount } from "../src/core/inbox";
+import { courierControl } from "../src/core/couriers";
+import { workflowCandidates } from "../src/core/automations";
+import { classifyInbound, projectConversations, waitingCount } from "../src/core/inbox";
 import { courierScorecard, referralLeaderboard } from "../src/core/retention";
 import { storyForCustomer, storyForOrder } from "../src/core/story";
 import { restageInLang, stageAction } from "../src/core/actions";
@@ -605,6 +607,109 @@ console.log("\nWhatsApp Operations Inbox (v0.33):");
   check("a customer texting STOP is flagged opted-out", qasim.optedOut === true);
   check("opted-out customers are excluded from the waiting count", waitingCount(convs) === 1);
   check("threads sort newest-activity first", convs[0].lastAt >= convs[convs.length - 1].lastAt);
+
+  check("explicit YES/OUI/Darija replies classify as confirmation",
+    ["YES", "oui ✅", "نعم", "wakha"].every((x) => classifyInbound(x) === "confirm"));
+  check("explicit NO replies classify as cancellation",
+    ["NO", "non", "لا"].every((x) => classifyInbound(x) === "cancel"));
+  check("a sentence containing yes is not over-classified", classifyInbound("Yes, but change my address") === "unknown");
+
+  im.append("fact", "conversation_resolved", {
+    customer: "Inbox Ivy", phone: "+212611", at: t(1), reason: "No reply required",
+  }, t(1));
+  const resolved = projectConversations(im.all()).find((c) => c.customer === "Inbox Ivy")!;
+  check("a resolved inbound thread leaves the waiting queue", resolved.waiting === false);
+
+  const phoneOnly = new TestMemory();
+  phoneOnly.append("fact", "message_received", { messageId: "m4", phone: "+212633", body: "STOP", channel: "whatsapp", at: t(1) }, t(1));
+  phoneOnly.append("fact", "customer_opted_out", { phone: "+212633", at: t(1) }, t(1));
+  check("unmatched phone opt-out is still enforced", projectConversations(phoneOnly.all())[0].optedOut === true);
+
+  const tracked = new TestMemory();
+  tracked.append("fact", "message_sent", {
+    messageId: "SM-TRACKED", customer: "Tracked Taha", phone: "+212644", body: "Your order is ready", channel: "whatsapp", status: "queued", at: t(3),
+  }, t(3));
+  tracked.append("fact", "message_status_changed", {
+    messageId: "SM-TRACKED", status: "delivered", at: t(2),
+  }, t(2));
+  tracked.append("fact", "conversation_assigned", {
+    customer: "Tracked Taha", assignedTo: "staff-1", assignedLabel: "Samira", at: t(1),
+  }, t(1));
+  let trackedConv = projectConversations(tracked.all())[0];
+  check("outbound Twilio SID receives its latest delivery status", trackedConv.messages[0].status === "delivered");
+  check("conversation ownership projects from append-only assignment", trackedConv.assignedTo === "staff-1" && trackedConv.assignedLabel === "Samira");
+  check("sent messages remain visible in CRM activity history", projectActivities(tracked.all()).some((a) => a.customer === "Tracked Taha" && a.kind === "message"));
+  tracked.append("fact", "conversation_assigned", { customer: "Tracked Taha", assignedTo: "", at: Date.now() }, Date.now());
+  trackedConv = projectConversations(tracked.all())[0];
+  check("unassignment returns the thread to the shared queue", trackedConv.assignedTo === undefined);
+}
+
+console.log("\nCourier Control Tower (v0.34):");
+{
+  const cm = new TestMemory();
+  const now = Date.now();
+  const day = 86_400_000;
+  cm.append("fact", "product_added", {
+    productId: "cp", name: "Courier Product", price: 200, unitCost: 80,
+    stock: 20, weeklySales: 2, leadTimeDays: 7,
+  }, now - 8 * day);
+  cm.append("fact", "order_created", {
+    orderId: "co", customer: "Courier Customer",
+    lines: [{ productId: "cp", productName: "Courier Product", qty: 1, unitPrice: 200, unitCost: 80 }],
+    discount: 0, shippingCharged: 0, shippingCost: 25, codFee: 5, packagingCost: 3,
+    createdAt: now - 6 * day,
+  }, now - 6 * day);
+  cm.append("fact", "order_status_changed", { orderId: "co", status: "confirmed", at: now - 5 * day }, now - 5 * day);
+  let cc = courierControl(projectState(cm.all()), now);
+  check("confirmed order without shipment is ranked for handoff", cc.rows[0].action === "handoff");
+
+  cm.append("fact", "shipment_created", {
+    orderId: "co", courier: "Atlas Courier", trackingNumber: "TRK-1", at: now - 4 * day,
+  }, now - 4 * day);
+  cm.append("fact", "order_status_changed", { orderId: "co", status: "shipped", at: now - 4 * day }, now - 4 * day);
+  cm.append("fact", "shipment_status_changed", {
+    orderId: "co", status: "delivery_failed", reason: "Customer unavailable", at: now - 2 * day,
+  }, now - 2 * day);
+  cc = courierControl(projectState(cm.all()), now);
+  check("failed delivery becomes the highest-priority customer intervention",
+    cc.rows[0].action === "contact-customer" && cc.rows[0].reason.includes("Customer unavailable"));
+
+  cm.append("fact", "shipment_status_changed", { orderId: "co", status: "delivered", at: now - 4 * day }, now - 4 * day);
+  cm.append("fact", "order_status_changed", { orderId: "co", status: "delivered", at: now - 4 * day }, now - 4 * day);
+  cc = courierControl(projectState(cm.all()), now);
+  check("delivered COD cash past three days is ranked for remittance chase",
+    cc.rows[0].action === "chase-remittance" && cc.cashPending === 200);
+
+  cm.append("fact", "order_cash_received", { orderId: "co", at: now }, now);
+  cc = courierControl(projectState(cm.all()), now);
+  check("remitted courier cash leaves the control queue", cc.rows.length === 0 && cc.cashPending === 0);
+}
+
+console.log("\nGuardrailed workflows (v0.35):");
+{
+  const wm = new TestMemory();
+  const now = Date.now();
+  const day = 86_400_000;
+  wm.append("fact", "product_added", {
+    productId: "wp", name: "Workflow Product", price: 100, unitCost: 40,
+    stock: 10, weeklySales: 1, leadTimeDays: 5,
+  }, now - day);
+  wm.append("fact", "order_created", {
+    orderId: "wo", customer: "Workflow Customer",
+    lines: [{ productId: "wp", productName: "Workflow Product", qty: 1, unitPrice: 100, unitCost: 40 }],
+    discount: 0, shippingCharged: 0, shippingCost: 10, codFee: 4, packagingCost: 2,
+    createdAt: now - 5 * 3_600_000,
+  }, now - 5 * 3_600_000);
+  let candidates = workflowCandidates(projectState(wm.all()), wm.all(), now);
+  const confirmation = candidates.find((c) => c.recipeId === "cod-confirmation")!;
+  check("old unconfirmed COD order prepares a follow-up candidate", Boolean(confirmation) && confirmation.customer === "Workflow Customer");
+  check("workflow candidate explains the trigger and intended task", confirmation.reason.includes("hours") && confirmation.taskNote.includes("Follow up"));
+
+  wm.append("fact", "automation_run_recorded", {
+    candidateKey: confirmation.key, recipeId: confirmation.recipeId, outcome: "followup_task_created", at: now,
+  }, now);
+  candidates = workflowCandidates(projectState(wm.all()), wm.all(), now);
+  check("completed workflow candidate is idempotently suppressed", !candidates.some((c) => c.key === confirmation.key));
 }
 
 console.log("\nBilling entitlement (vendor productization):");

@@ -19,7 +19,8 @@ Companion to `DEPLOYMENT.md` (how to ship) — this is how to run.
 | Check | Where | Healthy looks like |
 |---|---|---|
 | Client errors | Table Editor → `zyvora_client_errors` | Empty, or known issues already fixed |
-| Edge Function failures | Dashboard → Edge Functions → Logs (ask-ai, send-message, zyvora-billing, zyvora-stripe-webhook) | No 5xx entries |
+| Edge Function failures | Dashboard → Edge Functions → Logs (ask-ai, send-message, whatsapp-inbound, message-status, zyvora-billing, zyvora-stripe-webhook) | No 5xx entries |
+| WhatsApp delivery | Inbox message receipts + Twilio Monitor → Messaging logs | Recent sends progress from queued/sent to delivered/read; failed items show a reason/code |
 | Webhook delivery | Stripe Dashboard → Webhooks → endpoint | 100% delivered; retry any failed |
 | Payment health | Stripe Dashboard → Subscriptions | No unexpected `past_due` pile-up |
 | Database size / limits | Supabase Dashboard → Reports | Comfortably under plan limits |
@@ -39,6 +40,8 @@ Optional free uptime alarm: point UptimeRobot (or similar) at the production URL
    assistant — this is by design, not an emergency.
 4. **Messages not sending** — `send-message` logs + Twilio Console → Monitor → Logs. Sandbox
    recipients must have joined; production senders must be approved.
+   If messages send but receipts never update, check `message-status` logs and confirm
+   `TWILIO_STATUS_CALLBACK_URL` is the deployed function URL.
 5. **Subscriptions out of sync** — Stripe webhook logs first (delivery failures), then
    `zyvora_subscriptions` rows. Stripe is the truth; the table is a mirror — replaying the webhook
    from Stripe Dashboard repairs the mirror.

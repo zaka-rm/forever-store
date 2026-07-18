@@ -25,6 +25,10 @@ function describe(e: MemoryEvent): string | null {
       return `Status → ${cap(String(p.status))}`;
     case "order_cash_received":
       return "Courier remitted the cash";
+    case "shipment_created":
+      return `Courier handoff — ${String(p.courier)}${p.trackingNumber ? ` · tracking ${p.trackingNumber}` : ""}`;
+    case "shipment_status_changed":
+      return `Shipment → ${cap(String(p.status).replace(/_/g, " "))}${p.reason ? ` · ${p.reason}` : ""}`;
     case "invoice_issued":
       return `Invoice issued — ${money(Number(p.amount))}, due in ${p.dueDays} days`;
     case "invoice_paid":
@@ -35,6 +39,20 @@ function describe(e: MemoryEvent): string | null {
       return `${cap(String(p.kind))}: ${String(p.note).slice(0, 120)}`;
     case "customer_activity_completed":
       return "Follow-up marked done";
+    case "message_received":
+      return `Customer message: ${String(p.body).slice(0, 120)}`;
+    case "message_sent":
+      return `${String(p.channel) === "sms" ? "SMS" : "WhatsApp"} sent: ${String(p.body).slice(0, 120)}`;
+    case "message_status_changed":
+      return `Message delivery → ${cap(String(p.status))}${p.errorCode ? ` · error ${p.errorCode}` : ""}`;
+    case "customer_opted_out":
+      return "Customer opted out of business messages";
+    case "customer_opted_in":
+      return "Customer opted back into business messages";
+    case "conversation_resolved":
+      return `Conversation resolved${p.reason ? ` — ${p.reason}` : ""}`;
+    case "conversation_assigned":
+      return p.assignedTo ? `Conversation assigned to ${p.assignedLabel || p.assignedTo}` : "Conversation returned to the unassigned queue";
     case "customer_archived":
       return "Archived (hidden from lists; history kept)";
     case "customer_restored":

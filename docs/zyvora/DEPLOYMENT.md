@@ -19,7 +19,7 @@ Supabase ── Postgres + RLS (business memory, teams, error telemetry)
 
 ## One-time setup (owner)
 
-1. **Supabase schema** — paste `supabase/APPLY_ZYVORA.sql` into the SQL editor of the **dedicated ZYVORA project** and Run (idempotent; safe to re-run). This contains ONLY the ZYVORA tables (files 40-43); the Naturaloe store keeps its own separate project/schema. Regenerate it with `powershell -File supabase/build-apply-zyvora.ps1` after any 4x_zyvora*.sql change. (`APPLY_ALL.sql` = both apps combined, only for a shared project — not this setup.)
+1. **Supabase schema** — paste `supabase/APPLY_ZYVORA.sql` into the SQL editor of the **dedicated ZYVORA project** and Run (idempotent; safe to re-run). This contains ONLY the ZYVORA tables (files 40-44, including explicit WhatsApp/SMS channel bindings); the Naturaloe store keeps its own separate project/schema. Regenerate it with `powershell -File supabase/build-apply-zyvora.ps1` after any 4x_zyvora*.sql change. (`APPLY_ALL.sql` = both apps combined, only for a shared project — not this setup.)
 2. **Edge Functions** (needs `supabase login` + `supabase link --project-ref muzweildgqhlchkxeshr`):
    ```powershell
    supabase functions deploy ask-ai
@@ -27,12 +27,29 @@ Supabase ── Postgres + RLS (business memory, teams, error telemetry)
    supabase functions deploy zyvora-billing
    supabase functions deploy zyvora-stripe-webhook --no-verify-jwt
    supabase functions deploy whatsapp-inbound --no-verify-jwt
+   supabase functions deploy message-status --no-verify-jwt
    supabase secrets set GROQ_API_KEY=<gsk_...>
-   supabase secrets set TWILIO_ACCOUNT_SID=<AC...> TWILIO_AUTH_TOKEN=<...> TWILIO_WHATSAPP_FROM=whatsapp:+14155238886
+   supabase secrets set TWILIO_ACCOUNT_SID=<AC...> TWILIO_AUTH_TOKEN=<...> TWILIO_WHATSAPP_FROM=whatsapp:+14155238886 TWILIO_WEBHOOK_URL=https://<project-ref>.supabase.co/functions/v1/whatsapp-inbound TWILIO_STATUS_CALLBACK_URL=https://<project-ref>.supabase.co/functions/v1/message-status
    supabase secrets set STRIPE_SECRET_KEY=<sk_...> STRIPE_PRICE_ID=<price_...> APP_URL=<https://your-app-url>
    supabase secrets set ZYVORA_STRIPE_WEBHOOK_SECRET=<whsec_...>
    ```
    NOTE: `stripe-webhook` (no prefix) belongs to the parent Naturaloe store — never redeploy it with ZYVORA code.
+
+### WhatsApp inbound binding (required)
+
+After applying `APPLY_ZYVORA.sql`, register the Twilio destination that belongs to each Workspace. This deliberately replaces the old unsafe “newest Workspace” fallback. In the SQL editor, replace both placeholders and run once:
+
+```sql
+insert into public.zyvora_channel_bindings (workspace_id, channel, address, label)
+values ('<your-workspace-uuid>', 'whatsapp', '+14155238886', 'Twilio WhatsApp sandbox')
+on conflict (channel, address) do update
+set workspace_id = excluded.workspace_id, label = excluded.label;
+```
+
+In Twilio Sandbox settings, set **When a message comes in** to
+`https://<project-ref>.supabase.co/functions/v1/whatsapp-inbound` using **POST**. The value of `TWILIO_WEBHOOK_URL` must match that public URL exactly so Twilio signature verification succeeds. The sandbox still requires each test recipient to send `join <code>` first.
+
+`send-message` supplies `message-status` to Twilio automatically for every new outbound message. Do not add the Workspace query parameter yourself; the sender function adds it and Twilio signs the resulting callback URL. Delivery receipts then appear beside the message as Queued, Sent, Delivered, Read, or Delivery failed.
 
 ### Stripe setup (billing)
 

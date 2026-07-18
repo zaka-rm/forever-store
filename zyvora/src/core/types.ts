@@ -131,6 +131,34 @@ export interface OrderCashReceived {
   at: number;
 }
 
+/** Carrier progress is separate from commercial order status (ZPL-040 §4). */
+export type ShipmentStatus =
+  | "handed_to_courier"
+  | "in_transit"
+  | "out_for_delivery"
+  | "delivery_failed"
+  | "delivered"
+  | "returning"
+  | "returned";
+
+export interface ShipmentCreated {
+  orderId: string;
+  courier: string;
+  trackingNumber?: string;
+  trackingUrl?: string;
+  expectedDeliveryAt?: number;
+  expectedRemittanceAt?: number;
+  at: number;
+}
+
+export interface ShipmentStatusChanged {
+  orderId: string;
+  status: ShipmentStatus;
+  at: number;
+  reason?: string;
+  note?: string;
+}
+
 // ---------- Procurement (CAP-000006 — FEAT-000045 purchase orders & receipts) ----------
 
 export interface PoLine {
@@ -177,13 +205,22 @@ export interface MessageReceived {
 
 /** Consent trail — a customer texting STOP opts out of business-initiated messages. */
 export interface CustomerOptedOut {
-  customer: string;
+  customer?: string;
   phone?: string;
   at: number;
 }
 export interface CustomerOptedIn {
-  customer: string;
+  customer?: string;
+  phone?: string;
   at: number;
+}
+
+/** Clear a customer message that required no outbound reply (append-only). */
+export interface ConversationResolved {
+  customer?: string;
+  phone?: string;
+  at: number;
+  reason?: string;
 }
 
 export type ActivityKind = "call" | "message" | "visit" | "note" | "followup";
@@ -271,6 +308,15 @@ export interface Order extends OrderCreated {
   status: OrderStatus;
   deliveredAt?: number;
   cashReceivedAt?: number;
+  shipmentStatus?: ShipmentStatus;
+  trackingNumber?: string;
+  trackingUrl?: string;
+  shipmentCreatedAt?: number;
+  shipmentUpdatedAt?: number;
+  expectedDeliveryAt?: number;
+  expectedRemittanceAt?: number;
+  deliveryAttempts?: number;
+  lastDeliveryFailure?: string;
 }
 
 export interface PurchaseOrder extends PurchaseOrderCreated {

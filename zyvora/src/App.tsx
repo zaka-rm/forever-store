@@ -52,12 +52,13 @@ import { ErrorBoundary } from "./ui/ErrorBoundary";
 import { OrdersView } from "./ui/Orders";
 import { PromosView } from "./ui/Promos";
 import { InboxView } from "./ui/Inbox";
+import { AutomationsView } from "./ui/Automations";
 import { projectConversations, waitingCount } from "./core/inbox";
 import { Today } from "./ui/Today";
 
 type View =
   | "today" | "notifications" | "inbox" | "orders" | "finance" | "customers"
-  | "inventory" | "promos" | "analytics" | "ask" | "import" | "team" | "billing" | "memory";
+  | "inventory" | "promos" | "automations" | "analytics" | "ask" | "import" | "team" | "billing" | "memory";
 
 type NavItem = { id: View; label: string; icon: IconName };
 
@@ -79,6 +80,7 @@ const NAV_GROUPS: { label: string; items: NavItem[] }[] = [
     items: [
       { id: "inbox", label: "Inbox", icon: "chat" },
       { id: "orders", label: "Orders", icon: "orders" },
+      { id: "automations", label: "Workflows", icon: "automation" },
       { id: "customers", label: "Customers", icon: "customers" },
       { id: "inventory", label: "Inventory", icon: "inventory" },
       { id: "promos", label: "Promos", icon: "promos" },
@@ -108,6 +110,7 @@ const VIEW_META: Record<View, { title: string; section: string }> = {
   notifications: { title: "Notifications", section: "Overview" },
   inbox: { title: "Inbox", section: "Commerce" },
   orders: { title: "Orders", section: "Commerce" },
+  automations: { title: "Workflows", section: "Commerce" },
   customers: { title: "Customers", section: "Commerce" },
   inventory: { title: "Inventory", section: "Commerce" },
   promos: { title: "Promos", section: "Commerce" },
@@ -593,7 +596,7 @@ function Workspace({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [notifications, view, notifVersion]);
 
-  const waiting = useMemo(() => waitingCount(projectConversations(events)), [events]);
+  const waiting = useMemo(() => waitingCount(projectConversations(events)), [events, events.length]);
 
   /** Lifecycle stages 8 & 11: the human decides; interpretation + decision enter Memory. */
   const onDecide = (
@@ -801,14 +804,24 @@ function Workspace({
               onChange={() => setNotifVersion((v) => v + 1)}
             />
           )}
-          {view === "inbox" && <InboxView state={state} memory={memory} workspaceId={workspace.id} workspaceName={workspace.name} />}
-          {view === "orders" && <OrdersView state={state} memory={memory} workspaceName={workspace.name} />}
-          {view === "finance" && <FinanceView state={state} memory={memory} />}
-          {view === "customers" && <CustomersView state={state} memory={memory} />}
+          {view === "inbox" && (
+            <InboxView
+              state={state}
+              memory={memory}
+              workspaceId={workspace.id}
+              workspaceName={workspace.name}
+              userId={userId}
+              editable={can(role, "advance_order")}
+            />
+          )}
+          {view === "orders" && <OrdersView state={state} memory={memory} workspaceName={workspace.name} workspaceId={workspace.id} />}
+          {view === "automations" && <AutomationsView state={state} memory={memory} editable={can(role, "advance_order")} />}
+          {view === "finance" && <FinanceView state={state} memory={memory} workspaceId={workspace.id} />}
+          {view === "customers" && <CustomersView state={state} memory={memory} workspaceId={workspace.id} />}
           {view === "inventory" && <InventoryView state={state} memory={memory} />}
           {view === "promos" && <PromosView state={state} memory={memory} />}
           {view === "analytics" && <AnalyticsView state={state} memory={memory} />}
-          {view === "ask" && <AskView state={state} memory={memory} />}
+          {view === "ask" && <AskView state={state} memory={memory} workspaceId={workspace.id} />}
           {view === "import" && <ImportView memory={memory} state={state} />}
           {view === "team" && (
             <TeamView

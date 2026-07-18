@@ -9,7 +9,7 @@ import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { askZyvora, businessContext, SUGGESTED_QUESTIONS, type Answer } from "../core/assistant";
 import { askLlm, llmConfigured, llmModel, type ChatMessage } from "../core/llm";
 import { restageInLang, stageAction, type DraftLang, type StagedMessage } from "../core/actions";
-import { messagingConfigured, sendMessage } from "../core/messaging";
+import { messagingConfigured, recordSentMessage, sendMessage } from "../core/messaging";
 import { projectContacts, projectCustomerProfiles } from "../core/projections";
 import type { MemoryStore } from "../core/memory";
 import type { WorkspaceState } from "../core/types";
@@ -25,7 +25,7 @@ interface Turn {
 }
 
 /** Staged action — a drafted, editable, human-approved message (Ask → Act). */
-function ActionCard({ staged, state, memory }: { staged: StagedMessage; state: WorkspaceState; memory: MemoryStore }) {
+function ActionCard({ staged, state, memory, workspaceId }: { staged: StagedMessage; state: WorkspaceState; memory: MemoryStore; workspaceId: string }) {
   const [draft, setDraft] = useState(staged);
   const [body, setBody] = useState(staged.body);
   const [busy, setBusy] = useState(false);
@@ -57,13 +57,10 @@ function ActionCard({ staged, state, memory }: { staged: StagedMessage; state: W
   const send = async () => {
     if (!draft.phone) return;
     setBusy(true);
-    const r = await sendMessage(draft.phone, body.trim(), "whatsapp");
+    const r = await sendMessage(draft.phone, body.trim(), "whatsapp", { workspaceId, customer: draft.customer });
     setBusy(false);
     if (r.ok) {
-      memory.append("fact", "customer_activity_logged", {
-        activityId: crypto.randomUUID(), customer: draft.customer, kind: "message",
-        note: `WhatsApp (${draft.intent}): ${body.trim()}`, at: Date.now(),
-      });
+      recordSentMessage(memory, r, { customer: draft.customer, phone: draft.phone, body: body.trim(), channel: "whatsapp" });
       setSent(true);
       toast(`Sent to ${draft.customer}`);
     } else {
@@ -121,7 +118,7 @@ function ActionCard({ staged, state, memory }: { staged: StagedMessage; state: W
   );
 }
 
-export function AskView({ state, memory }: { state: WorkspaceState; memory: MemoryStore }) {
+export function AskView({ state, memory, workspaceId }: { state: WorkspaceState; memory: MemoryStore; workspaceId: string }) {
   const [input, setInput] = useState("");
   const [turns, setTurns] = useState<Turn[]>([]);
   const [busy, setBusy] = useState(false);
@@ -244,7 +241,7 @@ export function AskView({ state, memory }: { state: WorkspaceState; memory: Memo
                   ))}
                 </div>
               )}
-              {t.staged && <ActionCard staged={t.staged} state={state} memory={memory} />}
+              {t.staged && <ActionCard staged={t.staged} state={state} memory={memory} workspaceId={workspaceId} />}
             </div>
           </motion.div>
         ))}

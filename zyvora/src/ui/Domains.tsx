@@ -20,7 +20,7 @@ import {
   type Contact,
   type CustomerTag,
 } from "../core/projections";
-import { messagingConfigured, sendMessage } from "../core/messaging";
+import { messagingConfigured, recordSentMessage, sendMessage } from "../core/messaging";
 import { SEGMENT_LABEL, SEGMENT_TONE, computeRfm, refillDueList, referralLeaderboard, reorderDueList, type RfmSegment } from "../core/retention";
 import { measureCampaign, projectCampaigns } from "../core/campaigns";
 import { storyForCustomer } from "../core/story";
@@ -35,7 +35,7 @@ const dateLabel = (ts: number) =>
 
 // ------------------------------------------------------------------ Finance
 
-export function FinanceView({ state, memory }: { state: WorkspaceState; memory: MemoryStore }) {
+export function FinanceView({ state, memory, workspaceId }: { state: WorkspaceState; memory: MemoryStore; workspaceId: string }) {
   const [customer, setCustomer] = useState("");
   const [amount, setAmount] = useState("");
   const [dueDays, setDueDays] = useState("14");
@@ -88,7 +88,7 @@ export function FinanceView({ state, memory }: { state: WorkspaceState; memory: 
       />
 
       <CashCenter state={state} />
-      <CashCalendarPanel state={state} memory={memory} />
+      <CashCalendarPanel state={state} memory={memory} workspaceId={workspaceId} />
 
       {creating === "invoice" && (
       <section className="card form-card" aria-labelledby="new-invoice-title">
@@ -203,7 +203,7 @@ export function FinanceView({ state, memory }: { state: WorkspaceState; memory: 
  * undated courier cash shown honestly as its own bucket, plus a one-tap
  * WhatsApp reminder per overdue invoice (the collect workflow).
  */
-function CashCalendarPanel({ state, memory }: { state: WorkspaceState; memory: MemoryStore }) {
+function CashCalendarPanel({ state, memory, workspaceId }: { state: WorkspaceState; memory: MemoryStore; workspaceId: string }) {
   const cal = cashCalendar(state);
   const contacts = projectContacts(memory.all());
   const overdueEntries = cal.entries.filter((e) => e.overdueDays > 0).slice(0, 6);
@@ -262,12 +262,9 @@ function CashCalendarPanel({ state, memory }: { state: WorkspaceState; memory: M
                             <button
                               className="btn mini"
                               onClick={async () => {
-                                const r = await sendMessage(phone, reminder, "whatsapp");
+                                const r = await sendMessage(phone, reminder, "whatsapp", { workspaceId, customer: e.customer });
                                 if (r.ok) {
-                                  memory.append("fact", "customer_activity_logged", {
-                                    activityId: crypto.randomUUID(), customer: e.customer, kind: "message",
-                                    note: `WhatsApp payment reminder: ${reminder}`, at: Date.now(),
-                                  });
+                                  recordSentMessage(memory, r, { customer: e.customer, phone, body: reminder, channel: "whatsapp" });
                                   toast(`Reminder sent to ${e.customer}`);
                                 } else toast(`Couldn't send: ${r.error}`);
                               }}
@@ -382,7 +379,7 @@ const TAG_STYLE: Record<CustomerTag, { label: string; cls: string }> = {
   "high-refusal": { label: "High refusal", cls: "strategic" },
 };
 
-export function CustomersView({ state, memory }: { state: WorkspaceState; memory: MemoryStore }) {
+export function CustomersView({ state, memory, workspaceId }: { state: WorkspaceState; memory: MemoryStore; workspaceId: string }) {
   const now = Date.now();
   const allCustomers = projectCustomerProfiles(state, now);
   const archivedSet = new Set(state.archivedCustomers);
@@ -603,7 +600,7 @@ export function CustomersView({ state, memory }: { state: WorkspaceState; memory
         </>
       )}
 
-      <CampaignPanel state={state} memory={memory} rfm={rfm} customers={customers} contacts={contacts} />
+      <CampaignPanel state={state} memory={memory} rfm={rfm} customers={customers} contacts={contacts} workspaceId={workspaceId} />
 
       {referrers.length > 0 && (
         <section className="card" style={{ marginTop: 18 }} aria-labelledby="referrers-title">
@@ -663,12 +660,9 @@ export function CustomersView({ state, memory }: { state: WorkspaceState; memory
                             <button
                               className="btn mini"
                               onClick={async () => {
-                                const res = await sendMessage(phone, nudge, "whatsapp");
+                                const res = await sendMessage(phone, nudge, "whatsapp", { workspaceId, customer: r.customer });
                                 if (res.ok) {
-                                  memory.append("fact", "customer_activity_logged", {
-                                    activityId: crypto.randomUUID(), customer: r.customer, kind: "message",
-                                    note: `WhatsApp refill nudge (${r.productName}): ${nudge}`, at: Date.now(),
-                                  });
+                                  recordSentMessage(memory, res, { customer: r.customer, phone, body: nudge, channel: "whatsapp" });
                                   toast(`Refill nudge sent to ${r.customer}`);
                                 } else toast(`Couldn't send: ${res.error}`);
                               }}
@@ -727,12 +721,9 @@ export function CustomersView({ state, memory }: { state: WorkspaceState; memory
                             <button
                               className="btn mini"
                               onClick={async () => {
-                                const r = await sendMessage(phone, nudge, "whatsapp");
+                                const r = await sendMessage(phone, nudge, "whatsapp", { workspaceId, customer: d.name });
                                 if (r.ok) {
-                                  memory.append("fact", "customer_activity_logged", {
-                                    activityId: crypto.randomUUID(), customer: d.name, kind: "message",
-                                    note: `WhatsApp reorder nudge: ${nudge}`, at: Date.now(),
-                                  });
+                                  recordSentMessage(memory, r, { customer: d.name, phone, body: nudge, channel: "whatsapp" });
                                   toast(`Nudge sent to ${d.name}`);
                                 } else toast(`Couldn't send: ${r.error}`);
                               }}
@@ -795,6 +786,7 @@ export function CustomersView({ state, memory }: { state: WorkspaceState; memory
             contact={contacts.get(selectedCustomer.name) ?? {}}
             activities={activities.filter((a) => a.customer === selectedCustomer.name)}
             memory={memory}
+            workspaceId={workspaceId}
           />
 
           <h2 style={{ marginTop: 22 }}>Story</h2>
@@ -834,12 +826,13 @@ export function CustomersView({ state, memory }: { state: WorkspaceState; memory
  * measure the real order lift (before vs after) once the window elapses.
  */
 function CampaignPanel({
-  state, memory, rfm, customers, contacts,
+  state, memory, rfm, customers, contacts, workspaceId,
 }: {
   state: WorkspaceState; memory: MemoryStore;
   rfm: Map<string, { segment: RfmSegment }>;
   customers: { name: string }[];
   contacts: Map<string, Contact>;
+  workspaceId: string;
 }) {
   const [open, setOpen] = useState(false);
   const [segment, setSegment] = useState<RfmSegment>("at-risk");
@@ -878,13 +871,10 @@ function CampaignPanel({
     let sent = 0;
     for (const c of reachable) {
       const phone = contacts.get(c.name)!.phone!.trim();
-      const r = await sendMessage(phone, body, "whatsapp");
+      const r = await sendMessage(phone, body, "whatsapp", { workspaceId, customer: c.name });
       if (r.ok) {
         sent++;
-        memory.append("fact", "customer_activity_logged", {
-          activityId: crypto.randomUUID(), customer: c.name, kind: "message",
-          note: `Campaign (${SEGMENT_LABEL[segment]}): ${body}`, at: Date.now(),
-        });
+        recordSentMessage(memory, r, { customer: c.name, phone, body, channel: "whatsapp" });
       }
     }
     memory.append("fact", "campaign_sent", {
@@ -977,8 +967,8 @@ function CampaignPanel({
 
 /** Contact record + follow-up activities for one customer (CAP-000007). */
 function CustomerCrm({
-  customer, contact, activities, memory,
-}: { customer: string; contact: Contact; activities: Activity[]; memory: MemoryStore }) {
+  customer, contact, activities, memory, workspaceId,
+}: { customer: string; contact: Contact; activities: Activity[]; memory: MemoryStore; workspaceId: string }) {
   const [phone, setPhone] = useState(contact.phone ?? "");
   const [city, setCity] = useState(contact.city ?? "");
   const [notes, setNotes] = useState(contact.notes ?? "");
@@ -992,9 +982,12 @@ function CustomerCrm({
   const send = async (channel: "whatsapp" | "sms") => {
     if (!phone.trim() || !msg.trim()) return;
     setSending(true); setSendResult(null);
-    const r = await sendMessage(phone.trim(), msg.trim(), channel);
+    const r = await sendMessage(phone.trim(), msg.trim(), channel, { workspaceId, customer });
     setSending(false);
-    if (r.ok) { setSendResult(`Sent via ${channel === "whatsapp" ? "WhatsApp" : "SMS"}.`); setMsg(""); memory.append("fact", "customer_activity_logged", { activityId: crypto.randomUUID(), customer, kind: "message", note: `${channel === "whatsapp" ? "WhatsApp" : "SMS"}: ${msg.trim()}`, at: Date.now() }); }
+    if (r.ok) {
+      recordSentMessage(memory, r, { customer, phone: phone.trim(), body: msg.trim(), channel });
+      setSendResult(`Sent via ${channel === "whatsapp" ? "WhatsApp" : "SMS"}.`); setMsg("");
+    }
     else setSendResult(`Couldn't send: ${r.error}`);
   };
 

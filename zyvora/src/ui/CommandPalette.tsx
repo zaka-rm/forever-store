@@ -32,6 +32,7 @@ const NAV_TARGETS: { view: string; label: string; icon: IconName }[] = [
   { view: "today", label: "Today", icon: "today" },
   { view: "notifications", label: "Notifications", icon: "bell" },
   { view: "orders", label: "Orders", icon: "orders" },
+  { view: "automations", label: "Workflows", icon: "automation" },
   { view: "finance", label: "Finance", icon: "finance" },
   { view: "customers", label: "Customers", icon: "customers" },
   { view: "inventory", label: "Inventory", icon: "inventory" },

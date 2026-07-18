@@ -1,6 +1,6 @@
 # ZYVORA — Decision Operating System
 
-**Vertical slice v0.1** — the first implementation increment of the ZYVORA Architecture Library
+**Current vertical slice v0.36** — an implementation increment of the ZYVORA Architecture Library
 (`docs/zyvora/`), built under ZPL-030 (Implementation Constitution).
 
 ZYVORA is not an ERP, CRM, or analytics tool. It is a Decision Operating System: it turns a
@@ -42,14 +42,19 @@ Appends go through a persisted offline outbox with idempotent upserts, so a drop
 connection never loses Memory. Without env vars (or via "Continue in local device mode"),
 the app runs fully local as before.
 
+## Current operations layer
+
+- WhatsApp Operations Inbox: signed inbound webhook, STOP/START consent, delivery/read/failure receipts, team assignment, and Mine/Unassigned/All queues.
+- Courier Control Tower: shipment progress, failed-delivery intervention, and COD remittance control.
+- Guardrailed Workflows: human-approved follow-up preparation; no silent sends or financial/order changes.
+- Production build and 166-check deterministic suite are green as of v0.36.
+
 ## Deliberate boundaries (sequencing per ZPL-020 waves)
 
-- **Multi-user teams and roles** arrive with the permissions slice (CODEX 61–62); today one
-  account = one owner.
+- **Multi-user teams and roles are implemented**; accepted Meta WhatsApp templates and Flows remain external-approval work.
 - **The Engine is rules-based (maturity M3)** — explainable by construction; model-backed brains
   arrive with CODEX 41 and remain swappable dependencies (CODEX 00 F.8).
-- **Automation ladder** is at rung 1 (the system prepares; the Builder acts). Rungs 2–3 arrive
-  with the Notifications and Agents codices. There is no rung 4, ever (Article IV, ADR-0005).
+- **Automation ladder** supports human-approved prepared follow-ups (rung 2). Background standing rules remain deferred until server-side scheduling, retry monitoring, and dead-letter recovery exist. There is no rung 4, ever (Article IV, ADR-0005).
 - Loop closure (ADR-1002) is wired: outcomes are recorded against decisions in Memory. The
   Engine's *use* of outcome history for per-business calibration (M4) is the next increment.
 

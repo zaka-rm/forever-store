@@ -16,6 +16,8 @@ import type {
   OrderCashReceived,
   OrderCreated,
   OrderStatusChanged,
+  ShipmentCreated,
+  ShipmentStatusChanged,
   GoalMetric,
   GoalSet,
   Product,
@@ -143,6 +145,33 @@ export function projectState(events: readonly MemoryEvent[]): WorkspaceState {
         const p = e.payload as unknown as OrderCashReceived;
         const o = orders.get(p.orderId);
         if (o) o.cashReceivedAt = p.at;
+        break;
+      }
+      case "shipment_created": {
+        const p = e.payload as unknown as ShipmentCreated;
+        const o = orders.get(p.orderId);
+        if (o) {
+          o.courier = p.courier;
+          o.trackingNumber = p.trackingNumber;
+          o.trackingUrl = p.trackingUrl;
+          o.shipmentCreatedAt = p.at;
+          o.shipmentUpdatedAt = p.at;
+          o.expectedDeliveryAt = p.expectedDeliveryAt;
+          o.expectedRemittanceAt = p.expectedRemittanceAt;
+          o.shipmentStatus = "handed_to_courier";
+          o.deliveryAttempts = 0;
+        }
+        break;
+      }
+      case "shipment_status_changed": {
+        const p = e.payload as unknown as ShipmentStatusChanged;
+        const o = orders.get(p.orderId);
+        if (o) {
+          o.shipmentStatus = p.status;
+          o.shipmentUpdatedAt = p.at;
+          if (p.status === "out_for_delivery") o.deliveryAttempts = (o.deliveryAttempts ?? 0) + 1;
+          if (p.status === "delivery_failed") o.lastDeliveryFailure = p.reason || p.note || "Reason not recorded";
+        }
         break;
       }
       case "promo_created": {
@@ -809,6 +838,17 @@ export function projectActivities(events: readonly MemoryEvent[]): Activity[] {
         note: String(p.note),
         dueAt: p.dueAt as number | undefined,
         at: e.ts,
+        done: false,
+      });
+    } else if (e.type === "message_sent") {
+      const p = e.payload as Record<string, unknown>;
+      if (!p.customer || !p.body) continue;
+      acts.set(String(p.messageId ?? e.id), {
+        activityId: String(p.messageId ?? e.id),
+        customer: String(p.customer),
+        kind: "message",
+        note: `${String(p.channel) === "sms" ? "SMS" : "WhatsApp"}: ${String(p.body)}`,
+        at: (p.at as number | undefined) ?? e.ts,
         done: false,
       });
     } else if (e.type === "customer_activity_completed") {
