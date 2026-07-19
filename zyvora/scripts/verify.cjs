@@ -15,6 +15,7 @@ function entitlement(sub, workspaceCreatedAt, now = Date.now()) {
 // src/core/projections.ts
 function projectState(events) {
   const invoices = /* @__PURE__ */ new Map();
+  const quotes = /* @__PURE__ */ new Map();
   const products = /* @__PURE__ */ new Map();
   const orders = /* @__PURE__ */ new Map();
   const purchaseOrders = /* @__PURE__ */ new Map();
@@ -23,6 +24,8 @@ function projectState(events) {
   const goals = {};
   const expenses = [];
   const archived = /* @__PURE__ */ new Set();
+  const storeCreditBalances = /* @__PURE__ */ new Map();
+  const storeCreditTransactions = [];
   for (const e of events) {
     if (e.stream !== "fact") continue;
     switch (e.type) {
@@ -35,6 +38,20 @@ function projectState(events) {
         const p2 = e.payload;
         const inv = invoices.get(p2.invoiceId);
         if (inv) inv.paidAt = p2.paidAt;
+        break;
+      }
+      case "quote_created": {
+        const p2 = e.payload;
+        quotes.set(p2.quoteId, { ...p2, status: "draft" });
+        break;
+      }
+      case "quote_status_changed": {
+        const p2 = e.payload;
+        const quote = quotes.get(p2.quoteId);
+        if (quote) {
+          quote.status = p2.status;
+          quote.statusChangedAt = p2.at;
+        }
         break;
       }
       case "expense_recorded": {
@@ -89,7 +106,34 @@ function projectState(events) {
       }
       case "order_created": {
         const p2 = e.payload;
-        orders.set(p2.orderId, { ...p2, status: "pending" });
+        const availableCredit = storeCreditBalances.get(p2.customer) ?? 0;
+        const requestedCredit = Math.max(0, Number(p2.storeCreditApplied) || 0);
+        const orderTotal = Math.max(0, p2.lines.reduce((sum, line) => sum + line.qty * line.unitPrice, 0) - p2.discount + p2.shippingCharged);
+        const storeCreditApplied = Math.min(availableCredit, requestedCredit, orderTotal);
+        orders.set(p2.orderId, { ...p2, ...storeCreditApplied ? { storeCreditApplied } : {}, status: "pending" });
+        if (storeCreditApplied > 0) {
+          storeCreditBalances.set(p2.customer, availableCredit - storeCreditApplied);
+          storeCreditTransactions.push({ transactionId: `${e.id}-redeemed`, customer: p2.customer, orderId: p2.orderId, kind: "redeemed", amount: storeCreditApplied, at: p2.createdAt });
+        }
+        break;
+      }
+      case "store_credit_adjusted": {
+        const p2 = e.payload;
+        const customer = p2.customer?.trim();
+        const current = storeCreditBalances.get(customer) ?? 0;
+        const requested = Number(p2.delta) || 0;
+        const delta = Math.max(-current, requested);
+        if (!customer || delta === 0) break;
+        storeCreditBalances.set(customer, current + delta);
+        storeCreditTransactions.push({
+          transactionId: p2.transactionId || e.id,
+          customer,
+          kind: "adjusted",
+          amount: delta,
+          reason: p2.reason,
+          note: p2.note,
+          at: p2.at
+        });
         break;
       }
       case "order_status_changed": {
@@ -104,6 +148,7 @@ function projectState(events) {
             const prod = products.get(line.productId);
             if (prod) prod.stock -= line.qty;
           }
+          if (orderCashDue(o) === 0) o.cashReceivedAt = p2.at;
         }
         if (p2.status === "returned" && prev === "delivered") {
           for (const line of o.lines) {
@@ -111,12 +156,72 @@ function projectState(events) {
             if (prod) prod.stock += line.qty;
           }
         }
+        if ((p2.status === "cancelled" || p2.status === "refused") && o.storeCreditApplied && !o.storeCreditReleasedAt) {
+          storeCreditBalances.set(o.customer, (storeCreditBalances.get(o.customer) ?? 0) + o.storeCreditApplied);
+          storeCreditTransactions.push({ transactionId: `${e.id}-released`, customer: o.customer, orderId: o.orderId, kind: "released", amount: o.storeCreditApplied, at: p2.at });
+          o.storeCreditReleasedAt = p2.at;
+        }
         break;
       }
       case "order_cash_received": {
         const p2 = e.payload;
         const o = orders.get(p2.orderId);
         if (o) o.cashReceivedAt = p2.at;
+        break;
+      }
+      case "order_return_recorded": {
+        const p2 = e.payload;
+        const o = orders.get(p2.orderId);
+        if (!o || o.status !== "delivered") break;
+        const returnedQtyByLine = { ...o.returnedQtyByLine ?? {} };
+        const lines = [];
+        let restockedCost = 0;
+        for (const requested of p2.lines ?? []) {
+          const index = Math.trunc(requested.orderLineIndex);
+          const original = o.lines[index];
+          if (!original) continue;
+          const alreadyReturned = returnedQtyByLine[String(index)] ?? 0;
+          const qty = Math.min(Math.max(0, Math.trunc(requested.qty)), Math.max(0, original.qty - alreadyReturned));
+          if (qty === 0) continue;
+          returnedQtyByLine[String(index)] = alreadyReturned + qty;
+          const line = {
+            orderLineIndex: index,
+            productId: original.productId,
+            productName: original.productName,
+            qty,
+            unitPrice: original.unitPrice,
+            unitCost: original.unitCost,
+            restock: Boolean(requested.restock)
+          };
+          lines.push(line);
+          if (line.restock) {
+            const product = products.get(line.productId);
+            if (product) product.stock += qty;
+            restockedCost += qty * line.unitCost;
+          }
+        }
+        const grossRevenue = o.lines.reduce((sum, line) => sum + line.qty * line.unitPrice, 0) - o.discount + o.shippingCharged;
+        const refundable = Math.max(0, grossRevenue - (o.refundAmount ?? 0));
+        const refundAmount = Math.min(refundable, Math.max(0, Number(p2.refundAmount) || 0));
+        if (lines.length === 0 && refundAmount === 0) break;
+        const record = {
+          ...p2,
+          lines,
+          refundAmount,
+          returnShippingCost: Math.max(0, Number(p2.returnShippingCost) || 0)
+        };
+        o.returnRecords = [...o.returnRecords ?? [], record];
+        o.returnedQtyByLine = returnedQtyByLine;
+        o.refundAmount = (o.refundAmount ?? 0) + refundAmount;
+        o.returnShippingCost = (o.returnShippingCost ?? 0) + record.returnShippingCost;
+        o.restockedCost = (o.restockedCost ?? 0) + restockedCost;
+        o.lastReturnedAt = p2.at;
+        const fullyReturned = o.lines.every((line, index) => (returnedQtyByLine[String(index)] ?? 0) >= line.qty);
+        o.returnStatus = fullyReturned ? "returned" : "partial";
+        if (record.refundMethod === "store_credit" && refundAmount > 0) {
+          storeCreditBalances.set(o.customer, (storeCreditBalances.get(o.customer) ?? 0) + refundAmount);
+          storeCreditTransactions.push({ transactionId: `${e.id}-issued`, customer: o.customer, orderId: o.orderId, returnId: record.returnId, kind: "issued", amount: refundAmount, at: record.at });
+        }
         break;
       }
       case "shipment_created": {
@@ -171,10 +276,26 @@ function projectState(events) {
         const p2 = e.payload;
         const po = purchaseOrders.get(p2.poId);
         if (po && !po.receivedAt) {
-          po.receivedAt = p2.at;
-          for (const line of po.lines) {
+          const received = { ...po.receivedQtyByLine ?? {} };
+          const requested = p2.lines?.length ? p2.lines : po.lines.map((line, orderLineIndex) => ({ orderLineIndex, productId: line.productId, qty: line.qty - (received[String(orderLineIndex)] ?? 0) }));
+          const accepted = [];
+          for (const request of requested) {
+            const index = Math.trunc(request.orderLineIndex);
+            const line = po.lines[index];
+            if (!line || line.productId !== request.productId) continue;
+            const already = received[String(index)] ?? 0;
+            const qty = Math.min(Math.max(0, Math.trunc(request.qty)), Math.max(0, line.qty - already));
+            if (!qty) continue;
+            received[String(index)] = already + qty;
             const prod = products.get(line.productId);
-            if (prod) prod.stock += line.qty;
+            if (prod) prod.stock += qty;
+            accepted.push({ orderLineIndex: index, productId: line.productId, qty });
+          }
+          if (accepted.length) {
+            po.receivedQtyByLine = received;
+            po.lastReceivedAt = p2.at;
+            po.receipts = [...po.receipts ?? [], { ...p2, receiptId: p2.receiptId || e.id, lines: accepted }];
+            if (po.lines.every((line, index) => (received[String(index)] ?? 0) >= line.qty)) po.receivedAt = p2.at;
           }
         }
         break;
@@ -185,8 +306,10 @@ function projectState(events) {
   }
   const incoming = {};
   for (const po of purchaseOrders.values()) {
-    if (po.receivedAt) continue;
-    for (const line of po.lines) incoming[line.productId] = (incoming[line.productId] ?? 0) + line.qty;
+    for (const [index, line] of po.lines.entries()) {
+      const remaining = Math.max(0, line.qty - (po.receivedQtyByLine?.[String(index)] ?? 0));
+      if (remaining) incoming[line.productId] = (incoming[line.productId] ?? 0) + remaining;
+    }
   }
   const usageByCode = /* @__PURE__ */ new Map();
   for (const o of orders.values()) {
@@ -209,6 +332,7 @@ function projectState(events) {
   }
   return {
     invoices: [...invoices.values()].sort((a, b) => b.issuedAt - a.issuedAt),
+    quotes: [...quotes.values()].sort((a, b) => b.createdAt - a.createdAt),
     expenses: expenses.sort((a, b) => b.date - a.date),
     products: [...products.values()],
     orders: [...orders.values()].sort((a, b) => b.createdAt - a.createdAt),
@@ -217,7 +341,9 @@ function projectState(events) {
     goals,
     reserved,
     incoming,
-    archivedCustomers: [...archived]
+    archivedCustomers: [...archived],
+    storeCreditBalances: Object.fromEntries(storeCreditBalances),
+    storeCreditTransactions: storeCreditTransactions.sort((a, b) => b.at - a.at)
   };
 }
 var monthStart = (now) => {
@@ -226,13 +352,12 @@ var monthStart = (now) => {
 };
 function profitAndLoss(state2, start, end, periodLabel) {
   const inPeriod = (ts) => ts !== void 0 && ts >= start && ts < end;
-  const delivered = state2.orders.filter((o) => inPeriod(o.deliveredAt) && o.status !== "returned");
-  const returned = state2.orders.filter((o) => o.status === "returned" && inPeriod(o.deliveredAt));
+  const delivered = state2.orders.filter((o) => inPeriod(o.deliveredAt) && (o.status === "delivered" || o.status === "returned"));
   const productSales = delivered.reduce((s, o) => s + orderLinesTotal(o), 0);
   const discounts = delivered.reduce((s, o) => s + o.discount, 0);
   const shippingCharged = delivered.reduce((s, o) => s + o.shippingCharged, 0);
   const invoicedSales = state2.invoices.filter((i) => inPeriod(i.paidAt)).reduce((s, i) => s + i.amount, 0);
-  const refunds = returned.reduce((s, o) => s + orderRevenue(o), 0);
+  const refunds = delivered.reduce((sum, order) => sum + (order.refundAmount ?? (order.status === "returned" ? orderGrossRevenue(order) : 0)), 0);
   const revenueLines = [
     { label: "Product sales (delivered)", amount: productSales },
     { label: "Shipping charged to customers", amount: shippingCharged },
@@ -241,17 +366,19 @@ function profitAndLoss(state2, start, end, periodLabel) {
     ...refunds ? [{ label: "Less: refunds/returns", amount: -refunds }] : []
   ];
   const netRevenue = revenueLines.reduce((s, l) => s + l.amount, 0);
-  const cogs = delivered.reduce((s, o) => s + orderCogs(o), 0);
+  const cogs = delivered.reduce((sum, order) => sum + (order.status === "returned" && !order.returnRecords?.length ? 0 : orderCogs(order)), 0);
   const grossProfit = netRevenue - cogs;
   const shippingCost = delivered.reduce((s, o) => s + o.shippingCost, 0);
   const codFees = delivered.reduce((s, o) => s + o.codFee, 0);
   const packaging = delivered.reduce((s, o) => s + o.packagingCost, 0);
+  const returnShipping = delivered.reduce((s, o) => s + (o.returnShippingCost ?? 0), 0);
   const byCategory = /* @__PURE__ */ new Map();
   for (const e of state2.expenses) if (inPeriod(e.date)) byCategory.set(e.label, (byCategory.get(e.label) ?? 0) + e.amount);
   const opexLines = [
     ...shippingCost ? [{ label: "Delivery / shipping cost", amount: shippingCost }] : [],
     ...codFees ? [{ label: "COD fees", amount: codFees }] : [],
     ...packaging ? [{ label: "Packaging", amount: packaging }] : [],
+    ...returnShipping ? [{ label: "Return shipping", amount: returnShipping }] : [],
     ...[...byCategory.entries()].map(([label, amount]) => ({ label, amount }))
   ];
   const opexTotal = opexLines.reduce((s, l) => s + l.amount, 0);
@@ -310,14 +437,14 @@ function cashCalendar(state2, now = Date.now()) {
     const list = entries.filter(test);
     return { count: list.length, total: list.reduce((s, e) => s + e.amount, 0) };
   };
-  const codList = state2.orders.filter((o) => o.status === "delivered" && !o.cashReceivedAt);
+  const codList = state2.orders.filter((o) => o.status === "delivered" && !o.cashReceivedAt && orderCashDue(o) > 0);
   const expenses90 = state2.expenses.filter((e) => now - e.date <= 90 * DAY2);
   const avgDailyExpense = expenses90.length >= 3 ? expenses90.reduce((s, e) => s + e.amount, 0) / 90 : null;
   return {
     overdue: bucket((e) => e.overdueDays > 0),
     next7: bucket((e) => e.overdueDays <= 0 && e.dueAt - now <= 7 * DAY2),
     next30: bucket((e) => e.dueAt - now > 7 * DAY2 && e.dueAt - now <= 30 * DAY2),
-    codPending: { count: codList.length, total: codList.reduce((s, o) => s + orderRevenue(o), 0) },
+    codPending: { count: codList.length, total: codList.reduce((s, o) => s + orderCashDue(o), 0) },
     avgDailyExpense,
     entries
   };
@@ -336,9 +463,9 @@ function forecast(state2, now = Date.now()) {
   } else {
     assumptions.push("Too few days into the month to project revenue honestly yet.");
   }
-  const collected = state2.invoices.filter((i) => i.paidAt).reduce((s, i) => s + i.amount, 0) + state2.orders.filter((o) => o.status === "delivered" && o.cashReceivedAt).reduce((s, o) => s + orderRevenue(o), 0);
+  const collected = state2.invoices.filter((i) => i.paidAt).reduce((s, i) => s + i.amount, 0) + state2.orders.filter((o) => o.status === "delivered" && o.cashReceivedAt).reduce((s, o) => s + orderCashDue(o), 0);
   const cashAvailable = collected - state2.expenses.reduce((s, e) => s + e.amount, 0);
-  const pendingCod = state2.orders.filter((o) => o.status === "delivered" && !o.cashReceivedAt).reduce((s, o) => s + orderRevenue(o), 0);
+  const pendingCod = state2.orders.filter((o) => o.status === "delivered" && !o.cashReceivedAt).reduce((s, o) => s + orderCashDue(o), 0);
   const exp90items = state2.expenses.filter((e) => now - e.date <= 90 * DAY2);
   const exp90 = exp90items.reduce((s, e) => s + e.amount, 0);
   let cashNext30 = null;
@@ -387,14 +514,21 @@ function checkPromo(state2, code, basketSubtotal, now = Date.now()) {
 function orderLinesTotal(o) {
   return o.lines.reduce((s, l) => s + l.qty * l.unitPrice, 0);
 }
-function orderRevenue(o) {
+function orderGrossRevenue(o) {
   return orderLinesTotal(o) - o.discount + o.shippingCharged;
 }
+function orderRevenue(o) {
+  return Math.max(0, orderGrossRevenue(o) - (o.refundAmount ?? 0));
+}
+function orderCashDue(o) {
+  const cashRefunds = (o.returnRecords ?? []).filter((record) => record.refundMethod !== "store_credit").reduce((sum, record) => sum + record.refundAmount, 0);
+  return Math.max(0, orderGrossRevenue(o) - (o.storeCreditApplied ?? 0) - cashRefunds);
+}
 function orderCogs(o) {
-  return o.lines.reduce((s, l) => s + l.qty * l.unitCost, 0);
+  return Math.max(0, o.lines.reduce((s, l) => s + l.qty * l.unitCost, 0) - (o.restockedCost ?? 0));
 }
 function orderNetProfit(o) {
-  return orderRevenue(o) - orderCogs(o) - o.shippingCost - o.codFee - o.packagingCost;
+  return orderRevenue(o) - orderCogs(o) - o.shippingCost - o.codFee - o.packagingCost - (o.returnShippingCost ?? 0);
 }
 function orderRefusalLoss(o) {
   return o.shippingCost * 2 + o.packagingCost;
@@ -553,39 +687,225 @@ function projectActivities(events) {
 var DAY2 = 24 * 60 * 60 * 1e3;
 
 // src/core/documents.ts
+function calculateInvoiceTotals(lines, discount, taxRate) {
+  const subtotal = lines.reduce((sum, line) => sum + Math.max(0, line.qty) * Math.max(0, line.unitPrice), 0);
+  const appliedDiscount = Math.min(subtotal, Math.max(0, discount || 0));
+  const appliedTaxRate = Math.min(100, Math.max(0, taxRate || 0));
+  const taxable = subtotal - appliedDiscount;
+  const taxAmount = taxable * appliedTaxRate / 100;
+  return { subtotal, discount: appliedDiscount, taxRate: appliedTaxRate, taxAmount, total: taxable + taxAmount };
+}
+function invoiceFromAcceptedQuote(quote, invoiceId, issuedAt) {
+  return {
+    invoiceId,
+    customer: quote.customer,
+    customerEmail: quote.customerEmail,
+    customerAddress: quote.customerAddress,
+    lines: quote.lines.map((line) => ({ ...line })),
+    subtotal: quote.subtotal,
+    discount: quote.discount,
+    taxRate: quote.taxRate,
+    taxAmount: quote.taxAmount,
+    amount: quote.amount,
+    notes: quote.notes,
+    issuedAt,
+    dueDays: 14,
+    sourceQuoteId: quote.quoteId
+  };
+}
+var defaultDocumentBranding = (workspaceName) => ({
+  businessName: workspaceName,
+  legalName: "",
+  email: "",
+  phone: "",
+  address: "",
+  city: "",
+  country: "",
+  taxId: "",
+  registrationNumber: "",
+  paymentDetails: "",
+  footerNote: "Thank you for your business.",
+  accentColor: "#13795b",
+  logoDataUrl: "",
+  logoFileName: "",
+  logoWidth: 0,
+  logoHeight: 0
+});
+function projectDocumentBranding(events, workspaceName) {
+  let branding = defaultDocumentBranding(workspaceName);
+  for (const event of events) {
+    if (event.type !== "document_branding_updated") continue;
+    const patch = event.payload;
+    branding = { ...branding, ...patch };
+  }
+  return branding;
+}
 var esc = (value) => String(value ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+var nl = (value) => esc(value).replace(/\n/g, "<br>");
 var date = (timestamp) => new Date(timestamp).toLocaleDateString(void 0, {
   day: "numeric",
   month: "long",
   year: "numeric"
 });
-var shell = (title, business, kind, meta, body) => `<!doctype html>
+var normalizeBranding = (input) => {
+  const base = defaultDocumentBranding(typeof input === "string" ? input : input.businessName || "Business");
+  return typeof input === "string" ? base : { ...base, ...input };
+};
+var safeAccent = (value) => /^#[0-9a-f]{6}$/i.test(value) ? value : "#13795b";
+var safeLogo = (value) => /^data:image\/(?:png|webp|svg\+xml);base64,[a-z0-9+/=]+$/i.test(value) ? value : "";
+var contactLine = (brand) => [brand.email, brand.phone].filter(Boolean).join(" \xB7 ");
+var addressLine = (brand) => [brand.address, brand.city, brand.country].filter(Boolean).join(", ");
+function shell(title, brandInput, kind, reference, status, body) {
+  const brand = normalizeBranding(brandInput);
+  const accent = safeAccent(brand.accentColor);
+  const logo = safeLogo(brand.logoDataUrl);
+  const legal = brand.legalName && brand.legalName !== brand.businessName ? brand.legalName : "";
+  const registration = [
+    brand.taxId && `Tax ID: ${brand.taxId}`,
+    brand.registrationNumber && `Registration: ${brand.registrationNumber}`
+  ].filter(Boolean).join(" \xB7 ");
+  return `<!doctype html>
 <html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>${esc(title)}</title><style>
-*{box-sizing:border-box}body{margin:0;background:#f4f6f4;color:#17211e;font:14px/1.5 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
-.page{width:min(760px,calc(100% - 32px));margin:32px auto;background:white;padding:48px;border:1px solid #dfe5e1;border-radius:14px;box-shadow:0 16px 45px rgba(20,37,31,.08)}
-.brand{font-size:22px;font-weight:800;letter-spacing:.16em}.kind{color:#147d64;font-size:12px;font-weight:750;text-transform:uppercase;letter-spacing:.12em;margin-top:8px}
-.meta{color:#65736e;margin-top:3px}.parties{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin:32px 0}.label{color:#65736e;font-size:11px;text-transform:uppercase;letter-spacing:.08em}
-table{width:100%;border-collapse:collapse;margin:24px 0}th,td{text-align:left;padding:11px 8px;border-bottom:1px solid #e5e9e6}th{color:#65736e;font-size:11px;text-transform:uppercase;letter-spacing:.05em}.num{text-align:right}
-.total{display:flex;justify-content:flex-end;gap:30px;padding:14px 8px;font-size:18px;font-weight:800;border-top:2px solid #17211e}.status{display:inline-block;padding:4px 9px;border-radius:999px;background:#e7f5ef;color:#147d64;font-weight:700;font-size:12px}
-.foot{margin-top:44px;padding-top:16px;border-top:1px solid #e5e9e6;color:#65736e;text-align:center}.actions{text-align:center;margin:0 auto 30px}.actions button{border:0;border-radius:8px;background:#147d64;color:white;padding:10px 16px;font-weight:700;cursor:pointer}
-@media(max-width:560px){.page{margin:0;width:100%;border:0;border-radius:0;padding:28px 20px}.parties{grid-template-columns:1fr}}
-@media print{body{background:white}.page{box-shadow:none;border:0;margin:0;width:100%;padding:20px}.actions{display:none}}
-</style></head><body><main class="page"><div class="brand">${esc(business.toUpperCase())}</div><div class="kind">${esc(kind)}</div><div class="meta">${esc(meta)}</div>${body}<div class="foot">Generated from ZYVORA Business Memory \xB7 ${esc(business)}</div></main><div class="actions"><button onclick="window.print()">Print / Save PDF</button></div></body></html>`;
-function invoiceDocumentHtml(invoice, business, money2) {
-  const dueAt = invoice.issuedAt + invoice.dueDays * 864e5;
-  const status = invoice.paidAt ? `Paid ${date(invoice.paidAt)}` : `Due ${date(dueAt)}`;
-  return shell(`Invoice ${invoice.invoiceId}`, business, "Invoice", `Reference ${invoice.invoiceId}`, `
-    <div class="parties"><div><div class="label">Bill to</div><strong>${esc(invoice.customer)}</strong></div><div><div class="label">Issued</div><strong>${esc(date(invoice.issuedAt))}</strong></div></div>
-    <table><thead><tr><th>Description</th><th class="num">Amount</th></tr></thead><tbody><tr><td>Goods or services supplied</td><td class="num">${esc(money2(invoice.amount))}</td></tr></tbody></table>
-    <div class="total"><span>Total due</span><span>${esc(money2(invoice.amount))}</span></div><p><span class="status">${esc(status)}</span></p>`);
+@page{size:A4;margin:0}*{box-sizing:border-box}html{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+body{margin:0;background:#e9eeeb;color:#17211e;font:14px/1.5 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.sheet{position:relative;width:min(820px,calc(100% - 32px));min-height:1080px;margin:32px auto;background:#fff;padding:58px 62px 46px;box-shadow:0 22px 60px rgba(17,34,27,.13);overflow:hidden}
+.sheet:before{content:"";position:absolute;inset:0 0 auto;height:9px;background:${accent}}
+.head{display:flex;justify-content:space-between;gap:38px;align-items:flex-start}.identity{min-width:0;max-width:54%}
+.logo{display:block;max-width:190px;max-height:76px;width:auto;height:auto;object-fit:contain;object-position:left center;margin-bottom:17px}
+.brand{font-size:24px;font-weight:800;letter-spacing:-.025em;color:#11221c}.legal{margin-top:3px;color:#66736e;font-size:12px}
+.brand-lines{margin-top:13px;color:#53615c;font-size:12.5px}.brand-lines div+div{margin-top:2px}
+.doc{text-align:right}.kind{font-size:34px;line-height:1;font-weight:780;letter-spacing:-.04em;text-transform:uppercase;color:#17211e}
+.ref{margin-top:13px;color:#66736e;font-size:12px}.ref strong{display:block;color:#17211e;font-size:14px;letter-spacing:.02em}.status{display:inline-flex;margin-top:14px;padding:6px 11px;border-radius:999px;background:${accent}16;color:${accent};border:1px solid ${accent}35;font-size:11px;font-weight:750;letter-spacing:.055em;text-transform:uppercase}
+.rule{height:1px;background:#dfe6e2;margin:34px 0}.parties{display:grid;grid-template-columns:1fr 1fr;gap:44px;margin-bottom:34px}.label{color:#78847f;font-size:10.5px;font-weight:760;text-transform:uppercase;letter-spacing:.1em;margin-bottom:7px}.party strong{display:block;font-size:15px}.party p{margin:4px 0 0;color:#5f6d68}
+table{width:100%;border-collapse:collapse;margin:0}th{padding:10px 12px;background:#f3f6f4;color:#66736e;font-size:10.5px;text-transform:uppercase;letter-spacing:.075em;text-align:left;border-top:1px solid #dfe6e2;border-bottom:1px solid #dfe6e2}td{padding:16px 12px;border-bottom:1px solid #e6ebe8;color:#27342f}.num{text-align:right;font-variant-numeric:tabular-nums}.description{font-weight:650}.summary{width:min(330px,100%);margin:22px 0 0 auto}.summary-row{display:flex;justify-content:space-between;gap:24px;padding:7px 12px;color:#66736e}.summary-row.total{margin-top:6px;padding:15px 12px;border-top:2px solid #17211e;color:#17211e;font-size:18px;font-weight:800}
+.notes{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:44px}.note{padding-top:14px;border-top:1px solid #dfe6e2;color:#53615c;font-size:12.5px}.note strong{display:block;color:#27342f;margin-bottom:5px;font-size:11px;text-transform:uppercase;letter-spacing:.07em}
+.statement-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:0 0 30px}.statement-metric{padding:16px;border:1px solid #dfe6e2;border-radius:10px;background:#f8faf9}.statement-metric span{display:block;color:#78847f;font-size:10px;font-weight:760;text-transform:uppercase;letter-spacing:.08em}.statement-metric strong{display:block;margin-top:5px;font-size:19px;color:#17211e}
+.check{display:inline-block;width:17px;height:17px;border:1.5px solid #87928e;border-radius:3px;vertical-align:middle}.signature-grid{display:grid;grid-template-columns:1fr 1fr;gap:42px;margin-top:58px}.signature{min-height:70px;border-bottom:1px solid #7f8b86;color:#66736e;font-size:11px;display:flex;align-items:flex-end;padding-bottom:7px}
+.footer{position:absolute;left:62px;right:62px;bottom:38px;padding-top:14px;border-top:1px solid #dfe6e2;display:flex;justify-content:space-between;gap:24px;color:#77837e;font-size:10.5px}.footer strong{color:#3f4c47}.audit{text-align:right}
+.actions{display:flex;justify-content:center;margin:0 auto 30px}.actions button{border:0;border-radius:9px;background:${accent};color:#fff;padding:11px 18px;font-weight:750;cursor:pointer;box-shadow:0 5px 16px ${accent}35}
+@media(max-width:600px){.sheet{margin:0;width:100%;min-height:100vh;padding:38px 22px 100px;box-shadow:none}.head{display:block}.identity{max-width:100%}.doc{text-align:left;margin-top:34px}.kind{font-size:29px}.parties,.notes,.signature-grid,.statement-grid{grid-template-columns:1fr;gap:24px}.footer{left:22px;right:22px;bottom:24px;display:block}.audit{text-align:left;margin-top:5px}.table-wrap{overflow-x:auto}.logo{max-width:170px}}
+@media print{body{background:#fff}.sheet{box-shadow:none;margin:0;width:100%;min-height:297mm;padding:18mm 17mm 16mm}.sheet:before{height:3mm}.footer{left:17mm;right:17mm;bottom:12mm}.actions{display:none}}
+</style></head><body><main class="sheet"><header class="head"><section class="identity">
+${logo ? `<img class="logo" src="${esc(logo)}" alt="${esc(brand.businessName)} logo">` : `<div class="brand">${esc(brand.businessName)}</div>`}
+${logo ? `<div class="brand">${esc(brand.businessName)}</div>` : ""}${legal ? `<div class="legal">${esc(legal)}</div>` : ""}
+<div class="brand-lines">${addressLine(brand) ? `<div>${esc(addressLine(brand))}</div>` : ""}${contactLine(brand) ? `<div>${esc(contactLine(brand))}</div>` : ""}${registration ? `<div>${esc(registration)}</div>` : ""}</div>
+</section><section class="doc"><div class="kind">${esc(kind)}</div><div class="ref">Document reference<strong>${esc(reference)}</strong></div><span class="status">${esc(status)}</span></section></header><div class="rule"></div>${body}
+<footer class="footer"><div><strong>${esc(brand.businessName)}</strong>${contactLine(brand) ? ` \xB7 ${esc(contactLine(brand))}` : ""}</div><div class="audit">Generated from ZYVORA Business Memory</div></footer></main><div class="actions"><button onclick="window.print()">Print / Save PDF</button></div></body></html>`;
 }
-function receiptDocumentHtml(order, business, money2) {
-  const rows = order.lines.map((line) => `<tr><td>${esc(line.qty)}\xD7 ${esc(line.productName)}</td><td class="num">${esc(money2(line.qty * line.unitPrice))}</td></tr>`).join("");
-  return shell(`Receipt ${order.orderId}`, business, "Receipt", `Reference ${order.orderId}`, `
-    <div class="parties"><div><div class="label">Customer</div><strong>${esc(order.customer)}</strong></div><div><div class="label">Order date</div><strong>${esc(date(order.createdAt))}</strong></div></div>
-    <table><thead><tr><th>Item</th><th class="num">Amount</th></tr></thead><tbody>${rows}</tbody></table>
-    <div class="total"><span>Total paid</span><span>${esc(money2(orderRevenue(order)))}</span></div><p><span class="status">Delivered${order.cashReceivedAt ? " \xB7 payment received" : ""}</span></p>`);
+function invoiceDocumentHtml(invoice, branding, money2) {
+  const brand = normalizeBranding(branding);
+  const dueAt = invoice.issuedAt + invoice.dueDays * 864e5;
+  const status = invoice.paidAt ? "Paid" : "Payment due";
+  const lines = invoice.lines?.length ? invoice.lines : [{ lineId: "legacy", description: "Goods or services supplied", qty: 1, unitPrice: invoice.amount }];
+  const rows = lines.map((line) => `<tr><td class="description">${esc(line.description)}</td><td class="num">${esc(line.qty)}</td><td class="num">${esc(money2(line.unitPrice))}</td><td class="num">${esc(money2(line.qty * line.unitPrice))}</td></tr>`).join("");
+  const subtotal = invoice.subtotal ?? lines.reduce((sum, line) => sum + line.qty * line.unitPrice, 0);
+  const discount = invoice.discount ?? 0;
+  const taxAmount = invoice.taxAmount ?? 0;
+  return shell(`Invoice ${invoice.invoiceId}`, brand, "Invoice", invoice.invoiceId, status, `
+    <section class="parties"><div class="party"><div class="label">Bill to</div><strong>${esc(invoice.customer)}</strong>${invoice.customerEmail ? `<p>${esc(invoice.customerEmail)}</p>` : ""}${invoice.customerAddress ? `<p>${nl(invoice.customerAddress)}</p>` : ""}</div><div class="party"><div class="label">Invoice details</div><p>Issued <strong>${esc(date(invoice.issuedAt))}</strong></p><p>${invoice.paidAt ? `Paid <strong>${esc(date(invoice.paidAt))}</strong>` : `Due <strong>${esc(date(dueAt))}</strong>`}</p></div></section>
+    <div class="table-wrap"><table><thead><tr><th>Description</th><th class="num">Qty</th><th class="num">Unit price</th><th class="num">Amount</th></tr></thead><tbody>${rows}</tbody></table></div>
+    <section class="summary"><div class="summary-row"><span>Subtotal</span><span>${esc(money2(subtotal))}</span></div>${discount ? `<div class="summary-row"><span>Discount</span><span>\u2212${esc(money2(discount))}</span></div>` : ""}${taxAmount ? `<div class="summary-row"><span>Tax${invoice.taxRate ? ` (${esc(invoice.taxRate)}%)` : ""}</span><span>${esc(money2(taxAmount))}</span></div>` : ""}<div class="summary-row total"><span>Total</span><span>${esc(money2(invoice.amount))}</span></div></section>
+    <section class="notes">${brand.paymentDetails ? `<div class="note"><strong>Payment details</strong>${nl(brand.paymentDetails)}</div>` : `<div class="note"><strong>Payment</strong>${invoice.paidAt ? "Payment received in full." : `Please pay by ${esc(date(dueAt))}.`}</div>`}<div class="note"><strong>Note</strong>${nl(invoice.notes || brand.footerNote || "Thank you for your business.")}</div></section>`);
+}
+function quoteDocumentHtml(quote, branding, money2) {
+  const brand = normalizeBranding(branding);
+  const rows = quote.lines.map((line) => `<tr><td class="description">${esc(line.description)}</td><td class="num">${esc(line.qty)}</td><td class="num">${esc(money2(line.unitPrice))}</td><td class="num">${esc(money2(line.qty * line.unitPrice))}</td></tr>`).join("");
+  const status = quote.status === "accepted" ? "Accepted" : quote.status === "declined" ? "Declined" : quote.status === "converted" ? "Converted" : `Valid until ${date(quote.validUntil)}`;
+  return shell(`Estimate ${quote.quoteId}`, brand, "Estimate", quote.quoteId, status, `
+    <section class="parties"><div class="party"><div class="label">Prepared for</div><strong>${esc(quote.customer)}</strong>${quote.customerEmail ? `<p>${esc(quote.customerEmail)}</p>` : ""}${quote.customerAddress ? `<p>${nl(quote.customerAddress)}</p>` : ""}</div><div class="party"><div class="label">Estimate details</div><p>Prepared <strong>${esc(date(quote.createdAt))}</strong></p><p>Valid until <strong>${esc(date(quote.validUntil))}</strong></p></div></section>
+    <div class="table-wrap"><table><thead><tr><th>Description</th><th class="num">Qty</th><th class="num">Unit price</th><th class="num">Amount</th></tr></thead><tbody>${rows}</tbody></table></div>
+    <section class="summary"><div class="summary-row"><span>Subtotal</span><span>${esc(money2(quote.subtotal))}</span></div>${quote.discount ? `<div class="summary-row"><span>Discount</span><span>\u2212${esc(money2(quote.discount))}</span></div>` : ""}${quote.taxAmount ? `<div class="summary-row"><span>Tax${quote.taxRate ? ` (${esc(quote.taxRate)}%)` : ""}</span><span>${esc(money2(quote.taxAmount))}</span></div>` : ""}<div class="summary-row total"><span>Estimated total</span><span>${esc(money2(quote.amount))}</span></div></section>
+    <section class="notes"><div class="note"><strong>Terms</strong>This estimate is valid until ${esc(date(quote.validUntil))}. Acceptance does not record revenue; an invoice is created separately.</div><div class="note"><strong>Note</strong>${nl(quote.notes || brand.footerNote || "Thank you for considering our offer.")}</div></section>`);
+}
+function receiptDocumentHtml(order, branding, money2) {
+  const brand = normalizeBranding(branding);
+  const rows = order.lines.map((line) => `<tr><td class="description">${esc(line.productName)}<div style="font-weight:400;color:#78847f;font-size:12px">${esc(line.qty)} \xD7 ${esc(money2(line.unitPrice))}</div></td><td class="num">${esc(money2(line.qty * line.unitPrice))}</td></tr>`).join("");
+  const total = orderRevenue(order);
+  const gross = orderGrossRevenue(order);
+  return shell(`Receipt ${order.orderId}`, brand, "Receipt", order.orderId, "Delivered", `
+    <section class="parties"><div class="party"><div class="label">Received from</div><strong>${esc(order.customer)}</strong></div><div class="party"><div class="label">Order details</div><p>Order date <strong>${esc(date(order.createdAt))}</strong></p><p>${order.cashReceivedAt ? `Payment received <strong>${esc(date(order.cashReceivedAt))}</strong>` : "Delivery completed"}</p></div></section>
+    <div class="table-wrap"><table><thead><tr><th>Item</th><th class="num">Amount</th></tr></thead><tbody>${rows}</tbody></table></div>
+    <section class="summary">${order.discount ? `<div class="summary-row"><span>Discount</span><span>\u2212${esc(money2(order.discount))}</span></div>` : ""}${order.shippingCharged ? `<div class="summary-row"><span>Shipping</span><span>${esc(money2(order.shippingCharged))}</span></div>` : ""}${order.storeCreditApplied ? `<div class="summary-row"><span>Store credit used</span><span>${esc(money2(order.storeCreditApplied))}</span></div><div class="summary-row"><span>Cash payment</span><span>${esc(money2(orderCashDue(order)))}</span></div>` : ""}${order.refundAmount ? `<div class="summary-row"><span>Original total</span><span>${esc(money2(gross))}</span></div><div class="summary-row"><span>Refunded</span><span>\u2212${esc(money2(order.refundAmount))}</span></div>` : ""}<div class="summary-row total"><span>${order.refundAmount ? "Net purchase value" : "Total paid"}</span><span>${esc(money2(total))}</span></div></section>
+    <section class="notes"><div class="note"><strong>Payment status</strong>${order.cashReceivedAt ? "Payment received in full." : "Delivered \u2014 collection pending."}</div><div class="note"><strong>Note</strong>${nl(brand.footerNote || "Thank you for your business.")}</div></section>`);
+}
+function customerStatementDocumentHtml(state2, customer, branding, money2, contact, generatedAt = Date.now()) {
+  const brand = normalizeBranding(branding);
+  const invoices = state2.invoices.filter((invoice) => invoice.customer === customer);
+  const orders = state2.orders.filter((order) => order.customer === customer && order.status === "delivered");
+  const transactions = state2.storeCreditTransactions.filter((transaction) => transaction.customer === customer);
+  const openInvoices = invoices.filter((invoice) => !invoice.paidAt).reduce((sum, invoice) => sum + invoice.amount, 0);
+  const netPurchases = orders.reduce((sum, order) => sum + orderRevenue(order), 0);
+  const storeCredit = state2.storeCreditBalances[customer] ?? 0;
+  const rows = [];
+  for (const invoice of invoices) rows.push({ at: invoice.issuedAt, activity: "Invoice", reference: invoice.invoiceId, amount: money2(invoice.amount), status: invoice.paidAt ? "Paid" : "Open" });
+  for (const order of orders) {
+    rows.push({ at: order.deliveredAt ?? order.createdAt, activity: "Delivered order", reference: order.orderId, amount: money2(orderGrossRevenue(order)), status: order.cashReceivedAt ? "Paid" : orderCashDue(order) === 0 ? "Store credit" : "COD pending" });
+    for (const record of order.returnRecords ?? []) if (record.refundAmount > 0) rows.push({ at: record.at, activity: "Refund", reference: record.returnId, amount: `\u2212${money2(record.refundAmount)}`, status: record.refundMethod.replace(/_/g, " ") });
+  }
+  for (const transaction of transactions) {
+    const signed = transaction.kind === "redeemed" ? -transaction.amount : transaction.amount;
+    rows.push({ at: transaction.at, activity: transaction.kind === "issued" ? "Store credit issued" : transaction.kind === "redeemed" ? "Store credit used" : transaction.kind === "released" ? "Store credit restored" : transaction.reason || "Store credit adjustment", reference: transaction.orderId ?? transaction.transactionId, amount: `${signed < 0 ? "\u2212" : "+"}${money2(Math.abs(signed))}`, status: "Credit ledger" });
+  }
+  rows.sort((a, b) => b.at - a.at);
+  const activityRows = rows.length ? rows.map((row) => `<tr><td>${esc(date(row.at))}</td><td class="description">${esc(row.activity)}</td><td>${esc(row.reference.slice(0, 12))}</td><td class="num">${esc(row.amount)}</td><td>${esc(row.status)}</td></tr>`).join("") : `<tr><td colspan="5">No financial activity recorded.</td></tr>`;
+  const reference = `STMT-${new Date(generatedAt).toISOString().slice(0, 10)}-${customer.replace(/[^a-z0-9]/gi, "").slice(0, 10).toUpperCase() || "CUSTOMER"}`;
+  return shell(`Account statement ${customer}`, brand, "Account statement", reference, "Current", `
+    <section class="parties"><div class="party"><div class="label">Statement for</div><strong>${esc(customer)}</strong>${contact?.phone ? `<p>${esc(contact.phone)}</p>` : ""}${contact?.city ? `<p>${esc(contact.city)}</p>` : ""}</div><div class="party"><div class="label">Statement details</div><p>Generated <strong>${esc(date(generatedAt))}</strong></p><p>${rows.length} recorded activit${rows.length === 1 ? "y" : "ies"}</p></div></section>
+    <section class="statement-grid"><div class="statement-metric"><span>Open invoices due</span><strong>${esc(money2(openInvoices))}</strong></div><div class="statement-metric"><span>Net delivered purchases</span><strong>${esc(money2(netPurchases))}</strong></div><div class="statement-metric"><span>Store credit available</span><strong>${esc(money2(storeCredit))}</strong></div></section>
+    <div class="table-wrap"><table><thead><tr><th>Date</th><th>Activity</th><th>Reference</th><th class="num">Amount</th><th>Status</th></tr></thead><tbody>${activityRows}</tbody></table></div>
+    <section class="notes"><div class="note"><strong>Amount currently due</strong>${esc(money2(openInvoices))} from open invoices. Delivered COD orders are shown separately and are not added twice.</div><div class="note"><strong>Store credit</strong>${esc(money2(storeCredit))} is available for future orders and is not cash owed to the business.</div></section>`);
+}
+function purchaseOrderDocumentHtml(purchaseOrder, branding, money2) {
+  const brand = normalizeBranding(branding);
+  const total = purchaseOrder.lines.reduce((sum, line) => sum + line.qty * line.unitCost, 0);
+  const receivedUnits = purchaseOrder.lines.reduce((sum, line, index) => sum + Math.min(line.qty, purchaseOrder.receivedQtyByLine?.[String(index)] ?? 0), 0);
+  const orderedUnits = purchaseOrder.lines.reduce((sum, line) => sum + line.qty, 0);
+  const rows = purchaseOrder.lines.map((line, index) => {
+    const received = Math.min(line.qty, purchaseOrder.receivedQtyByLine?.[String(index)] ?? 0);
+    return `<tr><td class="description">${esc(line.productName)}</td><td class="num">${esc(line.qty)}</td><td class="num">${esc(received)}</td><td class="num">${esc(line.qty - received)}</td><td class="num">${esc(money2(line.unitCost))}</td><td class="num">${esc(money2(line.qty * line.unitCost))}</td></tr>`;
+  }).join("");
+  const status = purchaseOrder.receivedAt ? "Received" : receivedUnits > 0 ? "Partially received" : purchaseOrder.expectedAt && purchaseOrder.expectedAt < Date.now() ? "Arrival overdue" : "Open";
+  return shell(`Purchase order ${purchaseOrder.poId}`, brand, "Purchase order", purchaseOrder.poId, status, `
+    <section class="parties"><div class="party"><div class="label">Supplier</div><strong>${esc(purchaseOrder.supplier)}</strong>${purchaseOrder.supplierEmail ? `<p>${esc(purchaseOrder.supplierEmail)}</p>` : ""}${purchaseOrder.supplierAddress ? `<p>${nl(purchaseOrder.supplierAddress)}</p>` : ""}</div><div class="party"><div class="label">Purchase order details</div><p>Created <strong>${esc(date(purchaseOrder.createdAt))}</strong></p>${purchaseOrder.expectedAt ? `<p>Expected arrival <strong>${esc(date(purchaseOrder.expectedAt))}</strong></p>` : ""}${purchaseOrder.receivedAt ? `<p>Received <strong>${esc(date(purchaseOrder.receivedAt))}</strong></p>` : ""}</div></section>
+    <div class="table-wrap"><table><thead><tr><th>Item ordered</th><th class="num">Ordered</th><th class="num">Received</th><th class="num">Remaining</th><th class="num">Unit cost</th><th class="num">Amount</th></tr></thead><tbody>${rows}</tbody></table></div>
+    <section class="summary"><div class="summary-row total"><span>Purchase order total</span><span>${esc(money2(total))}</span></div></section>
+    <section class="notes"><div class="note"><strong>Receiving progress</strong>${esc(receivedUnits)} of ${esc(orderedUnits)} units received${purchaseOrder.lastReceivedAt ? ` \xB7 last receipt ${esc(date(purchaseOrder.lastReceivedAt))}` : ""}.</div><div class="note"><strong>Payment terms</strong>${nl(purchaseOrder.paymentTerms || "Not specified")}</div><div class="note"><strong>Instructions</strong>${nl(purchaseOrder.notes || "Please confirm availability and expected arrival.")}</div></section>`);
+}
+function canGenerateFulfillmentDocuments(order) {
+  return order.returnStatus !== "returned" && (order.status === "confirmed" || order.status === "shipped" || order.status === "delivered");
+}
+var fulfillmentStatus = (order) => order.status === "delivered" ? "Delivered" : order.status === "shipped" ? "In delivery" : "Ready to pack";
+var deliveryRecipient = (order) => `<div class="party"><div class="label">Deliver to</div><strong>${esc(order.customer)}</strong>${order.customerPhone ? `<p>${esc(order.customerPhone)}</p>` : ""}${order.shippingAddress ? `<p>${nl(order.shippingAddress)}</p>` : ""}</div>`;
+var fulfillmentDetails = (order) => `<div class="party"><div class="label">Fulfillment details</div><p>Order date <strong>${esc(date(order.createdAt))}</strong></p>${order.courier ? `<p>Courier <strong>${esc(order.courier)}</strong></p>` : ""}${order.trackingNumber ? `<p>Tracking <strong>${esc(order.trackingNumber)}</strong></p>` : ""}</div>`;
+function packingSlipDocumentHtml(order, branding) {
+  const brand = normalizeBranding(branding);
+  const rows = order.lines.map((line) => `<tr><td style="width:38px"><span class="check" aria-hidden="true"></span></td><td class="description">${esc(line.productName)}</td><td class="num"><strong>${esc(line.qty)}</strong></td></tr>`).join("");
+  return shell(`Packing slip ${order.orderId}`, brand, "Packing slip", order.orderId, fulfillmentStatus(order), `
+    <section class="parties">${deliveryRecipient(order)}${fulfillmentDetails(order)}</section>
+    <div class="table-wrap"><table><thead><tr><th aria-label="Packed"></th><th>Item to pack</th><th class="num">Quantity</th></tr></thead><tbody>${rows}</tbody></table></div>
+    <section class="notes"><div class="note"><strong>Packing check</strong>Check every item and quantity before sealing the package.</div><div class="note"><strong>Delivery instructions</strong>${order.deliveryInstructions ? nl(order.deliveryInstructions) : "No special instructions."}</div></section>`);
+}
+function deliveryNoteDocumentHtml(order, branding, money2) {
+  const brand = normalizeBranding(branding);
+  const rows = order.lines.map((line) => `<tr><td class="description">${esc(line.productName)}</td><td class="num"><strong>${esc(line.qty)}</strong></td></tr>`).join("");
+  const total = orderCashDue(order);
+  return shell(`Delivery note ${order.orderId}`, brand, "Delivery note", order.orderId, fulfillmentStatus(order), `
+    <section class="parties">${deliveryRecipient(order)}${fulfillmentDetails(order)}</section>
+    <div class="table-wrap"><table><thead><tr><th>Delivered item</th><th class="num">Quantity</th></tr></thead><tbody>${rows}</tbody></table></div>
+    <section class="summary"><div class="summary-row total"><span>${order.cashReceivedAt ? "Payment" : "COD amount due"}</span><span>${order.cashReceivedAt ? "Received" : esc(money2(total))}</span></div></section>
+    <section class="notes"><div class="note"><strong>Delivery instructions</strong>${order.deliveryInstructions ? nl(order.deliveryInstructions) : "No special instructions."}</div><div class="note"><strong>Handover</strong>Please verify the parcel before acknowledgment.</div></section>
+    <section class="signature-grid"><div class="signature">Customer name and signature</div><div class="signature">Delivered at (date and time)</div></section>`);
+}
+function creditNoteDocumentHtml(order, record, branding, money2) {
+  const brand = normalizeBranding(branding);
+  const humanize = (value) => value.replace(/_/g, " ").replace(/^./, (letter) => letter.toUpperCase());
+  const rows = record.lines.length ? record.lines.map((line) => `<tr><td class="description">${esc(line.productName)}</td><td class="num">${esc(line.qty)}</td><td class="num">${esc(money2(line.unitPrice))}</td><td class="num">${esc(money2(line.qty * line.unitPrice))}</td></tr>`).join("") : `<tr><td class="description">Refund adjustment</td><td class="num">\u2014</td><td class="num">\u2014</td><td class="num">${esc(money2(record.refundAmount))}</td></tr>`;
+  return shell(`Credit note ${record.returnId}`, brand, "Credit note", record.returnId, record.refundAmount > 0 ? "Refund recorded" : "Items returned", `
+    <section class="parties"><div class="party"><div class="label">Credit issued to</div><strong>${esc(order.customer)}</strong>${order.customerPhone ? `<p>${esc(order.customerPhone)}</p>` : ""}${order.shippingAddress ? `<p>${nl(order.shippingAddress)}</p>` : ""}</div><div class="party"><div class="label">Related order</div><p>Order <strong>${esc(order.orderId)}</strong></p><p>Return date <strong>${esc(date(record.at))}</strong></p><p>Reason <strong>${esc(humanize(record.reason))}</strong></p></div></section>
+    <div class="table-wrap"><table><thead><tr><th>Returned item / adjustment</th><th class="num">Qty</th><th class="num">Unit value</th><th class="num">Value</th></tr></thead><tbody>${rows}</tbody></table></div>
+    <section class="summary"><div class="summary-row"><span>Original order</span><span>${esc(money2(orderGrossRevenue(order)))}</span></div><div class="summary-row total"><span>Refund</span><span>${esc(money2(record.refundAmount))}</span></div></section>
+    <section class="notes"><div class="note"><strong>Refund method</strong>${esc(humanize(record.refundMethod))}</div><div class="note"><strong>Note</strong>${nl(record.note || `Credit recorded for ${humanize(record.reason).toLowerCase()}.`)}</div></section>`);
 }
 
 // src/core/retention.ts
@@ -835,7 +1155,7 @@ function generateInsights(state2, decisions3, now = Date.now()) {
 function financeBrain(state2, out, now) {
   const paid = state2.invoices.filter((i) => i.paidAt);
   const remitted = state2.orders.filter((o) => o.status === "delivered" && o.cashReceivedAt);
-  const cash = paid.reduce((s, i) => s + i.amount, 0) + remitted.reduce((s, o) => s + orderRevenue(o), 0) - state2.expenses.reduce((s, e) => s + e.amount, 0);
+  const cash = paid.reduce((s, i) => s + i.amount, 0) + remitted.reduce((s, o) => s + orderCashDue(o), 0) - state2.expenses.reduce((s, e) => s + e.amount, 0);
   const overdue2 = state2.invoices.filter(
     (i) => !i.paidAt && now > i.issuedAt + i.dueDays * DAY2
   );
@@ -1485,13 +1805,13 @@ function cashCenter(state2, now = Date.now()) {
   const paidInvoices = state2.invoices.filter((i) => i.paidAt);
   const remitted = state2.orders.filter((o) => o.status === "delivered" && o.cashReceivedAt);
   const pendingCod = state2.orders.filter((o) => o.status === "delivered" && !o.cashReceivedAt);
-  const collectedAllTime = paidInvoices.reduce((s, i) => s + i.amount, 0) + remitted.reduce((s, o) => s + orderRevenue(o), 0);
+  const collectedAllTime = paidInvoices.reduce((s, i) => s + i.amount, 0) + remitted.reduce((s, o) => s + orderCashDue(o), 0);
   const expensesAllTime = state2.expenses.reduce((s, e) => s + e.amount, 0);
-  const collected30 = paidInvoices.filter((i) => now - i.paidAt <= 30 * DAY2).reduce((s, i) => s + i.amount, 0) + remitted.filter((o) => now - o.cashReceivedAt <= 30 * DAY2).reduce((s, o) => s + orderRevenue(o), 0);
+  const collected30 = paidInvoices.filter((i) => now - i.paidAt <= 30 * DAY2).reduce((s, i) => s + i.amount, 0) + remitted.filter((o) => now - o.cashReceivedAt <= 30 * DAY2).reduce((s, o) => s + orderCashDue(o), 0);
   const expenses30 = state2.expenses.filter((e) => now - e.date <= 30 * DAY2).reduce((s, e) => s + e.amount, 0);
   return {
     cashAvailable: collectedAllTime - expensesAllTime,
-    cashPendingCod: pendingCod.reduce((s, o) => s + orderRevenue(o), 0),
+    cashPendingCod: pendingCod.reduce((s, o) => s + orderCashDue(o), 0),
     collected30,
     expenses30,
     envelopes: {
@@ -1507,12 +1827,12 @@ function stateOfThings(state2, now = Date.now()) {
   const open = state2.invoices.filter((i) => !i.paidAt);
   const remitted = state2.orders.filter((o) => o.status === "delivered" && o.cashReceivedAt);
   const pendingCod = state2.orders.filter((o) => o.status === "delivered" && !o.cashReceivedAt);
-  const cash = paid.reduce((s, i) => s + i.amount, 0) + remitted.reduce((s, o) => s + orderRevenue(o), 0) - state2.expenses.reduce((s, e) => s + e.amount, 0);
-  const last30 = state2.invoices.filter((i) => now - i.issuedAt <= 30 * DAY2).reduce((s, i) => s + i.amount, 0) + state2.orders.filter((o) => o.deliveredAt && now - o.deliveredAt <= 30 * DAY2).reduce((s, o) => s + orderRevenue(o), 0);
+  const cash = paid.reduce((s, i) => s + i.amount, 0) + remitted.reduce((s, o) => s + orderCashDue(o), 0) - state2.expenses.reduce((s, e) => s + e.amount, 0);
+  const last30 = state2.invoices.filter((i) => now - i.issuedAt <= 30 * DAY2).reduce((s, i) => s + i.amount, 0) + state2.orders.filter((o) => o.deliveredAt && now - o.deliveredAt <= 30 * DAY2).reduce((s, o) => s + orderCashDue(o), 0);
   const stockValue = state2.products.reduce((s, p2) => s + p2.stock * p2.unitCost, 0);
   return {
     cash,
-    cashPendingCod: pendingCod.reduce((s, o) => s + orderRevenue(o), 0),
+    cashPendingCod: pendingCod.reduce((s, o) => s + orderCashDue(o), 0),
     billedLast30: last30,
     openInvoices: open.length,
     openInvoiceValue: open.reduce((s, i) => s + i.amount, 0),
@@ -1658,7 +1978,7 @@ function weeklyReview(events, now = Date.now()) {
     const p2 = e.payload;
     return p2.status === "refused" && test(p2.at);
   }).length;
-  const cashCollected = (test) => state2.orders.filter((o) => o.cashReceivedAt && test(o.cashReceivedAt)).reduce((s, o) => s + orderRevenue(o), 0) + state2.invoices.filter((i) => i.paidAt && test(i.paidAt)).reduce((s, i) => s + i.amount, 0);
+  const cashCollected = (test) => state2.orders.filter((o) => o.cashReceivedAt && test(o.cashReceivedAt)).reduce((s, o) => s + orderCashDue(o), 0) + state2.invoices.filter((i) => i.paidAt && test(i.paidAt)).reduce((s, i) => s + i.amount, 0);
   const expenses = (test) => state2.expenses.filter((e) => test(e.date)).reduce((s, e) => s + e.amount, 0);
   const decisions3 = (test) => events.filter((e) => e.stream === "decision" && e.type === "decision_recorded" && test(e.ts)).length;
   const build = (key, label, fn, higherIsBetter, money2) => {
@@ -1688,7 +2008,7 @@ function courierControl(state2, now = Date.now()) {
   for (const order of state2.orders) {
     if (["cancelled", "refused", "returned"].includes(order.status)) continue;
     const sinceUpdate = age(order.shipmentUpdatedAt ?? order.createdAt);
-    const value = orderRevenue(order);
+    const value = orderCashDue(order);
     let row = null;
     if (order.status === "confirmed" && !order.shipmentStatus) {
       row = {
@@ -1977,6 +2297,15 @@ function describe(e) {
       return `Status \u2192 ${cap(String(p2.status))}`;
     case "order_cash_received":
       return "Courier remitted the cash";
+    case "order_return_recorded": {
+      const lines = p2.lines ?? [];
+      const items = lines.length ? lines.map((line) => `${line.qty}\xD7 ${line.productName}${line.restock ? " restocked" : " not restocked"}`).join(", ") : "refund-only adjustment";
+      return `Return recorded \u2014 ${items} \xB7 refund ${money(Number(p2.refundAmount) || 0)}`;
+    }
+    case "store_credit_adjusted": {
+      const delta = Number(p2.delta) || 0;
+      return `Store credit ${delta >= 0 ? "granted" : "reduced"} \u2014 ${money(Math.abs(delta))} \xB7 ${String(p2.reason || "Manager adjustment")}`;
+    }
     case "shipment_created":
       return `Courier handoff \u2014 ${String(p2.courier)}${p2.trackingNumber ? ` \xB7 tracking ${p2.trackingNumber}` : ""}`;
     case "shipment_status_changed":
@@ -2175,6 +2504,165 @@ function stageAction(state2, profiles2, contacts2, question, now = Date.now()) {
 function restageInLang(staged, state2, profiles2, contacts2, lang, now = Date.now()) {
   const q = `draft ${staged.intent} for ${staged.customer} in ${lang === "fr" ? "french" : lang === "ar" ? "arabic" : "english"}`;
   return stageAction(state2, profiles2, contacts2, q, now) ?? { ...staged, lang };
+}
+
+// src/core/operator.ts
+var wantsCod = (q) => /cod|cash.?on.?delivery/i.test(q) && /confirm|prepare|message|today|send/i.test(q);
+var wantsWinback = (q) => /win.?back|re.?engag|quiet customer|come back/i.test(q) && /campaign|prepare|create|message|send/i.test(q);
+var wantsBudgetReorder = (q) => /reorder|restock|purchase order|buy stock/i.test(q) && /budget|with|spend|afford|mad|dh|dirham/i.test(q);
+var requestBudget = (request) => {
+  const normalized = request.replace(/\s/g, "");
+  const match = normalized.match(/(?:mad|dh|dirham)?([\d,.]+)(?:mad|dh|dirham)?/i);
+  if (!match) return null;
+  const value = Number(match[1].replace(/,/g, ""));
+  return Number.isFinite(value) && value > 0 ? value : null;
+};
+function prepareOperatorPlan(state2, events, request, now = Date.now()) {
+  const contacts2 = projectContacts(events);
+  if (wantsBudgetReorder(request)) {
+    const budget = requestBudget(request);
+    if (!budget) return null;
+    const candidates = state2.products.filter((product) => !product.discontinued && product.weeklySales > 0 && product.unitCost > 0).map((product) => {
+      const available = Math.max(0, product.stock - (state2.reserved[product.productId] ?? 0));
+      const incoming = state2.incoming[product.productId] ?? 0;
+      const daysLeft = available / (product.weeklySales / 7);
+      const coverDays = Math.max(28, product.leadTimeDays + 14);
+      const targetUnits = Math.ceil(product.weeklySales * coverDays / 7);
+      const need = Math.max(0, targetUnits - available - incoming);
+      const urgency = product.leadTimeDays - daysLeft;
+      const unitMargin = Math.max(0, product.price - product.unitCost);
+      return { product, available, incoming, daysLeft, need, urgency, unitMargin };
+    }).filter((candidate) => candidate.need > 0).sort((a, b) => b.urgency - a.urgency || b.unitMargin - a.unitMargin);
+    let remaining = budget;
+    const lines = [];
+    for (const candidate of candidates) {
+      const affordable = Math.floor(remaining / candidate.product.unitCost);
+      const qty = Math.min(candidate.need, affordable);
+      if (qty <= 0) continue;
+      const cost = qty * candidate.product.unitCost;
+      lines.push({ productId: candidate.product.productId, productName: candidate.product.name, qty, unitCost: candidate.product.unitCost, evidence: `${Math.round(candidate.daysLeft)} days left \xB7 ${candidate.product.leadTimeDays}-day lead \xB7 ${candidate.incoming} incoming \xB7 ${money(candidate.unitMargin)} unit margin` });
+      remaining -= cost;
+    }
+    if (!lines.length) return null;
+    const total = lines.reduce((sum, line) => sum + line.qty * line.unitCost, 0);
+    const expectedAt = now + Math.max(...lines.map((line) => state2.products.find((product) => product.productId === line.productId)?.leadTimeDays ?? 7)) * DAY2;
+    return {
+      planId: crypto.randomUUID(),
+      kind: "budget-reorder",
+      title: `Reorder within ${money(budget)}`,
+      problem: `${candidates.length} selling product${candidates.length === 1 ? " needs" : "s need"} more coverage. The budget cannot be spent safely without prioritizing stockout urgency and unit economics.`,
+      evidence: [
+        { label: "Budget", value: money(budget) },
+        { label: "Recommended commitment", value: money(total) },
+        { label: "Budget left uncommitted", value: money(Math.max(0, budget - total)) },
+        { label: "Products funded", value: `${lines.length}/${candidates.length}` }
+      ],
+      proposedAction: `Create one editable supplier purchase order for ${lines.reduce((sum, line) => sum + line.qty, 0)} units across ${lines.length} product${lines.length === 1 ? "" : "s"}. Nothing changes until approval.`,
+      targets: [],
+      excluded: candidates.filter((candidate) => !lines.some((line) => line.productId === candidate.product.productId)).map((candidate) => ({ customer: candidate.product.name, reason: "Outside the available budget after higher-urgency products" })),
+      measurement: "After the expected arrival date, check whether every funded product stayed available and whether the ordered stock was received.",
+      purchaseOrder: { lines, total, expectedAt },
+      preparedAt: now
+    };
+  }
+  if (wantsCod(request)) {
+    const pending = state2.orders.filter((order) => order.status === "pending").sort((a, b) => a.createdAt - b.createdAt);
+    if (!pending.length) return null;
+    const targets = pending.map((order) => {
+      const items = order.lines.map((line) => `${line.qty}\xD7 ${line.productName}`).join(", ");
+      const total = money(orderCashDue(order));
+      return {
+        targetId: order.orderId,
+        orderId: order.orderId,
+        customer: order.customer,
+        phone: contacts2.get(order.customer)?.phone?.trim() || order.customerPhone?.trim() || void 0,
+        body: `Hello ${order.customer}, this is your store. Please confirm your order: ${items}. Total to pay on delivery: ${total}. Reply YES to confirm so we can ship it. Thank you!`,
+        evidence: `${items} \xB7 COD ${total} \xB7 waiting since ${new Date(order.createdAt).toLocaleDateString()}`
+      };
+    });
+    const reachable = targets.filter((target2) => target2.phone).length;
+    return {
+      planId: crypto.randomUUID(),
+      kind: "cod-confirmations",
+      title: `Prepare ${pending.length} COD confirmation${pending.length === 1 ? "" : "s"}`,
+      problem: `${pending.length} order${pending.length === 1 ? " is" : "s are"} waiting for customer confirmation, blocking fulfillment and increasing refusal risk.`,
+      evidence: [
+        { label: "Pending confirmation", value: String(pending.length) },
+        { label: "COD value waiting", value: money(pending.reduce((sum, order) => sum + orderCashDue(order), 0)) },
+        { label: "Reachable by WhatsApp", value: `${reachable}/${pending.length}` }
+      ],
+      proposedAction: `Send the prepared order-specific confirmation message to ${reachable} reachable customer${reachable === 1 ? "" : "s"}. Nothing is sent before approval.`,
+      targets,
+      excluded: targets.filter((target2) => !target2.phone).map((target2) => ({ customer: target2.customer, reason: "No phone saved" })),
+      measurement: "Count how many targeted orders move from pending to confirmed, shipped, or delivered.",
+      preparedAt: now
+    };
+  }
+  if (wantsWinback(request)) {
+    const profiles2 = projectCustomerProfiles(state2, now);
+    const candidates = profiles2.filter((profile) => profile.medianGapDays && (now - profile.lastActivityAt) / DAY2 > profile.medianGapDays);
+    const safe = candidates.filter((profile) => !profile.tags.includes("high-refusal") && !state2.archivedCustomers.includes(profile.name));
+    const excluded = candidates.filter((profile) => profile.tags.includes("high-refusal")).map((profile) => ({ customer: profile.name, reason: "Previous COD refusal risk" }));
+    if (!safe.length) return null;
+    const targets = safe.slice(0, 20).map((profile) => {
+      const days = Math.max(1, Math.round((now - profile.lastActivityAt) / DAY2));
+      return {
+        targetId: profile.name,
+        customer: profile.name,
+        phone: contacts2.get(profile.name)?.phone?.trim() || void 0,
+        body: `Hello ${profile.name}! It's been about ${days} days since your last order \u2014 hope all is well. Anything you need this week? We can prepare your usual order. \u{1F33F}`,
+        evidence: `${days} days quiet \xB7 usual rhythm ~${Math.round(profile.medianGapDays || 0)} days \xB7 ${money(profile.lifetimeRevenue)} lifetime`
+      };
+    });
+    const reachable = targets.filter((target2) => target2.phone).length;
+    return {
+      planId: crypto.randomUUID(),
+      kind: "winback-campaign",
+      title: `Win back ${targets.length} quiet customer${targets.length === 1 ? "" : "s"}`,
+      problem: `${candidates.length} customer${candidates.length === 1 ? " has" : "s have"} passed their own reorder rhythm. Previous refusers should not receive a promotional nudge.`,
+      evidence: [
+        { label: "Quiet past own rhythm", value: String(candidates.length) },
+        { label: "Previous refusers excluded", value: String(excluded.length) },
+        { label: "Reachable safe recipients", value: `${reachable}/${targets.length}` }
+      ],
+      proposedAction: `Send a personal, low-pressure reorder message to the reachable safe segment. ${excluded.length} previous refuser${excluded.length === 1 ? "" : "s"} remain excluded.`,
+      targets,
+      excluded: [...excluded, ...targets.filter((target2) => !target2.phone).map((target2) => ({ customer: target2.customer, reason: "No phone saved" }))],
+      measurement: "Measure customers who place a new order after the campaign, plus the revenue they generate.",
+      preparedAt: now
+    };
+  }
+  return null;
+}
+function projectOperatorRuns(events) {
+  const runs = /* @__PURE__ */ new Map();
+  for (const event of events) {
+    if (event.type === "operator_run_executed") {
+      const payload = event.payload;
+      runs.set(payload.planId, { ...payload });
+    }
+    if (event.type === "operator_outcome_recorded") {
+      const payload = event.payload;
+      const run = runs.get(payload.planId);
+      if (run) run.outcome = { successes: payload.successes, total: payload.total, result: payload.result, measuredAt: payload.measuredAt };
+    }
+  }
+  return [...runs.values()].sort((a, b) => b.executedAt - a.executedAt);
+}
+function measureOperatorRun(run, state2) {
+  const total = run.targetIds.length;
+  if (run.kind === "budget-reorder") {
+    const received = run.targetIds.filter((productId) => state2.products.some((product) => product.productId === productId && product.stock > 0) && !(state2.incoming[productId] > 0)).length;
+    if (run.expectedAt && Date.now() < run.expectedAt) return { successes: 0, total, result: "no-result-yet", detail: `${total} funded product${total === 1 ? "" : "s"} are being monitored until expected arrival.` };
+    return { successes: received, total, result: received === 0 ? "no-result-yet" : received === total ? "worked" : "mixed", detail: `${received}/${total} funded products were received and remained available.` };
+  }
+  if (run.kind === "cod-confirmations") {
+    const successes2 = run.targetIds.filter((id) => state2.orders.some((order) => order.orderId === id && order.status !== "pending" && order.status !== "cancelled" && order.status !== "refused")).length;
+    return { successes: successes2, total, result: successes2 === 0 ? "no-result-yet" : successes2 === total ? "worked" : "mixed", detail: `${successes2}/${total} targeted orders progressed beyond pending confirmation.` };
+  }
+  const successes = run.customers.filter((customer) => state2.orders.some((order) => order.customer === customer && order.createdAt > run.executedAt && order.status !== "cancelled" && order.status !== "refused")).length;
+  const revenue = state2.orders.filter((order) => run.customers.includes(order.customer) && order.createdAt > run.executedAt && order.status === "delivered").reduce((sum, order) => sum + order.lines.reduce((lineSum, line) => lineSum + line.qty * line.unitPrice, 0) - order.discount + order.shippingCharged, 0);
+  return { successes, total, result: successes === 0 ? "no-result-yet" : successes === total ? "worked" : "mixed", detail: `${successes}/${total} customers reordered; delivered revenue ${money(revenue)}.` };
 }
 
 // src/core/coach.ts
@@ -3335,8 +3823,8 @@ var OPERATIONS = [
 ];
 var TEAM = ["invite_member", "change_role", "remove_member"];
 var GRANTS = {
-  owner: /* @__PURE__ */ new Set(["view", ...OPERATIONS, ...TEAM, "export_memory", "delete_workspace"]),
-  manager: /* @__PURE__ */ new Set(["view", ...OPERATIONS, ...TEAM, "export_memory"]),
+  owner: /* @__PURE__ */ new Set(["view", ...OPERATIONS, ...TEAM, "manage_documents", "manage_store_credit", "export_memory", "delete_workspace"]),
+  manager: /* @__PURE__ */ new Set(["view", ...OPERATIONS, ...TEAM, "manage_documents", "manage_store_credit", "export_memory"]),
   staff: /* @__PURE__ */ new Set(["view", ...OPERATIONS]),
   viewer: /* @__PURE__ */ new Set(["view"])
 };
@@ -3404,7 +3892,7 @@ function generateNotifications(state2, insights3, activities = [], now = Date.no
         key: "collect:" + o.orderId,
         priority: "medium",
         category: "finance",
-        title: `Cash not collected from courier \u2014 ${o.customer}, ${formatMoney(orderRevenue(o))}`,
+        title: `Cash not collected from courier \u2014 ${o.customer}, ${formatMoney(orderCashDue(o))}`,
         body: `Delivered ${days} days ago but the courier hasn't remitted the cash. Chase the remittance so it isn't lost.`,
         at: o.deliveredAt,
         actionView: "orders"
@@ -3420,7 +3908,7 @@ function dailyBriefing(state2, notifications, now = Date.now()) {
   const inYesterday = (ts) => ts !== void 0 && ts >= startYesterday && ts < startToday.getTime();
   const deliveredY = state2.orders.filter((o) => inYesterday(o.deliveredAt));
   const revenueY = deliveredY.reduce((s, o) => s + orderRevenue(o), 0);
-  const cashY = state2.orders.filter((o) => inYesterday(o.cashReceivedAt)).reduce((s, o) => s + orderRevenue(o), 0);
+  const cashY = state2.orders.filter((o) => inYesterday(o.cashReceivedAt)).reduce((s, o) => s + orderCashDue(o), 0);
   const high = notifications.filter((n) => n.priority === "high").length;
   const hour = new Date(now).getHours();
   const greeting = hour < 12 ? "Good morning" : hour < 18 ? "Good afternoon" : "Good evening";
@@ -3796,6 +4284,10 @@ check("owner can do everything", can("owner", "delete_workspace") && can("owner"
 check("viewer can only view", can("viewer", "view") && !can("viewer", "create_order") && !can("viewer", "export_memory"));
 check("staff runs operations but not the team", can("staff", "create_order") && can("staff", "manage_inventory") && !can("staff", "invite_member"));
 check("manager manages team but can't delete workspace", can("manager", "invite_member") && !can("manager", "delete_workspace"));
+check(
+  "owner and manager can manage document branding while staff cannot",
+  can("owner", "manage_documents") && can("manager", "manage_documents") && !can("staff", "manage_documents")
+);
 check("escalation guard: owner cannot be demoted/removed", !canManageMember("manager", "owner"));
 check("escalation guard: staff cannot change roles", !canManageMember("staff", "viewer"));
 check("escalation guard: cannot promote above your own rank", !canManageMember("manager", "staff", "owner") && canManageMember("manager", "staff", "manager"));
@@ -3834,15 +4326,38 @@ check("activity marked done via completion event", acts[0].done === true);
 console.log("\nPurchase orders & receipts (CAP-000006 FEAT-000045):");
 var invMem = new TestMemory();
 invMem.append("fact", "product_added", { productId: "PX", name: "Widget", stock: 5, weeklySales: 7, leadTimeDays: 14, unitCost: 10, price: 25 });
+invMem.append("fact", "product_added", { productId: "PY", name: "Bottle", stock: 2, weeklySales: 2, leadTimeDays: 10, unitCost: 5, price: 12 });
 var poId = crypto.randomUUID();
-invMem.append("fact", "purchase_order_created", { poId, supplier: "Forever", lines: [{ productId: "PX", productName: "Widget", qty: 40, unitCost: 9 }], createdAt: Date.now() });
+invMem.append("fact", "purchase_order_created", { poId, supplier: "Forever", supplierEmail: "supply@example.com", supplierAddress: "Casablanca", lines: [{ productId: "PX", productName: "Widget", qty: 40, unitCost: 9 }, { productId: "PY", productName: "Bottle", qty: 10, unitCost: 5 }], expectedAt: Date.now() + 7 * 864e5, paymentTerms: "Net 30", notes: "Confirm batch before shipping", createdAt: Date.now() });
 var invState = projectState(invMem.all());
-check("open PO shows as incoming, stock unchanged", invState.incoming["PX"] === 40 && invState.products[0].stock === 5);
+check("open multi-line PO shows every item as incoming with stock unchanged", invState.incoming["PX"] === 40 && invState.incoming["PY"] === 10 && invState.products[0].stock === 5);
+var openPoHtml = purchaseOrderDocumentHtml(invState.purchaseOrders[0], "Test business", (amount) => `MAD ${amount.toFixed(2)}`);
+check(
+  "supplier purchase-order document carries identity, items, terms, arrival, and total",
+  openPoHtml.includes("Purchase order") && openPoHtml.includes("supply@example.com") && openPoHtml.includes("Widget") && openPoHtml.includes("Bottle") && openPoHtml.includes("Net 30") && openPoHtml.includes("MAD 410.00") && openPoHtml.includes("Expected arrival")
+);
 var insWithPo = generateInsights(invState, []);
 check("stockout alert suppressed when enough is already inbound", !insWithPo.some((i) => i.decisionKey === "inventory.stockout.PX"));
+invMem.append("fact", "goods_received", { receiptId: "partial-receipt", poId, lines: [{ orderLineIndex: 0, productId: "PX", qty: 15 }, { orderLineIndex: 1, productId: "PY", qty: 4 }], note: "First carton", at: Date.now() });
+invState = projectState(invMem.all());
+check(
+  "partial receipt raises stock only by accepted quantities and leaves exact incoming remainder",
+  invState.products.find((product) => product.productId === "PX")?.stock === 20 && invState.products.find((product) => product.productId === "PY")?.stock === 6 && invState.incoming["PX"] === 25 && invState.incoming["PY"] === 6 && !invState.purchaseOrders[0].receivedAt
+);
+check(
+  "partial receipt is preserved as an immutable batch and shown on the supplier document",
+  invState.purchaseOrders[0].receipts?.[0].receiptId === "partial-receipt" && purchaseOrderDocumentHtml(invState.purchaseOrders[0], "Test business", (amount) => `MAD ${amount.toFixed(2)}`).includes("Partially received")
+);
 invMem.append("fact", "goods_received", { poId, at: Date.now() });
 invState = projectState(invMem.all());
-check("receiving raises stock and clears incoming", invState.products[0].stock === 45 && !invState.incoming["PX"]);
+check(
+  "legacy receive-all completes only the remaining units and clears incoming",
+  invState.products.find((product) => product.productId === "PX")?.stock === 45 && invState.products.find((product) => product.productId === "PY")?.stock === 12 && !invState.incoming["PX"] && !invState.incoming["PY"]
+);
+check(
+  "received purchase-order document records the immutable receiving status",
+  purchaseOrderDocumentHtml(invState.purchaseOrders[0], "Test business", (amount) => `MAD ${amount.toFixed(2)}`).includes("Received")
+);
 console.log("\nConstitutional invariants:");
 check("insights are ranked descending", insights.every((x, i, a) => i === 0 || a[i - 1].score >= x.score));
 var withGuidance = insights.filter((i) => i.guidance);
@@ -3962,6 +4477,74 @@ console.log("\nAsk \u2192 Act (staged actions, ghostwriter):");
   }
   const plain = stageAction(st, profiles2, contacts2, "How much profit did I make last month?");
   check("plain questions are never turned into actions", plain === null);
+}
+console.log("\nAI Operator \u2014 prepared actions, approval memory, and measured outcomes (v0.50):");
+{
+  const op = new TestMemory();
+  const now = Date.now();
+  op.append("fact", "product_added", { productId: "OP", name: "Operator Gel", stock: 20, weeklySales: 2, leadTimeDays: 7, unitCost: 30, price: 100 }, now - 130 * 864e5);
+  const addOrder = (orderId, customer, createdAt, status) => {
+    op.append("fact", "order_created", { orderId, customer, lines: [{ productId: "OP", productName: "Operator Gel", qty: 1, unitPrice: 100, unitCost: 30 }], discount: 0, shippingCharged: 0, shippingCost: 0, codFee: 0, packagingCost: 0, createdAt }, createdAt);
+    if (status !== "pending") op.append("fact", "order_status_changed", { orderId, status, at: createdAt + 1 }, createdAt + 1);
+  };
+  addOrder("safe-old-1", "Safe Quiet", now - 120 * 864e5, "delivered");
+  addOrder("safe-old-2", "Safe Quiet", now - 90 * 864e5, "delivered");
+  addOrder("refuse-old-1", "Past Refuser", now - 120 * 864e5, "refused");
+  addOrder("refuse-old-2", "Past Refuser", now - 90 * 864e5, "refused");
+  addOrder("cod-waiting", "COD Buyer", now - 2 * 864e5, "pending");
+  op.append("fact", "customer_contact_updated", { customer: "Safe Quiet", phone: "+212600000011", at: now - 80 * 864e5 }, now - 80 * 864e5);
+  op.append("fact", "customer_contact_updated", { customer: "Past Refuser", phone: "+212600000012", at: now - 80 * 864e5 }, now - 80 * 864e5);
+  op.append("fact", "customer_contact_updated", { customer: "COD Buyer", phone: "+212600000013", at: now - 1 * 864e5 }, now - 1 * 864e5);
+  let opState = projectState(op.all());
+  const codPlan = prepareOperatorPlan(opState, op.all(), "Prepare today's COD confirmations", now);
+  check(
+    "operator finds pending COD work and grounds every exact prepared message",
+    codPlan.kind === "cod-confirmations" && codPlan.targets.length === 1 && codPlan.targets[0].orderId === "cod-waiting" && codPlan.targets[0].body.includes("Operator Gel") && /\d/.test(codPlan.targets[0].body)
+  );
+  check(
+    "operator exposes evidence, approval boundary, and success measurement before execution",
+    codPlan.evidence.some((item) => item.label === "COD value waiting") && /Nothing is sent before approval/.test(codPlan.proposedAction) && /move from pending/.test(codPlan.measurement)
+  );
+  const winbackPlan = prepareOperatorPlan(opState, op.all(), "Create a win-back campaign, but exclude previous refusers", now);
+  check(
+    "win-back operator targets quiet safe customers and excludes previous refusers",
+    winbackPlan.kind === "winback-campaign" && winbackPlan.targets.some((target2) => target2.customer === "Safe Quiet") && !winbackPlan.targets.some((target2) => target2.customer === "Past Refuser") && winbackPlan.excluded.some((item) => item.customer === "Past Refuser")
+  );
+  const run = { planId: codPlan.planId, kind: codPlan.kind, title: codPlan.title, targetIds: ["cod-waiting"], customers: ["COD Buyer"], executedAt: now };
+  check("operator measurement honestly reports no result while the COD order is still pending", measureOperatorRun(run, opState).result === "no-result-yet");
+  op.append("fact", "operator_run_executed", run, now);
+  op.append("fact", "order_status_changed", { orderId: "cod-waiting", status: "confirmed", at: now + 1 }, now + 1);
+  opState = projectState(op.all());
+  const measured = measureOperatorRun(run, opState);
+  check("operator measures a progressed COD order as a worked recommendation", measured.result === "worked" && measured.successes === 1);
+  op.append("outcome", "operator_outcome_recorded", { planId: run.planId, successes: measured.successes, total: measured.total, result: measured.result, measuredAt: now + 2 }, now + 2);
+  check("operator memory joins execution to its measured outcome", projectOperatorRuns(op.all())[0].outcome?.result === "worked");
+  const reorder = new TestMemory();
+  reorder.append("fact", "product_added", { productId: "R1", name: "Urgent Gel", stock: 0, weeklySales: 7, leadTimeDays: 14, unitCost: 30, price: 90 }, now);
+  reorder.append("fact", "product_added", { productId: "R2", name: "Margin Cream", stock: 1, weeklySales: 5, leadTimeDays: 7, unitCost: 20, price: 80 }, now);
+  let reorderState = projectState(reorder.all());
+  const reorderPlan = prepareOperatorPlan(reorderState, reorder.all(), "What should I reorder with MAD 100?", now);
+  check(
+    "budget operator prepares an exact prioritized PO without exceeding the approved budget",
+    reorderPlan.kind === "budget-reorder" && Boolean(reorderPlan.purchaseOrder?.lines.length) && (reorderPlan.purchaseOrder?.total ?? 101) <= 100
+  );
+  check(
+    "budget operator explains urgency, unit economics, exclusions, and the approval boundary",
+    reorderPlan.purchaseOrder.lines.every((line) => /days left/.test(line.evidence) && /unit margin/.test(line.evidence)) && /Nothing changes until approval/.test(reorderPlan.proposedAction)
+  );
+  reorder.append("fact", "purchase_order_created", { poId: reorderPlan.planId, supplier: "Approved supplier", lines: reorderPlan.purchaseOrder.lines.map(({ evidence: _evidence, ...line }) => line), expectedAt: reorderPlan.purchaseOrder.expectedAt, createdAt: now }, now);
+  reorderState = projectState(reorder.all());
+  check(
+    "approved reorder operation becomes incoming inventory rather than pretending stock arrived",
+    reorderPlan.purchaseOrder.lines.every((line) => reorderState.incoming[line.productId] === line.qty && reorderState.products.find((product) => product.productId === line.productId)?.stock !== line.qty)
+  );
+  reorder.append("fact", "goods_received", { poId: reorderPlan.planId, at: now + 1 }, now + 1);
+  reorderState = projectState(reorder.all());
+  const reorderRun = { planId: reorderPlan.planId, kind: "budget-reorder", title: reorderPlan.title, targetIds: reorderPlan.purchaseOrder.lines.map((line) => line.productId), customers: [], executedAt: now, expectedAt: now - 1 };
+  check(
+    "reorder operator measures received and available funded products as worked",
+    measureOperatorRun(reorderRun, reorderState).result === "worked"
+  );
 }
 console.log("\nDecision-memory coach & goal pacing (stage 4):");
 {
@@ -4281,9 +4864,27 @@ console.log("\nApproved WhatsApp templates (v0.38):");
 console.log("\nDocuments center (v0.39):");
 {
   const money2 = (amount) => `MAD ${amount.toFixed(2)}`;
-  const invoiceHtml = invoiceDocumentHtml(state.invoices[0], "Naturaloe", money2);
+  const brand = {
+    businessName: "Naturaloe",
+    legalName: "Naturaloe SARL",
+    email: "hello@naturaloe.ma",
+    phone: "+212600000000",
+    address: "12 Aloe Road",
+    city: "Casablanca",
+    country: "Morocco",
+    taxId: "ICE-123",
+    registrationNumber: "RC-456",
+    paymentDetails: "Bank transfer",
+    footerNote: "Pure care, naturally.",
+    accentColor: "#176b52",
+    logoDataUrl: "data:image/png;base64,aGVsbG8=",
+    logoFileName: "logo.png",
+    logoWidth: 1024,
+    logoHeight: 400
+  };
+  const invoiceHtml = invoiceDocumentHtml(state.invoices[0], brand, money2);
   const deliveredOrder = state.orders.find((order) => order.status === "delivered");
-  const receiptHtml = receiptDocumentHtml(deliveredOrder, "Naturaloe", money2);
+  const receiptHtml = receiptDocumentHtml(deliveredOrder, brand, money2);
   check(
     "invoice document carries the canonical customer, amount, and reference",
     invoiceHtml.includes(state.invoices[0].customer) && invoiceHtml.includes(money2(state.invoices[0].amount)) && invoiceHtml.includes(state.invoices[0].invoiceId)
@@ -4296,8 +4897,243 @@ console.log("\nDocuments center (v0.39):");
     "documents expose browser print-to-PDF without another persistence store",
     invoiceHtml.includes("window.print()") && receiptHtml.includes("Generated from ZYVORA Business Memory")
   );
+  check(
+    "branded documents carry editable legal, contact, payment, and logo information",
+    invoiceHtml.includes("Naturaloe SARL") && invoiceHtml.includes("hello@naturaloe.ma") && invoiceHtml.includes("Bank transfer") && invoiceHtml.includes('class="logo"')
+  );
+  check(
+    "invoice uses a print-safe A4 layout and a controlled brand accent",
+    invoiceHtml.includes("@page{size:A4") && invoiceHtml.includes("#176b52") && invoiceHtml.includes("Document reference")
+  );
   const escaped = invoiceDocumentHtml({ ...state.invoices[0], customer: "<script>alert(1)</script>" }, "Naturaloe", money2);
   check("document content escapes user-entered HTML", !escaped.includes("<script>alert(1)</script>") && escaped.includes("&lt;script&gt;"));
+  const brandingEvents = [
+    { id: "b1", ts: 1, stream: "fact", type: "document_branding_updated", payload: { businessName: "First", phone: "1" } },
+    { id: "b2", ts: 2, stream: "fact", type: "document_branding_updated", payload: { businessName: "Latest", email: "latest@example.com" } }
+  ];
+  const projectedBrand = projectDocumentBranding(brandingEvents, "Workspace");
+  check(
+    "latest append-only document-branding correction wins without losing earlier fields",
+    projectedBrand.businessName === "Latest" && projectedBrand.phone === "1" && projectedBrand.email === "latest@example.com"
+  );
+  const totals = calculateInvoiceTotals([{ qty: 2, unitPrice: 500 }, { qty: 1, unitPrice: 200 }], 50, 20);
+  check(
+    "itemized invoice has one canonical subtotal, discount, tax, and total calculation",
+    totals.subtotal === 1200 && totals.discount === 50 && totals.taxAmount === 230 && totals.total === 1380
+  );
+  const itemizedHtml = invoiceDocumentHtml({
+    ...state.invoices[0],
+    amount: totals.total,
+    subtotal: totals.subtotal,
+    discount: totals.discount,
+    taxRate: totals.taxRate,
+    taxAmount: totals.taxAmount,
+    customerEmail: "buyer@example.com",
+    customerAddress: "12 Commerce Street\nCasablanca",
+    notes: "Handle with care",
+    lines: [{ lineId: "l1", description: "Aloe care set", qty: 2, unitPrice: 500 }, { lineId: "l2", description: "Delivery", qty: 1, unitPrice: 200 }]
+  }, brand, money2);
+  check(
+    "branded invoice renders item descriptions, quantities, billing details, tax, and notes",
+    itemizedHtml.includes("Aloe care set") && itemizedHtml.includes("buyer@example.com") && itemizedHtml.includes("Casablanca") && itemizedHtml.includes("Tax (20%)") && itemizedHtml.includes("Handle with care")
+  );
+  const quoteMemory = new TestMemory();
+  const quoteCreatedAt = Date.now();
+  quoteMemory.append("fact", "quote_created", {
+    quoteId: "quote-1",
+    customer: "Quote Customer",
+    customerEmail: "quote@example.com",
+    customerAddress: "Rabat",
+    lines: [{ lineId: "ql1", description: "Negotiated care set", qty: 2, unitPrice: 500 }],
+    subtotal: 1e3,
+    discount: 100,
+    taxRate: 20,
+    taxAmount: 180,
+    amount: 1080,
+    notes: "Valid while stock lasts",
+    createdAt: quoteCreatedAt,
+    validUntil: quoteCreatedAt + 14 * 864e5
+  }, quoteCreatedAt);
+  let quoteState = projectState(quoteMemory.all());
+  check(
+    "a new estimate projects as draft without creating revenue or an invoice",
+    quoteState.quotes[0].status === "draft" && quoteState.invoices.length === 0
+  );
+  quoteMemory.append("fact", "quote_status_changed", { quoteId: "quote-1", status: "sent", at: quoteCreatedAt + 1 }, quoteCreatedAt + 1);
+  quoteMemory.append("fact", "quote_status_changed", { quoteId: "quote-1", status: "accepted", at: quoteCreatedAt + 2 }, quoteCreatedAt + 2);
+  quoteState = projectState(quoteMemory.all());
+  check("append-only quote status projects the latest human-recorded state", quoteState.quotes[0].status === "accepted");
+  const estimateHtml = quoteDocumentHtml(quoteState.quotes[0], brand, money2);
+  check(
+    "branded estimate renders negotiated lines, validity, customer and total",
+    estimateHtml.includes("Negotiated care set") && estimateHtml.includes("Quote Customer") && estimateHtml.includes("Valid until") && estimateHtml.includes(money2(1080))
+  );
+  const convertedInvoice = invoiceFromAcceptedQuote(quoteState.quotes[0], "invoice-from-quote", quoteCreatedAt + 3);
+  check(
+    "accepted estimate conversion copies commercial terms and preserves source traceability",
+    convertedInvoice.amount === 1080 && convertedInvoice.lines?.[0].description === "Negotiated care set" && convertedInvoice.sourceQuoteId === "quote-1"
+  );
+  quoteMemory.append("fact", "invoice_issued", { ...convertedInvoice }, quoteCreatedAt + 3);
+  quoteMemory.append("fact", "quote_status_changed", { quoteId: "quote-1", status: "converted", at: quoteCreatedAt + 3 }, quoteCreatedAt + 3);
+  quoteState = projectState(quoteMemory.all());
+  check(
+    "conversion produces one open invoice and closes the estimate as converted",
+    quoteState.invoices.length === 1 && quoteState.quotes[0].status === "converted"
+  );
+  const fulfillmentOrder = {
+    ...deliveredOrder,
+    status: "confirmed",
+    customerPhone: "+212600000001",
+    shippingAddress: "18 Palm Street\nMarrakesh",
+    deliveryInstructions: "Call before delivery",
+    courier: "Atlas Express",
+    trackingNumber: "AT-2048"
+  };
+  const packingHtml = packingSlipDocumentHtml(fulfillmentOrder, brand);
+  const deliveryHtml = deliveryNoteDocumentHtml(fulfillmentOrder, brand, money2);
+  check(
+    "fulfillment documents unlock only after order confirmation",
+    !canGenerateFulfillmentDocuments({ status: "pending" }) && canGenerateFulfillmentDocuments({ status: "confirmed" }) && canGenerateFulfillmentDocuments({ status: "shipped" }) && canGenerateFulfillmentDocuments({ status: "delivered" }) && !canGenerateFulfillmentDocuments({ status: "cancelled" })
+  );
+  check(
+    "packing slip carries delivery snapshot and every quantity without exposing prices",
+    packingHtml.includes("Marrakesh") && packingHtml.includes("+212600000001") && fulfillmentOrder.lines.every((line) => packingHtml.includes(line.productName) && packingHtml.includes(`<strong>${line.qty}</strong>`)) && !packingHtml.includes(money2(orderRevenue(fulfillmentOrder)))
+  );
+  check(
+    "delivery note carries COD, courier, tracking, instructions, and acknowledgment fields",
+    deliveryHtml.includes(money2(orderRevenue(fulfillmentOrder))) && deliveryHtml.includes("Atlas Express") && deliveryHtml.includes("AT-2048") && deliveryHtml.includes("Call before delivery") && deliveryHtml.includes("Customer name and signature")
+  );
+  const historicalPackingHtml = packingSlipDocumentHtml(deliveredOrder, brand);
+  check(
+    "historical orders without delivery snapshot still render fulfillment documents safely",
+    historicalPackingHtml.includes(deliveredOrder.customer) && historicalPackingHtml.includes("No special instructions")
+  );
+  const returnMemory = new TestMemory();
+  const returnAt = Date.now();
+  returnMemory.append("fact", "product_added", { productId: "return-product", name: "Return product", price: 100, unitCost: 40, stock: 10, weeklySales: 1, leadTimeDays: 7 }, returnAt);
+  returnMemory.append("fact", "order_created", {
+    orderId: "return-order",
+    customer: "Return customer",
+    customerPhone: "+212600000002",
+    shippingAddress: "Rabat",
+    lines: [{ productId: "return-product", productName: "Return product", qty: 3, unitPrice: 100, unitCost: 40 }],
+    discount: 0,
+    shippingCharged: 0,
+    shippingCost: 10,
+    codFee: 0,
+    packagingCost: 2,
+    createdAt: returnAt
+  }, returnAt);
+  returnMemory.append("fact", "order_status_changed", { orderId: "return-order", status: "delivered", at: returnAt + 1 }, returnAt + 1);
+  returnMemory.append("fact", "order_return_recorded", {
+    returnId: "credit-partial",
+    orderId: "return-order",
+    lines: [{ orderLineIndex: 0, productId: "return-product", productName: "Return product", qty: 1, unitPrice: 100, unitCost: 40, restock: true }],
+    refundAmount: 90,
+    refundMethod: "cash",
+    returnShippingCost: 20,
+    reason: "changed_mind",
+    note: "Inspected and sellable",
+    at: returnAt + 2
+  }, returnAt + 2);
+  let returnState = projectState(returnMemory.all());
+  let returnedOrder = returnState.orders[0];
+  check(
+    "partial return restocks only sellable quantity and keeps the order partially returned",
+    returnState.products[0].stock === 8 && returnedOrder.returnStatus === "partial" && returnedOrder.returnedQtyByLine?.["0"] === 1
+  );
+  check(
+    "refunds reverse revenue while restocking reverses COGS and return freight reduces profit",
+    orderGrossRevenue(returnedOrder) === 300 && orderRevenue(returnedOrder) === 210 && orderCogs(returnedOrder) === 80 && orderNetProfit(returnedOrder) === 98
+  );
+  const partialCredit = creditNoteDocumentHtml(returnedOrder, returnedOrder.returnRecords[0], brand, money2);
+  check(
+    "credit note carries immutable return reference, customer, item, refund method, and amount",
+    partialCredit.includes("credit-partial") && partialCredit.includes("Return customer") && partialCredit.includes("Return product") && partialCredit.includes("Cash") && partialCredit.includes(money2(90))
+  );
+  returnMemory.append("fact", "order_return_recorded", {
+    returnId: "credit-final",
+    orderId: "return-order",
+    lines: [{ orderLineIndex: 0, productId: "wrong", productName: "Wrong", qty: 99, unitPrice: 999, unitCost: 999, restock: false }],
+    refundAmount: 9999,
+    refundMethod: "bank_transfer",
+    returnShippingCost: 5,
+    reason: "damaged",
+    at: returnAt + 3
+  }, returnAt + 3);
+  returnState = projectState(returnMemory.all());
+  returnedOrder = returnState.orders[0];
+  check(
+    "projection clamps over-return and over-refund facts to the canonical order balance",
+    returnedOrder.returnedQtyByLine?.["0"] === 3 && returnedOrder.refundAmount === 300 && returnedOrder.returnRecords?.[1].lines[0].qty === 2
+  );
+  check(
+    "fully returned damaged units stay out of inventory and fulfillment documents close",
+    returnedOrder.returnStatus === "returned" && returnState.products[0].stock === 8 && !canGenerateFulfillmentDocuments(returnedOrder)
+  );
+  const returnPnl = profitAndLoss(returnState, returnAt - 1, returnAt + 10, "Returns test");
+  check(
+    "P&L shows refunds and return freight explicitly while retaining gross sales traceability",
+    returnPnl.revenue.lines.some((line) => line.label.includes("refund") && line.amount === -300) && returnPnl.operatingExpenses.lines.some((line) => line.label === "Return shipping" && line.amount === 25) && returnPnl.revenue.lines.some((line) => line.label.includes("Product sales") && line.amount === 300)
+  );
+  const creditMemory = new TestMemory();
+  creditMemory.append("fact", "product_added", { productId: "credit-product", name: "Credit product", price: 80, unitCost: 30, stock: 10, weeklySales: 1, leadTimeDays: 7 }, returnAt);
+  creditMemory.append("fact", "order_created", { orderId: "credit-source", customer: "Credit customer", lines: [{ productId: "credit-product", productName: "Credit product", qty: 1, unitPrice: 80, unitCost: 30 }], discount: 0, shippingCharged: 0, shippingCost: 0, codFee: 0, packagingCost: 0, createdAt: returnAt }, returnAt);
+  creditMemory.append("fact", "order_status_changed", { orderId: "credit-source", status: "delivered", at: returnAt + 1 }, returnAt + 1);
+  creditMemory.append("fact", "order_return_recorded", { returnId: "store-credit-refund", orderId: "credit-source", lines: [], refundAmount: 80, refundMethod: "store_credit", returnShippingCost: 0, reason: "other", at: returnAt + 2 }, returnAt + 2);
+  let creditState = projectState(creditMemory.all());
+  check(
+    "store-credit refund issues a customer balance and immutable ledger transaction",
+    creditState.storeCreditBalances["Credit customer"] === 80 && creditState.storeCreditTransactions[0].kind === "issued"
+  );
+  creditMemory.append("fact", "order_created", { orderId: "credit-cancelled", customer: "Credit customer", lines: [{ productId: "credit-product", productName: "Credit product", qty: 2, unitPrice: 80, unitCost: 30 }], discount: 0, shippingCharged: 0, shippingCost: 0, codFee: 0, packagingCost: 0, storeCreditApplied: 999, createdAt: returnAt + 3 }, returnAt + 3);
+  creditState = projectState(creditMemory.all());
+  const creditOrder = creditState.orders.find((order) => order.orderId === "credit-cancelled");
+  check(
+    "redemption is clamped to the available balance and reduces COD without reducing revenue",
+    creditOrder.storeCreditApplied === 80 && creditState.storeCreditBalances["Credit customer"] === 0 && orderRevenue(creditOrder) === 160 && orderCashDue(creditOrder) === 80
+  );
+  creditMemory.append("fact", "order_status_changed", { orderId: "credit-cancelled", status: "cancelled", at: returnAt + 4 }, returnAt + 4);
+  creditState = projectState(creditMemory.all());
+  check(
+    "cancelled or refused orders restore redeemed store credit exactly once",
+    creditState.storeCreditBalances["Credit customer"] === 80 && creditState.storeCreditTransactions.some((transaction) => transaction.kind === "released" && transaction.orderId === "credit-cancelled")
+  );
+  creditMemory.append("fact", "order_created", { orderId: "credit-paid", customer: "Credit customer", lines: [{ productId: "credit-product", productName: "Credit product", qty: 1, unitPrice: 80, unitCost: 30 }], discount: 0, shippingCharged: 0, shippingCost: 0, codFee: 0, packagingCost: 0, storeCreditApplied: 80, createdAt: returnAt + 5 }, returnAt + 5);
+  creditMemory.append("fact", "order_status_changed", { orderId: "credit-paid", status: "delivered", at: returnAt + 6 }, returnAt + 6);
+  creditState = projectState(creditMemory.all());
+  const creditPaidOrder = creditState.orders.find((order) => order.orderId === "credit-paid");
+  const creditReceipt = receiptDocumentHtml(creditPaidOrder, brand, money2);
+  check(
+    "fully credit-paid delivery has no courier cash task and receipt separates payment tender",
+    orderCashDue(creditPaidOrder) === 0 && creditPaidOrder.cashReceivedAt === returnAt + 6 && creditReceipt.includes("Store credit used") && creditReceipt.includes("Cash payment")
+  );
+  creditMemory.append("fact", "store_credit_adjusted", { transactionId: "goodwill-credit", customer: "Credit customer", delta: 35, reason: "Goodwill", note: "Manager approved", at: returnAt + 7 }, returnAt + 7);
+  creditMemory.append("fact", "store_credit_adjusted", { transactionId: "balance-correction", customer: "Credit customer", delta: -999, reason: "Correction", at: returnAt + 8 }, returnAt + 8);
+  creditState = projectState(creditMemory.all());
+  check(
+    "manager adjustments create immutable reasoned store-credit ledger entries",
+    creditState.storeCreditTransactions.some((transaction) => transaction.transactionId === "goodwill-credit" && transaction.kind === "adjusted" && transaction.amount === 35 && transaction.reason === "Goodwill")
+  );
+  check(
+    "manager balance reductions are clamped so store credit never becomes negative",
+    creditState.storeCreditBalances["Credit customer"] === 0 && creditState.storeCreditTransactions.some((transaction) => transaction.transactionId === "balance-correction" && transaction.amount === -35)
+  );
+  const statementHtml = customerStatementDocumentHtml({
+    ...creditState,
+    invoices: [
+      { invoiceId: "statement-open", customer: "Credit customer", amount: 120, issuedAt: returnAt, dueDays: 14 },
+      { invoiceId: "statement-paid", customer: "Credit customer", amount: 30, issuedAt: returnAt, dueDays: 14, paidAt: returnAt + 1 }
+    ]
+  }, "Credit customer", brand, money2, { phone: "+212600000003", city: "Casablanca" }, returnAt + 9);
+  check(
+    "customer statement combines invoices, delivered purchases, refunds, and the credit ledger",
+    statementHtml.includes("Account statement") && statementHtml.includes("Credit customer") && statementHtml.includes("statement-op") && statementHtml.includes("Store credit issued") && statementHtml.includes("Goodwill")
+  );
+  check(
+    "customer statement keeps open receivables and store credit as separate balances",
+    statementHtml.includes("Open invoices due") && statementHtml.includes(money2(120)) && statementHtml.includes("Store credit available") && !statementHtml.includes("Open invoices due</span><strong>" + money2(150))
+  );
 }
 console.log("\nCourier Control Tower (v0.34):");
 {

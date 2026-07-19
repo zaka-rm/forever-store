@@ -818,11 +818,11 @@ function Workspace({
           {view === "orders" && <OrdersView state={state} memory={memory} workspaceName={workspace.name} workspaceId={workspace.id} />}
           {view === "automations" && <AutomationsView state={state} memory={memory} editable={can(role, "advance_order")} />}
           {view === "finance" && <FinanceView state={state} memory={memory} workspaceId={workspace.id} />}
-          {view === "customers" && <CustomersView state={state} memory={memory} workspaceId={workspace.id} workspaceName={workspace.name} />}
+          {view === "customers" && <CustomersView state={state} memory={memory} workspaceId={workspace.id} workspaceName={workspace.name} editableCredit={can(role, "manage_store_credit")} />}
           {view === "inventory" && <InventoryView state={state} memory={memory} />}
           {view === "promos" && <PromosView state={state} memory={memory} />}
           {view === "analytics" && <AnalyticsView state={state} memory={memory} />}
-          {view === "ask" && <AskView state={state} memory={memory} workspaceId={workspace.id} />}
+          {view === "ask" && <AskView state={state} memory={memory} workspaceId={workspace.id} editable={can(role, "advance_order")} />}
           {view === "documents" && (
             <DocumentsView
               state={state}

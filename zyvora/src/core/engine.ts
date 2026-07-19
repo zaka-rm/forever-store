@@ -20,6 +20,7 @@
 import { money } from "./format";
 import {
   DAY,
+  orderCashDue,
   orderNetProfit,
   orderRefusalLoss,
   orderRevenue,
@@ -81,7 +82,7 @@ function financeBrain(state: WorkspaceState, out: Insight[], now: number): void 
   const remitted = state.orders.filter((o) => o.status === "delivered" && o.cashReceivedAt);
   const cash =
     paid.reduce((s, i) => s + i.amount, 0) +
-    remitted.reduce((s, o) => s + orderRevenue(o), 0) -
+    remitted.reduce((s, o) => s + orderCashDue(o), 0) -
     state.expenses.reduce((s, e) => s + e.amount, 0);
 
   // 1. Overdue invoices → operational guidance.
@@ -872,21 +873,21 @@ export function cashCenter(state: WorkspaceState, now: number = Date.now()) {
 
   const collectedAllTime =
     paidInvoices.reduce((s, i) => s + i.amount, 0) +
-    remitted.reduce((s, o) => s + orderRevenue(o), 0);
+    remitted.reduce((s, o) => s + orderCashDue(o), 0);
   const expensesAllTime = state.expenses.reduce((s, e) => s + e.amount, 0);
 
   const collected30 =
     paidInvoices.filter((i) => now - (i.paidAt as number) <= 30 * DAY).reduce((s, i) => s + i.amount, 0) +
     remitted
       .filter((o) => now - (o.cashReceivedAt as number) <= 30 * DAY)
-      .reduce((s, o) => s + orderRevenue(o), 0);
+      .reduce((s, o) => s + orderCashDue(o), 0);
   const expenses30 = state.expenses
     .filter((e) => now - e.date <= 30 * DAY)
     .reduce((s, e) => s + e.amount, 0);
 
   return {
     cashAvailable: collectedAllTime - expensesAllTime,
-    cashPendingCod: pendingCod.reduce((s, o) => s + orderRevenue(o), 0),
+    cashPendingCod: pendingCod.reduce((s, o) => s + orderCashDue(o), 0),
     collected30,
     expenses30,
     envelopes: {
@@ -906,7 +907,7 @@ export function stateOfThings(state: WorkspaceState, now: number = Date.now()) {
   const pendingCod = state.orders.filter((o) => o.status === "delivered" && !o.cashReceivedAt);
   const cash =
     paid.reduce((s, i) => s + i.amount, 0) +
-    remitted.reduce((s, o) => s + orderRevenue(o), 0) -
+    remitted.reduce((s, o) => s + orderCashDue(o), 0) -
     state.expenses.reduce((s, e) => s + e.amount, 0);
   const last30 =
     state.invoices
@@ -914,11 +915,11 @@ export function stateOfThings(state: WorkspaceState, now: number = Date.now()) {
       .reduce((s, i) => s + i.amount, 0) +
     state.orders
       .filter((o) => o.deliveredAt && now - o.deliveredAt <= 30 * DAY)
-      .reduce((s, o) => s + orderRevenue(o), 0);
+      .reduce((s, o) => s + orderCashDue(o), 0);
   const stockValue = state.products.reduce((s, p) => s + p.stock * p.unitCost, 0);
   return {
     cash,
-    cashPendingCod: pendingCod.reduce((s, o) => s + orderRevenue(o), 0),
+    cashPendingCod: pendingCod.reduce((s, o) => s + orderCashDue(o), 0),
     billedLast30: last30,
     openInvoices: open.length,
     openInvoiceValue: open.reduce((s, i) => s + i.amount, 0),

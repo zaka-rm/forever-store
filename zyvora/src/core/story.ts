@@ -30,6 +30,10 @@ function describe(e: MemoryEvent): string | null {
       const items = lines.length ? lines.map((line) => `${line.qty}× ${line.productName}${line.restock ? " restocked" : " not restocked"}`).join(", ") : "refund-only adjustment";
       return `Return recorded — ${items} · refund ${money(Number(p.refundAmount) || 0)}`;
     }
+    case "store_credit_adjusted": {
+      const delta = Number(p.delta) || 0;
+      return `Store credit ${delta >= 0 ? "granted" : "reduced"} — ${money(Math.abs(delta))} · ${String(p.reason || "Manager adjustment")}`;
+    }
     case "shipment_created":
       return `Courier handoff — ${String(p.courier)}${p.trackingNumber ? ` · tracking ${p.trackingNumber}` : ""}`;
     case "shipment_status_changed":

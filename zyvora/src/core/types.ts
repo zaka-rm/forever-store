@@ -162,6 +162,8 @@ export interface OrderCreated {
   source?: string;
   /** Which courier carried this order — powers the courier scorecard. */
   courier?: string;
+  /** Payment tender, not a discount: revenue stays whole while COD cash due falls. */
+  storeCreditApplied?: number;
 }
 
 export interface OrderStatusChanged {
@@ -197,6 +199,29 @@ export interface OrderReturnRecorded {
   refundAmount: number;
   refundMethod: RefundMethod;
   returnShippingCost: number;
+  reason: string;
+  note?: string;
+  at: number;
+}
+
+export interface StoreCreditTransaction {
+  transactionId: string;
+  customer: string;
+  orderId?: string;
+  returnId?: string;
+  kind: "issued" | "redeemed" | "released" | "adjusted";
+  /** Positive for credit granted/restored; negative for a manager correction. */
+  amount: number;
+  reason?: string;
+  note?: string;
+  at: number;
+}
+
+/** Append-only manager correction; the projection never lets a balance fall below zero. */
+export interface StoreCreditAdjusted {
+  transactionId: string;
+  customer: string;
+  delta: number;
   reason: string;
   note?: string;
   at: number;
@@ -242,13 +267,22 @@ export interface PoLine {
 export interface PurchaseOrderCreated {
   poId: string;
   supplier: string;
+  supplierEmail?: string;
+  supplierAddress?: string;
   lines: PoLine[];
+  expectedAt?: number;
+  paymentTerms?: string;
+  notes?: string;
   createdAt: number;
 }
 
 /** Receiving a PO increases stock and closes the incoming quantity (append-only). */
 export interface GoodsReceived {
+  receiptId?: string;
   poId: string;
+  /** Omitted by legacy events, which means receive every remaining unit. */
+  lines?: { orderLineIndex: number; productId: string; qty: number }[];
+  note?: string;
   at: number;
 }
 
@@ -400,10 +434,14 @@ export interface Order extends OrderCreated {
   restockedCost?: number;
   returnStatus?: "partial" | "returned";
   lastReturnedAt?: number;
+  storeCreditReleasedAt?: number;
 }
 
 export interface PurchaseOrder extends PurchaseOrderCreated {
   receivedAt?: number;
+  lastReceivedAt?: number;
+  receivedQtyByLine?: Record<string, number>;
+  receipts?: GoodsReceived[];
 }
 
 export interface Promo extends PromoCreated {
@@ -427,6 +465,8 @@ export interface WorkspaceState {
   incoming: Record<string, number>;
   /** Customer names the user has archived (hidden from the CRM list). */
   archivedCustomers: string[];
+  storeCreditBalances: Record<string, number>;
+  storeCreditTransactions: StoreCreditTransaction[];
 }
 
 // ---------- Insight & Decision layers (D.1 levels 4–5; CODEX 10 P4.6) ----------

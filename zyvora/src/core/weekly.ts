@@ -5,7 +5,7 @@
  * carries its own "higher is better" polarity so the UI can colour honestly.
  * Deterministic; the optional AI narration only phrases what this returns.
  */
-import { DAY, orderRevenue, projectState } from "./projections";
+import { DAY, orderCashDue, orderRevenue, projectState } from "./projections";
 import type { MemoryEvent, OrderStatusChanged } from "./types";
 
 export interface WeeklyMetric {
@@ -48,7 +48,7 @@ export function weeklyReview(events: readonly MemoryEvent[], now: number = Date.
     }).length;
 
   const cashCollected = (test: (t: number) => boolean) =>
-    state.orders.filter((o) => o.cashReceivedAt && test(o.cashReceivedAt)).reduce((s, o) => s + orderRevenue(o), 0) +
+    state.orders.filter((o) => o.cashReceivedAt && test(o.cashReceivedAt)).reduce((s, o) => s + orderCashDue(o), 0) +
     state.invoices.filter((i) => i.paidAt && test(i.paidAt)).reduce((s, i) => s + i.amount, 0);
 
   const expenses = (test: (t: number) => boolean) =>

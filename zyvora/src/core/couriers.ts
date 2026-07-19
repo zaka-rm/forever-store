@@ -3,7 +3,7 @@
  * Decision served: which shipment or COD remittance needs attention first?
  * Facts remain on Order projections; this file only ranks rebuildable views.
  */
-import { DAY, orderRevenue } from "./projections";
+import { DAY, orderCashDue } from "./projections";
 import type { Order, WorkspaceState } from "./types";
 
 export type CourierAction =
@@ -39,7 +39,7 @@ export function courierControl(state: WorkspaceState, now: number = Date.now()):
   for (const order of state.orders) {
     if (["cancelled", "refused", "returned"].includes(order.status)) continue;
     const sinceUpdate = age(order.shipmentUpdatedAt ?? order.createdAt);
-    const value = orderRevenue(order);
+    const value = orderCashDue(order);
     let row: CourierControlRow | null = null;
 
     if (order.status === "confirmed" && !order.shipmentStatus) {
@@ -110,4 +110,3 @@ export function courierControl(state: WorkspaceState, now: number = Date.now()):
       .reduce((sum, r) => sum + r.cashAtRisk, 0),
   };
 }
-

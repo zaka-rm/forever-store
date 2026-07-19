@@ -28,6 +28,7 @@ export type Action =
   | "manage_inventory"
   | "manage_promos"
   | "manage_documents"
+  | "manage_store_credit"
   | "record_decision"
   | "import_data"
   | "export_memory"
@@ -43,8 +44,8 @@ const OPERATIONS: Action[] = [
 const TEAM: Action[] = ["invite_member", "change_role", "remove_member"];
 
 const GRANTS: Record<Role, Set<Action>> = {
-  owner: new Set<Action>(["view", ...OPERATIONS, ...TEAM, "manage_documents", "export_memory", "delete_workspace"]),
-  manager: new Set<Action>(["view", ...OPERATIONS, ...TEAM, "manage_documents", "export_memory"]),
+  owner: new Set<Action>(["view", ...OPERATIONS, ...TEAM, "manage_documents", "manage_store_credit", "export_memory", "delete_workspace"]),
+  manager: new Set<Action>(["view", ...OPERATIONS, ...TEAM, "manage_documents", "manage_store_credit", "export_memory"]),
   staff: new Set<Action>(["view", ...OPERATIONS]),
   viewer: new Set<Action>(["view"]),
 };

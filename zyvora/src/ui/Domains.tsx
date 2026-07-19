@@ -427,7 +427,7 @@ const TAG_STYLE: Record<CustomerTag, { label: string; cls: string }> = {
   "high-refusal": { label: "High refusal", cls: "strategic" },
 };
 
-export function CustomersView({ state, memory, workspaceId, workspaceName }: { state: WorkspaceState; memory: MemoryStore; workspaceId: string; workspaceName: string }) {
+export function CustomersView({ state, memory, workspaceId, workspaceName, editableCredit = false }: { state: WorkspaceState; memory: MemoryStore; workspaceId: string; workspaceName: string; editableCredit?: boolean }) {
   const now = Date.now();
   const allCustomers = projectCustomerProfiles(state, now);
   const archivedSet = new Set(state.archivedCustomers);
@@ -440,6 +440,11 @@ export function CustomersView({ state, memory, workspaceId, workspaceName }: { s
   const [custQ, setCustQ] = useState("");
   const [tagFilter, setTagFilter] = useState<CustomerTag | "all">("all");
   const [selectedCustomers, setSelectedCustomers] = useState<Set<string>>(() => new Set());
+  const [creditOpen, setCreditOpen] = useState(false);
+  const [creditDirection, setCreditDirection] = useState<"add" | "reduce">("add");
+  const [creditAmount, setCreditAmount] = useState("");
+  const [creditReason, setCreditReason] = useState("");
+  const [creditNote, setCreditNote] = useState("");
 
   // Command-palette deep link: open the exact profile that was searched for.
   useEffect(() => {
@@ -497,6 +502,33 @@ export function CustomersView({ state, memory, workspaceId, workspaceName }: { s
     if (open && selectedCustomers.has(open)) setOpen(null);
     setSelectedCustomers(new Set());
     toast(`${names.length} customer${names.length === 1 ? "" : "s"} archived`, "Undo", () => names.forEach(restore));
+  };
+
+  const adjustStoreCredit = async (customer: string) => {
+    const amount = Number(creditAmount);
+    const current = state.storeCreditBalances[customer] ?? 0;
+    if (!Number.isFinite(amount) || amount <= 0 || !creditReason.trim()) {
+      toast("Enter a positive amount and a reason.");
+      return;
+    }
+    if (creditDirection === "reduce" && amount > current) {
+      toast(`You can reduce at most ${formatMoney(current)}.`);
+      return;
+    }
+    const delta = creditDirection === "add" ? amount : -amount;
+    const ok = await appConfirm({
+      title: creditDirection === "add" ? "Grant store credit" : "Reduce store credit",
+      body: `${creditDirection === "add" ? "Add" : "Remove"} ${formatMoney(amount)} ${creditDirection === "add" ? "to" : "from"} ${customer}'s balance? This creates a permanent ledger entry.`,
+      confirmLabel: creditDirection === "add" ? "Grant credit" : "Reduce credit",
+      danger: creditDirection === "reduce",
+    });
+    if (!ok) return;
+    memory.append("fact", "store_credit_adjusted", {
+      transactionId: crypto.randomUUID(), customer, delta,
+      reason: creditReason.trim(), note: creditNote.trim(), at: Date.now(),
+    });
+    setCreditAmount(""); setCreditReason(""); setCreditNote(""); setCreditOpen(false);
+    toast(`${customer}'s store credit ${delta > 0 ? "increased" : "reduced"} by ${formatMoney(amount)}`);
   };
 
   const rfm = computeRfm(customers, now);
@@ -825,7 +857,23 @@ export function CustomersView({ state, memory, workspaceId, workspaceName }: { s
             <div className="stat"><div className="k">Average order</div><div className="v">{formatMoney(selectedCustomer.avgOrderValue)}</div></div>
             <div className="stat"><div className="k">Interactions</div><div className="v">{selectedCustomer.interactions}</div></div>
             <div className="stat"><div className="k">COD reliability</div><div className="v">{selectedCustomer.codReliability === null ? "—" : `${Math.round(selectedCustomer.codReliability * 100)}%`}</div></div>
+            <div className="stat"><div className="k">Store credit</div><div className="v">{formatMoney(state.storeCreditBalances[selectedCustomer.name] ?? 0)}</div></div>
           </div>
+          {editableCredit && (
+            <div className="card" style={{ marginTop: 14, padding: 16 }}>
+              <div className="section-heading" style={{ marginBottom: creditOpen ? 14 : 0 }}>
+                <div><strong>Store credit controls</strong><div className="muted">Owner and manager only · every change stays in the ledger.</div></div>
+                <button className="btn subtle mini" onClick={() => setCreditOpen((value) => !value)}>{creditOpen ? "Close" : "Adjust credit"}</button>
+              </div>
+              {creditOpen && <div className="form-grid">
+                <label>Action<select value={creditDirection} onChange={(event) => setCreditDirection(event.target.value as "add" | "reduce")}><option value="add">Grant credit</option><option value="reduce">Reduce balance</option></select></label>
+                <label>Amount<input inputMode="decimal" value={creditAmount} onChange={(event) => setCreditAmount(event.target.value)} placeholder="0.00" /></label>
+                <label>Reason<input value={creditReason} onChange={(event) => setCreditReason(event.target.value)} placeholder="Goodwill, correction, promotion…" /></label>
+                <label>Internal note<input value={creditNote} onChange={(event) => setCreditNote(event.target.value)} placeholder="Optional details" /></label>
+                <div className="form-actions"><button className="btn" onClick={() => void adjustStoreCredit(selectedCustomer.name)}>{creditDirection === "add" ? "Grant credit" : "Reduce credit"}</button></div>
+              </div>}
+            </div>
+          )}
           <p className="confidence-note">
             Lifetime profit counts only delivered orders with cost data; paid invoices contribute to revenue but not the profit figure.
           </p>
@@ -838,6 +886,17 @@ export function CustomersView({ state, memory, workspaceId, workspaceName }: { s
             workspaceName={workspaceName}
             state={state}
           />
+
+          {state.storeCreditTransactions.some((transaction) => transaction.customer === selectedCustomer.name) && <details className="layers" style={{ marginTop: 18 }}>
+            <summary>Store credit transactions</summary>
+            <div className="table-scroll" style={{ marginTop: 10 }}><table className="records"><thead><tr><th>Date</th><th>Activity</th><th>Order</th><th>Amount</th></tr></thead><tbody>
+              {state.storeCreditTransactions.filter((transaction) => transaction.customer === selectedCustomer.name).map((transaction) => {
+                const signedAmount = transaction.kind === "redeemed" ? -transaction.amount : transaction.amount;
+                const activity = transaction.kind === "issued" ? "Credit issued" : transaction.kind === "redeemed" ? "Applied to order" : transaction.kind === "released" ? "Restored from closed order" : transaction.reason || "Manager adjustment";
+                return <tr key={transaction.transactionId}><td className="muted">{dateLabel(transaction.at)}</td><td>{activity}{transaction.note ? <div className="muted">{transaction.note}</div> : null}</td><td>{transaction.orderId?.slice(0, 8) ?? "Manual"}</td><td><span className={`tone ${signedAmount < 0 ? "attention" : "success"}`}>{signedAmount < 0 ? "−" : "+"}{formatMoney(Math.abs(signedAmount))}</span></td></tr>;
+              })}
+            </tbody></table></div>
+          </details>}
 
           <h2 style={{ marginTop: 22 }}>Story</h2>
           <ul className="timeline">
@@ -1429,31 +1488,64 @@ function ProductEditor({ product, memory, onDone, idPrefix }: { product: Product
 function PurchaseOrders({ state, memory }: { state: WorkspaceState; memory: MemoryStore }) {
   const ccy = getActiveCurrency();
   const [supplier, setSupplier] = useState("Forever Living");
+  const [supplierEmail, setSupplierEmail] = useState("");
+  const [supplierAddress, setSupplierAddress] = useState("");
+  const [expectedDate, setExpectedDate] = useState("");
+  const [paymentTerms, setPaymentTerms] = useState("");
+  const [poNotes, setPoNotes] = useState("");
   const [productId, setProductId] = useState("");
   const [qty, setQty] = useState("");
   const [unitCost, setUnitCost] = useState("");
+  const [poLines, setPoLines] = useState<{ productId: string; productName: string; qty: number; unitCost: number }[]>([]);
   const [creating, setCreating] = useState(false);
+  const [receivingPo, setReceivingPo] = useState<string | null>(null);
+  const [receiveQty, setReceiveQty] = useState<Record<string, string>>({});
+  const [receiveNote, setReceiveNote] = useState("");
 
   const selected = state.products.find((p) => p.productId === productId);
   // Default the unit cost to the product's known cost when a product is picked.
   const effectiveCost = unitCost !== "" ? unitCost : selected ? String(selected.unitCost) : "";
 
-  const createPo = () => {
+  const addPoLine = () => {
     const q = parseInt(qty, 10);
     const c = parseFloat(effectiveCost);
     if (!selected || !isFinite(q) || q <= 0) return;
+    setPoLines((current) => {
+      const existing = current.find((line) => line.productId === selected.productId);
+      if (existing) return current.map((line) => line.productId === selected.productId ? { ...line, qty: line.qty + q, unitCost: isFinite(c) && c >= 0 ? c : selected.unitCost } : line);
+      return [...current, { productId: selected.productId, productName: selected.name, qty: q, unitCost: isFinite(c) && c >= 0 ? c : selected.unitCost }];
+    });
+    setProductId(""); setQty(""); setUnitCost("");
+  };
+
+  const createPo = () => {
+    if (!poLines.length) return;
     memory.append("fact", "purchase_order_created", {
       poId: crypto.randomUUID(),
       supplier: supplier.trim() || "Supplier",
-      lines: [{ productId: selected.productId, productName: selected.name, qty: q, unitCost: isFinite(c) && c >= 0 ? c : selected.unitCost }],
+      supplierEmail: supplierEmail.trim(),
+      supplierAddress: supplierAddress.trim(),
+      lines: poLines,
+      ...(expectedDate ? { expectedAt: new Date(`${expectedDate}T12:00:00`).getTime() } : {}),
+      paymentTerms: paymentTerms.trim(),
+      notes: poNotes.trim(),
       createdAt: Date.now(),
     });
-    setProductId(""); setQty(""); setUnitCost("");
+    setProductId(""); setQty(""); setUnitCost(""); setPoLines([]); setExpectedDate(""); setPaymentTerms(""); setPoNotes("");
     setCreating(false);
   };
 
-  const receive = (poId: string) => {
-    memory.append("fact", "goods_received", { poId, at: Date.now() });
+  const openReceiving = (po: WorkspaceState["purchaseOrders"][number]) => {
+    const initial: Record<string, string> = {};
+    po.lines.forEach((line, index) => { initial[String(index)] = String(Math.max(0, line.qty - (po.receivedQtyByLine?.[String(index)] ?? 0))); });
+    setReceiveQty(initial); setReceiveNote(""); setReceivingPo(po.poId);
+  };
+  const receive = (po: WorkspaceState["purchaseOrders"][number]) => {
+    const lines = po.lines.map((line, orderLineIndex) => ({ orderLineIndex, productId: line.productId, qty: parseInt(receiveQty[String(orderLineIndex)] || "0", 10) || 0 })).filter((line) => line.qty > 0);
+    if (!lines.length) { toast("Enter at least one received quantity."); return; }
+    memory.append("fact", "goods_received", { receiptId: crypto.randomUUID(), poId: po.poId, lines, note: receiveNote.trim(), at: Date.now() });
+    setReceivingPo(null); setReceiveQty({}); setReceiveNote("");
+    toast(`Received ${lines.reduce((sum, line) => sum + line.qty, 0)} unit${lines.reduce((sum, line) => sum + line.qty, 0) === 1 ? "" : "s"}`);
   };
 
   const poValue = (lines: { qty: number; unitCost: number }[]) => lines.reduce((s, l) => s + l.qty * l.unitCost, 0);
@@ -1471,6 +1563,7 @@ function PurchaseOrders({ state, memory }: { state: WorkspaceState; memory: Memo
       <div className="card form-card">
       <div className="form-row">
         <div><label htmlFor="po-supplier">Supplier</label><input id="po-supplier" value={supplier} onChange={(e) => setSupplier(e.target.value)} style={{ width: 160 }} /></div>
+        <div><label htmlFor="po-supplier-email">Supplier email</label><input id="po-supplier-email" type="email" value={supplierEmail} onChange={(e) => setSupplierEmail(e.target.value)} style={{ width: 190 }} /></div>
         <div>
           <label htmlFor="po-product">Product</label>
           <select id="po-product" value={productId} onChange={(e) => setProductId(e.target.value)}>
@@ -1482,8 +1575,14 @@ function PurchaseOrders({ state, memory }: { state: WorkspaceState; memory: Memo
         </div>
         <div><label htmlFor="po-qty">Quantity</label><input id="po-qty" value={qty} onChange={(e) => setQty(e.target.value)} inputMode="numeric" style={{ width: 80 }} /></div>
         <div><label htmlFor="po-cost">Unit cost ({ccy})</label><input id="po-cost" value={effectiveCost} onChange={(e) => setUnitCost(e.target.value)} inputMode="decimal" style={{ width: 110 }} /></div>
-        <button className="btn" onClick={createPo} disabled={!selected || !(parseInt(qty, 10) > 0)}>Create PO</button>
+        <div><label htmlFor="po-expected">Expected arrival</label><input id="po-expected" type="date" value={expectedDate} onChange={(e) => setExpectedDate(e.target.value)} /></div>
+        <div><label htmlFor="po-terms">Payment terms</label><input id="po-terms" value={paymentTerms} onChange={(e) => setPaymentTerms(e.target.value)} placeholder="e.g. Net 30" style={{ width: 120 }} /></div>
+        <div style={{ flex: 1 }}><label htmlFor="po-address">Supplier address</label><input id="po-address" value={supplierAddress} onChange={(e) => setSupplierAddress(e.target.value)} style={{ width: "100%" }} /></div>
+        <div style={{ flex: 1 }}><label htmlFor="po-notes">Notes</label><input id="po-notes" value={poNotes} onChange={(e) => setPoNotes(e.target.value)} placeholder="Delivery or quality instructions" style={{ width: "100%" }} /></div>
+        <button className="btn subtle" onClick={addPoLine} disabled={!selected || !(parseInt(qty, 10) > 0)}>Add item</button>
+        <button className="btn" onClick={createPo} disabled={!poLines.length}>Create PO</button>
       </div>
+      {poLines.length > 0 && <div className="table-scroll" style={{ marginTop: 12 }}><table className="records"><thead><tr><th>Draft item</th><th>Qty</th><th>Unit cost</th><th>Total</th><th></th></tr></thead><tbody>{poLines.map((line) => <tr key={line.productId}><td>{line.productName}</td><td>{line.qty}</td><td>{formatMoney(line.unitCost)}</td><td>{formatMoney(line.qty * line.unitCost)}</td><td><button className="link-btn" onClick={() => setPoLines((current) => current.filter((item) => item.productId !== line.productId))}>Remove</button></td></tr>)}</tbody></table></div>}
       </div>
       )}
 
@@ -1496,15 +1595,17 @@ function PurchaseOrders({ state, memory }: { state: WorkspaceState; memory: Memo
             <tr><th>Supplier</th><th>Items</th><th>Cost</th><th>Status</th><th></th></tr>
           </thead>
           <tbody>
-            {state.purchaseOrders.map((po) => (
-              <tr key={po.poId}>
+            {state.purchaseOrders.map((po) => {
+              const receivedUnits = po.lines.reduce((sum, line, index) => sum + Math.min(line.qty, po.receivedQtyByLine?.[String(index)] ?? 0), 0);
+              const orderedUnits = po.lines.reduce((sum, line) => sum + line.qty, 0);
+              return <Fragment key={po.poId}><tr>
                 <td>{po.supplier}</td>
                 <td className="muted">{po.lines.map((l) => `${l.qty}× ${l.productName}`).join(", ")}</td>
                 <td>{formatMoney(poValue(po.lines))}</td>
-                <td>{po.receivedAt ? <span className="muted">Received {dateLabel(po.receivedAt)}</span> : "Open"}</td>
-                <td>{!po.receivedAt && <button className="btn mini" onClick={() => receive(po.poId)}>Receive</button>}</td>
-              </tr>
-            ))}
+                <td>{po.receivedAt ? <span className="tone success">Received {dateLabel(po.receivedAt)}</span> : receivedUnits > 0 ? <span className="tone attention">Partial · {receivedUnits}/{orderedUnits}</span> : "Open"}</td>
+                <td>{!po.receivedAt && <button className="btn mini" onClick={() => receivingPo === po.poId ? setReceivingPo(null) : openReceiving(po)}>{receivingPo === po.poId ? "Close" : "Receive"}</button>}</td>
+              </tr>{receivingPo === po.poId && <tr><td colSpan={5}><div className="inline-editor"><div className="form-row">{po.lines.map((line, index) => { const already = po.receivedQtyByLine?.[String(index)] ?? 0; const remaining = Math.max(0, line.qty - already); return <div key={line.productId}><label htmlFor={`receive-${po.poId}-${index}`}>{line.productName}<span className="muted"> · {already} received, {remaining} remaining</span></label><input id={`receive-${po.poId}-${index}`} inputMode="numeric" value={receiveQty[String(index)] ?? ""} onChange={(event) => setReceiveQty((current) => ({ ...current, [String(index)]: event.target.value }))} style={{ width: 110 }} /></div>; })}<div style={{ flex: 1 }}><label htmlFor={`receive-note-${po.poId}`}>Receiving note</label><input id={`receive-note-${po.poId}`} value={receiveNote} onChange={(event) => setReceiveNote(event.target.value)} placeholder="Batch, damage, discrepancy…" style={{ width: "100%" }} /></div><button className="btn" onClick={() => receive(po)}>Receive selected</button></div></div></td></tr>}</Fragment>;
+            })}
           </tbody>
         </table>
         </div>

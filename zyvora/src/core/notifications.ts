@@ -13,7 +13,7 @@
  * `deliver(notification, channel)` — not yet wired to a provider.
  */
 import { formatMoney } from "./engine";
-import { DAY, orderRevenue, type Activity } from "./projections";
+import { DAY, orderCashDue, orderRevenue, type Activity } from "./projections";
 import type { Insight, WorkspaceState } from "./types";
 
 export type NotifPriority = "high" | "medium" | "low";
@@ -102,7 +102,7 @@ export function generateNotifications(
         key: "collect:" + o.orderId,
         priority: "medium",
         category: "finance",
-        title: `Cash not collected from courier — ${o.customer}, ${formatMoney(orderRevenue(o))}`,
+        title: `Cash not collected from courier — ${o.customer}, ${formatMoney(orderCashDue(o))}`,
         body: `Delivered ${days} days ago but the courier hasn't remitted the cash. Chase the remittance so it isn't lost.`,
         at: o.deliveredAt,
         actionView: "orders",
@@ -157,7 +157,7 @@ export function dailyBriefing(
 
   const deliveredY = state.orders.filter((o) => inYesterday(o.deliveredAt));
   const revenueY = deliveredY.reduce((s, o) => s + orderRevenue(o), 0);
-  const cashY = state.orders.filter((o) => inYesterday(o.cashReceivedAt)).reduce((s, o) => s + orderRevenue(o), 0);
+  const cashY = state.orders.filter((o) => inYesterday(o.cashReceivedAt)).reduce((s, o) => s + orderCashDue(o), 0);
   const high = notifications.filter((n) => n.priority === "high").length;
 
   const hour = new Date(now).getHours();

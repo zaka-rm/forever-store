@@ -4,7 +4,7 @@
  * constitutional behaviors. Exit code 0 = all checks pass.
  */
 import { entitlement } from "../src/core/entitlement";
-import { calculateInvoiceTotals, canGenerateFulfillmentDocuments, creditNoteDocumentHtml, deliveryNoteDocumentHtml, invoiceDocumentHtml, invoiceFromAcceptedQuote, packingSlipDocumentHtml, projectDocumentBranding, quoteDocumentHtml, receiptDocumentHtml } from "../src/core/documents";
+import { calculateInvoiceTotals, canGenerateFulfillmentDocuments, creditNoteDocumentHtml, customerStatementDocumentHtml, deliveryNoteDocumentHtml, invoiceDocumentHtml, invoiceFromAcceptedQuote, packingSlipDocumentHtml, projectDocumentBranding, purchaseOrderDocumentHtml, quoteDocumentHtml, receiptDocumentHtml } from "../src/core/documents";
 import { computeRfm, refillDueList, reorderDueList, upsellSuggestion } from "../src/core/retention";
 import { refusalRisk } from "../src/core/risk";
 import { businessHealth } from "../src/core/health";
@@ -17,6 +17,7 @@ import { WHATSAPP_TEMPLATES, numberedTemplateVariables, whatsappTemplatePreview 
 import { courierScorecard, referralLeaderboard } from "../src/core/retention";
 import { storyForCustomer, storyForOrder } from "../src/core/story";
 import { restageInLang, stageAction } from "../src/core/actions";
+import { measureOperatorRun, prepareOperatorPlan, projectOperatorRuns, type OperatorRun } from "../src/core/operator";
 import { coachFor, pendingOutcomeReviews, projectDecisionMemories } from "../src/core/coach";
 import { generateInsights, stateOfThings } from "../src/core/engine";
 import {
@@ -25,6 +26,7 @@ import {
   checkPromo,
   forecast,
   goalActual,
+  orderCashDue,
   orderCogs,
   orderNetProfit,
   orderGrossRevenue,
@@ -265,15 +267,28 @@ check("activity marked done via completion event", acts[0].done === true);
 console.log("\nPurchase orders & receipts (CAP-000006 FEAT-000045):");
 const invMem = new TestMemory();
 invMem.append("fact", "product_added", { productId: "PX", name: "Widget", stock: 5, weeklySales: 7, leadTimeDays: 14, unitCost: 10, price: 25 });
+invMem.append("fact", "product_added", { productId: "PY", name: "Bottle", stock: 2, weeklySales: 2, leadTimeDays: 10, unitCost: 5, price: 12 });
 const poId = crypto.randomUUID();
-invMem.append("fact", "purchase_order_created", { poId, supplier: "Forever", lines: [{ productId: "PX", productName: "Widget", qty: 40, unitCost: 9 }], createdAt: Date.now() });
+invMem.append("fact", "purchase_order_created", { poId, supplier: "Forever", supplierEmail: "supply@example.com", supplierAddress: "Casablanca", lines: [{ productId: "PX", productName: "Widget", qty: 40, unitCost: 9 }, { productId: "PY", productName: "Bottle", qty: 10, unitCost: 5 }], expectedAt: Date.now() + 7 * 86_400_000, paymentTerms: "Net 30", notes: "Confirm batch before shipping", createdAt: Date.now() });
 let invState = projectState(invMem.all());
-check("open PO shows as incoming, stock unchanged", invState.incoming["PX"] === 40 && invState.products[0].stock === 5);
+check("open multi-line PO shows every item as incoming with stock unchanged", invState.incoming["PX"] === 40 && invState.incoming["PY"] === 10 && invState.products[0].stock === 5);
+const openPoHtml = purchaseOrderDocumentHtml(invState.purchaseOrders[0], "Test business", (amount) => `MAD ${amount.toFixed(2)}`);
+check("supplier purchase-order document carries identity, items, terms, arrival, and total",
+  openPoHtml.includes("Purchase order") && openPoHtml.includes("supply@example.com") && openPoHtml.includes("Widget") && openPoHtml.includes("Bottle") && openPoHtml.includes("Net 30") && openPoHtml.includes("MAD 410.00") && openPoHtml.includes("Expected arrival"));
 const insWithPo = generateInsights(invState, []);
 check("stockout alert suppressed when enough is already inbound", !insWithPo.some((i) => i.decisionKey === "inventory.stockout.PX"));
+invMem.append("fact", "goods_received", { receiptId: "partial-receipt", poId, lines: [{ orderLineIndex: 0, productId: "PX", qty: 15 }, { orderLineIndex: 1, productId: "PY", qty: 4 }], note: "First carton", at: Date.now() });
+invState = projectState(invMem.all());
+check("partial receipt raises stock only by accepted quantities and leaves exact incoming remainder",
+  invState.products.find((product) => product.productId === "PX")?.stock === 20 && invState.products.find((product) => product.productId === "PY")?.stock === 6 && invState.incoming["PX"] === 25 && invState.incoming["PY"] === 6 && !invState.purchaseOrders[0].receivedAt);
+check("partial receipt is preserved as an immutable batch and shown on the supplier document",
+  invState.purchaseOrders[0].receipts?.[0].receiptId === "partial-receipt" && purchaseOrderDocumentHtml(invState.purchaseOrders[0], "Test business", (amount) => `MAD ${amount.toFixed(2)}`).includes("Partially received"));
 invMem.append("fact", "goods_received", { poId, at: Date.now() });
 invState = projectState(invMem.all());
-check("receiving raises stock and clears incoming", invState.products[0].stock === 45 && !invState.incoming["PX"]);
+check("legacy receive-all completes only the remaining units and clears incoming",
+  invState.products.find((product) => product.productId === "PX")?.stock === 45 && invState.products.find((product) => product.productId === "PY")?.stock === 12 && !invState.incoming["PX"] && !invState.incoming["PY"]);
+check("received purchase-order document records the immutable receiving status",
+  purchaseOrderDocumentHtml(invState.purchaseOrders[0], "Test business", (amount) => `MAD ${amount.toFixed(2)}`).includes("Received"));
 
 console.log("\nConstitutional invariants:");
 check("insights are ranked descending", insights.every((x, i, a) => i === 0 || a[i - 1].score >= x.score));
@@ -406,6 +421,83 @@ console.log("\nAsk → Act (staged actions, ghostwriter):");
 
   const plain = stageAction(st, profiles, contacts, "How much profit did I make last month?");
   check("plain questions are never turned into actions", plain === null);
+}
+
+console.log("\nAI Operator — prepared actions, approval memory, and measured outcomes (v0.50):");
+{
+  const op = new TestMemory();
+  const now = Date.now();
+  op.append("fact", "product_added", { productId: "OP", name: "Operator Gel", stock: 20, weeklySales: 2, leadTimeDays: 7, unitCost: 30, price: 100 }, now - 130 * 86_400_000);
+  const addOrder = (orderId: string, customer: string, createdAt: number, status: "delivered" | "refused" | "pending") => {
+    op.append("fact", "order_created", { orderId, customer, lines: [{ productId: "OP", productName: "Operator Gel", qty: 1, unitPrice: 100, unitCost: 30 }], discount: 0, shippingCharged: 0, shippingCost: 0, codFee: 0, packagingCost: 0, createdAt }, createdAt);
+    if (status !== "pending") op.append("fact", "order_status_changed", { orderId, status, at: createdAt + 1 }, createdAt + 1);
+  };
+  addOrder("safe-old-1", "Safe Quiet", now - 120 * 86_400_000, "delivered");
+  addOrder("safe-old-2", "Safe Quiet", now - 90 * 86_400_000, "delivered");
+  addOrder("refuse-old-1", "Past Refuser", now - 120 * 86_400_000, "refused");
+  addOrder("refuse-old-2", "Past Refuser", now - 90 * 86_400_000, "refused");
+  addOrder("cod-waiting", "COD Buyer", now - 2 * 86_400_000, "pending");
+  op.append("fact", "customer_contact_updated", { customer: "Safe Quiet", phone: "+212600000011", at: now - 80 * 86_400_000 }, now - 80 * 86_400_000);
+  op.append("fact", "customer_contact_updated", { customer: "Past Refuser", phone: "+212600000012", at: now - 80 * 86_400_000 }, now - 80 * 86_400_000);
+  op.append("fact", "customer_contact_updated", { customer: "COD Buyer", phone: "+212600000013", at: now - 1 * 86_400_000 }, now - 1 * 86_400_000);
+  let opState = projectState(op.all());
+  const codPlan = prepareOperatorPlan(opState, op.all(), "Prepare today's COD confirmations", now)!;
+  check("operator finds pending COD work and grounds every exact prepared message",
+    codPlan.kind === "cod-confirmations" && codPlan.targets.length === 1 && codPlan.targets[0].orderId === "cod-waiting" && codPlan.targets[0].body.includes("Operator Gel") && /\d/.test(codPlan.targets[0].body));
+  check("operator exposes evidence, approval boundary, and success measurement before execution",
+    codPlan.evidence.some((item) => item.label === "COD value waiting") && /Nothing is sent before approval/.test(codPlan.proposedAction) && /move from pending/.test(codPlan.measurement));
+  const winbackPlan = prepareOperatorPlan(opState, op.all(), "Create a win-back campaign, but exclude previous refusers", now)!;
+  check("win-back operator targets quiet safe customers and excludes previous refusers",
+    winbackPlan.kind === "winback-campaign" && winbackPlan.targets.some((target) => target.customer === "Safe Quiet") && !winbackPlan.targets.some((target) => target.customer === "Past Refuser") && winbackPlan.excluded.some((item) => item.customer === "Past Refuser"));
+  const run: OperatorRun = { planId: codPlan.planId, kind: codPlan.kind, title: codPlan.title, targetIds: ["cod-waiting"], customers: ["COD Buyer"], executedAt: now };
+  check("operator measurement honestly reports no result while the COD order is still pending", measureOperatorRun(run, opState).result === "no-result-yet");
+  op.append("fact", "operator_run_executed", run as unknown as Record<string, unknown>, now);
+  op.append("fact", "order_status_changed", { orderId: "cod-waiting", status: "confirmed", at: now + 1 }, now + 1);
+  opState = projectState(op.all());
+  const measured = measureOperatorRun(run, opState);
+  check("operator measures a progressed COD order as a worked recommendation", measured.result === "worked" && measured.successes === 1);
+  op.append("outcome", "operator_outcome_recorded", { planId: run.planId, successes: measured.successes, total: measured.total, result: measured.result, measuredAt: now + 2 }, now + 2);
+  check("operator memory joins execution to its measured outcome", projectOperatorRuns(op.all())[0].outcome?.result === "worked");
+
+  const reorder = new TestMemory();
+  reorder.append("fact", "product_added", { productId: "R1", name: "Urgent Gel", stock: 0, weeklySales: 7, leadTimeDays: 14, unitCost: 30, price: 90 }, now);
+  reorder.append("fact", "product_added", { productId: "R2", name: "Margin Cream", stock: 1, weeklySales: 5, leadTimeDays: 7, unitCost: 20, price: 80 }, now);
+  let reorderState = projectState(reorder.all());
+  const reorderPlan = prepareOperatorPlan(reorderState, reorder.all(), "What should I reorder with MAD 100?", now)!;
+  check("budget operator prepares an exact prioritized PO without exceeding the approved budget",
+    reorderPlan.kind === "budget-reorder" && Boolean(reorderPlan.purchaseOrder?.lines.length) && (reorderPlan.purchaseOrder?.total ?? 101) <= 100);
+  check("budget operator explains urgency, unit economics, exclusions, and the approval boundary",
+    reorderPlan.purchaseOrder!.lines.every((line) => /days left/.test(line.evidence) && /unit margin/.test(line.evidence)) && /Nothing changes until approval/.test(reorderPlan.proposedAction));
+  reorder.append("fact", "purchase_order_created", { poId: reorderPlan.planId, supplier: "Approved supplier", lines: reorderPlan.purchaseOrder!.lines.map(({ evidence: _evidence, ...line }) => line), expectedAt: reorderPlan.purchaseOrder!.expectedAt, createdAt: now }, now);
+  reorderState = projectState(reorder.all());
+  check("approved reorder operation becomes incoming inventory rather than pretending stock arrived",
+    reorderPlan.purchaseOrder!.lines.every((line) => reorderState.incoming[line.productId] === line.qty && reorderState.products.find((product) => product.productId === line.productId)?.stock !== line.qty));
+  reorder.append("fact", "goods_received", { poId: reorderPlan.planId, at: now + 1 }, now + 1);
+  reorderState = projectState(reorder.all());
+  const reorderRun: OperatorRun = { planId: reorderPlan.planId, kind: "budget-reorder", title: reorderPlan.title, targetIds: reorderPlan.purchaseOrder!.lines.map((line) => line.productId), customers: [], executedAt: now, expectedAt: now - 1 };
+  check("reorder operator measures received and available funded products as worked",
+    measureOperatorRun(reorderRun, reorderState).result === "worked");
+
+  const courier = new TestMemory();
+  courier.append("fact", "product_added", { productId: "CP", name: "Courier Product", stock: 20, weeklySales: 2, leadTimeDays: 7, unitCost: 30, price: 150 }, now - 20 * 86_400_000);
+  const courierOrder = (orderId: string, customer: string, carrier: string, status: "delivered" | "refused") => {
+    courier.append("fact", "order_created", { orderId, customer, courier: carrier, lines: [{ productId: "CP", productName: "Courier Product", qty: 1, unitPrice: 150, unitCost: 30 }], discount: 0, shippingCharged: 0, shippingCost: 25, codFee: 5, packagingCost: 3, createdAt: now - 12 * 86_400_000 }, now - 12 * 86_400_000);
+    courier.append("fact", "order_status_changed", { orderId, status, at: now - 10 * 86_400_000 }, now - 10 * 86_400_000);
+  };
+  courierOrder("bad-refusal", "Refused Buyer", "Damage Express", "refused");
+  courierOrder("bad-cash", "Cash Buyer", "Damage Express", "delivered");
+  courierOrder("good-delivery", "Happy Buyer", "Reliable Courier", "delivered");
+  courier.append("fact", "order_cash_received", { orderId: "good-delivery", at: now - 8 * 86_400_000 }, now - 8 * 86_400_000);
+  const courierState = projectState(courier.all());
+  const courierPlan = prepareOperatorPlan(courierState, courier.all(), "Show me which courier is hurting profit", now)!;
+  check("courier operator identifies economic damage rather than merely sorting delivery rate",
+    courierPlan.kind === "courier-profit-recovery" && courierPlan.title.includes("Damage Express") && courierPlan.evidence.some((item) => item.label === "Direct refusal loss"));
+  check("courier operator separates overdue cash from profit loss and prepares order-linked tasks",
+    courierPlan.problem.includes("liquidity risk") && courierPlan.tasks!.some((task) => task.orderId === "bad-refusal") && courierPlan.tasks!.some((task) => task.orderId === "bad-cash"));
+  const courierRun: OperatorRun = { planId: courierPlan.planId, kind: courierPlan.kind, title: courierPlan.title, targetIds: ["bad-cash"], customers: ["Cash Buyer"], executedAt: now };
+  check("courier recovery remains unproven until the remittance arrives", measureOperatorRun(courierRun, courierState).result === "no-result-yet");
+  courier.append("fact", "order_cash_received", { orderId: "bad-cash", at: now + 1 }, now + 1);
+  check("courier operator measures a recovered COD remittance as worked", measureOperatorRun(courierRun, projectState(courier.all())).result === "worked");
 }
 
 console.log("\nDecision-memory coach & goal pacing (stage 4):");
@@ -797,6 +889,49 @@ console.log("\nDocuments center (v0.39):");
   const returnPnl = profitAndLoss(returnState, returnAt - 1, returnAt + 10, "Returns test");
   check("P&L shows refunds and return freight explicitly while retaining gross sales traceability",
     returnPnl.revenue.lines.some((line) => line.label.includes("refund") && line.amount === -300) && returnPnl.operatingExpenses.lines.some((line) => line.label === "Return shipping" && line.amount === 25) && returnPnl.revenue.lines.some((line) => line.label.includes("Product sales") && line.amount === 300));
+
+  const creditMemory = new TestMemory();
+  creditMemory.append("fact", "product_added", { productId: "credit-product", name: "Credit product", price: 80, unitCost: 30, stock: 10, weeklySales: 1, leadTimeDays: 7 }, returnAt);
+  creditMemory.append("fact", "order_created", { orderId: "credit-source", customer: "Credit customer", lines: [{ productId: "credit-product", productName: "Credit product", qty: 1, unitPrice: 80, unitCost: 30 }], discount: 0, shippingCharged: 0, shippingCost: 0, codFee: 0, packagingCost: 0, createdAt: returnAt }, returnAt);
+  creditMemory.append("fact", "order_status_changed", { orderId: "credit-source", status: "delivered", at: returnAt + 1 }, returnAt + 1);
+  creditMemory.append("fact", "order_return_recorded", { returnId: "store-credit-refund", orderId: "credit-source", lines: [], refundAmount: 80, refundMethod: "store_credit", returnShippingCost: 0, reason: "other", at: returnAt + 2 }, returnAt + 2);
+  let creditState = projectState(creditMemory.all());
+  check("store-credit refund issues a customer balance and immutable ledger transaction",
+    creditState.storeCreditBalances["Credit customer"] === 80 && creditState.storeCreditTransactions[0].kind === "issued");
+  creditMemory.append("fact", "order_created", { orderId: "credit-cancelled", customer: "Credit customer", lines: [{ productId: "credit-product", productName: "Credit product", qty: 2, unitPrice: 80, unitCost: 30 }], discount: 0, shippingCharged: 0, shippingCost: 0, codFee: 0, packagingCost: 0, storeCreditApplied: 999, createdAt: returnAt + 3 }, returnAt + 3);
+  creditState = projectState(creditMemory.all());
+  const creditOrder = creditState.orders.find((order) => order.orderId === "credit-cancelled")!;
+  check("redemption is clamped to the available balance and reduces COD without reducing revenue",
+    creditOrder.storeCreditApplied === 80 && creditState.storeCreditBalances["Credit customer"] === 0 && orderRevenue(creditOrder) === 160 && orderCashDue(creditOrder) === 80);
+  creditMemory.append("fact", "order_status_changed", { orderId: "credit-cancelled", status: "cancelled", at: returnAt + 4 }, returnAt + 4);
+  creditState = projectState(creditMemory.all());
+  check("cancelled or refused orders restore redeemed store credit exactly once",
+    creditState.storeCreditBalances["Credit customer"] === 80 && creditState.storeCreditTransactions.some((transaction) => transaction.kind === "released" && transaction.orderId === "credit-cancelled"));
+  creditMemory.append("fact", "order_created", { orderId: "credit-paid", customer: "Credit customer", lines: [{ productId: "credit-product", productName: "Credit product", qty: 1, unitPrice: 80, unitCost: 30 }], discount: 0, shippingCharged: 0, shippingCost: 0, codFee: 0, packagingCost: 0, storeCreditApplied: 80, createdAt: returnAt + 5 }, returnAt + 5);
+  creditMemory.append("fact", "order_status_changed", { orderId: "credit-paid", status: "delivered", at: returnAt + 6 }, returnAt + 6);
+  creditState = projectState(creditMemory.all());
+  const creditPaidOrder = creditState.orders.find((order) => order.orderId === "credit-paid")!;
+  const creditReceipt = receiptDocumentHtml(creditPaidOrder, brand, money);
+  check("fully credit-paid delivery has no courier cash task and receipt separates payment tender",
+    orderCashDue(creditPaidOrder) === 0 && creditPaidOrder.cashReceivedAt === returnAt + 6 && creditReceipt.includes("Store credit used") && creditReceipt.includes("Cash payment"));
+  creditMemory.append("fact", "store_credit_adjusted", { transactionId: "goodwill-credit", customer: "Credit customer", delta: 35, reason: "Goodwill", note: "Manager approved", at: returnAt + 7 }, returnAt + 7);
+  creditMemory.append("fact", "store_credit_adjusted", { transactionId: "balance-correction", customer: "Credit customer", delta: -999, reason: "Correction", at: returnAt + 8 }, returnAt + 8);
+  creditState = projectState(creditMemory.all());
+  check("manager adjustments create immutable reasoned store-credit ledger entries",
+    creditState.storeCreditTransactions.some((transaction) => transaction.transactionId === "goodwill-credit" && transaction.kind === "adjusted" && transaction.amount === 35 && transaction.reason === "Goodwill"));
+  check("manager balance reductions are clamped so store credit never becomes negative",
+    creditState.storeCreditBalances["Credit customer"] === 0 && creditState.storeCreditTransactions.some((transaction) => transaction.transactionId === "balance-correction" && transaction.amount === -35));
+  const statementHtml = customerStatementDocumentHtml({
+    ...creditState,
+    invoices: [
+      { invoiceId: "statement-open", customer: "Credit customer", amount: 120, issuedAt: returnAt, dueDays: 14 },
+      { invoiceId: "statement-paid", customer: "Credit customer", amount: 30, issuedAt: returnAt, dueDays: 14, paidAt: returnAt + 1 },
+    ],
+  }, "Credit customer", brand, money, { phone: "+212600000003", city: "Casablanca" }, returnAt + 9);
+  check("customer statement combines invoices, delivered purchases, refunds, and the credit ledger",
+    statementHtml.includes("Account statement") && statementHtml.includes("Credit customer") && statementHtml.includes("statement-op") && statementHtml.includes("Store credit issued") && statementHtml.includes("Goodwill"));
+  check("customer statement keeps open receivables and store credit as separate balances",
+    statementHtml.includes("Open invoices due") && statementHtml.includes(money(120)) && statementHtml.includes("Store credit available") && !statementHtml.includes("Open invoices due</span><strong>" + money(150)));
 }
 
 console.log("\nCourier Control Tower (v0.34):");

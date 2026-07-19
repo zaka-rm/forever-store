@@ -2,15 +2,18 @@ import { useEffect, useMemo, useRef, useState, type FormEvent } from "react";
 import {
   canGenerateFulfillmentDocuments,
   creditNoteDocumentHtml,
+  customerStatementDocumentHtml,
   deliveryNoteDocumentHtml,
   invoiceDocumentHtml,
   packingSlipDocumentHtml,
   projectDocumentBranding,
+  purchaseOrderDocumentHtml,
   receiptDocumentHtml,
   type DocumentBranding,
 } from "../core/documents";
 import { formatMoney } from "../core/engine";
 import type { MemoryStore } from "../core/memory";
+import { projectContacts } from "../core/projections";
 import type { WorkspaceState } from "../core/types";
 import { PageHeader } from "./PageHeader";
 import { toast } from "./toast";
@@ -146,8 +149,17 @@ export function DocumentsView({ state, workspaceName, memory, editable }: { stat
   const receipts = state.orders.filter((order) => order.status === "delivered");
   const fulfillmentOrders = state.orders.filter(canGenerateFulfillmentDocuments);
   const creditNotes = state.orders.flatMap((order) => (order.returnRecords ?? []).map((record) => ({ order, record })));
+  const purchaseOrders = state.purchaseOrders;
   const branding = useMemo(() => projectDocumentBranding(memory.all(), workspaceName), [memory, workspaceName, memory.all().length]);
+  const contacts = useMemo(() => projectContacts(memory.all()), [memory, memory.all().length]);
+  const statementCustomers = useMemo(() => [...new Set([
+    ...state.invoices.map((invoice) => invoice.customer),
+    ...state.orders.map((order) => order.customer),
+    ...state.storeCreditTransactions.map((transaction) => transaction.customer),
+  ])].filter(Boolean).sort((a, b) => a.localeCompare(b)), [state]);
   const [editing, setEditing] = useState(false);
+  const [statementCustomer, setStatementCustomer] = useState("");
+  useEffect(() => { if (!statementCustomer && statementCustomers.length) setStatementCustomer(statementCustomers[0]); }, [statementCustomer, statementCustomers]);
   const exampleInvoice = {
     invoiceId: "INV-PREVIEW", customer: "Example customer", customerEmail: "billing@example.com",
     customerAddress: "12 Commerce Street\nCasablanca, Morocco",
@@ -161,7 +173,7 @@ export function DocumentsView({ state, workspaceName, memory, editable }: { stat
   };
   return (
     <div>
-      <PageHeader title="Documents" description="Branded estimates, invoices, packing slips, delivery notes, and receipts generated directly from Business Memory." />
+      <PageHeader title="Documents" description="Branded estimates, invoices, account statements, fulfillment documents, credit notes, and receipts generated directly from Business Memory." />
       <section className="document-brand-summary" aria-label="Current document brand">
         <div className="document-brand-mark">{branding.logoDataUrl ? <img src={branding.logoDataUrl} alt={`${branding.businessName} logo`} /> : <strong>{branding.businessName.slice(0, 1).toUpperCase()}</strong>}</div>
         <div><span>Document identity</span><h2>{branding.businessName}</h2><p>{[branding.email, branding.phone, branding.city, branding.country].filter(Boolean).join(" · ") || "Add business contact and legal information to complete your documents."}</p></div>
@@ -179,10 +191,21 @@ export function DocumentsView({ state, workspaceName, memory, editable }: { stat
         <div><span>Receipts available</span><strong>{receipts.length}</strong></div>
         <div><span>Fulfillment sets</span><strong>{fulfillmentOrders.length}</strong></div>
         <div><span>Credit notes</span><strong>{creditNotes.length}</strong></div>
+        <div><span>Purchase orders</span><strong>{purchaseOrders.length}</strong></div>
       </div>
       <p className="confidence-note">Each preview uses the latest approved brand profile while the underlying financial facts stay immutable.</p>
 
-      <section className="card" aria-labelledby="invoice-documents-title">
+      <section className="card" aria-labelledby="customer-statements-title">
+        <div className="section-head"><div><h2 id="customer-statements-title">Customer account statements</h2><p className="muted">One branded view of open invoices, delivered purchases, refunds, and store credit—with balances kept clearly separate.</p></div></div>
+        {statementCustomers.length === 0 ? <div className="quiet">A customer will appear after their first invoice or order.</div> : (() => {
+          const customer = statementCustomers.includes(statementCustomer) ? statementCustomer : statementCustomers[0];
+          const contact = contacts.get(customer);
+          const html = customerStatementDocumentHtml(state, customer, branding, formatMoney, contact);
+          return <div className="form-row" style={{ alignItems: "end" }}><div style={{ flex: 1 }}><label htmlFor="statement-customer">Customer</label><select id="statement-customer" value={customer} onChange={(event) => setStatementCustomer(event.target.value)}>{statementCustomers.map((name) => <option key={name} value={name}>{name}</option>)}</select></div><div className="row-actions"><button className="btn" onClick={() => preview(html)}>Preview / PDF</button><button className="btn subtle" onClick={() => download(html, `account-statement-${customer}`)}>Download</button></div></div>;
+        })()}
+      </section>
+
+      <section className="card" style={{ marginTop: 18 }} aria-labelledby="invoice-documents-title">
         <div className="section-head"><div><h2 id="invoice-documents-title">Invoices</h2><p className="muted">Professional A4 layout with payment status and business identity.</p></div></div>
         {state.invoices.length === 0 ? <div className="quiet">Create an invoice in Finance and it will appear here.</div> : (
           <div className="table-scroll"><table className="records"><thead><tr><th>Reference</th><th>Customer</th><th>Issued</th><th>Amount</th><th>Status</th><th>Actions</th></tr></thead><tbody>
@@ -202,6 +225,22 @@ export function DocumentsView({ state, workspaceName, memory, editable }: { stat
               const packingHtml = packingSlipDocumentHtml(order, branding);
               const deliveryHtml = deliveryNoteDocumentHtml(order, branding, formatMoney);
               return <tr key={order.orderId}><td>{order.orderId.slice(0, 8)}</td><td><strong>{order.customer}</strong>{order.shippingAddress && <div className="muted">{order.shippingAddress}</div>}</td><td><span className={`tone ${order.status === "delivered" ? "success" : order.status === "shipped" ? "info" : "attention"}`}>{order.status === "confirmed" ? "Ready to pack" : order.status === "shipped" ? "In delivery" : "Delivered"}</span></td><td>{order.courier || "—"}{order.trackingNumber && <div className="muted">{order.trackingNumber}</div>}</td><td><div className="row-actions"><button className="btn mini" onClick={() => preview(packingHtml)}>Packing slip</button><button className="btn subtle mini" onClick={() => preview(deliveryHtml)}>Delivery note</button><button className="link-btn" onClick={() => download(packingHtml, `packing-slip-${order.orderId}`)}>Download</button></div></td></tr>;
+            })}
+          </tbody></table></div>
+        )}
+      </section>
+
+      <section className="card" style={{ marginTop: 18 }} aria-labelledby="purchase-order-documents-title">
+        <div className="section-head"><div><h2 id="purchase-order-documents-title">Supplier purchase orders</h2><p className="muted">Branded procurement documents with quantities, unit costs, total commitment, terms, and receiving status.</p></div></div>
+        {purchaseOrders.length === 0 ? <div className="quiet">Create a purchase order in Inventory and its supplier document will appear here.</div> : (
+          <div className="table-scroll"><table className="records"><thead><tr><th>Reference</th><th>Supplier</th><th>Created / expected</th><th>Total</th><th>Status</th><th>Actions</th></tr></thead><tbody>
+            {purchaseOrders.map((purchaseOrder) => {
+              const total = purchaseOrder.lines.reduce((sum, line) => sum + line.qty * line.unitCost, 0);
+              const receivedUnits = purchaseOrder.lines.reduce((sum, line, index) => sum + Math.min(line.qty, purchaseOrder.receivedQtyByLine?.[String(index)] ?? 0), 0);
+              const orderedUnits = purchaseOrder.lines.reduce((sum, line) => sum + line.qty, 0);
+              const html = purchaseOrderDocumentHtml(purchaseOrder, branding, formatMoney);
+              const partial = receivedUnits > 0 && !purchaseOrder.receivedAt;
+              return <tr key={purchaseOrder.poId}><td>{purchaseOrder.poId.slice(0, 8)}</td><td><strong>{purchaseOrder.supplier}</strong><div className="muted">{purchaseOrder.lines.map((line) => `${line.qty}× ${line.productName}`).join(", ")}</div></td><td>{shortDate(purchaseOrder.createdAt)}{purchaseOrder.expectedAt && <div className="muted">Expected {shortDate(purchaseOrder.expectedAt)}</div>}</td><td>{formatMoney(total)}</td><td><span className={`tone ${purchaseOrder.receivedAt ? "success" : partial || purchaseOrder.expectedAt && purchaseOrder.expectedAt < Date.now() ? "attention" : "info"}`}>{purchaseOrder.receivedAt ? "Received" : partial ? `Partial · ${receivedUnits}/${orderedUnits}` : purchaseOrder.expectedAt && purchaseOrder.expectedAt < Date.now() ? "Overdue" : "Open"}</span></td><td><div className="row-actions"><button className="btn mini" onClick={() => preview(html)}>Preview / PDF</button><button className="btn subtle mini" onClick={() => download(html, `purchase-order-${purchaseOrder.poId}`)}>Download</button></div></td></tr>;
             })}
           </tbody></table></div>
         )}

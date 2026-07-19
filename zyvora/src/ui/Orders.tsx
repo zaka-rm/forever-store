@@ -14,6 +14,7 @@ import type { MemoryStore } from "../core/memory";
 import {
   checkPromo,
   orderCogs,
+  orderCashDue,
   orderGrossRevenue,
   orderLinesTotal,
   orderNetProfit,
@@ -202,6 +203,7 @@ export function OrdersView({ state, memory, workspaceName, workspaceId }: { stat
   const ccy = getActiveCurrency();
   const [customer, setCustomer] = useState("");
   const [customerPhone, setCustomerPhone] = useState("");
+  const [storeCredit, setStoreCredit] = useState("0");
   const [shippingAddress, setShippingAddress] = useState("");
   const [deliveryInstructions, setDeliveryInstructions] = useState("");
   const [lines, setLines] = useState<OrderLine[]>([]);
@@ -332,6 +334,10 @@ export function OrdersView({ state, memory, workspaceName, workspaceId }: { stat
     setDiscount("0");
   };
 
+  const availableStoreCredit = state.storeCreditBalances[customer.trim()] ?? 0;
+  const orderCharge = Math.max(0, subtotal - num(discount) + num(shipCharged));
+  const appliedStoreCredit = Math.min(availableStoreCredit, orderCharge, num(storeCredit));
+
   const draft: Order = {
     orderId: "draft",
     customer: customer.trim(),
@@ -346,6 +352,7 @@ export function OrdersView({ state, memory, workspaceName, workspaceId }: { stat
     packagingCost: num(packaging),
     createdAt: Date.now(),
     status: "pending",
+    ...(appliedStoreCredit ? { storeCreditApplied: appliedStoreCredit } : {}),
   };
   const draftProfit = lines.length ? orderNetProfit(draft) : 0;
 
@@ -378,9 +385,11 @@ export function OrdersView({ state, memory, workspaceName, workspaceId }: { stat
       ...(appliedPromo ? { promoCode: appliedPromo } : {}),
       ...(source ? { source } : {}),
       ...(courier.trim() ? { courier: courier.trim() } : {}),
+      ...(appliedStoreCredit ? { storeCreditApplied: appliedStoreCredit } : {}),
     });
     setCustomer("");
     setCustomerPhone("");
+    setStoreCredit("0");
     setShippingAddress("");
     setDeliveryInstructions("");
     setSource("");
@@ -456,7 +465,7 @@ export function OrdersView({ state, memory, workspaceName, workspaceId }: { stat
       <div className="form-row">
         <div>
           <label htmlFor="order-customer">Customer</label>
-          <input id="order-customer" value={customer} onChange={(e) => setCustomer(e.target.value)} placeholder="Customer name" autoComplete="name" />
+          <input id="order-customer" value={customer} onChange={(e) => { setCustomer(e.target.value); setStoreCredit("0"); }} placeholder="Customer name" autoComplete="name" />
         </div>
         <div>
           <label htmlFor="order-source">Source</label>
@@ -560,9 +569,10 @@ export function OrdersView({ state, memory, workspaceName, workspaceId }: { stat
             <div><label htmlFor="order-cod-fee">COD fee</label><input id="order-cod-fee" value={codFee} onChange={(e) => setCodFee(e.target.value)} inputMode="decimal" style={{ width: 90 }} /></div>
             <div><label htmlFor="order-packaging">Packaging</label><input id="order-packaging" value={packaging} onChange={(e) => setPackaging(e.target.value)} inputMode="decimal" style={{ width: 90 }} /></div>
           </div>
+          {availableStoreCredit > 0 && <div className="store-credit-apply"><div><strong>{formatMoney(availableStoreCredit)} store credit available</strong><span>Payment tender only—this does not reduce revenue or product value.</span></div><label htmlFor="order-store-credit">Apply to this order<input id="order-store-credit" type="number" min="0" max={Math.min(availableStoreCredit, orderCharge)} step="0.01" value={storeCredit} onChange={(event) => setStoreCredit(event.target.value)} /></label><button className="btn subtle mini" onClick={() => setStoreCredit(String(Math.min(availableStoreCredit, orderCharge)))}>Apply maximum</button></div>}
           <p className="confidence-note" style={{ marginBottom: 10 }}>
             Projected: revenue {formatMoney(orderRevenue(draft))} · cost {formatMoney(orderCogs(draft) + draft.shippingCost + draft.codFee + draft.packagingCost)} ·{" "}
-            <strong>net {formatMoney(draftProfit)}</strong>
+            <strong>net {formatMoney(draftProfit)}</strong> · COD cash due {formatMoney(orderCashDue(draft))}
             {draftProfit < 0 && " — this order loses money as priced"}
           </p>
           <button className="btn" onClick={createOrder} disabled={!customer.trim()}>
@@ -634,12 +644,12 @@ export function OrdersView({ state, memory, workspaceName, workspaceId }: { stat
                     {n.label}
                   </button>
                 ))}
-                {o.status === "delivered" && !o.cashReceivedAt && (
+                {o.status === "delivered" && !o.cashReceivedAt && orderCashDue(o) > 0 && (
                   <button
                     className="btn mini"
                     onClick={() => {
                       memory.append("fact", "order_cash_received", { orderId: o.orderId, at: Date.now() });
-                      toast(`Cash from ${o.customer} recorded — ${formatMoney(orderRevenue(o))}`);
+                      toast(`Cash from ${o.customer} recorded — ${formatMoney(orderCashDue(o))}`);
                     }}
                   >
                     Cash received
@@ -689,9 +699,11 @@ export function OrdersView({ state, memory, workspaceName, workspaceId }: { stat
                   <td><span className={`tone ${STATUS_TONE[o.status]}`}>{STATUS_LABEL[o.status]}</span>{o.returnStatus && <div style={{ marginTop: 5 }}><span className={`tone ${o.returnStatus === "returned" ? "critical" : "attention"}`}>{o.returnStatus === "returned" ? "Returned" : "Partially refunded"}</span></div>}</td>
                   <td className="muted">
                     {o.status === "delivered"
-                      ? o.cashReceivedAt
-                        ? "Collected"
-                        : "Pending courier"
+                      ? orderCashDue(o) === 0
+                        ? "No COD · store credit"
+                        : o.cashReceivedAt
+                          ? `Collected ${formatMoney(orderCashDue(o))}`
+                          : `Pending ${formatMoney(orderCashDue(o))}`
                       : "—"}
                   </td>
                   <td>
@@ -705,12 +717,12 @@ export function OrdersView({ state, memory, workspaceName, workspaceId }: { stat
                           {n.label}
                         </button>
                       ))}
-                      {o.status === "delivered" && !o.cashReceivedAt && (
+                      {o.status === "delivered" && !o.cashReceivedAt && orderCashDue(o) > 0 && (
                         <button
                           className="btn mini"
                           onClick={() => {
                             memory.append("fact", "order_cash_received", { orderId: o.orderId, at: Date.now() });
-                            toast(`Cash from ${o.customer} recorded — ${formatMoney(orderRevenue(o))}`);
+                            toast(`Cash from ${o.customer} recorded — ${formatMoney(orderCashDue(o))}`);
                           }}
                         >
                           Cash received
@@ -740,6 +752,8 @@ export function OrdersView({ state, memory, workspaceName, workspaceId }: { stat
                           <tr><td>Discount</td><td>−{formatMoney(o.discount)}</td></tr>
                           <tr><td>Shipping charged to customer</td><td>+{formatMoney(o.shippingCharged)}</td></tr>
                           <tr><td>Revenue {o.status !== "delivered" && "(recognized only on delivery)"}</td><td>{formatMoney(orderRevenue(o))}</td></tr>
+                          {(o.storeCreditApplied ?? 0) > 0 && <tr><td>Paid with store credit</td><td>{formatMoney(o.storeCreditApplied ?? 0)}</td></tr>}
+                          {(o.storeCreditApplied ?? 0) > 0 && <tr><td>COD cash due</td><td>{formatMoney(orderCashDue(o))}</td></tr>}
                           {(o.refundAmount ?? 0) > 0 && <tr><td>Refunds issued</td><td>−{formatMoney(o.refundAmount ?? 0)}</td></tr>}
                           <tr><td>Product cost (COGS)</td><td>−{formatMoney(orderCogs(o))}</td></tr>
                           <tr><td>Shipping cost</td><td>−{formatMoney(o.shippingCost)}</td></tr>
@@ -812,7 +826,7 @@ function ConfirmationQueue({
   const contacts = projectContacts(memory.all());
   const phone = contacts.get(o.customer)?.phone?.trim();
   const itemsSummary = o.lines.map((l) => `${l.qty}× ${l.productName}`).join(", ");
-  const message = codConfirmationText(workspaceName, o.customer, itemsSummary, formatMoney(orderRevenue(o)));
+  const message = codConfirmationText(workspaceName, o.customer, itemsSummary, formatMoney(orderCashDue(o)));
   const upsell = upsellSuggestion(state, o.lines.map((l) => l.productId));
   const waitedDays = Math.floor((Date.now() - o.createdAt) / 86_400_000);
   const risk = refusalRisk(state, o, contacts);
@@ -837,7 +851,7 @@ function ConfirmationQueue({
         </span>
       </div>
       <p className="claim" id="confirm-queue-title">
-        {o.customer} — {itemsSummary} · {formatMoney(orderRevenue(o))}
+        {o.customer} — {itemsSummary} · COD {formatMoney(orderCashDue(o))}
         {waitedDays > 0 && <span className="muted"> · waiting {waitedDays} day{waitedDays > 1 ? "s" : ""}</span>}
       </p>
       <p className="reasoning">

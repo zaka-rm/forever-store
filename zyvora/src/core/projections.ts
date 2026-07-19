@@ -39,6 +39,8 @@ import type {
   GoodsReceived,
   RecordedDecision,
   StockAdjusted,
+  StoreCreditTransaction,
+  StoreCreditAdjusted,
   WorkspaceState,
 } from "./types";
 
@@ -53,6 +55,8 @@ export function projectState(events: readonly MemoryEvent[]): WorkspaceState {
   const goals: Partial<Record<GoalMetric, number>> = {};
   const expenses: ExpenseRecorded[] = [];
   const archived = new Set<string>();
+  const storeCreditBalances = new Map<string, number>();
+  const storeCreditTransactions: StoreCreditTransaction[] = [];
 
   for (const e of events) {
     if (e.stream !== "fact") continue;
@@ -132,7 +136,34 @@ export function projectState(events: readonly MemoryEvent[]): WorkspaceState {
       }
       case "order_created": {
         const p = e.payload as unknown as OrderCreated;
-        orders.set(p.orderId, { ...p, status: "pending" });
+        const availableCredit = storeCreditBalances.get(p.customer) ?? 0;
+        const requestedCredit = Math.max(0, Number(p.storeCreditApplied) || 0);
+        const orderTotal = Math.max(0, p.lines.reduce((sum, line) => sum + line.qty * line.unitPrice, 0) - p.discount + p.shippingCharged);
+        const storeCreditApplied = Math.min(availableCredit, requestedCredit, orderTotal);
+        orders.set(p.orderId, { ...p, ...(storeCreditApplied ? { storeCreditApplied } : {}), status: "pending" });
+        if (storeCreditApplied > 0) {
+          storeCreditBalances.set(p.customer, availableCredit - storeCreditApplied);
+          storeCreditTransactions.push({ transactionId: `${e.id}-redeemed`, customer: p.customer, orderId: p.orderId, kind: "redeemed", amount: storeCreditApplied, at: p.createdAt });
+        }
+        break;
+      }
+      case "store_credit_adjusted": {
+        const p = e.payload as unknown as StoreCreditAdjusted;
+        const customer = p.customer?.trim();
+        const current = storeCreditBalances.get(customer) ?? 0;
+        const requested = Number(p.delta) || 0;
+        const delta = Math.max(-current, requested);
+        if (!customer || delta === 0) break;
+        storeCreditBalances.set(customer, current + delta);
+        storeCreditTransactions.push({
+          transactionId: p.transactionId || e.id,
+          customer,
+          kind: "adjusted",
+          amount: delta,
+          reason: p.reason,
+          note: p.note,
+          at: p.at,
+        });
         break;
       }
       case "order_status_changed": {
@@ -148,12 +179,18 @@ export function projectState(events: readonly MemoryEvent[]): WorkspaceState {
             const prod = products.get(line.productId);
             if (prod) prod.stock -= line.qty;
           }
+          if (orderCashDue(o) === 0) o.cashReceivedAt = p.at;
         }
         if (p.status === "returned" && prev === "delivered") {
           for (const line of o.lines) {
             const prod = products.get(line.productId);
             if (prod) prod.stock += line.qty;
           }
+        }
+        if ((p.status === "cancelled" || p.status === "refused") && o.storeCreditApplied && !o.storeCreditReleasedAt) {
+          storeCreditBalances.set(o.customer, (storeCreditBalances.get(o.customer) ?? 0) + o.storeCreditApplied);
+          storeCreditTransactions.push({ transactionId: `${e.id}-released`, customer: o.customer, orderId: o.orderId, kind: "released", amount: o.storeCreditApplied, at: p.at });
+          o.storeCreditReleasedAt = p.at;
         }
         break;
       }
@@ -206,6 +243,10 @@ export function projectState(events: readonly MemoryEvent[]): WorkspaceState {
         o.lastReturnedAt = p.at;
         const fullyReturned = o.lines.every((line, index) => (returnedQtyByLine[String(index)] ?? 0) >= line.qty);
         o.returnStatus = fullyReturned ? "returned" : "partial";
+        if (record.refundMethod === "store_credit" && refundAmount > 0) {
+          storeCreditBalances.set(o.customer, (storeCreditBalances.get(o.customer) ?? 0) + refundAmount);
+          storeCreditTransactions.push({ transactionId: `${e.id}-issued`, customer: o.customer, orderId: o.orderId, returnId: record.returnId, kind: "issued", amount: refundAmount, at: record.at });
+        }
         break;
       }
       case "shipment_created": {
@@ -260,10 +301,26 @@ export function projectState(events: readonly MemoryEvent[]): WorkspaceState {
         const p = e.payload as unknown as GoodsReceived;
         const po = purchaseOrders.get(p.poId);
         if (po && !po.receivedAt) {
-          po.receivedAt = p.at;
-          for (const line of po.lines) {
+          const received = { ...(po.receivedQtyByLine ?? {}) };
+          const requested = p.lines?.length ? p.lines : po.lines.map((line, orderLineIndex) => ({ orderLineIndex, productId: line.productId, qty: line.qty - (received[String(orderLineIndex)] ?? 0) }));
+          const accepted: NonNullable<GoodsReceived["lines"]> = [];
+          for (const request of requested) {
+            const index = Math.trunc(request.orderLineIndex);
+            const line = po.lines[index];
+            if (!line || line.productId !== request.productId) continue;
+            const already = received[String(index)] ?? 0;
+            const qty = Math.min(Math.max(0, Math.trunc(request.qty)), Math.max(0, line.qty - already));
+            if (!qty) continue;
+            received[String(index)] = already + qty;
             const prod = products.get(line.productId);
-            if (prod) prod.stock += line.qty; // receiving raises stock (FEAT-000045)
+            if (prod) prod.stock += qty;
+            accepted.push({ orderLineIndex: index, productId: line.productId, qty });
+          }
+          if (accepted.length) {
+            po.receivedQtyByLine = received;
+            po.lastReceivedAt = p.at;
+            po.receipts = [...(po.receipts ?? []), { ...p, receiptId: p.receiptId || e.id, lines: accepted }];
+            if (po.lines.every((line, index) => (received[String(index)] ?? 0) >= line.qty)) po.receivedAt = p.at;
           }
         }
         break;
@@ -276,8 +333,10 @@ export function projectState(events: readonly MemoryEvent[]): WorkspaceState {
   // Incoming: units on open (unreceived) purchase orders, per product.
   const incoming: Record<string, number> = {};
   for (const po of purchaseOrders.values()) {
-    if (po.receivedAt) continue;
-    for (const line of po.lines) incoming[line.productId] = (incoming[line.productId] ?? 0) + line.qty;
+    for (const [index, line] of po.lines.entries()) {
+      const remaining = Math.max(0, line.qty - (po.receivedQtyByLine?.[String(index)] ?? 0));
+      if (remaining) incoming[line.productId] = (incoming[line.productId] ?? 0) + remaining;
+    }
   }
 
   // Promo usage is server-counted: redemptions = non-cancelled orders bearing the code.
@@ -315,6 +374,8 @@ export function projectState(events: readonly MemoryEvent[]): WorkspaceState {
     reserved,
     incoming,
     archivedCustomers: [...archived],
+    storeCreditBalances: Object.fromEntries(storeCreditBalances),
+    storeCreditTransactions: storeCreditTransactions.sort((a, b) => b.at - a.at),
   };
 }
 
@@ -533,7 +594,7 @@ export function cashCalendar(state: WorkspaceState, now: number = Date.now()): C
     const list = entries.filter(test);
     return { count: list.length, total: list.reduce((s, e) => s + e.amount, 0) };
   };
-  const codList = state.orders.filter((o) => o.status === "delivered" && !o.cashReceivedAt);
+  const codList = state.orders.filter((o) => o.status === "delivered" && !o.cashReceivedAt && orderCashDue(o) > 0);
 
   const expenses90 = state.expenses.filter((e) => now - e.date <= 90 * DAY);
   const avgDailyExpense =
@@ -543,7 +604,7 @@ export function cashCalendar(state: WorkspaceState, now: number = Date.now()): C
     overdue: bucket((e) => e.overdueDays > 0),
     next7: bucket((e) => e.overdueDays <= 0 && e.dueAt - now <= 7 * DAY),
     next30: bucket((e) => e.dueAt - now > 7 * DAY && e.dueAt - now <= 30 * DAY),
-    codPending: { count: codList.length, total: codList.reduce((s, o) => s + orderRevenue(o), 0) },
+    codPending: { count: codList.length, total: codList.reduce((s, o) => s + orderCashDue(o), 0) },
     avgDailyExpense,
     entries,
   };
@@ -583,11 +644,11 @@ export function forecast(state: WorkspaceState, now: number = Date.now()): Forec
   // Cash next 30 days: available + pending COD − average monthly outgoings.
   const collected =
     state.invoices.filter((i) => i.paidAt).reduce((s, i) => s + i.amount, 0) +
-    state.orders.filter((o) => o.status === "delivered" && o.cashReceivedAt).reduce((s, o) => s + orderRevenue(o), 0);
+    state.orders.filter((o) => o.status === "delivered" && o.cashReceivedAt).reduce((s, o) => s + orderCashDue(o), 0);
   const cashAvailable = collected - state.expenses.reduce((s, e) => s + e.amount, 0);
   const pendingCod = state.orders
     .filter((o) => o.status === "delivered" && !o.cashReceivedAt)
-    .reduce((s, o) => s + orderRevenue(o), 0);
+    .reduce((s, o) => s + orderCashDue(o), 0);
   const exp90items = state.expenses.filter((e) => now - e.date <= 90 * DAY);
   const exp90 = exp90items.reduce((s, e) => s + e.amount, 0);
   let cashNext30: number | null = null;
@@ -674,6 +735,14 @@ export function orderGrossRevenue(o: Order): number {
 
 export function orderRevenue(o: Order): number {
   return Math.max(0, orderGrossRevenue(o) - (o.refundAmount ?? 0));
+}
+
+/** Net cash expected/retained after store-credit tender and non-credit refunds. */
+export function orderCashDue(o: Order): number {
+  const cashRefunds = (o.returnRecords ?? [])
+    .filter((record) => record.refundMethod !== "store_credit")
+    .reduce((sum, record) => sum + record.refundAmount, 0);
+  return Math.max(0, orderGrossRevenue(o) - (o.storeCreditApplied ?? 0) - cashRefunds);
 }
 
 export function orderCogs(o: Order): number {

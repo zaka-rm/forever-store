@@ -5,7 +5,7 @@
 import { courierControl } from "../core/couriers";
 import { formatMoney } from "../core/engine";
 import type { MemoryStore } from "../core/memory";
-import { orderRevenue } from "../core/projections";
+import { orderCashDue, orderRevenue } from "../core/projections";
 import type { Order, ShipmentStatus, WorkspaceState } from "../core/types";
 import { appConfirm, appPrompt } from "./dialog";
 import { toast } from "./toast";
@@ -80,7 +80,7 @@ export function CourierControlPanel({ state, memory }: { state: WorkspaceState; 
   const receiveCash = async (order: Order) => {
     const ok = await appConfirm({
       title: "Record courier cash?",
-      body: `Confirm that ${formatMoney(orderRevenue(order))} was actually remitted for ${order.customer}.`,
+      body: `Confirm that ${formatMoney(orderCashDue(order))} was actually remitted for ${order.customer}.`,
       confirmLabel: "Cash received",
     });
     if (!ok) return;
