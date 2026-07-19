@@ -19,7 +19,7 @@ Supabase ── Postgres + RLS (business memory, teams, error telemetry)
 
 ## One-time setup (owner)
 
-1. **Supabase schema** — paste `supabase/APPLY_ZYVORA.sql` into the SQL editor of the **dedicated ZYVORA project** and Run (idempotent; safe to re-run). This contains ONLY the ZYVORA tables (files 40-44, including explicit WhatsApp/SMS channel bindings); the Naturaloe store keeps its own separate project/schema. Regenerate it with `powershell -File supabase/build-apply-zyvora.ps1` after any 4x_zyvora*.sql change. (`APPLY_ALL.sql` = both apps combined, only for a shared project — not this setup.)
+1. **Supabase schema** — paste `supabase/APPLY_ZYVORA.sql` into the SQL editor of the **dedicated ZYVORA project** and Run (idempotent; safe to re-run). This contains ONLY the ZYVORA tables (files 40-45, including channel bindings and the authenticated first-Workspace bootstrap function); the Naturaloe store keeps its own separate project/schema. Regenerate it with `powershell -File supabase/build-apply-zyvora.ps1` after any 4x_zyvora*.sql change. (`APPLY_ALL.sql` = both apps combined, only for a shared project — not this setup.)
 2. **Edge Functions** (needs `supabase login` + `supabase link --project-ref muzweildgqhlchkxeshr`):
    ```powershell
    supabase functions deploy ask-ai

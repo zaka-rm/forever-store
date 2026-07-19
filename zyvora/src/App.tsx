@@ -338,9 +338,18 @@ function CloudWorkspaceLoader({ userId }: { userId: string }) {
   if (phase === "loading") return <LoadingShell />;
   if (phase === "error")
     return (
-      <CenteredNote
-        text={`${error} — if this is a fresh setup, paste supabase/APPLY_ZYVORA.sql into the project's SQL editor and Run first.`}
-      />
+      <div className="onboarding">
+        <div className="panel">
+          <div className="wordmark">ZYVORA</div>
+          <h1>Workspace setup needs one repair.</h1>
+          <p role="alert">{error}</p>
+          <p className="confidence-note">Apply the latest <code>supabase/APPLY_ZYVORA.sql</code> in this Supabase project, then retry. Applying it before sign-in is correct.</p>
+          <div className="actions">
+            <button className="btn" onClick={() => window.location.reload()}>Retry setup</button>
+            <button className="btn subtle" onClick={() => void client.auth.signOut()}>Sign out</button>
+          </div>
+        </div>
+      </div>
     );
   if (phase === "onboarding")
     return (
@@ -378,17 +387,6 @@ function LoadingShell() {
         <div className="skeleton" style={{ height: 130 }} />
         <div className="skeleton" style={{ height: 190 }} />
         <div className="skeleton" style={{ height: 190 }} />
-      </div>
-    </div>
-  );
-}
-
-function CenteredNote({ text }: { text: string }) {
-  return (
-    <div className="onboarding">
-      <div className="panel">
-        <div className="wordmark">ZYVORA</div>
-        <p>{text}</p>
       </div>
     </div>
   );

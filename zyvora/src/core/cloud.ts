@@ -53,17 +53,18 @@ export async function fetchMyWorkspace(client: SupabaseClient): Promise<Workspac
 
 export async function createCloudWorkspace(
   client: SupabaseClient,
-  ownerId: string,
+  _ownerId: string,
   name: string,
   currency: string
 ): Promise<WorkspaceMeta> {
-  const { data, error } = await client
-    .from("zyvora_workspaces")
-    .insert({ owner: ownerId, name: name.trim(), currency: currency.trim().toUpperCase() || "USD" })
-    .select("id,name,currency,created_at,owner")
-    .single();
+  const { data, error } = await client.rpc("zyvora_create_workspace", {
+    p_name: name.trim(),
+    p_currency: currency.trim().toUpperCase() || "USD",
+  });
   if (error) throw new Error(`Could not create the Workspace: ${error.message}`);
-  return toMeta(data as WorkspaceRow);
+  const row = (Array.isArray(data) ? data[0] : data) as WorkspaceRow | null;
+  if (!row?.id) throw new Error("Could not create the Workspace: the server returned no workspace.");
+  return toMeta(row);
 }
 
 export async function fetchEvents(
