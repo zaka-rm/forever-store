@@ -23,6 +23,7 @@ import { messagingConfigured, recordSentMessage, sendMessage } from "../core/mes
 import { PageHeader } from "./PageHeader";
 import { toast } from "./toast";
 import { fetchMembers, supabase, type Member } from "../core/cloud";
+import { WhatsAppTemplateComposer } from "./WhatsAppTemplates";
 
 const timeLabel = (ts: number) =>
   new Date(ts).toLocaleString(undefined, { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" });
@@ -270,6 +271,16 @@ export function InboxView({
                         </button>
                       )}
                     </div>
+                    {phone && (
+                      <WhatsAppTemplateComposer
+                        customer={selected.customer ?? phone}
+                        phone={phone}
+                        state={state}
+                        memory={memory}
+                        workspaceId={workspaceId}
+                        business={workspaceName}
+                      />
+                    )}
                     <div className="reply-row">
                       <textarea
                         value={reply}

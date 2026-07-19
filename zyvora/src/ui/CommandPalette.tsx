@@ -39,6 +39,7 @@ const NAV_TARGETS: { view: string; label: string; icon: IconName }[] = [
   { view: "promos", label: "Promos", icon: "promos" },
   { view: "analytics", label: "Analytics", icon: "analytics" },
   { view: "ask", label: "Ask ZYVORA", icon: "ask" },
+  { view: "documents", label: "Documents", icon: "documents" },
   { view: "import", label: "Import", icon: "import" },
   { view: "team", label: "Team", icon: "team" },
   { view: "memory", label: "Business Memory", icon: "memory" },

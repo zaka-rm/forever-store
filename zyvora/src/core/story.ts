@@ -25,6 +25,11 @@ function describe(e: MemoryEvent): string | null {
       return `Status → ${cap(String(p.status))}`;
     case "order_cash_received":
       return "Courier remitted the cash";
+    case "order_return_recorded": {
+      const lines = (p.lines as { qty: number; productName: string; restock: boolean }[]) ?? [];
+      const items = lines.length ? lines.map((line) => `${line.qty}× ${line.productName}${line.restock ? " restocked" : " not restocked"}`).join(", ") : "refund-only adjustment";
+      return `Return recorded — ${items} · refund ${money(Number(p.refundAmount) || 0)}`;
+    }
     case "shipment_created":
       return `Courier handoff — ${String(p.courier)}${p.trackingNumber ? ` · tracking ${p.trackingNumber}` : ""}`;
     case "shipment_status_changed":

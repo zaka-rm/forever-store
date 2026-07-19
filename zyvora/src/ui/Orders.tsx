@@ -14,6 +14,7 @@ import type { MemoryStore } from "../core/memory";
 import {
   checkPromo,
   orderCogs,
+  orderGrossRevenue,
   orderLinesTotal,
   orderNetProfit,
   orderRevenue,
@@ -24,7 +25,7 @@ import { RISK_TONE, refusalRisk } from "../core/risk";
 import { storyForOrder } from "../core/story";
 import { extractOrderFromImage, visionConfigured } from "../core/llm";
 import { codConfirmationText, messagingConfigured, recordSentMessage, sendMessage } from "../core/messaging";
-import type { Order, OrderLine, OrderStatus, WorkspaceState } from "../core/types";
+import type { Order, OrderLine, OrderReturnRecorded, OrderStatus, RefundMethod, WorkspaceState } from "../core/types";
 import { toast } from "./toast";
 import { appAlert, appConfirm } from "./dialog";
 import { PageHeader } from "./PageHeader";
@@ -131,15 +132,78 @@ const NEXT: Record<OrderStatus, { to: OrderStatus; label: string }[]> = {
     { to: "delivered", label: "Delivered" },
     { to: "refused", label: "Refused at door" },
   ],
-  delivered: [{ to: "returned", label: "Returned" }],
+  delivered: [],
   refused: [],
   cancelled: [],
   returned: [],
 };
 
+function ReturnRefundPanel({ order, memory, onClose }: { order: Order; memory: MemoryStore; onClose: () => void }) {
+  const remainingByLine = order.lines.map((line, index) => Math.max(0, line.qty - (order.returnedQtyByLine?.[String(index)] ?? 0)));
+  const [quantities, setQuantities] = useState(() => remainingByLine.map(() => "0"));
+  const [restock, setRestock] = useState(() => remainingByLine.map(() => true));
+  const [refundAmount, setRefundAmount] = useState("0");
+  const [refundEdited, setRefundEdited] = useState(false);
+  const [returnShippingCost, setReturnShippingCost] = useState("0");
+  const [refundMethod, setRefundMethod] = useState<RefundMethod>("cash");
+  const [reason, setReason] = useState("changed_mind");
+  const [note, setNote] = useState("");
+  const selectedValue = quantities.reduce((sum, raw, index) => sum + Math.min(remainingByLine[index], Math.max(0, parseInt(raw, 10) || 0)) * order.lines[index].unitPrice, 0);
+  const refundable = Math.max(0, orderGrossRevenue(order) - (order.refundAmount ?? 0));
+  const refund = Math.min(refundable, Math.max(0, Number(refundAmount) || 0));
+  const selectedUnits = quantities.reduce((sum, raw, index) => sum + Math.min(remainingByLine[index], Math.max(0, parseInt(raw, 10) || 0)), 0);
+
+  const changeQty = (index: number, value: string) => {
+    const next = [...quantities];
+    next[index] = value;
+    setQuantities(next);
+    if (!refundEdited) {
+      const valueTotal = next.reduce((sum, raw, lineIndex) => sum + Math.min(remainingByLine[lineIndex], Math.max(0, parseInt(raw, 10) || 0)) * order.lines[lineIndex].unitPrice, 0);
+      setRefundAmount(String(Math.min(refundable, valueTotal)));
+    }
+  };
+
+  const submit = async () => {
+    const lines: OrderReturnRecorded["lines"] = order.lines.flatMap((line, index) => {
+      const qty = Math.min(remainingByLine[index], Math.max(0, parseInt(quantities[index], 10) || 0));
+      return qty > 0 ? [{ orderLineIndex: index, productId: line.productId, productName: line.productName, qty, unitPrice: line.unitPrice, unitCost: line.unitCost, restock: restock[index] }] : [];
+    });
+    if (lines.length === 0 && refund === 0) { toast("Select returned items or enter a refund amount."); return; }
+    const ok = await appConfirm({
+      title: "Record this return and refund?",
+      body: `${selectedUnits} unit(s) returned · ${formatMoney(refund)} refunded · ${formatMoney(Number(returnShippingCost) || 0)} return cost. This creates an auditable credit note and cannot be silently edited.`,
+      confirmLabel: "Record return",
+      danger: true,
+    });
+    if (!ok) return;
+    memory.append("fact", "order_return_recorded", {
+      returnId: crypto.randomUUID(), orderId: order.orderId, lines, refundAmount: refund, refundMethod,
+      returnShippingCost: Math.max(0, Number(returnShippingCost) || 0), reason, ...(note.trim() ? { note: note.trim() } : {}), at: Date.now(),
+    });
+    toast(`Return recorded — ${formatMoney(refund)} refunded`);
+    onClose();
+  };
+
+  return <section className="card return-refund-panel" aria-labelledby="return-refund-title">
+    <div className="section-head"><div><h2 id="return-refund-title">Return or refund · {order.customer}</h2><p className="muted">Choose only the units received back. Restock sellable items; keep damaged items out of inventory.</p></div><button className="btn subtle mini" onClick={onClose}>Close</button></div>
+    <div className="table-scroll"><table className="records"><thead><tr><th>Item</th><th>Remaining</th><th>Return qty</th><th>Inventory</th></tr></thead><tbody>{order.lines.map((line, index) => <tr key={`${line.productId}-${index}`}><td><strong>{line.productName}</strong><div className="muted">{formatMoney(line.unitPrice)} each</div></td><td>{remainingByLine[index]}</td><td><input aria-label={`Return quantity for ${line.productName}`} type="number" min="0" max={remainingByLine[index]} value={quantities[index]} onChange={(event) => changeQty(index, event.target.value)} style={{ width: 78 }} /></td><td><label className="return-restock"><input type="checkbox" checked={restock[index]} onChange={(event) => setRestock((current) => current.map((value, i) => i === index ? event.target.checked : value))} /> Restock as sellable</label></td></tr>)}</tbody></table></div>
+    <div className="return-form-grid">
+      <label><span>Refund amount</span><input type="number" min="0" max={refundable} step="0.01" value={refundAmount} onChange={(event) => { setRefundEdited(true); setRefundAmount(event.target.value); }} /><small>Maximum remaining: {formatMoney(refundable)} · selected item value: {formatMoney(selectedValue)}</small></label>
+      <label><span>Refund method</span><select value={refundMethod} onChange={(event) => setRefundMethod(event.target.value as RefundMethod)}><option value="cash">Cash</option><option value="bank_transfer">Bank transfer</option><option value="store_credit">Store credit</option><option value="other">Other</option></select></label>
+      <label><span>Return shipping cost</span><input type="number" min="0" step="0.01" value={returnShippingCost} onChange={(event) => setReturnShippingCost(event.target.value)} /></label>
+      <label><span>Reason</span><select value={reason} onChange={(event) => setReason(event.target.value)}><option value="changed_mind">Customer changed mind</option><option value="damaged">Damaged product</option><option value="wrong_item">Wrong item</option><option value="delivery_issue">Delivery issue</option><option value="other">Other</option></select></label>
+      <label className="wide"><span>Internal note</span><textarea rows={2} value={note} onChange={(event) => setNote(event.target.value)} placeholder="Inspection result or customer agreement…" /></label>
+    </div>
+    <div className="return-summary"><div><span>Refund</span><strong>{formatMoney(refund)}</strong></div><div><span>Return cost</span><strong>{formatMoney(Number(returnShippingCost) || 0)}</strong></div><button className="btn danger" onClick={() => void submit()} disabled={selectedUnits === 0 && refund === 0}>Record return / refund</button></div>
+  </section>;
+}
+
 export function OrdersView({ state, memory, workspaceName, workspaceId }: { state: WorkspaceState; memory: MemoryStore; workspaceName: string; workspaceId: string }) {
   const ccy = getActiveCurrency();
   const [customer, setCustomer] = useState("");
+  const [customerPhone, setCustomerPhone] = useState("");
+  const [shippingAddress, setShippingAddress] = useState("");
+  const [deliveryInstructions, setDeliveryInstructions] = useState("");
   const [lines, setLines] = useState<OrderLine[]>([]);
   const [productId, setProductId] = useState("");
   const [qty, setQty] = useState("1");
@@ -159,6 +223,7 @@ export function OrdersView({ state, memory, workspaceName, workspaceId }: { stat
   const [q, setQ] = useState("");
   const [creating, setCreating] = useState(false);
   const [selected, setSelected] = useState<Set<string>>(() => new Set());
+  const [returningId, setReturningId] = useState<string | null>(null);
 
   // Command-palette deep link: expand the exact order that was searched for.
   useEffect(() => {
@@ -270,6 +335,9 @@ export function OrdersView({ state, memory, workspaceName, workspaceId }: { stat
   const draft: Order = {
     orderId: "draft",
     customer: customer.trim(),
+    customerPhone: customerPhone.trim(),
+    shippingAddress: shippingAddress.trim(),
+    deliveryInstructions: deliveryInstructions.trim(),
     lines,
     discount: num(discount),
     shippingCharged: num(shipCharged),
@@ -297,6 +365,9 @@ export function OrdersView({ state, memory, workspaceName, workspaceId }: { stat
     memory.append("fact", "order_created", {
       orderId: crypto.randomUUID(),
       customer: customer.trim(),
+      ...(customerPhone.trim() ? { customerPhone: customerPhone.trim() } : {}),
+      ...(shippingAddress.trim() ? { shippingAddress: shippingAddress.trim() } : {}),
+      ...(deliveryInstructions.trim() ? { deliveryInstructions: deliveryInstructions.trim() } : {}),
       lines,
       discount: num(discount),
       shippingCharged: num(shipCharged),
@@ -309,6 +380,9 @@ export function OrdersView({ state, memory, workspaceName, workspaceId }: { stat
       ...(courier.trim() ? { courier: courier.trim() } : {}),
     });
     setCustomer("");
+    setCustomerPhone("");
+    setShippingAddress("");
+    setDeliveryInstructions("");
     setSource("");
     setCourier("");
     setLines([]);
@@ -422,6 +496,20 @@ export function OrdersView({ state, memory, workspaceName, workspaceId }: { stat
         </div>
         <button className="btn ghost" onClick={addLine}>Add line</button>
       </div>
+      <div className="order-delivery-grid">
+        <div>
+          <label htmlFor="order-customer-phone">Customer phone</label>
+          <input id="order-customer-phone" type="tel" value={customerPhone} onChange={(e) => setCustomerPhone(e.target.value)} placeholder="+212 6…" autoComplete="tel" />
+        </div>
+        <div>
+          <label htmlFor="order-shipping-address">Shipping address</label>
+          <textarea id="order-shipping-address" rows={2} value={shippingAddress} onChange={(e) => setShippingAddress(e.target.value)} placeholder="Street, area, city" autoComplete="shipping street-address" />
+        </div>
+        <div>
+          <label htmlFor="order-delivery-instructions">Delivery instructions</label>
+          <textarea id="order-delivery-instructions" rows={2} value={deliveryInstructions} onChange={(e) => setDeliveryInstructions(e.target.value)} placeholder="Landmark, preferred time, call before delivery…" />
+        </div>
+      </div>
 
       {lines.length > 0 && (
         <>
@@ -485,6 +573,10 @@ export function OrdersView({ state, memory, workspaceName, workspaceId }: { stat
       </section>
       )}
 
+      {returningId && state.orders.find((order) => order.orderId === returningId) && (
+        <ReturnRefundPanel order={state.orders.find((order) => order.orderId === returningId)!} memory={memory} onClose={() => setReturningId(null)} />
+      )}
+
       <h2>Order book</h2>
       {state.orders.length === 0 ? (
         <div className="quiet">No orders yet. Orders reserve stock when created and count as revenue only when delivered.</div>
@@ -531,7 +623,7 @@ export function OrdersView({ state, memory, workspaceName, workspaceId }: { stat
               <p className="rc-sub">
                 {o.lines.map((l) => `${l.qty}× ${l.productName}`).join(", ")} · {dateLabel(o.createdAt)}
               </p>
-              <div className="rc-status"><span className={`tone ${STATUS_TONE[o.status]}`}>{STATUS_LABEL[o.status]}</span></div>
+              <div className="rc-status"><span className={`tone ${STATUS_TONE[o.status]}`}>{STATUS_LABEL[o.status]}</span>{o.returnStatus && <span className={`tone ${o.returnStatus === "returned" ? "critical" : "attention"}`}>{o.returnStatus === "returned" ? "Returned" : "Partially refunded"}</span>}</div>
               <div className="row-actions">
                 {NEXT[o.status].map((n) => (
                   <button
@@ -553,6 +645,7 @@ export function OrdersView({ state, memory, workspaceName, workspaceId }: { stat
                     Cash received
                   </button>
                 )}
+                {o.status === "delivered" && o.returnStatus !== "returned" && <button className="btn danger mini" onClick={() => { setReturningId(o.orderId); window.scrollTo({ top: 0, behavior: "smooth" }); }}>Return / refund</button>}
                 <button
                   className="btn subtle mini"
                   aria-expanded={expanded === o.orderId}
@@ -593,7 +686,7 @@ export function OrdersView({ state, memory, workspaceName, workspaceId }: { stat
                     <span className="muted"> · {dateLabel(o.createdAt)}</span>
                   </td>
                   <td>{formatMoney(orderRevenue(o))}</td>
-                  <td><span className={`tone ${STATUS_TONE[o.status]}`}>{STATUS_LABEL[o.status]}</span></td>
+                  <td><span className={`tone ${STATUS_TONE[o.status]}`}>{STATUS_LABEL[o.status]}</span>{o.returnStatus && <div style={{ marginTop: 5 }}><span className={`tone ${o.returnStatus === "returned" ? "critical" : "attention"}`}>{o.returnStatus === "returned" ? "Returned" : "Partially refunded"}</span></div>}</td>
                   <td className="muted">
                     {o.status === "delivered"
                       ? o.cashReceivedAt
@@ -623,6 +716,7 @@ export function OrdersView({ state, memory, workspaceName, workspaceId }: { stat
                           Cash received
                         </button>
                       )}
+                      {o.status === "delivered" && o.returnStatus !== "returned" && <button className="btn danger mini" onClick={() => { setReturningId(o.orderId); window.scrollTo({ top: 0, behavior: "smooth" }); }}>Return / refund</button>}
                       <button
                         className="btn subtle mini"
                         aria-expanded={expanded === o.orderId}
@@ -646,10 +740,12 @@ export function OrdersView({ state, memory, workspaceName, workspaceId }: { stat
                           <tr><td>Discount</td><td>−{formatMoney(o.discount)}</td></tr>
                           <tr><td>Shipping charged to customer</td><td>+{formatMoney(o.shippingCharged)}</td></tr>
                           <tr><td>Revenue {o.status !== "delivered" && "(recognized only on delivery)"}</td><td>{formatMoney(orderRevenue(o))}</td></tr>
+                          {(o.refundAmount ?? 0) > 0 && <tr><td>Refunds issued</td><td>−{formatMoney(o.refundAmount ?? 0)}</td></tr>}
                           <tr><td>Product cost (COGS)</td><td>−{formatMoney(orderCogs(o))}</td></tr>
                           <tr><td>Shipping cost</td><td>−{formatMoney(o.shippingCost)}</td></tr>
                           <tr><td>COD fee</td><td>−{formatMoney(o.codFee)}</td></tr>
                           <tr><td>Packaging</td><td>−{formatMoney(o.packagingCost)}</td></tr>
+                          {(o.returnShippingCost ?? 0) > 0 && <tr><td>Return shipping cost</td><td>−{formatMoney(o.returnShippingCost ?? 0)}</td></tr>}
                           <tr><td><strong>Net profit</strong></td><td><strong>{formatMoney(orderNetProfit(o))}</strong></td></tr>
                         </tbody>
                       </table>

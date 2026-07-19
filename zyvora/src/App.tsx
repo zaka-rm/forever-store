@@ -55,10 +55,11 @@ import { InboxView } from "./ui/Inbox";
 import { AutomationsView } from "./ui/Automations";
 import { projectConversations, waitingCount } from "./core/inbox";
 import { Today } from "./ui/Today";
+import { DocumentsView } from "./ui/Documents";
 
 type View =
   | "today" | "notifications" | "inbox" | "orders" | "finance" | "customers"
-  | "inventory" | "promos" | "automations" | "analytics" | "ask" | "import" | "team" | "billing" | "memory";
+  | "inventory" | "promos" | "automations" | "analytics" | "ask" | "documents" | "import" | "team" | "billing" | "memory";
 
 type NavItem = { id: View; label: string; icon: IconName };
 
@@ -92,6 +93,7 @@ const NAV_GROUPS: { label: string; items: NavItem[] }[] = [
       { id: "finance", label: "Finance", icon: "finance" },
       { id: "analytics", label: "Analytics", icon: "analytics" },
       { id: "ask", label: "Ask ZYVORA", icon: "ask" },
+      { id: "documents", label: "Documents", icon: "documents" },
     ],
   },
   {
@@ -117,6 +119,7 @@ const VIEW_META: Record<View, { title: string; section: string }> = {
   finance: { title: "Finance", section: "Insights" },
   analytics: { title: "Analytics", section: "Insights" },
   ask: { title: "Ask ZYVORA", section: "Insights" },
+  documents: { title: "Documents", section: "Insights" },
   import: { title: "Import", section: "Workspace" },
   team: { title: "Team", section: "Workspace" },
   billing: { title: "Billing", section: "Workspace" },
@@ -815,11 +818,19 @@ function Workspace({
           {view === "orders" && <OrdersView state={state} memory={memory} workspaceName={workspace.name} workspaceId={workspace.id} />}
           {view === "automations" && <AutomationsView state={state} memory={memory} editable={can(role, "advance_order")} />}
           {view === "finance" && <FinanceView state={state} memory={memory} workspaceId={workspace.id} />}
-          {view === "customers" && <CustomersView state={state} memory={memory} workspaceId={workspace.id} />}
+          {view === "customers" && <CustomersView state={state} memory={memory} workspaceId={workspace.id} workspaceName={workspace.name} />}
           {view === "inventory" && <InventoryView state={state} memory={memory} />}
           {view === "promos" && <PromosView state={state} memory={memory} />}
           {view === "analytics" && <AnalyticsView state={state} memory={memory} />}
           {view === "ask" && <AskView state={state} memory={memory} workspaceId={workspace.id} />}
+          {view === "documents" && (
+            <DocumentsView
+              state={state}
+              workspaceName={workspace.name}
+              memory={memory}
+              editable={can(role, "manage_documents")}
+            />
+          )}
           {view === "import" && <ImportView memory={memory} state={state} />}
           {view === "team" && (
             <TeamView

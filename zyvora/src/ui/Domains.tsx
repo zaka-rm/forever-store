@@ -9,6 +9,7 @@ import { Fragment, useEffect, useState } from "react";
 import { consumeDeepLink } from "../core/deepLink";
 import { ENVELOPES, cashCenter, formatMoney } from "../core/engine";
 import { getActiveCurrency } from "../core/format";
+import { calculateInvoiceTotals } from "../core/documents";
 import type { MemoryStore } from "../core/memory";
 import {
   DAY,
@@ -29,6 +30,7 @@ import { appConfirm, appPrompt } from "./dialog";
 import type { Product, WorkspaceState } from "../core/types";
 import { FinanceTools } from "./FinanceTools";
 import { PageHeader } from "./PageHeader";
+import { WhatsAppTemplateComposer } from "./WhatsAppTemplates";
 
 const dateLabel = (ts: number) =>
   new Date(ts).toLocaleDateString(undefined, { day: "numeric", month: "short", year: "numeric" });
@@ -37,27 +39,60 @@ const dateLabel = (ts: number) =>
 
 export function FinanceView({ state, memory, workspaceId }: { state: WorkspaceState; memory: MemoryStore; workspaceId: string }) {
   const [customer, setCustomer] = useState("");
-  const [amount, setAmount] = useState("");
+  const [customerEmail, setCustomerEmail] = useState("");
+  const [customerAddress, setCustomerAddress] = useState("");
   const [dueDays, setDueDays] = useState("14");
+  const [invoiceLines, setInvoiceLines] = useState([{ lineId: crypto.randomUUID(), description: "", qty: "1", unitPrice: "" }]);
+  const [invoiceDiscount, setInvoiceDiscount] = useState("0");
+  const [invoiceTaxRate, setInvoiceTaxRate] = useState("0");
+  const [invoiceNotes, setInvoiceNotes] = useState("");
   const [expLabel, setExpLabel] = useState("");
   const [expAmount, setExpAmount] = useState("");
   const [creating, setCreating] = useState<"invoice" | "expense" | null>(null);
   const now = Date.now();
   const ccy = getActiveCurrency();
+  const invoiceTotals = calculateInvoiceTotals(
+    invoiceLines.map((line) => ({ qty: parseFloat(line.qty) || 0, unitPrice: parseFloat(line.unitPrice) || 0 })),
+    parseFloat(invoiceDiscount) || 0,
+    parseFloat(invoiceTaxRate) || 0,
+  );
+  const invoiceTotal = invoiceTotals.total;
 
   const addInvoice = () => {
-    const value = parseFloat(amount);
-    if (!customer.trim() || !isFinite(value) || value <= 0) return;
+    const lines = invoiceLines.map((line) => ({
+      lineId: line.lineId,
+      description: line.description.trim(),
+      qty: parseFloat(line.qty),
+      unitPrice: parseFloat(line.unitPrice),
+    })).filter((line) => line.description && isFinite(line.qty) && line.qty > 0 && isFinite(line.unitPrice) && line.unitPrice >= 0);
+    if (!customer.trim() || lines.length !== invoiceLines.length || invoiceTotal <= 0) {
+      toast("Add a customer and complete every invoice line.");
+      return;
+    }
     memory.append("fact", "invoice_issued", {
       invoiceId: crypto.randomUUID(),
       customer: customer.trim(),
-      amount: value,
+      customerEmail: customerEmail.trim(),
+      customerAddress: customerAddress.trim(),
+      lines,
+      subtotal: invoiceTotals.subtotal,
+      discount: invoiceTotals.discount,
+      taxRate: invoiceTotals.taxRate,
+      taxAmount: invoiceTotals.taxAmount,
+      notes: invoiceNotes.trim(),
+      amount: invoiceTotal,
       issuedAt: Date.now(),
       dueDays: parseInt(dueDays, 10) || 14,
     });
     setCustomer("");
-    setAmount("");
+    setCustomerEmail("");
+    setCustomerAddress("");
+    setInvoiceLines([{ lineId: crypto.randomUUID(), description: "", qty: "1", unitPrice: "" }]);
+    setInvoiceDiscount("0");
+    setInvoiceTaxRate("0");
+    setInvoiceNotes("");
     setCreating(null);
+    toast("Itemized invoice created");
   };
 
   const addExpense = () => {
@@ -91,23 +126,36 @@ export function FinanceView({ state, memory, workspaceId }: { state: WorkspaceSt
       <CashCalendarPanel state={state} memory={memory} workspaceId={workspaceId} />
 
       {creating === "invoice" && (
-      <section className="card form-card" aria-labelledby="new-invoice-title">
-      <div className="section-heading"><div><h2 id="new-invoice-title">Create invoice</h2><p>Record what the customer owes and when it is due.</p></div></div>
-      <div className="form-row">
-        <div>
-          <label htmlFor="invoice-customer">Customer</label>
-          <input id="invoice-customer" value={customer} onChange={(e) => setCustomer(e.target.value)} placeholder="Customer name" autoComplete="name" />
+      <section className="card form-card invoice-composer" aria-labelledby="new-invoice-title">
+        <div className="section-heading"><div><h2 id="new-invoice-title">Create itemized invoice</h2><p>Describe exactly what the customer is paying for. ZYVORA calculates every total.</p></div></div>
+        <div className="invoice-customer-grid">
+          <label><span>Customer *</span><input id="invoice-customer" value={customer} onChange={(e) => setCustomer(e.target.value)} placeholder="Customer or company" autoComplete="name" /></label>
+          <label><span>Email</span><input type="email" value={customerEmail} onChange={(e) => setCustomerEmail(e.target.value)} placeholder="billing@customer.com" autoComplete="email" /></label>
+          <label className="wide"><span>Billing address</span><textarea rows={2} value={customerAddress} onChange={(e) => setCustomerAddress(e.target.value)} placeholder="Street, city, country" /></label>
         </div>
-        <div>
-          <label htmlFor="invoice-amount">Amount ({ccy})</label>
-          <input id="invoice-amount" value={amount} onChange={(e) => setAmount(e.target.value)} inputMode="decimal" placeholder="0.00" style={{ width: 120 }} />
+        <div className="invoice-line-head"><span>Description</span><span>Quantity</span><span>Unit price ({ccy})</span><span>Amount</span><span aria-hidden="true" /></div>
+        <div className="invoice-lines">
+          {invoiceLines.map((line, index) => <div className="invoice-line" key={line.lineId}>
+            <label><span className="sr-only">Line {index + 1} description</span><input value={line.description} onChange={(e) => setInvoiceLines((before) => before.map((item) => item.lineId === line.lineId ? { ...item, description: e.target.value } : item))} placeholder="Product or service" /></label>
+            <label><span className="sr-only">Line {index + 1} quantity</span><input value={line.qty} onChange={(e) => setInvoiceLines((before) => before.map((item) => item.lineId === line.lineId ? { ...item, qty: e.target.value } : item))} inputMode="decimal" /></label>
+            <label><span className="sr-only">Line {index + 1} unit price</span><input value={line.unitPrice} onChange={(e) => setInvoiceLines((before) => before.map((item) => item.lineId === line.lineId ? { ...item, unitPrice: e.target.value } : item))} inputMode="decimal" placeholder="0.00" /></label>
+            <strong>{formatMoney((parseFloat(line.qty) || 0) * (parseFloat(line.unitPrice) || 0))}</strong>
+            <button type="button" className="btn subtle mini" aria-label={`Remove line ${index + 1}`} disabled={invoiceLines.length === 1} onClick={() => setInvoiceLines((before) => before.filter((item) => item.lineId !== line.lineId))}>Remove</button>
+          </div>)}
         </div>
-        <div>
-          <label htmlFor="invoice-due">Due (days)</label>
-          <input id="invoice-due" value={dueDays} onChange={(e) => setDueDays(e.target.value)} inputMode="numeric" style={{ width: 90 }} />
+        <button type="button" className="btn ghost mini" onClick={() => setInvoiceLines((before) => [...before, { lineId: crypto.randomUUID(), description: "", qty: "1", unitPrice: "" }])}>Add line</button>
+        <div className="invoice-bottom-grid">
+          <div>
+            <label><span>Invoice note</span><textarea rows={3} value={invoiceNotes} onChange={(e) => setInvoiceNotes(e.target.value)} placeholder="Optional customer-facing note" /></label>
+          </div>
+          <div className="invoice-calculation">
+            <label><span>Discount ({ccy})</span><input value={invoiceDiscount} onChange={(e) => setInvoiceDiscount(e.target.value)} inputMode="decimal" /></label>
+            <label><span>Tax rate (%)</span><input value={invoiceTaxRate} onChange={(e) => setInvoiceTaxRate(e.target.value)} inputMode="decimal" /></label>
+            <label><span>Due in days</span><input id="invoice-due" value={dueDays} onChange={(e) => setDueDays(e.target.value)} inputMode="numeric" /></label>
+            <div className="invoice-live-total"><span>Total</span><strong>{formatMoney(invoiceTotal)}</strong></div>
+          </div>
         </div>
-        <button className="btn" onClick={addInvoice}>Add invoice</button>
-      </div>
+        <div className="invoice-composer-actions"><button className="btn" onClick={addInvoice} disabled={invoiceTotal <= 0}>Create invoice · {formatMoney(invoiceTotal)}</button><span>Tax is optional and controlled by you; confirm the correct rate for your business.</span></div>
       </section>
       )}
 
@@ -379,7 +427,7 @@ const TAG_STYLE: Record<CustomerTag, { label: string; cls: string }> = {
   "high-refusal": { label: "High refusal", cls: "strategic" },
 };
 
-export function CustomersView({ state, memory, workspaceId }: { state: WorkspaceState; memory: MemoryStore; workspaceId: string }) {
+export function CustomersView({ state, memory, workspaceId, workspaceName }: { state: WorkspaceState; memory: MemoryStore; workspaceId: string; workspaceName: string }) {
   const now = Date.now();
   const allCustomers = projectCustomerProfiles(state, now);
   const archivedSet = new Set(state.archivedCustomers);
@@ -787,6 +835,8 @@ export function CustomersView({ state, memory, workspaceId }: { state: Workspace
             activities={activities.filter((a) => a.customer === selectedCustomer.name)}
             memory={memory}
             workspaceId={workspaceId}
+            workspaceName={workspaceName}
+            state={state}
           />
 
           <h2 style={{ marginTop: 22 }}>Story</h2>
@@ -967,8 +1017,8 @@ function CampaignPanel({
 
 /** Contact record + follow-up activities for one customer (CAP-000007). */
 function CustomerCrm({
-  customer, contact, activities, memory, workspaceId,
-}: { customer: string; contact: Contact; activities: Activity[]; memory: MemoryStore; workspaceId: string }) {
+  customer, contact, activities, memory, workspaceId, workspaceName, state,
+}: { customer: string; contact: Contact; activities: Activity[]; memory: MemoryStore; workspaceId: string; workspaceName: string; state: WorkspaceState }) {
   const [phone, setPhone] = useState(contact.phone ?? "");
   const [city, setCity] = useState(contact.city ?? "");
   const [notes, setNotes] = useState(contact.notes ?? "");
@@ -1033,6 +1083,17 @@ function CustomerCrm({
         </div>
       )}
       {sendResult && <p className="confidence-note" role="status" style={{ marginTop: 0 }}>{sendResult}</p>}
+
+      {messagingConfigured && (
+        <WhatsAppTemplateComposer
+          customer={customer}
+          phone={phone.trim()}
+          state={state}
+          memory={memory}
+          workspaceId={workspaceId}
+          business={workspaceName}
+        />
+      )}
 
       {activities.length > 0 && (
         <ul className="timeline" style={{ marginTop: 8 }}>

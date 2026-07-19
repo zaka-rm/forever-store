@@ -24,6 +24,47 @@ export interface InvoiceIssued {
   amount: number;
   issuedAt: number;
   dueDays: number;
+  /** Optional commercial detail; legacy/imported invoices may remain amount-only. */
+  lines?: InvoiceLine[];
+  subtotal?: number;
+  discount?: number;
+  taxRate?: number;
+  taxAmount?: number;
+  customerEmail?: string;
+  customerAddress?: string;
+  notes?: string;
+  sourceQuoteId?: string;
+}
+
+export interface InvoiceLine {
+  lineId: string;
+  description: string;
+  qty: number;
+  unitPrice: number;
+}
+
+export type QuoteStatus = "draft" | "sent" | "accepted" | "declined" | "converted";
+
+export interface QuoteCreated {
+  quoteId: string;
+  customer: string;
+  customerEmail?: string;
+  customerAddress?: string;
+  lines: InvoiceLine[];
+  subtotal: number;
+  discount: number;
+  taxRate: number;
+  taxAmount: number;
+  amount: number;
+  notes?: string;
+  createdAt: number;
+  validUntil: number;
+}
+
+export interface QuoteStatusChanged {
+  quoteId: string;
+  status: Exclude<QuoteStatus, "draft">;
+  at: number;
 }
 
 export interface InvoicePaid {
@@ -104,6 +145,10 @@ export type OrderStatus =
 export interface OrderCreated {
   orderId: string;
   customer: string;
+  /** Delivery snapshot captured with the order; later contact edits do not rewrite history. */
+  customerPhone?: string;
+  shippingAddress?: string;
+  deliveryInstructions?: string;
   lines: OrderLine[];
   discount: number;
   shippingCharged: number; // paid by the customer (part of revenue)
@@ -128,6 +173,32 @@ export interface OrderStatusChanged {
 /** Courier remitted the collected COD cash for this order. */
 export interface OrderCashReceived {
   orderId: string;
+  at: number;
+}
+
+export type RefundMethod = "cash" | "bank_transfer" | "store_credit" | "other";
+
+export interface ReturnedOrderLine {
+  orderLineIndex: number;
+  productId: string;
+  productName: string;
+  qty: number;
+  unitPrice: number;
+  unitCost: number;
+  /** Only sellable goods re-enter available inventory; damaged goods keep their COGS. */
+  restock: boolean;
+}
+
+/** One immutable partial/full return and refund transaction. */
+export interface OrderReturnRecorded {
+  returnId: string;
+  orderId: string;
+  lines: ReturnedOrderLine[];
+  refundAmount: number;
+  refundMethod: RefundMethod;
+  returnShippingCost: number;
+  reason: string;
+  note?: string;
   at: number;
 }
 
@@ -300,6 +371,11 @@ export interface Invoice extends InvoiceIssued {
   paidAt?: number;
 }
 
+export interface Quote extends QuoteCreated {
+  status: QuoteStatus;
+  statusChangedAt?: number;
+}
+
 export interface Product extends ProductAdded {
   discontinued?: boolean;
 }
@@ -317,6 +393,13 @@ export interface Order extends OrderCreated {
   expectedRemittanceAt?: number;
   deliveryAttempts?: number;
   lastDeliveryFailure?: string;
+  returnRecords?: OrderReturnRecorded[];
+  returnedQtyByLine?: Record<string, number>;
+  refundAmount?: number;
+  returnShippingCost?: number;
+  restockedCost?: number;
+  returnStatus?: "partial" | "returned";
+  lastReturnedAt?: number;
 }
 
 export interface PurchaseOrder extends PurchaseOrderCreated {
@@ -330,6 +413,7 @@ export interface Promo extends PromoCreated {
 
 export interface WorkspaceState {
   invoices: Invoice[];
+  quotes: Quote[];
   expenses: ExpenseRecorded[];
   products: Product[];
   orders: Order[];

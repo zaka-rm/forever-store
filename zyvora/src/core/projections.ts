@@ -11,10 +11,14 @@ import type {
   Invoice,
   InvoiceIssued,
   InvoicePaid,
+  Quote,
+  QuoteCreated,
+  QuoteStatusChanged,
   MemoryEvent,
   Order,
   OrderCashReceived,
   OrderCreated,
+  OrderReturnRecorded,
   OrderStatusChanged,
   ShipmentCreated,
   ShipmentStatusChanged,
@@ -40,6 +44,7 @@ import type {
 
 export function projectState(events: readonly MemoryEvent[]): WorkspaceState {
   const invoices = new Map<string, Invoice>();
+  const quotes = new Map<string, Quote>();
   const products = new Map<string, Product>();
   const orders = new Map<string, Order>();
   const purchaseOrders = new Map<string, PurchaseOrder>();
@@ -61,6 +66,17 @@ export function projectState(events: readonly MemoryEvent[]): WorkspaceState {
         const p = e.payload as unknown as InvoicePaid;
         const inv = invoices.get(p.invoiceId);
         if (inv) inv.paidAt = p.paidAt;
+        break;
+      }
+      case "quote_created": {
+        const p = e.payload as unknown as QuoteCreated;
+        quotes.set(p.quoteId, { ...p, status: "draft" });
+        break;
+      }
+      case "quote_status_changed": {
+        const p = e.payload as unknown as QuoteStatusChanged;
+        const quote = quotes.get(p.quoteId);
+        if (quote) { quote.status = p.status; quote.statusChangedAt = p.at; }
         break;
       }
       case "expense_recorded": {
@@ -145,6 +161,51 @@ export function projectState(events: readonly MemoryEvent[]): WorkspaceState {
         const p = e.payload as unknown as OrderCashReceived;
         const o = orders.get(p.orderId);
         if (o) o.cashReceivedAt = p.at;
+        break;
+      }
+      case "order_return_recorded": {
+        const p = e.payload as unknown as OrderReturnRecorded;
+        const o = orders.get(p.orderId);
+        // A return/refund is valid only after delivery; projection also clamps malformed facts.
+        if (!o || o.status !== "delivered") break;
+        const returnedQtyByLine = { ...(o.returnedQtyByLine ?? {}) };
+        const lines: OrderReturnRecorded["lines"] = [];
+        let restockedCost = 0;
+        for (const requested of p.lines ?? []) {
+          const index = Math.trunc(requested.orderLineIndex);
+          const original = o.lines[index];
+          if (!original) continue;
+          const alreadyReturned = returnedQtyByLine[String(index)] ?? 0;
+          const qty = Math.min(Math.max(0, Math.trunc(requested.qty)), Math.max(0, original.qty - alreadyReturned));
+          if (qty === 0) continue;
+          returnedQtyByLine[String(index)] = alreadyReturned + qty;
+          const line = {
+            orderLineIndex: index, productId: original.productId, productName: original.productName,
+            qty, unitPrice: original.unitPrice, unitCost: original.unitCost, restock: Boolean(requested.restock),
+          };
+          lines.push(line);
+          if (line.restock) {
+            const product = products.get(line.productId);
+            if (product) product.stock += qty;
+            restockedCost += qty * line.unitCost;
+          }
+        }
+        const grossRevenue = o.lines.reduce((sum, line) => sum + line.qty * line.unitPrice, 0) - o.discount + o.shippingCharged;
+        const refundable = Math.max(0, grossRevenue - (o.refundAmount ?? 0));
+        const refundAmount = Math.min(refundable, Math.max(0, Number(p.refundAmount) || 0));
+        if (lines.length === 0 && refundAmount === 0) break;
+        const record: OrderReturnRecorded = {
+          ...p, lines, refundAmount,
+          returnShippingCost: Math.max(0, Number(p.returnShippingCost) || 0),
+        };
+        o.returnRecords = [...(o.returnRecords ?? []), record];
+        o.returnedQtyByLine = returnedQtyByLine;
+        o.refundAmount = (o.refundAmount ?? 0) + refundAmount;
+        o.returnShippingCost = (o.returnShippingCost ?? 0) + record.returnShippingCost;
+        o.restockedCost = (o.restockedCost ?? 0) + restockedCost;
+        o.lastReturnedAt = p.at;
+        const fullyReturned = o.lines.every((line, index) => (returnedQtyByLine[String(index)] ?? 0) >= line.qty);
+        o.returnStatus = fullyReturned ? "returned" : "partial";
         break;
       }
       case "shipment_created": {
@@ -244,6 +305,7 @@ export function projectState(events: readonly MemoryEvent[]): WorkspaceState {
 
   return {
     invoices: [...invoices.values()].sort((a, b) => b.issuedAt - a.issuedAt),
+    quotes: [...quotes.values()].sort((a, b) => b.createdAt - a.createdAt),
     expenses: expenses.sort((a, b) => b.date - a.date),
     products: [...products.values()],
     orders: [...orders.values()].sort((a, b) => b.createdAt - a.createdAt),
@@ -288,8 +350,7 @@ export function profitAndLoss(
   periodLabel: string
 ): ProfitAndLoss {
   const inPeriod = (ts?: number) => ts !== undefined && ts >= start && ts < end;
-  const delivered = state.orders.filter((o) => inPeriod(o.deliveredAt) && o.status !== "returned");
-  const returned = state.orders.filter((o) => o.status === "returned" && inPeriod(o.deliveredAt));
+  const delivered = state.orders.filter((o) => inPeriod(o.deliveredAt) && (o.status === "delivered" || o.status === "returned"));
 
   const productSales = delivered.reduce((s, o) => s + orderLinesTotal(o), 0);
   const discounts = delivered.reduce((s, o) => s + o.discount, 0);
@@ -297,7 +358,7 @@ export function profitAndLoss(
   const invoicedSales = state.invoices
     .filter((i) => inPeriod(i.paidAt))
     .reduce((s, i) => s + i.amount, 0);
-  const refunds = returned.reduce((s, o) => s + orderRevenue(o), 0);
+  const refunds = delivered.reduce((sum, order) => sum + (order.refundAmount ?? (order.status === "returned" ? orderGrossRevenue(order) : 0)), 0);
 
   const revenueLines: PnlLine[] = [
     { label: "Product sales (delivered)", amount: productSales },
@@ -308,13 +369,14 @@ export function profitAndLoss(
   ];
   const netRevenue = revenueLines.reduce((s, l) => s + l.amount, 0);
 
-  const cogs = delivered.reduce((s, o) => s + orderCogs(o), 0);
+  const cogs = delivered.reduce((sum, order) => sum + (order.status === "returned" && !order.returnRecords?.length ? 0 : orderCogs(order)), 0);
   const grossProfit = netRevenue - cogs;
 
   // Operating expenses: order-level (shipping, COD fees, packaging) + recorded expenses by category.
   const shippingCost = delivered.reduce((s, o) => s + o.shippingCost, 0);
   const codFees = delivered.reduce((s, o) => s + o.codFee, 0);
   const packaging = delivered.reduce((s, o) => s + o.packagingCost, 0);
+  const returnShipping = delivered.reduce((s, o) => s + (o.returnShippingCost ?? 0), 0);
   const byCategory = new Map<string, number>();
   for (const e of state.expenses) if (inPeriod(e.date)) byCategory.set(e.label, (byCategory.get(e.label) ?? 0) + e.amount);
 
@@ -322,6 +384,7 @@ export function profitAndLoss(
     ...(shippingCost ? [{ label: "Delivery / shipping cost", amount: shippingCost }] : []),
     ...(codFees ? [{ label: "COD fees", amount: codFees }] : []),
     ...(packaging ? [{ label: "Packaging", amount: packaging }] : []),
+    ...(returnShipping ? [{ label: "Return shipping", amount: returnShipping }] : []),
     ...[...byCategory.entries()].map(([label, amount]) => ({ label, amount })),
   ];
   const opexTotal = opexLines.reduce((s, l) => s + l.amount, 0);
@@ -605,17 +668,21 @@ export function orderLinesTotal(o: Order): number {
 }
 
 /** Revenue = lines − discount + shipping charged to the customer. Recognized on delivery only. */
-export function orderRevenue(o: Order): number {
+export function orderGrossRevenue(o: Order): number {
   return orderLinesTotal(o) - o.discount + o.shippingCharged;
 }
 
+export function orderRevenue(o: Order): number {
+  return Math.max(0, orderGrossRevenue(o) - (o.refundAmount ?? 0));
+}
+
 export function orderCogs(o: Order): number {
-  return o.lines.reduce((s, l) => s + l.qty * l.unitCost, 0);
+  return Math.max(0, o.lines.reduce((s, l) => s + l.qty * l.unitCost, 0) - (o.restockedCost ?? 0));
 }
 
 /** Net profit = revenue − COGS − shipping cost − COD fee − packaging. */
 export function orderNetProfit(o: Order): number {
-  return orderRevenue(o) - orderCogs(o) - o.shippingCost - o.codFee - o.packagingCost;
+  return orderRevenue(o) - orderCogs(o) - o.shippingCost - o.codFee - o.packagingCost - (o.returnShippingCost ?? 0);
 }
 
 /** Cost sunk on a refused COD order: round-trip shipping + packaging (goods come back). */

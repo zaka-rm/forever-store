@@ -21,6 +21,7 @@ Companion to `DEPLOYMENT.md` (how to ship) — this is how to run.
 | Client errors | Table Editor → `zyvora_client_errors` | Empty, or known issues already fixed |
 | Edge Function failures | Dashboard → Edge Functions → Logs (ask-ai, send-message, whatsapp-inbound, message-status, zyvora-billing, zyvora-stripe-webhook) | No 5xx entries |
 | WhatsApp delivery | Inbox message receipts + Twilio Monitor → Messaging logs | Recent sends progress from queued/sent to delivered/read; failed items show a reason/code |
+| Approved WhatsApp templates | Twilio Content Template Builder + Supabase Edge Function logs | All four `TWILIO_CONTENT_SID_*` values point to approved `HX...` templates; test each after approval and after any template edit |
 | Webhook delivery | Stripe Dashboard → Webhooks → endpoint | 100% delivered; retry any failed |
 | Payment health | Stripe Dashboard → Subscriptions | No unexpected `past_due` pile-up |
 | Database size / limits | Supabase Dashboard → Reports | Comfortably under plan limits |

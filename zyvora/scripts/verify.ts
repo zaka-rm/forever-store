@@ -4,6 +4,7 @@
  * constitutional behaviors. Exit code 0 = all checks pass.
  */
 import { entitlement } from "../src/core/entitlement";
+import { calculateInvoiceTotals, canGenerateFulfillmentDocuments, creditNoteDocumentHtml, deliveryNoteDocumentHtml, invoiceDocumentHtml, invoiceFromAcceptedQuote, packingSlipDocumentHtml, projectDocumentBranding, quoteDocumentHtml, receiptDocumentHtml } from "../src/core/documents";
 import { computeRfm, refillDueList, reorderDueList, upsellSuggestion } from "../src/core/retention";
 import { refusalRisk } from "../src/core/risk";
 import { businessHealth } from "../src/core/health";
@@ -12,6 +13,7 @@ import { weeklyReview } from "../src/core/weekly";
 import { courierControl } from "../src/core/couriers";
 import { workflowCandidates } from "../src/core/automations";
 import { classifyInbound, projectConversations, waitingCount } from "../src/core/inbox";
+import { WHATSAPP_TEMPLATES, numberedTemplateVariables, whatsappTemplatePreview } from "../src/core/messageTemplates";
 import { courierScorecard, referralLeaderboard } from "../src/core/retention";
 import { storyForCustomer, storyForOrder } from "../src/core/story";
 import { restageInLang, stageAction } from "../src/core/actions";
@@ -23,7 +25,9 @@ import {
   checkPromo,
   forecast,
   goalActual,
+  orderCogs,
   orderNetProfit,
+  orderGrossRevenue,
   orderRevenue,
   projectCustomerProfiles,
   projectDecisions,
@@ -218,6 +222,8 @@ check("owner can do everything", can("owner", "delete_workspace") && can("owner"
 check("viewer can only view", can("viewer", "view") && !can("viewer", "create_order") && !can("viewer", "export_memory"));
 check("staff runs operations but not the team", can("staff", "create_order") && can("staff", "manage_inventory") && !can("staff", "invite_member"));
 check("manager manages team but can't delete workspace", can("manager", "invite_member") && !can("manager", "delete_workspace"));
+check("owner and manager can manage document branding while staff cannot",
+  can("owner", "manage_documents") && can("manager", "manage_documents") && !can("staff", "manage_documents"));
 check("escalation guard: owner cannot be demoted/removed", !canManageMember("manager", "owner"));
 check("escalation guard: staff cannot change roles", !canManageMember("staff", "viewer"));
 check("escalation guard: cannot promote above your own rank", !canManageMember("manager", "staff", "owner") && canManageMember("manager", "staff", "manager"));
@@ -642,6 +648,155 @@ console.log("\nWhatsApp Operations Inbox (v0.33):");
   tracked.append("fact", "conversation_assigned", { customer: "Tracked Taha", assignedTo: "", at: Date.now() }, Date.now());
   trackedConv = projectConversations(tracked.all())[0];
   check("unassignment returns the thread to the shared queue", trackedConv.assignedTo === undefined);
+}
+
+console.log("\nApproved WhatsApp templates (v0.38):");
+{
+  check("four operational template purposes are allow-listed",
+    WHATSAPP_TEMPLATES.map((template) => template.key).join(",") ===
+      "cod_confirmation,shipping_update,abandoned_cart,payment_reminder");
+  check("every template has sequential variables and human-readable guidance",
+    WHATSAPP_TEMPLATES.every((template) =>
+      template.variableLabels.length > 0 &&
+      template.variableLabels.every((_, index) => template.body.includes(`{{${index + 1}}}`)) &&
+      template.label.length > 0 && template.purpose.length > 0));
+  const variables = numberedTemplateVariables(["  Amina  ", "2× Aloe Gel", "MAD 250", "Naturaloe"]);
+  check("template variables are trimmed and numbered for Twilio ContentVariables",
+    variables["1"] === "Amina" && variables["4"] === "Naturaloe" && Object.keys(variables).length === 4);
+  const preview = whatsappTemplatePreview("cod_confirmation", variables);
+  check("Business Memory preview resolves approved content without changing facts",
+    preview.includes("Amina") && preview.includes("MAD 250") && !preview.includes("{{1}}"));
+}
+
+console.log("\nDocuments center (v0.39):");
+{
+  const money = (amount: number) => `MAD ${amount.toFixed(2)}`;
+  const brand = {
+    businessName: "Naturaloe", legalName: "Naturaloe SARL", email: "hello@naturaloe.ma",
+    phone: "+212600000000", address: "12 Aloe Road", city: "Casablanca", country: "Morocco",
+    taxId: "ICE-123", registrationNumber: "RC-456", paymentDetails: "Bank transfer",
+    footerNote: "Pure care, naturally.", accentColor: "#176b52",
+    logoDataUrl: "data:image/png;base64,aGVsbG8=", logoFileName: "logo.png", logoWidth: 1024, logoHeight: 400,
+  };
+  const invoiceHtml = invoiceDocumentHtml(state.invoices[0], brand, money);
+  const deliveredOrder = state.orders.find((order) => order.status === "delivered")!;
+  const receiptHtml = receiptDocumentHtml(deliveredOrder, brand, money);
+  check("invoice document carries the canonical customer, amount, and reference",
+    invoiceHtml.includes(state.invoices[0].customer) && invoiceHtml.includes(money(state.invoices[0].amount)) && invoiceHtml.includes(state.invoices[0].invoiceId));
+  check("receipt document carries every order line and the derived order total",
+    deliveredOrder.lines.every((line) => receiptHtml.includes(line.productName)) && receiptHtml.includes(money(orderRevenue(deliveredOrder))));
+  check("documents expose browser print-to-PDF without another persistence store",
+    invoiceHtml.includes("window.print()") && receiptHtml.includes("Generated from ZYVORA Business Memory"));
+  check("branded documents carry editable legal, contact, payment, and logo information",
+    invoiceHtml.includes("Naturaloe SARL") && invoiceHtml.includes("hello@naturaloe.ma") && invoiceHtml.includes("Bank transfer") && invoiceHtml.includes("class=\"logo\""));
+  check("invoice uses a print-safe A4 layout and a controlled brand accent",
+    invoiceHtml.includes("@page{size:A4") && invoiceHtml.includes("#176b52") && invoiceHtml.includes("Document reference"));
+  const escaped = invoiceDocumentHtml({ ...state.invoices[0], customer: "<script>alert(1)</script>" }, "Naturaloe", money);
+  check("document content escapes user-entered HTML", !escaped.includes("<script>alert(1)</script>") && escaped.includes("&lt;script&gt;"));
+  const brandingEvents = [
+    { id: "b1", ts: 1, stream: "fact" as const, type: "document_branding_updated", payload: { businessName: "First", phone: "1" } },
+    { id: "b2", ts: 2, stream: "fact" as const, type: "document_branding_updated", payload: { businessName: "Latest", email: "latest@example.com" } },
+  ];
+  const projectedBrand = projectDocumentBranding(brandingEvents, "Workspace");
+  check("latest append-only document-branding correction wins without losing earlier fields",
+    projectedBrand.businessName === "Latest" && projectedBrand.phone === "1" && projectedBrand.email === "latest@example.com");
+  const totals = calculateInvoiceTotals([{ qty: 2, unitPrice: 500 }, { qty: 1, unitPrice: 200 }], 50, 20);
+  check("itemized invoice has one canonical subtotal, discount, tax, and total calculation",
+    totals.subtotal === 1200 && totals.discount === 50 && totals.taxAmount === 230 && totals.total === 1380);
+  const itemizedHtml = invoiceDocumentHtml({
+    ...state.invoices[0], amount: totals.total, subtotal: totals.subtotal, discount: totals.discount,
+    taxRate: totals.taxRate, taxAmount: totals.taxAmount, customerEmail: "buyer@example.com",
+    customerAddress: "12 Commerce Street\nCasablanca", notes: "Handle with care",
+    lines: [{ lineId: "l1", description: "Aloe care set", qty: 2, unitPrice: 500 }, { lineId: "l2", description: "Delivery", qty: 1, unitPrice: 200 }],
+  }, brand, money);
+  check("branded invoice renders item descriptions, quantities, billing details, tax, and notes",
+    itemizedHtml.includes("Aloe care set") && itemizedHtml.includes("buyer@example.com") && itemizedHtml.includes("Casablanca") && itemizedHtml.includes("Tax (20%)") && itemizedHtml.includes("Handle with care"));
+
+  const quoteMemory = new TestMemory();
+  const quoteCreatedAt = Date.now();
+  quoteMemory.append("fact", "quote_created", {
+    quoteId: "quote-1", customer: "Quote Customer", customerEmail: "quote@example.com", customerAddress: "Rabat",
+    lines: [{ lineId: "ql1", description: "Negotiated care set", qty: 2, unitPrice: 500 }],
+    subtotal: 1000, discount: 100, taxRate: 20, taxAmount: 180, amount: 1080,
+    notes: "Valid while stock lasts", createdAt: quoteCreatedAt, validUntil: quoteCreatedAt + 14 * 86_400_000,
+  }, quoteCreatedAt);
+  let quoteState = projectState(quoteMemory.all());
+  check("a new estimate projects as draft without creating revenue or an invoice",
+    quoteState.quotes[0].status === "draft" && quoteState.invoices.length === 0);
+  quoteMemory.append("fact", "quote_status_changed", { quoteId: "quote-1", status: "sent", at: quoteCreatedAt + 1 }, quoteCreatedAt + 1);
+  quoteMemory.append("fact", "quote_status_changed", { quoteId: "quote-1", status: "accepted", at: quoteCreatedAt + 2 }, quoteCreatedAt + 2);
+  quoteState = projectState(quoteMemory.all());
+  check("append-only quote status projects the latest human-recorded state", quoteState.quotes[0].status === "accepted");
+  const estimateHtml = quoteDocumentHtml(quoteState.quotes[0], brand, money);
+  check("branded estimate renders negotiated lines, validity, customer and total",
+    estimateHtml.includes("Negotiated care set") && estimateHtml.includes("Quote Customer") && estimateHtml.includes("Valid until") && estimateHtml.includes(money(1080)));
+  const convertedInvoice = invoiceFromAcceptedQuote(quoteState.quotes[0], "invoice-from-quote", quoteCreatedAt + 3);
+  check("accepted estimate conversion copies commercial terms and preserves source traceability",
+    convertedInvoice.amount === 1080 && convertedInvoice.lines?.[0].description === "Negotiated care set" && convertedInvoice.sourceQuoteId === "quote-1");
+  quoteMemory.append("fact", "invoice_issued", { ...convertedInvoice }, quoteCreatedAt + 3);
+  quoteMemory.append("fact", "quote_status_changed", { quoteId: "quote-1", status: "converted", at: quoteCreatedAt + 3 }, quoteCreatedAt + 3);
+  quoteState = projectState(quoteMemory.all());
+  check("conversion produces one open invoice and closes the estimate as converted",
+    quoteState.invoices.length === 1 && quoteState.quotes[0].status === "converted");
+
+  const fulfillmentOrder: Order = {
+    ...deliveredOrder,
+    status: "confirmed",
+    customerPhone: "+212600000001",
+    shippingAddress: "18 Palm Street\nMarrakesh",
+    deliveryInstructions: "Call before delivery",
+    courier: "Atlas Express",
+    trackingNumber: "AT-2048",
+  };
+  const packingHtml = packingSlipDocumentHtml(fulfillmentOrder, brand);
+  const deliveryHtml = deliveryNoteDocumentHtml(fulfillmentOrder, brand, money);
+  check("fulfillment documents unlock only after order confirmation",
+    !canGenerateFulfillmentDocuments({ status: "pending" }) && canGenerateFulfillmentDocuments({ status: "confirmed" }) && canGenerateFulfillmentDocuments({ status: "shipped" }) && canGenerateFulfillmentDocuments({ status: "delivered" }) && !canGenerateFulfillmentDocuments({ status: "cancelled" }));
+  check("packing slip carries delivery snapshot and every quantity without exposing prices",
+    packingHtml.includes("Marrakesh") && packingHtml.includes("+212600000001") && fulfillmentOrder.lines.every((line) => packingHtml.includes(line.productName) && packingHtml.includes(`<strong>${line.qty}</strong>`)) && !packingHtml.includes(money(orderRevenue(fulfillmentOrder))));
+  check("delivery note carries COD, courier, tracking, instructions, and acknowledgment fields",
+    deliveryHtml.includes(money(orderRevenue(fulfillmentOrder))) && deliveryHtml.includes("Atlas Express") && deliveryHtml.includes("AT-2048") && deliveryHtml.includes("Call before delivery") && deliveryHtml.includes("Customer name and signature"));
+  const historicalPackingHtml = packingSlipDocumentHtml(deliveredOrder, brand);
+  check("historical orders without delivery snapshot still render fulfillment documents safely",
+    historicalPackingHtml.includes(deliveredOrder.customer) && historicalPackingHtml.includes("No special instructions"));
+
+  const returnMemory = new TestMemory();
+  const returnAt = Date.now();
+  returnMemory.append("fact", "product_added", { productId: "return-product", name: "Return product", price: 100, unitCost: 40, stock: 10, weeklySales: 1, leadTimeDays: 7 }, returnAt);
+  returnMemory.append("fact", "order_created", {
+    orderId: "return-order", customer: "Return customer", customerPhone: "+212600000002", shippingAddress: "Rabat",
+    lines: [{ productId: "return-product", productName: "Return product", qty: 3, unitPrice: 100, unitCost: 40 }],
+    discount: 0, shippingCharged: 0, shippingCost: 10, codFee: 0, packagingCost: 2, createdAt: returnAt,
+  }, returnAt);
+  returnMemory.append("fact", "order_status_changed", { orderId: "return-order", status: "delivered", at: returnAt + 1 }, returnAt + 1);
+  returnMemory.append("fact", "order_return_recorded", {
+    returnId: "credit-partial", orderId: "return-order",
+    lines: [{ orderLineIndex: 0, productId: "return-product", productName: "Return product", qty: 1, unitPrice: 100, unitCost: 40, restock: true }],
+    refundAmount: 90, refundMethod: "cash", returnShippingCost: 20, reason: "changed_mind", note: "Inspected and sellable", at: returnAt + 2,
+  }, returnAt + 2);
+  let returnState = projectState(returnMemory.all());
+  let returnedOrder = returnState.orders[0];
+  check("partial return restocks only sellable quantity and keeps the order partially returned",
+    returnState.products[0].stock === 8 && returnedOrder.returnStatus === "partial" && returnedOrder.returnedQtyByLine?.["0"] === 1);
+  check("refunds reverse revenue while restocking reverses COGS and return freight reduces profit",
+    orderGrossRevenue(returnedOrder) === 300 && orderRevenue(returnedOrder) === 210 && orderCogs(returnedOrder) === 80 && orderNetProfit(returnedOrder) === 98);
+  const partialCredit = creditNoteDocumentHtml(returnedOrder, returnedOrder.returnRecords![0], brand, money);
+  check("credit note carries immutable return reference, customer, item, refund method, and amount",
+    partialCredit.includes("credit-partial") && partialCredit.includes("Return customer") && partialCredit.includes("Return product") && partialCredit.includes("Cash") && partialCredit.includes(money(90)));
+  returnMemory.append("fact", "order_return_recorded", {
+    returnId: "credit-final", orderId: "return-order",
+    lines: [{ orderLineIndex: 0, productId: "wrong", productName: "Wrong", qty: 99, unitPrice: 999, unitCost: 999, restock: false }],
+    refundAmount: 9999, refundMethod: "bank_transfer", returnShippingCost: 5, reason: "damaged", at: returnAt + 3,
+  }, returnAt + 3);
+  returnState = projectState(returnMemory.all());
+  returnedOrder = returnState.orders[0];
+  check("projection clamps over-return and over-refund facts to the canonical order balance",
+    returnedOrder.returnedQtyByLine?.["0"] === 3 && returnedOrder.refundAmount === 300 && returnedOrder.returnRecords?.[1].lines[0].qty === 2);
+  check("fully returned damaged units stay out of inventory and fulfillment documents close",
+    returnedOrder.returnStatus === "returned" && returnState.products[0].stock === 8 && !canGenerateFulfillmentDocuments(returnedOrder));
+  const returnPnl = profitAndLoss(returnState, returnAt - 1, returnAt + 10, "Returns test");
+  check("P&L shows refunds and return freight explicitly while retaining gross sales traceability",
+    returnPnl.revenue.lines.some((line) => line.label.includes("refund") && line.amount === -300) && returnPnl.operatingExpenses.lines.some((line) => line.label === "Return shipping" && line.amount === 25) && returnPnl.revenue.lines.some((line) => line.label.includes("Product sales") && line.amount === 300));
 }
 
 console.log("\nCourier Control Tower (v0.34):");

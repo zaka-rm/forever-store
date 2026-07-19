@@ -30,6 +30,7 @@ Supabase ── Postgres + RLS (business memory, teams, error telemetry)
    supabase functions deploy message-status --no-verify-jwt
    supabase secrets set GROQ_API_KEY=<gsk_...>
    supabase secrets set TWILIO_ACCOUNT_SID=<AC...> TWILIO_AUTH_TOKEN=<...> TWILIO_WHATSAPP_FROM=whatsapp:+14155238886 TWILIO_WEBHOOK_URL=https://<project-ref>.supabase.co/functions/v1/whatsapp-inbound TWILIO_STATUS_CALLBACK_URL=https://<project-ref>.supabase.co/functions/v1/message-status
+   supabase secrets set TWILIO_CONTENT_SID_COD_CONFIRMATION=<HX...> TWILIO_CONTENT_SID_SHIPPING_UPDATE=<HX...> TWILIO_CONTENT_SID_ABANDONED_CART=<HX...> TWILIO_CONTENT_SID_PAYMENT_REMINDER=<HX...>
    supabase secrets set STRIPE_SECRET_KEY=<sk_...> STRIPE_PRICE_ID=<price_...> APP_URL=<https://your-app-url>
    supabase secrets set ZYVORA_STRIPE_WEBHOOK_SECRET=<whsec_...>
    ```
@@ -50,6 +51,21 @@ In Twilio Sandbox settings, set **When a message comes in** to
 `https://<project-ref>.supabase.co/functions/v1/whatsapp-inbound` using **POST**. The value of `TWILIO_WEBHOOK_URL` must match that public URL exactly so Twilio signature verification succeeds. The sandbox still requires each test recipient to send `join <code>` first.
 
 `send-message` supplies `message-status` to Twilio automatically for every new outbound message. Do not add the Workspace query parameter yourself; the sender function adds it and Twilio signs the resulting callback URL. Delivery receipts then appear beside the message as Queued, Sent, Delivered, Read, or Delivery failed.
+
+### Approved WhatsApp templates (outside the 24-hour window)
+
+The app allow-lists four purposes: COD confirmation, shipping update, abandoned cart, and payment reminder. The browser never supplies a Twilio Content SID. `send-message` maps each purpose to its protected `TWILIO_CONTENT_SID_*` secret, validates sequential non-empty variables, and sends `ContentSid` + `ContentVariables` without a free-form `Body`.
+
+In Twilio Console → Messaging → Content Template Builder, create and submit these exact bodies for WhatsApp approval. Copy each resulting `HX...` Content SID into the matching Supabase secret above.
+
+| Secret | Suggested template name | Approved body |
+|---|---|---|
+| `TWILIO_CONTENT_SID_COD_CONFIRMATION` | `zyvora_cod_confirmation` | `Hello {{1}}, please confirm your order: {{2}}. Total on delivery: {{3}}. Reply YES to confirm or NO to cancel. Thank you from {{4}}.` |
+| `TWILIO_CONTENT_SID_SHIPPING_UPDATE` | `zyvora_shipping_update` | `Hello {{1}}, your order is now {{2}}. Tracking: {{3}}. Thank you from {{4}}.` |
+| `TWILIO_CONTENT_SID_ABANDONED_CART` | `zyvora_abandoned_cart` | `Hello {{1}}, you left {{2}} in your cart. Complete your order here: {{3}}. Reply STOP to opt out. Thank you from {{4}}.` |
+| `TWILIO_CONTENT_SID_PAYMENT_REMINDER` | `zyvora_payment_reminder` | `Hello {{1}}, this is a reminder that {{2}} for invoice {{4}} was due on {{3}}. Please reply if you need help. Thank you from {{5}}.` |
+
+Use the exact same variable order shown in ZYVORA's template composer. Meta approval and a registered production WhatsApp sender are required for custom out-of-session templates; the sandbox only supports Twilio's own pre-approved test templates. WhatsApp Flows remain intentionally deferred.
 
 ### Stripe setup (billing)
 

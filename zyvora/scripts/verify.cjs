@@ -552,6 +552,42 @@ function projectActivities(events) {
 }
 var DAY2 = 24 * 60 * 60 * 1e3;
 
+// src/core/documents.ts
+var esc = (value) => String(value ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+var date = (timestamp) => new Date(timestamp).toLocaleDateString(void 0, {
+  day: "numeric",
+  month: "long",
+  year: "numeric"
+});
+var shell = (title, business, kind, meta, body) => `<!doctype html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>${esc(title)}</title><style>
+*{box-sizing:border-box}body{margin:0;background:#f4f6f4;color:#17211e;font:14px/1.5 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.page{width:min(760px,calc(100% - 32px));margin:32px auto;background:white;padding:48px;border:1px solid #dfe5e1;border-radius:14px;box-shadow:0 16px 45px rgba(20,37,31,.08)}
+.brand{font-size:22px;font-weight:800;letter-spacing:.16em}.kind{color:#147d64;font-size:12px;font-weight:750;text-transform:uppercase;letter-spacing:.12em;margin-top:8px}
+.meta{color:#65736e;margin-top:3px}.parties{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin:32px 0}.label{color:#65736e;font-size:11px;text-transform:uppercase;letter-spacing:.08em}
+table{width:100%;border-collapse:collapse;margin:24px 0}th,td{text-align:left;padding:11px 8px;border-bottom:1px solid #e5e9e6}th{color:#65736e;font-size:11px;text-transform:uppercase;letter-spacing:.05em}.num{text-align:right}
+.total{display:flex;justify-content:flex-end;gap:30px;padding:14px 8px;font-size:18px;font-weight:800;border-top:2px solid #17211e}.status{display:inline-block;padding:4px 9px;border-radius:999px;background:#e7f5ef;color:#147d64;font-weight:700;font-size:12px}
+.foot{margin-top:44px;padding-top:16px;border-top:1px solid #e5e9e6;color:#65736e;text-align:center}.actions{text-align:center;margin:0 auto 30px}.actions button{border:0;border-radius:8px;background:#147d64;color:white;padding:10px 16px;font-weight:700;cursor:pointer}
+@media(max-width:560px){.page{margin:0;width:100%;border:0;border-radius:0;padding:28px 20px}.parties{grid-template-columns:1fr}}
+@media print{body{background:white}.page{box-shadow:none;border:0;margin:0;width:100%;padding:20px}.actions{display:none}}
+</style></head><body><main class="page"><div class="brand">${esc(business.toUpperCase())}</div><div class="kind">${esc(kind)}</div><div class="meta">${esc(meta)}</div>${body}<div class="foot">Generated from ZYVORA Business Memory \xB7 ${esc(business)}</div></main><div class="actions"><button onclick="window.print()">Print / Save PDF</button></div></body></html>`;
+function invoiceDocumentHtml(invoice, business, money2) {
+  const dueAt = invoice.issuedAt + invoice.dueDays * 864e5;
+  const status = invoice.paidAt ? `Paid ${date(invoice.paidAt)}` : `Due ${date(dueAt)}`;
+  return shell(`Invoice ${invoice.invoiceId}`, business, "Invoice", `Reference ${invoice.invoiceId}`, `
+    <div class="parties"><div><div class="label">Bill to</div><strong>${esc(invoice.customer)}</strong></div><div><div class="label">Issued</div><strong>${esc(date(invoice.issuedAt))}</strong></div></div>
+    <table><thead><tr><th>Description</th><th class="num">Amount</th></tr></thead><tbody><tr><td>Goods or services supplied</td><td class="num">${esc(money2(invoice.amount))}</td></tr></tbody></table>
+    <div class="total"><span>Total due</span><span>${esc(money2(invoice.amount))}</span></div><p><span class="status">${esc(status)}</span></p>`);
+}
+function receiptDocumentHtml(order, business, money2) {
+  const rows = order.lines.map((line) => `<tr><td>${esc(line.qty)}\xD7 ${esc(line.productName)}</td><td class="num">${esc(money2(line.qty * line.unitPrice))}</td></tr>`).join("");
+  return shell(`Receipt ${order.orderId}`, business, "Receipt", `Reference ${order.orderId}`, `
+    <div class="parties"><div><div class="label">Customer</div><strong>${esc(order.customer)}</strong></div><div><div class="label">Order date</div><strong>${esc(date(order.createdAt))}</strong></div></div>
+    <table><thead><tr><th>Item</th><th class="num">Amount</th></tr></thead><tbody>${rows}</tbody></table>
+    <div class="total"><span>Total paid</span><span>${esc(money2(orderRevenue(order)))}</span></div><p><span class="status">Delivered${order.cashReceivedAt ? " \xB7 payment received" : ""}</span></p>`);
+}
+
 // src/core/retention.ts
 var SEGMENT_LABEL = {
   champion: "Champion",
@@ -1889,6 +1925,45 @@ function waitingCount(convs) {
   return convs.filter((c) => c.waiting && !c.optedOut).length;
 }
 
+// src/core/messageTemplates.ts
+var WHATSAPP_TEMPLATES = [
+  {
+    key: "cod_confirmation",
+    label: "COD confirmation",
+    purpose: "Confirm an order before courier handoff",
+    variableLabels: ["Customer", "Order summary", "Total on delivery", "Business"],
+    body: "Hello {{1}}, please confirm your order: {{2}}. Total on delivery: {{3}}. Reply YES to confirm or NO to cancel. Thank you from {{4}}."
+  },
+  {
+    key: "shipping_update",
+    label: "Shipping update",
+    purpose: "Share delivery progress and tracking",
+    variableLabels: ["Customer", "Shipping status", "Tracking reference or link", "Business"],
+    body: "Hello {{1}}, your order is now {{2}}. Tracking: {{3}}. Thank you from {{4}}."
+  },
+  {
+    key: "abandoned_cart",
+    label: "Abandoned cart",
+    purpose: "Help a customer finish a saved cart",
+    variableLabels: ["Customer", "Cart summary", "Checkout link", "Business"],
+    body: "Hello {{1}}, you left {{2}} in your cart. Complete your order here: {{3}}. Reply STOP to opt out. Thank you from {{4}}."
+  },
+  {
+    key: "payment_reminder",
+    label: "Payment reminder",
+    purpose: "Remind a customer about an unpaid invoice",
+    variableLabels: ["Customer", "Amount due", "Due date", "Invoice reference", "Business"],
+    body: "Hello {{1}}, this is a reminder that {{2}} for invoice {{4}} was due on {{3}}. Please reply if you need help. Thank you from {{5}}."
+  }
+];
+var whatsappTemplate = (key) => WHATSAPP_TEMPLATES.find((template) => template.key === key);
+function numberedTemplateVariables(values) {
+  return Object.fromEntries(values.map((value, index) => [String(index + 1), value.trim()]));
+}
+function whatsappTemplatePreview(key, variables) {
+  return whatsappTemplate(key).body.replace(/\{\{(\d+)\}\}/g, (_, number) => variables[number] || `{{${number}}}`);
+}
+
 // src/core/story.ts
 var cap = (s) => s.charAt(0).toUpperCase() + s.slice(1);
 function describe(e) {
@@ -2423,13 +2498,13 @@ function buildRow(type, map, cells) {
     const amount2 = parseNum(get("amount"));
     if (!label) return { event: null, error: "missing label" };
     if (amount2 === null) return { event: null, error: "invalid amount" };
-    const date = get("date") ? parseDate(get("date")) : now;
+    const date2 = get("date") ? parseDate(get("date")) : now;
     return {
       error: null,
       event: {
         type: "expense_recorded",
-        ts: date ?? now,
-        payload: { expenseId: crypto.randomUUID(), label, amount: amount2, date: date ?? now }
+        ts: date2 ?? now,
+        payload: { expenseId: crypto.randomUUID(), label, amount: amount2, date: date2 ?? now }
       }
     };
   }
@@ -4181,6 +4256,48 @@ console.log("\nWhatsApp Operations Inbox (v0.33):");
   tracked.append("fact", "conversation_assigned", { customer: "Tracked Taha", assignedTo: "", at: Date.now() }, Date.now());
   trackedConv = projectConversations(tracked.all())[0];
   check("unassignment returns the thread to the shared queue", trackedConv.assignedTo === void 0);
+}
+console.log("\nApproved WhatsApp templates (v0.38):");
+{
+  check(
+    "four operational template purposes are allow-listed",
+    WHATSAPP_TEMPLATES.map((template) => template.key).join(",") === "cod_confirmation,shipping_update,abandoned_cart,payment_reminder"
+  );
+  check(
+    "every template has sequential variables and human-readable guidance",
+    WHATSAPP_TEMPLATES.every((template) => template.variableLabels.length > 0 && template.variableLabels.every((_, index) => template.body.includes(`{{${index + 1}}}`)) && template.label.length > 0 && template.purpose.length > 0)
+  );
+  const variables = numberedTemplateVariables(["  Amina  ", "2\xD7 Aloe Gel", "MAD 250", "Naturaloe"]);
+  check(
+    "template variables are trimmed and numbered for Twilio ContentVariables",
+    variables["1"] === "Amina" && variables["4"] === "Naturaloe" && Object.keys(variables).length === 4
+  );
+  const preview = whatsappTemplatePreview("cod_confirmation", variables);
+  check(
+    "Business Memory preview resolves approved content without changing facts",
+    preview.includes("Amina") && preview.includes("MAD 250") && !preview.includes("{{1}}")
+  );
+}
+console.log("\nDocuments center (v0.39):");
+{
+  const money2 = (amount) => `MAD ${amount.toFixed(2)}`;
+  const invoiceHtml = invoiceDocumentHtml(state.invoices[0], "Naturaloe", money2);
+  const deliveredOrder = state.orders.find((order) => order.status === "delivered");
+  const receiptHtml = receiptDocumentHtml(deliveredOrder, "Naturaloe", money2);
+  check(
+    "invoice document carries the canonical customer, amount, and reference",
+    invoiceHtml.includes(state.invoices[0].customer) && invoiceHtml.includes(money2(state.invoices[0].amount)) && invoiceHtml.includes(state.invoices[0].invoiceId)
+  );
+  check(
+    "receipt document carries every order line and the derived order total",
+    deliveredOrder.lines.every((line) => receiptHtml.includes(line.productName)) && receiptHtml.includes(money2(orderRevenue(deliveredOrder)))
+  );
+  check(
+    "documents expose browser print-to-PDF without another persistence store",
+    invoiceHtml.includes("window.print()") && receiptHtml.includes("Generated from ZYVORA Business Memory")
+  );
+  const escaped = invoiceDocumentHtml({ ...state.invoices[0], customer: "<script>alert(1)</script>" }, "Naturaloe", money2);
+  check("document content escapes user-entered HTML", !escaped.includes("<script>alert(1)</script>") && escaped.includes("&lt;script&gt;"));
 }
 console.log("\nCourier Control Tower (v0.34):");
 {
